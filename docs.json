@@ -69,14 +69,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "L2Pass",
+          "href": "https://l2pass.com/",
+          "icon": "house"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Docs",
+          "href": "https://docs.l2pass.com/",
+          "icon": "book-open-cover"
         }
       ]
     }
