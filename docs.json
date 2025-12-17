@@ -75,12 +75,12 @@
         {
           "anchor": "SWAP & BRIDGE",
           "href": "https://swap.l2pass.com/",
-          "icon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreiassqwtdp3tyboo2jes35yybp5fwhcgplz225vptdty6p2rtyztde"
+          "icon": "l2pass_website_icon"
         },
           {
           "anchor": "YIELD",
           "href": "https://earn.l2pass.com/",
-          "icon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreiassqwtdp3tyboo2jes35yybp5fwhcgplz225vptdty6p2rtyztde"
+          "icon": "l2pass_website_icon"
         },
         {
           "anchor": "DOCS",
