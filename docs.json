@@ -88,13 +88,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:help@l2pass.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Start Earning",
+      "href": "https://earn.l2pass.com"
     }
   },
   "contextual": {
