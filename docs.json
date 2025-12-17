@@ -68,9 +68,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2PASS",
+          "anchor": "L2Pass site",
           "href": "https://l2pass.com/",
           "icon": "house"
+        },
+        {
+          "anchor": "Swap",
+          "href": "https://swap.l2pass.com/",
+          "icon": "book-open-cover"
+        },
+          {
+          "anchor": "Yield",
+          "href": "https://earn.l2pass.com/",
+          "icon": "book-open-cover"
         },
         {
           "anchor": "Docs",
