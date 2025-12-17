@@ -68,7 +68,7 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2Pass",
+          "anchor": "L2PASS",
           "href": "https://l2pass.com/",
           "icon": "house"
         },
