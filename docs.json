@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "L2Pass Docs",
   "colors": {
-    "primary": "#971AE4",
-    "light": "#53CBC8",
-    "dark": "#A5FFBE"
+    "primary": "#8C8DFC",
+    "light": "#8C8DFC",
+    "dark": "#8C8DFC"
   },
   "favicon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreifxpy5alh6h5y67iu7nnmqdspfck5hzm6w7hszbpx4fn2ed6iwcge",
   "navigation": {
@@ -81,8 +81,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreibvjvn52bbbtq3c5dclnooouo6dwfgnb6wwrtlyavqrnhionfglsu"
+    "light": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreibfbxsqhftkwl7btscvuhoqworfm4mt6ahj4wtkxufxlzgu5mkb74",
+    "dark": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreid7tzv4ywgyteyzgugteh2som2pcoxwp4gjmty5xuwlkdzbsfuwji"
   },
   "navbar": {
     "links": [
