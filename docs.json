@@ -81,7 +81,7 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
+    "light": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreibvjvn52bbbtq3c5dclnooouo6dwfgnb6wwrtlyavqrnhionfglsu",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
