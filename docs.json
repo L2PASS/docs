@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "L2Pass Docs",
   "colors": {
-    "primary": "#A5FFBE",
+    "primary": "#53CBC8",
     "light": "#8C8DFC",
-    "dark": "#53CBC8"
+    "dark": "#8C8DFC"
   },
   "favicon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreifxpy5alh6h5y67iu7nnmqdspfck5hzm6w7hszbpx4fn2ed6iwcge",
   "navigation": {
