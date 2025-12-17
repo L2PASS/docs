@@ -68,22 +68,22 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2Pass site",
+          "anchor": "L2PASS",
           "href": "https://l2pass.com/",
           "icon": "house"
         },
         {
-          "anchor": "Swap",
+          "anchor": "SWAP & BRIDGE",
           "href": "https://swap.l2pass.com/",
-          "icon": "book-open-cover"
+          "icon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreiassqwtdp3tyboo2jes35yybp5fwhcgplz225vptdty6p2rtyztde"
         },
           {
-          "anchor": "Yield",
+          "anchor": "YIELD",
           "href": "https://earn.l2pass.com/",
-          "icon": "book-open-cover"
+          "icon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreiassqwtdp3tyboo2jes35yybp5fwhcgplz225vptdty6p2rtyztde"
         },
         {
-          "anchor": "Docs",
+          "anchor": "DOCS",
           "href": "https://docs.l2pass.com/",
           "icon": "book-open-cover"
         }
