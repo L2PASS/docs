@@ -20,10 +20,9 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Products",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "products/yield"
             ]
           },
           {
