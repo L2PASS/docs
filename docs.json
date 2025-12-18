@@ -25,10 +25,12 @@
               
 
   {
-            "group": "products/yield",
+            "group": "Yield",
             "pages": [
+              "products/yield",
               "products/yield/user-flow",
               "products/yiled/architecture",
+              "products/yiled/contracts",
               "products/yiled/faq",
               "products/yiled/risks"
             ]
@@ -36,6 +38,30 @@
               
   
               "products/swap",
+
+ {
+            "group": "Swap & Bridge",
+            "pages": [
+              "products/swap/",
+              "products/swap/faq"
+            ]
+          },   
+           {
+            "group": "Gas Refuel",
+            "pages": [
+              "products/gas-refuel/",
+              "products/gas-refuel/contracts"
+            ]
+          },   
+           {
+            "group": "NFT Quest",
+            "pages": [
+              "products/nft/",
+              "products/nft/contracts"
+            ]
+          },   
+
+              
               "products/gas_refuel",
               "products/nft"
               
