@@ -7,7 +7,7 @@
     "light": "#8C8DFC",
     "dark": "#8C8DFC"
   },
-  "favicon": "favicon",
+  "favicon": "favicon.svg",
   "navigation": {
     "tabs": [
       {
@@ -75,12 +75,12 @@
         {
           "anchor": "SWAP & BRIDGE",
           "href": "https://swap.l2pass.com/",
-          "icon": "l2pass_website_icon"
+          "icon": "l2pass_website_icon.svg"
         },
           {
           "anchor": "YIELD",
           "href": "https://earn.l2pass.com/",
-          "icon": "l2pass_website_icon"
+          "icon": "l2pass_website_icon.svg"
         },
         {
           "anchor": "DOCS",
