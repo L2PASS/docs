@@ -22,7 +22,11 @@
           {
             "group": "Products",
             "pages": [
-              "products/yield"
+              "products/yield",
+              "products/swap",
+              "products/gas_refuel",
+              "products/nft"
+              
             ]
           },
           {
