@@ -123,9 +123,7 @@
         {
           "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
-          "icon": "globe-pointer",
-          "iconType": "thin"
-
+          "icon": "globe-pointer"
         },
         {
           "anchor": "SWAP & BRIDGE ↗",
