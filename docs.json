@@ -17,7 +17,8 @@
   "decoration":"grid",
   "color":
     {
-      "light":"#1A1A1A"
+      "light":"#FFFFFF",
+      "dark":"#1A1A1A"
     }},
 
 "banner": {
