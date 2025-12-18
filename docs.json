@@ -35,7 +35,6 @@
   {
             "group": "Yield",
             "icon": "circle-info",
-            "iconType": light,
     
             "pages": [
               "products/yield",
