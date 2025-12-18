@@ -76,10 +76,13 @@
           },
 
                     {
-            "group": "Yiled group",
-            "tag":"test",
+            "group": "Resources",
             "pages": [
-              "products/yiled/components-test"
+              "resources/components-test",
+              "resources/brand-assets",
+              "resources/contracts",
+              "resources/roadmap",
+              "resources/audits"
             ]
           },
           
