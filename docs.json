@@ -71,6 +71,11 @@
     ],
     "global": {
       "anchors": [
+           {
+          "anchor": "links" ,
+          "href": "",
+          "icon": "globe-pointer"
+        },
         {
           "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
