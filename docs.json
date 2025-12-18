@@ -36,6 +36,8 @@
             "group": "Yield",
             "icon": "arrow-up-right-dots",
             "tag": "9.75% APY",
+             "expanded": false,
+            "icon": "pencil",
             "pages": [
               "products/yield/overview",
               "products/yield/user-flow",
