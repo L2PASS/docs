@@ -32,11 +32,12 @@
     "tabs": [
       {
         "tab": "Guides",
-        "icon": "square-terminal",
+        "icon": "book",
                
         "groups": [
           {
             "group": "Get Started",
+            "icon": "book",
             "pages": [
               "index"
             ]
