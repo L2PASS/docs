@@ -75,12 +75,12 @@
         {
           "anchor": "SWAP & BRIDGE",
           "href": "https://swap.l2pass.com/",
-          "icon": "/images/l2pass_star.svg"
+          "icon": "bridge"
         },
           {
           "anchor": "YIELD",
           "href": "https://earn.l2pass.com/",
-          "icon": "swap"
+          "icon": "seedling"
         },
         {
           "anchor": "DOCS",
