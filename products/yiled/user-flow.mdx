@@ -10,18 +10,53 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
 
 ## High-level flow
 
-```text
-Connect Wallet
-  → Deposit USDT
-  → Smart Liquid Vault
-  → PSM: USDT → USDD
-  → JustLend: Supply USDD → jUSDD
-  → Mint Position NFT
-  → Yield Accrual
-  → Claim Rewards / Withdraw Principal
+<Steps>
+
+  <Step title="Connect Wallet">
+    The user connects a TRON-compatible wallet to the L2Pass interface.
+    The wallet is authenticated, the TRON network is verified, and the user’s USDT and TRX balances are displayed.
+  </Step>
+
+  <Step title="Deposit USDT">
+    The user selects an amount of **USDT (TRC20)** and confirms the deposit transaction in their wallet.
+    The interface displays information about weekly reward distribution and required network resources.
+  </Step>
+
+  <Step title="Smart Liquid Vault">
+    The deposited USDT is received by the L2Pass **Smart Liquid Vault**, which manages user accounting and executes the yield strategy on-chain.
+  </Step>
+
+  <Step title="PSM: USDT → USDD">
+    The Smart Liquid Vault converts USDT to **USDD** via the Peg Stability Module (PSM) at a 1:1 rate.
+  </Step>
+
+  <Step title="JustLend: Supply USDD → jUSDD">
+    The converted USDD is supplied to **JustLend**, where it is lent to the market and represented by **jUSDD**.
+    This step is the primary source of base yield.
+  </Step>
+
+  <Step title="Mint Position NFT">
+    A non-transferable **Position NFT** is minted to the user’s wallet.
+    The NFT represents the user’s position and tracks deposited principal, accrued rewards, and ownership.
+  </Step>
+
+  <Step title="Yield Accrual">
+    Yield begins accruing automatically from JustLend lending rates and protocol incentive distributions.
+    Rewards accumulate continuously and are finalized on a weekly basis.
+  </Step>
+
+  <Step title="Claim Rewards / Withdraw Principal">
+    The user may claim eligible rewards or withdraw their principal partially or in full at any time.
+    Previously accrued rewards remain claimable even after principal withdrawal.
+  </Step>
+
+</Steps>
 
 
-User Flow Steps
+
+
+##User Flow Steps
+
 <Steps> <Step title="Connect Wallet"> The user connects a TRON-compatible wallet (for example, TronLink) to the L2Pass interface.
 
 During this step:
