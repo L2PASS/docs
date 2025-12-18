@@ -93,14 +93,8 @@
               "essentials/images",
               "essentials/reusable-snippets"
             ]
-          },
-     "anchors": [
-        {
-          "anchor": "L2PASS ↗" ,
-          "href": "https://l2pass.com/",
-          "icon": "globe-pointer",
-          "iconType": "light"
-        },
+          }
+    
         ]
       },
       {
@@ -129,20 +123,20 @@
         {
           "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
-          "icon": "globe-pointer",
-          "iconType": "light"
+          "icon": "globe-pointer"
+
         },
         {
           "anchor": "SWAP & BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
-          "icon": "bridge",
-          "iconType": "light"
+          "icon": "bridge"
+
         },
           {
           "anchor": "YIELD ↗",
           "href": "https://earn.l2pass.com/",
-          "icon": "hand-holding-seedling",
-            "iconType": "light"
+          "icon": "hand-holding-seedling"
+
         }
       ]
     }
