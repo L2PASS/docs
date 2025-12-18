@@ -121,11 +121,6 @@
           "anchor": "YIELD ↗",
           "href": "https://earn.l2pass.com/",
           "icon": "hand-holding-seedling"
-        },
-        {
-          "anchor": "DOCS ↗",
-          "href": "https://docs.l2pass.com/",
-          "icon": "book-open-cover"
         }
       ]
     }
