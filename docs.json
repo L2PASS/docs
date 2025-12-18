@@ -50,8 +50,9 @@
             "group": "Swap & Bridge",
            "icon": "bridge",
            "tag": "0% FEE",
+           "expanded": true,
             "pages": [
-              "products/swap/",
+              "products/swap/overview",
               "products/swap/faq"
             ]
           },   
