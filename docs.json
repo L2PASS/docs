@@ -22,11 +22,21 @@
           {
             "group": "Products",
             "pages": [
+              
+
+  {
+            "group": "Yiled",
+            "pages": [
               "products/yield",
               "products/yield/user-flow",
               "products/yiled/architecture",
               "products/yiled/faq",
-              "products/yiled/risks",
+              "products/yiled/risks"
+            ]
+          },              
+              
+              
+ 
               
               "products/swap",
               "products/gas_refuel",
