@@ -10,10 +10,9 @@
 
 
 "banner": {
-  
   "content": "Liquid Yield is live on TRON chain. Earn up to 9.7% on USDT with full liquidity. Check earn.l2pass.com.",
   "dismissible": true 
-}
+},
   
   "favicon": "/favicon.svg",
   "navigation": {
