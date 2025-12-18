@@ -36,7 +36,7 @@
             "group": "Yield",
             "icon": "arrow-up-right-dots",
             "pages": [
-              "products/yield",
+              "products/yield/overview",
               "products/yield/user-flow",
               "products/yiled/architecture",
               "products/yiled/contracts",
