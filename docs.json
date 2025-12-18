@@ -35,7 +35,6 @@
   {
             "group": "Yield",
             "icon": "arrow-up-right-dots",
-    
             "pages": [
               "products/yield",
               "products/yield/user-flow",
@@ -124,17 +123,20 @@
         {
           "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
-          "icon": "globe-pointer"
+          "icon": "globe-pointer",
+          "iconType": "light"
         },
         {
           "anchor": "SWAP & BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
-          "icon": "bridge"
+          "icon": "bridge",
+          "iconType": "light"
         },
           {
           "anchor": "YIELD ↗",
           "href": "https://earn.l2pass.com/",
-          "icon": "hand-holding-seedling"
+          "icon": "hand-holding-seedling",
+            "iconType": "light"
         }
       ]
     }
