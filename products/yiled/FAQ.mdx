@@ -1,0 +1,187 @@
+---
+title: "FAQ"
+icon: "circle-question"
+description: "This section answers common questions about how L2Pass Liquid Yield works, how yield is generated, and what risks users should consider."
+---
+
+## L2Pass Liquid Yield — FAQ
+
+This section answers common questions about how L2Pass Liquid Yield works, how yield is generated, and what risks users should consider.
+
+---
+
+## 1. General & Product Overview
+
+### What is L2Pass Liquid Yield?
+
+L2Pass Liquid Yield is a non-custodial yield product that enables users to earn yield on stablecoin liquidity without lockups or withdrawal cooldowns. Users deposit USDT on TRON, and the protocol automatically routes liquidity through on-chain yield strategies while preserving full withdrawal flexibility.
+
+---
+
+### Which assets can I deposit? 
+
+Currently, L2Pass Liquid Yield supports deposits in **USDT (TRC20)** on the TRON network. Support for additional assets and networks may be introduced in future versions.
+
+
+---
+
+### Is L2Pass Liquid Yield custodial?
+
+No. L2Pass Liquid Yield is non-custodial. User funds are managed by smart contracts, and ownership is enforced through on-chain accounting and Position NFTs.
+
+---
+
+### What do I receive after depositing?
+
+After depositing, you receive a **L2Pass Position NFT**.\
+This NFT represents your position in the protocol and tracks:
+
+- Deposited principal
+- Accrued rewards
+- Withdrawal eligibility
+
+---
+
+### What are L2Pass Position NFTs?
+
+Position NFTs are non-transferable NFTs minted once per user. They are used exclusively for internal accounting and position tracking. The NFT’s properties update as your position state changes.
+
+Position NFTs are not designed to be traded or transferred.
+
+---
+
+### Where can I track my position?
+
+You can track your active positions, accrued rewards, claimable rewards, and withdrawal history directly in the L2Pass interface.
+
+---
+
+### Do I need TRX to use the protocol?
+
+Yes. Transactions on the TRON network require sufficient **TRX or Energy**.\
+Users may optionally rent Energy through third-party services to reduce transaction costs.
+
+---
+
+## 2. Yield, Rewards & Economics
+
+### What is the source of yield?
+
+Yield is generated from:
+
+- Lending **USDD** on **JustLend**
+- Weekly incentive distributions from **L2Pass** and/or **JustLend**
+
+Yield is variable and depends on market conditions and incentive programs.
+
+---
+
+### Is the yield guaranteed?
+
+No. Yield is not guaranteed and may fluctuate over time based on utilization rates, demand, and incentive availability.
+
+---
+
+### How often can I claim rewards?
+
+Rewards accrue continuously but become **claimable on a weekly basis** after each reward epoch is finalized.
+
+---
+
+### In which token are rewards paid?
+
+Rewards are paid in **USDT**.
+
+---
+
+### Does claiming rewards affect my principal?
+
+No. Claiming rewards does not affect your deposited principal.
+
+---
+
+### Can I withdraw and still claim rewards?
+
+Yes. Any rewards accrued for completed reward epochs remain claimable even after you withdraw part or all of your principal.
+
+---
+
+### Are there any fees?
+
+- No deposit fees
+- No withdrawal fees (excluding PSM conversion spread)
+- No protocol performance fees in the current version
+
+A performance fee applied only to yield may be introduced in future versions via protocol parameters.
+
+---
+
+## 3. Deposits, Withdrawals & Positions
+
+### Can I withdraw my funds at any time?
+
+Yes. You can withdraw your funds **partially or fully at any time**.
+
+---
+
+### Are there lockups or withdrawal cooldowns?
+
+No. There are no lockups or withdrawal cooldowns.
+
+---
+
+### Are Position NFTs transferable?
+
+No. Position NFTs are non-transferable and remain bound to the original depositor’s wallet.
+
+This design simplifies accounting, preserves clear ownership, and reduces protocol-level risk.
+
+---
+
+### Is there any liquidation risk?
+
+No. The protocol does not support borrowing or leverage.\
+There are no liquidation mechanics.
+
+---
+
+## 4. Risks, Assets & Governance
+
+### What are the main risks?
+
+Key risks include:
+
+- Smart contract risk
+- External protocol risk (JustLend, USDD PSM)
+- Stablecoin risk (USDT, USDD)
+- Yield variability
+
+Users are encouraged to review the full **Risks** section before depositing.
+
+---
+
+### What is USDD?
+
+USDD is a decentralized stablecoin issued on the TRON network, designed to maintain a value close to the US dollar. Within L2Pass Liquid Yield, USDD is used as the underlying yield-bearing asset routed through external lending markets.
+
+For more details, refer to the official USDD documentation:\
+https://docs.usdd.io/
+
+---
+
+### Is my deposit insured?
+
+No. Deposits are not insured, and there is no guarantee of recovery in the event of protocol or external failures.
+
+---
+
+### Who controls the protocol parameters?
+
+Before TGE, protocol parameters may be adjusted by the L2Pass team.\
+After TGE, changes are expected to be governed through the protocol’s governance framework.
+
+---
+
+<Card title="Have more questions?" icon="telegram" iconType="light" href="https://t.me/L2pass">
+  Join the L2Pass Telegram group for updates and community support.
+</Card>
