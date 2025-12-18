@@ -123,7 +123,8 @@
         {
           "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
-          "icon": "globe-pointer"
+          "icon": "globe-pointer",
+          "iconType": "light"
 
         },
         {
