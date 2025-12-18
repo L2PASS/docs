@@ -25,9 +25,8 @@
               
 
   {
-            "group": "Yiled",
+            "group": "products/yield",
             "pages": [
-              "products/yield",
               "products/yield/user-flow",
               "products/yiled/architecture",
               "products/yiled/faq",
@@ -35,15 +34,25 @@
             ]
           },              
               
-              
- 
-              
+  
               "products/swap",
               "products/gas_refuel",
               "products/nft"
               
             ]
           },
+
+                    {
+            "group": "Yiled group",
+            "pages": [
+              "products/yield",
+              "products/yield/user-flow",
+              "products/yiled/architecture",
+              "products/yiled/faq",
+              "products/yiled/risks"
+            ]
+          },
+          
           {
             "group": "Writing content",
             "pages": [
