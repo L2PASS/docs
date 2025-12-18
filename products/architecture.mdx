@@ -1,0 +1,228 @@
+Architecture Overview
+
+## System Overview
+
+At a high level, L2Pass Liquid Yield consists of:
+
+- A **Smart Liquid Vault**
+- An **NFT-based position accounting system**
+- A **reward pipeline with weekly epochs**
+- Integration with **USDD PSM** and **JustLend**
+
+The protocol automates yield generation while keeping funds non-custodial and transparent.
+
+The system is composed of five logical layers:
+
+### 1. Finality Layer
+
+The underlying blockchains providing consensus, security, and settlement for all transactions.
+
+- **TRON** (primary execution and yield settlement layer)
+- **Ethereum** (future expansion, roadmap)
+
+### 2. Transfer Layer
+
+- Native **USDT (TRC20)**
+- PSM (USDT ⇄ USDD)
+- Cross-chain intents and bridges (roadmap)
+
+### 3. User Layer
+
+- Frontend deposit / withdraw
+- Position analytics & transparency
+- Fiat on/off ramps + KYC (roadmap)
+
+### 4. Smart Vault Layer
+
+- Smart Liquid Vault
+- Vault accounting
+- Reward pipeline
+- Risk parameters
+- Liquidity rebalancing (roadmap)
+
+### 5. Yield Layer
+
+- **JustLend** (as a yield source)
+- Weekly L2Pass/JustLend incentives
+- Cross-chain Yield Optimizer (roadmap)
+
+1. High-Level System Architecture
+
+```jsx
++--------------------------------------------------------------+
+|                          USER                                |
+|                                                              |
+|  Wallet (USDT)                                                |
++-----------------------------+--------------------------------+
+                              |
+                              v
++--------------------------------------------------------------+
+|                     L2PASS FRONTEND                           |
+|                                                              |
+|  - Deposit / Withdraw                                        |
+|  - Claim Rewards                                             |
+|  - Position Analytics                                        |
++-----------------------------+--------------------------------+
+                              |
+                              v
++--------------------------------------------------------------+
+|                  SMART LIQUID VAULT                           |
+|                                                              |
+|  +----------------------+   +-----------------------------+ |
+|  |  Position NFT       |   |   Vault Accounting           | |
+|  |  (Ownership)        |<->|   (Principal, Rewards)       | |
+|  +----------------------+   +-----------------------------+ |
+|              |                         |                     |
+|              v                         v                     |
+|       Reward Pipeline           Risk Parameters               |
++-----------------------------+--------------------------------+
+                              |
+                              v
++--------------------------------------------------------------+
+|                      YIELD LAYER                              |
+|                                                              |
+|  +----------------------+   +-----------------------------+ |
+|  |        PSM           |-->|         JustLend            | |
+|  |  USDT ⇄ USDD         |   |   USDD → jUSDD              | |
+|  +----------------------+   +-----------------------------+ |
+|                                                              |
+|  Weekly USDD Incentives                                       |
++--------------------------------------------------------------+
+
+```
+
+2. Deposit Flow (USDT → Yield Position)
+
+```jsx
+User
+ |
+ | 1. Deposit USDT (TRC20)
+ v
++---------------------+
+| L2Pass Frontend     |
++---------------------+
+ |
+ | 2. Forward to Vault
+ v
++-----------------------------+
+| Smart Liquid Vault          |
++-----------------------------+
+ |
+ | 3. Convert via PSM
+ v
++-----------------------------+
+| PSM (USDT → USDD)           |
++-----------------------------+
+ |
+ | 4. Supply USDD
+ v
++-----------------------------+
+| JustLend                    |
+| - Mint jUSDD                |
++-----------------------------+
+ |
+ | 5. Mint Position NFT
+ v
++-----------------------------+
+| Position NFT (User-owned)   |
++-----------------------------+
+
+```
+
+3. Reward Accrual & Weekly Streaming
+
+```jsx
+JustLend
+ |
+ | Base Yield + Incentives
+ v
++-----------------------------+
+| Smart Liquid Vault          |
+|                             |
+|  +----------------------+   |
+|  | Reward Pipeline      |<--+
+|  | - Weekly Epochs     |
+|  | - Snapshot Balances |
+|  | - Prevent Double    |
+|  |   Claims            |
+|  +----------------------+
+|
+|  Rewards become claimable
+|  at epoch boundary
+ v
+User (Claim USDT)
+
+```
+
+4. Claim Rewards Flow
+
+```jsx
+User
+ |
+ | Claim Rewards (NFT ID)
+ v
++-----------------------------+
+| Smart Liquid Vault          |
+|                             |
+|  - Verify NFT Ownership     |
+|  - Check Claimable Epochs   |
+|  - Calculate Rewards        |
++-----------------------------+
+ |
+ | Transfer USDD
+ v
+User Wallet (USDD)
+
+```
+
+5. Withdraw Flow (Partial / Full)
+
+```jsx
+User
+ |
+ | Withdraw (Amount, NFT ID)
+ v
++-----------------------------+
+| Smart Liquid Vault          |
+|                             |
+|  - Verify Ownership         |
+|  - Update Position State    |
++-----------------------------+
+ |
+ | Redeem jUSDD
+ v
++-----------------------------+
+| JustLend                    |
++-----------------------------+
+ |
+ | Convert via PSM
+ v
++-----------------------------+
+| PSM (USDD → USDT)           |
++-----------------------------+
+ |
+ | Transfer USDT
+ v
+User Wallet (USDT)
+
+```
+
+6. Position NFT Accounting Model
+
+```jsx
++--------------------------------------------------+
+|               POSITION NFT                       |
++--------------------------------------------------+
+| Position ID                                      |
+| Owner (Wallet Address)                           |
+|--------------------------------------------------|
+| Principal (USDT → USDD)                          |
+| jUSDD Balance                                    |
+|--------------------------------------------------|
+| Accrued Rewards (USDD)                           |
+| Last Claimed Epoch                               |
++--------------------------------------------------+
+
+```
+
+##
