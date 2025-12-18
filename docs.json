@@ -34,7 +34,7 @@
 
   {
             "group": "Yield",
-            "icon": "circle-info",
+            "icon": "arrow-up-right-dots",
     
             "pages": [
               "products/yield",
@@ -48,6 +48,7 @@
 
  {
             "group": "Swap & Bridge",
+           "icon": "bridge",
             "pages": [
               "products/swap/",
               "products/swap/faq"
@@ -55,6 +56,7 @@
           },   
            {
             "group": "Gas Refuel",
+             "icon": "gas-pump",
             "pages": [
               "products/gas-refuel/",
               "products/gas-refuel/contracts"
@@ -62,6 +64,7 @@
           },   
            {
             "group": "NFT Quest",
+             "icon": "map",
             "pages": [
               "products/nft/",
               "products/nft/contracts"
