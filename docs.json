@@ -4,8 +4,8 @@
   "name": "L2Pass Docs",
   "colors": {
     "primary": "#8C8DFC",
-    "light": "#8C8DFC",
-    "dark": "#8C8DFC"
+    "light": "#A5FFBE",
+    "dark": "#971AE4"
   },
   "favicon": "/favicon.svg",
   "navigation": {
