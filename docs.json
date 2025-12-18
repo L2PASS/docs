@@ -39,8 +39,8 @@
              "expanded": true,
             "pages": [
               "products/yiled/overview",
-              "products/yiled/user-flow",
               "products/yiled/architecture",
+              "products/yiled/user-flow",
               "products/yiled/faq",
               "products/yiled/risks"
             ]
