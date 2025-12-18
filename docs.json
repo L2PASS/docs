@@ -36,7 +36,7 @@
             "group": "Yield",
             "icon": "arrow-up-right-dots",
             "tag": "9.75% APY",
-             "expanded": false,
+             "expanded": true,
             "pages": [
               "products/yiled/overview",
               "products/yield/user-flow",
@@ -127,16 +127,18 @@
           "href": "https://l2pass.com/",
           "icon": "globe-pointer"
         },
+                {
+          "anchor": "YIELD ↗",
+          "href": "https://earn.l2pass.com/",
+          "icon": "hand-holding-seedling",
+            "tag": "9.75% APY"
+
+        },
         {
           "anchor": "SWAP & BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
-          "icon": "bridge"
-
-        },
-          {
-          "anchor": "YIELD ↗",
-          "href": "https://earn.l2pass.com/",
-          "icon": "hand-holding-seedling"
+          "icon": "bridge",
+          "tag": "0% fees"
 
         }
       ]
