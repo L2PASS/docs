@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "L2Pass Docs",
   "colors": {
     "primary": "#8C8DFC",
