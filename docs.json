@@ -23,6 +23,18 @@
             "group": "Products",
             "pages": [
               "products/yield",
+
+                 {
+            "group": "Yiled",
+            "pages": [
+              "products/yield/user-flow",
+              "products/yiled/architecture",
+              "products/yiled/faq",
+              "products/yiled/risks"
+              
+            ]
+          },
+              
               "products/swap",
               "products/gas_refuel",
               "products/nft"
@@ -71,11 +83,6 @@
     ],
     "global": {
       "anchors": [
-           {
-          "anchor": "links" ,
-          "href": "",
-          "icon": "globe-pointer"
-        },
         {
           "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
