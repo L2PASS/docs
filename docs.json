@@ -77,13 +77,9 @@
 
                     {
             "group": "Yiled group",
+            "tag":"test",
             "pages": [
-              "products/yiled/components-test",
-              "products/yield",
-              "products/yield/user-flow",
-              "products/yiled/architecture",
-              "products/yiled/faq",
-              "products/yiled/risks"
+              "products/yiled/components-test"
             ]
           },
           
@@ -130,8 +126,7 @@
                 {
           "anchor": "YIELD ↗",
           "href": "https://earn.l2pass.com/",
-          "icon": "hand-holding-seedling",
-            "tag": "9.75% APY"
+          "icon": "hand-holding-seedling"
 
         },
         {
