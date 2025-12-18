@@ -7,7 +7,7 @@
     "light": "#8C8DFC",
     "dark": "#8C8DFC"
   },
-  "favicon": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreifxpy5alh6h5y67iu7nnmqdspfck5hzm6w7hszbpx4fn2ed6iwcge",
+  "favicon": "favicon",
   "navigation": {
     "tabs": [
       {
@@ -91,8 +91,8 @@
     }
   },
   "logo": {
-    "light": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreibfbxsqhftkwl7btscvuhoqworfm4mt6ahj4wtkxufxlzgu5mkb74",
-    "dark": "https://violet-perfect-eel-804.mypinata.cloud/ipfs/bafkreid7tzv4ywgyteyzgugteh2som2pcoxwp4gjmty5xuwlkdzbsfuwji"
+    "light": "l2pass_docs_logo_light",
+    "dark": "l2pass_docs_logo_dark"
   },
   "navbar": {
     "links": [
