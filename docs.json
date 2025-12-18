@@ -7,6 +7,13 @@
     "light": "#A5FFBE",
     "dark": "#971AE4"
   },
+
+
+  "banner": {
+  "content": "**Action required:** Migrate to our new version by January 1. [Migration guide](/migration)",
+  "dismissible": true
+},
+  
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
