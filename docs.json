@@ -70,7 +70,7 @@
         {
           "anchor": "L2PASS",
           "href": "https://l2pass.com/",
-          "icon": "house"
+          "icon": "globe-pointer"
         },
         {
           "anchor": "SWAP & BRIDGE",
@@ -80,7 +80,7 @@
           {
           "anchor": "YIELD",
           "href": "https://earn.l2pass.com/",
-          "icon": "/images/l2pass_website_icon.svg"
+          "icon": "swap"
         },
         {
           "anchor": "DOCS",
