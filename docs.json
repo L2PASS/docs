@@ -6,7 +6,13 @@
     "primary": "#8C8DFC",
     "light": "#A5FFBE",
     "dark": "#971AE4"
+  
   },
+  "styling": {
+  "codeblocks": {
+    "theme": "dracula"
+            }
+},
 
 
 "banner": {
