@@ -76,12 +76,12 @@
                     {
             "group": "Yiled group",
             "pages": [
+              "products/yiled/components-test",
               "products/yield",
               "products/yield/user-flow",
               "products/yiled/architecture",
               "products/yiled/faq",
-              "products/yiled/risks",
-              "products/yiled/components-test"
+              "products/yiled/risks"
             ]
           },
           
