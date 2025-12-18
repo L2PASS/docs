@@ -34,7 +34,7 @@
 
   {
             "group": "Yield",
-            "icon": "arrow-up-right-dots",
+            "icon": "hand-holding-seedling",
             "tag": "9.75% APY",
              "expanded": true,
             "pages": [
@@ -50,6 +50,7 @@
  {
             "group": "Swap & Bridge",
            "icon": "bridge",
+           "tag": "0% FEE",
             "pages": [
               "products/swap/",
               "products/swap/faq"
