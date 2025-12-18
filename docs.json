@@ -75,12 +75,12 @@
         {
           "anchor": "SWAP & BRIDGE",
           "href": "https://swap.l2pass.com/",
-          "icon": "l2pass_website_icon.svg"
+          "icon": "images/l2pass_website_icon.svg"
         },
           {
           "anchor": "YIELD",
           "href": "https://earn.l2pass.com/",
-          "icon": "l2pass_website_icon.svg"
+          "icon": "/images/l2pass_website_icon.svg"
         },
         {
           "anchor": "DOCS",
@@ -91,8 +91,8 @@
     }
   },
   "logo": {
-    "light": "l2pass_docs_logo_light.svg",
-    "dark": "l2pass_docs_logo_dark.svg"
+    "light": "/logo/l2pass_docs_logo_light.svg",
+    "dark": "/logo/l2pass_docs_logo_dark.svg"
   },
   "navbar": {
     "links": [
