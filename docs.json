@@ -73,26 +73,19 @@
           },
           
           {
-            "group": "Writing content",
+            "group": "Content DELETE",
             "pages": [
               "essentials/markdown",
               "essentials/code",
               "essentials/images",
               "essentials/reusable-snippets"
             ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
           }
+    
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API DELETE",
         "groups": [
           {
             "group": "API documentation",
