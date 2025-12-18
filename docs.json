@@ -93,8 +93,14 @@
               "essentials/images",
               "essentials/reusable-snippets"
             ]
-          }
-    
+          },
+     "anchors": [
+        {
+          "anchor": "L2PASS ↗" ,
+          "href": "https://l2pass.com/",
+          "icon": "globe-pointer",
+          "iconType": "light"
+        },
         ]
       },
       {
