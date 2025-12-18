@@ -68,22 +68,22 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2PASS ->" ,
+          "anchor": "L2PASS ↗" ,
           "href": "https://l2pass.com/",
           "icon": "globe-pointer"
         },
         {
-          "anchor": "SWAP & BRIDGE ->",
+          "anchor": "SWAP & BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
           "icon": "bridge"
         },
           {
-          "anchor": "YIELD ->",
+          "anchor": "YIELD ↗",
           "href": "https://earn.l2pass.com/",
           "icon": "seedling"
         },
         {
-          "anchor": "DOCS ->",
+          "anchor": "DOCS ↗",
           "href": "https://docs.l2pass.com/",
           "icon": "book-open-cover"
         }
