@@ -102,6 +102,8 @@
       },
       {
         "tab": "Resources DELETE",
+         "tag": "DELETE",
+         "icon": "folder-open",
         "groups": [
           {
             "group": "Resources",
