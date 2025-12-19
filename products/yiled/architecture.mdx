@@ -17,7 +17,77 @@ The system abstracts the complexity of manual cross-token swaps and lending inte
       className="rounded-lg"
     />
 
+### System Layers
+The architecture is composed of five distinct logical layers that separate asset finality from yield generation and user interaction.
 
+## 1. Finality Layer
+The underlying blockchain infrastructure providing consensus, security, and settlement.
+
+TRON: Current primary execution and yield settlement layer.
+
+Ethereum: Identified for future cross-chain expansion.
+
+## 2. Transfer Layer
+Manages the mobility and conversion of stablecoin assets.
+
+Native USDT (TRC20): The primary asset for user deposits and withdrawals.
+
+Peg Stability Module (PSM): Facilitates programmatic swaps between USDT and USDD to access lending markets.
+
+Cross-chain Infrastructure: Future support for intents and bridging to extend liquidity reach.
+
+## 3. User Layer
+Interfaces for interaction and monitoring of yield positions.
+
+Smart Liquid Vault Interface: Frontend for deposit/withdrawal execution.
+
+NFT-based Position Accounting: Each liquidity position is represented via an on-chain accounting system to track user shares and weight.
+
+Analytics: Transparent reporting of vault performance and on-chain state.
+
+## 4. Smart Vault Layer
+The core logic resides in the WeeklyStreamingStaking smart contract.
+
+Vault Accounting: Tracks amountActive (denominated in jUSDD) and manages user balances.
+
+Streaming Reward Pipeline: Implements a time-weighted reward mechanism where weight is accrued per second over weekly epochs (604,800 seconds).
+
+Risk Management: Governance-controlled parameters for pausing functionality and adjusting fee structures.
+
+## 5. Yield Layer
+The destination for protocol-managed liquidity to generate returns.
+
+JustLend: Primary yield source where USDD is supplied to mint interest-bearing jUSDD.
+
+Incentive Mechanisms: Distribution of USDT rewards from L2Pass or external partners based on time-weighted participation.
+
+### Core Components
+## Smart Liquid Vault
+The Smart Liquid Vault acts as the central coordinator. When a user deposits USDT, the vault interacts with the GEM_JOIN target to sell USDT for USDD via the PSM. This USDD is then immediately supplied to JustLend. The resulting jUSDD is held by the vault as the underlying productive asset.
+
+## Streaming Weight Mechanism
+Unlike static staking models, Overnight Yield utilizes a streaming weight system. A user's share of the weekly reward pool is determined by the ratio of their userWeightSeconds to the totalWeightSeconds of the entire vault for that specific period. This ensures that rewards are proportional to both the amount of liquidity provided and the duration of the stake.
+
+## Fee Structure
+The protocol is designed with a modular fee architecture:
+
+Performance Fee: A fee (default 10%) applied to rewards claimed via the Merkle distributor.
+
+Conversion Costs: The protocol assumes the spread and fees associated with the external USDD PSM during swaps.
+
+## External Dependencies
+The protocol relies on the functional availability of the following external systems:
+
+TRON Network: For transaction finality.
+
+USDD PSM: For converting USDT into the yield-generating USDD token.
+
+JustLend: For the generation of lending interest via jUSDD.
+
+<CardGroup cols={2}> <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow"> Detailed lifecycle of deposit and withdrawal actions. </Card> <Card title="Risks" icon="circle-info" href="/products/yield/risks"> Technical and economic risks associated with the architecture. </Card> </CardGroup>
+
+
+-------
 At a high level, L2Pass Liquid Yield consists of:
 
 - A **Smart Liquid Vault**
@@ -61,3 +131,5 @@ The underlying blockchains providing consensus, security, and settlement for all
 - **JustLend** (as a yield source)
 - Weekly L2Pass/JustLend incentives
 - Cross-chain Yield Optimizer (roadmap)
+
+
