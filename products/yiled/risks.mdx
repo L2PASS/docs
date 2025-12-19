@@ -3,3 +3,86 @@ title: "Risks"
 icon: "circle-info"
 iconType: light
 ---
+
+## title: "Risks" description: "A comprehensive assessment of technical, financial, and operational risks associated with the L2Pass Overnight Yield protocol." icon: "triangle-exclamation"
+
+## Risk Management Overview
+
+L2Pass Overnight Yield is a non-custodial interoperability protocol. While the system architecture is designed for transparency and capital efficiency, interacting with decentralized finance (DeFi) protocols involves inherent risks. Users should perform their own due diligence before depositing assets.
+
+This document outlines the primary risk vectors identified in the current implementation.
+
+---
+
+## Technical & Smart Contract Risks
+
+### 1. Smart Contract Vulnerabilities
+
+The protocol logic is governed by the `L2PassOvernightYield` contract deployed on the TRON network. Despite adhering to industry security standards and modular design, vulnerabilities in the code—including core logic, reward accounting, and external interface handling—could lead to a total or partial loss of funds.
+
+### 2. Soulbound Token (SBT) & Position Logic
+
+User positions are represented by a non-transferable ERC721 token (SBT).
+
+* **Access Risk:** If a user loses access to their private keys, the staking position cannot be transferred to a new wallet.
+* **Accounting Errors:** Any failure in the internal `amountActive` mapping or the mint/burn lifecycle of the SBT could lead to discrepancies between a user's on-chain representation and their actual claimable balance.
+
+### 3. Integration Risk (JustLend & PSM)
+
+The protocol acts as an aggregator and router for external systems:
+
+* **JustLend:** Used for generating yield via **jUSDD**.
+* **USDD Peg Stability Module (PSM):** Used for converting **USDT** to **USDD** and vice-versa.
+
+Failures, logic changes, or exploits within these third-party protocols are outside the control of L2Pass and may negatively affect the protocol’s functionality.
+
+---
+
+## Financial & Market Risks
+
+### 1. Stablecoin De-pegging
+
+The protocol utilizes **USDT** and **USDD**. The value of a user's position is subject to the market stability of these assets.
+
+* **USDD Peg:** The system relies on a stable 1:1 parity (or near parity) between USDT and USDD via the PSM. A significant or sustained de-pegging of USDD could lead to a loss of value relative to USDT.
+* **Issuer Risk:** Both assets are subject to the operational, financial, and regulatory risks of their respective issuers.
+
+### 2. Yield Volatility
+
+Yield is variable and not guaranteed. Returns are derived from lending demand in JustLend and external incentive programs. These rates are market-driven and may decrease significantly or reach 0% without prior notice.
+
+### 3. Liquidity & Withdrawal Risk
+
+* **PSM Liquidity:** Standard withdrawals depend on available USDT liquidity within the external USDD PSM contract. If the PSM is depleted, standard withdrawals may fail.
+* **Direct Withdrawal Path:** To mitigate PSM constraints, the protocol offers a **Direct Withdrawal** path (receiving USDD). Users opting for this path must manage the USDD asset themselves.
+
+---
+
+## Operational & Governance Risks
+
+### 1. Administrative Authority
+
+The protocol employs a multi-role governance structure:
+
+* **DEFAULT_ADMIN_ROLE:** Can update critical contract targets (PSM, JustLend, GEM_JOIN), modify fee parameters, and manage protocol roles.
+* **MANAGER_ROLE:** Can pause/unpause the protocol and withdraw accrued fees.
+
+Malicious use of these roles or compromised administrative keys could lead to protocol downtime or the misdirection of funds.
+
+### 2. Reward Finalization
+
+Rewards are distributed on a **weekly epoch basis**. While the UI provides real-time estimates of pending rewards, these are only finalized and guaranteed once the epoch concludes and the data is processed on-chain.
+
+### 3. Network & Execution Risk
+
+Operations on the TRON network require sufficient Energy and Bandwidth (TRX). High network congestion or significant increases in resource costs may lead to failed transactions or high execution fees for users.
+
+---
+
+<Warning>
+**L2Pass Overnight Yield is provided on an "as-is" basis.** The protocol does not offer insurance, and there is no guarantee of recovery in the event of technical failure, de-pegging, or external protocol exploits.
+</Warning>
+
+<Card title="Support & Community" icon="telegram" href="[https://t.me/L2pass](https://t.me/L2pass)">
+For technical inquiries regarding security or protocol mechanics, please join our official Telegram community.
+</Card>
