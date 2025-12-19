@@ -12,14 +12,25 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
 
 <Steps>
 
+ <Step title="Visit earn.l2pass.com">
+ Open **https://earn.l2pass.com** to access the Liquid Yield product.
+  </Step>
+  
   <Step title="Connect Wallet">
     The user connects a TRON-compatible wallet to the L2Pass interface.
     The wallet is authenticated, the TRON network is verified, and the user’s USDT and TRX balances are displayed.
+    <Info>
+To use the product, you need a TRON-compatible wallet such as **TronLink**: https://www.tronlink.org/. You can top up your wallet USDT TRC20 balance from any centralized exchange (CEX).
+</Info>
   </Step>
 
   <Step title="Deposit USDT">
     The user selects an amount of **USDT (TRC20)** and confirms the deposit transaction in their wallet.
-    The interface displays information about weekly reward distribution and required network resources.
+    The interface displays information about next weekly reward distribution and required network resources.
+    <Info>
+Deposits require sufficient **TRX or Energy** to cover TRON network fees.
+Renting Energy is often a more efficient and cost-effective option. Energy can be rented through third-party services such as https://netts.io/?lang=en.
+</Info>
   </Step>
 
   <Step title="Smart Liquid Vault">
@@ -34,21 +45,28 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
   <Step title="Mint Position NFT">
     A non-transferable **Position NFT** is minted to the user’s wallet.
     The NFT represents the user’s position and tracks deposited principal, accrued rewards, and ownership.
+    <Info>
+The first deposit may require more **Energy** or **TRX** because the Position NFT is minted at this step.
+The NFT is minted only once per user. Next deposits do not require NFT minting and typically cost **35–40% less** in network resources.
+</Info>
   </Step>
 
   <Step title="Yield Accrual">
     Yield begins accruing automatically from JustLend lending rates and protocol incentive distributions.
-    Rewards accumulate continuously and are finalized on a weekly basis.
+  <Info>
+Rewards accrue continuously and are finalized on a **weekly basis**.
+Users can claim rewards for all completed reward epochs in a single transaction, covering every week they participated.
+</Info>
   </Step>
 
   <Step title="Claim Rewards / Withdraw Principal">
     The user may claim eligible rewards or withdraw their principal partially or in full at any time.
     Previously accrued rewards remain claimable even after principal withdrawal.
+    <Info>
+      Any rewards earned during completed epochs remain claimable, even after the user has fully exited the position. The interface continues to display eligible reward epochs until all rewards are claimed.
+      </Info>
   </Step>
 
 </Steps>
 
-
-
-Any rewards earned during completed epochs remain claimable, even after the user has fully exited the position. The interface continues to display eligible reward epochs until all rewards are claimed.
 
