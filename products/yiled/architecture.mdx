@@ -16,6 +16,12 @@ The system abstracts the complexity of manual cross-token swaps and lending inte
   className="rounded-lg"
 />
 
+![L2Pass Yield Architecture Diagram](/images/architecture.png)
+
+<Frame caption="L2Pass Yield Architecture Diagram">
+  <img src="/images/architecture.png" alt="L2Pass Yield Architecture Diagram" />
+</Frame>
+
 ---
 
 ## System Layers
@@ -24,57 +30,59 @@ The L2Pass Yield architecture is organized into five functional layers to separa
 
 ### 1. Finality Layer
 The underlying blockchain infrastructure providing consensus and settlement for all protocol interactions.
-**TRON:** The primary execution environment for the current vault implementation.
-**Ethereum:** Planned for future expansion to support multi-chain yield strategies.
+* **TRON:** The primary execution environment for the current vault implementation.
+* **Ethereum:** Identified for future expansion to support multi-chain yield strategies.
 
 ### 2. Transfer Layer
 Manages the conversion and movement of assets between stablecoin variants.
-**Native USDT (TRC20):** The primary entry and exit asset for users.
-**Peg Stability Module (PSM):** Facilitates swaps between **USDT** and **USDD**.
-**GEM_JOIN:** The approval target required for PSM interactions when converting USDT to USDD.
+* **Native USDT (TRC20):** The primary entry and exit asset for users.
+* **Peg Stability Module (PSM):** Facilitates swaps between **USDT** and **USDD**.
+* **GEM_JOIN:** The approval target required for PSM interactions when converting USDT to USDD.
 
 ### 3. User Layer
 Interfaces for user interaction and position monitoring.
 * **Smart Liquid Vault Interface:** Frontend for initiating deposit and withdrawal actions.
-**Position Accounting:** Each user position is tracked on-chain via the `amountActive` mapping.
-**Transparency:** Users can view pending rewards and active balances directly from the contract state.
+* **SBT Position Representation:** Each staking position is represented by a Soulbound Token (SBT). Transfers are prohibited to ensure 1:1 mapping between the staking address and the yield position.
+* **Dynamic Metadata:** The NFT URI generates an on-chain SVG displaying the current staked amount and pending rewards.
 
 ### 4. Smart Vault Layer
-The core logic resides in the `WeeklyStreamingStaking` contract, which handles asset management and reward accounting.
-**Vault Accounting:** Tracks balances in **jUSDD** units and manages `userWeightSeconds` for reward distribution.
-**Streaming Reward Pipeline:** Manages the distribution of rewards over weekly epochs (604,800 seconds).
-]**Risk Parameters:** Admin-controlled settings including pause functionality and fee adjustments.
+The core logic resides in the `L2PassOvernightYield` contract, which handles asset management and reward accounting.
+* **Vault Accounting:** Tracks balances in **jUSDD** units and manages `userWeightSeconds` for reward distribution.
+* **Streaming Reward Pipeline:** Manages the distribution of rewards over weekly epochs (604,800 seconds).
+* **Inactivity Protection:** The protocol includes backfilling logic to ensure total weight is maintained even during periods of low interaction.
 
 ### 5. Yield Layer
 The destination for capital deployment to generate returns.
-**JustLend:** Primary venue where **USDD** is supplied to mint interest-bearing **jUSDD**.
-**Incentive Engines:** Weekly distributions from the protocol or external partners funded via the `fundRewards` function.
+* **JustLend:** Primary venue where **USDD** is supplied to mint interest-bearing **jUSDD**.
+* **Incentive Engines:** Weekly distributions of USDT rewards funded by protocol managers or external partners.
 
 ---
 
 ## Core Mechanics
 
+### Soulbound Position Tracking (SBT)
+Upon the first deposit, the protocol mints a non-transferable ERC721 token (NFT) to the user's address. 
+* **Minting:** Triggered during the first active deposit.
+* **Burning:** The token is burned if the user's `amountActive` reaches zero.
+* **Transfer Restriction:** The `_update` function enforces that tokens can only be minted or burned, preventing secondary market transfers of yield positions.
+
 ### Streaming Weight Accounting
 The protocol uses a time-weighted mechanism to ensure equitable reward distribution:
-**Weight Calculation:** User rewards are determined by `userWeightSeconds`, representing the product of the active balance and the duration of the stake within a specific week.
-**Total Weight:** A global `totalWeightSeconds` tracks the sum of all participant weights to calculate proportional shares.
-**Weight Accrual:** Weights are updated ("accrued") during every interaction (deposit, withdrawal, or claim) to ensure accurate accounting.
+* **Weight Calculation:** User rewards are determined by `userWeightSeconds`, representing the product of the active balance and the duration of the stake within a specific week.
+* **Total Weight:** A global `totalWeightSeconds` tracks the sum of all participant weights.
+* **Accrual:** Weights are updated ("accrued") during every interaction (deposit, withdrawal, or claim). The protocol backfills missing weeks if no interactions occurred globally during a specific epoch.
 
 ### Liquidity Routing Flow
-1. **Deposit:** USDT is transferred to the contract and swapped for USDD via the PSM.
-USDD is then supplied to JustLend to mint jUSDD.
+1. **Deposit:** USDT is transferred to the contract and swapped for USDD via the PSM. USDD is then supplied to JustLend to mint jUSDD.
 2. **Standard Withdrawal:** jUSDD is redeemed for USDD. USDD is then converted back to USDT via the PSM for delivery to the user.
-3. **Direct Withdrawal:** Users may redeem jUSDD for USDD and withdraw the raw USDD tokens directly to mitigate PSM liquidity constraints.
-
----
+3. **Direct Withdrawal:** Users may redeem jUSDD for USDD and withdraw the raw USDD tokens directly. This path bypasses the PSM to mitigate potential liquidity constraints on the USDT side.
 
 ## Economics & Fees
 
 ### Fee Configuration
-**Performance Fee:** A protocol-level fee (curently 0%) is applied to rewards claimed via the Merkle distributor.
-**Accrued Fees:** Fees are accumulated in USDT and can be withdrawn by authorized protocol managers.
-
----
+* **Performance Fee:** A protocol-level fee (default 10%) is applied to rewards claimed via the Merkle distributor.
+* **Service Fee Accrual:** Fees are accumulated in USDT and can be withdrawn by authorized protocol managers.
+* **Rewards Distribution:** USDT rewards are added to the `rewardsPerWeek` mapping and distributed proportionally based on accrued weight.
 
 ## External Dependencies
 The protocol relies on the functional availability of the following external systems:
