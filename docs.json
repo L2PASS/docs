@@ -5,7 +5,7 @@
   "colors": {
     "primary": "#8C8DFC",
     "light": "#A5FFBE",
-    "dark": "#971AE4"
+    "dark": "#26A17B"
   
   },
   "styling": {
@@ -122,7 +122,7 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2PASS ↗" ,
+          "anchor": "L2PASS WEB ↗" ,
           "href": "https://l2pass.com/",
           "icon": "globe-pointer"
         },
@@ -133,7 +133,7 @@
 
         },
         {
-          "anchor": "SWAP & BRIDGE ↗",
+          "anchor": "BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
           "icon": "bridge",
           "tag": "0% fees"
