@@ -1,119 +1,93 @@
 ---
 title: "User Flow"
 icon: "diagram-project"
-iconType: light
-description: "This section describes the end-to-end lifecycle of a user interacting with L2Pass Liquid Yield, from deposit to reward claims and withdrawals."
-
+iconType: "light"
+description: "This section describes the end-to-end lifecycle of a user interacting with L2Pass Yield, from deposit to reward claims and withdrawals."
 ---
 
-## L2Pass Liquid Yield
+## L2Pass Yield
 
 <Steps>
-
   <Step title="Visit earn.l2pass.com">
-    Open **https://earn.l2pass.com** to access the Liquid Yield product.
+    Open [**https://earn.l2pass.com**](https://earn.l2pass.com) to access the  Yield product.
   </Step>
-
   <Step title="Connect Wallet">
-    The user connects a TRON-compatible wallet to the L2Pass interface.
-    The wallet is authenticated, the TRON network is verified, and the user’s USDT and TRX balances are displayed.
+    The user connects a TRON-compatible wallet to the L2Pass interface. The wallet is authenticated, the TRON network is verified, and the user’s USDT and TRX balances are displayed.
 
     <img
       src="/images/user_flow_connect_wallet.png"
       alt="User flow – connect wallet"
-      style={{ height: "420px", width: "auto" }}
+      style={{ height:"420px",width:"auto" }}
       className="rounded-lg"
     />
 
     <Info>
-      To use the product, you need a TRON-compatible wallet such as **TronLink**:
-      [tronlink.org](https://www.tronlink.org/).  
-      You can top up your USDT (TRC20) balance from any centralized exchange (CEX).
+      To use the product, you need a TRON-compatible wallet such as [**TronLink**](https://www.tronlink.org/).\
+      You can top up your USDT (TRC20) balance from any centralized exchange (CEX) or swap & bridge stablecoin assets from EVM-chain using our non-custodial, no-KYC [Bridge](https://swap.l2pass.com).
     </Info>
   </Step>
-
   <Step title="Deposit USDT">
-    The user selects an amount of **USDT (TRC20)** and confirms the deposit transaction in their wallet.
-    The interface displays information about the next weekly reward distribution and required network resources.
+    The user selects an amount of **USDT (TRC20)** and confirms the deposit transaction in their wallet. The interface displays information about the next weekly reward distribution and required network resources.
 
     <img
       src="/images/user_flow_deposit.png"
       alt="User flow – deposit USDT"
-      style={{ height: "420px", width: "auto" }}
+      style={{ height:"420px",width:"auto" }}
       className="rounded-lg"
     />
 
     <Tip>
-      Deposits require sufficient **TRX or Energy** to cover TRON network fees.  
-      Renting Energy is often a more efficient and ~80% cost-effective option.
-      Energy can be rented via services such as
-      [netts.io](https://netts.io/?lang=en).
+      Executing deposits on TRON requires **Energy** or the burning of **TRX** for gas fees. For maximum cost-efficiency, we recommend using **Energy Rental** services like [**netts.io**](http://netts.io), which typically reduce transaction overhead by **~80%** compared to burning TRX.
     </Tip>
   </Step>
-
   <Step title="Smart Liquid Vault">
     The deposited USDT is received by the L2Pass **Smart Liquid Vault**, which manages user accounting and executes the yield strategy on-chain.
 
-    **PSM: USDT → USDD**
-      The Smart Liquid Vault converts USDT to **USDD** via the Peg Stability Module (PSM) at a 1:1 rate.
+    **PSM: USDT → USDD** The Smart Liquid Vault converts USDT to **USDD** via the Peg Stability Module (PSM) at a 1:1 rate.
 
-
- **JustLend: Supply USDD → jUSDD**
-      The converted USDD is supplied to **JustLend**, where it is lent to the market and represented by **jUSDD**.  
-      This step is the primary source of base yield.
+    **JustLend: Supply USDD → jUSDD** The converted USDD is supplied to **JustLend**, where it is lent to the market and represented by **jUSDD**.
   </Step>
-
   <Step title="Mint Position NFT">
-    A non-transferable **Position NFT** is minted to the user’s wallet.
-    The NFT represents the user’s position and tracks deposited principal, accrued rewards, and ownership.
+    A non-transferable **Soulbound NFT** is minted to your wallet upon your first deposit. This unique asset serves as your position receipt, programmatically tracking your principal, rewards, and ownership on-chain.
 
     <img
       src="/images/nft_l2p.png"
       alt="L2Pass Position NFT"
-      style={{ height: "420px", width: "auto" }}
+      style={{ height:"420px",width:"auto" }}
       className="rounded-lg"
     />
 
     <Tip>
-      The first deposit may require more **Energy or TRX** because the Position NFT is minted at this step.  
-      The NFT is minted only once per user. Subsequent deposits typically cost
-      **35–40% less** in network resources.
+      Your initial deposit incurs a higher **Energy** cost due to the one-time minting of your **Soulbound NFT** position. Because this NFT is only minted once per account, all subsequent deposits are significantly more efficient, typically requiring **40% less** in network resources.
     </Tip>
   </Step>
-
-  <Step title="Yield Accrual / Claim Rewards">
+  <Step title="Claim Rewards">
     Yield begins accruing automatically from JustLend lending rates and protocol incentive distributions.
 
-   
-  
-      <img
+    <img
       src="/images/user_flow_claim_rewards.png"
       alt="User flow – claim rewards"
-      style={{ height: "420px", width: "auto" }}
+      style={{ height:"420px",width:"auto" }}
       className="rounded-lg"
     />
 
-     <Info>
-      Rewards accrue continuously and are finalized on a **weekly basis**.  
+    <Info>
+      Rewards accrue continuously and are finalized on a **weekly basis**.\
       Users can claim rewards for all completed reward epochs in a single transaction.
     </Info>
-    
   </Step>
-
-
   <Step title="Withdraw Principal">
     The user may withdraw their principal partially or in full at any time.
 
     <img
       src="/images/user_flow_withdraw.png"
       alt="User flow – withdraw principal"
-      style={{ height: "420px", width: "auto" }}
+      style={{ height:"420px",width:"auto" }}
       className="rounded-lg"
     />
 
     <Info>
-          Previously accrued rewards remain claimable even after principal withdrawal.
+      Previously accrued rewards remain claimable even after principal withdrawal.
     </Info>
   </Step>
-
 </Steps>
