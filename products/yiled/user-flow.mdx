@@ -2,6 +2,7 @@
 title: "User Flow"
 icon: "diagram-project"
 iconType: light
+mode: "wide"
 ---
 
 # L2Pass Liquid Yield: User Flow
@@ -20,8 +21,16 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
     The user connects a TRON-compatible wallet to the L2Pass interface.
     The wallet is authenticated, the TRON network is verified, and the user’s USDT and TRX balances are displayed.
 
+    <img
+      src="/images/user_flow_connect_wallet.png"
+      alt="User flow – connect wallet"
+      style={{ height: "260px", width: "420px" }}
+      className="rounded-lg"
+    />
+
     <Info>
-      To use the product, you need a TRON-compatible wallet such as **TronLink**: https://www.tronlink.org/.  
+      To use the product, you need a TRON-compatible wallet such as **TronLink**:
+      [tronlink.org](https://www.tronlink.org/).  
       You can top up your USDT (TRC20) balance from any centralized exchange (CEX).
     </Info>
   </Step>
@@ -30,10 +39,19 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
     The user selects an amount of **USDT (TRC20)** and confirms the deposit transaction in their wallet.
     The interface displays information about the next weekly reward distribution and required network resources.
 
-    <Info>
+    <img
+      src="/images/user_flow_deposit.png"
+      alt="User flow – deposit USDT"
+      style={{ height: "260px", width: "420px" }}
+      className="rounded-lg"
+    />
+
+    <Tip>
       Deposits require sufficient **TRX or Energy** to cover TRON network fees.  
-      Renting Energy is often a more efficient and cost-effective option. Energy can be rented through third-party services such as https://netts.io/?lang=en.
-    </Info>
+      Renting Energy is often a more efficient and ~80% cost-effective option.
+      Energy can be rented via services such as
+      [netts.io](https://netts.io/?lang=en).
+    </Tip>
   </Step>
 
   <Step title="Smart Liquid Vault">
@@ -53,10 +71,18 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
     A non-transferable **Position NFT** is minted to the user’s wallet.
     The NFT represents the user’s position and tracks deposited principal, accrued rewards, and ownership.
 
-    <Info>
+    <img
+      src="/images/nft_l2p.png"
+      alt="L2Pass Position NFT"
+      style={{ height: "260px", width: "420px" }}
+      className="rounded-lg"
+    />
+
+    <Tip>
       The first deposit may require more **Energy or TRX** because the Position NFT is minted at this step.  
-      The NFT is minted only once per user. Subsequent deposits do not require NFT minting and typically cost **35–40% less** in network resources.
-    </Info>
+      The NFT is minted only once per user. Subsequent deposits typically cost
+      **35–40% less** in network resources.
+    </Tip>
   </Step>
 
   <Step title="Yield Accrual">
@@ -64,7 +90,7 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
 
     <Info>
       Rewards accrue continuously and are finalized on a **weekly basis**.  
-      Users can claim rewards for all completed reward epochs in a single transaction, covering every week they participated.
+      Users can claim rewards for all completed reward epochs in a single transaction.
     </Info>
   </Step>
 
@@ -72,9 +98,23 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
     The user may claim eligible rewards or withdraw their principal partially or in full at any time.
     Previously accrued rewards remain claimable even after principal withdrawal.
 
+    <img
+      src="/images/user_flow_claim_rewards.png"
+      alt="User flow – claim rewards"
+      style={{ height: "260px", width: "420px" }}
+      className="rounded-lg"
+    />
+
+    <img
+      src="/images/user_flow_withdraw.png"
+      alt="User flow – withdraw principal"
+      style={{ height: "260px", width: "420px" }}
+      className="rounded-lg"
+    />
+
     <Info>
-      Rewards earned during completed epochs remain claimable even after the user has fully exited the position.  
-      The interface continues to display eligible reward epochs until all rewards are claimed.
+      Rewards earned during completed epochs remain claimable even after a full exit.  
+      Eligible reward epochs remain visible until all rewards are claimed.
     </Info>
   </Step>
 
