@@ -92,7 +92,9 @@
               "resources/brand-assets",
               "resources/contracts",
               "resources/roadmap",
-              "resources/audits"
+              "resources/audits",
+              "resources/support"
+              
             ]
           }
     
