@@ -3,13 +3,11 @@ title: "User Flow"
 icon: "diagram-project"
 mode: wide
 iconType: light
+description: "This section describes the end-to-end lifecycle of a user interacting with L2Pass Liquid Yield, from deposit to reward claims and withdrawals."
+
 ---
 
-# L2Pass Liquid Yield: User Flow
-
-This section describes the end-to-end lifecycle of a user interacting with L2Pass Liquid Yield, from deposit to reward claims and withdrawals.
-
-## High-level flow
+## L2Pass Liquid Yield
 
 <Steps>
 
@@ -85,25 +83,26 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
     </Tip>
   </Step>
 
-  <Step title="Yield Accrual">
+  <Step title="Yield Accrual / Claim Rewards">
     Yield begins accruing automatically from JustLend lending rates and protocol incentive distributions.
 
     <Info>
       Rewards accrue continuously and are finalized on a **weekly basis**.  
       Users can claim rewards for all completed reward epochs in a single transaction.
     </Info>
-  </Step>
-
-  <Step title="Claim Rewards / Withdraw Principal">
-    The user may claim eligible rewards or withdraw their principal partially or in full at any time.
-    Previously accrued rewards remain claimable even after principal withdrawal.
-
-    <img
+  
+      <img
       src="/images/user_flow_claim_rewards.png"
       alt="User flow – claim rewards"
       style={{ height: "260px", width: "420px" }}
       className="rounded-lg"
     />
+    
+  </Step>
+
+
+  <Step title="Withdraw Principal">
+    The user may withdraw their principal partially or in full at any time.
 
     <img
       src="/images/user_flow_withdraw.png"
@@ -113,8 +112,7 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
     />
 
     <Info>
-      Rewards earned during completed epochs remain claimable even after a full exit.  
-      Eligible reward epochs remain visible until all rewards are claimed.
+          Previously accrued rewards remain claimable even after principal withdrawal.
     </Info>
   </Step>
 
