@@ -101,21 +101,17 @@
         ]
       },
       {
-        "tab": "API DELETE",
+        "tab": "Resources DELETE",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Resources",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "resources/components-test",
+              "resources/brand-assets",
+              "resources/contracts",
+              "resources/roadmap",
+              "resources/audits",
+              "resources/support"
             ]
           }
         ]
