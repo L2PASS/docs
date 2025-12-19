@@ -41,11 +41,15 @@ description: "This section describes the end-to-end lifecycle of a user interact
     </Tip>
   </Step>
   <Step title="Smart Liquid Vault">
-    The deposited USDT is received by the L2Pass **Smart Liquid Vault**, which manages user accounting and executes the yield strategy on-chain.
+    User-deposited USDT is held in the L2Pass **Smart Liquid Vault**, which manages accounting and executes the yield strategy on-chain.
 
-    **PSM: USDT → USDD** The Smart Liquid Vault converts USDT to **USDD** via the Peg Stability Module (PSM) at a 1:1 rate.
+    **PSM: USDT → USDD** USDT is converted to USDD via the Peg Stability Module (PSM) at a 1:1 ratio.\
+    \
+    **JustLend: Supply USDD → jUSDD** The resulting USDD is supplied to JustLend and represented as jUSDD, generating base lending yield.
 
-    **JustLend: Supply USDD → jUSDD** The converted USDD is supplied to **JustLend**, where it is lent to the market and represented by **jUSDD**.
+    <Info>
+      **Unwind Process: **Withdrawals follow the reverse sequence: jUSDD is redeemed from JustLend, converted back to USDT via the PSM, and returned to the user.
+    </Info>
   </Step>
   <Step title="Mint Position NFT">
     A non-transferable **Soulbound NFT** is minted to your wallet upon your first deposit. This unique asset serves as your position receipt, programmatically tracking your principal, rewards, and ownership on-chain.
