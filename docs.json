@@ -35,6 +35,7 @@
             "pages": [
               {
                 "group": "Yield",
+                "pages": ["products/yiled/overview"],
                 "icon": "hand-holding-seedling",
                 "expanded": true,
                 "pages": [
