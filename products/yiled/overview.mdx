@@ -1,7 +1,7 @@
 ---
 title: "Overview"
-description: "Non-custodial stablecoin yield through automated TRON ecosystem integrations."
-icon: "hand-holding-dollar"
+description: Simple, liquid, and non-custodial stablecoin yield on the TRON network."
+icon: "seedling"
 ---
 
 <img
@@ -10,57 +10,46 @@ icon: "hand-holding-dollar"
   className="rounded-lg"
 />
 
-## Overview
+## Welcome to Overnight Yield
 
-**Overnight Yield** (L2Pass Liquid Yield) is a non-custodial protocol designed to provide seamless stablecoin yield without the constraints of traditional lockup periods or withdrawal cooldowns. 
+**Overnight Yield** is a decentralized, non-custodial protocol that allows you to earn competitive returns on your stablecoins without giving up control or liquidity. Designed for both retail users and crypto-native businesses, the protocol automates complex DeFi strategies into a simple "deposit and earn" experience.
 
-The protocol automates the deployment of **USDT (TRC20)** into established yield-generating venues on the **TRON network**, specifically targeting the most liquid USDT environment in the industry. By programmatically routing liquidity through the **Peg Stability Module (PSM)** and **JustLend**, L2Pass abstracts the complexity of manual yield farming while maintaining full on-chain transparency.
+Currently operating on the **TRON network**, Overnight Yield leverages the ecosystem's massive USDT liquidity to provide a stable and efficient yield environment.
 
 ---
 
 ## Key Properties
 
 * **Maximum Liquidity:** No mandatory lockups or withdrawal cooldowns; access your funds when you need them.
+**Full Transparency:** Every interaction happens on-chain. You can verify the protocol's health and your own rewards at any time.
 * **Non-Custodial Design:** Assets are managed by verified smart contracts where users retain ultimate control of their capital.
-* **NFT-Based Positions:** Each staking position is represented by a unique Soulbound Token (SBT), featuring on-chain SVG metadata that displays real-time balance and rewards.
-* **Automated Routing:** Programmatic execution of USDT ↔ USDD swaps and lending supply to optimize efficiency.
-* **Streaming Rewards:** Reward distribution is calculated per-second and settled on a weekly epoch basis.
+* **NFT-Based Positions:** Your staking position is uniquely represented by a **Soulbound NFT**. This digital asset features dynamic on-chain art that updates to show your current balance and pending rewards directly in your wallet.
+* **Automated Efficiency:** The protocol simplifies your experience by programmatically managing stablecoin swaps and lending supply, while ensuring fair reward calculations.
 
 ---
 
-## Architecture & Mechanics
+## Yield & Incentives
 
-The protocol utilizes a modular "Smart Liquid Vault" architecture to manage the lifecycle of a deposit:
+Your returns come from two primary sources:
 
-1.  **Entry:** Users deposit USDT, which the vault converts to USDD via the Peg Stability Module (PSM).
-2.  **Deployment:** The USDD is supplied to JustLend to mint interest-bearing **jUSDD**.
-3.  **Accounting:** User positions are tracked via `amountActive` and an assigned Soulbound NFT.
-4.  **Exit:** Users can withdraw back to USDT (standard path) or withdraw raw USDD (direct path) to bypass external liquidity constraints.
+* **Lending Interest:** Earned directly from supplying liquidity to the JustLend protocol.
 
----
+* **Incentives:** Additional USDT-denominated rewards distributed weekly by the JustLend/L2Pass team to boost your overall performance.
 
-## Yield Strategy (TRON)
-
-The vault currently executes a conservative strategy focused on capital preservation and consistent returns:
-
-* **Primary Source:** Organic lending interest generated through **JustLend**.
-* **Secondary Incentives:** USDT-denominated rewards distributed weekly from the **L2Pass** ecosystem and/or partner protocols.
 
 <Note>
-  Future roadmap considerations include cross-chain yield aggregation and dynamic multi-strategy optimization across additional networks.
+Future roadmap considerations include cross-chain yield aggregation and dynamic multi-strategy optimization across additional networks.
 </Note>
 
 ---
 
 ## Fee Structure
 
-L2Pass prioritizes a transparent, performance-oriented fee model:
-
 | Fee Category | Rate | Note |
 | :--- | :--- | :--- |
 | **Deposit Fee** | 0% | No cost to enter the vault. |
 | **Withdrawal Fee** | 0%* | No protocol fee (external PSM spread may apply). |
-| **Performance Fee** | 10% | Applied only to realized yield/rewards. |
+| **Performance Fee** | 0% | Applied only to realized yield/rewards. |
 
 ---
 
