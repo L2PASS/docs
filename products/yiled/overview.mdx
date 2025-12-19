@@ -1,90 +1,90 @@
 ---
 title: "Overview"
-icon: "seedling"
-iconType: light
+description: "Non-custodial stablecoin yield through automated TRON ecosystem integrations."
+icon: "hand-holding-dollar"
 ---
 
-![Yield Product L2Pass](/images/l2pass_share_banner.png)
+<img
+  src="/images/l2pass_share_banner.png"
+  alt="L2Pass Overnight Yield"
+  className="rounded-lg"
+/>
 
 ## Overview
 
-**L2Pass Liquid Yield** is a non-custodial yield product that enables users to earn yield on stablecoin liquidity without lockups or withdrawal cooldowns.
+**Overnight Yield** (L2Pass Liquid Yield) is a non-custodial protocol designed to provide seamless stablecoin yield without the constraints of traditional lockup periods or withdrawal cooldowns. 
 
-The protocol is designed to:
-
-- Maximize capital efficiency
-- Preserve full liquidity at all times
-- Abstract underlying DeFi interactions through a simplified user experience
-
-In its current version, L2Pass Liquid Yield operates on the **TRON network**, targeting the largest USDT liquidity environment.
-
-Users deposit **USDT (TRC20)** into the L2Pass **Smart Liquid Vault**, which programmatically routes liquidity through established on-chain mechanisms to generate yield. While the yield strategy is abstracted from the user, all accounting and interactions remain transparent and verifiable on-chain.
-
-<Info>
-Additional networks and yield sources may be supported in future versions.
-</Info>
+The protocol automates the deployment of **USDT (TRC20)** into established yield-generating venues on the **TRON network**, specifically targeting the most liquid USDT environment in the industry. By programmatically routing liquidity through the **Peg Stability Module (PSM)** and **JustLend**, L2Pass abstracts the complexity of manual yield farming while maintaining full on-chain transparency.
 
 ---
 
 ## Key Properties
 
-- No lockups
-- No withdrawal cooldowns
-- Non-custodial by design
-- Automated yield routing
-- On-chain transparency
-- NFT-based position accounting
-- Weekly reward distribution
+* **Maximum Liquidity:** No mandatory lockups or withdrawal cooldowns; access your funds when you need them.
+* **Non-Custodial Design:** Assets are managed by verified smart contracts where users retain ultimate control of their capital.
+* **NFT-Based Positions:** Each staking position is represented by a unique Soulbound Token (SBT), featuring on-chain SVG metadata that displays real-time balance and rewards.
+* **Automated Routing:** Programmatic execution of USDT ↔ USDD swaps and lending supply to optimize efficiency.
+* **Streaming Rewards:** Reward distribution is calculated per-second and settled on a weekly epoch basis.
 
 ---
 
-## Fees
+## Architecture & Mechanics
 
-- No deposit fees
-- No withdrawal fees (excluding PSM conversion spread)
-- No protocol performance fees in the current version
+The protocol utilizes a modular "Smart Liquid Vault" architecture to manage the lifecycle of a deposit:
 
-<Info>A performance fee applied only to yield may be introduced in future versions via protocol parameters
-</Info>
-
----
-
-## Yield Sources (USDT Strategy on TRON)
-
-**Primary Yield Source**
-
-- USDD lending yield generated through **JustLend**
-
-**Secondary Incentives**
-
-- Weekly incentive distributions from **L2Pass** and/or **JustLend**
-
-**Future roadmap considerations include:**
-
-- Cross-chain yield aggregation
-- Dynamic strategy optimization
-
-## Learn more
-
-Explore the core documentation for L2Pass Liquid Yield.
-
-<Columns cols={2}>
-  <Card title="User Flow" icon="diagram-project" iconType="light" href="products/yield/user-flow">
-    Step-by-step overview of the deposit, yield accrual, and withdrawal lifecycle.
-  </Card>
-  <Card title="Architecture" icon="layer-group" iconType="light" href="products/yield/architecture">
-    High-level system design, smart contracts, and protocol components.
-  </Card>
-  <Card title="FAQ" icon="circle-question" iconType="light" href="products/yield/faq">
-    Answers to common questions about usage, yield, and mechanics.
-  </Card>
-  <Card title="Risks" icon="circle-info" iconType="light" href="products/yield/risks">
-    Key risks, assumptions, and limitations users should understand.
-  </Card>
-</Columns>
+1.  **Entry:** Users deposit USDT, which the vault converts to USDD via the Peg Stability Module (PSM).
+2.  **Deployment:** The USDD is supplied to JustLend to mint interest-bearing **jUSDD**.
+3.  **Accounting:** User positions are tracked via `amountActive` and an assigned Soulbound NFT.
+4.  **Exit:** Users can withdraw back to USDT (standard path) or withdraw raw USDD (direct path) to bypass external liquidity constraints.
 
 ---
 
-<Card title="Have more questions?" icon="telegram" iconType="light" href="https://t.me/L2pass">
-  Join the L2Pass Telegram group for updates and community support.
+## Yield Strategy (TRON)
+
+The vault currently executes a conservative strategy focused on capital preservation and consistent returns:
+
+* **Primary Source:** Organic lending interest generated through **JustLend**.
+* **Secondary Incentives:** USDT-denominated rewards distributed weekly from the **L2Pass** ecosystem and/or partner protocols.
+
+<Note>
+  Future roadmap considerations include cross-chain yield aggregation and dynamic multi-strategy optimization across additional networks.
+</Note>
+
+---
+
+## Fee Structure
+
+L2Pass prioritizes a transparent, performance-oriented fee model:
+
+| Fee Category | Rate | Note |
+| :--- | :--- | :--- |
+| **Deposit Fee** | 0% | No cost to enter the vault. |
+| **Withdrawal Fee** | 0%* | No protocol fee (external PSM spread may apply). |
+| **Performance Fee** | 10% | Applied only to realized yield/rewards. |
+
+---
+
+## Learn More
+
+Dive deeper into the technical and operational specifics of Overnight Yield.
+
+<CardGroup cols={2}>
+  <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow">
+    Step-by-step overview of the deposit, accrual, and withdrawal lifecycle.
+  </Card>
+  <Card title="Architecture" icon="layer-group" href="/products/yield/architecture">
+    Deep dive into the Smart Liquid Vault, SBT logic, and system layers.
+  </Card>
+  <Card title="FAQ" icon="circle-question" href="/products/yield/faq">
+    Answers to common questions regarding rewards and mechanics.
+  </Card>
+  <Card title="Risks" icon="circle-info" href="/products/yield/risks">
+    Key risk disclosures, assumptions, and protocol limitations.
+  </Card>
+</CardGroup>
+
+---
+
+<Card title="Community & Support" icon="telegram" href="https://t.me/L2pass">
+  Join the L2Pass Telegram group for real-time updates and direct community support.
 </Card>
