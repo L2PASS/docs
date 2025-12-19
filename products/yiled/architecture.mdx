@@ -10,14 +10,6 @@ Overnight Yield is a non-custodial interoperability component within the L2Pass 
 
 The system abstracts the complexity of manual cross-token swaps and lending interactions, enabling users to maintain a liquid position while accruing rewards based on a streaming weight mechanism.
 
-<img
-  src="/images/architecture.png"
-  alt="L2Pass Yield Architecture Diagram"
-  className="rounded-lg"
-/>
-
-![L2Pass Yield Architecture Diagram](/images/architecture.png)
-
 <Frame caption="L2Pass Yield Architecture Diagram">
   <img src="/images/architecture.png" alt="L2Pass Yield Architecture Diagram" />
 </Frame>
@@ -80,7 +72,7 @@ The protocol uses a time-weighted mechanism to ensure equitable reward distribut
 ## Economics & Fees
 
 ### Fee Configuration
-* **Performance Fee:** A protocol-level fee (default 10%) is applied to rewards claimed via the Merkle distributor.
+* **Performance Fee:** A protocol-level fee (curently 0%) is applied to rewards claimed via the Merkle distributor.
 * **Service Fee Accrual:** Fees are accumulated in USDT and can be withdrawn by authorized protocol managers.
 * **Rewards Distribution:** USDT rewards are added to the `rewardsPerWeek` mapping and distributed proportionally based on accrued weight.
 
@@ -93,4 +85,6 @@ The protocol relies on the functional availability of the following external sys
 
 **JustLend:** For the generation of lending interest via jUSDD.
 
+
+## Learn more
 <CardGroup cols={2}> <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow"> Detailed lifecycle of deposit and withdrawal actions. </Card> <Card title="Risks" icon="circle-info" href="/products/yield/risks"> Technical and economic risks associated with the architecture. </Card> </CardGroup>
