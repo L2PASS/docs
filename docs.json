@@ -6,107 +6,81 @@
     "primary": "#8C8DFC",
     "light": "#A5FFBE",
     "dark": "#26A17B"
-  
   },
   "styling": {
-  "codeblocks": {
-    "theme": "dracula"
-            }
-},
+    "codeblocks": {
+      "theme": "dracula"
+    }
+  },
   "background": {
-  "decoration":"grid",
-  "color":
-    {
-      "light":"#FFFFFF",
-      "dark":"#181818"
-    }},
-
-  
+    "decoration": "grid",
+    "color": {
+      "light": "#FFFFFF",
+      "dark": "#181818"
+    }
+  },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
         "tab": "Guides",
         "icon": "book",
-               
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "index"
-            ]
+            "pages": ["index"]
           },
           {
             "group": "Products",
             "pages": [
-              
-
-  {
-            "group": "Yield",
-            "icon": "hand-holding-seedling",
-            "tag": "9.75% APY",
-             "expanded": true,
-            "pages": [
-              "products/yiled/overview",
-              "products/yiled/architecture",
-              "products/yiled/user-flow",
-              "products/yiled/faq",
-              "products/yiled/risks"
-            ]
-          },              
-
- {
-            "group": "Bridge",
-           "icon": "bridge",
-           "tag": "0% FEE",
-           "expanded": true,
-            "pages": [
-              "products/bridge/overview",
-              "products/bridge/faq"
-            ]
-          },   
-           {
-            "group": "Gas Refuel",
-             "icon": "gas-pump",
-            "pages": [
-              "products/gas-refuel/",
-              "products/gas-refuel/contracts"
-            ]
-          },   
-           {
-            "group": "NFT Quest",
-             "icon": "map",
-            "pages": [
-              "products/nft/",
-              "products/nft/contracts"
-            ]
-          }
-              
+              {
+                "group": "Yield",
+                "icon": "hand-holding-seedling",
+                "expanded": true,
+                "pages": [
+                  {
+                    "group": "Overnight Yield",
+                    "tag": "9.75% APY",
+                    "pages": [
+                      "products/yiled/overview",
+                      "products/yiled/architecture",
+                      "products/yiled/user-flow",
+                      "products/yiled/faq",
+                      "products/yiled/risks"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Bridge",
+                "icon": "bridge",
+                "tag": "0% FEE",
+                "expanded": true,
+                "pages": [
+                  "products/bridge/overview",
+                  "products/bridge/faq"
+                ]
+              },
+              {
+                "group": "Gas Refuel",
+                "icon": "gas-pump",
+                "pages": [
+                  "products/gas-refuel/",
+                  "products/gas-refuel/contracts"
+                ]
+              },
+              {
+                "group": "NFT Quest",
+                "icon": "map",
+                "pages": [
+                  "products/nft/",
+                  "products/nft/contracts"
+                ]
+              }
             ]
           },
-
-                    {
-            "group": "Resources",
-            "pages": [
-              "resources/components-test",
-              "resources/brand-assets",
-              "resources/contracts",
-              "resources/roadmap",
-              "resources/audits",
-              "resources/support"
-              
-            ]
-          }
-    
-        ]
-      },
-      {
-        "tab": "Resources DELETE",
-         "tag": "DELETE",
-         "icon": "folder-open",
-        "groups": [
           {
-            "group": "Resources Test",
+            "group": "Resources",
             "pages": [
               "resources/components-test",
               "resources/brand-assets",
@@ -122,22 +96,20 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2PASS WEB ↗" ,
+          "anchor": "L2PASS WEB ↗",
           "href": "https://l2pass.com/",
           "icon": "globe-pointer"
         },
-                {
+        {
           "anchor": "YIELD ↗",
           "href": "https://earn.l2pass.com/",
           "icon": "hand-holding-seedling"
-
         },
         {
           "anchor": "BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
           "icon": "bridge",
           "tag": "0% fees"
-
         }
       ]
     }
