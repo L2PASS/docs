@@ -61,8 +61,8 @@
            "tag": "0% FEE",
            "expanded": true,
             "pages": [
-              "products/swap/overview",
-              "products/swap/faq"
+              "products/bridge/overview",
+              "products/bridge/faq"
             ]
           },   
            {
