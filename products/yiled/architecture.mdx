@@ -6,17 +6,18 @@ iconType: "light"
 
 ## System Overview
 
-~~Overnight Yield is a non-custodial interoperability component within the L2Pass protocol designed to provide stablecoin yield without lockup periods or withdrawal cooldowns. The protocol automates the deployment of USDT into established yield-generating venues on the TRON network, utilizing the Peg Stability Module (PSM) and JustLend for liquidity routing.~~
+L2Pass Overnight Yield is a decentralized, non-custodial yield optimization engine and product strategy deployed on the TRON network. The protocol enables users to earn USDT rewards by supplying liquidity that is routed through the USDD Peg Stability Module (PSM) and JustLend.
 
-~~The system abstracts the complexity of manual cross-token swaps and lending interactions, enabling users to maintain a liquid position while accruing rewards based on a streaming weight mechanism.~~
+The system utilizes a unique time-weighted reward distribution engine and represents staking positions via non-transferable Soulbound Tokens (SBTs). This ensures that yield is distributed equitably based on the duration and size of the stake while maintaining a transparent 1:1 mapping between the depositor and the position.
 
 <Frame caption="L2Pass Yield Architecture Diagram">
   ![L2Pass Yield Architecture Diagram](/images/architecture.png)
 </Frame>
 
+
 ## System Layers
 
-The L2Pass Yield architecture is organized into five functional layers to separate execution, liquidity movement, and yield generation.
+The L2Pass Overnight Yield architecture is organized into five functional layers to separate execution, liquidity movement, and yield generation.
 
 ### 1. Finality Layer
 
@@ -103,11 +104,10 @@ The protocol relies on the functional availability of the following external sys
 ## Learn more
 
 <CardGroup cols={2}>
-   <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow">
-     Detailed lifecycle of deposit and withdrawal actions. 
+  <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow">
+    Detailed lifecycle of deposit and withdrawal actions.
   </Card>
-   <Card title="Risks" icon="circle-info" href="/products/yield/risks">
-     Technical and economic risks associated with the architecture. 
+  <Card title="Risks" icon="circle-info" href="/products/yield/risks">
+    Technical and economic risks associated with the architecture.
   </Card>
-   
 </CardGroup>
