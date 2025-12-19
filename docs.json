@@ -106,7 +106,7 @@
          "icon": "folder-open",
         "groups": [
           {
-            "group": "Resources",
+            "group": "Resources Test",
             "pages": [
               "resources/components-test",
               "resources/brand-assets",
