@@ -6,14 +6,14 @@ iconType: light
 
 ## System Overview
 
-[cite_start]Overnight Yield is a non-custodial interoperability component within the L2Pass protocol designed to provide stablecoin yield without lockup periods or withdrawal cooldowns[cite: 1, 100, 114]. [cite_start]The protocol automates the deployment of **USDT** into established yield-generating venues on the **TRON network**, utilizing the **Peg Stability Module (PSM)** and **JustLend** for liquidity routing[cite: 5, 26, 89, 93].
+Overnight Yield is a non-custodial interoperability component within the L2Pass protocol designed to provide stablecoin yield without lockup periods or withdrawal cooldowns. The protocol automates the deployment of USDT into established yield-generating venues on the TRON network, utilizing the Peg Stability Module (PSM) and JustLend for liquidity routing.
 
-[cite_start]The system abstracts the complexity of manual cross-token swaps and lending interactions, enabling users to maintain a liquid position while accruing rewards based on a streaming weight mechanism[cite: 13, 83, 153].
+The system abstracts the complexity of manual cross-token swaps and lending interactions, enabling users to maintain a liquid position while accruing rewards based on a streaming weight mechanism.
 
 <img
   src="/images/architecture.png"
   alt="L2Pass Yield Architecture Diagram"
-  style={{ height: "auto", width: "auto" }}
+  style={{ height: "720", width: "auto" }}
   className="rounded-lg"
 />
 
@@ -25,31 +25,31 @@ The L2Pass Yield architecture is organized into five functional layers to separa
 
 ### 1. Finality Layer
 The underlying blockchain infrastructure providing consensus and settlement for all protocol interactions.
-* [cite_start]**TRON:** The primary execution environment for the current vault implementation[cite: 26, 62].
-* **Ethereum:** Planned for future expansion to support multi-chain yield strategies.
+**TRON:** The primary execution environment for the current vault implementation.
+**Ethereum:** Planned for future expansion to support multi-chain yield strategies.
 
 ### 2. Transfer Layer
 Manages the conversion and movement of assets between stablecoin variants.
-* [cite_start]**Native USDT (TRC20):** The primary entry and exit asset for users[cite: 4, 88].
-* [cite_start]**Peg Stability Module (PSM):** Facilitates swaps between **USDT** and **USDD**[cite: 5, 91, 106].
-* [cite_start]**GEM_JOIN:** The approval target required for PSM interactions when converting USDT to USDD[cite: 6, 91].
+**Native USDT (TRC20):** The primary entry and exit asset for users.
+**Peg Stability Module (PSM):** Facilitates swaps between **USDT** and **USDD**.
+**GEM_JOIN:** The approval target required for PSM interactions when converting USDT to USDD.
 
 ### 3. User Layer
 Interfaces for user interaction and position monitoring.
 * **Smart Liquid Vault Interface:** Frontend for initiating deposit and withdrawal actions.
-* [cite_start]**Position Accounting:** Each user position is tracked on-chain via the `amountActive` mapping[cite: 15, 161].
-* [cite_start]**Transparency:** Users can view pending rewards and active balances directly from the contract state[cite: 161, 168].
+**Position Accounting:** Each user position is tracked on-chain via the `amountActive` mapping.
+**Transparency:** Users can view pending rewards and active balances directly from the contract state.
 
 ### 4. Smart Vault Layer
-[cite_start]The core logic resides in the `WeeklyStreamingStaking` contract, which handles asset management and reward accounting[cite: 3].
-* [cite_start]**Vault Accounting:** Tracks balances in **jUSDD** units and manages `userWeightSeconds` for reward distribution[cite: 14, 15, 94].
-* [cite_start]**Streaming Reward Pipeline:** Manages the distribution of rewards over weekly epochs (604,800 seconds)[cite: 8, 39, 153].
-* [cite_start]**Risk Parameters:** Admin-controlled settings including pause functionality and fee adjustments[cite: 19, 37, 128].
+The core logic resides in the `WeeklyStreamingStaking` contract, which handles asset management and reward accounting.
+**Vault Accounting:** Tracks balances in **jUSDD** units and manages `userWeightSeconds` for reward distribution.
+**Streaming Reward Pipeline:** Manages the distribution of rewards over weekly epochs (604,800 seconds).
+]**Risk Parameters:** Admin-controlled settings including pause functionality and fee adjustments.
 
 ### 5. Yield Layer
 The destination for capital deployment to generate returns.
-* [cite_start]**JustLend:** Primary venue where **USDD** is supplied to mint interest-bearing **jUSDD**[cite: 6, 93].
-* [cite_start]**Incentive Engines:** Weekly distributions from the protocol or external partners funded via the `fundRewards` function[cite: 19, 114, 126].
+**JustLend:** Primary venue where **USDD** is supplied to mint interest-bearing **jUSDD**.
+**Incentive Engines:** Weekly distributions from the protocol or external partners funded via the `fundRewards` function.
 
 ---
 
@@ -57,28 +57,33 @@ The destination for capital deployment to generate returns.
 
 ### Streaming Weight Accounting
 The protocol uses a time-weighted mechanism to ensure equitable reward distribution:
-* [cite_start]**Weight Calculation:** User rewards are determined by `userWeightSeconds`, representing the product of the active balance and the duration of the stake within a specific week[cite: 14, 83, 153].
-* [cite_start]**Total Weight:** A global `totalWeightSeconds` tracks the sum of all participant weights to calculate proportional shares[cite: 13, 50, 153].
-* [cite_start]**Weight Accrual:** Weights are updated ("accrued") during every interaction (deposit, withdrawal, or claim) to ensure accurate accounting[cite: 66, 86, 145].
+**Weight Calculation:** User rewards are determined by `userWeightSeconds`, representing the product of the active balance and the duration of the stake within a specific week.
+**Total Weight:** A global `totalWeightSeconds` tracks the sum of all participant weights to calculate proportional shares.
+**Weight Accrual:** Weights are updated ("accrued") during every interaction (deposit, withdrawal, or claim) to ensure accurate accounting.
 
 ### Liquidity Routing Flow
-1. [cite_start]**Deposit:** USDT is transferred to the contract and swapped for USDD via the PSM[cite: 88, 91]. [cite_start]USDD is then supplied to JustLend to mint jUSDD[cite: 93].
-2. [cite_start]**Standard Withdrawal:** jUSDD is redeemed for USDD[cite: 102]. [cite_start]USDD is then converted back to USDT via the PSM for delivery to the user[cite: 103, 106].
-3. [cite_start]**Direct Withdrawal:** Users may redeem jUSDD for USDD and withdraw the raw USDD tokens directly to mitigate PSM liquidity constraints[cite: 112, 113].
+1. **Deposit:** USDT is transferred to the contract and swapped for USDD via the PSM.
+USDD is then supplied to JustLend to mint jUSDD.
+2. **Standard Withdrawal:** jUSDD is redeemed for USDD. USDD is then converted back to USDT via the PSM for delivery to the user.
+3. **Direct Withdrawal:** Users may redeem jUSDD for USDD and withdraw the raw USDD tokens directly to mitigate PSM liquidity constraints.
 
 ---
 
 ## Economics & Fees
 
 ### Fee Configuration
-* [cite_start]**Performance Fee:** A protocol-level fee (default 10%) is applied to rewards claimed via the Merkle distributor[cite: 20, 30, 125].
-* [cite_start]**Accrued Fees:** Fees are accumulated in USDT and can be withdrawn by authorized protocol managers[cite: 20, 129, 130].
+**Performance Fee:** A protocol-level fee (curently 0%) is applied to rewards claimed via the Merkle distributor.
+**Accrued Fees:** Fees are accumulated in USDT and can be withdrawn by authorized protocol managers.
 
 ---
 
-## Risks
+## External Dependencies
+The protocol relies on the functional availability of the following external systems:
 
-* [cite_start]**Dependency Risk:** Functional availability is tied to the security and liquidity of the TRON PSM and JustLend[cite: 5, 6].
-* [cite_start]**De-peg Risk:** The 1:1 conversion mechanism assumes stability between USDT and USDD[cite: 11, 103].
-* [cite_start]**Smart Contract Risk:** Technical vulnerabilities in the `WeeklyStreamingStaking` contract or external dependencies[cite: 1, 36].
-* [cite_start]**Governance Risk:** Authorized roles have the capacity to pause the protocol or modify critical parameters[cite: 9, 37, 128].
+**TRON Network:** For transaction finality.
+
+**USDD PSM:** For converting USDT into the yield-generating USDD token.
+
+**JustLend:** For the generation of lending interest via jUSDD.
+
+<CardGroup cols={2}> <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow"> Detailed lifecycle of deposit and withdrawal actions. </Card> <Card title="Risks" icon="circle-info" href="/products/yield/risks"> Technical and economic risks associated with the architecture. </Card> </CardGroup>
