@@ -56,7 +56,7 @@
           },              
 
  {
-            "group": "Swap & Bridge",
+            "group": "Bridge",
            "icon": "bridge",
            "tag": "0% FEE",
            "expanded": true,
