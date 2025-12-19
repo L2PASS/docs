@@ -24,16 +24,12 @@ This section describes the end-to-end lifecycle of a user interacting with L2Pas
 
   <Step title="Smart Liquid Vault">
     The deposited USDT is received by the L2Pass **Smart Liquid Vault**, which manages user accounting and executes the yield strategy on-chain.
-  </Step>
-
-  <Step title="PSM: USDT → USDD">
-    The Smart Liquid Vault converts USDT to **USDD** via the Peg Stability Module (PSM) at a 1:1 rate.
-  </Step>
-
-  <Step title="JustLend: Supply USDD → jUSDD">
+  <text title="PSM: USDT → USDD">
+    The Smart Liquid Vault converts USDT to **USDD** via the Peg Stability Module (PSM) at a 1:1 rate.</text>
+  <text title="JustLend: Supply USDD → jUSDD">
     The converted USDD is supplied to **JustLend**, where it is lent to the market and represented by **jUSDD**.
     This step is the primary source of base yield.
-  </Step>
+  </text>
 
   <Step title="Mint Position NFT">
     A non-transferable **Position NFT** is minted to the user’s wallet.
