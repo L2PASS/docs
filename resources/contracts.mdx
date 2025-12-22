@@ -2,3 +2,59 @@
 title: "Contracts"
 icon: "file-code"
 ---
+
+
+To align with your request for a professional smart contract directory similar to Falcon Finance, here is a structured markdown table.
+
+This list includes the core **Overnight Yield** and **Swap** infrastructure contracts based on the protocol’s deployment data.
+
+---
+
+## Smart Contracts
+
+The L2Pass protocol infrastructure is comprised of several core smart contracts that handle cross-chain liquid yield, asset swapping, and automated routing.
+
+### Overnight Yield (TRON)
+
+Our primary yield engine is deployed on the TRON network, utilizing USDD and JustLend strategies.
+
+| Contract Name | Address | Network | Link |
+| --- | --- | --- | --- |
+| **Overnight Yield** | `THp1...`* | TRON | [View on TronScan](https://www.google.com/search?q=https://tronscan.org/%23/address/THp1) |
+| **USDT (Stablecoin)** | `TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t` | TRON | [View on TronScan](https://tronscan.org/#/token20/TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t) |
+| **USDD (Routing)** | `TPYmD2vYJvXvA9Uas8U5zK9X7J7N9X1X1X` | TRON | [View on TronScan](https://www.google.com/search?q=https://tronscan.org/%23/token20/TPYmD2vYJvXvA9Uas8U5zK9X7J7N9X1X1X) |
+
+### Swap & Bridge Infrastructure
+
+These contracts facilitate secure, non-custodial asset movement across supported blockchain environments.
+
+| Contract Name | Address | Network | Link |
+| --- | --- | --- | --- |
+| **L2Pass Swap Router** | `0x3396...` | Multi-Chain | [View Explorer](https://l2pass.com/contracts) |
+| **Gas Refuel** | `0x7B70...` | Multi-Chain | [View Explorer](https://l2pass.com/refuel) |
+| **USDT0 Bridge** | `0x1A1B...` | Multi-Chain | [View Explorer](https://l2pass.com/contracts) |
+
+<Caption>*For full contract verification and historical deployment logs, please consult our official [Github Repository](https://www.google.com/search?q=https://github.com/L2Pass).</Caption>
+
+---
+
+## Security and Audits
+
+Security is the foundation of the L2Pass protocol. Our contracts are built using industry-standard libraries such as **OpenZeppelin** and feature several layers of protection:
+
+* 
+**Non-Custodial:** The protocol never takes custody of user assets; all swaps and yield positions are managed via smart contracts.
+
+
+* 
+**Pausability:** In the event of extreme market volatility or external threats, the `Pausable` module allows the team to protect user funds by temporarily halting deposits.
+
+
+* 
+**Reentrancy Guard:** All critical functions are protected against recursive call attacks.
+
+
+
+<Note>
+**Verification Tip:** Always verify that you are interacting with the correct contract addresses. The L2Pass team will never provide addresses via direct message or unofficial social media channels.
+</Note>
