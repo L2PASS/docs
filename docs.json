@@ -109,8 +109,12 @@
         {
           "anchor": "BRIDGE ↗",
           "href": "https://swap.l2pass.com/",
-          "icon": "bridge",
-          "tag": "0% fees"
+          "icon": "bridge"
+        },
+             {
+          "anchor": "GAS REFUEL ↗",
+          "href": "https://l2pass.com/refuel",
+          "icon": "gas-pump"
         }
       ]
     }
