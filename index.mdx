@@ -1,116 +1,88 @@
 ---
 title: "Introduction"
 icon: "star"
-iconType: light
 mode: "wide"
-description: "Welcome to the new home for your documentation"
+description: "Everything you need to navigate the L2Pass ecosystem."
 ---
 
 ## Setting up
 
-Get your documentation site up and running in minutes.
+Get started with the L2Pass infrastructure.
 
 <Card
-  title="Start here"
+  title="Quickstart Guide"
   icon="rocket"
   href="/quickstart"
   horizontal>
-  Follow our three step quickstart guide.
+  Follow our three-step guide to bridge, swap, and earn.
 </Card>
 
 ## Our Products
 
-Design a docs site that looks great and empowers your users.
+Explore our suite of omnichain financial solutions.
 
-<Columns cols={2}>
-  <Card
-    title="Yiled"
+<CardGroup cols={2}>
+  <Card title="Yield" icon="leaf" href="/products/yield/overview">
     <img 
-    src="/images/bridge_img.png" 
-    alt="Bridge" 
-    style={{ height: "150px", width: "auto" }} 
-    className="rounded-lg"
-  />
-    icon="leaf"
-    iconType: light
-    href="/products/yiled/overview"
-  >
+      src="/images/yield_img.png" 
+      alt="Yield" 
+      style={{ height: "150px", width: "100%", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }} 
+    />
     Secure, expert-led financial products for individuals and institutions.
   </Card>
-  <Card
-    title="Bridge"
+  
+  <Card title="Bridge" icon="bridge" href="/products/swap/overview">
     <img 
-    src="/images/bridge_img.png" 
-    alt="Bridge" 
-    style={{ height: "150px", width: "auto" }} 
-    className="rounded-lg"
-  />
-    icon="bridge"
-    iconType: light
-    href="/products/swap/overview"
-  >
-    Bridge and Swap with best exchange rate from 0 bps fee
+      src="/images/bridge_img.png" 
+      alt="Bridge" 
+      style={{ height: "150px", width: "100%", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }} 
+    />
+    Bridge and Swap with best exchange rates from 0 bps fee.
   </Card>
-    <Card
-    title="Gas Refuel"
-      <img 
-    src="/images/bridge_img.png" 
-    alt="Bridge" 
-    style={{ height: "150px", width: "auto" }} 
-    className="rounded-lg"
-  />
-    icon="gas-pump"
-    iconType: light
-    href="/essentials/navigation"
-  >
-    Refuel gas tokens 32+ EVM chains.
-  </Card>
-  <Card
-    title="NFT Quest"
+
+  <Card title="Gas Refuel" icon="gas-pump" href="/essentials/navigation">
     <img 
-    src="/images/bridge_img.png" 
-    alt="Bridge" 
-    style={{ height: "150px", width: "auto" }} 
-    className="rounded-lg"
-  />
-    icon="map"
-    iconType: light
-    href="/api-reference/introduction"
-  >
-    The first upgradable omnichain NFT.
+      src="/images/gas_refuel_img.png" 
+      alt="Gas Refuel" 
+      style={{ height: "150px", width: "100%", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }} 
+    />
+    Seamlessly refuel gas tokens across 32+ EVM chains.
   </Card>
-</Columns>
 
-## About L2Pass
+  <Card title="NFT Quest" icon="map" href="/api-reference/introduction">
+    <img 
+      src="/images/nft_quest_img.png" 
+      alt="NFT Quest" 
+      style={{ height: "150px", width: "100%", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }} 
+    />
+    The first upgradable omnichain NFT experience.
+  </Card>
+</CardGroup>
 
-Everything you need to create world-class documentation.
-
+## Ecosystem & Metrics
 
 <Tile title="Ecosystem Partners">
-  <img src="/images/partners_dark.svg" alt="Accordion component preview" className="block dark:hidden" />
-  <img src="/images/partners_light.svg" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
+  <img src="/images/partners_light.svg" alt="Partners" className="block dark:hidden" />
+  <img src="/images/partners_dark.svg" alt="Partners" className="hidden dark:block" />
 </Tile>
----
 
-<Card title="Protocol Metrics" img="/images/metrics_light.svg">
+<Card title="Protocol Metrics" img="/images/metrics_light.svg" href="/metrics">
+  Real-time data on volume, TVL, and cross-chain transactions.
 </Card>
----
 
-<Columns cols={4}>
-  <Tile href="/components/accordions" title="Liquid Yield" description="up to 12% on USDT">
-    <img icon="beer-mug-empty" alt="Accordion component preview" className="block dark:hidden" />
-    <img src="/logo/l2pass_docs_dark.svg" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
-  </Tile>
-  <Tile href="/components/accordions" title="Swap & Bridge" description="From 0% tx fees">
-   <img src="/images/bridge_img.png" alt="Accordion component preview" className="block dark:hidden" />
-    <img src="/images/bridge_img.png" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
-  </Tile>
-  <Tile href="/components/accordions" title="Gas Refuel" description="Top up gas in 33 EVM chain">
-    <img src="/images/gas_refuel_img.png" alt="Accordion component preview" className="block dark:hidden" />
-    <img src="/images/gas_refuel_img.png" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
-  </Tile>
-    <Tile href="/components/accordions" title="NFT Quest" description="First omnichain upgradable NFT">
-    <img src="images/nft_quest_img.png" alt="Accordion component preview" className="block dark:hidden" />
-    <img src="/images/nft_quest_img.png" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
-  </Tile>
-</Columns>
+## Quick Links
+
+<CardGroup cols={4}>
+  <Card title="Liquid Yield" icon="coins" href="/products/yield">
+    Up to 12% on USDT
+  </Card>
+  <Card title="Swap & Bridge" icon="arrow-right-arrow-left" href="/products/swap">
+    From 0% tx fees
+  </Card>
+  <Card title="Gas Refuel" icon="gas-pump" href="/products/refuel">
+    33 EVM Chains
+  </Card>
+  <Card title="NFT Quest" icon="shield-halved" href="/products/nft">
+    Omnichain NFT
+  </Card>
+</CardGroup>
