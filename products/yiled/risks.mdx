@@ -1,88 +1,69 @@
 ---
 title: "Risks"
 icon: "circle-info"
-iconType: light
+iconType: "light"
 description: "A comprehensive assessment of technical, financial, and operational risks associated with the L2Pass Overnight Yield protocol."
 ---
 
-## Risk Management Overview
+## Smart Contract Risks
 
-L2Pass Overnight Yield is a non-custodial interoperability protocol. While the system architecture is designed for transparency and capital efficiency, interacting with decentralized finance (DeFi) protocols involves inherent risks. Users should perform their own due diligence before depositing assets.
+The core protocol logic is implemented in the L2PassOvernightYield.sol smart contract deployed on the TRON network. The contract follows established security best practices and a modular design. As with all smart contracts, there is a residual risk that unforeseen issues in logic, accounting, or external integrations could affect protocol behavior or user funds. Continuous testing and conservative design choices are used to reduce these risks as much as possible.
 
-This document outlines the primary risk vectors identified in the current implementation.
+## User Access Risks
 
----
+L2Pass is fully non-custodial. Users retain full control of their assets at all times. As a result, access to funds depends entirely on the security of the user’s private keys. If a wallet becomes inaccessible, the associated staking position cannot be migrated to a new address, and funds may not be recoverable.
 
-## Technical & Smart Contract Risks
+## Third-Party Smart Contract Risks
 
-### 1. Smart Contract Vulnerabilities
-
-The protocol logic is governed by the `L2PassOvernightYield` contract deployed on the TRON network. Despite adhering to industry security standards and modular design, vulnerabilities in the code—including core logic, reward accounting, and external interface handling—could lead to a total or partial loss of funds.
-
-### 2. Soulbound Token (SBT) & Position Logic
-
-User positions are represented by a non-transferable ERC721 token (SBT).
-
-* **Access Risk:** If a user loses access to their private keys, the staking position cannot be transferred to a new wallet.
-* **Accounting Errors:** Any failure in the internal `amountActive` mapping or the mint/burn lifecycle of the SBT could lead to discrepancies between a user's on-chain representation and their actual claimable balance.
-
-### 3. Integration Risk (JustLend & PSM)
-
-The protocol acts as an aggregator and router for external systems:
-
-* **JustLend:** Used for generating yield via **jUSDD**.
-* **USDD Peg Stability Module (PSM):** Used for converting **USDT** to **USDD** and vice-versa.
-
-Failures, logic changes, or exploits within these third-party protocols are outside the control of L2Pass and may negatively affect the protocol’s functionality.
+The protocol integrates with external smart contracts such as JustLend and the USDD Peg Stability Module. The operation and security of these systems are outside the direct control of L2Pass. Changes in logic, upgrades, or unexpected issues within these third-party contracts could impact protocol functionality or yields. All integrated protocols have undergone independent security audits. Audit reports for JustLend and the USDD PSM are publicly available.
 
 ---
 
-## Financial & Market Risks
+## Financial and Market Risks
 
-### 1. Stablecoin De-pegging
+### Stablecoin Stability
 
-The protocol utilizes **USDT** and **USDD**. The value of a user's position is subject to the market stability of these assets.
+The protocol utilizes USDT and USDD. The value of a user’s position depends on the stability of these assets. The system assumes a near 1:1 exchange rate between USDT and USDD through the PSM. A prolonged deviation from this parity could affect withdrawal outcomes or asset value. Both stablecoins are also subject to the operational, financial, and regulatory risks of their respective issuers.
 
-* **USDD Peg:** The system relies on a stable 1:1 parity (or near parity) between USDT and USDD via the PSM. A significant or sustained de-pegging of USDD could lead to a loss of value relative to USDT.
-* **Issuer Risk:** Both assets are subject to the operational, financial, and regulatory risks of their respective issuers.
+### Yield Variability
 
-### 2. Yield Volatility
+Yield is variable and not guaranteed. Returns are driven by borrowing demand on JustLend and, where applicable, external incentive programs. These rates are market-based and may fluctuate over time, including decreasing significantly or temporarily reaching zero.
 
-Yield is variable and not guaranteed. Returns are derived from lending demand in JustLend and external incentive programs. These rates are market-driven and may decrease significantly or reach 0% without prior notice.
+### Withdrawal Liquidity
 
-### 3. Liquidity & Withdrawal Risk
-
-* **PSM Liquidity:** Standard withdrawals depend on available USDT liquidity within the external USDD PSM contract. If the PSM is depleted, standard withdrawals may fail.
-* **Direct Withdrawal Path:** To mitigate PSM constraints, the protocol offers a **Direct Withdrawal** path (receiving USDD). Users opting for this path must manage the USDD asset themselves.
+Standard withdrawals rely on available USDT liquidity in the USDD PSM. In periods where PSM liquidity is limited, standard withdrawals may not be immediately available. To provide flexibility, the protocol supports a Direct Withdrawal option that returns USDD instead. Users choosing this option are responsible for managing or converting the USDD asset independently.
 
 ---
 
-## Operational & Governance Risks
+## Operational and Governance Risks
 
-### 1. Administrative Authority
+### Administrative Roles
 
-The protocol employs a multi-role governance structure:
+The protocol uses a role-based governance model to support safe operation and maintenance:
 
-* **DEFAULT_ADMIN_ROLE:** Can update critical contract targets (PSM, JustLend, GEM_JOIN), modify fee parameters, and manage protocol roles.
-* **MANAGER_ROLE:** Can pause/unpause the protocol and withdraw accrued fees.
+- **DEFAULT_ADMIN_ROLE**\
+  Responsible for updating core integrations such as the PSM and JustLend, adjusting fee parameters, and managing protocol roles.
+- **MANAGER_ROLE**\
+  Authorized to pause or resume protocol operations and withdraw accrued protocol fees.
 
-Malicious use of these roles or compromised administrative keys could lead to protocol downtime or the misdirection of funds.
+While these roles are designed for maintenance and risk management, misuse or compromised administrative keys could result in temporary disruption or unintended fund movements.
 
-### 2. Reward Finalization
+### Reward Finalization
 
-Rewards are distributed on a **weekly epoch basis**. While the UI provides real-time estimates of pending rewards, these are only finalized and guaranteed once the epoch concludes and the data is processed on-chain.
+Rewards accrue continuously but are finalized on a weekly epoch basis. The interface displays real-time reward estimates for transparency. Final reward amounts are confirmed on-chain only after the epoch is completed and settled.
 
-### 3. Network & Execution Risk
+### Network Execution
 
-Operations on the TRON network require sufficient Energy and Bandwidth (TRX). High network congestion or significant increases in resource costs may lead to failed transactions or high execution fees for users.
+All interactions occur on the TRON network and require sufficient Energy and Bandwidth. Periods of network congestion or increased resource costs may result in delayed or failed transactions, or higher execution costs for users.
 
 ---
 
 <Note>
-**L2Pass Overnight Yield is provided on an "as-is" basis.** The protocol does not offer insurance, and there is no guarantee of recovery in the event of technical failure, de-pegging, or external protocol exploits.
+  **L2Pass Overnight Yield is provided on an "as-is" basis.** The protocol does not offer insurance, and there is no guarantee of recovery in the event of technical failure, de-pegging, or external protocol exploits.
 </Note>
 
 ---
+
 <Card title="Support & Community" icon="telegram" href="[https://t.me/L2pass](https://t.me/L2pass)">
-For technical inquiries regarding security or protocol mechanics, please join our official Telegram community.
+  For technical inquiries regarding security or protocol mechanics, please join our official Telegram community.
 </Card>
