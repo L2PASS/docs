@@ -4,67 +4,71 @@ icon: "image"
 description: "Guidelines and assets for the L2Pass brand identity."
 ---
 
-
 ## Logo Assets
 
 Please do not alter the logo proportions, colors, or orientation. Ensure sufficient padding around the logo.
 
-<CardGroup cols={3}>
-  <Card title="Logo Dark" icon="file-pdf" href="/assets/logo-dark.svg" arrow=true>
-    <img src="/brand_assets/l2p_logo.svg" />
-    SVG for dark backgrounds.
+<CardGroup cols={2}>
+  <Card title="Full Logo" icon="file-pdf" href="/brand_assets/l2p_logo.svg">
+    Official L2Pass wordmark in SVG format for high-resolution scaling.
   </Card>
-  <Card title="Logo Light" icon="file-pdf" href="/assets/logo-light.svg">
-    SVG for light backgrounds.
-  </Card>
-  <Card title="Icon Only" icon="file-image" href="/assets/icon.png">
-    High-res square icon.
+  <Card title="Brand Icon" icon="file-image" href="/assets/icon.png">
+    Simplified icon for use in social media profiles and browser favicons.
   </Card>
 </CardGroup>
 
-
-  <Tile href="/components/accordions" title="L2P Logo Dark">
-    <img src="/brand_assets/l2p_logo.svg" />
-  </Tile>
+<Frame caption="L2P Logo Dark Background Preview">
+  <img src="/brand_assets/l2p_logo.svg" style={{ borderRadius: '0.5rem', backgroundColor: '#1A1A1A', padding: '2rem' }} />
+</Frame>
 
 ## Brand Colors
 
-Our palette is designed for a high-contrast, dark-mode first experience, utilizing deep blues and vibrant neon accents.
+Our palette is designed for a high-contrast, dark-mode first experience, utilizing deep shades and vibrant neon accents.
 
-Primary
+### Primary
 <Color variant="compact">
   <Color.Item name="Midnight" value="#1A1A1A" />
-  <Color.Item name="Accent Dark" value="#181818" />
-    <Color.Item name="Ghost White" value="#FCFAF7" />
-<Color.Item name="Ultraviolet" value="#971AE4" />
-  </Color>
+  <Color.Item name="Deep Surface" value="#181818" />
+  <Color.Item name="Ghost White" value="#FCFAF7" />
+  <Color.Item name="Ultraviolet" value="#971AE4" />
+</Color>
 
-Secondary
-  <Color variant="compact">
-    <Color.Item name="Lavender" value="#b19eef" />
-    <Color.Item name="Polar Green" value="#A5FFBE" />
-  <Color.Item name="Aurora" value="#53CBC8" />  
+### Secondary
+<Color variant="compact">
+  <Color.Item name="Lavender" value="#B19EEF" />
+  <Color.Item name="Neon Mint" value="#A5FFBE" />
+  <Color.Item name="Aurora" value="#53CBC8" />
 </Color>
 
 ### Gradients
-Used for primary buttons, active states, and featured components.
 
 <CardGroup cols={2}>
   <Card title="Polar Glow" icon="palette">
-    `radial-gradient(#53CBC8 100%, #A5FFBE 100%)`
+    `linear-gradient(135deg, #53CBC8 0%, #A5FFBE 100%)`
   </Card>
-    <Card title="Aurora" icon="palette">
-  (#7cff67 100%, #b19eef 100%, #5227ff 100%)`
+  <Card title="Aurora Pulse" icon="palette">
+    `linear-gradient(90deg, #7CFF67 0%, #B19EEF 50%, #5227FF 100%)`
   </Card>
 </CardGroup>
 
 ## Typography
 
-We use a modern, clean sans-serif typeface to ensure readability across complex financial data.
+We use clean, modern typefaces to ensure readability across complex financial data.
 
-* **Headings:** [Inter](https://fonts.google.com/specimen/Inter) / Semi-Bold
-* **Body:** [Inter](https://fonts.google.com/specimen/Inter) / Regular
-* **Monospace:** [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (For contract addresses and code)
+<CardGroup cols={3}>
+  <Card title="Inter" icon="font">
+    **Headings & Body**
+    Clean sans-serif.
+  </Card>
+  <Card title="JetBrains Mono" icon="code">
+    **Data & Contracts**
+    High-legibility mono.
+  </Card>
+  <Card title="Weights" icon="weight-hanging">
+    Semi-Bold (H)
+    Regular (P)
+  </Card>
+</CardGroup>
 
 ---
 
