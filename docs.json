@@ -7,11 +7,7 @@
     "light": "#A5FFBE",
     "dark": "#26A17B"
   },
-  "styling": {
-    "codeblocks": {
-      "theme": "dracula"
-    }
-  },
+
   "background": {
     "decoration": "grid",
     "color": {
