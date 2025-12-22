@@ -1,4 +1,35 @@
 ---
 title: "Security Audits"
-icon: "shield-halved"
+description: "Transparency regarding L2Pass smart contract security and scheduled reviews."
+icon: "shield-check"
 ---
+
+<Warning>
+  **Experimental Phase Notice** While the Yield product is currently deployed and functional, we strongly advise against depositing large amounts of capital at this stage. Please only deposit funds you are comfortable with as we finalize our security testing.
+</Warning>
+
+## Current Status
+
+The **L2Pass Yield** product is officially deployed on mainnet. We are currently in a "soft launch" phase to monitor contract performance and security in a live environment.
+
+### Audit Roadmap
+Security is our top priority. We have a multi-stage audit process planned to ensure the safety of user funds:
+
+* **Internal Review:** Complete. Our core engineering team has conducted extensive unit testing and simulated stress tests.
+* **External Audits:** **[Planned / In Progress]** We are currently scheduling reviews with leading blockchain security firms to perform a comprehensive audit of our Yield and Bridge logic.
+* **Bug Bounty:** [Planned] A community-driven bug bounty program will be launched following the completion of our external audits.
+
+## Smart Contract Security
+
+Our architecture is built on top of battle-tested primitives, but the custom logic for our cross-chain yield strategies is new. 
+
+### Best Practices
+* **Non-Custodial:** L2Pass never has direct access to your private keys.
+* **Transparency:** All contract logic is verifiable on-chain. You can view our contracts in the [Official Addresses](/contracts) section.
+* **Modular Design:** Our system is designed to isolate risk between different yield strategies and chains.
+
+---
+
+<Note>
+  We will update this page with direct links to PDF audit reports as soon as they are finalized by our security partners.
+</Note>
