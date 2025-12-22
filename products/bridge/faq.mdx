@@ -1,5 +1,77 @@
 ---
 title: "FAQ"
 icon: "circle-question"
-iconType: light
+iconType: "light"
 ---
+
+<AccordionGroup>
+  <Accordion title="What is the Bridge product and how does it work?">
+    The Bridge enables on-chain and cross-chain stablecoin transfers between supported blockchains using native bridges and intent-based protocols. Transfers are executed in a decentralized, non-custodial manner without asset wrapping.
+  </Accordion>
+
+  <Accordion title="What is the difference between Bridge and Swap?">
+    Bridge transfers the same asset between blockchains, while Swap exchanges assets and may include AMM interaction and cross-chain execution in a single transaction.
+  </Accordion>
+
+  <Accordion title="What assets can I transfer?">
+    Supported stablecoins and networks are listed on the
+    <a href="https://swap.l2pass.com" target="_blank">frontend page</a>
+    and may vary by chain.
+  </Accordion>
+
+  <Accordion title="What is price impact?">
+    Price impact is the change in execution price caused by trade size relative to available liquidity.
+  </Accordion>
+
+  <Accordion title="What is slippage?">
+    Slippage is the difference between the quoted price and the final execution price due to market movement.
+  </Accordion>
+
+  <Accordion title="Can I configure slippage tolerance?">
+    Yes. Automatic slippage is enabled by default, with manual configuration available.
+  </Accordion>
+
+  <Accordion title="What is the expected output?">
+    The expected output is the estimated amount you are likely to receive under current market conditions.
+  </Accordion>
+
+  <Accordion title="What is the minimum received amount?">
+    The minimum received amount represents the worst-case execution threshold based on your slippage tolerance. If this threshold is exceeded, the transaction reverts.
+  </Accordion>
+
+  <Accordion title="What fees apply?">
+    Fees may include AMM fees, cross-chain messaging fees, native bridge fees, network gas fees, and a minimal swap platform fee.
+  </Accordion>
+
+  <Accordion title="Are there hidden fees?">
+    No. All fees are calculated and displayed before confirmation.
+  </Accordion>
+
+  <Accordion title="Is L2Pass Swap non-custodial?">
+    Yes. Assets remain under user control throughout the entire execution process.
+  </Accordion>
+
+  <Accordion title="Do I need gas on both chains for a cross-chain swap?">
+    Gas is required on the source chain. Destination chain gas may be required for subsequent interactions.
+  </Accordion>
+
+  <Accordion title="How is cross-chain security handled?">
+    Transfers rely on native bridges and intent-based protocols that require sufficient block finality before settlement.
+  </Accordion>
+
+  <Accordion title="Does L2Pass use wrapped or synthetic assets?">
+    No. Only native assets, AMMs, and official bridges are used.
+  </Accordion>
+
+  <Accordion title="Can my funds get stuck?">
+    The protocol is designed to prevent trapped assets. Funds either settle successfully or are returned.
+  </Accordion>
+
+  <Accordion title="What happens if a swap fails?">
+    The transaction reverts. No assets are exchanged, and network gas fees are not refundable.
+  </Accordion>
+
+  <Accordion title="Can a cross-chain swap be partially filled?">
+    No. All executions follow an all-or-nothing model.
+  </Accordion>
+</AccordionGroup>
