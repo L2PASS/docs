@@ -1,11 +1,12 @@
 ---
 title: "Brand Assets"
 icon: "image"
+description: "Guidelines and assets for the L2Pass brand identity."
 ---
 
 
   <Tile href="/components/accordions" title="L2P Logo Dark">
-    <img src="/brand_assets_l2p_logo.svg" />
+    <img src="/brand_assets/l2p_logo.svg" />
   </Tile>
 
 
@@ -15,3 +16,61 @@ icon: "image"
   <Color.Item name="blue-700" value="#1D4ED8" />
   <Color.Item name="blue-800" value="#1E40AF" />
 </Color>
+
+
+---
+
+## Brand Colors
+
+Our palette is designed for a high-contrast, dark-mode first experience, utilizing deep blues and vibrant neon accents.
+
+### Primary Palette
+<Color variant="compact">
+  <Color.Item name="Deep Space (BG)" value="#0A0A0B" />
+  <Color.Item name="Electric Blue" value="#3B82F6" />
+  <Color.Item name="Cyan Glow" value="#06B6D4" />
+  <Color.Item name="Pure White" value="#FFFFFF" />
+</Color>
+
+### Gradients
+Used for primary buttons, active states, and featured components.
+
+<CardGroup cols={2}>
+  <Card title="Primary Glow" icon="palette">
+    `linear-gradient(90deg, #3B82F6 0%, #06B6D4 100%)`
+  </Card>
+  <Card title="Dark Surface" icon="layer-group">
+    `#121214` (Used for cards and navigation)
+  </Card>
+</CardGroup>
+
+## Logo Assets
+
+Please do not alter the logo proportions, colors, or orientation. Ensure sufficient padding around the logo.
+
+<CardGroup cols={3}>
+  <Card title="Logo Dark" icon="file-pdf" href="/assets/logo-dark.svg">
+    SVG for dark backgrounds.
+  </Card>
+  <Card title="Logo Light" icon="file-pdf" href="/assets/logo-light.svg">
+    SVG for light backgrounds.
+  </Card>
+  <Card title="Icon Only" icon="file-image" href="/assets/icon.png">
+    High-res square icon.
+  </Card>
+</CardGroup>
+
+## Typography
+
+We use a modern, clean sans-serif typeface to ensure readability across complex financial data.
+
+* **Headings:** [Inter](https://fonts.google.com/specimen/Inter) / Semi-Bold
+* **Body:** [Inter](https://fonts.google.com/specimen/Inter) / Regular
+* **Monospace:** [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (For contract addresses and code)
+
+---
+
+<Note>
+**Usage Policy**
+By using these assets, you agree to follow the L2Pass brand guidelines. For custom inquiries or partnership materials, please contact our [marketing team](/resources/support).
+</Note>
