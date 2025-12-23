@@ -39,7 +39,7 @@
                 "icon": "hand-holding-seedling",
                 "expanded": true,
                 "pages": [
-                  "products/yield/yiled_into",
+                  "products/yield/yield_into",
                   {
                     "group": "Overnight Yield",
                     "tag": "9.75% APY",
