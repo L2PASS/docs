@@ -35,7 +35,6 @@
             "pages": [
               {
                 "group": "Yield",
-                "pages": ["yield_intro"],
                 "icon": "hand-holding-seedling",
                 "expanded": true,
                 "pages": [
