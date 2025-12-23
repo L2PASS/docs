@@ -84,11 +84,9 @@
           {
             "group": "Resources",
             "pages": [
-              "resources/components-test",
-              "resources/brand-assets",
               "resources/contracts",
-              "resources/roadmap",
               "resources/audits",
+              "resources/brand-assets",
               "resources/support"
             ]
           }
