@@ -1,0 +1,44 @@
+---
+title: "Yield Intro"
+---
+
+## Overview
+
+Yield by L2Pass is a non-custodial liquidity aggregation protocol designed to optimize stablecoin capital efficiency. The system functions as a modular interface between end users and on-chain DeFi primitives, automating the deployment of assets into verified yield generating strategies.
+
+## Core Architecture
+
+### Non-Custodial Vault Design
+
+The protocol utilizes a vault based architecture where user assets are governed strictly by smart contract logic.
+
+- **Asset Ownership:** Users retain full sovereignty over their deposits. The protocol cannot access or move funds outside of the parameters defined by the immutable smart contract code.
+- **Deterministic Execution:** All deposits and withdrawals are processed via transparent on-chain functions, ensuring that redemption rights remain programmatically guaranteed at all times.
+
+### Liquidity Allocation Strategies
+
+The execution layer identifies and captures native yield opportunities within the finality layer ecosystem.
+
+- **Protocol Integration:** Capital is deployed into established on-chain primitives, such as decentralized lending markets, to generate interest.
+- **Capital Velocity:** The system is engineered to minimize idle liquidity, ensuring that principal assets are continuously productive from the moment of deposit.
+
+### Cross-Chain Strategy Framework
+
+The architecture is designed for future expansion into cross-chain yield optimization. This framework will allow the protocol to dynamically allocate liquidity across multiple EVM and non-EVM networks. By leveraging secure messaging protocols and native bridges, Yield will facilitate capital movement to the highest performing risk adjusted strategies across the broader DeFi landscape.
+
+### Technical Transparency
+
+Every capital allocation and rebalancing event is recorded as an on-chain state change. Protocol activities generate immutable event logs, allowing for real-time monitoring of fund deployment and yield accrual via public block explorer.
+
+### Risk Management
+
+The protocol implements several safety layers to protect user principal:
+
+- **Contract Fail-Safes:** Logic is designed to revert transactions in the event of execution failures or unexpected state changes in the underlying strategies.
+- **Market Sensitivity:** Strategies are monitored for liquidity depth and protocol health to ensure that exit liquidity is available for user redemptions under standard market conditions.
+
+## Product Lineup
+
+### Overnight Yield
+
+**Overnight Yield** is the flagship non-custodial strategy that programmatically deploys stablecoin liquidity into audited, high-utilization lending markets. While the architecture is optimized for institutional capital efficiency during transaction downtime, there are no technical limitations on deposit duration. The protocol provides stable, continuous yield accrual for any deposit size without time-based constraints, utilizing algorithmic rebalancing and automated compounding to ensure perpetual capital growth and frictionless redemption.
