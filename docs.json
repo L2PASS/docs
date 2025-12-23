@@ -44,11 +44,11 @@
                     "tag": "9.75% APY",
                     "expanded": true,
                     "pages": [
-                      "products/yiled/overview",
-                      "products/yiled/architecture",
-                      "products/yiled/user-flow",
-                      "products/yiled/faq",
-                      "products/yiled/risks"
+                      "products/yield/overview",
+                      "products/yield/architecture",
+                      "products/yield/user-flow",
+                      "products/yield/faq",
+                      "products/yield/risks"
                     ]
                   }
                 ]
@@ -96,7 +96,7 @@
     "global": {
       "anchors": [
         {
-          "anchor": "L2PASS WEB ↗",
+          "anchor": "WEBSITE ↗",
           "href": "https://l2pass.com/",
           "icon": "globe-pointer"
         },
