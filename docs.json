@@ -21,6 +21,32 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "WEBSITE ↗",
+          "icon": "globe-pointer",
+          "href": "https://l2pass.com/"
+        },
+        {
+          "anchor": "YIELD ↗",
+          "icon": "hand-holding-seedling",
+          "href": "https://earn.l2pass.com/"
+        },
+        {
+          "anchor": "BRIDGE ↗",
+          "icon": "bridge",
+          "hidden": true,
+          "href": "https://swap.l2pass.com/"
+        },
+        {
+          "anchor": "GAS REFUEL ↗",
+          "icon": "gas-pump",
+          "hidden": true,
+          "href": "https://l2pass.com/refuel"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Guides",
@@ -28,7 +54,9 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["index"]
+            "pages": [
+              "index"
+            ]
           },
           {
             "group": "Products",
@@ -92,31 +120,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "WEBSITE ↗",
-          "href": "https://l2pass.com/",
-          "icon": "globe-pointer"
-        },
-        {
-          "anchor": "YIELD ↗",
-          "href": "https://earn.l2pass.com/",
-          "icon": "hand-holding-seedling"
-        },
-        {
-          "anchor": "BRIDGE ↗",
-          "href": "https://swap.l2pass.com/",
-          "icon": "bridge"
-        },
-             {
-          "anchor": "GAS REFUEL ↗",
-          "href": "https://l2pass.com/refuel",
-          "icon": "gas-pump"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/l2pass_docs_light.svg",
