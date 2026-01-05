@@ -88,22 +88,6 @@
                   "products/bridge/overview",
                   "products/bridge/faq"
                 ]
-              },
-              {
-                "group": "Gas Refuel",
-                "icon": "gas-pump",
-                "pages": [
-                  "products/gas-refuel/",
-                  "products/gas-refuel/contracts"
-                ]
-              },
-              {
-                "group": "NFT Quest",
-                "icon": "map",
-                "pages": [
-                  "products/nft/",
-                  "products/nft/contracts"
-                ]
               }
             ]
           },
