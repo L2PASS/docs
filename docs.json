@@ -71,8 +71,8 @@
                 "pages": [
                   "products/yield/yield_intro",
                   {
-                    "group": "Tron Overnight Yield",
-                    "tag": "6.0% APY",
+                    "group": "Tron Yield",
+                    "tag": "6.0% APR",
                     "expanded": true,
                     "pages": [
                       "products/yield/overview",
