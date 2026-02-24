@@ -29,12 +29,12 @@
           "href": "https://l2pass.com/"
         },
         {
-          "anchor": "YIELD ↗",
+          "anchor": "EARN ↗",
           "icon": "hand-holding-seedling",
           "href": "https://earn.l2pass.com/"
         },
         {
-          "anchor": "BRIDGE ↗",
+          "anchor": "SWAP ↗",
           "icon": "bridge",
           "href": "https://swap.l2pass.com/"
         },
@@ -66,8 +66,8 @@
                 "pages": [
                   "products/yield/yield_intro",
                   {
-                    "group": "Overnight Yield",
-                    "tag": "9.75% APY",
+                    "group": "Tron Overnight Yield",
+                    "tag": "6.00% APY",
                     "expanded": true,
                     "pages": [
                       "products/yield/overview",
@@ -80,7 +80,7 @@
                 ]
               },
               {
-                "group": "Bridge",
+                "group": "Cross-chain Swap",
                 "icon": "bridge",
                 "tag": "0% FEE",
                 "expanded": true,
