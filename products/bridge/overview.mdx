@@ -5,9 +5,11 @@ description: "The most efficient way to bridge and swap stablecoins across netwo
 iconType: "light"
 ---
 
-## Protocol Overview
+<Frame>
+  ![Docs Cross Chain Swap](/images/docs_cross-chain_swap.png)
+</Frame>
 
-L2Pass Swap was engineered to solve the fragmentation and inefficiency of cross-chain stablecoin liquidity. The protocol provides a streamlined, non-custodial interface for executing stablecoin swaps across multiple networks in a single transaction.
+[L2Pass Swap](https://swap.l2pass.com/) was engineered to solve the fragmentation and inefficiency of cross-chain stablecoin liquidity. The protocol provides a streamlined, non-custodial interface for executing stablecoin swaps across multiple networks in a single transaction.
 
 By abstracting routing complexity, the system continuously evaluates liquidity sources, fee structures, and execution paths to select the most cost-effective route at the moment of settlement. This removes the need for manual comparison of bridges or pools, ensuring users receive the optimal available outcome through a fully decentralized process.
 
@@ -37,27 +39,32 @@ In rare scenarios involving specific network conditions, processing can take up 
 
 - **Automatic Slippage:** This default setting dynamically adjusts tolerance based on real-time market volatility to optimize the probability of successful execution.
 - **Manual Control:** For experienced users requiring granular control, the interface provides a manual input option to define a custom slippage percentage.
-- **Minimum Received:** The interface displays a **Minimum Received** value. This represents the worst-case settlement threshold. If network conditions cause the price to deviate beyond this limit, the smart contract will automatically **revert** the transaction to protect your capital. 
+- **Minimum Received:** The interface displays a **Minimum Received** value. This represents the worst-case settlement threshold. If network conditions cause the price to deviate beyond this limit, the smart contract will automatically **revert** the transaction to protect your capital.
 
 ## Fee Structure
 
 Transparency is a core protocol principle: every fee component is calculated and displayed within the quote prior to confirmation.
 
 ### Gas Fees
+
 Every blockchain interaction requires a network fee (Gas) paid in the native token (e.g., ETH, MATIC, or BNB). These fees are determined by network congestion and are not controlled by the protocol.
 
-<Tip> 
-  **Pro Tip:** If you have gas on one network but are missing it on another, you can use our **[Gas Refuel](https://l2pass.com/refuel)** service to bridge native tokens instantly and avoid getting stuck.
+<Tip>
+  **Pro Tip:** If you have gas on one network but are missing it on another, you can use our [**Gas Refuel**](https://l2pass.com/refuel) service to bridge native tokens instantly and avoid getting stuck.
 </Tip>
 
 ### Infrastructure & Provider Fees
+
 These fees are charged by the underlying layers facilitating the transfer. The routing engine ensures the best available route is selected by evaluating:
+
 - **Liquidity Providers (AMM):** Fees paid to the pools where the swap occurs.
 - **Cross-Chain Messaging:** Costs for secure data transfer protocols such as LayerZero or Near Intents.
 - **Native Bridges:** Fees associated with official network-specific bridges.
 
 ### Platform Fee
+
 This fee supports the ongoing development and maintenance of the L2Pass infrastructure:
+
 - **Bridging:** Currently, a **0% platform fee** is applied to asset bridging.
 - **Swapping:** A minimal fee is charged, often as low as **1 pip (0.0001%)**.
 
@@ -70,10 +77,10 @@ The protocol follows an "all-or-nothing" execution model. If a critical failure 
 
 ## Supported Chains and Assets
 
-Our ecosystem of supported networks and assets is constantly growing. For the most up-to-date list of technical parameters and live deployments, please visit our **[Smart Contracts](/resources/contracts)** page.
+Our ecosystem of supported networks and assets is constantly growing. For the most up-to-date list of technical parameters and live deployments, please visit our [**Smart Contracts**](/resources/contracts) page.
 
 ---
 
-<Card title="Bridge FAQ" icon="circle-question" href="/products/bridge/faq">
+<Card icon="circle-question" href="/products/bridge/faq" title="Bridge FAQ">
   Answers to common questions about the L2Pass Bridge, including usage, fees, and supported networks.
 </Card>
