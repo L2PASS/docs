@@ -9,28 +9,37 @@ mode: "wide"
 The L2Pass protocol infrastructure is comprised of several core smart contracts that handle cross-chain liquid yield, asset swapping, and automated routing.
 
 <Tabs>
+  <Tab title="Recursive Yield">
+    ## Recursive Yield
+
+    Ethereum native USDT yield strategy leveraging isolated lending markets with automated execution.
+
+    | Chain        | Contract Name            | Address                                      | Link                                                                                         |
+    | :----------- | :----------------------- | :------------------------------------------- | :------------------------------------------------------------------------------------------- |
+    | **Ethereum** | **Recursive Yield USDT** | `0x2387053F7Aee257F33a35708EbC7ca71AE07B584` | [View on Etherscan](https://etherscan.io/address/0x2387053F7Aee257F33a35708EbC7ca71AE07B584) |
+  </Tab>
   <Tab title="Overnight Yield">
     ## Overnight Yield Contracts
 
     Our primary yield engine is deployed on the TRON network, utilizing USDD and JustLend strategies.
 
-    | Contract Name       | Address       | Network | Link                                                                                  |
-    | :------------------ | :------------ | :------ | :------------------------------------------------------------------------------------ |
-    | **Overnight Yield** | `TCezVDuiWoQu79dyGpdo5HGuH7HdDBB9RU` | TRON    | [View on TronScan](https://tronscan.org/#/address/TCezVDuiWoQu79dyGpdo5HGuH7HdDBB9RU) |
+    | Network | Contract Name       | Address                              | Link                                                                                  |
+    | :------ | :------------------ | :----------------------------------- | :------------------------------------------------------------------------------------ |
+    | TRON    | **Overnight Yield** | `TCezVDuiWoQu79dyGpdo5HGuH7HdDBB9RU` | [View on TronScan](https://tronscan.org/#/address/TCezVDuiWoQu79dyGpdo5HGuH7HdDBB9RU) |
   </Tab>
   <Tab title="Bridge">
     ## Bridge Contracts
 
     These contracts facilitate secure, non-custodial asset movement across supported blockchain environments.
 
-    | Chain        | Contract Name     | Address         | Explorer Link                                                                                       |
-    | :----------- | :---------------- | :-------------- | :-------------------------------------------------------------------------------------------------- |
+    | Chain        | Contract Name     | Address                                      | Explorer Link                                                                                       |
+    | :----------- | :---------------- | :------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
     | **Ethereum** | **L2Pass Router** | `0xE4808928a6A2f8570A45aC477d634Ca080C9Ba5D` | [View Explorer](https://etherscan.io/address/0xE4808928a6A2f8570A45aC477d634Ca080C9Ba5D)            |
-    | **Arbitrum** | **L2Pass Router** | `0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355`  | [View Explorer](https://arbiscan.io/address/0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355)     |
-    | **Optimism** | **L2Pass Router** | `0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355`  | [View Explorer](https://optimistic.etherscan.io/address/0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355) |
+    | **Arbitrum** | **L2Pass Router** | `0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355` | [View Explorer](https://arbiscan.io/address/0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355)             |
+    | **Optimism** | **L2Pass Router** | `0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355` | [View Explorer](https://optimistic.etherscan.io/address/0xafCE0A8fD88217ECb39db1ec0CD0aE8B46E1b355) |
     | **Polygon**  | **L2Pass Router** | `0xB81e2cBDf5e6649A3D138db9F7f7c2Fc06168069` | [View Explorer](https://polygonscan.com/address/0xB81e2cBDf5e6649A3D138db9F7f7c2Fc06168069)         |
     | **HyperEVM** | **L2Pass Router** | `0x7B2D64941F531C4bA7aC796401891b5B4547A447` | [View Explorer](https://hyperevmscan.io/address/0x7B2D64941F531C4bA7aC796401891b5B4547A447)         |
-    | **Tron**     | **L2Pass Proxy**  | `THePtf1m94ST39sHwm5oeVuLQyYPmUyMP6`   | [View Explorer](https://tronscan.org/#/contract/THePtf1m94ST39sHwm5oeVuLQyYPmUyMP6)                 |
+    | **Tron**     | **L2Pass Proxy**  | `THePtf1m94ST39sHwm5oeVuLQyYPmUyMP6`         | [View Explorer](https://tronscan.org/#/contract/THePtf1m94ST39sHwm5oeVuLQyYPmUyMP6)                 |
   </Tab>
   <Tab title="Gas Refuel">
     ## Gas Refuel Contracts
@@ -161,6 +170,6 @@ The L2Pass protocol infrastructure is comprised of several core smart contracts 
 - **Anti-Phishing:** Be vigilant against look-alike addresses; always cross-reference the full contract address.
 - **Official Channels:** We never provide addresses via DMs or unofficial social media.
 
-<Card title="Need Assistance?" icon="question-circle" href="/resources/support">
+<Card icon="question-circle" href="/resources/support" title="Need Assistance?">
   If you have questions or concerns about contract authenticity, please contact our support before proceeding with any transactions.
 </Card>
