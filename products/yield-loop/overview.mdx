@@ -11,28 +11,50 @@ iconType: "light"
   className="rounded-lg"
 />
 
-**The sUSDD Recursive Yield Strategy** is an institutional-grade USDT Strategy on Ethereum, engineered to capture capital-efficient, leveraged exposure to sUSDD. By utilizing the Morpho Blue lending protocol and the USDD Peg Stability Module (PSM), the strategy maximizes yield while maintaining a disciplined risk profile.
+**The sUSDD Recursive Yield Strategy** is an institutional-grade USDT Vault on Ethereum, engineered to capture capital-efficient, leveraged exposure to sUSDD. By utilizing the Morpho Blue lending protocol and the USDD Peg Stability Module (PSM), the strategy maximizes yield while maintaining a disciplined risk profile.
 
 ## Strategy Summary
 
-Ethereum sUSDD Recurcive Strategy make posible a capital efficient leveraged exposure to sUSDD via Morpho Blue and the USDD Peg Stability Module. Capital enters and exits at 1 to 1 through the PSM with zero slippage and no fees, no lockups, and continuous liquidity. One hundred percent of assets are deployed with no idle cash drag.
+**L2Pass sUSDD Recursive Yield** is a non-custodial, institutional-grade strategy that maximizes yield by capturing the spread between **sUSDD** staking rewards and **USDT** borrowing costs. Using an automated "Engine" built on the **ERC-4626** standard, the vault executes a recursive leverage loop, converting deposited USDT into sUSDD, supplying it as collateral on **Morpho Blue**, and using flashloans to multiply the position. This process amplifies native staking returns while all harvested rewards are auto-compounded back into the collateral base to increase the value of vault shares.
 
-The strategy provides stablecoin exposure to USDD, a transparently collateralized protocol with a multi year track record and strong TRON ecosystem sponsorship. Leverage is applied within a defined risk framework, supported by a structurally anchored price feed tied to the PSM, continuous monitoring of liquidity, rates, and administrative activity, and automated unwind controls. The result is a modular ERC 4626 vault architecture delivering disciplined risk management, operational automation, and scalable onchain yield.
+To protect user principal, the strategy features robust, real-time risk mitigation including automated deleveraging triggers and peg monitoring. The system continuously tracks the **1:1 conversion efficiency** of the USDD/USDT Peg Stability Module (PSM) and the net interest spread; if borrow rates spike or liquidity drops, the vault automatically unwinds positions to maintain a safe Loan-to-Value (LTV) buffer. This modular architecture ensures the strategy remains capital-efficient and defensive during market volatility, providing a transparent, rules-based alternative to traditional stablecoin farming.
 
-## Core Architecture
+---
 
-- **The Hub (ERC-4626 Vault):** Operates as the standardized accountant. It manages user deposits, withdrawals, and share tracking (minting/burning).
-- **The Engine (Strategy Adapters):** These specialized modules execute all yield-generating "maneuvers." They handle leverage looping, flashloan orchestration, and position unwinding.
+## Core Architecture Layers
 
-## Key Properties
+The L2Pass architecture is an institutional-grade, segregated framework designed for modularity and high-fidelity risk management. It utilizes a "Hub-and-Engine" topology that strictly decouples capital accounting from execution logic.
 
-- **Real-time Monitoring:** 24/7 algorithmic surveillance of PSM liquidity, Morpho borrow rates, the USDD oracle price feed, and USDD administrative activity.
-- **Automated Unwind Controls:** Safeguard parameters that trigger deleveraging or a full "Safe Exit" to USDT if risk parameters (such as PSM liquidity or LTV) are breached.
-- **Zero-Slippage Strategy:** By routing all conversions through the PSM, the vault bypasses AMM fees and slippage, maximizing capital efficiency for all participants.
-- **Native USDT Yield:** Returns accrue directly to the Vault Share token (`lsUSDD`) price in native USDT. The strategy avoids inflationary "points" or secondary reward tokens.
-- **Liquid Strategy:** No lock-ups or cooldown periods. The vault remains fully accessible for instant entry and exit.
+#### **A.  Accounting Layer (Hub)**
 
-The result is a modular **ERC-4626** vault architecture that delivers operational automation and scalable, on-chain yield for the sophisticated participant.
+The Hub serves as the primary liquidity gateway and the single source of truth for the fund’s net asset value.
+
+- **ERC-4626 Standard:** A fully compliant tokenized vault interface that manages the minting and burning of vault shares. Provides real-time NAV calculation by aggregating total assets deployed within the active Strategy Engine.
+- **Total Capital Efficiency:** Unlike traditional models, the Hub maintains **zero idle reserves**. 100% of deposited USDT is immediately deployed to the execution layer to maximize yield generation from the first block.
+
+#### **B. The Execution Layer (Strategy Engine)**
+
+A dedicated logic module that executes the fund’s yield mandates without direct access to the Hub's core accounting records.
+
+- **Recursive Spread Execution:** Orchestrates the automated sUSDD/USDT spread strategy. It manages the conversion of USDT into sUSDD and the subsequent leverage loops on **Morpho Blue**.
+- **Atomic Leverage Logic:** Utilizes flashloans to achieve target exposure in a single transaction, ensuring the vault reaches its optimal yield profile instantaneously upon capital deployment.
+
+#### **C. The Sentinel Layer**
+
+A dedicated monitoring suite that acts as the fund's autonomous circuit breaker.
+
+- **Peg & Rate Monitoring:** Continuously tracks the 1:1 conversion efficiency of the USDD/USDT Peg Stability Module (PSM) and the sUSDD/USDT interest rate differential.
+- **Automated Intervention:** Keeper-driven logic triggers immediate deleveraging or a full "Safe Exit" if volatility, PSM liquidity, or borrow rates breach predefined safety thresholds.
+
+---
+
+## 2. Key Properties
+
+- **Real-time Algorithmic Surveillance:** 24/7 automated monitoring of PSM liquidity, Morpho borrow rates, the USDD oracle price feed, and administrative governance activity to ensure constant protocol health.
+- **Automated Unwind Controls:** Hard-coded safeguard parameters that trigger a defensive deleveraging or a total migration back to USDT if risk parameters—such as PSM depth or LTV—are compromised.
+- **Zero-Slippage Execution:** By routing all primary conversions through the PSM, the vault bypasses traditional AMM fees and slippage, ensuring 100% capital efficiency for participants.
+- **Native USDT Accrual:** Yield is captured directly in the Vault Share price in native USDT. The strategy avoids the volatility of "points" or inflationary reward tokens, focusing on hard-asset growth.
+- **On-Demand Liquidity:** The vault operates with no lock-ups or cooldown periods. The architecture remains fully accessible for instantaneous entry and exit, reflecting a truly liquid on-chain strategy.
 
 ## Yield & Incentives
 
@@ -48,7 +70,8 @@ Returns within the sUSDD Recursive Yield Strategy are generated through a multi-
 | Fee Category | Rate | Note |
 | :-- | :-- | :-- |
 | **Deposit Fee** | 0% | No cost to enter the vault |
-| **Withdrawal Fee** | 0% | No protocol fee |
+| **Withdrawal Fee** | 0% | No cost to exit the vault |
+| **Management Fee** | 0% | No managment fee |
 | **Performance Fee** | 15% | Applied only to realized yield/rewards. |
 
 ## Resources
