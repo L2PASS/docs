@@ -63,10 +63,11 @@ Profitability depends on a **positive spread**: `(sUSDD Yield - Morpho Borrow Ra
 
 ## 5. Smart Contract & Protocol Risk
 
-The strategy interacts with a complex stack of DeFi primitives:
+The strategy interacts with a stack of external and internal DeFi smart contracts:
 
 - **USDD & sUSDD** Staking Contracts.
-- **PSM** Logic & **Morpho Blue** Market Contracts.
+- **PSM** Contracts.
+- **Morpho Blue** Market Contracts.
 - **L2Pass Vault** Adapters.
 
 > **Mitigation Strategy:**
@@ -97,6 +98,8 @@ L2Pass maintains the following active safety triggers:
 | **Spread Health** | Auto-unwind if Borrow Rate significantly higher Collateral Yield. |
 | **Admin Activity** | Real-time mempool tracking for USDD Admin EOA. |
 | **Oracle Status** | Monitoring for update frequency and price staleness. |
+
+---
 
 <Note>
   **User Access Risks**
