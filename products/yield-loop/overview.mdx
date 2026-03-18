@@ -14,67 +14,67 @@ iconType: "light"
 **The sUSDD Recursive Yield Strategy** is an institutional-grade USDT Strategy on Ethereum, engineered to capture capital-efficient, leveraged exposure to sUSDD. By utilizing the Morpho Blue lending protocol and the USDD Peg Stability Module (PSM), the strategy maximizes yield while maintaining a disciplined risk profile.
 
 ## Strategy Summary
+
 Ethereum sUSDD Recurcive Strategy make posible a capital efficient leveraged exposure to sUSDD via Morpho Blue and the USDD Peg Stability Module. Capital enters and exits at 1 to 1 through the PSM with zero slippage and no fees, no lockups, and continuous liquidity. One hundred percent of assets are deployed with no idle cash drag.
 
 The strategy provides stablecoin exposure to USDD, a transparently collateralized protocol with a multi year track record and strong TRON ecosystem sponsorship. Leverage is applied within a defined risk framework, supported by a structurally anchored price feed tied to the PSM, continuous monitoring of liquidity, rates, and administrative activity, and automated unwind controls. The result is a modular ERC 4626 vault architecture delivering disciplined risk management, operational automation, and scalable onchain yield.
 
 ## Core Architecture
-* **The Hub (ERC-4626 Vault):** Operates as the standardized accountant. It manages user deposits, withdrawals, and share tracking (minting/burning).
-* **The Engine (Strategy Adapters):** These specialized modules execute all yield-generating "maneuvers." They handle leverage looping, flashloan orchestration, and position unwinding.
 
+- **The Hub (ERC-4626 Vault):** Operates as the standardized accountant. It manages user deposits, withdrawals, and share tracking (minting/burning).
+- **The Engine (Strategy Adapters):** These specialized modules execute all yield-generating "maneuvers." They handle leverage looping, flashloan orchestration, and position unwinding.
 
 ## Key Properties
 
-* **Real-time Monitoring:** 24/7 algorithmic surveillance of PSM liquidity, Morpho borrow rates, the USDD oracle price feed, and USDD administrative activity.
-* **Automated Unwind Controls:** Safeguard parameters that trigger deleveraging or a full "Safe Exit" to USDT if risk parameters (such as PSM liquidity or LTV) are breached.
-* **Zero-Slippage Strategy:** By routing all conversions through the PSM, the vault bypasses AMM fees and slippage, maximizing capital efficiency for all participants.
-* **Native USDT Yield:** Returns accrue directly to the Vault Share token (`lsUSDD`) price in native USDT. The strategy avoids inflationary "points" or secondary reward tokens.
-* **Liquid Strategy:** No lock-ups or cooldown periods. The vault remains fully accessible for instant entry and exit.
+- **Real-time Monitoring:** 24/7 algorithmic surveillance of PSM liquidity, Morpho borrow rates, the USDD oracle price feed, and USDD administrative activity.
+- **Automated Unwind Controls:** Safeguard parameters that trigger deleveraging or a full "Safe Exit" to USDT if risk parameters (such as PSM liquidity or LTV) are breached.
+- **Zero-Slippage Strategy:** By routing all conversions through the PSM, the vault bypasses AMM fees and slippage, maximizing capital efficiency for all participants.
+- **Native USDT Yield:** Returns accrue directly to the Vault Share token (`lsUSDD`) price in native USDT. The strategy avoids inflationary "points" or secondary reward tokens.
+- **Liquid Strategy:** No lock-ups or cooldown periods. The vault remains fully accessible for instant entry and exit.
 
 The result is a modular **ERC-4626** vault architecture that delivers operational automation and scalable, on-chain yield for the sophisticated participant.
-
 
 ## Yield & Incentives
 
 Returns within the sUSDD Recursive Yield Strategy are generated through a multi-layered approach that prioritizes capital efficiency and protocol-native rewards.
 
-* **Recursive Spread Capture**
-  The primary yield engine capitalizes on the positive spread between [sUSDD staking rewards](https://app.usdd.io/eth/earn) and the [Morpho Blue USDT borrow rate](https://app.morpho.org/). This spread is amplified through an automated recursive looping mechanism, maximizing the productivity of deposited capital without manual intervention.
-
-* **Programmatic Incentives**
-  Performance is further enhanced by external rewards (currently distributed via [Merkl](https://merkl.xyz/)). These incentives are dynamically integrated into the strategy to either bolster the underlying sUSDD yield or subsidize the market borrow costs, providing an additional layer of optimization for vault participants.
+- **Recursive Spread Capture** The primary yield engine capitalizes on the positive spread between [sUSDD staking rewards](https://app.usdd.io/eth/earn) and the [Morpho Blue USDT borrow rate](https://app.morpho.org/). This spread is amplified through an automated recursive looping mechanism, maximizing the productivity of deposited capital without manual intervention.
+- **Programmatic Incentives** Performance is further enhanced by external rewards (currently distributed via [Merkl](https://merkl.xyz/)). These incentives are dynamically integrated into the strategy to either bolster the underlying sUSDD yield or subsidize the market borrow costs, providing an additional layer of optimization for vault participants.
 
 ---
 
 ## Fee Structure
 
-| Fee Category        | Rate | Note                                    |
-| :------------------ | :--- | :-------------------------------------- |
-| **Deposit Fee** | 0%   | No cost to enter the vault              |
-| **Withdrawal Fee** | 0%   | No protocol fee                         |
-| **Performance Fee** | 15%  | Applied only to realized yield/rewards. |
+| Fee Category | Rate | Note |
+| :-- | :-- | :-- |
+| **Deposit Fee** | 0% | No cost to enter the vault |
+| **Withdrawal Fee** | 0% | No protocol fee |
+| **Performance Fee** | 15% | Applied only to realized yield/rewards. |
 
 ## Resources
 
 | Resource | Link |
-| :--- | :--- |
+| :-- | :-- |
 | **L2Pass sUSDD Recursive Vault UI** | [vault.l2pass.com](https://vault.l2pass.com) |
 | **USDD** | [usdd.io](https://usdd.io/) |
 | **PSM (Ethereum)** | [app.usdd.io/eth/psm](https://app.usdd.io/eth/psm) |
 | **USDD Metrics** | [DefiLlama - USDD](https://defillama.com/stablecoin/usdd) |
 | **sUSDD/USDT Market** | [Morpho Blue Market](https://app.morpho.org/ethereum/market/0x29ae8cad946d861464d5e829877245a863a18157c0cde2c3524434dafa34e476/susdd-usdt) |
 | **L2Pass Website** | [l2pass.com](https://l2pass.com) |
-
+| **Audit** | [Github](https://github.com/L2PASS/audit/blob/main/wake-arena-usdd-morpho-vault.pdf) |
 
 ---
+
 <CardGroup cols={2}>
   <Card title="FAQ" icon="circle-question" href="/products/yield-copied-1/faq">
     Answers to common questions regarding strategy mechanics.
   </Card>
+
   <Card title="Risks" icon="circle-info" href="/products/yield-copied-1/risks">
     Key risk disclosures, assumptions, and protocol limitations.
   </Card>
 </CardGroup>
+
 ---
 
 <Card title="Community & Support" icon="telegram" href="https://t.me/L2pass">
