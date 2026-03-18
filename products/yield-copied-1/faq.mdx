@@ -1,0 +1,128 @@
+---
+title: "FAQ"
+icon: "circle-question"
+iconType: light
+description: "Common questions regarding the sUSDD Recursive Strategy, leverage mechanics, yield sources on Ethereum, and risk management."
+
+---
+
+## 1. General & Product Overview
+
+<AccordionGroup>
+  <Accordion title="What is the sUSDD Recursive Strategy?">
+    An automated, capital-efficient yield harvesting vault for USDT. The strategy employs algorithmic leverage looping via the sUSDD/USDT market on **Morpho Blue**, the **USDD PSM** (Peg Stability Module), and flashloans to maintain high APRs without AMM slippage.
+  </Accordion>
+
+  <Accordion title="Where can I check the current strategy APY?">
+    You can monitor real-time performance and the **30-day strategy APR** directly on the official [L2Pass Vault UI](https://vault.l2pass.com/). 
+  </Accordion>
+
+  <Accordion title="How does the 'Recursive' looping work?">
+    The vault utilizes flashloans to execute a "looping" strategy within a single atomic transaction. It deposits sUSDD as collateral on **Morpho Blue**, borrows USDT, and converts that USDT back into sUSDD via the **PSM** to be re-deposited. This process creates an efficiently leveraged position that multiplies the underlying staking yield without manual intervention.
+  </Accordion>
+
+  <Accordion title="Are there any commitments or lock-up periods?">
+    No. The sUSDD Recursive Strategy is designed for maximum flexibility. There are **no lock-up periods**, no withdrawal cooldowns, and **no minimum allocation** required.
+  </Accordion>
+
+  <Accordion title="What are the deposit requirements and supported networks?">
+    The strategy is deployed on **Ethereum Mainnet** and currently accepts **[USDT (Tether)](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7)** as the deposit asset. 
+    
+    *Note: The strategy has a TVL cap set by the Strategy Curator. Please contact the L2Pass team to discuss current strategy cap extensions.*
+  </Accordion>
+
+</AccordionGroup>
+
+---
+
+## 2. Yield, Rewards & Economics
+
+<AccordionGroup>
+  <Accordion title="What are the three sources of yield?">
+    1. **Organic sUSDD Staking:** Base interest from the USDD Smart Allocator.
+    2. **Leveraged Spread:** The difference between sUSDD yield and USDT borrow costs, multiplied by the vault's leverage (1-11x).
+    3. **External Incentives:** Additional rewards (such as Morpho or protocol incentives) distributed via [Merkl](https://merkl.xyz/).
+  </Accordion>
+
+  <Accordion title="How do Merkl incentives affect my returns?">
+    Merkl incentives are programmatically integrated into the vault's performance. They often subsidize the cost of borrowing USDT or provide a "boost" to the collateral yield, significantly increasing the Net APY during active campaigns.
+  </Accordion>
+
+  <Accordion title="Is the yield compounded automatically?">
+    Yes. The vault harvests rewards and reinvests them into the recursive position. Your **lsUSDD** tokens represent a proportional claim on these growing assets; as yield is earned, each share becomes redeemable for more USDT.
+  </Accordion>
+
+  <Accordion title="What are the fees for this strategy?">
+    The strategy uses a "performance-first" model:
+    * **Management Fee:** 0%
+    * **Performance Fee:** 15% (applied only to generated yield)
+    * **Entry/Exit Fee:** 0%
+    
+    All APY figures displayed on the UI are **net of fees**. Standard Ethereum gas fees apply for deposit and withdrawal transactions.
+  </Accordion>
+
+  <Accordion title="Does the yield fluctuate?">
+    Yes. Yield is variable and changes based on the sUSDD staking rate, the demand for USDT borrowing on Morpho Blue, and the availability of external incentives.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 3. Deposits, Withdrawals & Positions
+
+<AccordionGroup>
+  <Accordion title="Can I withdraw my funds at any time?">
+    Yes. There are no lock-ups. You can withdraw your principal and accrued yield whenever you choose, subject to available liquidity in the Morpho market and PSM.
+  </Accordion>
+
+  <Accordion title="What do I receive after depositing?">
+    After depositing USDT, you receive **lsUSDD** tokens. These are **ERC-4626 vault shares** that represent your ownership of the strategy's assets. 
+
+    The yield is "baked into" the token value. This means the **exchange rate of lsUSDD increases over time** relative to USDT. When you withdraw, you redeem your **lsUSDD** for more USDT than you initially deposited.
+  </Accordion>
+
+  <Accordion title="How do I track my earnings?">
+    Earnings and current position value can be tracked in real-time via the [L2Pass Vault UI](https://vault.l2pass.com).
+  </Accordion>
+
+  <Accordion title="What happens to my Vault Shares when I withdraw?">
+    Upon withdrawal, your vault shares are burned (redeemed) for USDT. Because the strategy follows the **ERC-4626 standard**, the value of each share increases relative to the underlying asset as yield is harvested. Your final USDT payout includes your initial principal plus all accrued earnings.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 4. Risks & Safety
+
+<AccordionGroup>
+  <Accordion title="Where can I verify the strategy on-chain?">
+    The strategy is fully transparent. You can audit the vault and its interactions directly on [Etherscan](https://etherscan.io/address/0x2387053F7Aee257F33a35708EbC7ca71AE07B584).
+  </Accordion>
+
+  <Accordion title="Has the strategy been audited?">
+    Yes. The vault architecture has undergone a comprehensive security review by **Wake Arena**. You can [view the report here](https://github.com/L2PASS/audit/blob/main/wake-arena-usdd-morpho-vault.pdf).
+  </Accordion>
+
+  <Accordion title="Is there a risk of liquidation?">
+    Yes. Because the strategy uses leverage, a significant de-pegging of USDD or sUSDD against USDT could trigger a liquidation. To mitigate this, the vault uses an **Automated De-leveraging** system designed to exit positions if the LTV approaches the liquidation threshold.
+  </Accordion>
+
+  <Accordion title="What is 'Spread Compression' risk?">
+    If the cost to borrow USDT on Morpho Blue exceeds the sUSDD staking yield, the strategy spread becomes negative. The vault includes an **Automated Unwind** trigger that exits the position if the spread remains negative to protect user principal.
+  </Accordion>
+
+  <Accordion title="How does the vault handle a USDD price drop?">
+    The vault's risk profile is anchored to the **PSM** (which offers 1:1 redemptions) rather than secondary market volatility. To mitigate PSM liquidity risk, we monitor USDT reserves 24/7. Alerts trigger if liquidity falls below **5x** vault exposure, and an **automated unwind** is executed if it drops below **2x**. Current PSM status can be verified at [app.usdd.io/eth/psm](https://app.usdd.io/eth/psm).
+  </Accordion>
+
+  <Accordion title="Is my principal insured?">
+    No. Like most DeFi products, there is no insurance. Users should only deposit capital they can afford to lose and remain aware of the inherent risks of smart contracts and stablecoin pegs.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Card title="Have more questions?" icon="telegram" iconType="light" href="[https://t.me/L2pass](https://t.me/L2pass)">
+  Join the L2Pass Telegram group for real-time updates and community support.
+</Card>
+

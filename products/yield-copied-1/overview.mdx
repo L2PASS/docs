@@ -1,0 +1,88 @@
+---
+title: "Overview"
+description: "Earn sustainable yield on Ethereum. No lockups. Instant withdrawals."
+icon: "vault"
+iconType: "light"
+---
+
+<img
+  src="/images/l2pass_share_banner.png"
+  alt="L2Pass Overnight Yield"
+  className="rounded-lg"
+/>
+
+**The sUSDD Recursive Yield Strategy** is an institutional-grade USDT vault on Ethereum, engineered to capture capital-efficient, leveraged exposure to sUSDD. By utilizing the Morpho Blue lending protocol and the USDD Peg Stability Module (PSM), the strategy maximizes yield while maintaining a disciplined risk profile.
+
+## Strategy Summary
+Capital enters and exits the vault at a strict 1:1 ratio through the PSM, ensuring zero slippage, no entry/exit fees, and continuous liquidity. Unlike traditional yield products, there are no lock-up periods, providing users with a flexible yet powerful tool for stablecoin appreciation.
+
+The strategy targets exposure to USDD—a transparently collateralized protocol with a multi-year track record and robust ecosystem backing. 
+
+## Key Properties
+
+* **Structurally Anchored Pricing:** A USDD oracle price feed tied directly to the PSM for maximum stability.
+* **Real-time Monitoring:** Continuous surveillance of liquidity, borrow rates, and administrative activity.
+* **Automated Unwind Controls:** Algorithmic safeguards that trigger deleveraging if risk parameters are breached.
+
+The result is a modular **ERC-4626** vault architecture that delivers operational automation and scalable, on-chain yield for the sophisticated participant.
+
+## Yield & Incentives
+
+Returns within the sUSDD Recursive Yield Strategy are generated through a multi-layered approach that prioritizes capital efficiency and protocol-native rewards.
+
+---
+
+* **Recursive Spread Capture**
+  The primary yield engine capitalizes on the positive spread between [sUSDD staking rewards](https://app.usdd.io/eth/earn) and the [Morpho Blue USDT borrow rate](https://app.morpho.org/). This spread is amplified through an automated recursive looping mechanism, maximizing the productivity of deposited capital without manual intervention.
+
+* **Programmatic Incentives**
+  Performance is further enhanced by external rewards (currently distributed via [Merkl](https://merkl.xyz/)). These incentives are dynamically integrated into the strategy to either bolster the underlying sUSDD yield or subsidize the market borrow costs, providing an additional layer of optimization for vault participants.
+
+---
+
+## Fee Structure
+
+| Fee Category        | Rate | Note                                    |
+| :------------------ | :--- | :-------------------------------------- |
+| **Deposit Fee** | 0%   | No cost to enter the vault              |
+| **Withdrawal Fee** | 0%   | No protocol fee                         |
+| **Performance Fee** | 15%  | Applied only to realized yield/rewards. |
+
+## Resources
+
+| Resource | Link |
+| :--- | :--- |
+| **USDD (Ethereum)** | [app.usdd.io/eth/earn](https://app.usdd.io/eth/earn) |
+| **PSM (Ethereum)** | [app.usdd.io/eth/psm](https://app.usdd.io/eth/psm) |
+| **Morpho Metrics** | [DefiLlama - Morpho](https://defillama.com/protocol/morpho) |
+| **USDD Metrics** | [DefiLlama - USDD](https://defillama.com/stablecoin/usdd) |
+| **sUSDD/USDT Market** | [Morpho Blue Market](https://app.morpho.org/market?id=0x75d33e5c70e3ed510006742517865f32a32c2865955615f106752d2b51336141&network=mainnet) |
+| **L2Pass Vault UI** | [vault.l2pass.com](https://vault.l2pass.com) |
+| **Official Website** | [l2pass.com](https://l2pass.com) |
+
+---
+
+## Learn More
+
+Dive deeper into the technical and operational specifics of the L2Pass ecosystem.
+
+<CardGroup cols={2}>
+  <Card title="User Flow" icon="diagram-project" href="/products/yield/user-flow">
+    Step-by-step overview of the deposit, accrual, and withdrawal lifecycle.
+  </Card>
+  <Card title="Architecture" icon="layer-group" href="/products/yield/architecture">
+    Deep dive into the Smart Liquid Vault, ERC-4626 logic, and system layers.
+  </Card>
+  <Card title="FAQ" icon="circle-question" href="/products/yield/faq">
+    Answers to common questions regarding rewards and mechanics.
+  </Card>
+  <Card title="Risks" icon="circle-info" href="/products/yield/risks">
+    Key risk disclosures, assumptions, and protocol limitations.
+  </Card>
+</CardGroup>
+
+---
+
+<Card title="Community & Support" icon="telegram" href="https://t.me/L2pass">
+  Join the L2Pass Telegram group for real-time updates and direct community support.
+</Card>

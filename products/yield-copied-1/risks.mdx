@@ -1,0 +1,101 @@
+---
+title: "Risks"
+icon: "circle-info"
+iconType: "light"
+description: "A comprehensive assessment of technical, financial, and operational risks associated with the L2Pass sUSDD Recursive Strategy."
+---
+
+## 1. Peg Stability Module (PSM) Risks
+The strategy relies on the Ethereum PSM to convert **USDT ↔ USDD** at a **1:1 ratio** with zero slippage.
+
+* **Administrative Fee Activation:** The USDD administrator can activate withdrawal or conversion fees (TOUT) without a timelock. Under 5-10x leverage, even small fees can significantly compress net APY.
+* **Liquidity Depletion:** If USDT reserves in the PSM are exhausted, converting USDD back to USDT may become unavailable, delaying forced unwinds.
+
+> **Mitigation Strategy:**
+> * **Real-time Monitoring:** Continuous tracking of PSM USDT liquidity.
+> * **Threshold Alerts:** Alerts trigger at **10x** and **5x** total vault collateral exposure.
+> * **Automated Unwind:** The vault triggers an automatic exit if PSM liquidity falls below **2x** vault exposure.
+
+---
+
+## 2. Administrative Control & Governance Risk
+The USDD protocol is currently managed by an **Externally Owned Account (EOA)** without a structural timelock.
+
+* **Immediate Execution:** Changes to fees, yield parameters (sUSDD APY), or contract logic can be executed without prior notice.
+* **Operational Risk:** The admin could pause the PSM or modify sUSDD staking terms instantly.
+
+> **Mitigation Strategy:**
+> * **Mempool Monitoring:** Experimental tracking of administrative transactions to detect pending changes. (*Note: Mempool monitoring is informational only and does not guarantee a successful position exit before a transaction confirms.*)
+> * **Yield Alerts:** Immediate alerts are triggered if the sUSDD base yield drops significantly. 
+> * **Negative Spread Protection:** The vault executes an **automated unwind** if the strategy spread becomes negative (i.e., when USDT borrow costs exceed sUSDD staking rewards).
+
+---
+
+## 3. Oracle & Liquidation Risk
+The vault's Loan-to-Value (LTV) monitoring depends on accurate oracle pricing. The current oracle updates once per day, sourcing prices directly from the PSM 1:1 conversion.
+
+* **Price Source Deviation:** If the price source changes or deviates from the PSM 1:1 parity, a liquidation event could be triggered on Morpho Blue.
+* **High Leverage:** The strategy operates at a **0.91 LTV**, close to the **0.912** liquidation threshold.
+
+> **Mitigation Strategy:**
+> * **Automated Deleverage:** Immediate de-leveraging if **LTV > 0.912** or if oracle anomalies/staleness are detected.
+> * **Real-time Monitoring:** Continuous tracking of oracle health and Morpho pool oracle update proposals.
+
+---
+
+## 4. Yield & Spread Compression Risk
+Profitability depends on a **positive spread**: `(sUSDD Yield - Morpho Borrow Rate)`.
+
+* **Inversion Risk:** If sUSDD APY decreases or Morpho USDT borrow rates spike, the leveraged position may become unprofitable (the "cost of carry" exceeds the yield).
+
+> **Mitigation Strategy:**
+> * **Spread Monitoring:** Automated tracking of the net interest margin.
+> * **Keeper-Triggered Exit:** Automated unwind if the borrow rate exceeds collateral yield for a prolonged period.
+
+---
+
+## 5. Smart Contract & Protocol Risk
+The strategy interacts with a complex stack of DeFi primitives:
+* **USDD & sUSDD** Staking Contracts.
+* **PSM** Logic & **Morpho Blue** Market Contracts.
+* **L2Pass Vault** Adapters and Flashloan Logic.
+
+> **Mitigation Strategy:**
+> * **Institutional Standards:** Built using the audited **ERC-4626** share vault standard.
+> * **Isolated Markets:** Utilization of Morpho Blue to isolate risk from other assets.
+> * **Third-Party Audit:** All L2Pass specific logic has been audited by **Wake Arena**.
+
+---
+
+## 6. Stablecoin Structural Risk
+This strategy assumes the continued stability of the underlying assets.
+
+* **Peg Dependency:** Assumes USDT maintains its $1.00 peg and USDD maintains operational and functional redemption parity via the PSM.
+* **Systemic Stress:** Market-wide events could trigger mass withdrawals, affecting liquidity across all integrated protocols.
+
+---
+
+## Summary of Monitoring Controls
+L2Pass maintains the following active safety triggers:
+
+| Monitor | Action |
+| :--- | :--- |
+| **PSM Liquidity** | Auto-unwind if PSM USDT < **2x** Vault Collateral. |
+| **LTV Ratio** | Auto-deleverage if LTV approaches **0.912**. |
+| **Spread Health** | Auto-unwind if Borrow Rate > Collateral Yield. |
+| **Admin Activity** | Real-time mempool tracking for USDD Admin EOA. |
+| **Oracle Status** | Monitoring for update frequency and price staleness. |
+
+<Note> 
+**User Access Risks**
+
+L2Pass is fully non-custodial. Users retain full control of their assets at all times. As a result, access to funds depends entirely on the security of the user’s private keys. If a wallet becomes inaccessible, the associated staking position cannot be migrated to a new address, and funds may not be recoverable.
+</Note>
+
+<Note type="warning">
+  **L2Pass sUSDD Recursive Strategy is provided on an "as-is" basis.** The protocol does not offer insurance, and there is no guarantee of recovery in the event of technical failure, de-pegging, or external protocol exploits.
+</Note>
+
+<Card title="Support & Community" icon="telegram" href="https://t.me/L2pass">
+  For technical inquiries regarding security or protocol mechanics, please join our official Telegram community.
+</Card>
