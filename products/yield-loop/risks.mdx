@@ -28,8 +28,9 @@ The USDD protocol is currently managed by an **Externally Owned Account (EOA)** 
 
 > **Mitigation Strategy:**
 >
-> - **Mempool Monitoring:** Tracking of administrative transactions to detect pending changes. (_Note: Mempool monitoring and execution does not guarantee a successful position exit before a transaction confirms._)
 > - **Negative Spread Protection:** The vault executes an **automated unwind** if the strategy spread becomes negative (i.e., when USDT borrow costs exceed sUSDD staking rewards).
+> - **Mempool Monitoring:** Tracking of administrative transactions to detect pending changes. (_Note: Mempool monitoring and execution does not guarantee a successful position exit before a transaction confirms._)
+
 
 ---
 
