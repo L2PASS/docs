@@ -71,18 +71,6 @@
                 "pages": [
                   "products/yield/yield_intro",
                   {
-                    "group": "Tron Yield",
-                    "tag": "6.0%",
-                    "expanded": true,
-                    "pages": [
-                      "products/yield/overview",
-                      "products/yield/architecture",
-                      "products/yield/user-flow",
-                      "products/yield/faq",
-                      "products/yield/risks"
-                    ]
-                  },
-                  {
                     "group": "sUSDD Recursive Strategy",
                     "tag": "20.0%",
                     "expanded": true,
@@ -90,6 +78,17 @@
                       "products/yield-copied-1/overview",
                       "products/yield-copied-1/faq",
                       "products/yield-copied-1/risks"
+                    ]
+                  },
+                  {
+                    "group": "Tron Yield",
+                    "tag": "6.0%",
+                    "pages": [
+                      "products/yield/overview",
+                      "products/yield/architecture",
+                      "products/yield/user-flow",
+                      "products/yield/faq",
+                      "products/yield/risks"
                     ]
                   }
                 ]
