@@ -4,25 +4,31 @@ description: "Transparency regarding L2Pass smart contract security and schedule
 icon: "shield-check"
 ---
 
+## sUSDD Recursive Strategy
 
-## Current Status
+The **L2Pass sUSDD Recursive Strategy** is currently live on Ethereum Mainnet. To ensure maximum transparency, we maintain a public repository of all security assessments.
 
-While the **L2Pass Yield** product is deployed on mainnet, we are currently in a "soft launch" phase to monitor contract performance and security in a live environment.
+### Audit Status
 
+| Product | Auditor | Report | Date | Status |
+| :-- | :-- | :-- | :-- | :-- |
+| **sUSDD Recursive Vault** | Wake Arena | [View PDF](https://github.com/L2PASS/audit/blob/main/wake-arena-usdd-morpho-vault.pdf) | Feb 2026 | <Badge color="green" icon="circle-check">Passed</Badge> |
 
-<Warning>
-  **Experimental Phase Notice** While the Yield product is currently deployed and functional, we strongly advise against depositing large amounts of capital at this stage. Please only deposit funds you are comfortable with.
-</Warning>
+### Audit Scope:
 
-### Audit Roadmap
-Security is our top priority. We have a multi-stage audit process planned to ensure the safety of user funds:
+The Wake Arena review covered the following critical components:
 
-* **Internal Review:** <Badge icon="circle-check" color="green">Complete</Badge> Our core engineering team has conducted extensive unit testing and simulated stress tests.
-* **External Audits:** <Badge icon="clock" color="orange">Planned / In Progress</Badge> We are currently scheduling reviews with leading blockchain security firms to perform a comprehensive audit of our Yield product logic.
-* **Bug Bounty:** <Badge icon="clock" color="orange">Planned</Badge>  A community-driven bug bounty program will be launched following the completion of our external audits.
+- **ERC-4626 Compatibility:** Ensuring standard vault share accounting.
+- **Recursive Logic:** Verification of flashloan-based looping and debt management.
+- **Morpho Blue Integration:** Security of the collateralization and borrowing functions.
+- **Emergency Controls:** Validation of "Safe Exit" and deleveraging triggers.
 
-
+---
 
 <Note>
-  We will update this page with direct links to PDF audit reports as soon as they are finalized by our security partners.
+  Check our GitHub repository for the most up-to-date security documentation and raw audit data. [L2Pass Official Audit GitHub](https://github.com/L2PASS/audit).
 </Note>
+
+<Card title="Report a Vulnerability" icon="bug" href="https://t.me/L2pass">
+  If you believe you have found a security vulnerability, please contact our team immediately via Telegram for a coordinated disclosure.
+</Card>
