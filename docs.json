@@ -72,7 +72,7 @@
                   "products/yield/yield_intro",
                   {
                     "group": "Tron Yield",
-                    "tag": "6.0% APR",
+                    "tag": "6.0%",
                     "expanded": true,
                     "pages": [
                       "products/yield/overview",
@@ -84,11 +84,10 @@
                   },
                   {
                     "group": "sUSDD Recursive Strategy",
-                    "tag": "20.0% APR",
+                    "tag": "20.0%",
                     "expanded": true,
                     "pages": [
                       "products/yield-copied-1/overview",
-                      "products/yield-copied-1/user-flow",
                       "products/yield-copied-1/faq",
                       "products/yield-copied-1/risks"
                     ]

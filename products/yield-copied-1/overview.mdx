@@ -18,19 +18,25 @@ Capital enters and exits the vault at a strict 1:1 ratio through the PSM, ensuri
 
 The strategy targets exposure to USDD—a transparently collateralized protocol with a multi-year track record and robust ecosystem backing. 
 
+## Core Architecture
+* **The Hub (ERC-4626 Vault):** Operates as the standardized accountant. It manages user deposits, withdrawals, and share tracking (minting/burning).
+* **The Engine (Strategy Adapters):** These specialized modules execute all yield-generating "maneuvers." They handle leverage looping, flashloan orchestration, and position unwinding.
+
+
 ## Key Properties
 
-* **Structurally Anchored Pricing:** A USDD oracle price feed tied directly to the PSM for maximum stability.
-* **Real-time Monitoring:** Continuous surveillance of liquidity, borrow rates, and administrative activity.
-* **Automated Unwind Controls:** Algorithmic safeguards that trigger deleveraging if risk parameters are breached.
+* **Real-time Monitoring:** 24/7 algorithmic surveillance of PSM liquidity, Morpho borrow rates, the USDD oracle price feed, and USDD administrative activity.
+* **Automated Unwind Controls:** Safeguard parameters that trigger deleveraging or a full "Safe Exit" to USDT if risk parameters (such as PSM liquidity or LTV) are breached.
+* **Zero-Slippage Strategy:** By routing all conversions through the PSM, the vault bypasses AMM fees and slippage, maximizing capital efficiency for all participants.
+* **Native USDT Yield:** Returns accrue directly to the Vault Share token (`lsUSDD`) price in native USDT. The strategy avoids inflationary "points" or secondary reward tokens.
+* **Liquid Strategy:** No lock-ups or cooldown periods. The vault remains fully accessible for instant entry and exit.
 
 The result is a modular **ERC-4626** vault architecture that delivers operational automation and scalable, on-chain yield for the sophisticated participant.
+
 
 ## Yield & Incentives
 
 Returns within the sUSDD Recursive Yield Strategy are generated through a multi-layered approach that prioritizes capital efficiency and protocol-native rewards.
-
----
 
 * **Recursive Spread Capture**
   The primary yield engine capitalizes on the positive spread between [sUSDD staking rewards](https://app.usdd.io/eth/earn) and the [Morpho Blue USDT borrow rate](https://app.morpho.org/). This spread is amplified through an automated recursive looping mechanism, maximizing the productivity of deposited capital without manual intervention.
