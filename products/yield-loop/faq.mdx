@@ -1,9 +1,8 @@
 ---
 title: "FAQ"
 icon: "circle-question"
-iconType: light
+iconType: "light"
 description: "Common questions regarding the sUSDD Recursive Strategy, leverage mechanics, yield sources on Ethereum, and risk management."
-
 ---
 
 ## 1. General & Product Overview
@@ -14,7 +13,7 @@ description: "Common questions regarding the sUSDD Recursive Strategy, leverage 
   </Accordion>
 
   <Accordion title="Where can I check the current strategy APY?">
-    You can monitor real-time performance and the **30-day strategy APR** directly on the official [L2Pass Vault UI](https://vault.l2pass.com/). 
+    You can monitor real-time performance and the **30-day strategy APR** directly on the official [L2Pass Vault UI](https://vault.l2pass.com/).
   </Accordion>
 
   <Accordion title="How does the 'Recursive' looping work?">
@@ -26,11 +25,10 @@ description: "Common questions regarding the sUSDD Recursive Strategy, leverage 
   </Accordion>
 
   <Accordion title="What are the deposit requirements and supported networks?">
-    The strategy is deployed on **Ethereum Mainnet** and currently accepts **[USDT (Tether)](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7)** as the deposit asset. 
-    
-    *Note: The strategy has a TVL cap set by the Strategy Curator. Please contact the L2Pass team to discuss current strategy cap extensions.*
-  </Accordion>
+    The strategy is deployed on **Ethereum Mainnet** and currently accepts [**USDT (Tether)**](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7) as the deposit asset.
 
+    _Note: The strategy has a TVL cap set by the Strategy Curator. Please contact the L2Pass team to discuss current strategy cap extensions._
+  </Accordion>
 </AccordionGroup>
 
 ---
@@ -54,10 +52,11 @@ description: "Common questions regarding the sUSDD Recursive Strategy, leverage 
 
   <Accordion title="What are the fees for this strategy?">
     The strategy uses a "performance-first" model:
-    * **Management Fee:** 0%
-    * **Performance Fee:** 15% (applied only to generated yield)
-    * **Entry/Exit Fee:** 0%
-    
+
+    - **Management Fee:** 0%
+    - **Performance Fee:** 15% (applied only to generated yield)
+    - **Entry/Exit Fee:** 0%
+
     All APY figures displayed on the UI are **net of fees**. Standard Ethereum gas fees apply for deposit and withdrawal transactions.
   </Accordion>
 
@@ -71,9 +70,12 @@ description: "Common questions regarding the sUSDD Recursive Strategy, leverage 
 ## 3. Deposits, Withdrawals & Positions
 
 <AccordionGroup>
+  <Accordion title="Can I withdraw my funds at any time?">
+    Yes. There are no lock-ups. You can withdraw your principal and accrued yield whenever you choose.
+  </Accordion>
 
   <Accordion title="What do I receive after depositing?">
-    After depositing USDT, you receive **lsUSDD** tokens. These are **ERC-4626 vault shares** that represent your ownership of the strategy's assets. 
+    After depositing USDT, you receive **lsUSDD** tokens. These are **ERC-4626 vault shares** that represent your ownership of the strategy's assets.
 
     The yield is "baked into" the token value. This means the **exchange rate of lsUSDD increases over time** relative to USDT. When you withdraw, you redeem your **lsUSDD** for more USDT than you initially deposited.
   </Accordion>
@@ -126,4 +128,3 @@ description: "Common questions regarding the sUSDD Recursive Strategy, leverage 
 <Card title="Have more questions?" icon="telegram" iconType="light" href="[https://t.me/L2pass](https://t.me/L2pass)">
   Join the L2Pass Telegram group for real-time updates and community support.
 </Card>
-
