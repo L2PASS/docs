@@ -29,16 +29,6 @@
           "href": "https://l2pass.com/"
         },
         {
-          "anchor": "VAULT ↗",
-          "icon": "vault",
-          "href": "https://vault.l2pass.com/"
-        },
-        {
-          "anchor": "EARN ↗",
-          "icon": "hand-holding-seedling",
-          "href": "https://earn.l2pass.com/"
-        },
-        {
           "anchor": "SWAP ↗",
           "icon": "bridge",
           "href": "https://swap.l2pass.com/"
@@ -64,35 +54,6 @@
           {
             "group": "Products",
             "pages": [
-              {
-                "group": "Yield",
-                "icon": "hand-holding-seedling",
-                "expanded": true,
-                "pages": [
-                  "products/yield/yield_intro",
-                  {
-                    "group": "sUSDD Strategy",
-                    "tag": "17% APR",
-                    "expanded": true,
-                    "pages": [
-                      "products/yield-loop/overview",
-                      "products/yield-loop/faq",
-                      "products/yield-loop/risks"
-                    ]
-                  },
-                  {
-                    "group": "Tron Yield",
-                    "tag": "6% APY",
-                    "pages": [
-                      "products/yield/overview",
-                      "products/yield/architecture",
-                      "products/yield/user-flow",
-                      "products/yield/faq",
-                      "products/yield/risks"
-                    ]
-                  }
-                ]
-              },
               {
                 "group": "Cross-chain Swap",
                 "icon": "bridge",
