@@ -5,18 +5,18 @@ iconType: "light"
 ---
 
 <AccordionGroup>
-  <Accordion title="What is the Bridge product and how does it work?">
-    The Bridge enables on-chain and cross-chain stablecoin transfers between supported blockchains using native bridges and intent-based protocols. Transfers are executed in a decentralized, non-custodial manner without asset wrapping.
+  <Accordion title="What is L2Pass Swap and how does it work?">
+    L2Pass Swap is a non-custodial interface for swapping tokens across chains. It compares quotes from several independent routing providers, such as native bridges, solver networks and aggregators, and lets you execute the best route with a single confirmation.
   </Accordion>
 
-  <Accordion title="What is the difference between Bridge and Swap?">
-    Bridge transfers the same asset between blockchains, while Swap exchanges assets and may include AMM interaction and cross-chain execution in a single transaction.
+  <Accordion title="Can I bridge the same token between chains?">
+    Yes. Same-asset transfers, such as USDT from Tron to Ethereum or USDC from Arbitrum to Base, work the same way as swaps. Native routes like USDT0 and Circle CCTP are offered alongside other routes when available.
   </Accordion>
 
-  <Accordion title="What assets can I transfer?">
-    Supported stablecoins and networks are listed on the
-    <a href="https://swap.l2pass.com" target="_blank">frontend page</a>
-    and may vary by chain.
+  <Accordion title="What assets and networks can I use?">
+    Stablecoins are the main focus, but major assets such as ETH, BTC, SOL and ZEC are supported too. The current list of tokens and networks is shown on the
+    <a href="https://swap.l2pass.com" target="_blank">swap page</a>
+    and may change over time.
   </Accordion>
 
   <Accordion title="What is price impact?">
@@ -28,50 +28,46 @@ iconType: "light"
   </Accordion>
 
   <Accordion title="Can I configure slippage tolerance?">
-    Yes. Automatic slippage is enabled by default, with manual configuration available.
+    Yes. The default tolerance is 0.05%, and you can change it from any route card. Some routes, such as native USDT0 and USDC bridges, have a fixed output, so slippage does not apply.
   </Accordion>
 
   <Accordion title="What is the expected output?">
-    The expected output is the estimated amount you are likely to receive under current market conditions.
+    The expected output is the estimated amount you will receive on the destination network under current market conditions. It already includes all fees.
   </Accordion>
 
   <Accordion title="What is the minimum received amount?">
-    The minimum received amount represents the worst-case execution threshold based on your slippage tolerance. If this threshold is exceeded, the transaction reverts.
+    The minimum received amount is the worst-case outcome within your slippage tolerance. If the price moves beyond it, the swap does not execute: on-chain routes revert, and deposit-address routes return your deposit to your refund address.
   </Accordion>
 
   <Accordion title="What fees apply?">
-    Fees may include AMM fees, cross-chain messaging fees, native bridge fees, network gas fees, and a minimal swap platform fee.
+    The L2Pass fee is 0% for stablecoin swaps via RFQ, up to 0.2% for other assets, and up to 0.3% for private swaps. Routing partners and blockchains may charge their own fees, which L2Pass does not control; check each provider for the latest details. The actual fees are always shown on the swap page before you confirm, and the estimated amount on the destination network already includes all of them.
   </Accordion>
 
-  <Accordion title="Are there hidden fees?">
-    No. All fees are calculated and displayed before confirmation.
+  <Accordion title="What is a private swap?">
+    A private swap is executed in a confidential environment through NEAR Intents, which limits what is visible on public blockchains. It is not full anonymity: your wallet address is still shared with providers, and the same compliance screening applies. Private swaps carry an L2Pass fee of up to 0.3%.
   </Accordion>
 
   <Accordion title="Is L2Pass Swap non-custodial?">
-    Yes. Assets remain under user control throughout the entire execution process.
+    Yes. L2Pass never holds or controls your tokens or private keys. Swaps are executed by independent third-party providers.
   </Accordion>
 
-  <Accordion title="Do I need gas on both chains for a cross-chain swap?">
-    Gas is required on the source chain. Destination chain gas may be required for subsequent interactions.
+  <Accordion title="Do I need gas on the destination chain?">
+    No. Gas is only needed on the source chain to send your transaction or deposit. Destination gas is only needed for what you do with the funds afterwards. For deposit-address routes, you can also send tokens manually from any wallet.
   </Accordion>
 
-  <Accordion title="How is cross-chain security handled?">
-    Transfers rely on native bridges and intent-based protocols that require sufficient block finality before settlement.
-  </Accordion>
-
-  <Accordion title="Does L2Pass use wrapped or synthetic assets?">
-    No. Only native assets, AMMs, and official bridges are used.
-  </Accordion>
-
-  <Accordion title="Can my funds get stuck?">
-    The protocol is designed to prevent trapped assets. Funds either settle successfully or are returned.
+  <Accordion title="Can a swap be partially filled?">
+    No. L2Pass does not use partial execution. A swap either completes in full or does not execute.
   </Accordion>
 
   <Accordion title="What happens if a swap fails?">
-    The transaction reverts. No assets are exchanged, and network gas fees are not refundable.
+    On-chain routes revert, so no tokens are exchanged, but network gas fees are not refundable. For deposit-address routes, your deposit is returned to your refund address; provider and network fees may be deducted from the refunded amount.
   </Accordion>
 
-  <Accordion title="Can a cross-chain swap be partially filled?">
-    No. All executions follow an all-or-nothing model.
+  <Accordion title="Can my swap be blocked or held?">
+    Providers apply risk-based AML and sanctions checks. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed in that case. L2Pass cannot override a provider's review. See the <a href="https://l2pass.com/privacy-policy" target="_blank">Privacy & AML Principles</a>.
+  </Accordion>
+
+  <Accordion title="Do I need KYC?">
+    No. L2Pass does not require an account or identity verification for regular use. A provider may request additional checks for a specific transaction under its own compliance rules.
   </Accordion>
 </AccordionGroup>

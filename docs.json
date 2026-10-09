@@ -32,11 +32,6 @@
           "anchor": "SWAP ↗",
           "icon": "bridge",
           "href": "https://swap.l2pass.com/"
-        },
-        {
-          "anchor": "GAS REFUEL ↗",
-          "icon": "gas-pump",
-          "href": "https://l2pass.com/refuel"
         }
       ]
     },
@@ -57,7 +52,7 @@
               {
                 "group": "Cross-chain Swap",
                 "icon": "bridge",
-                "tag": "0% FEE",
+                "tag": "0% ON STABLES",
                 "expanded": true,
                 "pages": [
                   "products/bridge/overview",
@@ -70,7 +65,6 @@
             "group": "Resources",
             "pages": [
               "resources/contracts",
-              "resources/audits",
               "resources/brand-assets",
               "resources/support"
             ]
@@ -92,8 +86,8 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Start Earning",
-      "href": "https://earn.l2pass.com"
+      "label": "Swap Now",
+      "href": "https://swap.l2pass.com"
     }
   },
   "contextual": {
