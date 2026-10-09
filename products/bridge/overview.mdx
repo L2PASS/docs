@@ -1,7 +1,7 @@
 ---
 title: "Overview"
 icon: "bridge-water"
-description: "The most efficient way to bridge and swap stablecoins across networks."
+description: "Swap tokens across chains at the best available rate, with a focus on stablecoins."
 iconType: "light"
 ---
 
@@ -9,78 +9,93 @@ iconType: "light"
   ![Docs Cross Chain Swap](/images/docs_cross-chain_swap.png)
 </Frame>
 
-[L2Pass Swap](https://swap.l2pass.com/) was engineered to solve the fragmentation and inefficiency of cross-chain stablecoin liquidity. The protocol provides a streamlined, non-custodial interface for executing stablecoin swaps across multiple networks in a single transaction.
+[L2Pass Swap](https://swap.l2pass.com/) was built to solve the fragmentation of cross-chain liquidity, especially for stablecoins. It is a non-custodial interface that compares quotes from several independent routing providers and lets you execute the best one with a single confirmation.
 
-By abstracting routing complexity, the system continuously evaluates liquidity sources, fee structures, and execution paths to select the most cost-effective route at the moment of settlement. This removes the need for manual comparison of bridges or pools, ensuring users receive the optimal available outcome through a fully decentralized process.
+L2Pass never takes custody of your tokens. Swaps are executed by third-party bridges, solver networks and liquidity sources, and the interface shows you each route side by side before you confirm.
 
-## Architecture Summary
+## Supported Networks and Assets
 
-The L2Pass Swap architecture utilizes a modular routing and execution framework designed to maximize capital efficiency and reliability.
+L2Pass Swap currently supports **Ethereum, Bitcoin, Zcash, Tron, Solana, TON, BNB Chain, Arbitrum, Base, Polygon, Optimism, Avalanche, Plasma and HyperEVM**.
 
-- **Routing:** On-chain execution integrates the OKX Router Engine and Near Intents. This multi-path evaluation system identifies the most efficient route based on liquidity depth, fee tiers, and expected execution quality.
-- **Liquidity Sources:** Liquidity is sourced directly from native AMMs on each supported blockchain. By interacting with on-chain pools, L2Pass ensures market-driven execution and avoids the risks associated with synthetic pricing.
-- **Bridging:** Cross-chain transfers utilize the native USDT0 bridge and Near Intents protocol. This facilitates secure, capital-efficient transfers without the use of wrapped assets or third-party custody.
+Stablecoins (USDT, USDT0, USDC, DAI and others) are the main focus, but you can also swap major assets such as ETH, BTC, SOL, ZEC, TRX, BNB, AVAX and POL. Available tokens, networks and routes can change at any time; the [swap interface](https://swap.l2pass.com/) always shows the current list.
 
-## Execution & Settlement
+## How Routing Works
 
-Settlement latency is determined by the specific source and destination network parameters:
+When you request a quote, L2Pass asks several routing venues at once and shows every route that can fill your swap, sorted by what you will receive:
 
-- **On-chain Swaps:** Execution is typically near-instant, settling within 1 to 2 blocks.
-- **Cross-chain Swaps:** Standard transactions settle within 30 seconds to 5 minutes.
-- **Real-time Estimates:** Expected execution time is displayed on the interface prior to transaction confirmation.
+- **L2Pass RFQ:** Request-for-quote routing through the [NEAR Intents](https://near.org/intents) network, where solvers and market makers compete to fill your swap.
+- **L2Pass Private:** The same solver network, executed in a confidential environment. See [Private Swaps](#private-swaps).
+- **USDT Native Bridge:** Native USDT0 transfers over LayerZero, including from Tron.
+- **USDC Native Bridge:** Circle CCTP V2 transfers of native USDC, in Standard and Fast modes.
+- **Aggregators and intent networks:** LI.FI, LI.FI Intents, Relay, Aori and the OKX DEX aggregator.
 
-In rare scenarios involving specific network conditions, processing can take up to 12 hours. This is a security measure based on blockchain block finality to ensure a transaction cannot be reverted.
+Each route card shows the expected output, the minimum received, the estimated time and the fees for that route, so you can pick the one that suits you.
+
+## How a Swap Is Executed
+
+Depending on the route, a swap is executed in one of two ways:
+
+- **Wallet transaction:** You sign a transaction in your wallet and the route's contracts execute the swap and bridge on-chain.
+- **Deposit address:** For RFQ and Private routes, you send tokens to a one-time deposit address for your quote. You can send from your connected wallet, or transfer manually from any wallet using the address or QR code. The swap then moves through *Awaiting deposit*, *Deposit confirmed* and *Complete*, which you can follow in **Recent swaps**.
+
+For a deposit-address route, you also set a **refund address** on the source chain. If the swap cannot be completed, your deposit is returned there.
+
+## Execution Time
+
+Settlement time depends on the route and the networks involved:
+
+- **Fast routes** (Relay, Aori, RFQ, CCTP Fast) usually settle within seconds to about a minute.
+- **Bridge routes** such as USDT0 typically take a few minutes.
+- **Slower routes** such as CCTP Standard can take up to about 20 minutes while waiting for block finality.
+
+The estimated time is shown on each route before you confirm. In rare cases with network congestion or provider downtime, a swap can take longer.
 
 ## Slippage and Price Impact
 
-**Price Impact** refers to the price shift caused by the trade size relative to the available pool liquidity. L2Pass utilizes an advanced routing system to minimize this impact by selecting paths with the highest liquidity depth and lowest fees.
+**Price impact** is the price shift caused by the trade size relative to the available liquidity. Comparing several venues helps keep it low.
 
-**Slippage** represents the price variance between transaction submission and on-chain execution. To manage this risk, the protocol offers flexible controls:
+**Slippage** is the difference between the quoted price and the final execution price.
 
-- **Automatic Slippage:** This default setting dynamically adjusts tolerance based on real-time market volatility to optimize the probability of successful execution.
-- **Manual Control:** For experienced users requiring granular control, the interface provides a manual input option to define a custom slippage percentage.
-- **Minimum Received:** The interface displays a **Minimum Received** value. This represents the worst-case settlement threshold. If network conditions cause the price to deviate beyond this limit, the smart contract will automatically **revert** the transaction to protect your capital.
+- **Slippage tolerance:** The default tolerance is **0.05%**. You can change it from any route card.
+- **Fixed output:** Some routes, such as native USDT0 and USDC bridges, deliver a fixed amount, so slippage does not apply.
+- **Minimum received:** Each route shows the **Minimum Received** amount, the worst-case outcome within your tolerance. If the price moves beyond it, the swap does not execute: on-chain routes revert, and deposit-address routes return your deposit to your refund address.
 
 ## Fee Structure
 
-Transparency is a core protocol principle: every fee component is calculated and displayed within the quote prior to confirmation.
+The actual fees for your swap are always shown in the interface on the route card before you confirm. The **estimated amount on the destination network already includes all fees**.
 
-### Gas Fees
+### L2Pass Fee
 
-Every blockchain interaction requires a network fee (Gas) paid in the native token (e.g., ETH, MATIC, or BNB). These fees are determined by network congestion and are not controlled by the protocol.
+| Swap type | L2Pass fee |
+| :-- | :-- |
+| Stablecoin swaps via RFQ | **0%** |
+| Other assets | **up to 0.2%** |
+| Private swaps | **up to 0.3%** |
 
-<Tip>
-  **Pro Tip:** If you have gas on one network but are missing it on another, you can use our [**Gas Refuel**](https://l2pass.com/refuel) service to bridge native tokens instantly and avoid getting stuck.
-</Tip>
+### Partner and Network Fees
 
-### Infrastructure & Provider Fees
+Routing partners (bridges, solver networks, aggregators and liquidity providers) may charge their own fees. L2Pass does not control these fees; for the most up-to-date information, please check each provider's documentation.
 
-These fees are charged by the underlying layers facilitating the transfer. The routing engine ensures the best available route is selected by evaluating:
+Every blockchain transaction also requires a network (gas) fee paid in the native token, such as ETH, POL, BNB or TRX. Gas fees go to the network, not to L2Pass, and are not refundable.
 
-- **Liquidity Providers (AMM):** Fees paid to the pools where the swap occurs.
-- **Cross-Chain Messaging:** Costs for secure data transfer protocols such as LayerZero or Near Intents.
-- **Native Bridges:** Fees associated with official network-specific bridges.
+## Private Swaps
 
-### Platform Fee
+Private swaps route your swap through a confidential execution environment instead of a public one, which limits what is visible on public blockchains. They are made possible by NEAR Intents, a third-party protocol.
 
-This fee supports the ongoing development and maintenance of the L2Pass infrastructure:
+- **Not anonymity:** Your public wallet address is still included in requests sent to providers.
+- **Compliance still applies:** Private swaps are subject to the same transaction screening and sanctions controls as other swaps.
+- **Extra fee:** Private swaps carry an L2Pass fee of up to 0.3%, shown in the quote.
 
-- **Bridging:** Currently, a **0% platform fee** is applied to asset bridging.
-- **Swapping:** A minimal fee is charged, often as low as **1 pip (0.0001%)**.
+See the [Terms of Service](https://l2pass.com/terms-of-service) and [Privacy & AML Principles](https://l2pass.com/privacy-policy) for details.
 
 ## Execution Guarantees
 
-The protocol follows an "all-or-nothing" execution model. If a critical failure occurs, the contract fails-safe to prevent partial fills or trapped assets.
-
-- **Slippage Reversion:** If market conditions exceed your tolerance, the transaction reverts. Assets are not exchanged, though network gas fees are consumed by the network.
-- **Quote Expiry:** For intent-based transactions, a quote may expire due to extreme latency. In these cases, funds either remain in your custody or are returned directly to your wallet.
-
-## Supported Chains and Assets
-
-Our ecosystem of supported networks and assets is constantly growing. For the most up-to-date list of technical parameters and live deployments, please visit our [**Smart Contracts**](/resources/contracts) page.
+- **No partial fills:** L2Pass does not use partial execution. A swap either completes in full or does not execute.
+- **Refunds:** If a swap cannot be completed, for example because the price moved beyond your tolerance or the quote expired, your deposit is returned to your refund address. Provider and network fees may be deducted from the refunded amount.
+- **Compliance reviews:** If a provider flags a swap as high risk under its AML or sanctions rules, the provider decides whether to complete, refund or hold it, and a refund is not guaranteed. L2Pass cannot override a provider's review.
 
 ---
 
-<Card icon="circle-question" href="/products/bridge/faq" title="Bridge FAQ">
-  Answers to common questions about the L2Pass Bridge, including usage, fees, and supported networks.
+<Card icon="circle-question" href="/products/bridge/faq" title="Swap FAQ">
+  Answers to common questions about L2Pass Swap, including fees, routes, refunds and supported networks.
 </Card>
