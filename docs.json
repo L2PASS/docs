@@ -55,8 +55,8 @@
                 "tag": "0% ON STABLES",
                 "expanded": true,
                 "pages": [
-                  "products/bridge/overview",
-                  "products/bridge/faq"
+                  "products/swap/overview",
+                  "products/swap/faq"
                 ]
               }
             ]
@@ -108,5 +108,19 @@
       "github": "https://github.com/l2pass",
       "telegram": "https://t.me/l2pass"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/products/bridge/overview",
+      "destination": "/products/swap/overview"
+    },
+    {
+      "source": "/products/bridge/faq",
+      "destination": "/products/swap/faq"
+    },
+    {
+      "source": "/products/bridge",
+      "destination": "/products/swap/overview"
+    }
+  ]
 }

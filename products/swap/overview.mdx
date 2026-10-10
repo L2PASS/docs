@@ -23,20 +23,20 @@ Stablecoins (USDT, USDT0, USDC, DAI and others) are the main focus, but you can 
 
 When you request a quote, L2Pass asks several routing venues at once and shows every route that can fill your swap, sorted by what you will receive:
 
-- **L2Pass RFQ:** Request-for-quote routing through the [NEAR Intents](https://near.org/intents) network, where solvers and market makers compete to fill your swap.
+- **L2Pass RFQ by NEAR Intents:** Request-for-quote routing through the [NEAR Intents](https://near.org/intents) network, where solvers and market makers compete to fill your swap.
 - **L2Pass Private:** The same solver network, executed in a confidential environment. See [Private Swaps](#private-swaps).
 - **USDT Native Bridge:** Native USDT0 transfers over LayerZero, including from Tron.
 - **USDC Native Bridge:** Circle CCTP V2 transfers of native USDC, in Standard and Fast modes.
 - **Aggregators and intent networks:** LI.FI, LI.FI Intents, Relay, Aori and the OKX DEX aggregator.
 
-Each route card shows the expected output, the minimum received, the estimated time and the fees for that route, so you can pick the one that suits you.
+Each route card shows the expected output, the minimum received, the estimated time and the fees for that route, so you can pick the one that suits you. Some routes have a minimum swap amount; if your amount is below it, the route is listed as unavailable with the minimum shown.
 
 ## How a Swap Is Executed
 
 Depending on the route, a swap is executed in one of two ways:
 
 - **Wallet transaction:** You sign a transaction in your wallet and the route's contracts execute the swap and bridge on-chain.
-- **Deposit address:** For RFQ and Private routes, you send tokens to a one-time deposit address for your quote. You can send from your connected wallet, or transfer manually from any wallet using the address or QR code. The swap then moves through *Awaiting deposit*, *Deposit confirmed* and *Complete*, which you can follow in **Recent swaps**.
+- **Deposit address:** For RFQ and Private routes, you send tokens to a one-time deposit address for your quote. You can send from your connected wallet, or transfer manually from any wallet or exchange using the address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee. The swap then moves through *Awaiting deposit*, *Deposit confirmed* and *Complete*, which you can follow in **Recent swaps**.
 
 For a deposit-address route, you also set a **refund address** on the source chain. If the swap cannot be completed, your deposit is returned there.
 
@@ -44,7 +44,8 @@ For a deposit-address route, you also set a **refund address** on the source cha
 
 Settlement time depends on the route and the networks involved:
 
-- **Fast routes** (Relay, Aori, RFQ, CCTP Fast) usually settle within seconds to about a minute.
+- **Fast routes** (Relay, Aori, CCTP Fast) usually settle within seconds to about a minute.
+- **RFQ and Private routes** typically take from about 30 seconds to a few minutes, longer for networks with slow block confirmation such as Bitcoin or Zcash.
 - **Bridge routes** such as USDT0 typically take a few minutes.
 - **Slower routes** such as CCTP Standard can take up to about 20 minutes while waiting for block finality.
 
@@ -70,7 +71,7 @@ The actual fees for your swap are always shown in the interface on the route car
 | :-- | :-- |
 | Stablecoin swaps (any route) | **0%** |
 | Other assets | **up to 0.2%** |
-| Private swaps | **up to 0.3%** |
+| Private swaps (any asset, replaces the standard fee) | **up to 0.3%** |
 
 ### Partner and Network Fees
 
@@ -84,7 +85,7 @@ Private swaps route your swap through a confidential execution environment inste
 
 - **Not anonymity:** Your public wallet address is still included in requests sent to providers.
 - **Compliance still applies:** Private swaps are subject to the same transaction screening and sanctions controls as other swaps.
-- **Extra fee:** Private swaps carry an L2Pass fee of up to 0.3%, shown in the quote.
+- **Fee:** The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
 
 See the [Terms of Service](https://l2pass.com/terms-of-service) and [Privacy & AML Principles](https://l2pass.com/privacy-policy) for details.
 
@@ -96,6 +97,6 @@ See the [Terms of Service](https://l2pass.com/terms-of-service) and [Privacy & A
 
 ---
 
-<Card icon="circle-question" href="/products/bridge/faq" title="Swap FAQ">
+<Card icon="circle-question" href="/products/swap/faq" title="Swap FAQ">
   Answers to common questions about L2Pass Swap, including fees, routes, refunds and supported networks.
 </Card>
