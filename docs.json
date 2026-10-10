@@ -56,7 +56,18 @@
                 "expanded": true,
                 "pages": [
                   "products/swap/overview",
-                  "products/swap/faq"
+                  "products/swap/faq",
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "products/swap/guides/usdt-tron-to-ethereum",
+                      "products/swap/guides/usdt-tron-to-arbitrum",
+                      "products/swap/guides/usdt-tron-to-bnb-chain",
+                      "products/swap/guides/usdt-tron-to-solana",
+                      "products/swap/guides/usdt-tron-to-ton",
+                      "products/swap/guides/private-swaps-with-zec"
+                    ]
+                  }
                 ]
               }
             ]
