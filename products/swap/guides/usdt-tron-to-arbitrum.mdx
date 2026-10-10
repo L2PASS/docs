@@ -1,0 +1,83 @@
+---
+title: "How to Move USDT from Tron to Arbitrum"
+description: "Move USDT from Tron (TRC-20) to Arbitrum with L2Pass Swap. Compare routes and see all fees before you confirm. 0% L2Pass fee on stablecoin swaps."
+sidebarTitle: "USDT: Tron to Arbitrum"
+---
+
+You can move USDT from Tron (TRC-20) to Arbitrum with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. In test quotes on October 10, 2026, it offered three routes for this pair: L2Pass RFQ, the native USDT0 bridge and L2Pass Private, with estimated times of about 80 to 90 seconds. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and every fee is already included in the amount you will receive, shown in the quote before you confirm.
+
+## Routes for USDT from Tron to Arbitrum
+
+L2Pass RFQ and L2Pass Private both run on [NEAR Intents](https://near.org/intents), where solvers and market makers compete to fill your swap. Private executes it in a confidential environment.
+
+| Route | Estimated time | Output | Notes |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | About 80 seconds | Variable, with a minimum received | Pay to a one-time deposit address. |
+| USDT native bridge (USDT0) | About 1.5 minutes | Fixed | Signed in your Tron wallet. Adds a LayerZero message fee of about 4.7 TRX. |
+| L2Pass Private | About 80 seconds | Variable, with a minimum received | Deposit address. L2Pass fee up to 0.3%. |
+
+No aggregator routes (LI.FI, LI.FI Intents, Relay, Aori or the OKX DEX aggregator) were offered for this pair in those test quotes. The quote lists any route that can fill the pair.
+
+Test quotes for 1,000 USDT on October 10, 2026 showed these amounts received: 999.85 USDT0 on L2Pass RFQ, 999.7 USDT0 on the USDT0 bridge (plus about 4.67 TRX for the LayerZero message) and 997.29 USDT0 on L2Pass Private. The live quote shows current numbers for your amount.
+
+## How to move USDT from Tron to Arbitrum
+
+<Steps>
+  <Step title="Open L2Pass Swap">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Tron as the source and USDT on Arbitrum as the destination, then enter the amount and set the Arbitrum address that will receive the USDT.
+  </Step>
+
+  <Step title="Compare the routes">
+    Each route card shows the expected output, minimum received, estimated time and fees. Default slippage is 0.05% (editable) and does not apply to fixed-output routes such as USDT0.
+  </Step>
+
+  <Step title="Set a refund address">
+    For L2Pass RFQ and L2Pass Private, set the refund address to a Tron wallet you control. If the swap cannot complete, your deposit is returned there.
+  </Step>
+
+  <Step title="Pay by wallet or deposit address">
+    On the USDT0 route, sign the transaction in your Tron wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any Tron wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+  </Step>
+
+  <Step title="Track the swap">
+    For L2Pass RFQ and L2Pass Private, follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*. A USDT0 transfer is a LayerZero message, so you can follow it on [LayerZero Scan](https://layerzeroscan.com/) with your Tron transaction hash.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Gas on Tron only.** Sending TRC-20 USDT costs TRX for energy and bandwidth. Any network fee on the destination chain is deducted from the amount shown, so you do not need gas there.
+- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Minimum amount.** Some routes have a minimum swap amount that varies by pair. If your amount is below it, the route is listed as unavailable with the minimum shown.
+- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Will I receive USDT or USDT0 on Arbitrum?">
+    USDT0, the LayerZero-based version of USDT and the standard USDT on Arbitrum. Many wallets simply label it USDT. The route card shows the exact token and amount you will receive.
+  </Accordion>
+
+  <Accordion title="How long does it take to move USDT from Tron to Arbitrum?">
+    L2Pass RFQ and L2Pass Private each showed an estimated time of about 80 seconds, and USDT0 about 1.5 minutes, in test quotes on October 10, 2026. Route cards show the current estimate before you confirm.
+  </Accordion>
+
+  <Accordion title="How much does it cost to move USDT from Tron to Arbitrum?">
+    There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps). Routing partners and the networks charge their own fees, and the amount shown already includes them all.
+  </Accordion>
+
+  <Accordion title="Do I need ETH on Arbitrum to receive USDT?">
+    No. You pay gas only on Tron, in TRX, and any network fee on the destination chain is already deducted from the amount shown. You need ETH on Arbitrum later to move or use the USDT.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT from Tron to BNB Chain](/products/swap/guides/usdt-tron-to-bnb-chain)
+- [L2Pass Swap fees](https://docs.l2pass.com/products/swap/overview#fee-structure)
+- [L2Pass Swap FAQ](https://docs.l2pass.com/products/swap/faq)
+
+*Last updated: October 10, 2026*

@@ -55,8 +55,19 @@
                 "tag": "0% ON STABLES",
                 "expanded": true,
                 "pages": [
-                  "products/bridge/overview",
-                  "products/bridge/faq"
+                  "products/swap/overview",
+                  "products/swap/faq",
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "products/swap/guides/usdt-tron-to-ethereum",
+                      "products/swap/guides/usdt-tron-to-arbitrum",
+                      "products/swap/guides/usdt-tron-to-bnb-chain",
+                      "products/swap/guides/usdt-tron-to-solana",
+                      "products/swap/guides/usdt-tron-to-ton",
+                      "products/swap/guides/private-swaps-with-zec"
+                    ]
+                  }
                 ]
               }
             ]
@@ -108,5 +119,19 @@
       "github": "https://github.com/l2pass",
       "telegram": "https://t.me/l2pass"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/products/bridge/overview",
+      "destination": "/products/swap/overview"
+    },
+    {
+      "source": "/products/bridge/faq",
+      "destination": "/products/swap/faq"
+    },
+    {
+      "source": "/products/bridge",
+      "destination": "/products/swap/overview"
+    }
+  ]
 }
