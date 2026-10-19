@@ -1,0 +1,88 @@
+---
+title: "Slippage, Fixed Output and Minimum Received Explained"
+description: "What slippage tolerance, expected output, minimum received and fixed output mean in L2Pass Swap, with examples. Default slippage is 0.05%, editable."
+sidebarTitle: "Slippage and minimum received"
+---
+
+In [L2Pass Swap](https://swap.l2pass.com/), every route card shows an expected output and a minimum received. The expected output is the estimated amount you will receive, already including all fees. The minimum received is the worst case within your slippage tolerance, which is 0.05% by default and can be changed on any route card. If the price moves beyond it, the swap does not execute. Fixed-output routes, such as Circle CCTP, USDT0, Aori and LI.FI Intents, deliver the exact amount shown, so slippage does not apply to them.
+
+## Key terms
+
+| Term | Meaning |
+| :-- | :-- |
+| Expected output | The estimated amount on the destination network, after all fees |
+| Minimum received | The least you can receive within your slippage tolerance |
+| Slippage | The difference between the quoted price and the final execution price, caused by market movement |
+| Slippage tolerance | How much slippage you accept. Default 0.05% in L2Pass Swap |
+| Price impact | The change in price caused by the size of your trade relative to available liquidity |
+| Fixed output | A route that delivers exactly the amount shown, with no slippage |
+
+## Examples from live quotes
+
+Test quotes on October 19, 2026, with the default 0.05% tolerance. The live quote shows current numbers.
+
+| Swap | Route | Expected output | Minimum received | Output |
+| :-- | :-- | :-- | :-- | :-- |
+| 1,000 USDT, Tron to Ethereum | L2Pass RFQ | 999.50 USDT | 999.00 USDT | Variable |
+| 1,000 USDC, Arbitrum to Base | USDC native bridge, Fast | 999.81 USDC | 999.81 USDC | Fixed |
+| 1 ETH on Ethereum to USDC on Base | L2Pass RFQ | 2,387.76 USDC | 2,386.57 USDC | Variable |
+
+On a variable route, the minimum received is the expected output minus your tolerance. On a fixed route, both numbers are the same.
+
+## How to set slippage
+
+<Steps>
+  <Step title="Open the route card">
+    Request a quote on [swap.l2pass.com](https://swap.l2pass.com/) and open the route you want.
+  </Step>
+
+  <Step title="Change the tolerance">
+    Edit the slippage tolerance on the route card. A higher tolerance makes a volatile swap more likely to execute but lowers the minimum received.
+  </Step>
+
+  <Step title="Check the minimum received">
+    Confirm only if you are fine with receiving the minimum received in the worst case.
+  </Step>
+</Steps>
+
+## How to choose a tolerance
+
+- **Stablecoin to stablecoin.** Prices barely move, so the default 0.05% is usually enough.
+- **Volatile assets, such as ETH or BTC.** Prices can move while a swap settles, especially on slower routes. If a swap keeps failing on price, a slightly higher tolerance can help.
+- **Fixed-output routes.** Tolerance does not matter: you get the exact amount shown.
+
+## Things to know
+
+- **No partial fills.** If the price moves beyond your tolerance, the swap does not execute at all.
+- **Refunds.** A failed on-chain route reverts (gas is not refundable). A failed deposit-address route returns your deposit to the refund address; provider and network fees may be deducted.
+- **Slippage is not a fee.** It is a limit on price movement. Fees are shown separately on the route card and are already included in the expected output.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What is the default slippage in L2Pass Swap?">
+    0.05%. You can change it on any route card.
+  </Accordion>
+
+  <Accordion title="What does minimum received mean?">
+    The least you will receive if the price moves against you within your slippage tolerance. If it would be less, the swap does not execute.
+  </Accordion>
+
+  <Accordion title="Which routes have a fixed output?">
+    The USDC native bridge (Circle CCTP, Fast and Standard), the USDT native bridge (USDT0), Aori and LI.FI Intents. They deliver exactly the amount shown.
+  </Accordion>
+
+  <Accordion title="Does L2Pass Swap set slippage automatically?">
+    No. The tolerance is 0.05% by default, and you can change it yourself on any route card.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

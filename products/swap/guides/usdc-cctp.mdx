@@ -1,0 +1,90 @@
+---
+title: "How to Bridge USDC with Circle CCTP (Ethereum, Arbitrum, Base)"
+description: "Bridge native USDC between Ethereum, Arbitrum and Base with Circle CCTP in L2Pass Swap. Fast or Standard mode, fixed output, 0% L2Pass fee."
+sidebarTitle: "USDC with Circle CCTP"
+---
+
+You can bridge native USDC between Ethereum, Arbitrum and Base with Circle CCTP in [L2Pass Swap](https://swap.l2pass.com/), shown as the USDC native bridge. It has two modes: Fast, which took about 40 to 50 seconds in test quotes on October 19, 2026, and Standard, which took about 19.5 minutes and charged a lower network fee. Both deliver a fixed amount, and L2Pass shows them next to other routes such as Relay, L2Pass RFQ and LI.FI so you can compare. There is a 0% L2Pass fee on stablecoin swaps, and every fee is already included in the amount you will receive, shown in the quote before you confirm.
+
+## What Circle CCTP is
+
+CCTP (Cross-Chain Transfer Protocol) is Circle's own way of moving USDC between chains. USDC is burned on the source chain and the same amount of native USDC is minted on the destination chain, so you receive the USDC that Circle issues there.
+
+| Mode | How it works | Estimated time in test quotes | Network fee for 1,000 USDC |
+| :-- | :-- | :-- | :-- |
+| Fast | Circle confirms the transfer before the source chain reaches finality | About 38 seconds from Arbitrum, about 50 seconds from Ethereum | 0.19 USDC from Arbitrum, 0.15 USDC from Ethereum |
+| Standard | Waits for block finality on the source chain | About 19.5 minutes | 0.05 USDC |
+
+## Routes for 1,000 USDC from Arbitrum to Base
+
+Test quotes on October 19, 2026 (about 16:55 UTC) returned eight routes. The live quote shows current numbers.
+
+| Route | You receive | Estimated time | Output |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.97 USDC | Not shown | Fixed |
+| USDC native bridge, Standard | 999.95 USDC | About 19.5 minutes | Fixed |
+| Relay | 999.88 USDC | About 2 seconds | Variable |
+| USDC native bridge, Fast | 999.81 USDC | About 38 seconds | Fixed |
+| L2Pass RFQ | 999.80 USDC | About 27 seconds | Variable |
+| Aori | 999.28 USDC | About 3 seconds | Fixed |
+| L2Pass Private | 998.20 USDC | About 27 seconds | Variable |
+| LI.FI | 997.50 USDC | About 18 minutes | Variable |
+
+From Ethereum to Base, the same eight routes were offered with similar amounts. CCTP Standard showed 999.95 USDC and CCTP Fast 999.85 USDC.
+
+## How to bridge USDC with CCTP
+
+<Steps>
+  <Step title="Open L2Pass Swap">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDC on the source network (for example Arbitrum) and USDC on the destination network (for example Base), then enter the amount and set the address that will receive the USDC.
+  </Step>
+
+  <Step title="Pick Fast or Standard">
+    Find the USDC native bridge cards. Choose Fast if you want the USDC in under a minute, or Standard if you can wait about 20 minutes for a lower network fee. Compare them with the other route cards.
+  </Step>
+
+  <Step title="Approve and sign">
+    Sign the transaction in your wallet on the source network. If this is your first USDC transfer through the route, your wallet may ask for a token approval first.
+  </Step>
+
+  <Step title="Track the transfer">
+    If the app asks for a final step on the destination network, follow it; an unfinished transfer can be resumed from the app later. You can check that the USDC has arrived by looking up the receiving address on a block explorer for the destination network, such as Basescan for Base.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Gas on the source chain.** You pay gas in ETH on Ethereum, Arbitrum or Base. The CCTP network fee is deducted from the amount shown, so you do not need ETH on the destination chain to receive.
+- **Fixed output.** CCTP delivers the exact amount shown, so slippage does not apply.
+- **Wallet only.** CCTP needs a transaction signed in your wallet. To pay from an exchange, use L2Pass RFQ, which takes a deposit to a one-time address.
+- **Refunds.** On-chain routes revert if they fail, and gas is not refundable.
+- **No partial fills.** A transfer completes in full or does not execute.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How long does a CCTP transfer take?">
+    In test quotes on October 19, 2026, CCTP Fast took about 38 to 50 seconds and CCTP Standard about 19.5 minutes. Route cards show the current estimate.
+  </Accordion>
+
+  <Accordion title="How much does it cost to bridge USDC with CCTP?">
+    There is a 0% L2Pass fee on stablecoin swaps. In test quotes for 1,000 USDC, the network fee was 0.05 USDC on Standard and 0.15 to 0.19 USDC on Fast, plus source gas in ETH.
+  </Accordion>
+
+  <Accordion title="Is USDC bridged with CCTP the same as native USDC?">
+    Yes. CCTP burns USDC on the source chain and mints native USDC issued by Circle on the destination chain.
+  </Accordion>
+
+  <Accordion title="Which is the fastest way to move USDC from Arbitrum to Base?">
+    In test quotes on October 19, 2026, Relay showed about 2 seconds and Aori about 3 seconds, with slightly different amounts. Compare the route cards for your amount.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

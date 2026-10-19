@@ -1,0 +1,107 @@
+---
+title: "How to Bridge USDC to HyperEVM"
+description: "Bridge USDC to HyperEVM from Arbitrum, or swap TRC-20 USDT to USDC on HyperEVM, with L2Pass Swap. Compare routes and see all fees before you confirm."
+sidebarTitle: "USDC to HyperEVM"
+---
+
+You can bridge USDC to HyperEVM, the EVM chain of Hyperliquid, from Arbitrum, and swap USDT on Tron to USDC on HyperEVM, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes on October 19, 2026, Arbitrum to HyperEVM was offered by L2Pass RFQ and L2Pass Private in about 35 seconds, and also by Relay and LI.FI. Tron to HyperEVM was offered by L2Pass RFQ and L2Pass Private in about 1.5 minutes. L2Pass RFQ showed a 0% L2Pass fee on these pairs, and every fee is already included in the amount you will receive, shown in the quote before you confirm.
+
+## Routes to HyperEVM
+
+| Route | From | Estimated time | Output | Payment |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Arbitrum, Tron | About 35 seconds from Arbitrum, 1.5 minutes from Tron | Variable, with a minimum received | One-time deposit address |
+| L2Pass Private | Arbitrum, Tron | Same as L2Pass RFQ | Variable, with a minimum received | One-time deposit address. L2Pass fee up to 0.3% |
+| Relay | Arbitrum | About 2 seconds | Variable | Wallet transaction |
+| LI.FI | Arbitrum | About 18 minutes | Variable | Wallet transaction |
+
+L2Pass RFQ and L2Pass Private both run on [NEAR Intents](https://near.org/intents). Circle CCTP was not offered to HyperEVM in those test quotes. The quote lists any route that can fill your pair.
+
+## Test quotes on October 19, 2026
+
+Quotes at about 17:17 UTC. The live quote shows current numbers.
+
+<Tabs>
+<Tab title="1,000 USDC from Arbitrum">
+
+| Route | You receive | Estimated time |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 999.68 USDC | About 35 seconds |
+| L2Pass Private | 998.18 USDC | About 35 seconds |
+| Relay | 997.87 USDC | About 2 seconds |
+| LI.FI | 995.50 USDC | About 18 minutes |
+
+L2Pass RFQ showed no provider fee on this pair, only a HyperEVM network fee of 0.32 USDC.
+
+</Tab>
+<Tab title="1,000 USDT from Tron">
+
+| Route | You receive | Estimated time |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 998.59 USDC | About 1.5 minutes |
+| L2Pass Private | 996.07 USDC | About 1.5 minutes |
+
+</Tab>
+</Tabs>
+
+## How to bridge USDC to HyperEVM
+
+<Steps>
+  <Step title="Open L2Pass Swap">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDC on Arbitrum or USDT on Tron as the source and USDC on HyperEVM as the destination, then enter the amount and set the HyperEVM address (an EVM address starting with 0x) that will receive the USDC.
+  </Step>
+
+  <Step title="Compare the routes">
+    Each route card shows the expected output, minimum received, estimated time and fees. Default slippage is 0.05% (editable).
+  </Step>
+
+  <Step title="Set a refund address">
+    For L2Pass RFQ and L2Pass Private, set the refund address to a wallet you control on the source chain. If the swap cannot complete, your deposit is returned there.
+  </Step>
+
+  <Step title="Pay by wallet or deposit address">
+    On Relay and LI.FI, sign the transaction in your wallet. On L2Pass RFQ and L2Pass Private, send the tokens to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote.
+  </Step>
+
+  <Step title="Track the swap">
+    For L2Pass RFQ and L2Pass Private, follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **USDC only.** L2Pass Swap offers USDC on HyperEVM. To start from USDT, use the Tron to HyperEVM pair, which swaps USDT to USDC in one step.
+- **Gas on the source chain only.** You pay gas in ETH on Arbitrum or in TRX on Tron. The HyperEVM network fee is deducted from the amount shown, so you do not need HYPE to receive. HYPE is HyperEVM's gas token, needed later to send or use the USDC there.
+- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How long does it take to bridge USDC to HyperEVM?">
+    About 35 seconds from Arbitrum on L2Pass RFQ, or about 2 seconds on Relay, in test quotes on October 19, 2026. Route cards show the current estimate.
+  </Accordion>
+
+  <Accordion title="How much does it cost to bridge USDC to HyperEVM?">
+    In test quotes for 1,000 USDC from Arbitrum, L2Pass RFQ delivered 999.68 USDC with a 0% L2Pass fee and a 0.32 USDC HyperEVM network fee. Other routes showed their own fees. The amount shown already includes all of them.
+  </Accordion>
+
+  <Accordion title="Do I need HYPE to receive USDC on HyperEVM?">
+    No. The HyperEVM network fee is deducted from the amount shown. You need HYPE later to send or use the USDC on HyperEVM.
+  </Accordion>
+
+  <Accordion title="Can I send TRC-20 USDT to HyperEVM?">
+    Yes, as a swap to USDC. In test quotes on October 19, 2026, 1,000 USDT on Tron gave 998.59 USDC on HyperEVM on L2Pass RFQ.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [Swap from any wallet or exchange](/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

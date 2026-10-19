@@ -1,0 +1,90 @@
+---
+title: "How to Bridge USDC to Solana"
+description: "Bridge USDC to Solana from Ethereum or Base, or swap TRC-20 USDT to USDC on Solana, with L2Pass Swap. 0% L2Pass fee on stablecoin swaps."
+sidebarTitle: "USDC to Solana"
+---
+
+You can bridge USDC to Solana from Ethereum or Base, and swap USDT on Tron to USDC on Solana, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes on October 19, 2026, these pairs were offered by L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents), with estimated times of about 30 seconds to 1.5 minutes. You pay by sending tokens to a one-time deposit address from your connected wallet, any wallet or an exchange. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and every fee is already included in the amount you will receive, shown in the quote before you confirm.
+
+## Routes to Solana
+
+| Route | Estimated time | Output | Notes |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | About 32 seconds from Base, 42 seconds from Ethereum, 77 seconds from Tron | Variable, with a minimum received | Solvers and market makers compete to fill your swap. Deposit address. |
+| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3%. |
+
+No other routes, including Circle CCTP, were offered for these pairs in those test quotes. The quote lists any route that can fill your pair.
+
+## Test quotes on October 19, 2026
+
+Quotes for 1,000 USDC or USDT at about 17:17 UTC. The live quote shows current numbers.
+
+| Swap | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 1,000 USDC, Base to Solana | 999.65 USDC | 997.92 USDC |
+| 1,000 USDC, Ethereum to Solana | 999.55 USDC | 997.92 USDC |
+| 1,000 USDT on Tron to USDC on Solana | 998.67 USDC | 996.09 USDC |
+
+On L2Pass RFQ, the quotes showed a 0% L2Pass fee, a 0.01% NEAR Intents provider fee and a Solana network fee of 0.28 USDC.
+
+## How to bridge USDC to Solana
+
+<Steps>
+  <Step title="Open L2Pass Swap">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDC on Ethereum or Base (or USDT on Tron) as the source and USDC on Solana as the destination, then enter the amount and set the Solana address that will receive the USDC.
+  </Step>
+
+  <Step title="Compare the routes">
+    Check the expected output, minimum received, estimated time and fees on the L2Pass RFQ and L2Pass Private cards. Default slippage is 0.05% (editable).
+  </Step>
+
+  <Step title="Set a refund address">
+    Set the refund address to a wallet you control on the source chain. If the swap cannot complete, your deposit is returned there.
+  </Step>
+
+  <Step title="Pay to the deposit address">
+    Send the amount shown in the quote to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote.
+  </Step>
+
+  <Step title="Track the swap">
+    Follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Gas on the source chain only.** You pay gas in ETH on Ethereum or Base, or in TRX on Tron. The Solana network fee is deducted from the amount shown, so you do not need SOL to receive. You need SOL later to move or use the USDC on Solana.
+- **USDT to USDC in one swap.** From Tron, you can change the stablecoin and the network at once. It is still a stablecoin swap, with a 0% L2Pass fee on L2Pass RFQ.
+- **Refunds.** If a swap cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How long does it take to bridge USDC to Solana?">
+    About 32 seconds from Base, 42 seconds from Ethereum and 77 seconds from Tron in test quotes on October 19, 2026. Route cards show the current estimate.
+  </Accordion>
+
+  <Accordion title="How much does it cost to bridge USDC to Solana?">
+    There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps). In test quotes for 1,000 USDC, L2Pass RFQ delivered 999.65 USDC from Base and 999.55 USDC from Ethereum, after the NEAR Intents fee and the Solana network fee.
+  </Accordion>
+
+  <Accordion title="Do I need SOL to receive USDC on Solana?">
+    No. The Solana network fee is deducted from the amount shown. You need SOL later to send or use the USDC.
+  </Accordion>
+
+  <Accordion title="Can I swap TRC-20 USDT to USDC on Solana?">
+    Yes. In test quotes on October 19, 2026, 1,000 USDT on Tron gave 998.67 USDC on Solana on L2Pass RFQ, in about 77 seconds.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Bridge USDT from Tron to Solana](/products/swap/guides/usdt-tron-to-solana)
+- [How to bridge USDC with Circle CCTP](/products/swap/guides/usdc-cctp)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

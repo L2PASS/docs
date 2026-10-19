@@ -1,0 +1,88 @@
+---
+title: "Is L2Pass Safe? How Non-Custodial Swaps Work"
+description: "L2Pass Swap is non-custodial: it never holds your tokens or keys, swaps run on providers' own contracts, and you only pay to a one-time deposit address."
+sidebarTitle: "Is L2Pass safe?"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) is a non-custodial interface: L2Pass never holds your tokens or private keys. Each swap is executed by a routing provider, such as NEAR Intents, Circle CCTP, USDT0, LI.FI or Relay, on that provider's own contracts. You either sign a transaction in your own wallet or send tokens to a one-time deposit address created for your quote, and the amount you will receive, after all fees, is shown before you confirm. L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions.
+
+## How your funds move
+
+| Step | Wallet routes (CCTP, USDT0, LI.FI, Relay, Aori, OKX) | Deposit-address routes (L2Pass RFQ, L2Pass Private) |
+| :-- | :-- | :-- |
+| You confirm | Sign a transaction in your wallet | Send tokens to a one-time deposit address for your quote |
+| Who executes | The provider's contracts | Solvers on [NEAR Intents](https://near.org/intents) |
+| Who holds your keys | Only you | Only you |
+| If it fails | The transaction reverts (gas is not refundable) | The deposit returns to your refund address, minus any provider or network fees |
+
+## What L2Pass does and does not do
+
+**L2Pass does:**
+- Ask several routing providers for quotes and show them side by side.
+- Show every fee and the amount you will receive before you confirm.
+- Create the one-time deposit address for RFQ and Private quotes through NEAR Intents.
+
+**L2Pass does not:**
+- Hold your tokens or private keys.
+- Need an account or KYC for regular use.
+- Override a provider's AML or sanctions decision on a flagged swap.
+
+## L2Pass contracts
+
+Swaps through third-party routes are executed by those providers' own contracts. L2Pass uses its own router only for native USDT0 transfers. See [Contracts](/resources/contracts) for the addresses on Ethereum, Arbitrum, Optimism, Polygon, HyperEVM and Tron.
+
+## How to stay safe
+
+<Steps>
+  <Step title="Use the official site">
+    Open [swap.l2pass.com](https://swap.l2pass.com/) directly or from [docs.l2pass.com](https://docs.l2pass.com/). Check the address bar before you connect a wallet or send funds.
+  </Step>
+
+  <Step title="Send only to the deposit address in your quote">
+    The only address you send funds to is the one-time deposit address shown in the swap interface for your quote. L2Pass support never asks you to send funds anywhere else.
+  </Step>
+
+  <Step title="Set a refund address you control">
+    For deposit-address routes, use a wallet you control on the source chain, not an exchange deposit address.
+  </Step>
+
+  <Step title="Check approvals">
+    On wallet routes, read what your wallet asks you to approve. You can review and revoke token approvals in your wallet or a block explorer.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Compliance checks.** Providers run risk-based AML and sanctions checks. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Third-party risk.** Each provider runs its own contracts and infrastructure. See the [Terms of Service](https://l2pass.com/terms-of-service) for how L2Pass handles third-party providers.
+- **No partial fills.** A swap completes in full or does not execute.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Is L2Pass custodial?">
+    No. L2Pass never holds your tokens or private keys. Swaps are executed by routing providers on their own contracts or, on RFQ and Private routes, by solvers on NEAR Intents.
+  </Accordion>
+
+  <Accordion title="Is L2Pass legit?">
+    L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions. The swap interface shows every route, fee and the amount you will receive before you confirm.
+  </Accordion>
+
+  <Accordion title="Do I need to give L2Pass my personal data?">
+    No account or KYC is needed for regular use. A provider may request extra checks for a specific transaction. See the [Privacy & AML Principles](https://l2pass.com/privacy-policy).
+  </Accordion>
+
+  <Accordion title="What happens to my funds if a swap fails?">
+    On wallet routes, the transaction reverts and only gas is spent. On deposit-address routes, the deposit is returned to your refund address, minus any provider or network fees. See [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds).
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Contracts](/resources/contracts)
+- [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds)
+- [Swap from any wallet or exchange](/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*
