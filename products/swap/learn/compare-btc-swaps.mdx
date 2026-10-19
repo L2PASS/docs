@@ -1,0 +1,172 @@
+---
+title: "Best Way to Swap BTC to USDT: L2Pass vs THORChain, Relay, LI.FI and More"
+description: "Live quotes compared: 0.01 BTC to USDT and 1,000 USDT to BTC on L2Pass, THORChain, Relay, LI.FI, MAYAChain, ChangeNOW and SideShift."
+sidebarTitle: "Compare: BTC swaps"
+---
+
+We requested live quotes for native BTC to USDT, and back, from [L2Pass Swap](https://swap.l2pass.com/) and other cross-chain services, on October 19, 2026, with the same amounts for every provider. For 0.01 BTC to USDT, on Tron and on Ethereum, L2Pass RFQ by NEAR Intents returned the most USDT, and side by side in the web interfaces it beat the THORChain app on every pair, in regular and private mode. For 1,000 USDT on Tron to BTC, Relay returned the most BTC. The L2Pass fee on BTC swaps is up to 0.2%, included in every amount below.
+
+## Results at a glance
+
+| Swap | Most received | L2Pass RFQ | L2Pass place |
+| :-- | :-- | :-- | :-- |
+| 0.01 BTC to USDT on Tron | L2Pass RFQ, 815.91 USDT | 815.91 USDT | 1st |
+| 0.01 BTC to USDT on Ethereum | L2Pass RFQ, 817.29 USDT | 817.29 USDT | 1st |
+| 1,000 USDT on Tron to BTC | Relay, 0.01217679 BTC | 0.01215845 BTC | 3rd, 0.15% behind |
+| 1,000 USDT on Ethereum to BTC, THORChain app check | L2Pass RFQ, 0.01216000 BTC | 0.01216000 BTC | 1st, ahead of the THORChain app (0.0121513 BTC) |
+| Private swap, 0.01 BTC to USDT on Tron | L2Pass Private, 813.43 USDT | 813.43 USDT | 1st, 8.55 USDT ahead of Houdini Swap |
+| Private swap, 1,000 USDT on Ethereum to BTC | L2Pass Private, 0.01212596 BTC | 0.01212596 BTC | 1st, ahead of Houdini Swap (0.0120086 BTC) |
+
+THORChain is compared by what its own app shows. Its raw protocol quote does not include the app's fee and is higher than what a user sees in the app. We mark it separately in the tables below.
+
+## How we compared
+
+- **When:** October 19, 2026, from 18:21 UTC. Times are noted for each table. BTC was about 81,700 USD.
+- **How:** the same quote requests each provider's web interface makes, with the same amounts. No swaps were executed.
+- **What we compare:** the amount you receive, after the provider's fees and the destination network fee.
+
+<Note>
+Snapshots from October 19, 2026. Quotes change every few seconds, so open [L2Pass Swap](https://swap.l2pass.com/) for current numbers.
+</Note>
+
+## Live quotes
+
+<Tabs>
+<Tab title="BTC to USDT on Tron">
+
+Quotes at 18:21 UTC.
+
+| Provider | You receive | Estimated time | Fees shown |
+| :-- | :-- | :-- | :-- |
+| **L2Pass RFQ** | **815.91 USDT** | About 14.5 minutes | 0.2% L2Pass fee, 1.71 USDT Tron network fee |
+| LI.FI (via NEAR Intents) | 814.69 USDT | About 29 minutes | 2.05 USD LI.FI fee, 0.98 USD NEAR fees |
+| THORChain protocol quote* | 814.36 USDT | About 10 minutes | 5.11 USDT, including a 3.36 USDT outbound fee, before the app's fee |
+| L2Pass Private | 812.24 USDT | About 14.5 minutes | 0.3% L2Pass fee |
+| Relay | 811.65 USDT | Seconds after Bitcoin confirmation | About 5.05 USD relayer fee, 0.84 USD gas |
+| ChangeNOW, standard | 809.17 USDT | 10 to 60 minutes | 4.8 USDT withdrawal fee |
+| SideShift | 801.63 USDT | Not shown | Included in the rate |
+| ChangeNOW, fixed rate | 793.15 USDT | Not shown | Included in the rate |
+
+MAYAChain does not support Tron.
+
+\* A protocol quote is the raw number from the protocol's own quote service. Apps built on it, including the official THORChain app, add their own fee, so users see less. See the interface check below.
+
+</Tab>
+<Tab title="BTC to USDT on Ethereum">
+
+Quotes at 18:21 UTC.
+
+| Provider | You receive | Estimated time | Fees shown |
+| :-- | :-- | :-- | :-- |
+| THORChain protocol quote* | 817.44 USDT | About 10 minutes | 1.89 USDT (0.23%), before the THORChain app's fee |
+| **L2Pass RFQ** | **817.29 USDT** | About 13.5 minutes | 0.2% L2Pass fee, 0.3 USDT network fee |
+| LI.FI (via NEAR Intents) | 816.06 USDT | About 28.5 minutes | 2.05 USD LI.FI fee, 0.98 USD NEAR fees |
+| L2Pass Private | 814.34 USDT | About 13.5 minutes | 0.3% L2Pass fee |
+| Relay | 814.20 USDT | About 4 seconds after Bitcoin confirmation | About 2.65 USD relayer fee, 0.84 USD gas |
+| ChangeNOW, standard | 813.66 USDT | 10 to 60 minutes | 0.8 USDT withdrawal fee |
+| MAYAChain protocol quote* | 807.37 USDT | About 10 minutes | 6.17 USDT (0.75%), before any interface fee |
+| SideShift | 803.95 USDT | Not shown | Included in the rate |
+| ChangeNOW, fixed rate | 793.55 USDT | Not shown | Included in the rate |
+
+\* A protocol quote is the raw number from the protocol's own quote service. Apps built on it, including the official THORChain app, add their own fee, so users see less. See the interface check below.
+
+</Tab>
+<Tab title="USDT on Tron to BTC">
+
+Quotes at 18:21 to 18:22 UTC.
+
+| Provider | You receive | Estimated time | Fees shown |
+| :-- | :-- | :-- | :-- |
+| Relay | 0.01217679 BTC | About 5.5 minutes | 2.23 USDT relayer fee, plus about 6.1 TRX gas |
+| LI.FI (via LayerSwap) | 0.01216529 BTC | About 16.5 minutes | 2.50 USD LI.FI fee, 2.74 USD LayerSwap fee |
+| **L2Pass RFQ** | **0.01215845 BTC** | About 8.5 minutes | 0.2% L2Pass fee, 0.000019 BTC network fee |
+| THORChain protocol quote* | 0.01213514 BTC | Under a minute after confirmation | 0.00004134 BTC (0.33%), before the app's fee |
+| L2Pass Private | 0.01209693 BTC | About 8.5 minutes | 0.3% L2Pass fee |
+| ChangeNOW, standard | 0.01199890 BTC | 10 to 60 minutes | 4.8 USDT deposit fee |
+| SideShift | 0.01193748 BTC | Not shown | Included in the rate |
+| ChangeNOW, fixed rate | 0.01174823 BTC | Not shown | Included in the rate |
+
+deBridge does not support Bitcoin, and MAYAChain does not support Tron.
+
+\* A protocol quote is the raw number from the protocol's own quote service. Apps built on it, including the official THORChain app, add their own fee, so users see less. See the interface check below.
+
+</Tab>
+</Tabs>
+
+## Instant exchanges through Trocador
+
+[Trocador](https://trocador.app) compares instant exchanges such as FixedFloat, StealthEX and ChangeNOW. We requested the same swaps there between 18:32 and 18:34 UTC. L2Pass quotes for BTC to USDT on Tron were refreshed at 18:28 UTC for comparison.
+
+| Exchange (Trocador rating) | 0.01 BTC to USDT on Tron | 0.01 BTC to USDT on Ethereum | 1,000 USDT on Tron to BTC |
+| :-- | :-- | :-- | :-- |
+| **L2Pass RFQ** | **814.53 USDT** | 817.29 USDT (18:21 UTC) | 0.01215845 BTC (18:21 UTC) |
+| Best instant exchange, floating | 813.88 USDT (FixedFloat, C) | 814.45 USDT (Baltex, B) | 0.01214 BTC (FixedFloat, C, and CCECash, B) |
+| Best instant exchange, fixed | 809.79 USDT (FixedFloat, C) | 810.61 USDT (BitcoinVN, B) | 0.01208 BTC (FixedFloat, CCECash, Simpleswap) |
+| Lowest shown | 795.17 USDT (Godex, C) | 795.17 USDT (Godex, C) | 0.01190 BTC (ExWell, B) |
+
+Trocador shows BTC amounts to five decimals.
+
+Trocador's privacy rating (A to C here) reflects each exchange's terms, privacy policy and refund practice when a user refuses verification. Trocador notes that any exchange can still pause a swap and ask for KYC or AML checks. Floating amounts are estimates and are re-priced when your deposit confirms; fixed amounts are locked.
+
+## Interface check: L2Pass vs the THORChain app
+
+Checked side by side in both web interfaces on October 19, 2026, at about 18:50 and 19:05 UTC. The THORChain app offers a regular swap and a private swap powered by Houdini Swap.
+
+| Swap | L2Pass | THORChain app | Difference |
+| :-- | :-- | :-- | :-- |
+| 0.01 BTC to USDT on Tron, regular | **817.11 USDT** (L2Pass RFQ, about 14 minutes) | 814.86 USDT (about 11 minutes) | +2.25 USDT on L2Pass |
+| 0.01 BTC to USDT on Tron, private | **813.43 USDT** (L2Pass Private, about 14 minutes) | 804.88 USDT (Houdini Swap, about 15 minutes) | +8.55 USDT on L2Pass |
+| 1,000 USDT on Ethereum to BTC, regular | **0.01216000 BTC** (L2Pass RFQ, about 8 minutes) | 0.0121513 BTC (about 11 minutes) | +0.0000087 BTC on L2Pass |
+| 1,000 USDT on Ethereum to BTC, private | **0.01212596 BTC** (L2Pass Private, about 8 minutes) | 0.0120086 BTC (Houdini Swap, about 16 minutes) | +0.0001174 BTC on L2Pass |
+
+At the time of the check, the THORChain app said swaps without a connected wallet were paused, so a Bitcoin wallet had to be connected. L2Pass accepts BTC from any wallet or exchange through a one-time deposit address.
+
+## What the numbers show
+
+- **L2Pass beat the THORChain app on every pair we checked in both interfaces,** in regular and private mode. Relay returned the most for USDT on Tron to BTC.
+- **Tron delivery costs vary a lot.** THORChain charged a 3.36 USDT outbound fee to Tron, and L2Pass charged 1.71 USDT.
+- **Instant exchanges cost more.** ChangeNOW and SideShift returned 4 to 24 USDT less on 0.01 BTC.
+- **Bitcoin confirmations set the pace.** Every native BTC swap waits for Bitcoin blocks, so a 4-second relayer still takes minutes in total.
+- **Private swaps cost more everywhere, but less on L2Pass.** L2Pass Private returned 8.55 USDT more than Houdini Swap in the THORChain app.
+
+## Which one to use
+
+- **BTC to USDT on Tron:** L2Pass RFQ returned the most and accepts BTC from any wallet or exchange.
+- **BTC to USDT on Ethereum:** L2Pass RFQ returned the most of the providers we checked.
+- **USDT to BTC:** Relay returned the most in our test. L2Pass shows Relay's routes where Relay supports the pair.
+- **Private BTC swaps:** L2Pass Private.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What is the best way to swap BTC to USDT on Tron?">
+    In our live quotes on October 19, 2026, L2Pass RFQ returned 815.91 USDT for 0.01 BTC, the highest of all providers we checked.
+  </Accordion>
+
+  <Accordion title="Can I swap BTC to USDT without KYC?">
+    Yes. L2Pass Swap needs no account or KYC for regular use. A provider may request extra checks for a specific transaction.
+  </Accordion>
+
+  <Accordion title="Is THORChain cheaper than L2Pass for BTC?">
+    Not in our checks. Comparing what both web interfaces showed on October 19, 2026, L2Pass returned more than the THORChain app on every pair, for example 817.11 USDT against 814.86 USDT for 0.01 BTC to USDT on Tron. THORChain's raw protocol quote is higher than its app shows, because the app adds its own fee.
+  </Accordion>
+
+  <Accordion title="What is the cheapest private BTC swap?">
+    In the interfaces on October 19, 2026, L2Pass Private returned 813.43 USDT for 0.01 BTC to USDT on Tron, against 804.88 USDT from Houdini Swap in the THORChain app.
+  </Accordion>
+
+  <Accordion title="Is it real BTC or wrapped BTC?">
+    Native BTC on the Bitcoin network, in both directions.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How to swap BTC to USDT](/products/swap/guides/btc-to-usdt)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [Non-custodial swaps vs exchanges](/products/swap/learn/non-custodial-vs-exchanges)
+- [Compare: ZEC swaps](/products/swap/learn/compare-zec-swaps)
+- [Compare: stablecoin transfers](/products/swap/learn/compare-stablecoin-transfers)
+
+*Last updated: October 19, 2026*

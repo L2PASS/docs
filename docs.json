@@ -69,7 +69,12 @@
                       "products/swap/learn/usdt-networks",
                       "products/swap/learn/slippage",
                       "products/swap/learn/is-l2pass-safe",
-                      "products/swap/learn/swap-api"
+                      "products/swap/learn/swap-api",
+                      "products/swap/learn/crypto-payments",
+                      "products/swap/learn/non-custodial-vs-exchanges",
+                      "products/swap/learn/compare-stablecoin-transfers",
+                      "products/swap/learn/compare-btc-swaps",
+                      "products/swap/learn/compare-zec-swaps"
                     ]
                   },
                   {
