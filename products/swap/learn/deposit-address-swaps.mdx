@@ -1,0 +1,89 @@
+---
+title: "Swap from Any Wallet or Exchange: How Deposit-Address Swaps Work"
+description: "With L2Pass Swap you can pay for a cross-chain swap from any wallet or exchange by sending tokens to a one-time deposit address. No wallet connection needed."
+sidebarTitle: "Swap from any wallet or exchange"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) lets you pay for a cross-chain swap without connecting a wallet. On the L2Pass RFQ and L2Pass Private routes, both run on [NEAR Intents](https://near.org/intents), you get a one-time deposit address for your quote and send the tokens there from any wallet or exchange, by address or QR code. The swap starts when the deposit arrives, and the destination tokens go to the receiving address you set. If the swap cannot complete, the deposit is returned to your refund address. The L2Pass fee is 0% on stablecoin swaps, and every fee is already included in the amount shown in the quote.
+
+## Key terms
+
+| Term | Meaning |
+| :-- | :-- |
+| Deposit address | A one-time address on the source chain, created for your quote. Sending the quoted amount there starts the swap. |
+| Receiving address | The address on the destination chain that gets the tokens. |
+| Refund address | A wallet you control on the source chain. If the swap cannot complete, your deposit is returned there. |
+| Wallet route | A route where you sign a transaction in a connected wallet, such as Circle CCTP, USDT0, Relay or LI.FI. |
+
+## Deposit address or wallet transaction
+
+| | Deposit-address routes | Wallet routes |
+| :-- | :-- | :-- |
+| Routes | L2Pass RFQ, L2Pass Private | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX aggregator |
+| Pay from | Connected wallet, any wallet or an exchange | Connected wallet only |
+| What you do | Send one transfer to the deposit address | Sign the transaction (and sometimes a token approval) |
+| If it fails | Deposit returned to the refund address, minus any provider or network fees | Transaction reverts, gas is not refundable |
+| Networks | Includes Bitcoin, Zcash, Tron, Solana and TON | Depends on the route |
+
+## How to swap from an exchange or any wallet
+
+<Steps>
+  <Step title="Request a quote">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose the source token and network you will send from, the destination token and network, the amount and the receiving address.
+  </Step>
+
+  <Step title="Pick L2Pass RFQ or L2Pass Private">
+    These routes take a deposit. Check the expected output, minimum received, estimated time and fees on the route card.
+  </Step>
+
+  <Step title="Set a refund address">
+    Set the refund address to a wallet you control on the source chain. Do not use an exchange deposit address: a refund sent there may not be credited to your account.
+  </Step>
+
+  <Step title="Send the exact amount">
+    Copy the deposit address or scan the QR code, then send the amount shown in the quote on the source network shown in the quote. On an exchange, choose the matching withdrawal network, for example TRC-20 for USDT on Tron.
+  </Step>
+
+  <Step title="Track the swap">
+    Follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Exchange withdrawal fees.** Some exchanges deduct their withdrawal fee from the amount they send. Check that the amount that arrives matches the quote, or withdraw a little more so the deposit matches.
+- **Use the right network.** Send on the source network shown in the quote. Tokens sent on another network cannot be detected by the swap.
+- **One deposit per quote.** The deposit address belongs to your quote. Request a new quote for a new swap.
+- **Gas on the source chain only.** You pay the source network fee when you send. Any network fee on the destination chain is deducted from the amount shown.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Can I swap crypto without connecting a wallet?">
+    Yes. On L2Pass RFQ and L2Pass Private you send tokens to a one-time deposit address from any wallet or exchange, by address or QR code.
+  </Accordion>
+
+  <Accordion title="Can I send USDT from an exchange directly to another network?">
+    Yes, through a deposit-address route. For example, withdraw TRC-20 USDT from the exchange to the deposit address, and USDT arrives on Ethereum, Arbitrum or another network you chose.
+  </Accordion>
+
+  <Accordion title="What if the exchange sends less than the quoted amount?">
+    The quote is for the amount you deposit. Check the amount that arrives in **Recent swaps**. If the swap cannot complete, the deposit is returned to the refund address, minus any provider or network fees.
+  </Accordion>
+
+  <Accordion title="Is a deposit-address swap custodial?">
+    No. L2Pass never holds your tokens or private keys. The deposit is filled by solvers on NEAR Intents, and failed swaps are refunded to your refund address.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [What is L2Pass RFQ by NEAR Intents](/products/swap/learn/what-is-l2pass-rfq)
+- [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds)
+- [Bridge USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

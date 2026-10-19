@@ -1,0 +1,94 @@
+---
+title: "What Is a Private Cross-Chain Swap"
+description: "A private cross-chain swap in L2Pass runs in a confidential environment on NEAR Intents that limits what public blockchains show. What it hides and what not."
+sidebarTitle: "Private cross-chain swaps"
+---
+
+A private cross-chain swap in [L2Pass Swap](https://swap.l2pass.com/) is a swap on the L2Pass Private route, which runs on [NEAR Intents](https://near.org/intents) in a confidential execution environment. It limits what is visible on public blockchains about how your swap is filled. It is not anonymity: your wallet address is still included in requests sent to providers, and the same compliance screening applies as on any other swap. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+
+## Private and standard swaps compared
+
+| | L2Pass Private | L2Pass RFQ |
+| :-- | :-- | :-- |
+| Network | NEAR Intents | NEAR Intents |
+| Execution | Confidential environment | Public |
+| What public blockchains show | Limited | Not limited |
+| Provider sees your wallet address | Yes | Yes |
+| Compliance screening | Yes | Yes |
+| L2Pass fee | Up to 0.3%, any asset | 0% on stablecoins, up to 0.2% on other assets |
+| Payment | One-time deposit address | One-time deposit address |
+| Estimated time | Same as L2Pass RFQ for the pair | About 30 seconds to a few minutes, longer with Bitcoin or Zcash |
+
+In test quotes for 1,000 USDC from Arbitrum to Base on October 19, 2026, L2Pass Private showed 998.20 USDC and L2Pass RFQ 999.80 USDC, both with about 27 seconds. The live quote shows current numbers.
+
+## What a private swap does and does not do
+
+**It does:**
+- Execute the swap in a confidential environment instead of a public one.
+- Limit what public blockchains show about how the swap is filled.
+- Work for stablecoins and other assets, including ZEC, BTC and USDT on Tron.
+
+**It does not:**
+- Make you anonymous. Providers still receive your wallet address.
+- Skip compliance. Swaps are screened under the same AML and sanctions controls.
+- Hide your deposit or your receipt. The transfer to the deposit address and the tokens arriving at your receiving address are normal transactions on their chains.
+
+## How to make a private swap
+
+<Steps>
+  <Step title="Request a quote">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose the source and destination tokens and networks, the amount and the receiving address.
+  </Step>
+
+  <Step title="Select L2Pass Private">
+    Compare it with L2Pass RFQ and the other routes. Private shows the expected output, minimum received, estimated time and fees like any route.
+  </Step>
+
+  <Step title="Set a refund address">
+    Set the refund address to a wallet you control on the source chain. If the swap cannot complete, your deposit is returned there.
+  </Step>
+
+  <Step title="Pay to the deposit address">
+    Send the quoted amount to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code.
+  </Step>
+
+  <Step title="Track the swap">
+    Follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Refunds.** If a swap cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Legal terms.** See the [Terms of Service](https://l2pass.com/terms-of-service) and the [Privacy & AML Principles](https://l2pass.com/privacy-policy).
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Is a private swap anonymous?">
+    No. It limits what public blockchains show, but providers still receive your wallet address and screen the swap like any other.
+  </Accordion>
+
+  <Accordion title="How much does a private swap cost?">
+    The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+  </Accordion>
+
+  <Accordion title="Can I make a private stablecoin swap?">
+    Yes. L2Pass Private works for stablecoins too. The L2Pass fee is then up to 0.3% instead of 0%.
+  </Accordion>
+
+  <Accordion title="Which networks support private swaps?">
+    Any pair that L2Pass Private can fill, which in test quotes included USDT on Tron and Ethereum, USDC on Arbitrum, Base and Ethereum, BTC and ZEC. The quote shows whether L2Pass Private is offered for your pair.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How to make a private ZEC swap](/products/swap/guides/private-swaps-with-zec)
+- [What is L2Pass RFQ by NEAR Intents](/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [Private swaps in the Swap overview](/products/swap/overview#private-swaps)
+
+*Last updated: October 19, 2026*

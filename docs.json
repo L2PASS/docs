@@ -58,13 +58,36 @@
                   "products/swap/overview",
                   "products/swap/faq",
                   {
+                    "group": "Learn",
+                    "pages": [
+                      "products/swap/learn/fees",
+                      "products/swap/learn/what-is-l2pass-rfq",
+                      "products/swap/learn/compare-routes",
+                      "products/swap/learn/deposit-address-swaps",
+                      "products/swap/learn/failed-swaps-and-refunds",
+                      "products/swap/learn/private-cross-chain-swaps",
+                      "products/swap/learn/usdt-networks",
+                      "products/swap/learn/slippage",
+                      "products/swap/learn/is-l2pass-safe",
+                      "products/swap/learn/swap-api"
+                    ]
+                  },
+                  {
                     "group": "Guides",
                     "pages": [
                       "products/swap/guides/usdt-tron-to-ethereum",
+                      "products/swap/guides/usdt-ethereum-to-tron",
                       "products/swap/guides/usdt-tron-to-arbitrum",
+                      "products/swap/guides/usdt-ethereum-to-arbitrum",
                       "products/swap/guides/usdt-tron-to-bnb-chain",
                       "products/swap/guides/usdt-tron-to-solana",
                       "products/swap/guides/usdt-tron-to-ton",
+                      "products/swap/guides/usdc-cctp",
+                      "products/swap/guides/usdc-to-solana",
+                      "products/swap/guides/usdt-to-plasma",
+                      "products/swap/guides/usdc-to-hyperevm",
+                      "products/swap/guides/btc-to-usdt",
+                      "products/swap/guides/eth-to-usdc",
                       "products/swap/guides/private-swaps-with-zec"
                     ]
                   }

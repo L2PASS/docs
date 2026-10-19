@@ -1,0 +1,100 @@
+---
+title: "L2Pass Swap Fees Explained"
+description: "L2Pass Swap fees: 0% L2Pass fee on stablecoin swaps, up to 0.2% on other assets, up to 0.3% on private swaps. Examples from live quotes."
+sidebarTitle: "Fees explained"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) charges a 0% L2Pass fee on stablecoin swaps on any route, up to 0.2% on other assets and up to 0.3% on private swaps. The private fee is instead of 0% or 0.2%, not in addition. Routing partners and blockchains charge their own fees, and the amount you will receive, shown in the quote before you confirm, already includes all of them.
+
+## L2Pass fee
+
+| Swap | L2Pass fee |
+| :-- | :-- |
+| Stablecoin swaps (USDT, USDC and others), any route | **0%** |
+| Other assets (ETH, BTC, SOL, ZEC and others) | **up to 0.2%** |
+| Private swaps, any asset | **up to 0.3%** (instead of 0% or 0.2%, not in addition) |
+
+## Every fee you can see in a quote
+
+| Fee | Who charges it | How you pay it |
+| :-- | :-- | :-- |
+| L2Pass fee | L2Pass | Included in the amount you will receive |
+| Provider fee | The routing partner, such as NEAR Intents, LI.FI or Relay | Included in the amount you will receive |
+| Destination network fee | The destination blockchain | Included in the amount you will receive |
+| Bridge message fee | Some bridges, such as USDT0 over LayerZero | Paid in the source chain's native token, shown on the route card |
+| Source gas | The source blockchain | Paid from your wallet in the native token (ETH, TRX, BNB and so on), shown on the route card |
+
+L2Pass does not control partner or network fees. Check each provider for its latest details. The route card always shows the actual fees for your swap.
+
+## Examples from live quotes
+
+Test quotes on October 19, 2026 (about 16:55 UTC) showed these fees. The live quote shows current numbers for your pair and amount.
+
+| Swap | Route | L2Pass fee | Other fees | You receive |
+| :-- | :-- | :-- | :-- | :-- |
+| 1,000 USDC, Arbitrum to Base | L2Pass RFQ | 0 | 0.1 USDC NEAR Intents fee, 0.0024 USDC network fee | 999.80 USDC |
+| 1,000 USDC, Arbitrum to Base | L2Pass Private | 3 USDC (0.3%) | NEAR Intents fee, 0.0024 USDC network fee | 998.20 USDC |
+| 1,000 USDC, Arbitrum to Base | USDC bridge (CCTP Fast) | 0 | 0.19 USDC network fee | 999.81 USDC |
+| 1,000 USDT, Ethereum to Tron | USDT native bridge (USDT0) | 0 | LayerZero message fee of about 0.005 ETH (about 11.92 USD), paid in ETH | 999.7 USDT |
+| 0.5 ETH on Ethereum to USDC on Arbitrum | L2Pass RFQ | 0 | 0.001 ETH NEAR Intents fee, 0.0053 USDC network fee | 1,197.00 USDC |
+| 0.5 ETH on Ethereum to USDC on Arbitrum | Relay | 0.1% (about 1.20 USD) | Relay fee of about 1.34 USD | 1,195.67 USDC |
+
+The amount received also reflects the price each provider quotes, so the listed fees do not always add up to the full difference.
+
+Two things to notice:
+
+- **A different route can win on a different pair.** In the ETH example, L2Pass RFQ gave the most even though it is not the cheapest route on every pair.
+- **Look at fees paid outside the amount.** USDT0 showed the highest amount received from Ethereum to Tron, but its message fee is paid separately in ETH. L2Pass sorts routes by the net value you receive after gas, so it listed L2Pass RFQ first.
+
+## How to see the fees for your swap
+
+<Steps>
+  <Step title="Request a quote">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose the source and destination tokens and networks, and enter the amount.
+  </Step>
+
+  <Step title="Open the route card">
+    Each route card shows the expected output, the minimum received, the estimated time and a breakdown of the fees for that route.
+  </Step>
+
+  <Step title="Compare and confirm">
+    Pick the route that suits you. The amount shown is what you will receive after the L2Pass, provider and destination network fees.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Gas is not refundable.** If an on-chain route reverts, no tokens are exchanged, but the source gas is spent.
+- **Refunds and fees.** If a deposit-address route cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted.
+- **Slippage is not a fee.** The default slippage tolerance is 0.05% and can be changed on any route card. It sets the minimum received, and fixed-output routes are not affected by it.
+- **Sending from an exchange.** Some exchanges deduct their withdrawal fee from the amount they send. Check that the amount that arrives matches the quote.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Is L2Pass Swap free for stablecoins?">
+    The L2Pass fee on stablecoin swaps is 0% on any route. Routing partners and blockchains still charge their own fees, which are included in the amount shown in the quote.
+  </Accordion>
+
+  <Accordion title="Is the private swap fee added to the standard fee?">
+    No. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+  </Accordion>
+
+  <Accordion title="Are there fees I cannot see before I confirm?">
+    The route card shows the fees for your swap before you confirm, and the amount you will receive already includes the L2Pass, provider and destination network fees. Source gas and any bridge message fee are shown on the route card too.
+  </Accordion>
+
+  <Accordion title="Why do two routes show different amounts for the same swap?">
+    Each route has its own provider and network fees, speed and liquidity. Compare the route cards and pick the one that suits you. See [How L2Pass compares routes](/products/swap/learn/compare-routes).
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [What is L2Pass RFQ by NEAR Intents](/products/swap/learn/what-is-l2pass-rfq)
+- [Fee structure in the Swap overview](/products/swap/overview#fee-structure)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

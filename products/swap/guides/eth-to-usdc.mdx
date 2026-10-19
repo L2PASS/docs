@@ -1,0 +1,115 @@
+---
+title: "How to Swap ETH to USDC or USDT Across Chains"
+description: "Swap ETH to USDC or USDT on another chain in one step with L2Pass Swap: Ethereum to Base, Base to Arbitrum, Arbitrum to Tron. Fees shown in the quote."
+sidebarTitle: "ETH to USDC or USDT"
+---
+
+You can swap ETH to USDC or USDT on another chain in one step with [L2Pass Swap](https://swap.l2pass.com/), for example ETH on Ethereum to USDC on Base, or ETH on Arbitrum to USDT on Tron. In test quotes on October 19, 2026, L2Pass RFQ, Relay, LI.FI and L2Pass Private were offered between EVM chains, with estimated times from about 1 second to under a minute, and L2Pass RFQ and Private were offered to Tron. The L2Pass fee on ETH swaps is up to 0.2% (up to 0.3% on private swaps), and every fee is already included in the amount shown in the quote.
+
+## Routes for ETH to stablecoins
+
+| Route | Estimated time | Output | Payment | L2Pass fee in test quotes |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | About 34 to 80 seconds | Variable, with a minimum received | One-time deposit address | 0% |
+| Relay | About 1 to 2 seconds | Variable | Wallet transaction | 0.1% |
+| LI.FI | About 6 to 26 seconds | Variable | Wallet transaction | 0.1% |
+| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | One-time deposit address | 0.3% |
+
+L2Pass RFQ and L2Pass Private run on [NEAR Intents](https://near.org/intents). On L2Pass RFQ, the NEAR Intents provider fee was 0.2% on these pairs.
+
+## Test quotes on October 19, 2026
+
+Quotes for 1 ETH at about 17:50 UTC, when ETH was about 2,400 USD. The live quote shows current numbers.
+
+<Tabs>
+<Tab title="Ethereum to USDC on Base">
+
+| Route | You receive | Estimated time |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,387.76 USDC | About 49 seconds |
+| Relay | 2,386.58 USDC | About 2 seconds |
+| LI.FI | 2,384.78 USDC | About 26 seconds |
+| L2Pass Private | 2,379.58 USDC | About 49 seconds |
+
+</Tab>
+<Tab title="Base to USDC on Arbitrum">
+
+| Route | You receive | Estimated time |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,387.26 USDC | About 34 seconds |
+| Relay | 2,387.26 USDC | About 1 second |
+| LI.FI | 2,384.45 USDC | About 6 seconds |
+| L2Pass Private | 2,379.69 USDC | About 34 seconds |
+
+</Tab>
+<Tab title="Arbitrum to USDT on Tron">
+
+| Route | You receive | Estimated time |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,388.75 USDT | About 80 seconds |
+| L2Pass Private | 2,378.24 USDT | About 80 seconds |
+
+</Tab>
+</Tabs>
+
+## How to swap ETH to USDC on another chain
+
+<Steps>
+  <Step title="Open L2Pass Swap">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose ETH on the network you hold it on as the source and USDC or USDT on the destination network, then enter the amount and set the receiving address.
+  </Step>
+
+  <Step title="Compare the routes">
+    Each route card shows the expected output, minimum received, estimated time and fees. ETH prices move, so check the minimum received. Default slippage is 0.05% (editable).
+  </Step>
+
+  <Step title="Set a refund address">
+    For L2Pass RFQ and L2Pass Private, set the refund address to a wallet you control on the source chain. If the swap cannot complete, your ETH is returned there.
+  </Step>
+
+  <Step title="Pay by wallet or deposit address">
+    On Relay and LI.FI, sign the transaction in your wallet. On L2Pass RFQ and L2Pass Private, send ETH to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code.
+  </Step>
+
+  <Step title="Track the swap">
+    For L2Pass RFQ and L2Pass Private, follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Keep some ETH for gas.** You pay source gas in ETH, so do not swap your whole balance on a wallet route. On a deposit-address route, the network fee for your transfer comes out of your wallet too.
+- **Price moves.** ETH is volatile. The minimum received protects you: if the price moves beyond your slippage tolerance, the swap does not execute.
+- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Can I swap ETH to USDC and bridge it in one step?">
+    Yes. Choose ETH on the source network and USDC on the destination network. The route swaps and moves it in one swap.
+  </Accordion>
+
+  <Accordion title="How much does it cost to swap ETH to USDC across chains?">
+    The L2Pass fee on ETH swaps is up to 0.2% (up to 0.3% on private swaps). In test quotes on October 19, 2026, it was 0% on L2Pass RFQ and 0.1% on Relay and LI.FI. Providers and networks charge their own fees, and the amount shown already includes them.
+  </Accordion>
+
+  <Accordion title="Can I swap ETH on Arbitrum to USDT on Tron?">
+    Yes. In test quotes on October 19, 2026, L2Pass RFQ delivered 2,388.75 USDT on Tron for 1 ETH on Arbitrum, in about 80 seconds.
+  </Accordion>
+
+  <Accordion title="Which route is fastest?">
+    Relay showed about 1 to 2 seconds between EVM chains in test quotes. L2Pass RFQ took about 34 to 49 seconds but delivered as much or more. Compare the route cards for your amount.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [Slippage and minimum received](/products/swap/learn/slippage)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

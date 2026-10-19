@@ -1,0 +1,102 @@
+---
+title: "How to Bridge USDT from Ethereum to Arbitrum (USDT0)"
+description: "Bridge USDT from Ethereum to Arbitrum, where it arrives as USDT0, with L2Pass Swap. Six routes compared side by side. 0% L2Pass fee on stablecoin swaps."
+sidebarTitle: "USDT: Ethereum to Arbitrum"
+---
+
+You can bridge USDT from Ethereum to Arbitrum with [L2Pass Swap](https://swap.l2pass.com/). On Arbitrum, USDT arrives as USDT0, the omnichain version of USDT. In test quotes on October 19, 2026, six routes were offered for this pair: the native USDT0 bridge, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private and LI.FI, with estimated times from about 1 second to 1.5 minutes. The top routes delivered within 0.3 USDT of each other for 1,000 USDT. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and every fee is already included in the amount you will receive, shown in the quote before you confirm.
+
+## Routes for USDT from Ethereum to Arbitrum
+
+Test quotes for 1,000 USDT at about 17:51 UTC on October 19, 2026. The live quote shows current numbers.
+
+<Tabs>
+<Tab title="Ethereum to Arbitrum">
+
+| Route | You receive | Estimated time | Payment |
+| :-- | :-- | :-- | :-- |
+| USDT native bridge (USDT0) | 1,000.00 USDT0 | About 1.5 minutes | Wallet transaction, plus a LayerZero message fee of about 0.04 USD in ETH |
+| L2Pass RFQ | 999.79 USDT0 | About 44 seconds | One-time deposit address |
+| LI.FI Intents | 999.75 USDT0 | Not shown | Wallet transaction |
+| Relay | 999.68 USDT0 | About 1 second | Wallet transaction |
+| L2Pass Private | 998.19 USDT0 | About 44 seconds | One-time deposit address |
+| LI.FI | 997.39 USDT0 | About 2 seconds | Wallet transaction |
+
+</Tab>
+<Tab title="Arbitrum to Ethereum">
+
+| Route | You receive | Estimated time | Payment |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.75 USDT | Not shown | Wallet transaction |
+| USDT native bridge (USDT0) | 1,000.00 USDT | About 1.5 minutes | Wallet transaction, plus a LayerZero message fee of about 0.25 USD in ETH |
+| Relay | 999.63 USDT | About 4 seconds | Wallet transaction |
+| L2Pass RFQ | 999.51 USDT | About 32 seconds | One-time deposit address |
+| L2Pass Private | 997.90 USDT | About 32 seconds | One-time deposit address |
+| LI.FI | 997.33 USDT | About 9 seconds | Wallet transaction |
+
+</Tab>
+</Tabs>
+
+After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ were almost tied from Ethereum, and LI.FI Intents and USDT0 were almost tied from Arbitrum. The app sorts routes by net value after gas.
+
+## How to bridge USDT from Ethereum to Arbitrum
+
+<Steps>
+  <Step title="Open L2Pass Swap">
+    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Ethereum as the source and USDT0 on Arbitrum as the destination, then enter the amount and set the Arbitrum address that will receive the USDT0.
+  </Step>
+
+  <Step title="Compare the routes">
+    Each route card shows the expected output, minimum received, estimated time and fees. If speed matters, Relay settled in about 1 second in test quotes; if the amount matters most, compare USDT0 and L2Pass RFQ.
+  </Step>
+
+  <Step title="Set a refund address">
+    For L2Pass RFQ and L2Pass Private, set the refund address to an Ethereum wallet you control. If the swap cannot complete, your deposit is returned there.
+  </Step>
+
+  <Step title="Pay by wallet or deposit address">
+    On USDT0, Relay and LI.FI, sign the transaction in your Ethereum wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange.
+  </Step>
+
+  <Step title="Track the swap">
+    For L2Pass RFQ and L2Pass Private, follow the status in **Recent swaps**. A USDT0 transfer is a LayerZero message, so you can follow it on [LayerZero Scan](https://layerzeroscan.com/) with your Ethereum transaction hash.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Gas on Ethereum only.** You pay gas in ETH on Ethereum. The Arbitrum network fee is deducted from the amount shown, so you do not need ETH on Arbitrum to receive.
+- **USDT0 on Arbitrum.** The USDT that L2Pass Swap delivers on Arbitrum is USDT0.
+- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How long does it take to bridge USDT from Ethereum to Arbitrum?">
+    From about 1 second on Relay to about 1.5 minutes on the native USDT0 bridge, in test quotes on October 19, 2026. Route cards show the current estimate.
+  </Accordion>
+
+  <Accordion title="How much does it cost to bridge USDT from Ethereum to Arbitrum?">
+    There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps). In test quotes for 1,000 USDT, the native USDT0 bridge delivered 1,000 USDT0 plus a message fee of about 0.04 USD, and L2Pass RFQ delivered 999.79 USDT0. You also pay Ethereum gas.
+  </Accordion>
+
+  <Accordion title="Is USDT0 on Arbitrum the same as USDT?">
+    USDT0 is the omnichain version of USDT, moved between chains over LayerZero. On Arbitrum, it is the USDT that L2Pass Swap delivers.
+  </Accordion>
+
+  <Accordion title="Can I bridge back from Arbitrum to Ethereum?">
+    Yes. The same routes were offered in the other direction in test quotes, see the second tab above.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Bridge USDT from Tron to Arbitrum](/products/swap/guides/usdt-tron-to-arbitrum)
+- [USDT networks explained](/products/swap/learn/usdt-networks)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

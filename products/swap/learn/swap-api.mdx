@@ -1,0 +1,84 @@
+---
+title: "L2Pass Swap API for Wallets and Apps"
+description: "Add cross-chain stablecoin swaps to your wallet or app with the L2Pass SwapKit API: estimate, quote with deposit address, status and webhooks. Partner API key."
+sidebarTitle: "Swap API"
+---
+
+The L2Pass SwapKit API lets wallets, apps and AI agents add cross-chain swaps to their own product. It works the same way as L2Pass RFQ by NEAR Intents: you request a quote, get a one-time deposit address, and the user pays from any wallet or exchange. The API returns the platform fee, your partner fee and the net output for each quote, and it notifies you of status changes by signed webhooks. Access needs a partner API key, issued at onboarding. Reference docs are at [api.l2pass.com/docs](https://api.l2pass.com/docs).
+
+## What you can build
+
+- **Wallets:** cross-chain stablecoin swaps inside your wallet, including Tron, Solana, Bitcoin and Zcash.
+- **Payment apps:** accept USDT on one network and settle on another.
+- **Exchanges and merchants:** deposit-address flows that work from any wallet or exchange.
+- **AI agents:** quote and execute swaps through a simple REST API.
+
+## Endpoints
+
+| Endpoint | What it does |
+| :-- | :-- |
+| `GET /v1/assets` | Lists supported assets and networks |
+| `POST /v1/swap/estimate` | Returns an estimate without a deposit address |
+| `POST /v1/swap/quote` | Returns a binding quote with a one-time deposit address |
+| `GET /v1/swap/status/{quoteId}` | Returns the status: PENDING, COMPLETED, FAILED or REFUNDED |
+| `GET /v1/partner/me` | Returns your partner profile and limits |
+| `GET /v1/partner/transactions` | Lists your swaps |
+| `GET /v1/partner/analytics` | Returns usage analytics |
+
+Base URL: `https://api.l2pass.com`. Send your key in the `X-API-Key` header. The full OpenAPI specification is in the [API reference](https://api.l2pass.com/docs).
+
+## How a swap works through the API
+
+<Steps>
+  <Step title="Get an estimate">
+    Call `POST /v1/swap/estimate` with the source and destination assets and the amount to show the user what they will receive.
+  </Step>
+
+  <Step title="Request a quote">
+    Call `POST /v1/swap/quote` with the receiving and refund addresses. The response includes a one-time deposit address and the fee breakdown: `platform_fee`, `partner_fee`, `total_fee` and `net_output`.
+  </Step>
+
+  <Step title="Let the user pay">
+    The user sends the quoted amount to the deposit address from any wallet or exchange.
+  </Step>
+
+  <Step title="Track the status">
+    Poll `GET /v1/swap/status/{quoteId}` or receive webhooks signed with HMAC-SHA256 in the `X-Webhook-Signature` header.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **Partner fee.** You can add your own fee, returned as `partner_fee_bps` and `partner_fee` in each quote.
+- **Rate limits.** Limits are set per partner for quotes and for status requests. Over the limit, the API returns 429 with a `Retry-After` header.
+- **Key rotation.** Rotate your key with `POST /v1/partner/rotate-key`.
+- **Refunds and failures.** A swap that cannot complete is refunded to the refund address, and its status becomes REFUNDED.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How do I get an API key?">
+    API keys are issued at partner onboarding. Contact [L2Pass support](/resources/support) to request access.
+  </Accordion>
+
+  <Accordion title="Does the API hold user funds?">
+    No. Users pay to a one-time deposit address for their quote, and the swap is filled by solvers on NEAR Intents. L2Pass never holds user tokens or private keys.
+  </Accordion>
+
+  <Accordion title="Can I earn a fee on swaps?">
+    Yes. Set a partner fee, and each quote returns it as `partner_fee_bps` and `partner_fee` next to the platform fee.
+  </Accordion>
+
+  <Accordion title="Is there an SDK?">
+    Yes, `@l2pass/swapkit-sdk` on npm. See the [API reference](https://api.l2pass.com/docs) for details.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [API reference](https://api.l2pass.com/docs)
+- [What is L2Pass RFQ by NEAR Intents](/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [Contact support](/resources/support)
+
+*Last updated: October 19, 2026*

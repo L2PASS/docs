@@ -1,0 +1,97 @@
+---
+title: "What Is L2Pass RFQ by NEAR Intents"
+description: "L2Pass RFQ by NEAR Intents lets solvers and market makers compete to fill your cross-chain swap. How it works, what it costs and what happens if it fails."
+sidebarTitle: "L2Pass RFQ by NEAR Intents"
+---
+
+L2Pass RFQ by NEAR Intents is a cross-chain swap route in [L2Pass Swap](https://swap.l2pass.com/) where solvers and market makers compete to fill your swap. You state what you want to receive, they quote a price, and the winning quote is shown to you before you pay. You pay by sending tokens to a one-time deposit address, from a connected wallet, any wallet or an exchange. The L2Pass fee is 0% on stablecoin swaps and up to 0.2% on other assets, and every fee is already included in the amount shown in the quote.
+
+## Key terms
+
+| Term | Meaning |
+| :-- | :-- |
+| RFQ (request for quote) | A way of trading where professional market makers quote a price for your exact swap, instead of you trading against a pool. |
+| Intent | A signed statement of the result you want, such as "1,000 USDT on Tron in, USDT on Ethereum out". It says what, not how. |
+| Solver | A market maker or bot that competes to fill intents, using its own inventory and routes. |
+| [NEAR Intents](https://near.org/intents) | The network L2Pass RFQ runs on. It collects intents, lets solvers compete and settles the result. |
+| Deposit address | A one-time address created for your quote. Sending the quoted amount there starts the swap. |
+| Refund address | A wallet you control on the source chain. If the swap cannot complete, your deposit is returned there. |
+
+## How an RFQ swap works
+
+<Steps>
+  <Step title="You request a quote">
+    On [swap.l2pass.com](https://swap.l2pass.com/) you choose the source token and network, the destination token and network, the amount and the receiving address. L2Pass asks all of its routing venues at once, and L2Pass RFQ is one of them.
+  </Step>
+
+  <Step title="Solvers compete">
+    Solvers on NEAR Intents quote what they can deliver. The route card shows the expected output, the minimum received, the estimated time and the fees.
+  </Step>
+
+  <Step title="You set a refund address and pay">
+    You set a refund address on the source chain, then send the quoted amount to the one-time deposit address by wallet, address or QR code.
+  </Step>
+
+  <Step title="The swap settles">
+    The winning solver delivers the destination tokens to your receiving address. You can follow the status in **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, then *Complete*.
+  </Step>
+</Steps>
+
+## L2Pass RFQ compared with L2Pass Private
+
+Both routes use the same NEAR Intents solver network and the same deposit-address flow.
+
+| | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| Execution | Public | Confidential environment that limits what is visible on public blockchains |
+| L2Pass fee | 0% on stablecoins, up to 0.2% on other assets | Up to 0.3% (instead of 0% or 0.2%, not in addition) |
+| Payment | One-time deposit address | One-time deposit address |
+| Refund address | Required | Required |
+
+A private swap is not anonymity: your wallet address is still shared with providers, and compliance screening still applies. See [What is a private swap](/products/swap/overview#private-swaps).
+
+## Why use an RFQ route
+
+- **One payment from anywhere.** You can pay from any wallet or exchange, without connecting a wallet or signing a contract call on the source chain.
+- **Many networks.** One route can connect chains that have no direct bridge between them, such as Tron, Bitcoin, Zcash, Solana and TON.
+- **Price shown up front.** The amount you will receive already includes all fees and is shown before you pay.
+
+L2Pass also shows other routes next to RFQ, such as Circle CCTP, USDT0, LI.FI and Relay. Which one gives the most depends on the pair and the amount, so compare the route cards. See [How L2Pass compares routes](/products/swap/learn/compare-routes).
+
+## Things to know
+
+- **Minimum amount.** RFQ routes can have a minimum swap amount. If your amount is below it, the route is listed as unavailable with the minimum shown.
+- **Timing.** RFQ swaps typically take from about 30 seconds to a few minutes, longer for networks with slow block confirmation such as Bitcoin or Zcash.
+- **No partial fills.** A swap completes in full or does not execute.
+- **Refunds.** If a swap cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Sending from an exchange.** Check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Is L2Pass RFQ non-custodial?">
+    Yes. L2Pass never holds your tokens or private keys. You send tokens to a deposit address for your quote, and the swap is filled by solvers on NEAR Intents.
+  </Accordion>
+
+  <Accordion title="What does L2Pass RFQ cost?">
+    The L2Pass fee is 0% on stablecoin swaps and up to 0.2% on other assets. NEAR Intents and the networks charge their own fees. The amount shown in the quote already includes all of them.
+  </Accordion>
+
+  <Accordion title="Do I need to connect a wallet?">
+    No. You can pay by sending tokens to the deposit address from any wallet or exchange, using the address or QR code. You can also pay from a connected wallet.
+  </Accordion>
+
+  <Accordion title="What happens if no solver fills my swap?">
+    The swap does not execute, and your deposit is returned to the refund address, minus any provider or network fees.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [How L2Pass compares routes](/products/swap/learn/compare-routes)
+- [USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*
