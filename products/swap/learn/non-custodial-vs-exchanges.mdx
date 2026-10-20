@@ -1,0 +1,79 @@
+---
+title: "Non-Custodial Swaps vs Centralized Exchanges: Accounts, KYC and Control of Funds"
+description: "How a non-custodial swap like L2Pass differs from a centralized exchange: no account, no KYC for regular use, and you keep control of your funds."
+sidebarTitle: "Non-custodial vs exchanges"
+---
+
+A centralized exchange holds your funds in your account. To trade or withdraw, you usually need to verify your identity (KYC), and the exchange can pause a withdrawal or freeze an account while it reviews it, for example by asking for the source of funds. [L2Pass Swap](https://swap.l2pass.com/) works differently: it is non-custodial, needs no account and no KYC for regular use, and your tokens stay in your own wallet until you send them into a swap. Providers still run AML and sanctions screening on each swap, so a swap flagged as high risk can be held or refunded.
+
+## Side by side
+
+| | L2Pass Swap (non-custodial) | Centralized exchange |
+| :-- | :-- | :-- |
+| Account | Not needed | Required |
+| Identity verification (KYC) | Not needed for regular use; a provider may request extra checks for a specific transaction | Usually required to trade or withdraw |
+| Who holds your funds | You, in your own wallet | The exchange, in your account |
+| Who holds the keys | Only you | The exchange |
+| Cross-chain transfer | One swap, from one network to another | Deposit, trade if needed, then withdraw on the new network |
+| Fees shown | Every fee and the amount you will receive, before you confirm | Trading fee, spread and withdrawal fee, each on its own screen |
+| If a transaction is flagged | The provider decides to complete, refund or hold that swap | The exchange can hold the withdrawal or restrict the account |
+| Fiat on and off ramp | No | Usually yes |
+
+## Instant exchanges sit in between
+
+Instant exchanges such as FixedFloat, ChangeNOW or StealthEX need no account, but they take custody of your deposit until they send the swap. [Trocador](https://trocador.app), which compares them, rates each one by its terms, privacy policy and what it does when a user refuses verification, and notes that any exchange can still pause a swap and ask for KYC or AML checks. In our live quotes on October 19, 2026, they also returned less than L2Pass RFQ on most pairs. See [Compare: stablecoin transfers](/products/swap/learn/compare-stablecoin-transfers), [BTC swaps](/products/swap/learn/compare-btc-swaps) and [ZEC swaps](/products/swap/learn/compare-zec-swaps).
+
+## When each one fits
+
+**A non-custodial swap fits when you:**
+- Already hold crypto and want to move it to another network or token.
+- Want to keep custody of your funds between swaps.
+- Do not want to open or verify an account for a one-off transfer.
+
+**A centralized exchange fits when you:**
+- Need to buy or sell crypto for fiat money.
+- Want an order book or trading tools.
+- Are fine with keeping funds on the exchange.
+
+You can also combine them: withdraw from an exchange straight to the one-time deposit address of an L2Pass quote, and the tokens arrive on the network you chose. See [Swap from any wallet or exchange](/products/swap/learn/deposit-address-swaps).
+
+## What non-custodial does not mean
+
+- **Not anonymous.** Swaps are public blockchain transactions, and providers receive your wallet address.
+- **Not unscreened.** Providers run risk-based AML and sanctions checks. If a swap is flagged as high risk, the provider decides whether to complete, refund or hold it, and a refund is not guaranteed. L2Pass cannot override that decision.
+- **Not a place to store funds.** L2Pass does not keep a balance for you. Your funds stay in your wallet.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Do I need KYC to use L2Pass Swap?">
+    No account or KYC is needed for regular use. A provider may request extra checks for a specific transaction.
+  </Accordion>
+
+  <Accordion title="Can L2Pass freeze my funds?">
+    L2Pass never holds your funds, so it has no balance to freeze. A routing provider can hold a specific swap it flags as high risk under AML or sanctions rules, and decides whether to complete, refund or hold it.
+  </Accordion>
+
+  <Accordion title="Is L2Pass a DEX?">
+    L2Pass Swap is a non-custodial interface that compares routes from decentralized protocols and solver networks, such as NEAR Intents, Circle CCTP, USDT0, LI.FI and Relay. It does not run an order book or hold user funds.
+  </Accordion>
+
+  <Accordion title="Can I move crypto off an exchange without another KYC check?">
+    Withdraw from your exchange straight to the one-time deposit address of an L2Pass quote. L2Pass needs no account or KYC for regular use, and the tokens arrive on the network you chose. Your exchange's own rules still apply to the withdrawal.
+  </Accordion>
+
+  <Accordion title="Why do exchanges ask for proof of funds?">
+    Exchanges are custodians and must follow the rules where they are licensed, which can include checking where deposits come from. Ask your exchange for its exact requirements.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Is L2Pass safe?](/products/swap/learn/is-l2pass-safe)
+- [Swap from any wallet or exchange](/products/swap/learn/deposit-address-swaps)
+- [Privacy & AML Principles](https://l2pass.com/privacy-policy)
+- [Pay anyone in crypto on the network they prefer](/products/swap/learn/crypto-payments)
+- [L2Pass Swap FAQ](/products/swap/faq)
+
+*Last updated: October 19, 2026*

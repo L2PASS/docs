@@ -1,0 +1,144 @@
+---
+title: "Best Way to Bridge USDT and USDC: L2Pass vs deBridge, Relay, LI.FI and More"
+description: "Live quotes compared: 1,000 USDT from Tron to Ethereum and 1,000 USDC from Arbitrum to Base on L2Pass, deBridge, Relay, LI.FI, THORChain and others."
+sidebarTitle: "Compare: stablecoin transfers"
+---
+
+We requested live quotes for the same two stablecoin transfers from [L2Pass Swap](https://swap.l2pass.com/) and from other bridges and exchange services, on October 19, 2026, with the same amounts for every provider. For 1,000 USDT from Tron to Ethereum, L2Pass RFQ by NEAR Intents returned 999.55 USDT, more than deBridge, Relay, THORChain, LI.FI, ChangeNOW and SideShift. For 1,000 USDC from Arbitrum to Base, L2Pass showed eight routes, and its best one (Circle CCTP, 999.95 USDC) matched or beat every other provider. The L2Pass fee is 0% on stablecoin swaps on every route.
+
+## Results at a glance
+
+| Transfer | Most received | L2Pass result | Best instant exchange |
+| :-- | :-- | :-- | :-- |
+| 1,000 USDT, Tron to Ethereum | L2Pass RFQ, 999.55 USDT (after USDT0's extra message fee) | 999.55 USDT, 0% L2Pass fee | 994.65 USDT (FixedFloat) |
+| 1,000 USDC, Arbitrum to Base | Circle CCTP through L2Pass, 999.95 USDC | 999.95 USDC, eight routes in one quote | 987.50 USDC (ChangeNOW, standard) |
+
+## How we compared
+
+- **When:** October 19, 2026, from 18:21 UTC. Times are noted for each table.
+- **How:** the same quote requests that each provider's own web interface makes, with the same amounts. No swaps were executed.
+- **What we compare:** the amount you receive, which already includes each provider's fees and the destination network fee. Gas you pay on the source chain is listed separately.
+
+<Note>
+Snapshots from October 19, 2026. Quotes change every few seconds, so open [L2Pass Swap](https://swap.l2pass.com/) for current numbers.
+</Note>
+
+## Live quotes
+
+<Tabs>
+<Tab title="USDT: Tron to Ethereum">
+
+Quotes at 18:21 UTC.
+
+| Provider | You receive | Estimated time | Fees shown |
+| :-- | :-- | :-- | :-- |
+| L2Pass, USDT native bridge (USDT0) | 999.70 USDT | About 1.5 minutes | Plus a LayerZero message fee of 5.21 TRX (about 1.73 USD) and Tron energy |
+| **L2Pass RFQ** | **999.55 USDT** | About 1.5 minutes | 0% L2Pass fee, 0.01% NEAR Intents fee, 0.3 USDT Ethereum network fee |
+| Relay | 998.86 USDT | About 4 seconds | 1.14 USDT relayer fee, plus about 6.1 TRX gas |
+| THORChain protocol quote | 998.55 USDT | About 1 minute | 0.66 USDT, before the THORChain app's fee |
+| deBridge | 998.12 USDT | About 15 seconds | 4 TRX fixed fee, plus 4.35 USDT in protocol, taker and operating fees |
+| L2Pass Private | 997.00 USDT | About 1.5 minutes | 0.3% L2Pass fee |
+| LI.FI (via LayerSwap) | 996.66 USDT | About 30 seconds | 2.50 USD LI.FI fee, 0.84 USD LayerSwap fee |
+| ChangeNOW, standard | 988.14 USDT | 10 to 60 minutes | 4.8 USDT deposit fee |
+| ChangeNOW, fixed rate | 987.13 USDT | Not shown | 4.8 USDT deposit fee |
+| SideShift | 978.64 USDT | Not shown | Included in the rate |
+
+MAYAChain does not support Tron.
+
+USDT0 delivers the most USDT, but you pay the LayerZero message fee and more Tron energy on top. With that included, L2Pass RFQ costs the least.
+
+</Tab>
+<Tab title="USDC: Arbitrum to Base">
+
+Quotes at 18:21 UTC.
+
+| Provider | You receive | Estimated time | Fees shown |
+| :-- | :-- | :-- | :-- |
+| **L2Pass, USDC native bridge (CCTP), Standard** | **999.95 USDC** | About 19.5 minutes | 0.05 USDC |
+| L2Pass, LI.FI Intents | 999.95 USDC | Not shown | Gas about 0.01 USD |
+| L2Pass, Relay | 999.88 USDC | About 2 seconds | Included in the amount |
+| Relay (direct) | 999.88 USDC | About 2 seconds | 0.12 USDC relayer fee |
+| L2Pass, USDC native bridge (CCTP), Fast | 999.81 USDC | About 40 seconds | 0.19 USDC |
+| L2Pass RFQ | 999.80 USDC | About 30 seconds | 0% L2Pass fee, 0.1 USDC NEAR Intents fee |
+| L2Pass, Aori | 999.29 USDC | About 3 seconds | Included in the amount |
+| deBridge | 999.20 USDC | About 2 seconds | 0.001 ETH fixed fee (about 2.40 USD) on top, plus 1.10 USDC |
+| L2Pass Private | 998.20 USDC | About 30 seconds | 0.3% L2Pass fee |
+| LI.FI (direct, and in L2Pass) | 997.50 USDC | About 18 minutes | 2.50 USD LI.FI fee |
+| ChangeNOW, standard | 987.50 USDC | 10 to 60 minutes | 0.8 USDC deposit fee |
+| SideShift | 981.00 USDC | Not shown | Included in the rate |
+| ChangeNOW, fixed rate | 964.37 USDC | Not shown | 0.8 USDC deposit fee |
+
+THORChain has no Arbitrum pool, and MAYAChain does not support Base.
+
+Relay through L2Pass returned the same amount as Relay directly: L2Pass adds no fee on stablecoins.
+
+</Tab>
+</Tabs>
+
+## Instant exchanges through Trocador
+
+[Trocador](https://trocador.app) compares instant exchanges such as FixedFloat, StealthEX and ChangeNOW. We requested the same transfer there at 18:34 UTC, about 13 minutes after the quotes above.
+
+| Exchange (Trocador rating) | 1,000 USDT Tron to Ethereum | Rate type |
+| :-- | :-- | :-- |
+| FixedFloat (C) | 994.65 USDT | Floating |
+| CCECash (B) | 994.47 USDT | Floating |
+| Baltex (B) | 993.98 USDT | Floating |
+| Simpleswap (B), best fixed rate | 989.66 USDT | Fixed |
+| Swapuz (A), lowest | 973.00 USDT | Fixed |
+
+The best instant exchange returned about 4.9 USDT less than L2Pass RFQ (999.55 USDT).
+
+Trocador's privacy rating (A to C here) reflects each exchange's terms, privacy policy and refund practice when a user refuses verification. Trocador notes that any exchange can still pause a swap and ask for KYC or AML checks. Floating amounts are estimates and are re-priced when your deposit confirms; fixed amounts are locked.
+
+## What the numbers show
+
+- **L2Pass compares providers for you.** On Arbitrum to Base, one L2Pass quote returned eight routes, including Relay, LI.FI and Circle CCTP, so you see the best one without visiting each site.
+- **Fastest is not cheapest.** Relay and deBridge took seconds. CCTP Standard paid the most but took about 19.5 minutes.
+- **Instant exchanges cost more.** ChangeNOW and SideShift returned 12 to 36 USDT less on a 1,000 USDT transfer.
+- **Tron support varies.** MAYAChain does not support Tron, and LI.FI routed through LayerSwap.
+- **Totals matter more than headline fees.** deBridge adds a fixed fee in the source chain's native token on top of its quote, and USDT0 adds a LayerZero message fee, so compare what arrives after everything you pay.
+
+## Which one to use
+
+- **Lowest total cost from Tron:** L2Pass RFQ.
+- **Speed in seconds between EVM chains:** Relay, directly or inside L2Pass at the same price.
+- **Largest USDC amount when you can wait:** Circle CCTP Standard, about 19.5 minutes.
+- **Paying from an exchange account:** a deposit-address route such as L2Pass RFQ, because wallet-only bridges need you to sign from your own wallet.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What is the cheapest way to bridge USDT from Tron to Ethereum?">
+    In our live quotes on October 19, 2026, L2Pass RFQ returned 999.55 USDT for 1,000 USDT, the highest amount after all fees. USDT0 returned 999.70 USDT but needs a separate LayerZero message fee of about 1.73 USD.
+  </Accordion>
+
+  <Accordion title="Is L2Pass cheaper than using Relay directly?">
+    For stablecoins, the same. Relay through L2Pass returned exactly the same 999.88 USDC as Relay directly, because the L2Pass fee on stablecoins is 0%.
+  </Accordion>
+
+  <Accordion title="What is the fastest way to bridge USDT from Tron?">
+    Relay quoted about 4 seconds and deBridge about 15 seconds, but both returned less USDT than L2Pass RFQ, which took about 1.5 minutes.
+  </Accordion>
+
+  <Accordion title="Are instant exchanges like ChangeNOW or FixedFloat cheaper?">
+    Not in our quotes. The best instant exchange on Trocador returned 994.65 USDT for 1,000 USDT from Tron to Ethereum, about 4.9 USDT less than L2Pass RFQ.
+  </Accordion>
+
+  <Accordion title="Do I need an account?">
+    No. L2Pass Swap needs no account or KYC for regular use.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Compare cross-chain routes](/products/swap/learn/compare-routes)
+- [USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
+- [Bridge USDC with Circle CCTP](/products/swap/guides/usdc-cctp)
+- [L2Pass Swap fees explained](/products/swap/learn/fees)
+- [Compare: BTC swaps](/products/swap/learn/compare-btc-swaps)
+- [Compare: ZEC swaps](/products/swap/learn/compare-zec-swaps)
+- [Pay anyone in crypto on the network they prefer](/products/swap/learn/crypto-payments)
+
+*Last updated: October 19, 2026*
