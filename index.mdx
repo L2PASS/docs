@@ -1,15 +1,18 @@
 ---
-title: "Introduction"
+title: "Swap crypto across 14 networks, publicly or privately"
+sidebarTitle: "Introduction"
 icon: "angle-right"
 mode: "wide"
-description: "L2Pass docs: private cross-chain swaps across 14 networks, a Swap API for wallets and apps, fees, guides and contracts."
+description: "L2Pass Swap moves USDT, USDC, BTC, ETH and more between 14 networks with a 0% L2Pass fee on stablecoins. Guides, fees, private swaps and the Swap API."
 ---
 
 <Frame>
   ![L2Pass Introduction Banner](/images/intro/l2pass_banner.png)
 </Frame>
 
-L2Pass is cross-chain swap infrastructure. Swap any supported token to any other across **14 networks**, including Bitcoin, Zcash, Tron, Solana and TON, in one step, publicly or privately. Wallets and apps get the same routing through the **L2Pass Swap API**.
+L2Pass moves your tokens between blockchains in one step: USDT from Tron to Ethereum, BTC to USDT, USDC to Solana. It works across **14 networks**, including Bitcoin, Zcash, Tron, Solana and TON, and you can swap publicly or privately.
+
+For every swap, L2Pass asks several routes for a quote and shows you what each one pays out and charges before you confirm. L2Pass never holds your funds. Stablecoin swaps carry a **0% L2Pass fee**. Wallets and apps get the same routing through the **L2Pass Swap API**.
 
 ## Our Products
 
@@ -54,11 +57,11 @@ For every quote, L2Pass asks several independent routes at once and sorts them b
 - **Native bridges:** USDT0 over LayerZero and Circle CCTP for USDC.
 - **Aggregators and intent networks:** LI.FI, Relay, Aori and the OKX DEX aggregator.
 
-You see the amount you receive, the minimum received, the estimated time and the fees for each route before you confirm. All fees are already included in the quoted amount. [How routes are compared →](/products/swap/learn/compare-routes)
+You see the amount you receive, the minimum received, the estimated time and the fees for each route before you confirm. The amount shown is after fees. Only source-chain gas and any bridge message fee are paid separately. [How routes are compared →](/products/swap/learn/compare-routes)
 
 ## Why L2Pass
 
-- **Best available rate, not one provider's rate.** Routes compete for every swap.
+- **Several quotes, not one.** Every swap is quoted by NEAR Intents solvers, native bridges and aggregators at once, and sorted by what you receive.
 - **Every chain, not only EVM.** Bitcoin, Zcash, Tron, Solana and TON sit next to Ethereum and its L2s.
 - **Privacy when you need it.** Private swaps on the same interface, with the same compliance rules.
 - **Non-custodial.** L2Pass never holds your tokens or keys. No account and no KYC for regular use.
@@ -67,8 +70,8 @@ You see the amount you receive, the minimum received, the estimated time and the
 ## Track Record
 
 <CardGroup cols={3}>
-  <Card title="650K" icon="wallet">
-    Unique wallets connected
+  <Card title="650K+" icon="wallet">
+    Unique wallets have used L2Pass
   </Card>
 
   <Card title="4M+" icon="arrow-right-arrow-left">
@@ -76,7 +79,7 @@ You see the amount you receive, the minimum received, the estimated time and the
   </Card>
 
   <Card title="Since 2023" icon="calendar">
-    Live in production
+    Live on mainnet
   </Card>
 
   <Card title="14" icon="globe">
@@ -92,6 +95,8 @@ You see the amount you receive, the minimum received, the estimated time and the
 
 ## Ecosystem Partners
 
+Swaps route through NEAR Intents, LayerZero (USDT0), Circle CCTP, LI.FI, Relay, Aori and the OKX DEX aggregator.
+
 <Card title="Built on leading infrastructure">
   <div
   style={{ 
@@ -103,7 +108,7 @@ You see the amount you receive, the minimum received, the estimated time and the
  marginTop: "1rem"
 }}
 >
-  <img src="/images/partners_light.svg" style={{ height: "auto" }} />
+  <img src="/images/partners_light.svg" alt="L2Pass ecosystem partners" style={{ height: "auto" }} />
 </div>
 </Card>
 

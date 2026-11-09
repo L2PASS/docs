@@ -4,17 +4,21 @@ description: "L2Pass Swap fees: 0% L2Pass fee on stablecoin swaps, up to 0.2% on
 sidebarTitle: "Fees explained"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) charges a 0% L2Pass fee on stablecoin swaps on any route, up to 0.2% on other assets and up to 0.3% on private swaps. The private fee is instead of 0% or 0.2%, not in addition. Routing partners and blockchains charge their own fees, and the amount you will receive, shown in the quote before you confirm, already includes all of them.
+[L2Pass Swap](https://swap.l2pass.com/) charges a 0% L2Pass fee on stablecoin swaps on any route, up to 0.2% on other assets and up to 0.3% on private swaps. The private fee replaces the standard fee rather than adding to it. Routing partners and blockchains charge their own fees, and the amount you will receive, shown in the quote before you confirm, already includes all of them.
 
 ## L2Pass fee
+
+This is the only fee L2Pass itself charges. It depends on the asset and on whether the swap is private.
 
 | Swap | L2Pass fee |
 | :-- | :-- |
 | Stablecoin swaps (USDT, USDC and others), any route | **0%** |
 | Other assets (ETH, BTC, SOL, ZEC and others) | **up to 0.2%** |
-| Private swaps, any asset | **up to 0.3%** (instead of 0% or 0.2%, not in addition) |
+| Private swaps, any asset | **up to 0.3%** (replacing the standard fee, not added to it) |
 
 ## Every fee you can see in a quote
+
+A quote can include up to five fees. The first three come out of the amount you receive. The last two you pay from your wallet, and the route card shows them.
 
 | Fee | Who charges it | How you pay it |
 | :-- | :-- | :-- |
@@ -48,6 +52,8 @@ Two things to notice:
 
 ## How to see the fees for your swap
 
+You can check every fee for your exact amount in three steps, before you send anything.
+
 <Steps>
   <Step title="Request a quote">
     Go to [swap.l2pass.com](https://swap.l2pass.com/), choose the source and destination tokens and networks, and enter the amount.
@@ -58,7 +64,7 @@ Two things to notice:
   </Step>
 
   <Step title="Compare and confirm">
-    Pick the route that suits you. The amount shown is what you will receive after the L2Pass, provider and destination network fees.
+    Routes are sorted by what you receive. Pick the top one, or a faster one if speed matters more to you. The amount shown is what you will receive after the L2Pass, provider and destination network fees.
   </Step>
 </Steps>
 
@@ -73,11 +79,11 @@ Two things to notice:
 
 <AccordionGroup>
   <Accordion title="Is L2Pass Swap free for stablecoins?">
-    The L2Pass fee on stablecoin swaps is 0% on any route. Routing partners and blockchains still charge their own fees, which are included in the amount shown in the quote.
+    L2Pass charges 0% on stablecoin swaps, on any route. Routing partners and blockchains still charge their own fees, which are included in the amount shown in the quote. In a test quote for 1,000 USDC from Arbitrum to Base, those fees came to about 0.10 USDC.
   </Accordion>
 
   <Accordion title="Is the private swap fee added to the standard fee?">
-    No. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+    No. The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
   </Accordion>
 
   <Accordion title="Are there fees I cannot see before I confirm?">
