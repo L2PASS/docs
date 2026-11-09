@@ -4,7 +4,7 @@ description: "With L2Pass Swap you can pay for a cross-chain swap from any walle
 sidebarTitle: "Swap from any wallet or exchange"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) lets you pay for a cross-chain swap without connecting a wallet. On the L2Pass RFQ and L2Pass Private routes, both run on [NEAR Intents](https://near.org/intents), you get a one-time deposit address for your quote and send the tokens there from any wallet or exchange, by address or QR code. The swap starts when the deposit arrives, and the destination tokens go to the receiving address you set. If the swap cannot complete, the deposit is returned to your refund address. The L2Pass fee is 0% on stablecoin swaps, and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
+[L2Pass Swap](https://swap.l2pass.com/) lets you pay for a cross-chain swap without connecting a wallet. On the L2Pass RFQ and L2Pass Private routes, both run on [NEAR Intents](https://near.org/intents), you get a one-time deposit address for your quote and send the tokens there from any wallet or exchange, by address or QR code. The swap starts when the deposit arrives, and the destination tokens go to the receiving address you set. If the swap cannot complete, the provider sends the deposit back to your refund address. The L2Pass fee is 0% on stablecoin swaps, and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Key terms
 
@@ -14,7 +14,7 @@ Three addresses matter in a deposit-address swap: the deposit, receiving and ref
 | :-- | :-- |
 | Deposit address | A one-time address on the source chain, created for your quote. Sending the quoted amount there starts the swap. |
 | Receiving address | The address on the destination chain that gets the tokens. |
-| Refund address | A wallet you control on the source chain. If the swap cannot complete, your deposit is returned there. |
+| Refund address | A wallet you control on the source chain. If the swap cannot complete, the provider sends your deposit back there. |
 | Wallet route | A route where you sign a transaction in a connected wallet, such as Circle CCTP, USDT0, Relay or LI.FI. |
 
 ## Deposit address or wallet transaction
@@ -78,7 +78,7 @@ Send the exact amount on the network shown in the quote, or the swap may not sta
   </Accordion>
 
   <Accordion title="What if the exchange sends less than the quoted amount?">
-    The quote is for the amount you deposit. Check the amount that arrives in **Recent swaps**. If the swap cannot complete, the deposit is returned to the refund address, minus any provider or network fees.
+    The quote is for the amount you deposit. Check the amount that arrives in **Recent swaps**. If the swap cannot complete, the provider sends the deposit back to the refund address, minus any provider or network fees.
   </Accordion>
 
   <Accordion title="Is a deposit-address swap custodial?">

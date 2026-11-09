@@ -19,7 +19,7 @@ Two routes, both on NEAR Intents, filled BTC and USDT swaps in test quotes.
 | Route | Estimated time | Output | Notes |
 | :-- | :-- | :-- | :-- |
 | L2Pass RFQ | About 13.5 to 14 minutes from BTC, about 9 minutes to BTC | Variable, with a minimum received | Solvers and market makers compete to fill your swap. Deposit address. L2Pass fee up to 0.2%. |
-| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3% (replacing the standard fee, not added to it). |
+| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3% (instead of 0% or 0.2%, not in addition). |
 
 No other routes were offered for these pairs in those test quotes. The quote lists any route that can fill the pair.
 
@@ -54,7 +54,7 @@ Nothing leaves your wallet until you pay, so you can compare every route first.
   </Step>
 
   <Step title="Set a refund address">
-    Set the refund address to a Bitcoin address you control. If the swap cannot complete, your BTC is returned there.
+    Set the refund address to a Bitcoin address you control. If the swap cannot complete, the provider sends your BTC back there.
   </Step>
 
   <Step title="Send BTC to the deposit address">
@@ -86,7 +86,7 @@ Bitcoin blocks set the pace, and you pay the Bitcoin network fee when you send B
   </Accordion>
 
   <Accordion title="How much does it cost to swap BTC to USDT?">
-    The L2Pass fee is up to 0.2% (up to 0.3% on private swaps). In test quotes, L2Pass RFQ showed a 0% L2Pass fee, a 0.2% NEAR Intents provider fee and a destination network fee. The amount shown already includes all of them. You also pay the Bitcoin network fee when you send.
+    The L2Pass fee is up to 0.2% (up to 0.3% on private swaps). In test quotes, L2Pass RFQ showed a 0% L2Pass fee, a 0.2% NEAR Intents provider fee and a destination network fee. The amount shown already includes all of them. Only the Bitcoin network fee for your deposit is paid separately.
   </Accordion>
 
   <Accordion title="How long does a BTC to USDT swap take?">

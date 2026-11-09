@@ -4,7 +4,7 @@ description: "L2Pass Swap is non-custodial: it never holds your tokens or keys, 
 sidebarTitle: "Is L2Pass safe?"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) is a non-custodial interface: L2Pass never holds your tokens or private keys. Each swap is executed by a routing provider, such as NEAR Intents, Circle CCTP, USDT0, LI.FI or Relay, on that provider's own contracts. You either sign a transaction in your own wallet or send tokens to a one-time deposit address created for your quote, and the amount you will receive, after all fees, is shown before you confirm. L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions.
+[L2Pass Swap](https://swap.l2pass.com/) is a non-custodial interface: L2Pass never holds your tokens or private keys. Each swap is executed by a routing provider, such as NEAR Intents, Circle CCTP, USDT0, LI.FI or Relay, on that provider's own contracts. You either sign a transaction in your own wallet or send tokens to a one-time deposit address created for your quote, and the swap interface shows the amount you will receive, after fees, before you confirm. L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions.
 
 ## How your funds move
 
@@ -83,7 +83,7 @@ Providers, not L2Pass, run each swap and its compliance checks.
   </Accordion>
 
   <Accordion title="What happens to my funds if a swap fails?">
-    On wallet routes, the transaction reverts and only gas is spent. On deposit-address routes, the deposit is returned to your refund address, minus any provider or network fees. See [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds).
+    On wallet routes, the transaction reverts and only gas is spent. On deposit-address routes, the provider sends the deposit back to your refund address, minus any provider or network fees. See [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds).
   </Accordion>
 </AccordionGroup>
 

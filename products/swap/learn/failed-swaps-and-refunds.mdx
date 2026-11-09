@@ -4,7 +4,7 @@ description: "If an L2Pass swap cannot complete, on-chain routes revert and depo
 sidebarTitle: "Failed swaps and refunds"
 ---
 
-If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does not execute at all: swaps are never partially filled. On wallet routes, such as Circle CCTP, USDT0, Relay or LI.FI, the transaction reverts and no tokens are exchanged, but the gas you paid is not refunded. On deposit-address routes, L2Pass RFQ and L2Pass Private, your deposit is returned to the refund address you set, minus any provider or network fees. The one exception is a swap that a provider flags as high risk under AML or sanctions rules: the provider decides whether to complete, refund or hold it, and a refund is not guaranteed.
+If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does not execute at all: swaps are never partially filled. On wallet routes, such as Circle CCTP, USDT0, Relay or LI.FI, the transaction reverts and no tokens are exchanged, but the gas you paid is not refunded. On deposit-address routes, L2Pass RFQ and L2Pass Private, the provider sends your deposit back to the refund address you set, minus any provider or network fees. The one exception is a swap that a provider flags as high risk under AML or sanctions rules: the provider decides whether to complete, refund or hold it, and a refund is not guaranteed.
 
 ## What happens by route type
 
@@ -13,7 +13,7 @@ Wallet routes revert, deposit-address routes refund, and the provider decides on
 | Route type | Routes | If the swap cannot complete | What you lose |
 | :-- | :-- | :-- | :-- |
 | Wallet transaction | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX aggregator | The transaction reverts and no tokens are exchanged | Source gas |
-| Deposit address | L2Pass RFQ, L2Pass Private | The deposit is returned to your refund address | Provider and network fees that may be deducted from the refund |
+| Deposit address | L2Pass RFQ, L2Pass Private | The provider sends the deposit back to your refund address | Provider and network fees that may be deducted from the refund |
 | Flagged as high risk | Any route | The provider decides to complete, refund or hold the swap | A refund is not guaranteed |
 
 ## Why a swap may not complete

@@ -4,7 +4,7 @@ description: "L2Pass Swap fees: 0% L2Pass fee on stablecoin swaps, up to 0.2% on
 sidebarTitle: "Fees explained"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) charges a 0% L2Pass fee on stablecoin swaps on any route, up to 0.2% on other assets and up to 0.3% on private swaps. The private fee replaces the standard fee rather than adding to it. Routing partners and blockchains charge their own fees, and the amount you will receive, shown in the quote before you confirm, already includes all of them.
+[L2Pass Swap](https://swap.l2pass.com/) charges a 0% L2Pass fee on stablecoin swaps on any route, up to 0.2% on other assets and up to 0.3% on private swaps. The private fee applies instead of 0% or 0.2%, not in addition. Routing partners and blockchains charge their own fees, and the amount you will receive, shown in the quote before you confirm, already includes them, except source-chain gas and any bridge message fee, which you pay separately.
 
 ## L2Pass fee
 
@@ -14,7 +14,7 @@ This is the only fee L2Pass itself charges. It depends on the asset and on wheth
 | :-- | :-- |
 | Stablecoin swaps (USDT, USDC and others), any route | **0%** |
 | Other assets (ETH, BTC, SOL, ZEC and others) | **up to 0.2%** |
-| Private swaps, any asset | **up to 0.3%** (replacing the standard fee, not added to it) |
+| Private swaps, any asset | **up to 0.3%** (instead of 0% or 0.2%, not in addition) |
 
 ## Every fee you can see in a quote
 
@@ -73,7 +73,7 @@ You can check every fee for your exact amount in three steps, before you send an
 Gas is the one cost you never get back, even when a swap fails.
 
 - **Gas is not refundable.** If an on-chain route reverts, no tokens are exchanged, but the source gas is spent.
-- **Refunds and fees.** If a deposit-address route cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted.
+- **Refunds and fees.** If a deposit-address route cannot complete, the provider sends your deposit back to the refund address; provider and network fees may be deducted.
 - **Slippage is not a fee.** The default slippage tolerance is 0.05% and can be changed on any route card. It sets the minimum received, and fixed-output routes are not affected by it.
 - **Sending from an exchange.** Some exchanges deduct their withdrawal fee from the amount they send. Check that the amount that arrives matches the quote.
 
@@ -85,7 +85,7 @@ Gas is the one cost you never get back, even when a swap fails.
   </Accordion>
 
   <Accordion title="Is the private swap fee added to the standard fee?">
-    No. The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
+    No. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). It is already included in the amount shown in the quote.
   </Accordion>
 
   <Accordion title="Are there fees I cannot see before I confirm?">
