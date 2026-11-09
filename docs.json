@@ -32,6 +32,11 @@
           "anchor": "SWAP ↗",
           "icon": "bridge",
           "href": "https://swap.l2pass.com/"
+        },
+        {
+          "anchor": "GAS REFUEL ↗",
+          "icon": "gas-pump",
+          "href": "https://l2pass.com/refuel"
         }
       ]
     },

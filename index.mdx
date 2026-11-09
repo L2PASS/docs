@@ -2,56 +2,97 @@
 title: "Introduction"
 icon: "angle-right"
 mode: "wide"
-description: "L2Pass Swap docs: cross-chain and private swaps, routes including NEAR Intents, fees, refunds and contracts."
+description: "L2Pass docs: private cross-chain swaps across 14 networks, a Swap API for wallets and apps, fees, guides and contracts."
 ---
 
 <Frame>
   ![L2Pass Introduction Banner](/images/intro/l2pass_banner.png)
 </Frame>
 
-## Overview
-
-L2Pass Swap is a non-custodial interface for swapping tokens across chains, with a focus on stablecoins. It compares quotes from several independent routes at once, including L2Pass RFQ by NEAR Intents, native USDT0 and Circle CCTP bridges, and aggregators, and shows you every option before you confirm.
-
-- **14 networks:** Ethereum, Bitcoin, Zcash, Tron, Solana, TON, BNB Chain, Arbitrum, Base, Polygon, Optimism, Avalanche, Plasma and HyperEVM.
-- **0% L2Pass fee on stablecoin swaps.** Up to 0.2% on other assets and up to 0.3% on private swaps. Every fee is already included in the amount shown in the quote.
-- **Private swaps:** execute your swap in a confidential environment that limits what public blockchains show.
-- **Pay from any wallet or exchange:** send to a one-time deposit address, no wallet connection needed.
-- **No account, no KYC for regular use.** L2Pass never holds your tokens or keys.
-
----
-
-### Why L2Pass
-
-Stablecoin liquidity is spread across many blockchains, such as Tron, Ethereum, Solana and L2 networks. Every bridge, DEX and solver network offers different rates, fees and speeds, so moving value between them is slow to compare and easy to overpay for.
-
-**For users**\
-Instead of checking bridges one by one, you see the routes side by side with the amount you will receive, the minimum received and the estimated time.
-
-**For wallets and apps**\
-The [L2Pass Swap API](/products/swap/learn/swap-api) adds cross-chain stablecoin swaps to a wallet or app without building custom integrations for every network.
-
-> The result: stablecoins that **move freely across chains at the best available rate**.
-
----
+L2Pass is cross-chain swap infrastructure. Swap any supported token to any other across **14 networks**, including Bitcoin, Zcash, Tron, Solana and TON, in one step, publicly or privately. Wallets and apps get the same routing through the **L2Pass Swap API**.
 
 ## Our Products
 
-<Card title="Swap" icon="bridge" href="/products/swap/overview">
+<CardGroup cols={2}>
+  <Card title="L2Pass Swap" icon="right-left-large" href="/products/swap/overview">
+    Cross-chain and private swaps for people. Stablecoins, BTC, ETH, SOL, ZEC and more, with 0% L2Pass fee on stablecoins.
+  </Card>
+
+  <Card title="L2Pass Swap API" icon="code" href="/products/swap/learn/swap-api">
+    The same routing for wallets, exchanges and payment apps: quotes, deposit addresses, status and webhooks. Partners can earn on volume.
+  </Card>
+</CardGroup>
+
+<Card title="Gas Refuel" icon="gas-pump" href="https://l2pass.com/refuel">
   <div style={{ backgroundColor: "#181818", borderRadius: "8px", display: "flex", marginBottom: "1rem", marginTop: "1rem" }}>
     <img
-      src="/images/intro/bridge.png"
-      alt="Swap"
+      src="/images/gas_refuel.png"
+      alt="Gas Refuel"
       style={{ width: "100%", objectFit: "cover" }}
     />
   </div>
 
-  Swap stablecoins and major assets across 14 networks at the best available rate, with public or private execution and 0% L2Pass fee on stablecoin swaps.
+  Refuel gas tokens across 25+ EVM chains.
 </Card>
 
-## Ecosystem & Metrics
+## What You Can Do
 
-<Card title="Ecosystem Partners">
+| You want to | With L2Pass |
+| :-- | :-- |
+| Move stablecoins between networks | USDT and USDC across Tron, Ethereum, Solana, TON, BNB Chain, L2s and more, with 0% L2Pass fee |
+| Swap major assets natively | BTC on Bitcoin, ZEC on Zcash, ETH, SOL and others, to and from stablecoins, without wrapped tokens on your side |
+| Keep a swap private | Choose L2Pass Private: the swap runs in a confidential environment that limits what public blockchains show |
+| Pay someone on their network | Set their address as the recipient and pay from whatever you hold, in any supported token |
+| Swap straight from an exchange | Withdraw to a one-time deposit address, no wallet connection needed |
+| Add swaps to your product | Integrate the Swap API, or refer users and share fees |
+
+## How It Works
+
+For every quote, L2Pass asks several independent routes at once and sorts them by what you receive:
+
+- **L2Pass RFQ and L2Pass Private by NEAR Intents:** solvers and market makers compete to fill your swap.
+- **Native bridges:** USDT0 over LayerZero and Circle CCTP for USDC.
+- **Aggregators and intent networks:** LI.FI, Relay, Aori and the OKX DEX aggregator.
+
+You see the amount you receive, the minimum received, the estimated time and the fees for each route before you confirm. All fees are already included in the quoted amount. [How routes are compared →](/products/swap/learn/compare-routes)
+
+## Why L2Pass
+
+- **Best available rate, not one provider's rate.** Routes compete for every swap.
+- **Every chain, not only EVM.** Bitcoin, Zcash, Tron, Solana and TON sit next to Ethereum and its L2s.
+- **Privacy when you need it.** Private swaps on the same interface, with the same compliance rules.
+- **Non-custodial.** L2Pass never holds your tokens or keys. No account and no KYC for regular use.
+- **Transparent fees.** 0% on stablecoin swaps, up to 0.2% on other assets, up to 0.3% on private swaps. [Fees explained →](/products/swap/learn/fees)
+
+## Track Record
+
+<CardGroup cols={3}>
+  <Card title="650K" icon="wallet">
+    Unique wallets connected
+  </Card>
+
+  <Card title="4M+" icon="arrow-right-arrow-left">
+    Cross-chain transactions processed
+  </Card>
+
+  <Card title="Since 2023" icon="calendar">
+    Live in production
+  </Card>
+
+  <Card title="14" icon="globe">
+    Networks in Swap
+  </Card>
+
+  <Card title="№9" icon="ranking-star" href="https://layerzeroscan.com/application/l2pass">
+    Ranked LayerZero app
+  </Card>
+</CardGroup>
+
+---
+
+## Ecosystem Partners
+
+<Card title="Built on leading infrastructure">
   <div
   style={{ 
   backgroundColor: "#181818", 
@@ -66,38 +107,34 @@ The [L2Pass Swap API](/products/swap/learn/swap-api) adds cross-chain stablecoin
 </div>
 </Card>
 
-<Card title="Protocol Metrics">
-  <div
-  style={{ 
-  backgroundColor: "#181818", 
-  padding: "2rem", 
-  borderRadius: "8px", 
-  display: "flex", 
-  justifyContent: "center",
-  marginTop: "1rem"
-}}
->
-  <img src="/images/metrics_light.svg" style={{ height: "auto" }} />
-</div>
-
-  [Analytics -\>](https://layerzeroscan.com/application/l2pass).
-</Card>
 
 ---
 
-## Quick Links
+## Start Here
 
 <CardGroup cols={3}>
-  <Card title="How Swap Works" icon="right-left-large" href="/products/swap/overview">
+  <Card title="How Swap Works" icon="book-open" href="/products/swap/overview">
     Routes, execution, refunds and private swaps.
   </Card>
 
-  <Card title="Fees" icon="percent" href="/products/swap/learn/fees">
-    What L2Pass charges and what partners charge.
+  <Card title="Move USDT Between Networks" icon="route" href="/products/swap/guides/usdt-tron-to-ethereum">
+    Step-by-step route guides, starting with Tron to Ethereum.
   </Card>
 
-  <Card title="Route Guides" icon="route" href="/products/swap/guides/usdt-tron-to-ethereum">
-    Step-by-step guides for popular routes.
+  <Card title="Swap BTC" icon="bitcoin" href="/products/swap/guides/btc-to-usdt">
+    Swap native BTC to USDT and back.
+  </Card>
+
+  <Card title="Private Swaps" icon="user-secret" href="/products/swap/learn/private-cross-chain-swaps">
+    What a private swap hides and what it does not.
+  </Card>
+
+  <Card title="Pay in Crypto" icon="money-bill-transfer" href="/products/swap/learn/crypto-payments">
+    Pay anyone on the network they prefer.
+  </Card>
+
+  <Card title="Is L2Pass Safe?" icon="shield-check" href="/products/swap/learn/is-l2pass-safe">
+    How non-custodial swaps protect your funds.
   </Card>
 
   <Card title="Swap API" icon="code" href="/products/swap/learn/swap-api">
@@ -108,7 +145,7 @@ The [L2Pass Swap API](/products/swap/learn/swap-api) adds cross-chain stablecoin
     View and verify our official deployments.
   </Card>
 
-  <Card title="Support Center" icon="headset" href="/resources/support">
-    Connect with our team for help or partnership.
+  <Card title="Support" icon="headset" href="/resources/support">
+    Get help or talk to us about a partnership.
   </Card>
 </CardGroup>
