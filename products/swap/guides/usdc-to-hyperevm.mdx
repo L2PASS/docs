@@ -4,6 +4,8 @@ description: "Bridge USDC to HyperEVM from Arbitrum, or swap TRC-20 USDT to USDC
 sidebarTitle: "USDC to HyperEVM"
 ---
 
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
 You can bridge USDC to HyperEVM, the EVM chain of Hyperliquid, from Arbitrum, and swap USDT on Tron to USDC on HyperEVM, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes on October 19, 2026, Arbitrum to HyperEVM was offered by L2Pass RFQ and L2Pass Private in about 35 seconds, and also by Relay and LI.FI. Tron to HyperEVM was offered by L2Pass RFQ and L2Pass Private in about 1.5 minutes. L2Pass RFQ showed a 0% L2Pass fee on these pairs, and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Routes to HyperEVM
@@ -68,13 +70,12 @@ L2Pass RFQ showed no provider fee on this pair, only a HyperEVM network fee of 0
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
 
 - **USDC only.** L2Pass Swap offers USDC on HyperEVM. To start from USDT, use the Tron to HyperEVM pair, which swaps USDT to USDC in one step.
 - **Gas on the source chain only.** You pay gas in ETH on Arbitrum or in TRX on Tron. The HyperEVM network fee is deducted from the amount shown, so you do not need HYPE to receive. HYPE is HyperEVM's gas token, needed later to send or use the USDC there.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 

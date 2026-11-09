@@ -1,0 +1,3 @@
+- **Refunds.** If a wallet route fails, the transaction reverts and no tokens move, but the gas you paid is spent. If a deposit-address route cannot complete, the provider sends your deposit back to the refund address, minus any provider and network fees.
+- **No partial fills.** L2Pass does not use partial execution. A swap completes in full or does not execute.
+- **Compliance checks.** You need no account or KYC for regular use. A provider may ask for extra checks on a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it. In that case a refund is not guaranteed.

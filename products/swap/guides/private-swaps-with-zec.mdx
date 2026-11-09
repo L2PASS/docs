@@ -4,6 +4,8 @@ description: "Swap USDT to ZEC or ZEC to USDT with L2Pass Private, which limits 
 sidebarTitle: "Private swaps with ZEC"
 ---
 
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
 You can make a private swap between USDT and ZEC, in either direction, with [L2Pass Swap](https://swap.l2pass.com/) by choosing the L2Pass Private route. In test quotes on October 10, 2026, it was offered from USDT on Tron and Ethereum to ZEC, with an estimated time of about 3 minutes, and from ZEC to USDT on Tron, with about 8.5 minutes. It executes the swap in a confidential environment that limits what is visible on public blockchains. It is not anonymity: your wallet address is still shared with providers, and compliance screening still applies. The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
 
 ## Routes for swaps between USDT and ZEC
@@ -43,12 +45,12 @@ Test quotes for 1,000 USDT on Tron to ZEC on October 10, 2026 showed these amoun
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
 
 - **Network fees.** You pay gas only where you send from: ZEC on Zcash, or your USDT network's native token, such as TRX on Tron. Any network fee on the destination chain is deducted from the amount shown.
-- **Refunds.** If a swap cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Privacy and compliance.** A private swap is not anonymity: your public wallet address is still included in requests sent to providers, and the same screening and sanctions controls apply. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Not anonymity.** A private swap limits what public blockchains show, but your public wallet address is still included in requests sent to providers. The same screening and sanctions controls apply as on any other route.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 

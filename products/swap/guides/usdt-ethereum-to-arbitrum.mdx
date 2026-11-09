@@ -4,6 +4,8 @@ description: "Bridge USDT from Ethereum to Arbitrum, where it arrives as USDT0, 
 sidebarTitle: "USDT: Ethereum to Arbitrum"
 ---
 
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
 You can bridge USDT from Ethereum to Arbitrum with [L2Pass Swap](https://swap.l2pass.com/). On Arbitrum, USDT arrives as USDT0, the omnichain version of USDT. In test quotes on October 19, 2026, six routes were offered for this pair: the native USDT0 bridge, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private and LI.FI, with estimated times from about 1 second to 1.5 minutes. The top routes delivered within 0.3 USDT of each other for 1,000 USDT. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Routes for USDT from Ethereum to Arbitrum
@@ -63,13 +65,12 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
 
 - **Gas on Ethereum only.** You pay gas in ETH on Ethereum. The Arbitrum network fee is deducted from the amount shown, so you do not need ETH on Arbitrum to receive.
 - **USDT0 on Arbitrum.** The USDT that L2Pass Swap delivers on Arbitrum is USDT0.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 

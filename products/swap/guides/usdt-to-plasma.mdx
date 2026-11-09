@@ -4,6 +4,8 @@ description: "Bridge USDT to Plasma from Tron, Ethereum or Arbitrum with L2Pass 
 sidebarTitle: "USDT to Plasma"
 ---
 
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
 You can bridge USDT to Plasma from Tron, Ethereum or Arbitrum with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. On Plasma, USDT arrives as USDT0, the omnichain version of USDT. In test quotes on October 19, 2026, Tron to Plasma was offered by L2Pass RFQ and L2Pass Private in about 1.5 minutes, and Ethereum or Arbitrum to Plasma also by Relay and Aori in seconds. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Routes to Plasma
@@ -80,13 +82,12 @@ On this pair, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provider
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
 
 - **USDT0 on Plasma.** L2Pass Swap offers USDT on Plasma as USDT0. Plasma's native token is XPL.
 - **Gas on the source chain only.** You pay gas in TRX on Tron or in ETH on Ethereum and Arbitrum. The Plasma network fee is deducted from the amount shown, so you do not need XPL to receive.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 

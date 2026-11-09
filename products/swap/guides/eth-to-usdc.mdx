@@ -4,6 +4,8 @@ description: "Swap ETH to USDC or USDT on another chain in one step with L2Pass 
 sidebarTitle: "ETH to USDC or USDT"
 ---
 
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
 You can swap ETH to USDC or USDT on another chain in one step with [L2Pass Swap](https://swap.l2pass.com/), for example ETH on Ethereum to USDC on Base, or ETH on Arbitrum to USDT on Tron. In test quotes on October 19, 2026, L2Pass RFQ, Relay, LI.FI and L2Pass Private were offered between EVM chains, with estimated times from about 1 second to under a minute, and L2Pass RFQ and Private were offered to Tron. The L2Pass fee on ETH swaps is up to 0.2% (up to 0.3% on private swaps), and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Routes for ETH to stablecoins
@@ -76,13 +78,12 @@ Quotes for 1 ETH at about 17:50 UTC, when ETH was about 2,400 USD. The live quot
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
 
 - **Keep some ETH for gas.** You pay source gas in ETH, so do not swap your whole balance on a wallet route. On a deposit-address route, the network fee for your transfer comes out of your wallet too.
 - **Price moves.** ETH is volatile. The minimum received protects you: if the price moves beyond your slippage tolerance, the swap does not execute.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 
