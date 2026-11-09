@@ -49,7 +49,12 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
 
 <Steps>
   <Step title="Open L2Pass Swap">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Ethereum as the source and USDT0 on Arbitrum as the destination, then enter the amount and set the Arbitrum address that will receive the USDT0.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** USDT on Ethereum.
+    - **To:** USDT0 on Arbitrum.
+    - **Amount:** how much USDT you want to send.
+    - **Receiving address:** the Arbitrum address that will get the USDT0.
   </Step>
 
   <Step title="Compare the routes">
@@ -61,7 +66,16 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
   </Step>
 
   <Step title="Pay by wallet or deposit address">
-    On USDT0, Relay and LI.FI, sign the transaction in your Ethereum wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange.
+    How you pay depends on the route you picked.
+
+    <Tabs>
+      <Tab title="Wallet routes (USDT0, Relay, LI.FI)">
+        Sign the transaction in your Ethereum wallet.
+      </Tab>
+      <Tab title="Deposit address (L2Pass RFQ, L2Pass Private)">
+        Send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Track the swap">

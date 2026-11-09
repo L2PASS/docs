@@ -30,7 +30,12 @@ Test quotes for 1,000 USDT showed these amounts received: 999.85 USDT0 on L2Pass
 
 <Steps>
   <Step title="Open L2Pass Swap">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Tron as the source and USDT on Arbitrum as the destination, then enter the amount and set the Arbitrum address that will receive the USDT.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** USDT on Tron.
+    - **To:** USDT on Arbitrum.
+    - **Amount:** how much USDT you want to send.
+    - **Receiving address:** the Arbitrum address that will get the USDT.
   </Step>
 
   <Step title="Compare the routes">
@@ -42,7 +47,16 @@ Test quotes for 1,000 USDT showed these amounts received: 999.85 USDT0 on L2Pass
   </Step>
 
   <Step title="Pay by wallet or deposit address">
-    On the USDT0 route, sign the transaction in your Tron wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any Tron wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+    How you pay depends on the route you picked.
+
+    <Tabs>
+      <Tab title="Wallet route (USDT0)">
+        Sign the transaction in your Tron wallet.
+      </Tab>
+      <Tab title="Deposit address (L2Pass RFQ, L2Pass Private)">
+        Send USDT to the one-time deposit address from your connected wallet, any Tron wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Track the swap">
