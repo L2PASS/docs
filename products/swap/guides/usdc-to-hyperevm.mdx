@@ -14,6 +14,8 @@ You can bridge USDC to HyperEVM, the EVM chain of Hyperliquid, from Arbitrum, an
 
 ## Routes to HyperEVM
 
+Four routes reached HyperEVM from Arbitrum, and two of them also from Tron.
+
 | Route | From | Estimated time | Output | Payment |
 | :-- | :-- | :-- | :-- | :-- |
 | L2Pass RFQ | Arbitrum, Tron | About 35 seconds from Arbitrum, 1.5 minutes from Tron | Variable, with a minimum received | One-time deposit address |
@@ -52,6 +54,8 @@ L2Pass RFQ showed no provider fee on this pair, only a HyperEVM network fee of 0
 
 ## How to bridge USDC to HyperEVM
 
+Nothing leaves your wallet until you pay, so you can compare every route first.
+
 <Steps>
   <Step title="Open L2Pass Swap">
     Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
@@ -89,6 +93,8 @@ L2Pass RFQ showed no provider fee on this pair, only a HyperEVM network fee of 0
 </Steps>
 
 ## Before you send
+
+You can receive only USDC on HyperEVM, and you need gas only on the source chain.
 
 - **USDC only.** L2Pass Swap offers USDC on HyperEVM. To start from USDT, use the Tron to HyperEVM pair, which swaps USDT to USDC in one step.
 - **Gas on the source chain only.** You pay gas in ETH on Arbitrum or in TRX on Tron. The HyperEVM network fee is deducted from the amount shown, so you do not need HYPE to receive. HYPE is HyperEVM's gas token, needed later to send or use the USDC there.

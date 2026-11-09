@@ -8,6 +8,8 @@ sidebarTitle: "How routes compare"
 
 ## The routes
 
+Ten routes can appear in a quote, and only L2Pass RFQ and L2Pass Private take a deposit address.
+
 | Route in the app | What it is | How you pay | Output | Estimated time in test quotes |
 | :-- | :-- | :-- | :-- | :-- |
 | L2Pass RFQ | Solvers and market makers on [NEAR Intents](https://near.org/intents) compete to fill your swap | One-time deposit address, from any wallet or exchange | Variable, with a minimum received | About 30 seconds to 2 minutes; about 9 to 14 minutes with Bitcoin |
@@ -76,7 +78,9 @@ The quote lists any route that can fill your pair at that moment, so the set can
 
 Routes are sorted by the estimated net value you receive after gas. That is why a route with the highest amount received is not always first. In a test quote for 1,000 USDT from Ethereum to Tron, USDT0 showed 999.7 USDT, the most of any route, but it needs a LayerZero message fee of about 0.005 ETH (about 11.92 USD), paid in ETH. L2Pass RFQ showed 998.21 USDT with no separate fee to pay, so it was listed first.
 
-## Things to know
+## Fees, payment and refunds
+
+The route changes provider fees and how you pay, but not the 0% L2Pass fee on stablecoins.
 
 - **The L2Pass fee does not depend on the route for stablecoins.** It is 0% on stablecoin swaps on any route, up to 0.2% on other assets and up to 0.3% on private swaps. See [L2Pass Swap fees explained](/products/swap/learn/fees).
 - **Deposit or wallet.** Only L2Pass RFQ and L2Pass Private use a deposit address, so they are the routes you can pay from an exchange. Other routes need a transaction signed in your wallet.

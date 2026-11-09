@@ -8,6 +8,8 @@ If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does no
 
 ## What happens by route type
 
+Wallet routes revert, deposit-address routes refund, and the provider decides on flagged swaps.
+
 | Route type | Routes | If the swap cannot complete | What you lose |
 | :-- | :-- | :-- | :-- |
 | Wallet transaction | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX aggregator | The transaction reverts and no tokens are exchanged | Source gas |
@@ -16,6 +18,8 @@ If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does no
 
 ## Why a swap may not complete
 
+A swap stops when the price, the timing, the deposit or a provider check does not fit the quote.
+
 - **The price moved past your slippage tolerance.** The minimum received on the route card is the worst case within your tolerance (0.05% by default). If the price moves beyond it, the swap does not execute.
 - **The quote expired.** A quote is valid for a limited time. A deposit that arrives too late may not be filled.
 - **The deposit does not match the quote.** For example, an exchange deducted its withdrawal fee, or the tokens were sent on another network.
@@ -23,6 +27,8 @@ If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does no
 - **A provider check.** A provider may request extra checks or hold a swap under its own AML or sanctions rules. L2Pass cannot override that decision.
 
 ## How to set a refund address
+
+A refund goes only to the refund address, so set it to a wallet you control.
 
 <Steps>
   <Step title="Use a wallet you control">
@@ -39,6 +45,8 @@ If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does no
 </Steps>
 
 ## What to do if a swap is stuck
+
+Check **Recent swaps** and a block explorer before you contact support.
 
 1. Open **Recent swaps** and check the status: *Awaiting deposit*, *Deposit confirmed* or *Complete*.
 2. If it still shows *Awaiting deposit*, check on a block explorer that your transfer reached the deposit address on the right network with the right amount.

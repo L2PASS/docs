@@ -8,6 +8,8 @@ sidebarTitle: "Swap from any wallet or exchange"
 
 ## Key terms
 
+Three addresses matter in a deposit-address swap: the deposit, receiving and refund addresses.
+
 | Term | Meaning |
 | :-- | :-- |
 | Deposit address | A one-time address on the source chain, created for your quote. Sending the quoted amount there starts the swap. |
@@ -16,6 +18,8 @@ sidebarTitle: "Swap from any wallet or exchange"
 | Wallet route | A route where you sign a transaction in a connected wallet, such as Circle CCTP, USDT0, Relay or LI.FI. |
 
 ## Deposit address or wallet transaction
+
+Deposit-address routes accept exchange withdrawals and refund automatically. Wallet routes need your signature and revert if they fail.
 
 | | Deposit-address routes | Wallet routes |
 | :-- | :-- | :-- |
@@ -26,6 +30,8 @@ sidebarTitle: "Swap from any wallet or exchange"
 | Networks | Includes Bitcoin, Zcash, Tron, Solana and TON | Depends on the route |
 
 ## How to swap from an exchange or any wallet
+
+You send one transfer, and the swap starts when it arrives.
 
 <Steps>
   <Step title="Request a quote">
@@ -49,7 +55,9 @@ sidebarTitle: "Swap from any wallet or exchange"
   </Step>
 </Steps>
 
-## Things to know
+## Amounts, networks and fees
+
+Send the exact amount on the network shown in the quote, or the swap may not start.
 
 - **Exchange withdrawal fees.** Some exchanges deduct their withdrawal fee from the amount they send. Check that the amount that arrives matches the quote, or withdraw a little more so the deposit matches.
 - **Use the right network.** Send on the source network shown in the quote. Tokens sent on another network cannot be detected by the swap.

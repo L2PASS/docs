@@ -8,6 +8,8 @@ L2Pass RFQ by NEAR Intents is a cross-chain swap route in [L2Pass Swap](https://
 
 ## Key terms
 
+In an RFQ swap, solvers quote your exact swap, and you pay to a one-time deposit address.
+
 | Term | Meaning |
 | :-- | :-- |
 | RFQ (request for quote) | A way of trading where professional market makers quote a price for your exact swap, instead of you trading against a pool. |
@@ -18,6 +20,8 @@ L2Pass RFQ by NEAR Intents is a cross-chain swap route in [L2Pass Swap](https://
 | Refund address | A wallet you control on the source chain. If the swap cannot complete, your deposit is returned there. |
 
 ## How an RFQ swap works
+
+Solvers compete for your swap before you pay, so you see the price first.
 
 <Steps>
   <Step title="You request a quote">
@@ -52,13 +56,17 @@ A private swap is not anonymity: your wallet address is still shared with provid
 
 ## Why use an RFQ route
 
+RFQ lets you pay from anywhere and reach chains that have no direct bridge between them.
+
 - **One payment from anywhere.** You can pay from any wallet or exchange, without connecting a wallet or signing a contract call on the source chain.
 - **Many networks.** One route can connect chains that have no direct bridge between them, such as Tron, Bitcoin, Zcash, Solana and TON.
 - **Price shown up front.** The amount you will receive already includes all fees and is shown before you pay.
 
 L2Pass also shows other routes next to RFQ, such as Circle CCTP, USDT0, LI.FI and Relay. Which one gives the most depends on the pair and the amount, so compare the route cards. See [How L2Pass compares routes](/products/swap/learn/compare-routes).
 
-## Things to know
+## Limits, timing and refunds
+
+RFQ swaps can have a minimum, take longer with Bitcoin or Zcash, and never fill in part.
 
 - **Minimum amount.** RFQ routes can have a minimum swap amount. If your amount is below it, the route is listed as unavailable with the minimum shown.
 - **Timing.** RFQ swaps typically take from about 30 seconds to a few minutes, longer for networks with slow block confirmation such as Bitcoin or Zcash.

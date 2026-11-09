@@ -8,12 +8,16 @@ The L2Pass SwapKit API lets wallets, apps and AI agents add cross-chain swaps to
 
 ## What you can build
 
+Any product that takes tokens on one network and delivers on another can use the API.
+
 - **Wallets:** cross-chain stablecoin swaps inside your wallet, including Tron, Solana, Bitcoin and Zcash.
 - **Payment apps:** accept USDT on one network and settle on another.
 - **Exchanges and merchants:** deposit-address flows that work from any wallet or exchange.
 - **AI agents:** quote and execute swaps through a simple REST API.
 
 ## Endpoints
+
+Seven REST endpoints cover assets, estimates, quotes, status and your partner account.
 
 | Endpoint | What it does |
 | :-- | :-- |
@@ -28,6 +32,8 @@ The L2Pass SwapKit API lets wallets, apps and AI agents add cross-chain swaps to
 Base URL: `https://api.l2pass.com`. Send your key in the `X-API-Key` header. The full OpenAPI specification is in the [API reference](https://api.l2pass.com/docs).
 
 ## How a swap works through the API
+
+An API swap follows the same flow as a swap in the app: quote, deposit, status.
 
 <Steps>
   <Step title="Get an estimate">
@@ -47,7 +53,9 @@ Base URL: `https://api.l2pass.com`. Send your key in the `X-API-Key` header. The
   </Step>
 </Steps>
 
-## Things to know
+## Fees, limits and refunds
+
+You set your own partner fee, and your key has its own rate limits.
 
 - **Partner fee.** You can add your own fee, returned as `partner_fee_bps` and `partner_fee` in each quote.
 - **Rate limits.** Limits are set per partner for quotes and for status requests. Over the limit, the API returns 429 with a `Retry-After` header.

@@ -8,6 +8,8 @@ We requested live quotes for USDT and BTC to ZEC from [L2Pass Swap](https://swap
 
 ## Results at a glance
 
+L2Pass RFQ returned the most ZEC on all three swaps, except for MAYAChain's raw protocol quote on BTC.
+
 | Swap | Most received | L2Pass RFQ | Best instant exchange (Trocador) |
 | :-- | :-- | :-- | :-- |
 | 1,000 USDT on Tron to ZEC | L2Pass RFQ | 0.89444 ZEC | 0.89369 ZEC (Changee) |
@@ -18,6 +20,8 @@ L2Pass and MAYAChain quotes are from 18:21 to 18:28 UTC, and Trocador quotes fro
 
 ## How we compared
 
+We sent the same amounts and the same quote requests to every provider, and executed no swaps.
+
 - **When:** October 19, 2026, between 18:21 and 18:31 UTC. Times are noted for each table.
 - **How:** the same quote requests each provider's web interface makes, with the same amounts. No swaps were executed.
 - **What we compare:** the amount you receive, after the provider's fees and the destination network fee.
@@ -27,6 +31,8 @@ Snapshots from October 19, 2026. Quotes change every few seconds, so open [L2Pas
 </Note>
 
 ## Live quotes
+
+L2Pass RFQ returned the most ZEC for USDT from both networks.
 
 <Tabs>
 <Tab title="USDT on Tron to ZEC">
@@ -97,6 +103,8 @@ Trocador's privacy rating (A to C here) reflects each exchange's terms, privacy 
 
 ## What the numbers show
 
+Few protocols support ZEC, and L2Pass RFQ returned more than every instant exchange.
+
 - **L2Pass RFQ returned the most ZEC for USDT** from both networks, ahead of every instant exchange on Trocador. For 0.01 BTC, only MAYAChain's raw protocol quote was higher, by 0.07%, before any app fee.
 - **L2Pass Private beat several public routes.** Even with the 0.3% fee, it returned more ZEC than ChangeNOW and MAYAChain for USDT on Ethereum.
 - **Few cross-chain protocols support ZEC from Tron.** Only L2Pass and LI.FI returned a quote, and LI.FI routed through NEAR Intents, the same network behind L2Pass RFQ, with its own fees on top. Instant exchanges cover the pair, at lower amounts.
@@ -104,11 +112,15 @@ Trocador's privacy rating (A to C here) reflects each exchange's terms, privacy 
 
 ## Which one to use
 
+L2Pass RFQ returned the most on every pair a user can act on.
+
 - **USDT to ZEC, from Tron or Ethereum:** L2Pass RFQ returned the most.
 - **BTC to ZEC:** L2Pass RFQ returned more than every instant exchange. MAYAChain's raw protocol quote was 0.07% higher before app fees.
 - **Private execution:** L2Pass Private, for 0.3% instead of 0.2%.
 
-## Things to know
+## Privacy, addresses and compliance
+
+A private swap limits what public blockchains show, but it does not make you anonymous.
 
 - **Privacy is not anonymity.** L2Pass Private limits what public blockchains show about how the swap is filled. Providers still receive your wallet address, and compliance screening applies.
 - **Receiving address.** Use a transparent Zcash address unless the quote accepts yours, then shield the ZEC in your wallet.

@@ -8,6 +8,8 @@ In [L2Pass Swap](https://swap.l2pass.com/), every route card shows an expected o
 
 ## Key terms
 
+Two numbers on each route card matter most: the expected output and the minimum received.
+
 | Term | Meaning |
 | :-- | :-- |
 | Expected output | The estimated amount on the destination network, after all fees |
@@ -31,6 +33,8 @@ On a variable route, the minimum received is the expected output minus your tole
 
 ## How to set slippage
 
+You set slippage on each route card, in three steps.
+
 <Steps>
   <Step title="Open the route card">
     Request a quote on [swap.l2pass.com](https://swap.l2pass.com/) and open the route you want.
@@ -47,11 +51,15 @@ On a variable route, the minimum received is the expected output minus your tole
 
 ## How to choose a tolerance
 
+The default 0.05% fits stablecoins. Volatile assets on slower routes may need more.
+
 - **Stablecoin to stablecoin.** Prices barely move, so the default 0.05% is usually enough.
 - **Volatile assets, such as ETH or BTC.** Prices can move while a swap settles, especially on slower routes. If a swap keeps failing on price, a slightly higher tolerance can help.
 - **Fixed-output routes.** Tolerance does not matter: you get the exact amount shown.
 
-## Things to know
+## Failed swaps and fees
+
+A swap that would pay less than the minimum received does not execute at all.
 
 - **No partial fills.** If the price moves beyond your tolerance, the swap does not execute at all.
 - **Refunds.** A failed on-chain route reverts (gas is not refundable). A failed deposit-address route returns your deposit to the refund address; provider and network fees may be deducted.
