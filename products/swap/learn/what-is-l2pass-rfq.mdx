@@ -4,7 +4,7 @@ description: "L2Pass RFQ by NEAR Intents lets solvers and market makers compete 
 sidebarTitle: "L2Pass RFQ by NEAR Intents"
 ---
 
-L2Pass RFQ by NEAR Intents is a cross-chain swap route in [L2Pass Swap](https://swap.l2pass.com/) where solvers and market makers compete to fill your swap. You state what you want to receive, they quote a price, and the winning quote is shown to you before you pay. You pay by sending tokens to a one-time deposit address, from a connected wallet, any wallet or an exchange. The L2Pass fee is 0% on stablecoin swaps and up to 0.2% on other assets, and every fee is already included in the amount shown in the quote.
+L2Pass RFQ by NEAR Intents is a cross-chain swap route in [L2Pass Swap](https://swap.l2pass.com/) where solvers and market makers compete to fill your swap. You state what you want to receive, they quote a price, and the winning quote is shown to you before you pay. You pay by sending tokens to a one-time deposit address, from a connected wallet, any wallet or an exchange. The L2Pass fee is 0% on stablecoin swaps and up to 0.2% on other assets, and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Key terms
 
@@ -44,7 +44,7 @@ Both routes use the same NEAR Intents solver network and the same deposit-addres
 | | L2Pass RFQ | L2Pass Private |
 | :-- | :-- | :-- |
 | Execution | Public | Confidential environment that limits what is visible on public blockchains |
-| L2Pass fee | 0% on stablecoins, up to 0.2% on other assets | Up to 0.3% (instead of 0% or 0.2%, not in addition) |
+| L2Pass fee | 0% on stablecoins, up to 0.2% on other assets | Up to 0.3% (replacing the standard fee, not added to it) |
 | Payment | One-time deposit address | One-time deposit address |
 | Refund address | Required | Required |
 

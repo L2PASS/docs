@@ -15,6 +15,10 @@ sidebarTitle: "Is L2Pass safe?"
 | Who holds your keys | Only you | Only you |
 | If it fails | The transaction reverts (gas is not refundable) | The deposit returns to your refund address, minus any provider or network fees |
 
+<Warning>
+One exception to refunds: if a provider flags a swap as high risk under AML or sanctions rules, the provider decides whether to complete, refund or hold it. In that case a refund is not guaranteed.
+</Warning>
+
 ## What L2Pass does and does not do
 
 **L2Pass does:**
@@ -32,6 +36,8 @@ sidebarTitle: "Is L2Pass safe?"
 Swaps through third-party routes are executed by those providers' own contracts. L2Pass uses its own router only for native USDT0 transfers. See [Contracts](/resources/contracts) for the addresses on Ethereum, Arbitrum, Optimism, Polygon, HyperEVM and Tron.
 
 ## How to stay safe
+
+These four checks protect you from fake sites, wrong addresses and unwanted approvals.
 
 <Steps>
   <Step title="Use the official site">
@@ -65,7 +71,7 @@ Swaps through third-party routes are executed by those providers' own contracts.
   </Accordion>
 
   <Accordion title="Is L2Pass legit?">
-    L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions. The swap interface shows every route, fee and the amount you will receive before you confirm.
+    Yes, and you can check it yourself. L2Pass has run on mainnet since 2023, and its onchain history is public on [LayerZero Scan](https://layerzeroscan.com/application/l2pass). Its contract addresses are listed on [Contracts](/resources/contracts). Because L2Pass never holds your tokens, you do not have to trust it with your funds: each swap runs on the routing provider's own contracts, and you see the amount you will receive before you confirm.
   </Accordion>
 
   <Accordion title="Do I need to give L2Pass my personal data?">

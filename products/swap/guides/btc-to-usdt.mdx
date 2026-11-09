@@ -4,14 +4,14 @@ description: "Swap native BTC to USDT on Tron or Ethereum, or USDT back to BTC, 
 sidebarTitle: "BTC to USDT and back"
 ---
 
-You can swap native BTC on Bitcoin to USDT on Tron or Ethereum, and USDT back to BTC, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes on October 19, 2026, two routes were offered for these pairs, L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents). A swap from BTC took about 13.5 to 14 minutes, and a swap to BTC about 9 minutes, mostly waiting for Bitcoin block confirmations. You pay by sending BTC or USDT to a one-time deposit address from any wallet or exchange, with no account. The L2Pass fee is up to 0.2% (up to 0.3% on private swaps), and every fee is already included in the amount shown in the quote.
+You can swap native BTC on Bitcoin to USDT on Tron or Ethereum, and USDT back to BTC, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes on October 19, 2026, two routes were offered for these pairs, L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents). A swap from BTC took about 13.5 to 14 minutes, and a swap to BTC about 9 minutes, mostly waiting for Bitcoin block confirmations. You pay by sending BTC or USDT to a one-time deposit address from any wallet or exchange, with no account. The L2Pass fee is up to 0.2% (up to 0.3% on private swaps), and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
 
 ## Routes for BTC and USDT
 
 | Route | Estimated time | Output | Notes |
 | :-- | :-- | :-- | :-- |
 | L2Pass RFQ | About 13.5 to 14 minutes from BTC, about 9 minutes to BTC | Variable, with a minimum received | Solvers and market makers compete to fill your swap. Deposit address. L2Pass fee up to 0.2%. |
-| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3% (instead of 0.2%, not in addition). |
+| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3% (replacing the standard fee, not added to it). |
 
 No other routes were offered for these pairs in those test quotes. The quote lists any route that can fill the pair.
 

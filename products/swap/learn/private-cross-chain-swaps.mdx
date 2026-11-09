@@ -1,12 +1,20 @@
 ---
 title: "What Is a Private Cross-Chain Swap"
-description: "A private cross-chain swap in L2Pass runs in a confidential environment on NEAR Intents that limits what public blockchains show. What it hides and what not."
+description: "L2Pass private swaps limit what public blockchains show about how your swap is filled. What they hide, what stays visible, the fee and how to make one."
 sidebarTitle: "Private cross-chain swaps"
 ---
 
-A private cross-chain swap in [L2Pass Swap](https://swap.l2pass.com/) is a swap on the L2Pass Private route, which runs on [NEAR Intents](https://near.org/intents) in a confidential execution environment. It limits what is visible on public blockchains about how your swap is filled. It is not anonymity: your wallet address is still included in requests sent to providers, and the same compliance screening applies as on any other swap. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+A private cross-chain swap in [L2Pass Swap](https://swap.l2pass.com/) limits what public blockchains show about how your swap is filled. It runs on the L2Pass Private route, inside a confidential execution environment on [NEAR Intents](https://near.org/intents).
+
+<Warning>
+A private swap is not anonymous. Your deposit and the tokens you receive are still normal transactions on their chains. Providers still receive your wallet address and screen the swap for AML and sanctions risk, as on any other route.
+</Warning>
+
+The L2Pass fee for a private swap is up to 0.3%. It replaces the standard fee rather than adding to it, and it is already included in the amount shown in the quote.
 
 ## Private and standard swaps compared
+
+L2Pass Private and the standard L2Pass RFQ route run on the same network and use the same deposit flow. Execution and fee are what differ.
 
 | | L2Pass Private | L2Pass RFQ |
 | :-- | :-- | :-- |
@@ -49,7 +57,7 @@ In test quotes for 1,000 USDC from Arbitrum to Base on October 19, 2026, L2Pass 
   </Step>
 
   <Step title="Pay to the deposit address">
-    Send the quoted amount to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code.
+    Send the quoted amount to the one-time deposit address by address or QR code. You can pay from your connected wallet, from another wallet or straight from an exchange.
   </Step>
 
   <Step title="Track the swap">
@@ -71,7 +79,7 @@ In test quotes for 1,000 USDC from Arbitrum to Base on October 19, 2026, L2Pass 
   </Accordion>
 
   <Accordion title="How much does a private swap cost?">
-    The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+    The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
   </Accordion>
 
   <Accordion title="Can I make a private stablecoin swap?">
@@ -79,7 +87,7 @@ In test quotes for 1,000 USDC from Arbitrum to Base on October 19, 2026, L2Pass 
   </Accordion>
 
   <Accordion title="Which networks support private swaps?">
-    Any pair that L2Pass Private can fill, which in test quotes included USDT on Tron and Ethereum, USDC on Arbitrum, Base and Ethereum, BTC and ZEC. The quote shows whether L2Pass Private is offered for your pair.
+    In test quotes, private swaps worked for USDT on Tron and Ethereum, USDC on Arbitrum, Base and Ethereum, BTC and ZEC. For any other pair, check the quote: it lists L2Pass Private whenever it can fill your swap.
   </Accordion>
 </AccordionGroup>
 

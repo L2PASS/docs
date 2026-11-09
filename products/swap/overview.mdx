@@ -1,7 +1,7 @@
 ---
 title: "Overview"
 icon: "bridge-water"
-description: "Swap tokens across chains at the best available rate, with a focus on stablecoins."
+description: "How L2Pass Swap works: 14 networks, several routes quoted for every swap, 0% L2Pass fee on stablecoins, private swaps, refunds and execution times."
 iconType: "light"
 ---
 
@@ -9,9 +9,9 @@ iconType: "light"
   ![Docs Cross Chain Swap](/images/docs_cross-chain_swap.png)
 </Frame>
 
-[L2Pass Swap](https://swap.l2pass.com/) was built to solve the fragmentation of cross-chain liquidity, especially for stablecoins. It is a non-custodial interface that compares quotes from several independent routing providers and lets you execute the best one with a single confirmation.
+[L2Pass Swap](https://swap.l2pass.com/) moves tokens between blockchains, with a focus on stablecoins. For every swap it asks several independent routing providers for a quote, shows them side by side sorted by what you receive, and lets you execute the one you pick with a single confirmation.
 
-L2Pass never takes custody of your tokens. Swaps are executed by third-party bridges, solver networks and liquidity sources, and the interface shows you each route side by side before you confirm.
+L2Pass never takes custody of your tokens. Third-party bridges, solver networks and liquidity sources execute each swap on their own infrastructure.
 
 ## Supported Networks and Assets
 
@@ -85,7 +85,7 @@ Private swaps route your swap through a confidential execution environment inste
 
 - **Not anonymity:** Your public wallet address is still included in requests sent to providers.
 - **Compliance still applies:** Private swaps are subject to the same transaction screening and sanctions controls as other swaps.
-- **Fee:** The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
+- **Fee:** The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
 
 See the [Terms of Service](https://l2pass.com/terms-of-service) and [Privacy & AML Principles](https://l2pass.com/privacy-policy) for details.
 

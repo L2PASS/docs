@@ -1,0 +1,51 @@
+---
+title: "L2Pass Swap Glossary: RFQ, Solvers, USDT0, CCTP and More"
+description: "Plain definitions of the terms used in L2Pass Swap and these docs: RFQ, solver, deposit address, refund address, minimum received, slippage, USDT0, CCTP and more."
+sidebarTitle: "Glossary"
+---
+
+These are the terms you will meet in [L2Pass Swap](https://swap.l2pass.com/) and in these docs, in plain words. Each one links to the page that explains it in full.
+
+## Routes and providers
+
+| Term | What it means |
+| :-- | :-- |
+| **Route** | One way to fill your swap, run by one provider. L2Pass shows every route that can fill your swap, sorted by what you receive. [How routes are compared](/products/swap/learn/compare-routes) |
+| **Route card** | The box in the swap interface that shows a route's expected output, minimum received, estimated time and fees. |
+| **NEAR Intents** | A network where solvers and market makers compete to fill cross-chain swaps. It runs the L2Pass RFQ and L2Pass Private routes. |
+| **L2Pass RFQ** | The standard route on NEAR Intents. RFQ stands for request for quote: your swap is offered to solvers, and the best quote fills it. [What is L2Pass RFQ](/products/swap/learn/what-is-l2pass-rfq) |
+| **L2Pass Private** | The same route as L2Pass RFQ, executed in a confidential environment that limits what public blockchains show. [Private swaps](/products/swap/learn/private-cross-chain-swaps) |
+| **Solver** | A market maker that fills swaps on NEAR Intents with its own liquidity. |
+| **USDT0** | The version of USDT that moves natively between chains over LayerZero, with no wrapped token. [USDT networks explained](/products/swap/learn/usdt-networks) |
+| **Circle CCTP** | Circle's Cross-Chain Transfer Protocol. It burns USDC on the source chain and mints native USDC on the destination, in Standard or Fast mode. [Bridge USDC with CCTP](/products/swap/guides/usdc-cctp) |
+| **Aggregator** | A service that searches many bridges and exchanges for one route, such as LI.FI or the OKX DEX aggregator. |
+
+## Paying and getting paid
+
+| Term | What it means |
+| :-- | :-- |
+| **Wallet route** | A route where you sign a transaction in your own wallet, such as CCTP, USDT0, LI.FI or Relay. |
+| **Deposit address** | A one-time address created for your quote on the L2Pass RFQ and L2Pass Private routes. You can pay it from any wallet or exchange, with no wallet connection. [Deposit-address swaps](/products/swap/learn/deposit-address-swaps) |
+| **Refund address** | A wallet you control on the source chain. If a deposit-address swap cannot complete, your deposit goes back there. [Failed swaps and refunds](/products/swap/learn/failed-swaps-and-refunds) |
+| **Non-custodial** | L2Pass never holds your tokens or private keys. Providers execute each swap on their own contracts. [Is L2Pass safe?](/products/swap/learn/is-l2pass-safe) |
+| **Partial fill** | A swap that completes only in part. L2Pass does not use them: a swap completes in full or does not execute. |
+
+## Amounts and fees
+
+| Term | What it means |
+| :-- | :-- |
+| **Expected output** | The amount you should receive under current market conditions, after fees. |
+| **Minimum received** | The least you will receive. If the market moves past it, the swap does not execute. |
+| **Slippage tolerance** | How far below the expected output you accept. It sets the minimum received. The default is 0.05%. [Slippage explained](/products/swap/learn/slippage) |
+| **Fixed output** | A route that delivers an exact amount, such as USDT0. Slippage does not apply. |
+| **L2Pass fee** | The only fee L2Pass charges: 0% on stablecoin swaps, up to 0.2% on other assets, up to 0.3% on private swaps. [Fees explained](/products/swap/learn/fees) |
+| **Provider fee** | The fee the routing provider charges, such as NEAR Intents, LI.FI or Relay. It is included in the amount you receive. |
+| **Network fee** | The fee the destination blockchain charges. It is included in the amount you receive. |
+| **Source gas** | The fee the source blockchain charges to send your transaction, paid from your wallet in its native token (ETH, TRX, BNB and so on). |
+| **Bridge message fee** | A fee some bridges charge to send a cross-chain message, such as USDT0 over LayerZero. It is paid in the source chain's native token. |
+
+## Links
+
+- [Open L2Pass Swap](https://swap.l2pass.com/)
+- [How L2Pass Swap works](/products/swap/overview)
+- [L2Pass Swap FAQ](/products/swap/faq)
