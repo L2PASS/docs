@@ -1,10 +1,16 @@
 ---
 title: "How to Make a Private ZEC Swap (USDT to ZEC and ZEC to USDT)"
-description: "Swap USDT to ZEC or ZEC to USDT with L2Pass Private, which limits what public blockchains show. L2Pass fee up to 0.3%, included in the quote."
+description: "Swap USDT to ZEC in about 3 minutes, or ZEC to USDT in about 8.5, with L2Pass Private. L2Pass fee up to 0.3%, no account needed."
 sidebarTitle: "Private swaps with ZEC"
 ---
 
-You can make a private swap between USDT and ZEC, in either direction, with [L2Pass Swap](https://swap.l2pass.com/) by choosing the L2Pass Private route. In test quotes on October 10, 2026, it was offered from USDT on Tron and Ethereum to ZEC, with an estimated time of about 3 minutes, and from ZEC to USDT on Tron, with about 8.5 minutes. It executes the swap in a confidential environment that limits what is visible on public blockchains. It is not anonymity: your wallet address is still shared with providers, and compliance screening still applies. The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
+You can make a private swap between USDT and ZEC, in either direction, with [L2Pass Swap](https://swap.l2pass.com/) by choosing the L2Pass Private route. In test quotes, it was offered from USDT on Tron and Ethereum to ZEC, with an estimated time of about 3 minutes, and from ZEC to USDT on Tron, with about 8.5 minutes. It executes the swap in a confidential environment that limits what is visible on public blockchains. It is not anonymity: your wallet address is still shared with providers, and compliance screening still applies. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). It is already included in the amount shown in the quote.
+
+**About 3 minutes from USDT** · **0.8096 ZEC for 1,000 USDT** · **Confidential execution** · **No account**
+
+<Note>Numbers from test quotes on October 10, 2026. Your quote is always live.</Note>
 
 ## Routes for swaps between USDT and ZEC
 
@@ -17,13 +23,20 @@ L2Pass RFQ and L2Pass Private both run on [NEAR Intents](https://near.org/intent
 
 No other routes (aggregators or other intent networks) were offered for USDT and ZEC in either direction in those test quotes.
 
-Test quotes for 1,000 USDT on Tron to ZEC on October 10, 2026 showed these amounts received: 0.8151 ZEC on L2Pass RFQ and 0.8096 ZEC on L2Pass Private. The live quote shows current numbers for your pair and amount.
+Test quotes for 1,000 USDT on Tron to ZEC showed these amounts received: 0.8151 ZEC on L2Pass RFQ and 0.8096 ZEC on L2Pass Private. The live quote shows current numbers for your pair and amount.
 
 ## How to make a private ZEC swap
 
+Nothing leaves your wallet until you pay, so you can compare every route first.
+
 <Steps>
   <Step title="Open L2Pass Swap and choose the pair">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/). Choose USDT (on the network you hold it on) and ZEC (on Zcash) as source and destination, in either order, then enter the amount and the receiving address.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** USDT on the network you hold it on, or ZEC on Zcash.
+    - **To:** the other token of the pair.
+    - **Amount:** how much you want to swap.
+    - **Receiving address:** the address that will get the tokens, on Zcash or on your USDT network.
   </Step>
 
   <Step title="Select L2Pass Private">
@@ -31,7 +44,7 @@ Test quotes for 1,000 USDT on Tron to ZEC on October 10, 2026 showed these amoun
   </Step>
 
   <Step title="Set a refund address">
-    Set the refund address to a wallet you control on the chain you pay from (Zcash, or your USDT network). If the swap cannot complete, your deposit is returned there.
+    Set the refund address to a wallet you control on the chain you pay from (Zcash, or your USDT network). If the swap cannot complete, the provider sends your deposit back there.
   </Step>
 
   <Step title="Pay to the deposit address">
@@ -43,12 +56,14 @@ Test quotes for 1,000 USDT on Tron to ZEC on October 10, 2026 showed these amoun
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
+
+You pay gas only on the chain you send from, and a private swap does not make you anonymous.
 
 - **Network fees.** You pay gas only where you send from: ZEC on Zcash, or your USDT network's native token, such as TRX on Tron. Any network fee on the destination chain is deducted from the amount shown.
-- **Refunds.** If a swap cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Privacy and compliance.** A private swap is not anonymity: your public wallet address is still included in requests sent to providers, and the same screening and sanctions controls apply. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Not anonymity.** A private swap limits what public blockchains show, but your public wallet address is still included in requests sent to providers. The same screening and sanctions controls apply as on any other route.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 
@@ -58,11 +73,11 @@ Test quotes for 1,000 USDT on Tron to ZEC on October 10, 2026 showed these amoun
   </Accordion>
 
   <Accordion title="How much does a private ZEC swap cost?">
-    The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote, and so are the fees that routing partners and networks charge.
+    The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). It is already included in the amount shown in the quote, and so are the fees that routing partners and networks charge.
   </Accordion>
 
   <Accordion title="Which USDT networks can I swap with ZEC?">
-    In test quotes on October 10, 2026, private swaps with ZEC were offered for USDT on Tron and on Ethereum. When you request a quote, the route list shows which networks can fill the pair.
+    In test quotes, private swaps with ZEC were offered for USDT on Tron and on Ethereum. When you request a quote, the route list shows which networks can fill the pair.
   </Accordion>
 
   <Accordion title="Do I need an account or KYC for a private swap?">
@@ -73,9 +88,10 @@ Test quotes for 1,000 USDT on Tron to ZEC on October 10, 2026 showed these amoun
 ## Links
 
 - [Open L2Pass Swap](https://swap.l2pass.com/)
-- [Private swaps overview](https://docs.l2pass.com/products/swap/overview#private-swaps)
-- [L2Pass Swap fees](https://docs.l2pass.com/products/swap/overview#fee-structure)
-- [L2Pass Swap FAQ](https://docs.l2pass.com/products/swap/faq)
+- [Best way to swap USDT or BTC to ZEC: L2Pass vs other services](/products/swap/learn/compare-zec-swaps)
+- [Private swaps overview](/products/swap/overview#private-swaps)
+- [L2Pass Swap fees](/products/swap/overview#fee-structure)
+- [L2Pass Swap FAQ](/products/swap/faq)
 - [USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
 - [USDT from Tron to Solana](/products/swap/guides/usdt-tron-to-solana)
 - [Privacy & AML Principles](https://l2pass.com/privacy-policy) and [Terms of Service](https://l2pass.com/terms-of-service)

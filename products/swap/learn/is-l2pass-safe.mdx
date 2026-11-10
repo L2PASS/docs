@@ -4,9 +4,11 @@ description: "L2Pass Swap is non-custodial: it never holds your tokens or keys, 
 sidebarTitle: "Is L2Pass safe?"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) is a non-custodial interface: L2Pass never holds your tokens or private keys. Each swap is executed by a routing provider, such as NEAR Intents, Circle CCTP, USDT0, LI.FI or Relay, on that provider's own contracts. You either sign a transaction in your own wallet or send tokens to a one-time deposit address created for your quote, and the amount you will receive, after all fees, is shown before you confirm. L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions.
+[L2Pass Swap](https://swap.l2pass.com/) is a non-custodial interface: L2Pass never holds your tokens or private keys. Each swap is executed by a routing provider, such as NEAR Intents, Circle CCTP, USDT0, LI.FI or Relay, on that provider's own contracts. You either sign a transaction in your own wallet or send tokens to a one-time deposit address created for your quote, and the swap interface shows the amount you will receive, after fees, before you confirm. L2Pass has been live since 2023 and has served more than 650,000 wallets and over 4 million transactions.
 
 ## How your funds move
+
+Your keys never leave your wallet, whichever route you pick.
 
 | Step | Wallet routes (CCTP, USDT0, LI.FI, Relay, Aori, OKX) | Deposit-address routes (L2Pass RFQ, L2Pass Private) |
 | :-- | :-- | :-- |
@@ -57,7 +59,9 @@ These four checks protect you from fake sites, wrong addresses and unwanted appr
   </Step>
 </Steps>
 
-## Things to know
+## Compliance and third-party risk
+
+Providers, not L2Pass, run each swap and its compliance checks.
 
 - **Compliance checks.** Providers run risk-based AML and sanctions checks. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
 - **Third-party risk.** Each provider runs its own contracts and infrastructure. See the [Terms of Service](https://l2pass.com/terms-of-service) for how L2Pass handles third-party providers.
@@ -79,7 +83,7 @@ These four checks protect you from fake sites, wrong addresses and unwanted appr
   </Accordion>
 
   <Accordion title="What happens to my funds if a swap fails?">
-    On wallet routes, the transaction reverts and only gas is spent. On deposit-address routes, the deposit is returned to your refund address, minus any provider or network fees. See [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds).
+    On wallet routes, the transaction reverts and only gas is spent. On deposit-address routes, the provider sends the deposit back to your refund address, minus any provider or network fees. See [What happens if a swap fails](/products/swap/learn/failed-swaps-and-refunds).
   </Accordion>
 </AccordionGroup>
 

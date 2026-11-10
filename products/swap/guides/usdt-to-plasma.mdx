@@ -1,10 +1,16 @@
 ---
 title: "How to Bridge USDT to Plasma (USDT0)"
-description: "Bridge USDT to Plasma from Tron, Ethereum or Arbitrum with L2Pass Swap. USDT arrives as USDT0. Compare routes and see all fees before you confirm."
+description: "Bridge USDT to Plasma in about 1 second from Ethereum or 1.5 minutes from Tron. 0% L2Pass fee, arrives as USDT0, no XPL needed."
 sidebarTitle: "USDT to Plasma"
 ---
 
-You can bridge USDT to Plasma from Tron, Ethereum or Arbitrum with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. On Plasma, USDT arrives as USDT0, the omnichain version of USDT. In test quotes on October 19, 2026, Tron to Plasma was offered by L2Pass RFQ and L2Pass Private in about 1.5 minutes, and Ethereum or Arbitrum to Plasma also by Relay and Aori in seconds. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
+You can bridge USDT to Plasma from Tron, Ethereum or Arbitrum with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. On Plasma, USDT arrives as USDT0, the omnichain version of USDT. In test quotes, Tron to Plasma was offered by L2Pass RFQ and L2Pass Private in about 1.5 minutes, and Ethereum or Arbitrum to Plasma also by Relay and Aori in seconds. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+
+**Seconds from Ethereum** · **0% L2Pass fee** · **999.68 USDT0 arrives for 1,000 sent** · **No XPL needed**
+
+<Note>Numbers from test quotes on October 19, 2026. Your quote is always live.</Note>
 
 ## Routes to Plasma
 
@@ -19,7 +25,7 @@ L2Pass RFQ and L2Pass Private both run on [NEAR Intents](https://near.org/intent
 
 LI.FI was also offered from Ethereum. The quote lists any route that can fill your pair.
 
-## Test quotes on October 19, 2026
+## Test quotes
 
 Quotes for 1,000 USDT at about 17:17 UTC. The live quote shows current numbers for your pair and amount.
 
@@ -58,9 +64,16 @@ On this pair, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provider
 
 ## How to bridge USDT to Plasma
 
+Nothing leaves your wallet until you pay, so you can compare every route first.
+
 <Steps>
   <Step title="Open L2Pass Swap">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Tron or Ethereum, or USDT0 on Arbitrum, as the source and USDT0 on Plasma as the destination. Enter the amount and set the Plasma address (an EVM address starting with 0x) that will receive the USDT0.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** USDT on Tron or Ethereum, or USDT0 on Arbitrum.
+    - **To:** USDT0 on Plasma.
+    - **Amount:** how much you want to send.
+    - **Receiving address:** the Plasma address (an EVM address starting with 0x) that will get the USDT0.
   </Step>
 
   <Step title="Compare the routes">
@@ -68,11 +81,20 @@ On this pair, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provider
   </Step>
 
   <Step title="Set a refund address">
-    For L2Pass RFQ and L2Pass Private, set the refund address to a wallet you control on the source chain. If the swap cannot complete, your deposit is returned there.
+    For L2Pass RFQ and L2Pass Private, set the refund address to a wallet you control on the source chain. If the swap cannot complete, the provider sends your deposit back there.
   </Step>
 
   <Step title="Pay by wallet or deposit address">
-    On Relay and Aori, sign the transaction in your wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote.
+    How you pay depends on the route you picked.
+
+    <Tabs>
+      <Tab title="Wallet routes (Relay, Aori)">
+        Sign the transaction in your wallet.
+      </Tab>
+      <Tab title="Deposit address (L2Pass RFQ, L2Pass Private)">
+        Send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Track the swap">
@@ -80,19 +102,20 @@ On this pair, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provider
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
+
+You need gas only on the source chain, and your USDT arrives on Plasma as USDT0.
 
 - **USDT0 on Plasma.** L2Pass Swap offers USDT on Plasma as USDT0. Plasma's native token is XPL.
 - **Gas on the source chain only.** You pay gas in TRX on Tron or in ETH on Ethereum and Arbitrum. The Plasma network fee is deducted from the amount shown, so you do not need XPL to receive.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="Can I bridge USDT from Tron to Plasma?">
-    Yes. In test quotes on October 19, 2026, L2Pass RFQ and L2Pass Private offered TRC-20 USDT to USDT0 on Plasma, with an estimated time of about 1.5 minutes.
+    Yes. In test quotes, L2Pass RFQ and L2Pass Private offered TRC-20 USDT to USDT0 on Plasma, with an estimated time of about 1.5 minutes.
   </Accordion>
 
   <Accordion title="How much does it cost to bridge USDT to Plasma?">
@@ -111,6 +134,7 @@ On this pair, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provider
 ## Links
 
 - [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Best way to bridge USDT and USDC: L2Pass vs other bridges](/products/swap/learn/compare-stablecoin-transfers)
 - [Bridge USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
 - [How L2Pass compares routes](/products/swap/learn/compare-routes)
 - [L2Pass Swap fees explained](/products/swap/learn/fees)

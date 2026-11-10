@@ -8,12 +8,16 @@ We requested live quotes for the same two stablecoin transfers from [L2Pass Swap
 
 ## Results at a glance
 
+L2Pass returned the most on both transfers, counting the fees you pay outside the quote.
+
 | Transfer | Most received | L2Pass result | Best instant exchange |
 | :-- | :-- | :-- | :-- |
 | 1,000 USDT, Tron to Ethereum | L2Pass RFQ, 999.55 USDT (after USDT0's extra message fee) | 999.55 USDT, 0% L2Pass fee | 994.65 USDT (FixedFloat) |
 | 1,000 USDC, Arbitrum to Base | Circle CCTP through L2Pass, 999.95 USDC | 999.95 USDC, eight routes in one quote | 987.50 USDC (ChangeNOW, standard) |
 
 ## How we compared
+
+We sent the same amounts and the same quote requests to every provider, and executed no swaps.
 
 - **When:** October 19, 2026, from 18:21 UTC. Times are noted for each table.
 - **How:** the same quote requests that each provider's own web interface makes, with the same amounts. No swaps were executed.
@@ -24,6 +28,8 @@ Snapshots from October 19, 2026. Quotes change every few seconds, so open [L2Pas
 </Note>
 
 ## Live quotes
+
+L2Pass RFQ cost the least from Tron, and CCTP Standard through L2Pass tied with LI.FI Intents for the most USDC between EVM chains.
 
 <Tabs>
 <Tab title="USDT: Tron to Ethereum">
@@ -93,13 +99,17 @@ Trocador's privacy rating (A to C here) reflects each exchange's terms, privacy 
 
 ## What the numbers show
 
-- **L2Pass compares providers for you.** On Arbitrum to Base, one L2Pass quote returned eight routes, including Relay, LI.FI and Circle CCTP, so you see the best one without visiting each site.
+What arrives after every fee matters more than speed or the headline fee.
+
+- **L2Pass compares providers for you.** On Arbitrum to Base, one L2Pass quote returned eight routes, including Relay, LI.FI and Circle CCTP, so you can compare them without visiting each site.
 - **Fastest is not cheapest.** Relay and deBridge took seconds. CCTP Standard paid the most but took about 19.5 minutes.
 - **Instant exchanges cost more.** ChangeNOW and SideShift returned 12 to 36 USDT less on a 1,000 USDT transfer.
 - **Tron support varies.** MAYAChain does not support Tron, and LI.FI routed through LayerSwap.
 - **Totals matter more than headline fees.** deBridge adds a fixed fee in the source chain's native token on top of its quote, and USDT0 adds a LayerZero message fee, so compare what arrives after everything you pay.
 
 ## Which one to use
+
+Pick by what matters most to you: total cost, speed or paying from an exchange.
 
 - **Lowest total cost from Tron:** L2Pass RFQ.
 - **Speed in seconds between EVM chains:** Relay, directly or inside L2Pass at the same price.

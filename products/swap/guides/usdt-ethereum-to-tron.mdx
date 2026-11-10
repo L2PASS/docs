@@ -1,10 +1,16 @@
 ---
 title: "How to Bridge USDT from Ethereum to Tron (ERC-20 to TRC-20)"
-description: "Bridge USDT from Ethereum (ERC-20) to Tron (TRC-20) with L2Pass Swap. Compare routes and see all fees before you confirm. 0% L2Pass fee on stablecoin swaps."
+description: "Bridge USDT from Ethereum to Tron in under 2 minutes. 0% L2Pass fee, gas in ETH only, no TRX needed to receive. Three routes compared."
 sidebarTitle: "USDT: Ethereum to Tron"
 ---
 
-You can bridge USDT from Ethereum (ERC-20) to Tron (TRC-20) with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. In test quotes on October 19, 2026, it offered three routes for this pair: L2Pass RFQ, the native USDT0 bridge and L2Pass Private, each with an estimated time of about 1.5 minutes. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
+You can bridge USDT from Ethereum (ERC-20) to Tron (TRC-20) with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. In test quotes, it offered three routes for this pair: L2Pass RFQ, the native USDT0 bridge and L2Pass Private, each with an estimated time of about 1.5 minutes. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+
+**Under 2 minutes** · **0% L2Pass fee** · **998.21 USDT arrives for 1,000 sent** · **No TRX needed**
+
+<Note>Numbers from test quotes on October 19, 2026. Your quote is always live.</Note>
 
 ## Routes for USDT from Ethereum to Tron
 
@@ -18,13 +24,20 @@ L2Pass RFQ and L2Pass Private both run on [NEAR Intents](https://near.org/intent
 
 No aggregator routes (LI.FI, LI.FI Intents, Relay, Aori or the OKX DEX aggregator) were offered for this pair in those test quotes. The quote lists any route that can fill the pair.
 
-Test quotes for 1,000 USDT on October 19, 2026 showed these amounts received: 998.21 USDT on L2Pass RFQ, 999.7 USDT on USDT0 (plus a LayerZero message fee of about 0.005 ETH, about 11.92 USD) and 995.64 USDT on L2Pass Private. Because of the message fee, L2Pass listed L2Pass RFQ first. The live quote shows current numbers for your amount.
+Test quotes for 1,000 USDT showed these amounts received: 998.21 USDT on L2Pass RFQ, 999.7 USDT on USDT0 (plus a LayerZero message fee of about 0.005 ETH, about 11.92 USD) and 995.64 USDT on L2Pass Private. Because of the message fee, L2Pass listed L2Pass RFQ first. The live quote shows current numbers for your amount.
 
 ## How to bridge USDT from Ethereum to Tron
 
+Nothing leaves your wallet until you pay, so you can compare every route first.
+
 <Steps>
   <Step title="Open L2Pass Swap">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Ethereum as the source and USDT on Tron as the destination, then enter the amount and set the Tron address (it starts with T) that will receive the USDT.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** USDT on Ethereum.
+    - **To:** USDT on Tron.
+    - **Amount:** how much USDT you want to send.
+    - **Receiving address:** the Tron address (it starts with T) that will get the USDT.
   </Step>
 
   <Step title="Compare the routes">
@@ -32,11 +45,20 @@ Test quotes for 1,000 USDT on October 19, 2026 showed these amounts received: 99
   </Step>
 
   <Step title="Set a refund address">
-    For L2Pass RFQ and L2Pass Private, set the refund address to an Ethereum wallet you control. If the swap cannot complete, your deposit is returned there.
+    For L2Pass RFQ and L2Pass Private, set the refund address to an Ethereum wallet you control. If the swap cannot complete, the provider sends your deposit back there.
   </Step>
 
   <Step title="Pay by wallet or deposit address">
-    On the USDT0 route, sign the transaction in your Ethereum wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any Ethereum wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+    How you pay depends on the route you picked.
+
+    <Tabs>
+      <Tab title="Wallet route (USDT0)">
+        Sign the transaction in your Ethereum wallet.
+      </Tab>
+      <Tab title="Deposit address (L2Pass RFQ, L2Pass Private)">
+        Send USDT to the one-time deposit address from your connected wallet, any Ethereum wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Track the swap">
@@ -44,24 +66,25 @@ Test quotes for 1,000 USDT on October 19, 2026 showed these amounts received: 99
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
 
-- **Gas on Ethereum only.** Sending ERC-20 USDT costs ETH for gas. The Tron network fee is deducted from the amount shown (1.71 USDT in test quotes on October 19, 2026), so you do not need TRX to receive. You need TRX later to move the USDT on Tron.
+You need ETH on Ethereum for gas and no TRX to receive, and USDT0 adds a message fee in ETH.
+
+- **Gas on Ethereum only.** Sending ERC-20 USDT costs ETH for gas. The Tron network fee is deducted from the amount shown (1.71 USDT in test quotes), so you do not need TRX to receive. You need TRX later to move the USDT on Tron.
 - **USDT0 message fee.** The USDT0 route charges a LayerZero message fee in ETH on top of gas. Compare it with the RFQ amounts before you choose.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
 - **Minimum amount.** Some routes have a minimum swap amount. If your amount is below it, the route is listed as unavailable with the minimum shown.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="How long does it take to bridge USDT from Ethereum to Tron?">
-    L2Pass RFQ, USDT0 and L2Pass Private each showed an estimated time of about 1.5 minutes in test quotes on October 19, 2026. Route cards show the current estimate before you confirm.
+    L2Pass RFQ, USDT0 and L2Pass Private each showed an estimated time of about 1.5 minutes in test quotes. Route cards show the current estimate before you confirm.
   </Accordion>
 
   <Accordion title="How much does it cost to bridge USDT from Ethereum to Tron?">
-    There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps). Routing partners and the networks charge their own fees, and the amount shown already includes them. In a test quote on October 19, 2026, L2Pass RFQ showed a service fee of 0.1 USDT (0.01%) from the NEAR Intents network and a 1.71 USDT network fee on Tron. You also pay Ethereum gas in ETH.
+    There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps). Routing partners and the networks charge their own fees, and the amount shown already includes them. In the test, L2Pass RFQ showed a service fee of 0.1 USDT (0.01%) from the NEAR Intents network and a 1.71 USDT network fee on Tron. You also pay Ethereum gas in ETH.
   </Accordion>
 
   <Accordion title="Do I need TRX to receive USDT on Tron?">
@@ -76,6 +99,7 @@ Test quotes for 1,000 USDT on October 19, 2026 showed these amounts received: 99
 ## Links
 
 - [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Best way to bridge USDT and USDC: L2Pass vs other bridges](/products/swap/learn/compare-stablecoin-transfers)
 - [USDT from Tron to Ethereum](/products/swap/guides/usdt-tron-to-ethereum)
 - [How L2Pass compares routes](/products/swap/learn/compare-routes)
 - [L2Pass Swap fees explained](/products/swap/learn/fees)

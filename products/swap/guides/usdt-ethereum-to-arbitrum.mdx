@@ -1,14 +1,20 @@
 ---
 title: "How to Bridge USDT from Ethereum to Arbitrum (USDT0)"
-description: "Bridge USDT from Ethereum to Arbitrum, where it arrives as USDT0, with L2Pass Swap. Six routes compared side by side. 0% L2Pass fee on stablecoin swaps."
+description: "Bridge USDT from Ethereum to Arbitrum in 1 second to 1.5 minutes. Six routes compared, 0% L2Pass fee, arrives as USDT0."
 sidebarTitle: "USDT: Ethereum to Arbitrum"
 ---
 
-You can bridge USDT from Ethereum to Arbitrum with [L2Pass Swap](https://swap.l2pass.com/). On Arbitrum, USDT arrives as USDT0, the omnichain version of USDT. In test quotes on October 19, 2026, six routes were offered for this pair: the native USDT0 bridge, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private and LI.FI, with estimated times from about 1 second to 1.5 minutes. The top routes delivered within 0.3 USDT of each other for 1,000 USDT. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
+You can bridge USDT from Ethereum to Arbitrum with [L2Pass Swap](https://swap.l2pass.com/). On Arbitrum, USDT arrives as USDT0, the omnichain version of USDT. In test quotes, six routes were offered for this pair: the native USDT0 bridge, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private and LI.FI, with estimated times from about 1 second to 1.5 minutes. The top routes delivered within 0.3 USDT of each other for 1,000 USDT. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+
+**Six routes in one quote** · **0% L2Pass fee** · **1,000 USDT0 arrives for 1,000 sent** · **No ETH needed on Arbitrum**
+
+<Note>Numbers from test quotes on October 19, 2026. Your quote is always live.</Note>
 
 ## Routes for USDT from Ethereum to Arbitrum
 
-Test quotes for 1,000 USDT at about 17:51 UTC on October 19, 2026. The live quote shows current numbers.
+Test quotes for 1,000 USDT at about 17:51 UTC. The live quote shows current numbers.
 
 <Tabs>
 <Tab title="Ethereum to Arbitrum">
@@ -41,9 +47,16 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
 
 ## How to bridge USDT from Ethereum to Arbitrum
 
+Nothing leaves your wallet until you pay, so you can compare every route first.
+
 <Steps>
   <Step title="Open L2Pass Swap">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose USDT on Ethereum as the source and USDT0 on Arbitrum as the destination, then enter the amount and set the Arbitrum address that will receive the USDT0.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** USDT on Ethereum.
+    - **To:** USDT0 on Arbitrum.
+    - **Amount:** how much USDT you want to send.
+    - **Receiving address:** the Arbitrum address that will get the USDT0.
   </Step>
 
   <Step title="Compare the routes">
@@ -51,11 +64,20 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
   </Step>
 
   <Step title="Set a refund address">
-    For L2Pass RFQ and L2Pass Private, set the refund address to an Ethereum wallet you control. If the swap cannot complete, your deposit is returned there.
+    For L2Pass RFQ and L2Pass Private, set the refund address to an Ethereum wallet you control. If the swap cannot complete, the provider sends your deposit back there.
   </Step>
 
   <Step title="Pay by wallet or deposit address">
-    On USDT0, Relay and LI.FI, sign the transaction in your Ethereum wallet. On L2Pass RFQ and L2Pass Private, send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange.
+    How you pay depends on the route you picked.
+
+    <Tabs>
+      <Tab title="Wallet routes (USDT0, Relay, LI.FI)">
+        Sign the transaction in your Ethereum wallet.
+      </Tab>
+      <Tab title="Deposit address (L2Pass RFQ, L2Pass Private)">
+        Send USDT to the one-time deposit address from your connected wallet, any wallet or an exchange, by address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee from it.
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Track the swap">
@@ -63,19 +85,20 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
   </Step>
 </Steps>
 
-## Things to know
+## Before you send
+
+You need ETH on Ethereum for gas and no ETH on Arbitrum to receive.
 
 - **Gas on Ethereum only.** You pay gas in ETH on Ethereum. The Arbitrum network fee is deducted from the amount shown, so you do not need ETH on Arbitrum to receive.
 - **USDT0 on Arbitrum.** The USDT that L2Pass Swap delivers on Arbitrum is USDT0.
-- **Refunds.** On-chain routes revert (gas is not refundable). Deposit-address routes return your deposit to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="How long does it take to bridge USDT from Ethereum to Arbitrum?">
-    From about 1 second on Relay to about 1.5 minutes on the native USDT0 bridge, in test quotes on October 19, 2026. Route cards show the current estimate.
+    From about 1 second on Relay to about 1.5 minutes on the native USDT0 bridge, in test quotes. Route cards show the current estimate.
   </Accordion>
 
   <Accordion title="How much does it cost to bridge USDT from Ethereum to Arbitrum?">
@@ -94,6 +117,7 @@ After source gas and the message fee, the native USDT0 bridge and L2Pass RFQ wer
 ## Links
 
 - [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Best way to bridge USDT and USDC: L2Pass vs other bridges](/products/swap/learn/compare-stablecoin-transfers)
 - [Bridge USDT from Tron to Arbitrum](/products/swap/guides/usdt-tron-to-arbitrum)
 - [USDT networks explained](/products/swap/learn/usdt-networks)
 - [How L2Pass compares routes](/products/swap/learn/compare-routes)

@@ -1,21 +1,29 @@
 ---
 title: "How to Swap BTC to USDT (and USDT to BTC)"
-description: "Swap native BTC to USDT on Tron or Ethereum, or USDT back to BTC, with L2Pass Swap. No account, pay from any wallet or exchange, fees shown in the quote."
+description: "Swap native BTC to USDT in about 14 minutes, or USDT to BTC in about 9. L2Pass fee up to 0.2%, no account, pay from any wallet or exchange."
 sidebarTitle: "BTC to USDT and back"
 ---
 
-You can swap native BTC on Bitcoin to USDT on Tron or Ethereum, and USDT back to BTC, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes on October 19, 2026, two routes were offered for these pairs, L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents). A swap from BTC took about 13.5 to 14 minutes, and a swap to BTC about 9 minutes, mostly waiting for Bitcoin block confirmations. You pay by sending BTC or USDT to a one-time deposit address from any wallet or exchange, with no account. The L2Pass fee is up to 0.2% (up to 0.3% on private swaps), and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
+import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
+
+You can swap native BTC on Bitcoin to USDT on Tron or Ethereum, and USDT back to BTC, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes, two routes were offered for these pairs, L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents). A swap from BTC took about 13.5 to 14 minutes, and a swap to BTC about 9 minutes, mostly waiting for Bitcoin block confirmations. You pay by sending BTC or USDT to a one-time deposit address from any wallet or exchange, with no account. The L2Pass fee is up to 0.2% (up to 0.3% on private swaps), and the quote shows what you will receive after fees. Only source-chain gas and any bridge message fee are paid separately.
+
+**Native BTC, no wrapping** · **817.64 USDT for 0.01 BTC** · **No account** · **Pay from any wallet or exchange**
+
+<Note>Numbers from test quotes on October 19, 2026. Your quote is always live.</Note>
 
 ## Routes for BTC and USDT
+
+Two routes, both on NEAR Intents, filled BTC and USDT swaps in test quotes.
 
 | Route | Estimated time | Output | Notes |
 | :-- | :-- | :-- | :-- |
 | L2Pass RFQ | About 13.5 to 14 minutes from BTC, about 9 minutes to BTC | Variable, with a minimum received | Solvers and market makers compete to fill your swap. Deposit address. L2Pass fee up to 0.2%. |
-| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3% (replacing the standard fee, not added to it). |
+| L2Pass Private | Same as L2Pass RFQ | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3% (instead of 0% or 0.2%, not in addition). |
 
 No other routes were offered for these pairs in those test quotes. The quote lists any route that can fill the pair.
 
-## Test quotes on October 19, 2026
+## Test quotes
 
 Quotes at about 16:55 UTC, when the app showed BTC at about 81,935 USD. The live quote shows current numbers for your pair and amount.
 
@@ -29,9 +37,16 @@ In these quotes, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provi
 
 ## How to swap BTC to USDT
 
+Nothing leaves your wallet until you pay, so you can compare every route first.
+
 <Steps>
   <Step title="Open L2Pass Swap">
-    Go to [swap.l2pass.com](https://swap.l2pass.com/), choose BTC on Bitcoin as the source and USDT on Tron or Ethereum as the destination, then enter the amount and set the address that will receive the USDT.
+    Go to [swap.l2pass.com](https://swap.l2pass.com/) and fill in four fields:
+
+    - **From:** BTC on Bitcoin.
+    - **To:** USDT on Tron or Ethereum.
+    - **Amount:** how much BTC you want to swap.
+    - **Receiving address:** the Tron or Ethereum address that will get the USDT.
   </Step>
 
   <Step title="Compare the routes">
@@ -39,7 +54,7 @@ In these quotes, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provi
   </Step>
 
   <Step title="Set a refund address">
-    Set the refund address to a Bitcoin address you control. If the swap cannot complete, your BTC is returned there.
+    Set the refund address to a Bitcoin address you control. If the swap cannot complete, the provider sends your BTC back there.
   </Step>
 
   <Step title="Send BTC to the deposit address">
@@ -53,14 +68,15 @@ In these quotes, L2Pass RFQ showed a 0% L2Pass fee and a 0.2% NEAR Intents provi
 
 To swap USDT to BTC, choose USDT on Tron or Ethereum as the source and BTC as the destination, set a Bitcoin receiving address, set a refund address on your USDT network and send the USDT to the deposit address in the same way.
 
-## Things to know
+## Before you send
+
+Bitcoin blocks set the pace, and you pay the Bitcoin network fee when you send BTC.
 
 - **Bitcoin fees.** You pay the Bitcoin network fee when you send BTC. When you receive BTC, the Bitcoin network fee is deducted from the amount shown.
 - **Timing.** Bitcoin blocks come about every 10 minutes, so swaps from or to BTC take longer than stablecoin transfers between other chains.
-- **Refunds.** If a swap cannot complete, your deposit is returned to the refund address; provider and network fees may be deducted.
-- **No partial fills.** A swap completes in full or does not execute.
 - **Minimum amount.** Some routes have a minimum swap amount. If your amount is below it, the route is listed as unavailable with the minimum shown.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+
+<SwapBeforeYouSend />
 
 ## FAQ
 
@@ -70,11 +86,11 @@ To swap USDT to BTC, choose USDT on Tron or Ethereum as the source and BTC as th
   </Accordion>
 
   <Accordion title="How much does it cost to swap BTC to USDT?">
-    The L2Pass fee is up to 0.2% (up to 0.3% on private swaps). In test quotes on October 19, 2026, L2Pass RFQ showed a 0% L2Pass fee, a 0.2% NEAR Intents provider fee and a destination network fee. The amount shown already includes all of them. You also pay the Bitcoin network fee when you send.
+    The L2Pass fee is up to 0.2% (up to 0.3% on private swaps). In test quotes, L2Pass RFQ showed a 0% L2Pass fee, a 0.2% NEAR Intents provider fee and a destination network fee. The amount shown already includes all of them. You also pay the Bitcoin network fee when you send.
   </Accordion>
 
   <Accordion title="How long does a BTC to USDT swap take?">
-    About 13.5 to 14 minutes in test quotes on October 19, 2026, and about 9 minutes from USDT to BTC. Route cards show the current estimate.
+    About 13.5 to 14 minutes in test quotes, and about 9 minutes from USDT to BTC. Route cards show the current estimate.
   </Accordion>
 
   <Accordion title="Do I need an account?">
@@ -85,6 +101,7 @@ To swap USDT to BTC, choose USDT on Tron or Ethereum as the source and BTC as th
 ## Links
 
 - [Open L2Pass Swap](https://swap.l2pass.com/)
+- [Best way to swap BTC to USDT: L2Pass vs other services](/products/swap/learn/compare-btc-swaps)
 - [What is L2Pass RFQ by NEAR Intents](/products/swap/learn/what-is-l2pass-rfq)
 - [L2Pass Swap fees explained](/products/swap/learn/fees)
 - [Private swaps with ZEC](/products/swap/guides/private-swaps-with-zec)

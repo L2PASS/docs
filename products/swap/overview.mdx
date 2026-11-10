@@ -38,18 +38,18 @@ Depending on the route, a swap is executed in one of two ways:
 - **Wallet transaction:** You sign a transaction in your wallet and the route's contracts execute the swap and bridge on-chain.
 - **Deposit address:** For RFQ and Private routes, you send tokens to a one-time deposit address for your quote. You can send from your connected wallet, or transfer manually from any wallet or exchange using the address or QR code. If you send from an exchange, check that the amount that arrives matches the quote, since some exchanges deduct their withdrawal fee. The swap then moves through *Awaiting deposit*, *Deposit confirmed* and *Complete*, which you can follow in **Recent swaps**.
 
-For a deposit-address route, you also set a **refund address** on the source chain. If the swap cannot be completed, your deposit is returned there.
+For a deposit-address route, you also set a refund address on the source chain. If the swap cannot complete, the provider sends your deposit back there.
 
-## Execution Time
+## How long a swap takes
 
-Settlement time depends on the route and the networks involved:
+Most swaps settle in seconds to a few minutes, and each route card shows its estimate before you confirm.
 
-- **Fast routes** (Relay, Aori, CCTP Fast) usually settle within seconds to about a minute.
-- **RFQ and Private routes** typically take from about 30 seconds to a few minutes, longer for networks with slow block confirmation such as Bitcoin or Zcash.
-- **Bridge routes** such as USDT0 typically take a few minutes.
-- **Slower routes** such as CCTP Standard can take up to about 20 minutes while waiting for block finality.
+- **Relay, Aori and CCTP Fast:** seconds to about a minute.
+- **L2Pass RFQ and L2Pass Private:** 30 seconds to a few minutes, and longer with Bitcoin or Zcash, which wait for block confirmations.
+- **USDT0:** a few minutes.
+- **CCTP Standard:** up to 20 minutes, while it waits for block finality.
 
-The estimated time is shown on each route before you confirm. In rare cases with network congestion or provider downtime, a swap can take longer.
+Network congestion or provider downtime can make a swap take longer than its estimate.
 
 ## Slippage and Price Impact
 
@@ -59,11 +59,11 @@ The estimated time is shown on each route before you confirm. In rare cases with
 
 - **Slippage tolerance:** The default tolerance is **0.05%**. You can change it from any route card.
 - **Fixed output:** Some routes, such as native USDT0 and USDC bridges, deliver a fixed amount, so slippage does not apply.
-- **Minimum received:** Each route shows the **Minimum Received** amount, the worst-case outcome within your tolerance. If the price moves beyond it, the swap does not execute: on-chain routes revert, and deposit-address routes return your deposit to your refund address.
+- **Minimum received:** Each route card shows the minimum received, the worst-case amount within your tolerance. If the price moves beyond it, the swap does not execute: on-chain routes revert, and deposit-address routes return your deposit to your refund address.
 
 ## Fee Structure
 
-The actual fees for your swap are always shown in the interface on the route card before you confirm. The **estimated amount on the destination network already includes all fees**.
+The route card shows the actual fees for your swap before you confirm. The **estimated amount on the destination network already includes all fees** except source-chain gas and any bridge message fee, which you pay separately.
 
 ### L2Pass Fee
 
@@ -71,7 +71,7 @@ The actual fees for your swap are always shown in the interface on the route car
 | :-- | :-- |
 | Stablecoin swaps (any route) | **0%** |
 | Other assets | **up to 0.2%** |
-| Private swaps (any asset, replaces the standard fee) | **up to 0.3%** |
+| Private swaps, any asset (instead of 0% or 0.2%, not in addition) | **up to 0.3%** |
 
 ### Partner and Network Fees
 
@@ -85,14 +85,16 @@ Private swaps route your swap through a confidential execution environment inste
 
 - **Not anonymity:** Your public wallet address is still included in requests sent to providers.
 - **Compliance still applies:** Private swaps are subject to the same transaction screening and sanctions controls as other swaps.
-- **Fee:** The L2Pass fee for a private swap is up to 0.3% (replacing the standard fee, not added to it). It is already included in the amount shown in the quote.
+- **Fee:** The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
 
 See the [Terms of Service](https://l2pass.com/terms-of-service) and [Privacy & AML Principles](https://l2pass.com/privacy-policy) for details.
 
-## Execution Guarantees
+## Full fill or full refund
+
+A swap completes in full or does not execute, and the one exception to refunds is a swap a provider flags as high risk.
 
 - **No partial fills:** L2Pass does not use partial execution. A swap either completes in full or does not execute.
-- **Refunds:** If a swap cannot be completed, for example because the price moved beyond your tolerance or the quote expired, your deposit is returned to your refund address. Provider and network fees may be deducted from the refunded amount.
+- **Refunds:** If a deposit-address swap cannot complete, for example because the price moved beyond your tolerance or the quote expired, the provider sends your deposit back to your refund address, minus any provider and network fees. A failed wallet transaction reverts, and the gas you paid is spent.
 - **Compliance reviews:** If a provider flags a swap as high risk under its AML or sanctions rules, the provider decides whether to complete, refund or hold it, and a refund is not guaranteed. L2Pass cannot override a provider's review.
 
 ---

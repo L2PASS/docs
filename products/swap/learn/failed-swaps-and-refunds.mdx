@@ -4,17 +4,21 @@ description: "If an L2Pass swap cannot complete, on-chain routes revert and depo
 sidebarTitle: "Failed swaps and refunds"
 ---
 
-If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does not execute at all: swaps are never partially filled. On wallet routes, such as Circle CCTP, USDT0, Relay or LI.FI, the transaction reverts and no tokens are exchanged, but the gas you paid is not refunded. On deposit-address routes, L2Pass RFQ and L2Pass Private, your deposit is returned to the refund address you set, minus any provider or network fees. The one exception is a swap that a provider flags as high risk under AML or sanctions rules: the provider decides whether to complete, refund or hold it, and a refund is not guaranteed.
+If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does not execute at all: swaps are never partially filled. On wallet routes, such as Circle CCTP, USDT0, Relay or LI.FI, the transaction reverts and no tokens are exchanged, but the gas you paid is not refunded. On deposit-address routes, L2Pass RFQ and L2Pass Private, the provider sends your deposit back to the refund address you set, minus any provider or network fees. The one exception is a swap that a provider flags as high risk under AML or sanctions rules: the provider decides whether to complete, refund or hold it, and a refund is not guaranteed.
 
 ## What happens by route type
+
+Wallet routes revert, deposit-address routes refund, and the provider decides on flagged swaps.
 
 | Route type | Routes | If the swap cannot complete | What you lose |
 | :-- | :-- | :-- | :-- |
 | Wallet transaction | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX aggregator | The transaction reverts and no tokens are exchanged | Source gas |
-| Deposit address | L2Pass RFQ, L2Pass Private | The deposit is returned to your refund address | Provider and network fees that may be deducted from the refund |
+| Deposit address | L2Pass RFQ, L2Pass Private | The provider sends the deposit back to your refund address | Provider and network fees that may be deducted from the refund |
 | Flagged as high risk | Any route | The provider decides to complete, refund or hold the swap | A refund is not guaranteed |
 
 ## Why a swap may not complete
+
+A swap stops when the price, the timing, the deposit or a provider check does not fit the quote.
 
 - **The price moved past your slippage tolerance.** The minimum received on the route card is the worst case within your tolerance (0.05% by default). If the price moves beyond it, the swap does not execute.
 - **The quote expired.** A quote is valid for a limited time. A deposit that arrives too late may not be filled.
@@ -23,6 +27,8 @@ If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does no
 - **A provider check.** A provider may request extra checks or hold a swap under its own AML or sanctions rules. L2Pass cannot override that decision.
 
 ## How to set a refund address
+
+A refund goes only to the refund address, so set it to a wallet you control.
 
 <Steps>
   <Step title="Use a wallet you control">
@@ -39,6 +45,8 @@ If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does no
 </Steps>
 
 ## What to do if a swap is stuck
+
+Check **Recent swaps** and a block explorer before you contact support.
 
 1. Open **Recent swaps** and check the status: *Awaiting deposit*, *Deposit confirmed* or *Complete*.
 2. If it still shows *Awaiting deposit*, check on a block explorer that your transfer reached the deposit address on the right network with the right amount.
