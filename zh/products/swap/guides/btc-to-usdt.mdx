@@ -1,0 +1,110 @@
+---
+title: "如何把 BTC 兑换成 USDT（以及 USDT 换回 BTC）"
+description: "约 14 分钟把原生 BTC 兑换成 USDT，或约 9 分钟把 USDT 兑换成 BTC。L2Pass 手续费最高 0.2%，无需账户，可从任意钱包或交易所付款。"
+sidebarTitle: "BTC 与 USDT 互换"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 Bitcoin 上的原生 BTC 兑换成 Tron 或 Ethereum 上的 USDT，也可以把 USDT 换回 BTC。在测试报价中，这些交易对有两条路由：L2Pass RFQ 和 L2Pass Private，两者都运行在 [NEAR Intents](https://near.org/intents) 上。从 BTC 兑换约需 13.5 到 14 分钟，兑换成 BTC 约需 9 分钟，大部分时间用于等待 Bitcoin 区块确认。你把 BTC 或 USDT 发送到一次性充值地址即可付款，可以从任意钱包或交易所发送，无需账户。L2Pass 手续费最高 0.2%（私密兑换最高 0.3%），报价会显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**原生 BTC，无需包装** · **0.01 BTC 换得 817.64 USDT** · **无需账户** · **可从任意钱包或交易所付款**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## BTC 与 USDT 的路由
+
+在测试报价中，有两条路由完成了 BTC 与 USDT 的兑换，两者都运行在 NEAR Intents 上。
+
+| 路由 | 预计时间 | 到账 | 说明 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 从 BTC 约 13.5 到 14 分钟，兑换成 BTC 约 9 分钟 | 浮动，有最少到账 | 求解器和做市商竞争执行你的兑换。充值地址。L2Pass 手续费最高 0.2%。 |
+| L2Pass Private | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 机密执行。充值地址。L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取）。 |
+
+在这些测试报价中，这些交易对没有其他路由。报价会列出能完成该交易对的所有路由。
+
+## 测试报价
+
+约 16:55 UTC 的报价，当时应用显示 BTC 约为 81,935 USD。实时报价会显示你的交易对和金额的当前数据。
+
+| 兑换 | L2Pass RFQ | L2Pass Private | 目标链网络费 |
+| :-- | :-- | :-- | :-- |
+| 0.01 BTC 到 Tron 上的 USDT | 816.18 USDT | 812.52 USDT | 1.71 USDT |
+| 0.01 BTC 到 Ethereum 上的 USDT | 817.64 USDT | 814.70 USDT | 0.3 USDT |
+| Tron 上 1,000 USDT 到 BTC | 0.01215466 BTC | 0.01209267 BTC | 0.000019 BTC |
+
+在这些报价中，L2Pass RFQ 显示 L2Pass 手续费 0%、NEAR Intents 提供方费用 0.2%。L2Pass Private 显示 L2Pass 手续费 0.3%。
+
+## 如何把 BTC 兑换成 USDT
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Bitcoin 上的 BTC。
+    - **To：** Tron 或 Ethereum 上的 USDT。
+    - **Amount：** 你要兑换的 BTC 数量。
+    - **收款地址：** 接收 USDT 的 Tron 或 Ethereum 地址。
+  </Step>
+
+  <Step title="比较路由">
+    在 L2Pass RFQ 和 L2Pass Private 卡片上查看预计到账、最少到账、预计时间和费用。默认滑点为 0.05%（可修改）。
+  </Step>
+
+  <Step title="设置退款地址">
+    把退款地址设为你控制的 Bitcoin 地址。如果兑换无法完成，提供方会把你的 BTC 退回到这里。
+  </Step>
+
+  <Step title="把 BTC 发送到充值地址">
+    通过地址或二维码，从任意 Bitcoin 钱包或交易所把报价显示的金额发送到一次性 Bitcoin 充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+  </Step>
+
+  <Step title="跟踪兑换">
+    在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。Bitcoin 网络确认你的交易后，充值即被确认。
+  </Step>
+</Steps>
+
+如需把 USDT 兑换成 BTC，请选择 Tron 或 Ethereum 上的 USDT 作为来源、BTC 作为目标，设置 Bitcoin 收款地址和你的 USDT 网络上的退款地址，然后同样把 USDT 发送到充值地址。
+
+## 发送前须知
+
+速度取决于 Bitcoin 出块，发送 BTC 时需要支付 Bitcoin 网络费。
+
+- **Bitcoin 网络费。** 发送 BTC 时你需要支付 Bitcoin 网络费。接收 BTC 时，Bitcoin 网络费会从显示金额中扣除。
+- **时间。** Bitcoin 大约每 10 分钟出一个块，因此与 BTC 相关的兑换比其他链之间的稳定币转账耗时更长。
+- **最低金额。** 部分路由设有最低兑换金额。如果你的金额低于该值，路由会显示为不可用，并标出最低金额。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="把 BTC 兑换成 USDT 需要先包装 BTC 吗？">
+    不需要。你把 Bitcoin 上的原生 BTC 发送到充值地址，USDT 会到达 Tron 或 Ethereum。
+  </Accordion>
+
+  <Accordion title="把 BTC 兑换成 USDT 要多少钱？">
+    L2Pass 手续费最高 0.2%（私密兑换最高 0.3%）。在测试报价中，L2Pass RFQ 显示 L2Pass 手续费 0%、NEAR Intents 提供方费用 0.2% 以及目标链网络费。显示金额已包含所有这些费用。发送时你还需支付 Bitcoin 网络费。
+  </Accordion>
+
+  <Accordion title="BTC 兑换 USDT 需要多长时间？">
+    在测试报价中约 13.5 到 14 分钟，从 USDT 兑换成 BTC 约 9 分钟。路由卡片会显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="需要账户吗？">
+    不需要。无需账户和 KYC，可以从任意钱包或交易所付款。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [BTC 兑换 USDT 的最佳方式：L2Pass 对比其他服务](/zh/products/swap/learn/compare-btc-swaps)
+- [什么是 L2Pass RFQ by NEAR Intents](/zh/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [使用 ZEC 进行私密兑换](/zh/products/swap/guides/private-swaps-with-zec)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

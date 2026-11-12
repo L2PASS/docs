@@ -1,0 +1,133 @@
+---
+title: "Как перевести USDC в HyperEVM"
+description: "Переведите USDC в HyperEVM примерно за 35 секунд из Arbitrum или обменяйте USDT TRC-20 на USDC. Комиссия L2Pass 0% на L2Pass RFQ, HYPE не нужен."
+sidebarTitle: "USDC в HyperEVM"
+---
+
+import SwapBeforeYouSend from '/snippets/ru/swap-before-you-send.mdx';
+
+Перевести USDC в HyperEVM, EVM-сеть Hyperliquid, из Arbitrum, а также обменять USDT в Tron на USDC в HyperEVM можно в [L2Pass Swap](https://swap.l2pass.com/). В тестовых котировках Arbitrum → HyperEVM предлагали L2Pass RFQ и L2Pass Private примерно за 35 секунд, а также Relay и LI.FI. Tron → HyperEVM предлагали L2Pass RFQ и L2Pass Private примерно за 1,5 минуты. На этих парах L2Pass RFQ показал комиссию L2Pass 0%, а котировка до подтверждения показывает сумму к получению после комиссий. Отдельно оплачиваются только газ в исходной сети и комиссия за сообщение моста, если она есть.
+
+**Около 35 секунд из Arbitrum** · **Комиссия L2Pass 0%** · **999,68 USDC приходит на 1000 отправленных** · **HYPE не нужен**
+
+<Note>Цифры из тестовых котировок 19 октября 2026 г. Ваша котировка всегда живая.</Note>
+
+## Маршруты в HyperEVM
+
+Из Arbitrum до HyperEVM доходили четыре маршрута, два из них также из Tron.
+
+| Маршрут | Откуда | Примерное время | Сумма на выходе | Оплата |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Arbitrum, Tron | Около 35 секунд из Arbitrum, 1,5 минуты из Tron | Переменная, с минимумом к получению | Одноразовый адрес депозита |
+| L2Pass Private | Arbitrum, Tron | Как у L2Pass RFQ | Переменная, с минимумом к получению | Одноразовый адрес депозита. Комиссия L2Pass до 0,3% |
+| Relay | Arbitrum | Около 2 секунд | Переменная | Транзакция из кошелька |
+| LI.FI | Arbitrum | Около 18 минут | Переменная | Транзакция из кошелька |
+
+L2Pass RFQ и L2Pass Private работают на [NEAR Intents](https://near.org/intents). Circle CCTP в тех тестовых котировках в HyperEVM не предлагался. Котировка показывает все маршруты, которые могут исполнить вашу пару.
+
+## Тестовые котировки
+
+Котировки около 17:17 UTC. Живая котировка покажет актуальные цифры.
+
+<Tabs>
+<Tab title="1000 USDC из Arbitrum">
+
+| Маршрут | Вы получаете | Примерное время |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 999,68 USDC | Около 35 секунд |
+| L2Pass Private | 998,18 USDC | Около 35 секунд |
+| Relay | 997,87 USDC | Около 2 секунд |
+| LI.FI | 995,50 USDC | Около 18 минут |
+
+На этой паре L2Pass RFQ не показал комиссии провайдера, только комиссию сети HyperEVM 0,32 USDC.
+
+</Tab>
+<Tab title="1000 USDT из Tron">
+
+| Маршрут | Вы получаете | Примерное время |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 998,59 USDC | Около 1,5 минуты |
+| L2Pass Private | 996,07 USDC | Около 1,5 минуты |
+
+</Tab>
+</Tabs>
+
+## Как перевести USDC в HyperEVM
+
+Пока вы не заплатите, ничего не уходит из кошелька, поэтому сначала можно сравнить все маршруты.
+
+<Steps>
+  <Step title="Откройте L2Pass Swap">
+    Перейдите на [swap.l2pass.com](https://swap.l2pass.com/) и заполните четыре поля:
+
+    - **From:** USDC в Arbitrum или USDT в Tron.
+    - **To:** USDC в HyperEVM.
+    - **Amount:** сколько вы хотите отправить.
+    - **Адрес получателя:** адрес в HyperEVM (EVM-адрес, начинающийся с 0x), на который придут USDC.
+  </Step>
+
+  <Step title="Сравните маршруты">
+    Каждая карточка маршрута показывает ожидаемую сумму, минимум к получению, примерное время и комиссии. Проскальзывание по умолчанию 0,05% (можно изменить).
+  </Step>
+
+  <Step title="Укажите адрес возврата">
+    Для L2Pass RFQ и L2Pass Private укажите адрес возврата: кошелёк в исходной сети, который вы контролируете. Если свап не может завершиться, провайдер вернёт депозит туда.
+  </Step>
+
+  <Step title="Оплатите из кошелька или на адрес депозита">
+    Способ оплаты зависит от выбранного маршрута.
+
+    <Tabs>
+      <Tab title="Маршруты через кошелёк (Relay, LI.FI)">
+        Подпишите транзакцию в кошельке.
+      </Tab>
+      <Tab title="Адрес депозита (L2Pass RFQ, L2Pass Private)">
+        Отправьте токены на одноразовый адрес депозита из подключённого кошелька, любого кошелька или с биржи, по адресу или QR-коду. Если отправляете с биржи, проверьте, что поступившая сумма совпадает с котировкой: некоторые биржи вычитают из неё комиссию за вывод.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Следите за свапом">
+    Для L2Pass RFQ и L2Pass Private отслеживайте статус в **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, затем *Complete*.
+  </Step>
+</Steps>
+
+## Перед отправкой
+
+В HyperEVM можно получить только USDC, а газ нужен только в исходной сети.
+
+- **Только USDC.** L2Pass Swap предлагает USDC в HyperEVM. Чтобы начать с USDT, используйте пару Tron → HyperEVM, которая меняет USDT на USDC за один шаг.
+- **Газ только в исходной сети.** Газ вы платите в ETH в Arbitrum или в TRX в Tron. Комиссия сети HyperEVM вычитается из показанной суммы, поэтому HYPE для получения не нужен. HYPE это газовый токен HyperEVM, он понадобится позже, чтобы отправить или использовать там USDC.
+
+<SwapBeforeYouSend />
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Сколько времени занимает перевод USDC в HyperEVM?">
+    В тестовых котировках около 35 секунд из Arbitrum на L2Pass RFQ или около 2 секунд на Relay. Карточки маршрутов показывают текущую оценку.
+  </Accordion>
+
+  <Accordion title="Сколько стоит перевести USDC в HyperEVM?">
+    В тестовых котировках на 1000 USDC из Arbitrum L2Pass RFQ доставил 999,68 USDC при комиссии L2Pass 0% и комиссии сети HyperEVM 0,32 USDC. Другие маршруты показали свои комиссии. Показанная сумма их уже учитывает.
+  </Accordion>
+
+  <Accordion title="Нужен ли HYPE, чтобы получить USDC в HyperEVM?">
+    Нет. Комиссия сети HyperEVM вычитается из показанной суммы. HYPE понадобится позже, чтобы отправить или использовать USDC в HyperEVM.
+  </Accordion>
+
+  <Accordion title="Можно ли отправить USDT TRC-20 в HyperEVM?">
+    Да, как свап в USDC. В тестовых котировках 1000 USDT в Tron дали 998,59 USDC в HyperEVM на L2Pass RFQ.
+  </Accordion>
+</AccordionGroup>
+
+## Ссылки
+
+- [Открыть L2Pass Swap](https://swap.l2pass.com/)
+- [Как выгоднее перевести USDT и USDC: L2Pass и другие мосты](/ru/products/swap/learn/compare-stablecoin-transfers)
+- [Как L2Pass сравнивает маршруты](/ru/products/swap/learn/compare-routes)
+- [Свап с любого кошелька или биржи](/ru/products/swap/learn/deposit-address-swaps)
+- [Комиссии L2Pass Swap](/ru/products/swap/learn/fees)
+- [FAQ по L2Pass Swap](/ru/products/swap/faq)
+
+*Последнее обновление: 19 октября 2026 г.*

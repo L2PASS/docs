@@ -1,0 +1,107 @@
+---
+title: "如何把 USDT 从 Tron 跨链到 Arbitrum"
+description: "约 80 秒把 USDT 从 Tron 跨链到 Arbitrum。L2Pass 手续费 0%，只需 TRX 作为 Gas，到账为 USDT0，可从任意钱包或交易所付款。"
+sidebarTitle: "USDT：Tron 到 Arbitrum"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDT 从 Tron（TRC-20）跨链到 Arbitrum。这是一个非托管界面，会把该交易对的所有路由并排展示。在测试报价中，这个交易对有三条路由：L2Pass RFQ、原生 USDT0 跨链桥和 L2Pass Private，预计时间约 80 到 90 秒。稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**约 80 秒** · **L2Pass 手续费 0%** · **发送 1,000 到账 999.85 USDT0** · **只需 TRX 作为 Gas**
+
+<Note>数据来自 2026 年 10 月 10 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## USDT 从 Tron 到 Arbitrum 的路由
+
+L2Pass RFQ 和 L2Pass Private 都运行在 [NEAR Intents](https://near.org/intents) 上，求解器和做市商在这里竞争执行你的兑换。Private 会在机密环境中执行。
+
+| 路由 | 预计时间 | 到账 | 说明 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 约 80 秒 | 浮动，有最少到账 | 向一次性充值地址付款。 |
+| USDT native bridge（USDT0） | 约 1.5 分钟 | 固定 | 在你的 Tron 钱包中签名。另加约 4.7 TRX 的 LayerZero 消息费。 |
+| L2Pass Private | 约 80 秒 | 浮动，有最少到账 | 充值地址。L2Pass 手续费最高 0.3%。 |
+
+在这些测试报价中，该交易对没有聚合器路由（LI.FI、LI.FI Intents、Relay、Aori 或 OKX DEX 聚合器）。报价会列出能完成该交易对的所有路由。
+
+1,000 USDT 的测试报价显示的到账金额为：L2Pass RFQ 999.85 USDT0，USDT0 跨链桥 999.7 USDT0（另加约 4.67 TRX 的 LayerZero 消息费），L2Pass Private 997.29 USDT0。实时报价会显示你这笔金额的当前数据。
+
+## 如何把 USDT 从 Tron 跨链到 Arbitrum
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Tron 上的 USDT。
+    - **To：** Arbitrum 上的 USDT。
+    - **Amount：** 你要发送的 USDT 数量。
+    - **收款地址：** 接收 USDT 的 Arbitrum 地址。
+  </Step>
+
+  <Step title="比较路由">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和费用。默认滑点为 0.05%（可修改），不适用于 USDT0 等固定到账路由。
+  </Step>
+
+  <Step title="设置退款地址">
+    对于 L2Pass RFQ 和 L2Pass Private，请把退款地址设为你控制的 Tron 钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="通过钱包或充值地址付款">
+    付款方式取决于你选择的路由。
+
+    <Tabs>
+      <Tab title="钱包路由（USDT0）">
+        在你的 Tron 钱包中签署交易。
+      </Tab>
+      <Tab title="充值地址（L2Pass RFQ、L2Pass Private）">
+        通过地址或二维码，从已连接的钱包、任意 Tron 钱包或交易所把 USDT 发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="跟踪兑换">
+    对于 L2Pass RFQ 和 L2Pass Private，请在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。USDT0 转账是一条 LayerZero 消息，你可以用 Tron 交易哈希在 [LayerZero Scan](https://layerzeroscan.com/) 上跟踪。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+你需要 Tron 上的 TRX 作为 Gas，在 Arbitrum 上接收时不需要 ETH。
+
+- **只需 Tron 上的 Gas。** 发送 TRC-20 USDT 需要 TRX 来支付能量和带宽。目标链上的网络费（如有）会从显示金额中扣除，因此你在那里不需要 Gas。
+- **最低金额。** 部分路由设有最低兑换金额，因交易对而异。如果你的金额低于该值，路由会显示为不可用，并标出最低金额。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="我在 Arbitrum 上收到的是 USDT 还是 USDT0？">
+    是 USDT0，即基于 LayerZero 的 USDT 版本，也是 Arbitrum 上的标准 USDT。很多钱包直接把它标为 USDT。路由卡片会显示你将收到的确切代币和金额。
+  </Accordion>
+
+  <Accordion title="把 USDT 从 Tron 跨链到 Arbitrum 需要多长时间？">
+    在测试报价中，L2Pass RFQ 和 L2Pass Private 的预计时间约为 80 秒，USDT0 约为 1.5 分钟。路由卡片会在你确认前显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="把 USDT 从 Tron 跨链到 Arbitrum 要多少钱？">
+    稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。路由合作方和各网络收取自己的费用，显示金额已包含这些费用。
+  </Accordion>
+
+  <Accordion title="在 Arbitrum 上接收 USDT 需要 ETH 吗？">
+    不需要。你只需在 Tron 上用 TRX 支付 Gas，目标链上的网络费（如有）已从显示金额中扣除。之后在 Arbitrum 上转移或使用 USDT 时才需要 ETH。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [USDT 从 Tron 到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT 从 Tron 到 BNB Chain](/zh/products/swap/guides/usdt-tron-to-bnb-chain)
+- [L2Pass Swap 费用](/zh/products/swap/overview#fee-structure)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 10 日*

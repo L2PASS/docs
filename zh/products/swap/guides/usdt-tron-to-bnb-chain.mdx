@@ -1,0 +1,97 @@
+---
+title: "如何把 USDT 从 Tron 跨链到 BNB Chain（TRC-20 转 BEP-20）"
+description: "2 分钟内把 USDT 从 Tron 跨链到 BNB Chain（BEP-20）。L2Pass 手续费 0%，只需 TRX 作为 Gas，接收无需 BNB。"
+sidebarTitle: "USDT：Tron 到 BNB Chain"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDT 从 Tron（TRC-20）跨链到 BNB Chain（BEP-20）。这是一个非托管界面，会把该交易对的所有路由并排展示。在测试报价中，这个交易对有两条路由：L2Pass RFQ 和 L2Pass Private，预计时间都约为 1.5 分钟。稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**2 分钟内** · **L2Pass 手续费 0%** · **发送 1,010 到账 1,008.88 USDT** · **无需 BNB**
+
+<Note>数据来自 2026 年 10 月 10 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## USDT 从 Tron 到 BNB Chain 的路由
+
+L2Pass RFQ 和 L2Pass Private 都运行在 [NEAR Intents](https://near.org/intents) 上，求解器和做市商在这里竞争执行你的兑换。Private 会在机密环境中执行。
+
+| 路由 | 预计时间 | 到账 | 说明 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 约 1.5 分钟 | 浮动，有最少到账 | 向一次性充值地址付款。 |
+| L2Pass Private | 约 1.5 分钟 | 浮动，有最少到账 | 充值地址。L2Pass 手续费最高 0.3%。最低约 1,000 USD。 |
+
+在这些测试报价中，该交易对没有原生 USDT0 跨链桥和聚合器路由（LI.FI、LI.FI Intents、Relay、Aori、OKX DEX 聚合器）。报价会列出能完成该交易对的所有路由。
+
+1,010 USDT 的测试报价显示的到账金额为：L2Pass RFQ 1,008.88 USDT，L2Pass Private 1,007.26 USDT。实时报价会显示你这笔金额的当前数据。
+
+## 如何把 USDT 从 Tron 跨链到 BNB Chain
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Tron 上的 USDT。
+    - **To：** BNB Chain 上的 USDT。
+    - **Amount：** 你要发送的 USDT 数量。
+    - **收款地址：** 接收 USDT 的 BNB Chain 地址。
+  </Step>
+
+  <Step title="比较路由">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和费用。默认滑点为 0.05%（可修改），不适用于 USDT0 等固定到账路由。
+  </Step>
+
+  <Step title="设置退款地址">
+    对于 L2Pass RFQ 和 L2Pass Private，请把退款地址设为你控制的 Tron 钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="向充值地址付款">
+    通过地址或二维码，从已连接的钱包、任意 Tron 钱包或交易所把 USDT 发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+  </Step>
+
+  <Step title="在 Recent swaps 中跟踪兑换">
+    在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+你需要 Tron 上的 TRX 作为 Gas，接收时不需要 BNB；L2Pass Private 至少需要约 1,000 USD。
+
+- **只需 Tron 上的 Gas。** 发送 TRC-20 USDT 需要 TRX 来支付能量和带宽。目标链上的网络费（如有）会从显示金额中扣除，因此你在那里不需要 Gas。
+- **最低金额。** 在测试报价中，这个交易对的 L2Pass Private 至少需要 1,000 USD。如果你的金额低于某条路由的最低金额，该路由会显示为不可用，并标出最低金额。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="BEP-20 USDT 和 ERC-20 USDT 一样吗？">
+    两者都是 USDT，但在不同网络上：BEP-20 在 BNB Chain，ERC-20 在 Ethereum。两者都使用 0x 地址，所以请确认目标网络是 BNB Chain。
+  </Accordion>
+
+  <Accordion title="把 USDT 从 Tron 跨链到 BNB Chain 需要多长时间？">
+    在测试报价中，L2Pass RFQ 和 L2Pass Private 的预计时间都约为 1.5 分钟。路由卡片会在你确认前显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="把 USDT 从 Tron 跨链到 BNB Chain 要多少钱？">
+    稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。路由合作方和各网络收取自己的费用，显示金额已包含这些费用。
+  </Accordion>
+
+  <Accordion title="在 BNB Chain 上接收 USDT 需要 BNB 吗？">
+    不需要。你只需在 Tron 上用 TRX 支付 Gas，目标链上的网络费（如有）已从显示金额中扣除。之后转移或使用 USDT 时才需要 BNB。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [USDT 从 Tron 到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT 从 Tron 到 Arbitrum](/zh/products/swap/guides/usdt-tron-to-arbitrum)
+- [L2Pass Swap 费用](/zh/products/swap/overview#fee-structure)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 10 日*

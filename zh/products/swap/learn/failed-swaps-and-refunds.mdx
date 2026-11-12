@@ -1,0 +1,107 @@
+---
+title: "兑换失败会怎样：退款和退款地址"
+description: "如果 L2Pass 兑换无法完成，链上路由会回滚，充值地址路由会自动退款。介绍筛查如何运作、资金何时会被冻结审核，以及需要检查什么。"
+sidebarTitle: "兑换失败与退款"
+---
+
+如果 [L2Pass Swap](https://swap.l2pass.com/) 中的兑换无法完成，它根本不会执行：兑换永远不会部分成交。在钱包路由上（如 Circle CCTP、USDT0、Relay 或 LI.FI），交易会回滚，不会发生代币兑换，但你支付的 Gas 不予退还。在充值地址路由上（L2Pass RFQ 和 L2Pass Private），提供方会把你的充值退回到你设置的退款地址，并扣除提供方或网络费用。唯一不同的情况是充值后被合规标记：此时资金不会退回，而是冻结审核，你需要通过 NEAR Intents 支持团队处理。
+
+## 不同路由类型的处理方式
+
+钱包路由回滚，充值地址路由退款，被合规标记的充值冻结审核。
+
+| 路由类型 | 路由 | 兑换无法完成时 | 你损失什么 |
+| :-- | :-- | :-- | :-- |
+| 钱包交易 | USDT0、Circle CCTP、LI.FI、LI.FI Intents、Relay、Aori、OKX DEX 聚合器 | 交易回滚，不发生代币兑换 | 源链 Gas |
+| 充值地址 | L2Pass RFQ、L2Pass Private | 提供方把充值退回到你的退款地址 | 可能从退款中扣除的提供方和网络费用 |
+| 充值后被标记 | L2Pass RFQ、L2Pass Private | 资金在 NEAR Intents 审核期间被冻结 | 默认不会损失；你需要向 NEAR Intents 支持团队提交工单 |
+
+## 兑换为什么可能无法完成
+
+当价格、时间、充值或提供方检查与报价不符时，兑换就会停止。
+
+- **价格变动超出滑点容忍度。** 路由卡片上的最少到账是在你的容忍度（默认 0.05%）范围内的最差结果。如果价格变动超出该范围，兑换不会执行。
+- **报价过期。** 报价的有效时间有限。到账太晚的充值可能无法成交。
+- **充值与报价不符。** 例如交易所扣除了提现手续费，或代币在其他网络上发送。
+- **没有求解器执行兑换。** 在 RFQ 路由上，求解器可能拒绝兑换，例如在流动性不足时。
+- **合规标记。** 在 L2Pass RFQ 和 L2Pass Private 上，被标记的地址根本拿不到报价。到账后才被标记的充值会被冻结审核，而不是退款。参见[筛查如何运作](#how-screening-works)。
+
+<a id="how-screening-works"></a>
+
+## 筛查如何运作
+
+L2Pass RFQ 和 L2Pass Private 上的每笔兑换，无论公开还是私密，筛查方式都相同，且无需 KYC。
+
+- **报价时。** NEAR Intents 在报价前筛查兑换。如果有内容被标记，你拿不到报价，也不会发生任何转账。你的退款地址也会被筛查，所以请使用你自己的钱包。
+- **充值后。** 充值到账时，兑换会再次被检查。
+- **技术故障：退款。** 如果兑换因技术原因失败，例如价格变动或报价过期，充值会自动退回到你的退款地址。
+- **合规标记：冻结审核。** 如果充值因 AML 或制裁规则被标记，资金会在 NEAR Intents 审核期间被冻结，原因可能不会公开。要解决这个问题，请向 NEAR Intents 支持团队提交工单。他们可能会询问资金来源。
+
+L2Pass 无法推翻审核结果，但 [L2Pass 支持](/zh/resources/support)可以帮你找到正确的联系方式。Circle CCTP、USDT0、LI.FI 和 Relay 等钱包路由遵循各自提供方的检查规则。详情请参阅 [NEAR Intents 风险与合规页面](https://docs.near-intents.org/security-compliance/risk-and-compliance)。
+
+## 如何设置退款地址
+
+退款只会发送到退款地址，所以请把它设为你控制的钱包。
+
+<Steps>
+  <Step title="使用你控制的钱包">
+    把退款地址设为你在源链上控制并能签名的钱包，例如用 TRC-20 USDT 付款时使用 Tron 钱包。
+  </Step>
+
+  <Step title="不要使用交易所充值地址">
+    退回到交易所充值地址的资金可能无法入账到你的账户，因为交易所通常只接受来自已知发送方或带有备注（memo）的充值。
+  </Step>
+
+  <Step title="付款前检查">
+    在发送充值之前，退款地址必须正确，因为退款只会发到那里。
+  </Step>
+</Steps>
+
+## 兑换卡住了怎么办
+
+联系支持之前，请先检查 **Recent swaps** 和区块浏览器。
+
+1. 打开 **Recent swaps** 查看状态：*Awaiting deposit*、*Deposit confirmed* 或 *Complete*。
+2. 如果仍显示 *Awaiting deposit*，请在区块浏览器上确认你的转账已在正确的网络上以正确的金额到达充值地址。
+3. 对于 USDT0 转账，请在 [LayerZero Scan](https://layerzeroscan.com/) 上查询你的源交易哈希。
+4. 如果兑换没有完成，请检查退款地址是否收到退回的充值。
+5. 如果充值因合规审核被冻结，请向 NEAR Intents 支持团队提交工单。
+6. 如果仍需帮助，请附上源交易哈希联系 [L2Pass 支持](/zh/resources/support)。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="L2Pass 兑换会部分成交吗？">
+    不会。兑换要么全部完成，要么不执行。
+  </Accordion>
+
+  <Accordion title="兑换失败后 Gas 会退还吗？">
+    不会。在任何路由上，源链支付的 Gas 都不予退还。
+  </Accordion>
+
+  <Accordion title="退款会发到哪里？">
+    在充值地址路由上，退到你在源链上设置的退款地址。在钱包路由上，如果交易回滚，除了 Gas 之外不会有任何资金离开你的钱包。
+  </Accordion>
+
+  <Accordion title="退款总是有保障吗？">
+    因技术原因失败的兑换会自动退回到你的退款地址，并扣除提供方或网络费用。因 AML 或制裁规则被标记的充值不会自动退款：资金会被冻结审核，你需要向 NEAR Intents 支持团队提交工单处理。
+  </Accordion>
+
+  <Accordion title="为什么我拿不到报价？">
+    金额可能低于路由的最低金额，或者没有求解器报价。在 L2Pass RFQ 和 L2Pass Private 上，如果筛查标记了兑换，也不会给出报价。这种情况下不会发生任何转账。
+  </Accordion>
+
+  <Accordion title="需要 KYC 吗？">
+    不需要。无需账户，也无需 KYC。如果充值被冻结审核，NEAR Intents 支持团队可能会询问资金来源。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [Terms of Service](https://l2pass.com/terms-of-service)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 11 月 11 日*

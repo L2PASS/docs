@@ -1,0 +1,154 @@
+---
+title: "跨链 USDT 和 USDC 的最佳方式：L2Pass 对比 deBridge、Relay、LI.FI 等"
+description: "实时报价对比：在 L2Pass、deBridge、Relay、LI.FI、THORChain 等平台上，从 Tron 到 Ethereum 转 1,000 USDT，以及从 Arbitrum 到 Base 转 1,000 USDC。"
+sidebarTitle: "比较：稳定币转账"
+---
+
+2026 年 10 月 19 日，我们在 [L2Pass Swap](https://swap.l2pass.com/) 以及其他跨链桥和兑换服务上，为同样的两笔稳定币转账请求了实时报价，每个提供方使用相同金额。从 Tron 到 Ethereum 转 1,000 USDT，L2Pass RFQ by NEAR Intents 给出 999.55 USDT，高于 deBridge、Relay、THORChain、LI.FI、ChangeNOW 和 SideShift。从 Arbitrum 到 Base 转 1,000 USDC，L2Pass 显示了八条路由，其中最好的一条（Circle CCTP，999.95 USDC）与其他所有提供方持平或更优。任意路由上的稳定币兑换，L2Pass 手续费均为 0%。
+
+## 结果一览
+
+计入在报价之外支付的费用后，L2Pass 在两笔转账中都给出了最多的到账金额。
+
+| 转账 | 到账最多 | L2Pass 结果 | 最佳即时兑换平台 |
+| :-- | :-- | :-- | :-- |
+| 1,000 USDT，Tron 到 Ethereum | L2Pass RFQ，999.55 USDT（计入 USDT0 额外的消息费后） | 999.55 USDT，L2Pass 手续费 0% | 994.65 USDT（FixedFloat） |
+| 1,000 USDC，Arbitrum 到 Base | 通过 L2Pass 的 Circle CCTP，999.95 USDC | 999.95 USDC，一次报价八条路由 | 987.50 USDC（ChangeNOW, standard） |
+
+## 我们如何比较
+
+我们向每个提供方发送相同金额、相同的报价请求，没有执行任何兑换。
+
+- **时间：** 2026 年 10 月 19 日，自 18:21 UTC 起。每张表格都标注了时间。
+- **方法：** 使用与各提供方自家网页界面相同的报价请求和相同金额。未执行任何兑换。
+- **比较内容：** 到账金额，已包含各提供方的费用和目标网络费用。源链 Gas 单独列出。
+
+<Note>
+以下为 2026 年 10 月 19 日的快照。报价每隔几秒就会变化，最新数据请打开 [L2Pass Swap](https://swap.l2pass.com/)。
+</Note>
+
+## 实时报价
+
+从 Tron 转出时 L2Pass RFQ 成本最低；在 EVM 链之间，通过 L2Pass 的 CCTP Standard 与 LI.FI Intents 并列到账 USDC 最多。
+
+<Tabs>
+<Tab title="USDT：Tron 到 Ethereum">
+
+18:21 UTC 的报价。
+
+| 提供方 | 到账 | 预计时间 | 显示的费用 |
+| :-- | :-- | :-- | :-- |
+| L2Pass，USDT native bridge（USDT0） | 999.70 USDT | 约 1.5 分钟 | 另加 LayerZero 消息费 5.21 TRX（约 1.73 USD）和 Tron 能量 |
+| **L2Pass RFQ** | **999.55 USDT** | 约 1.5 分钟 | L2Pass 手续费 0%，NEAR Intents 费用 0.01%，Ethereum 网络费 0.3 USDT |
+| Relay | 998.86 USDT | 约 4 秒 | 中继费 1.14 USDT，另加约 6.1 TRX Gas |
+| THORChain 协议报价 | 998.55 USDT | 约 1 分钟 | 0.66 USDT，未计 THORChain 应用的费用 |
+| deBridge | 998.12 USDT | 约 15 秒 | 固定费用 4 TRX，另加 4.35 USDT 协议费、吃单费和运营费 |
+| L2Pass Private | 997.00 USDT | 约 1.5 分钟 | L2Pass 手续费 0.3% |
+| LI.FI（经由 LayerSwap） | 996.66 USDT | 约 30 秒 | LI.FI 费用 2.50 USD，LayerSwap 费用 0.84 USD |
+| ChangeNOW, standard | 988.14 USDT | 10 到 60 分钟 | 充值费 4.8 USDT |
+| ChangeNOW, fixed rate | 987.13 USDT | 未显示 | 充值费 4.8 USDT |
+| SideShift | 978.64 USDT | 未显示 | 已计入汇率 |
+
+MAYAChain 不支持 Tron。
+
+USDT0 到账的 USDT 最多，但你还需另付 LayerZero 消息费和更多 Tron 能量。计入这些后，L2Pass RFQ 成本最低。
+
+</Tab>
+<Tab title="USDC：Arbitrum 到 Base">
+
+18:21 UTC 的报价。
+
+| 提供方 | 到账 | 预计时间 | 显示的费用 |
+| :-- | :-- | :-- | :-- |
+| **L2Pass，USDC native bridge（CCTP），Standard** | **999.95 USDC** | 约 19.5 分钟 | 0.05 USDC |
+| L2Pass，LI.FI Intents | 999.95 USDC | 未显示 | Gas 约 0.01 USD |
+| L2Pass，Relay | 999.88 USDC | 约 2 秒 | 已包含在金额中 |
+| Relay（直接） | 999.88 USDC | 约 2 秒 | 中继费 0.12 USDC |
+| L2Pass，USDC native bridge（CCTP），Fast | 999.81 USDC | 约 40 秒 | 0.19 USDC |
+| L2Pass RFQ | 999.80 USDC | 约 30 秒 | L2Pass 手续费 0%，NEAR Intents 费用 0.1 USDC |
+| L2Pass，Aori | 999.29 USDC | 约 3 秒 | 已包含在金额中 |
+| deBridge | 999.20 USDC | 约 2 秒 | 另加固定费用 0.001 ETH（约 2.40 USD），以及 1.10 USDC |
+| L2Pass Private | 998.20 USDC | 约 30 秒 | L2Pass 手续费 0.3% |
+| LI.FI（直接及在 L2Pass 中） | 997.50 USDC | 约 18 分钟 | LI.FI 费用 2.50 USD |
+| ChangeNOW, standard | 987.50 USDC | 10 到 60 分钟 | 充值费 0.8 USDC |
+| SideShift | 981.00 USDC | 未显示 | 已计入汇率 |
+| ChangeNOW, fixed rate | 964.37 USDC | 未显示 | 充值费 0.8 USDC |
+
+THORChain 没有 Arbitrum 资金池，MAYAChain 不支持 Base。
+
+通过 L2Pass 使用 Relay 与直接使用 Relay 到账金额相同：L2Pass 对稳定币不加收费用。
+
+</Tab>
+</Tabs>
+
+## 通过 Trocador 比较即时兑换平台
+
+[Trocador](https://trocador.app) 比较 FixedFloat、StealthEX 和 ChangeNOW 等即时兑换平台。我们在 18:34 UTC（比上面的报价晚约 13 分钟）在那里请求了同一笔转账。
+
+| 兑换平台（Trocador 评级） | 1,000 USDT Tron 到 Ethereum | 汇率类型 |
+| :-- | :-- | :-- |
+| FixedFloat（C） | 994.65 USDT | 浮动 |
+| CCECash（B） | 994.47 USDT | 浮动 |
+| Baltex（B） | 993.98 USDT | 浮动 |
+| Simpleswap（B），最佳固定汇率 | 989.66 USDT | 固定 |
+| Swapuz（A），最低 | 973.00 USDT | 固定 |
+
+最佳即时兑换平台比 L2Pass RFQ（999.55 USDT）少约 4.9 USDT。
+
+Trocador 的隐私评级（此处为 A 到 C）反映各平台的条款、隐私政策，以及用户拒绝验证时的退款做法。Trocador 指出，任何平台都可能暂停兑换并要求 KYC 或 AML 检查。浮动金额是估算值，会在你的充值确认时重新定价；固定金额是锁定的。
+
+## 数据说明了什么
+
+扣除所有费用后实际到账的金额，比速度或标称费用更重要。
+
+- **L2Pass 替你比较提供方。** 在 Arbitrum 到 Base 上，一次 L2Pass 报价就返回了包括 Relay、LI.FI 和 Circle CCTP 在内的八条路由，你无需逐个访问网站即可比较。
+- **最快不等于最便宜。** Relay 和 deBridge 只需几秒。CCTP Standard 到账最多，但耗时约 19.5 分钟。
+- **即时兑换平台成本更高。** 在 1,000 USDT 的转账中，ChangeNOW 和 SideShift 少给了 12 到 36 USDT。
+- **对 Tron 的支持各不相同。** MAYAChain 不支持 Tron，LI.FI 经由 LayerSwap 路由。
+- **总额比标称费用更重要。** deBridge 在报价之外还会以源链原生代币收取固定费用，USDT0 会收取 LayerZero 消息费，因此请比较扣除所有支出后的到账金额。
+
+## 该用哪个
+
+根据你最看重的因素选择：总成本、速度，还是从交易所付款。
+
+- **从 Tron 转出总成本最低：** L2Pass RFQ。
+- **EVM 链之间秒级到账：** Relay，直接使用或在 L2Pass 中使用，价格相同。
+- **能等待时 USDC 到账最多：** Circle CCTP Standard，约 19.5 分钟。
+- **从交易所账户付款：** 选择充值地址路由，例如 L2Pass RFQ，因为仅支持钱包的跨链桥需要你从自己的钱包签名。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="把 USDT 从 Tron 跨链到 Ethereum 最便宜的方式是什么？">
+    在我们 2026 年 10 月 19 日的实时报价中，L2Pass RFQ 为 1,000 USDT 给出 999.55 USDT，是扣除所有费用后的最高金额。USDT0 给出 999.70 USDT，但需另付约 1.73 USD 的 LayerZero 消息费。
+  </Accordion>
+
+  <Accordion title="L2Pass 比直接使用 Relay 便宜吗？">
+    对稳定币来说两者相同。通过 L2Pass 使用 Relay 与直接使用 Relay 一样，都是 999.88 USDC，因为稳定币的 L2Pass 手续费为 0%。
+  </Accordion>
+
+  <Accordion title="从 Tron 跨链 USDT 最快的方式是什么？">
+    Relay 报价约 4 秒，deBridge 约 15 秒，但两者到账的 USDT 都少于约需 1.5 分钟的 L2Pass RFQ。
+  </Accordion>
+
+  <Accordion title="ChangeNOW 或 FixedFloat 这类即时兑换平台更便宜吗？">
+    在我们的报价中并非如此。Trocador 上最好的即时兑换平台从 Tron 到 Ethereum 兑换 1,000 USDT 给出 994.65 USDT，比 L2Pass RFQ 少约 4.9 USDT。
+  </Accordion>
+
+  <Accordion title="需要账户吗？">
+    不需要。L2Pass Swap 无需账户，也无需 KYC。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [比较跨链路由](/zh/products/swap/learn/compare-routes)
+- [USDT 从 Tron 到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [通过 Circle CCTP 跨链 USDC](/zh/products/swap/guides/usdc-cctp)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [比较：BTC 兑换](/zh/products/swap/learn/compare-btc-swaps)
+- [比较：ZEC 兑换](/zh/products/swap/learn/compare-zec-swaps)
+- [在对方偏好的网络上用加密货币付款](/zh/products/swap/learn/crypto-payments)
+
+*最后更新：2026 年 10 月 19 日*

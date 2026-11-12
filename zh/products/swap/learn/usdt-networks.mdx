@@ -1,0 +1,82 @@
+---
+title: "USDT 网络详解：TRC-20、ERC-20、BEP-20、SPL、TON 和 USDT0"
+description: "TRC-20、ERC-20、BEP-20、SPL、TON jetton 和 USDT0：每种 USDT 网络是什么、使用什么 Gas 代币和地址格式，以及如何在它们之间转移 USDT。"
+sidebarTitle: "USDT 网络详解"
+---
+
+USDT 存在于许多区块链上，每个版本只能在自己的网络上使用。TRC-20 USDT 在 Tron 上，ERC-20 USDT 在 Ethereum 上，BEP-20 USDT 在 BNB Chain 上，SPL USDT 在 Solana 上，jetton USDT 在 TON 上。USDT0 是 USDT 的全链版本，通过 LayerZero 在链之间转移，用于 Arbitrum、Plasma 等网络。你不能把一条网络上的 USDT 直接发送到另一条网络上的地址：你需要一条跨链路由，例如 [L2Pass Swap](https://swap.l2pass.com/) 中比较的那些路由，稳定币兑换的 L2Pass 手续费为 0%。
+
+## 各网络上的 USDT
+
+每种 USDT 网络都有自己的 Gas 代币和地址格式。
+
+| 网络 | 标准 | Gas 代币 | 地址格式 | 教程 |
+| :-- | :-- | :-- | :-- | :-- |
+| Tron | TRC-20 | TRX（能量和带宽） | 以 T 开头 | [Tron 到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum) |
+| Ethereum | ERC-20 | ETH | 0x... | [Ethereum 到 Tron](/zh/products/swap/guides/usdt-ethereum-to-tron) |
+| BNB Chain | BEP-20 | BNB | 0x... | [Tron 到 BNB Chain](/zh/products/swap/guides/usdt-tron-to-bnb-chain) |
+| Solana | SPL | SOL | Base58 | [Tron 到 Solana](/zh/products/swap/guides/usdt-tron-to-solana) |
+| TON | Jetton | Toncoin | 以 UQ 或 EQ 开头 | [Tron 到 TON](/zh/products/swap/guides/usdt-tron-to-ton) |
+| Arbitrum | USDT0 | ETH | 0x... | [Tron 到 Arbitrum](/zh/products/swap/guides/usdt-tron-to-arbitrum) |
+| Plasma | USDT0 | XPL | 0x... | [USDT 到 Plasma](/zh/products/swap/guides/usdt-to-plasma) |
+
+EVM 网络（Ethereum、BNB Chain、Arbitrum、Plasma 等）共用同一种 0x 地址格式。同一个地址在这些网络上都能使用，但每条网络上的代币是独立的。把 ERC-20 USDT 发送到你在 BNB Chain 上的地址，并不会把它转到 BNB Chain。
+
+## 在各网络接收 USDT 的成本
+
+目标网络费用会从到账金额中扣除，因此接收时不需要目标网络的 Gas。2026 年 10 月 19 日（约 17:50 UTC）通过 L2Pass RFQ 从 Tron 转出 1,000 USDT 的测试报价：
+
+| 目标网络 | 网络费 | 预计时间 | 到账 |
+| :-- | :-- | :-- | :-- |
+| Arbitrum（USDT0） | 0.005 USDT0 | 约 79 秒 | 999.77 USDT0 |
+| Solana | 0.01 USDT | 约 77 秒 | 999.73 USDT |
+| Ethereum | 0.3 USDT | 约 87 秒 | 999.51 USDT |
+| Plasma（USDT0） | 低于 0.0001 USDT0 | 约 84 秒 | 997.79 USDT0 |
+
+转到 Plasma 时，NEAR Intents 提供方费用为 0.2% 而不是 0.01%，所以尽管网络费最低，到账却更少。实时报价会显示当前数据。
+
+## 如何选择网络
+
+选择 USDT 将要使用的网络，然后确认你持有该网络的 Gas 代币。
+
+- **你要在哪里使用。** 选择你要付款的交易所、应用或个人所在的网络。交易所会显示它接受哪些网络的充值。
+- **你持有的 Gas。** 之后要发送 USDT，你需要该网络的 Gas 代币：Tron 上是 TRX，Ethereum 或 Arbitrum 上是 ETH，Solana 上是 SOL，依此类推。
+- **发送成本。** 各网络费用差异很大。从 Ethereum 发送通常最贵；Tron、Solana 和二层网络通常更便宜。
+
+## 网络与 USDT0
+
+每次发送 USDT 时，都要让网络与地址相匹配。
+
+- **在交易所选择正确的网络。** 提现或充值 USDT 时，你选择的网络必须与地址匹配。在错误网络上发送的代币可能丢失，或需要手动找回。
+- **USDT0 和 USDT。** 在 Arbitrum 和 Plasma 上，L2Pass Swap 交付的 USDT 是 USDT0。L2Pass Swap 可以把它与 Tron、Ethereum 等网络上的 USDT 互相转换。
+- **可用性。** 报价会显示你的交易对当前可用的路由。如果没有列出路由，请稍后再试或选择其他目标网络。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="TRC-20 和 ERC-20 USDT 有什么区别？">
+    TRC-20 USDT 运行在 Tron 上，用 TRX 支付手续费。ERC-20 USDT 运行在 Ethereum 上，用 ETH 支付。两者都是 Tether 发行的 USDT，但位于不同的网络，因此需要跨链路由才能互相转移。
+  </Accordion>
+
+  <Accordion title="可以把 TRC-20 USDT 发送到 ERC-20 地址吗？">
+    不可以。Tron 和 Ethereum 使用不同的网络和地址格式。请使用跨链路由，例如[把 USDT 从 Tron 跨链到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)。
+  </Accordion>
+
+  <Accordion title="什么是 USDT0？">
+    USDT0 是 USDT 的全链版本，通过 LayerZero 在链之间转移。在 L2Pass Swap 中，它就是 Arbitrum 和 Plasma 上的 USDT，由 USDT native bridge 路由转移，包括从 Tron 转出。
+  </Accordion>
+
+  <Accordion title="哪个 USDT 网络最便宜？">
+    取决于路由和时间。接收时，报价已包含目标网络费用。发送时，请比较你所在源网络的 Gas 成本。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

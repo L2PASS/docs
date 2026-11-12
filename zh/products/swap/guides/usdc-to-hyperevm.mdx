@@ -1,0 +1,133 @@
+---
+title: "如何把 USDC 跨链到 HyperEVM"
+description: "从 Arbitrum 约 35 秒把 USDC 跨链到 HyperEVM，或把 TRC-20 USDT 兑换成 USDC。L2Pass RFQ 上 L2Pass 手续费 0%，无需 HYPE。"
+sidebarTitle: "USDC 到 HyperEVM"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDC 从 Arbitrum 跨链到 HyperEVM（Hyperliquid 的 EVM 链），也可以把 Tron 上的 USDT 兑换成 HyperEVM 上的 USDC。在测试报价中，Arbitrum 到 HyperEVM 由 L2Pass RFQ 和 L2Pass Private 提供，约需 35 秒，Relay 和 LI.FI 也提供了报价。Tron 到 HyperEVM 由 L2Pass RFQ 和 L2Pass Private 提供，约需 1.5 分钟。在这些交易对上，L2Pass RFQ 显示 L2Pass 手续费为 0%，报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**从 Arbitrum 约 35 秒** · **L2Pass 手续费 0%** · **发送 1,000 到账 999.68 USDC** · **无需 HYPE**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## 到 HyperEVM 的路由
+
+从 Arbitrum 有四条路由可到达 HyperEVM，其中两条也支持从 Tron 出发。
+
+| 路由 | 来源 | 预计时间 | 到账 | 付款方式 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Arbitrum、Tron | 从 Arbitrum 约 35 秒，从 Tron 约 1.5 分钟 | 浮动，有最少到账 | 一次性充值地址 |
+| L2Pass Private | Arbitrum、Tron | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 一次性充值地址。L2Pass 手续费最高 0.3% |
+| Relay | Arbitrum | 约 2 秒 | 浮动 | 钱包交易 |
+| LI.FI | Arbitrum | 约 18 分钟 | 浮动 | 钱包交易 |
+
+L2Pass RFQ 和 L2Pass Private 都运行在 [NEAR Intents](https://near.org/intents) 上。在这些测试报价中，Circle CCTP 没有提供到 HyperEVM 的路由。报价会列出能完成你的交易对的所有路由。
+
+## 测试报价
+
+约 17:17 UTC 的报价。实时报价会显示当前数据。
+
+<Tabs>
+<Tab title="从 Arbitrum 发送 1,000 USDC">
+
+| 路由 | 到账 | 预计时间 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 999.68 USDC | 约 35 秒 |
+| L2Pass Private | 998.18 USDC | 约 35 秒 |
+| Relay | 997.87 USDC | 约 2 秒 |
+| LI.FI | 995.50 USDC | 约 18 分钟 |
+
+在这个交易对上，L2Pass RFQ 没有显示提供方费用，只有 0.32 USDC 的 HyperEVM 网络费。
+
+</Tab>
+<Tab title="从 Tron 发送 1,000 USDT">
+
+| 路由 | 到账 | 预计时间 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 998.59 USDC | 约 1.5 分钟 |
+| L2Pass Private | 996.07 USDC | 约 1.5 分钟 |
+
+</Tab>
+</Tabs>
+
+## 如何把 USDC 跨链到 HyperEVM
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Arbitrum 上的 USDC 或 Tron 上的 USDT。
+    - **To：** HyperEVM 上的 USDC。
+    - **Amount：** 你要发送的数量。
+    - **收款地址：** 接收 USDC 的 HyperEVM 地址（以 0x 开头的 EVM 地址）。
+  </Step>
+
+  <Step title="比较路由">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和费用。默认滑点为 0.05%（可修改）。
+  </Step>
+
+  <Step title="设置退款地址">
+    对于 L2Pass RFQ 和 L2Pass Private，请把退款地址设为你在源链上控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="通过钱包或充值地址付款">
+    付款方式取决于你选择的路由。
+
+    <Tabs>
+      <Tab title="钱包路由（Relay、LI.FI）">
+        在钱包中签署交易。
+      </Tab>
+      <Tab title="充值地址（L2Pass RFQ、L2Pass Private）">
+        通过地址或二维码，从已连接的钱包、任意钱包或交易所把代币发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="跟踪兑换">
+    对于 L2Pass RFQ 和 L2Pass Private，在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+在 HyperEVM 上只能接收 USDC，并且只需要源链上的 Gas。
+
+- **仅限 USDC。** L2Pass Swap 在 HyperEVM 上提供 USDC。如果从 USDT 出发，请使用 Tron 到 HyperEVM 交易对，它一步把 USDT 换成 USDC。
+- **只需源链 Gas。** 你在 Arbitrum 上用 ETH 支付 Gas，在 Tron 上用 TRX 支付。HyperEVM 网络费会从显示金额中扣除，因此接收时不需要 HYPE。HYPE 是 HyperEVM 的 Gas 代币，之后在那里发送或使用 USDC 时需要。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="把 USDC 跨链到 HyperEVM 需要多长时间？">
+    在测试报价中，从 Arbitrum 通过 L2Pass RFQ 约 35 秒，通过 Relay 约 2 秒。路由卡片会显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="把 USDC 跨链到 HyperEVM 要多少钱？">
+    在从 Arbitrum 发送 1,000 USDC 的测试报价中，L2Pass RFQ 到账 999.68 USDC，L2Pass 手续费 0%，HyperEVM 网络费 0.32 USDC。其他路由显示各自的费用。显示金额已包含这些费用。
+  </Accordion>
+
+  <Accordion title="在 HyperEVM 上接收 USDC 需要 HYPE 吗？">
+    不需要。HyperEVM 网络费会从显示金额中扣除。之后在 HyperEVM 上发送或使用 USDC 时需要 HYPE。
+  </Accordion>
+
+  <Accordion title="可以把 TRC-20 USDT 发送到 HyperEVM 吗？">
+    可以，以兑换成 USDC 的方式。在测试报价中，Tron 上的 1,000 USDT 通过 L2Pass RFQ 换得 HyperEVM 上的 998.59 USDC。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

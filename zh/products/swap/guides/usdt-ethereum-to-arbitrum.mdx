@@ -1,0 +1,126 @@
+---
+title: "如何把 USDT 从 Ethereum 跨链到 Arbitrum（USDT0）"
+description: "1 秒到 1.5 分钟把 USDT 从 Ethereum 跨链到 Arbitrum。对比六条路由，L2Pass 手续费 0%，到账为 USDT0。"
+sidebarTitle: "USDT：Ethereum 到 Arbitrum"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDT 从 Ethereum 跨链到 Arbitrum。在 Arbitrum 上，USDT 以 USDT0（USDT 的全链版本）到账。在测试报价中，这个交易对有六条路由：原生 USDT0 跨链桥、L2Pass RFQ、LI.FI Intents、Relay、L2Pass Private 和 LI.FI，预计时间从约 1 秒到 1.5 分钟不等。对于 1,000 USDT，排名靠前的路由彼此相差不超过 0.3 USDT。稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**一次报价六条路由** · **L2Pass 手续费 0%** · **发送 1,000 到账 1,000 USDT0** · **Arbitrum 上无需 ETH**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## USDT 从 Ethereum 到 Arbitrum 的路由
+
+约 17:51 UTC 的 1,000 USDT 测试报价。实时报价会显示当前数据。
+
+<Tabs>
+<Tab title="Ethereum 到 Arbitrum">
+
+| 路由 | 到账 | 预计时间 | 付款 |
+| :-- | :-- | :-- | :-- |
+| USDT native bridge（USDT0） | 1,000.00 USDT0 | 约 1.5 分钟 | 钱包交易，另加约 0.04 USD 的 LayerZero 消息费（以 ETH 支付） |
+| L2Pass RFQ | 999.79 USDT0 | 约 44 秒 | 一次性充值地址 |
+| LI.FI Intents | 999.75 USDT0 | 未显示 | 钱包交易 |
+| Relay | 999.68 USDT0 | 约 1 秒 | 钱包交易 |
+| L2Pass Private | 998.19 USDT0 | 约 44 秒 | 一次性充值地址 |
+| LI.FI | 997.39 USDT0 | 约 2 秒 | 钱包交易 |
+
+</Tab>
+<Tab title="Arbitrum 到 Ethereum">
+
+| 路由 | 到账 | 预计时间 | 付款 |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.75 USDT | 未显示 | 钱包交易 |
+| USDT native bridge（USDT0） | 1,000.00 USDT | 约 1.5 分钟 | 钱包交易，另加约 0.25 USD 的 LayerZero 消息费（以 ETH 支付） |
+| Relay | 999.63 USDT | 约 4 秒 | 钱包交易 |
+| L2Pass RFQ | 999.51 USDT | 约 32 秒 | 一次性充值地址 |
+| L2Pass Private | 997.90 USDT | 约 32 秒 | 一次性充值地址 |
+| LI.FI | 997.33 USDT | 约 9 秒 | 钱包交易 |
+
+</Tab>
+</Tabs>
+
+计入源链 Gas 和消息费后，从 Ethereum 出发时原生 USDT0 跨链桥与 L2Pass RFQ 几乎持平，从 Arbitrum 出发时 LI.FI Intents 与 USDT0 几乎持平。应用会按扣除 Gas 后的净值对路由排序。
+
+## 如何把 USDT 从 Ethereum 跨链到 Arbitrum
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Ethereum 上的 USDT。
+    - **To：** Arbitrum 上的 USDT0。
+    - **Amount：** 你要发送的 USDT 数量。
+    - **收款地址：** 接收 USDT0 的 Arbitrum 地址。
+  </Step>
+
+  <Step title="比较路由">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和费用。如果看重速度，Relay 在测试报价中约 1 秒完成；如果最看重金额，请比较 USDT0 和 L2Pass RFQ。
+  </Step>
+
+  <Step title="设置退款地址">
+    对于 L2Pass RFQ 和 L2Pass Private，请把退款地址设为你控制的 Ethereum 钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="通过钱包或充值地址付款">
+    付款方式取决于你选择的路由。
+
+    <Tabs>
+      <Tab title="钱包路由（USDT0、Relay、LI.FI）">
+        在你的 Ethereum 钱包中签署交易。
+      </Tab>
+      <Tab title="充值地址（L2Pass RFQ、L2Pass Private）">
+        通过地址或二维码，从已连接的钱包、任意钱包或交易所把 USDT 发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="跟踪兑换">
+    对于 L2Pass RFQ 和 L2Pass Private，请在 **Recent swaps** 中跟踪状态。USDT0 转账是一条 LayerZero 消息，你可以用 Ethereum 交易哈希在 [LayerZero Scan](https://layerzeroscan.com/) 上跟踪。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+你需要 Ethereum 上的 ETH 作为 Gas，在 Arbitrum 上接收时不需要 ETH。
+
+- **只需 Ethereum 上的 Gas。** 你在 Ethereum 上用 ETH 支付 Gas。Arbitrum 网络费会从显示金额中扣除，因此接收时不需要 Arbitrum 上的 ETH。
+- **Arbitrum 上的 USDT0。** L2Pass Swap 在 Arbitrum 上交付的 USDT 是 USDT0。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="把 USDT 从 Ethereum 跨链到 Arbitrum 需要多长时间？">
+    在测试报价中，从 Relay 的约 1 秒到原生 USDT0 跨链桥的约 1.5 分钟不等。路由卡片会显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="把 USDT 从 Ethereum 跨链到 Arbitrum 要多少钱？">
+    稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。在 1,000 USDT 的测试报价中，原生 USDT0 跨链桥到账 1,000 USDT0，另加约 0.04 USD 的消息费；L2Pass RFQ 到账 999.79 USDT0。你还需要支付 Ethereum Gas。
+  </Accordion>
+
+  <Accordion title="Arbitrum 上的 USDT0 和 USDT 一样吗？">
+    USDT0 是 USDT 的全链版本，通过 LayerZero 在链之间转移。在 Arbitrum 上，它就是 L2Pass Swap 交付的 USDT。
+  </Accordion>
+
+  <Accordion title="可以从 Arbitrum 跨链回 Ethereum 吗？">
+    可以。在测试报价中，反方向提供了相同的路由，见上方第二个标签页。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [把 USDT 从 Tron 跨链到 Arbitrum](/zh/products/swap/guides/usdt-tron-to-arbitrum)
+- [USDT 网络详解](/zh/products/swap/learn/usdt-networks)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

@@ -1,0 +1,106 @@
+---
+title: "什么是私密跨链兑换"
+description: "L2Pass 私密兑换会减少公开区块链上关于兑换如何成交的信息。介绍它能隐藏什么、哪些仍然可见、费用以及操作方法。"
+sidebarTitle: "私密跨链兑换"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) 中的私密跨链兑换会减少公开区块链上关于兑换如何成交的信息。它在 L2Pass Private 路由上运行，位于 [NEAR Intents](https://near.org/intents) 的机密执行环境中。
+
+<Warning>
+私密兑换并不匿名。你的充值和收到的代币仍然是各自链上的普通交易。提供方仍会收到你的钱包地址，并像对待公开兑换一样对其进行 AML 和制裁风险筛查。
+</Warning>
+
+私密兑换的 L2Pass 手续费最高 0.3%。它替代 0% 或 0.2%，而非额外收取，并且已包含在报价显示的金额中。
+
+## 私密兑换与标准兑换对比
+
+L2Pass Private 和标准 L2Pass RFQ 路由运行在同一个网络上，使用相同的充值流程。区别在于执行方式和手续费。
+
+| | L2Pass Private | L2Pass RFQ |
+| :-- | :-- | :-- |
+| 网络 | NEAR Intents | NEAR Intents |
+| 执行 | 机密环境 | 公开 |
+| 公开区块链显示的信息 | 受限 | 不受限 |
+| 提供方能看到你的钱包地址 | 是 | 是 |
+| 合规筛查 | 是 | 是 |
+| L2Pass 手续费 | 最高 0.3%，任意资产 | 稳定币 0%，其他资产最高 0.2% |
+| 付款 | 一次性充值地址 | 一次性充值地址 |
+| 预计时间 | 与该交易对的 L2Pass RFQ 相同 | 约 30 秒到几分钟，涉及 Bitcoin 或 Zcash 时更久 |
+
+在 2026 年 10 月 19 日从 Arbitrum 到 Base 兑换 1,000 USDC 的测试报价中，L2Pass Private 显示 998.20 USDC，L2Pass RFQ 显示 999.80 USDC，两者都约为 27 秒。实时报价会显示当前数据。
+
+## 私密兑换能做什么、不能做什么
+
+**它能：**
+- 在机密环境而非公开环境中执行兑换。
+- 减少公开区块链上关于兑换如何成交的信息。
+- 适用于稳定币和其他资产，包括 ZEC、BTC 和 Tron 上的 USDT。
+
+**它不能：**
+- 让你匿名。提供方仍会收到你的钱包地址。
+- 跳过筛查。私密兑换和公开兑换都经过相同的检查，在报价时和充值后都会进行。
+- 隐藏你的充值或收款。转到充值地址的交易和到达你收款地址的代币，都是各自链上的普通交易。
+
+## 如何进行私密兑换
+
+私密兑换的五个步骤与任何充值地址兑换相同，只需选择 L2Pass Private。
+
+<Steps>
+  <Step title="请求报价">
+    打开 [swap.l2pass.com](https://swap.l2pass.com/)，选择源代币和网络、目标代币和网络、金额以及收款地址。
+  </Step>
+
+  <Step title="选择 L2Pass Private">
+    将它与 L2Pass RFQ 和其他路由比较。与任何路由一样，Private 会显示预计到账、最少到账、预计时间和费用。
+  </Step>
+
+  <Step title="设置退款地址">
+    把退款地址设为你在源链上控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="向充值地址付款">
+    通过地址或二维码，把报价金额发送到一次性充值地址。你可以从已连接的钱包、其他钱包或直接从交易所付款。
+  </Step>
+
+  <Step title="跟踪兑换">
+    在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 退款和法律条款
+
+私密兑换遵循与 L2Pass RFQ 相同的退款规则。
+
+- **退款。** 如果兑换无法完成，提供方会把你的充值退回到退款地址；可能扣除提供方和网络费用。因 AML 或制裁规则被标记的充值则会被冻结审核，你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+- **不部分成交。** 兑换要么全部完成，要么不执行。
+- **法律条款。** 请参阅 [Terms of Service](https://l2pass.com/terms-of-service) 和 [Privacy & AML Principles](https://l2pass.com/privacy-policy)。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="私密兑换是匿名的吗？">
+    不是。它减少了公开区块链显示的信息，但提供方仍会收到你的钱包地址，并像对待公开兑换一样进行筛查。
+  </Accordion>
+
+  <Accordion title="私密兑换的费用是多少？">
+    私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取），已包含在报价显示的金额中。
+  </Accordion>
+
+  <Accordion title="可以私密兑换稳定币吗？">
+    可以。L2Pass Private 同样适用于稳定币，此时 L2Pass 手续费最高为 0.3%，而不是 0%。
+  </Accordion>
+
+  <Accordion title="哪些网络支持私密兑换？">
+    在测试报价中，私密兑换支持 Tron 和 Ethereum 上的 USDT，Arbitrum、Base 和 Ethereum 上的 USDC，以及 BTC 和 ZEC。其他交易对请查看报价：只要 L2Pass Private 能完成你的兑换，就会出现在报价中。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [如何私密兑换 ZEC](/zh/products/swap/guides/private-swaps-with-zec)
+- [什么是 L2Pass RFQ by NEAR Intents](/zh/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [Swap 概览中的私密兑换](/zh/products/swap/overview#private-swaps)
+
+*最后更新：2026 年 10 月 19 日*

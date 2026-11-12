@@ -1,0 +1,104 @@
+---
+title: "如何通过 Circle CCTP 跨链 USDC（Ethereum、Arbitrum、Base）"
+description: "通过 Circle CCTP 跨链 USDC，Fast 模式约 40 秒，Standard 模式约 19.5 分钟。固定到账，L2Pass 手续费 0%，只需 ETH 作为 Gas。"
+sidebarTitle: "通过 Circle CCTP 跨链 USDC"
+---
+
+你可以在 [L2Pass Swap](https://swap.l2pass.com/) 中通过 Circle CCTP 在 Ethereum、Arbitrum 和 Base 之间跨链原生 USDC，它显示为 USDC native bridge。它有两种模式：Fast，在测试报价中约需 40 到 50 秒；Standard，约需 19.5 分钟，网络费更低。两者都是固定到账，L2Pass 会把它们与 Relay、L2Pass RFQ 和 LI.FI 等其他路由并排展示，方便你比较。稳定币兑换的 L2Pass 手续费为 0%，报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**Fast 模式不到一分钟** · **L2Pass 手续费 0%** · **发送 1,000 到账 999.81 USDC** · **原生 USDC，固定到账**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## 什么是 Circle CCTP
+
+CCTP（Cross-Chain Transfer Protocol，跨链转账协议）是 Circle 官方的 USDC 跨链方式。USDC 在源链上被销毁，目标链上铸造等量的原生 USDC，因此你收到的是 Circle 在该链上发行的 USDC。
+
+| 模式 | 工作方式 | 测试报价中的预计时间 | 1,000 USDC 的网络费 |
+| :-- | :-- | :-- | :-- |
+| Fast | Circle 在源链达到最终确认之前确认转账 | 从 Arbitrum 约 38 秒，从 Ethereum 约 50 秒 | 从 Arbitrum 0.19 USDC，从 Ethereum 0.15 USDC |
+| Standard | 等待源链区块最终确认 | 约 19.5 分钟 | 0.05 USDC |
+
+## 1,000 USDC 从 Arbitrum 到 Base 的路由
+
+测试报价（约 16:55 UTC）返回了八条路由。实时报价会显示当前数据。
+
+| 路由 | 到账 | 预计时间 | 到账类型 |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.97 USDC | 未显示 | 固定 |
+| USDC native bridge, Standard | 999.95 USDC | 约 19.5 分钟 | 固定 |
+| Relay | 999.88 USDC | 约 2 秒 | 浮动 |
+| USDC native bridge, Fast | 999.81 USDC | 约 38 秒 | 固定 |
+| L2Pass RFQ | 999.80 USDC | 约 27 秒 | 浮动 |
+| Aori | 999.28 USDC | 约 3 秒 | 固定 |
+| L2Pass Private | 998.20 USDC | 约 27 秒 | 浮动 |
+| LI.FI | 997.50 USDC | 约 18 分钟 | 浮动 |
+
+从 Ethereum 到 Base 也提供了同样的八条路由，金额相近。CCTP Standard 显示 999.95 USDC，CCTP Fast 显示 999.85 USDC。
+
+## 如何通过 CCTP 跨链 USDC
+
+在第 3 步签名之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** 源网络上的 USDC，例如 Arbitrum。
+    - **To：** 目标网络上的 USDC，例如 Base。
+    - **Amount：** 你要转移的 USDC 数量。
+    - **收款地址：** 目标网络上接收 USDC 的地址。
+  </Step>
+
+  <Step title="选择 Fast 或 Standard">
+    找到 USDC native bridge 卡片。如果希望一分钟内到账，选择 Fast；如果能等约 20 分钟换取更低的网络费，选择 Standard。将它们与其他路由卡片比较。
+  </Step>
+
+  <Step title="授权并签名">
+    在源网络的钱包中签署交易。如果这是你第一次通过该路由转账 USDC，钱包可能会先要求代币授权。
+  </Step>
+
+  <Step title="跟踪转账">
+    如果应用要求在目标网络上完成最后一步，请按提示操作；未完成的转账之后可以在应用中继续。你可以在目标网络的区块浏览器（例如 Base 的 Basescan）上查询收款地址，确认 USDC 已到账。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+CCTP 需要钱包签名和 ETH 作为 Gas，并准确交付显示的金额。
+
+- **源链 Gas。** 你在 Ethereum、Arbitrum 或 Base 上用 ETH 支付 Gas。CCTP 网络费会从显示金额中扣除，因此接收时不需要目标链上的 ETH。
+- **固定到账。** CCTP 准确交付显示的金额，因此不涉及滑点。
+- **仅限钱包。** CCTP 需要在你的钱包中签署交易。如需从交易所付款，请使用接受一次性充值地址的 L2Pass RFQ。
+- **退款。** 链上路由失败时会回滚，Gas 不予退还。
+- **不部分成交。** 转账要么全部完成，要么不执行。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="CCTP 转账需要多长时间？">
+    在测试报价中，CCTP Fast 约需 38 到 50 秒，CCTP Standard 约需 19.5 分钟。路由卡片会显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="通过 CCTP 跨链 USDC 要多少钱？">
+    稳定币兑换的 L2Pass 手续费为 0%。在 1,000 USDC 的测试报价中，Standard 的网络费为 0.05 USDC，Fast 为 0.15 到 0.19 USDC，另加以 ETH 支付的源链 Gas。
+  </Accordion>
+
+  <Accordion title="通过 CCTP 跨链的 USDC 是原生 USDC 吗？">
+    是的。CCTP 在源链销毁 USDC，在目标链铸造由 Circle 发行的原生 USDC。
+  </Accordion>
+
+  <Accordion title="把 USDC 从 Arbitrum 转到 Base 最快的方式是什么？">
+    在测试报价中，Relay 约 2 秒，Aori 约 3 秒，金额略有不同。请针对你的金额比较路由卡片。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*
