@@ -1,20 +1,20 @@
 ---
 title: "What Happens If a Swap Fails: Refunds and Refund Addresses"
-description: "If an L2Pass swap cannot complete, on-chain routes revert and deposit-address routes refund to your refund address. No partial fills. What to check."
+description: "If an L2Pass swap cannot complete, on-chain routes revert and deposit-address routes refund automatically. How screening works, when funds are held for review, and what to check."
 sidebarTitle: "Failed swaps and refunds"
 ---
 
-If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does not execute at all: swaps are never partially filled. On wallet routes, such as Circle CCTP, USDT0, Relay or LI.FI, the transaction reverts and no tokens are exchanged, but the gas you paid is not refunded. On deposit-address routes, L2Pass RFQ and L2Pass Private, the provider sends your deposit back to the refund address you set, minus any provider or network fees. The one exception is a swap that a provider flags as high risk under AML or sanctions rules: the provider decides whether to complete, refund or hold it, and a refund is not guaranteed.
+If a swap in [L2Pass Swap](https://swap.l2pass.com/) cannot complete, it does not execute at all: swaps are never partially filled. On wallet routes, such as Circle CCTP, USDT0, Relay or LI.FI, the transaction reverts and no tokens are exchanged, but the gas you paid is not refunded. On deposit-address routes, L2Pass RFQ and L2Pass Private, the provider sends your deposit back to the refund address you set, minus any provider or network fees. The one case that works differently is a compliance flag after your deposit: then the funds are held for review instead of refunded, and you resolve it with NEAR Intents support.
 
 ## What happens by route type
 
-Wallet routes revert, deposit-address routes refund, and the provider decides on flagged swaps.
+Wallet routes revert, deposit-address routes refund, and a deposit flagged by compliance is held for review.
 
 | Route type | Routes | If the swap cannot complete | What you lose |
 | :-- | :-- | :-- | :-- |
 | Wallet transaction | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX aggregator | The transaction reverts and no tokens are exchanged | Source gas |
 | Deposit address | L2Pass RFQ, L2Pass Private | The provider sends the deposit back to your refund address | Provider and network fees that may be deducted from the refund |
-| Flagged as high risk | Any route | The provider decides to complete, refund or hold the swap | A refund is not guaranteed |
+| Flagged after deposit | L2Pass RFQ, L2Pass Private | The funds are held while NEAR Intents reviews the swap | Nothing is lost by default; you open a ticket with NEAR Intents support |
 
 ## Why a swap may not complete
 
@@ -24,7 +24,18 @@ A swap stops when the price, the timing, the deposit or a provider check does no
 - **The quote expired.** A quote is valid for a limited time. A deposit that arrives too late may not be filled.
 - **The deposit does not match the quote.** For example, an exchange deducted its withdrawal fee, or the tokens were sent on another network.
 - **No solver filled the swap.** On RFQ routes, solvers may decline a swap, for example when liquidity is thin.
-- **A provider check.** A provider may request extra checks or hold a swap under its own AML or sanctions rules. L2Pass cannot override that decision.
+- **A compliance flag.** On L2Pass RFQ and L2Pass Private, a flagged address gets no quote at all. A deposit flagged after it arrives is held for review, not refunded. See [How screening works](#how-screening-works).
+
+## How screening works
+
+Every swap on L2Pass RFQ and L2Pass Private is screened the same way, public or private, and no KYC is needed.
+
+- **At the quote.** NEAR Intents screens the swap before it quotes. If something is flagged, you get no quote and nothing is sent. Your refund address is screened too, so use your own wallet.
+- **After your deposit.** The swap is checked again when your deposit arrives.
+- **Technical failure: refunded.** If the swap fails for a technical reason, such as price movement or an expired quote, the deposit goes back to your refund address automatically.
+- **Compliance flag: held for review.** If the deposit is flagged under AML or sanctions rules, the funds are held while NEAR Intents reviews it, and the reason may not be shared. To resolve it, open a ticket with NEAR Intents support. They may ask where the funds came from.
+
+L2Pass cannot override a review, but [L2Pass support](/resources/support) can help you find the right contact. Wallet routes such as Circle CCTP, USDT0, LI.FI and Relay follow their providers' own checks. See the [NEAR Intents risk and compliance page](https://docs.near-intents.org/security-compliance/risk-and-compliance) for details.
 
 ## How to set a refund address
 
@@ -52,7 +63,8 @@ Check **Recent swaps** and a block explorer before you contact support.
 2. If it still shows *Awaiting deposit*, check on a block explorer that your transfer reached the deposit address on the right network with the right amount.
 3. For a USDT0 transfer, look up your source transaction hash on [LayerZero Scan](https://layerzeroscan.com/).
 4. If the swap does not complete, check your refund address for the returned deposit.
-5. If you still need help, contact [L2Pass support](/resources/support) with the source transaction hash.
+5. If the deposit is held for a compliance review, open a ticket with NEAR Intents support.
+6. If you still need help, contact [L2Pass support](/resources/support) with the source transaction hash.
 
 ## FAQ
 
@@ -70,7 +82,15 @@ Check **Recent swaps** and a block explorer before you contact support.
   </Accordion>
 
   <Accordion title="Is a refund always guaranteed?">
-    A failed deposit-address swap is refunded to your refund address, minus any provider or network fees. The exception is a swap a provider flags as high risk under AML or sanctions rules: the provider decides whether to complete, refund or hold it.
+    A swap that fails for a technical reason is refunded to your refund address automatically, minus any provider or network fees. A deposit flagged under AML or sanctions rules is not refunded automatically: the funds are held for review, and you resolve it with a ticket to NEAR Intents support.
+  </Accordion>
+
+  <Accordion title="Why did I get no quote?">
+    The amount may be below the route's minimum, or no solver offered a price. On L2Pass RFQ and L2Pass Private, a swap also gets no quote if screening flags it. In that case nothing is sent.
+  </Accordion>
+
+  <Accordion title="Do I need KYC?">
+    No. There is no account and no KYC. If a deposit is held for review, NEAR Intents support may ask where the funds came from.
   </Accordion>
 </AccordionGroup>
 
@@ -82,4 +102,4 @@ Check **Recent swaps** and a block explorer before you contact support.
 - [Terms of Service](https://l2pass.com/terms-of-service)
 - [L2Pass Swap FAQ](/products/swap/faq)
 
-*Last updated: October 19, 2026*
+*Last updated: November 11, 2026*

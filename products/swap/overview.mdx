@@ -84,18 +84,18 @@ Every blockchain transaction also requires a network (gas) fee paid in the nativ
 Private swaps route your swap through a confidential execution environment instead of a public one, which limits what is visible on public blockchains. They are made possible by NEAR Intents, a third-party protocol.
 
 - **Not anonymity:** Your public wallet address is still included in requests sent to providers.
-- **Compliance still applies:** Private swaps are subject to the same transaction screening and sanctions controls as other swaps.
+- **Same screening:** Private swaps are screened exactly like public ones, at the quote and after the deposit.
 - **Fee:** The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). Like every fee, it is already included in the amount shown in the quote.
 
 See the [Terms of Service](https://l2pass.com/terms-of-service) and [Privacy & AML Principles](https://l2pass.com/privacy-policy) for details.
 
 ## Full fill or full refund
 
-A swap completes in full or does not execute, and the one exception to refunds is a swap a provider flags as high risk.
+A swap completes in full or does not execute, and a failed swap is refunded automatically.
 
 - **No partial fills:** L2Pass does not use partial execution. A swap either completes in full or does not execute.
 - **Refunds:** If a deposit-address swap cannot complete, for example because the price moved beyond your tolerance or the quote expired, the provider sends your deposit back to your refund address, minus any provider and network fees. A failed wallet transaction reverts, and the gas you paid is spent.
-- **Compliance reviews:** If a provider flags a swap as high risk under its AML or sanctions rules, the provider decides whether to complete, refund or hold it, and a refund is not guaranteed. L2Pass cannot override a provider's review.
+- **Compliance reviews:** Every swap is screened, with no KYC. On L2Pass RFQ and L2Pass Private, a flagged address gets no quote. A deposit flagged after it arrives is held for review instead of refunded, and you resolve it with a ticket to NEAR Intents support. See [How screening works](/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
 
 ---
 
