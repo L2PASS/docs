@@ -1,0 +1,141 @@
+---
+title: "Cách hoán đổi ETH sang USDC hoặc USDT giữa các mạng"
+description: "Hoán đổi ETH sang USDC hoặc USDT trên mạng khác trong 1 giây đến khoảng 80 giây. Phí L2Pass tối đa 0,2%, so sánh bốn tuyến trong một báo giá."
+sidebarTitle: "ETH sang USDC hoặc USDT"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể hoán đổi ETH sang USDC hoặc USDT trên mạng khác chỉ trong một bước bằng [L2Pass Swap](https://swap.l2pass.com/), ví dụ ETH trên Ethereum sang USDC trên Base, hoặc ETH trên Arbitrum sang USDT trên Tron. Trong báo giá thử nghiệm, L2Pass RFQ, Relay, LI.FI và L2Pass Private được cung cấp giữa các mạng EVM, với thời gian ước tính từ khoảng 1 giây đến dưới một phút, còn L2Pass RFQ và Private được cung cấp sang Tron. Phí L2Pass cho hoán đổi ETH tối đa 0,2% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+
+**Dưới một phút giữa các mạng EVM** · **Hoán đổi và chuyển mạng trong một bước** · **2.387,76 USDC cho 1 ETH** · **Bốn tuyến trong một báo giá**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 19 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Các tuyến từ ETH sang stablecoin
+
+Bốn tuyến đã khớp lệnh hoán đổi ETH giữa các mạng EVM, và hai trong số đó cũng đến được Tron.
+
+| Tuyến | Thời gian ước tính | Đầu ra | Thanh toán | Phí L2Pass trong báo giá thử nghiệm |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Khoảng 34 đến 80 giây | Thay đổi, có mức nhận tối thiểu | Địa chỉ nạp dùng một lần | 0% |
+| Relay | Khoảng 1 đến 2 giây | Thay đổi | Giao dịch ví | 0,1% |
+| LI.FI | Khoảng 6 đến 26 giây | Thay đổi | Giao dịch ví | 0,1% |
+| L2Pass Private | Giống L2Pass RFQ | Thay đổi, có mức nhận tối thiểu | Địa chỉ nạp dùng một lần | 0,3% |
+
+L2Pass RFQ và L2Pass Private đều chạy trên [NEAR Intents](https://near.org/intents). Trên L2Pass RFQ, phí nhà cung cấp NEAR Intents là 0,2% cho các cặp này.
+
+## Báo giá thử nghiệm
+
+Báo giá cho 1 ETH vào khoảng 17:50 UTC, khi ETH ở mức khoảng 2.400 USD. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+<Tabs>
+<Tab title="Ethereum sang USDC trên Base">
+
+| Tuyến | Bạn nhận | Thời gian ước tính |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2.387,76 USDC | Khoảng 49 giây |
+| Relay | 2.386,58 USDC | Khoảng 2 giây |
+| LI.FI | 2.384,78 USDC | Khoảng 26 giây |
+| L2Pass Private | 2.379,58 USDC | Khoảng 49 giây |
+
+</Tab>
+<Tab title="Base sang USDC trên Arbitrum">
+
+| Tuyến | Bạn nhận | Thời gian ước tính |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2.387,26 USDC | Khoảng 34 giây |
+| Relay | 2.387,26 USDC | Khoảng 1 giây |
+| LI.FI | 2.384,45 USDC | Khoảng 6 giây |
+| L2Pass Private | 2.379,69 USDC | Khoảng 34 giây |
+
+</Tab>
+<Tab title="Arbitrum sang USDT trên Tron">
+
+| Tuyến | Bạn nhận | Thời gian ước tính |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2.388,75 USDT | Khoảng 80 giây |
+| L2Pass Private | 2.378,24 USDT | Khoảng 80 giây |
+
+</Tab>
+</Tabs>
+
+## Cách hoán đổi ETH sang USDC trên mạng khác
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** ETH trên mạng bạn đang giữ.
+    - **To:** USDC hoặc USDT trên mạng đích.
+    - **Amount:** số ETH bạn muốn hoán đổi.
+    - **Địa chỉ nhận:** địa chỉ trên mạng đích sẽ nhận stablecoin.
+  </Step>
+
+  <Step title="So sánh các tuyến">
+    Mỗi thẻ tuyến hiển thị số tiền ước tính, số tiền nhận tối thiểu, thời gian ước tính và các khoản phí. Giá ETH biến động, nên hãy kiểm tra số tiền nhận tối thiểu. Trượt giá mặc định là 0,05% (có thể chỉnh).
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Với L2Pass RFQ và L2Pass Private, đặt địa chỉ hoàn tiền là một ví bạn kiểm soát trên mạng nguồn. Nếu hoán đổi không thể hoàn tất, nhà cung cấp sẽ trả ETH của bạn về đó.
+  </Step>
+
+  <Step title="Thanh toán qua ví hoặc địa chỉ nạp">
+    Cách thanh toán phụ thuộc vào tuyến bạn chọn.
+
+    <Tabs>
+      <Tab title="Tuyến qua ví (Relay, LI.FI)">
+        Ký giao dịch trong ví của bạn.
+      </Tab>
+      <Tab title="Địa chỉ nạp (L2Pass RFQ, L2Pass Private)">
+        Gửi ETH đến địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn giao dịch, bằng địa chỉ hoặc mã QR. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào số tiền đó.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Theo dõi hoán đổi">
+    Với L2Pass RFQ và L2Pass Private, theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+Hãy giữ lại một ít ETH để trả gas, và kiểm tra số tiền nhận tối thiểu vì giá ETH biến động trong lúc hoán đổi.
+
+- **Giữ lại một ít ETH để trả gas.** Bạn trả gas nguồn bằng ETH, nên đừng hoán đổi toàn bộ số dư trên tuyến qua ví. Với tuyến qua địa chỉ nạp, phí mạng cho giao dịch chuyển của bạn cũng trừ từ ví.
+- **Biến động giá.** ETH biến động mạnh. Số tiền nhận tối thiểu bảo vệ bạn: nếu giá biến động vượt mức chịu trượt giá, hoán đổi sẽ không được thực hiện.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi có thể đổi ETH sang USDC và chuyển sang mạng khác trong một bước không?">
+    Có. Chọn ETH trên mạng nguồn và USDC trên mạng đích. Tuyến sẽ đổi và chuyển trong một lần hoán đổi.
+  </Accordion>
+
+  <Accordion title="Hoán đổi ETH sang USDC giữa các mạng tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi ETH tối đa 0,2% (tối đa 0,3% cho hoán đổi riêng tư). Trong báo giá thử nghiệm, phí là 0% trên L2Pass RFQ và 0,1% trên Relay và LI.FI. Nhà cung cấp và mạng lưới thu phí riêng, và số tiền hiển thị đã bao gồm các khoản đó.
+  </Accordion>
+
+  <Accordion title="Tôi có thể đổi ETH trên Arbitrum sang USDT trên Tron không?">
+    Có. Trong báo giá thử nghiệm, L2Pass RFQ giao 2.388,75 USDT trên Tron cho 1 ETH trên Arbitrum, trong khoảng 80 giây.
+  </Accordion>
+
+  <Accordion title="Tuyến nào nhanh nhất?">
+    Relay hiển thị khoảng 1 đến 2 giây giữa các mạng EVM trong báo giá thử nghiệm. L2Pass RFQ mất khoảng 34 đến 49 giây nhưng giao bằng hoặc nhiều hơn. Hãy so sánh các thẻ tuyến cho số tiền của bạn.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để chuyển USDT và USDC: L2Pass so với các cầu nối khác](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [Trượt giá và số tiền nhận tối thiểu](/vi/products/swap/learn/slippage)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

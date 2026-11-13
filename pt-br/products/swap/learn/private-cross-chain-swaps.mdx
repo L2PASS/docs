@@ -1,0 +1,106 @@
+---
+title: "O que é um swap cross-chain privado"
+description: "Os swaps privados da L2Pass limitam o que as blockchains públicas mostram sobre como seu swap é executado. O que ocultam, o que continua visível, a taxa e como fazer um."
+sidebarTitle: "Swaps cross-chain privados"
+---
+
+Um swap cross-chain privado no [L2Pass Swap](https://swap.l2pass.com/) limita o que as blockchains públicas mostram sobre como o seu swap é executado. Ele roda na rota L2Pass Private, dentro de um ambiente de execução confidencial na [NEAR Intents](https://near.org/intents).
+
+<Warning>
+Um swap privado não é anônimo. Seu depósito e os tokens que você recebe continuam sendo transações normais nas respectivas redes. Os provedores ainda recebem seu endereço de carteira e fazem a triagem de risco de AML e sanções exatamente como em um swap público.
+</Warning>
+
+A taxa L2Pass de um swap privado é de até 0,3%. Ela se aplica em vez de 0% ou 0,2%, não somada, e já está incluída no valor mostrado na cotação.
+
+## Swaps privados e padrão comparados
+
+O L2Pass Private e a rota padrão L2Pass RFQ rodam na mesma rede e usam o mesmo fluxo de depósito. O que muda é a execução e a taxa.
+
+| | L2Pass Private | L2Pass RFQ |
+| :-- | :-- | :-- |
+| Rede | NEAR Intents | NEAR Intents |
+| Execução | Ambiente confidencial | Pública |
+| O que as blockchains públicas mostram | Limitado | Sem limite |
+| O provedor vê seu endereço de carteira | Sim | Sim |
+| Triagem de compliance | Sim | Sim |
+| Taxa L2Pass | Até 0,3%, qualquer ativo | 0% em stablecoins, até 0,2% em outros ativos |
+| Pagamento | Endereço de depósito de uso único | Endereço de depósito de uso único |
+| Tempo estimado | Igual ao L2Pass RFQ para o par | De cerca de 30 segundos a alguns minutos, mais com Bitcoin ou Zcash |
+
+Em cotações de teste de 1.000 USDC da Arbitrum para a Base em 19 de outubro de 2026, o L2Pass Private mostrou 998,20 USDC e o L2Pass RFQ 999,80 USDC, ambos em cerca de 27 segundos. A cotação ao vivo mostra os números atuais.
+
+## O que um swap privado faz e não faz
+
+**Faz:**
+- Executa o swap em um ambiente confidencial em vez de um público.
+- Limita o que as blockchains públicas mostram sobre como o swap é executado.
+- Funciona com stablecoins e outros ativos, incluindo ZEC, BTC e USDT na Tron.
+
+**Não faz:**
+- Não torna você anônimo. Os provedores ainda recebem seu endereço de carteira.
+- Não pula a triagem. Swaps privados e públicos passam pelas mesmas verificações, na cotação e depois do depósito.
+- Não oculta seu depósito nem o recebimento. A transferência para o endereço de depósito e os tokens que chegam ao seu endereço de recebimento são transações normais nas respectivas redes.
+
+## Como fazer um swap privado
+
+Um swap privado segue os mesmos cinco passos de qualquer swap com endereço de depósito. Basta escolher o L2Pass Private.
+
+<Steps>
+  <Step title="Peça uma cotação">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/), escolha os tokens e redes de origem e destino, o valor e o endereço de recebimento.
+  </Step>
+
+  <Step title="Selecione o L2Pass Private">
+    Compare com o L2Pass RFQ e as outras rotas. O Private mostra o valor estimado, o mínimo a receber, o tempo estimado e as taxas como qualquer rota.
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    Use como endereço de reembolso uma carteira que você controla na rede de origem. Se o swap não puder ser concluído, o provedor devolve o depósito para lá.
+  </Step>
+
+  <Step title="Pague no endereço de depósito">
+    Envie o valor cotado para o endereço de depósito de uso único, pelo endereço ou QR code. Você pode pagar da carteira conectada, de outra carteira ou direto de uma exchange.
+  </Step>
+
+  <Step title="Acompanhe o swap">
+    Acompanhe o status em **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* e depois *Complete*.
+  </Step>
+</Steps>
+
+## Reembolsos e termos legais
+
+Swaps privados seguem as mesmas regras de reembolso do L2Pass RFQ.
+
+- **Reembolsos.** Se um swap não puder ser concluído, o provedor devolve o depósito ao endereço de reembolso; taxas do provedor e da rede podem ser descontadas. Um depósito sinalizado por regras de AML ou sanções fica retido para análise, e você resolve isso com o suporte da NEAR Intents. Veja [Como funciona a triagem](/pt-br/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Sem execução parcial.** Um swap é concluído por inteiro ou não é executado.
+- **Termos legais.** Veja os [Termos de Serviço](https://l2pass.com/terms-of-service) e os [Princípios de Privacidade e AML](https://l2pass.com/privacy-policy).
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Um swap privado é anônimo?">
+    Não. Ele limita o que as blockchains públicas mostram, mas os provedores ainda recebem seu endereço de carteira e fazem a triagem do swap exatamente como em um público.
+  </Accordion>
+
+  <Accordion title="Quanto custa um swap privado?">
+    A taxa L2Pass de um swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada). Ela já está incluída no valor mostrado na cotação.
+  </Accordion>
+
+  <Accordion title="Posso fazer um swap privado de stablecoins?">
+    Sim. O L2Pass Private também funciona com stablecoins. Nesse caso a taxa L2Pass é de até 0,3% em vez de 0%.
+  </Accordion>
+
+  <Accordion title="Quais redes suportam swaps privados?">
+    Nas cotações de teste, swaps privados funcionaram com USDT na Tron e na Ethereum, USDC na Arbitrum, Base e Ethereum, BTC e ZEC. Para qualquer outro par, confira a cotação: ela lista o L2Pass Private sempre que ele puder executar o seu swap.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Como fazer um swap privado de ZEC](/pt-br/products/swap/guides/private-swaps-with-zec)
+- [O que é o L2Pass RFQ by NEAR Intents](/pt-br/products/swap/learn/what-is-l2pass-rfq)
+- [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees)
+- [Swaps privados na visão geral do Swap](/pt-br/products/swap/overview#private-swaps)
+
+*Última atualização: 19 de outubro de 2026*

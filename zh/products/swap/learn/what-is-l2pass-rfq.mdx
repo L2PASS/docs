@@ -1,0 +1,105 @@
+---
+title: "什么是 L2Pass RFQ by NEAR Intents"
+description: "在 L2Pass RFQ by NEAR Intents 中，求解器和做市商竞争执行你的跨链兑换。介绍其运作方式、费用以及失败时的处理。"
+sidebarTitle: "L2Pass RFQ by NEAR Intents"
+---
+
+L2Pass RFQ by NEAR Intents 是 [L2Pass Swap](https://swap.l2pass.com/) 中的一条跨链兑换路由，求解器和做市商在这里竞争执行你的兑换。你说明想收到什么，他们给出价格，胜出的报价会在你付款前展示给你。付款方式是把代币发送到一次性充值地址，可以从已连接的钱包、任意钱包或交易所发送。稳定币兑换的 L2Pass 手续费为 0%，其他资产最高 0.2%，报价显示的是扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+## 关键术语
+
+在 RFQ 兑换中，求解器针对你这笔具体兑换报价，你向一次性充值地址付款。
+
+| 术语 | 含义 |
+| :-- | :-- |
+| RFQ（request for quote，询价） | 一种交易方式：专业做市商针对你的具体兑换报价，而不是让你与资金池交易。 |
+| 意图（intent） | 一份已签名的目标结果声明，例如“在 Tron 上付出 1,000 USDT，在 Ethereum 上收到 USDT”。它说明要什么，而不是怎么做。 |
+| 求解器（solver） | 竞争执行意图的做市商或机器人，使用自己的库存和路由。 |
+| [NEAR Intents](https://near.org/intents) | L2Pass RFQ 所运行的网络。它收集意图，让求解器竞争并完成结算。 |
+| 充值地址 | 为你的报价生成的一次性地址。把报价金额发送到这里即启动兑换。 |
+| 退款地址 | 你在源链上控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。 |
+
+## RFQ 兑换如何运作
+
+求解器在你付款前就竞争你的兑换，所以你会先看到价格。
+
+<Steps>
+  <Step title="你请求报价">
+    在 [swap.l2pass.com](https://swap.l2pass.com/) 上选择源代币和网络、目标代币和网络、金额以及收款地址。L2Pass 会同时询问所有路由渠道，L2Pass RFQ 是其中之一。
+  </Step>
+
+  <Step title="求解器竞争">
+    NEAR Intents 上的求解器报出它们能交付的金额。路由卡片会显示预计到账、最少到账、预计时间和费用。
+  </Step>
+
+  <Step title="设置退款地址并付款">
+    你在源链上设置退款地址，然后通过钱包、地址或二维码，把报价金额发送到一次性充值地址。
+  </Step>
+
+  <Step title="兑换完成结算">
+    胜出的求解器把目标代币发送到你的收款地址。你可以在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## L2Pass RFQ 与 L2Pass Private 对比
+
+两条路由使用同一个 NEAR Intents 求解器网络和同样的充值地址流程。
+
+| | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 执行 | 公开 | 机密环境，减少公开区块链上可见的信息 |
+| L2Pass 手续费 | 稳定币 0%，其他资产最高 0.2% | 最高 0.3%（替代 0% 或 0.2%，而非额外收取） |
+| 付款 | 一次性充值地址 | 一次性充值地址 |
+| 退款地址 | 必填 | 必填 |
+
+私密兑换不等于匿名：你的钱包地址仍会提供给提供方，并且筛查方式与公开兑换完全相同。参见[什么是私密兑换](/zh/products/swap/overview#private-swaps)。
+
+## 为什么使用 RFQ 路由
+
+RFQ 让你可以从任何地方付款，并到达彼此之间没有直连跨链桥的链。
+
+- **从任何地方一次付款。** 你可以从任意钱包或交易所付款，无需连接钱包，也无需在源链上签署合约调用。
+- **覆盖众多网络。** 一条路由就能连接彼此之间没有直连跨链桥的链，例如 Tron、Bitcoin、Zcash、Solana 和 TON。
+- **价格提前可见。** 付款前你就能看到到账金额，它已包含除源链 Gas 以外的所有费用。
+
+L2Pass 还会在 RFQ 旁边展示其他路由，例如 Circle CCTP、USDT0、LI.FI 和 Relay。哪条给得最多取决于交易对和金额，所以请比较路由卡片。参见 [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)。
+
+## 限额、时间和退款
+
+RFQ 兑换可能有最低金额，涉及 Bitcoin 或 Zcash 时耗时更长，并且永远不会部分成交。
+
+- **最低金额。** RFQ 路由可能设有最低兑换金额。如果你的金额低于该值，路由会显示为不可用，并标出最低金额。
+- **时间。** RFQ 兑换通常需要约 30 秒到几分钟；在 Bitcoin 或 Zcash 等区块确认较慢的网络上更久。
+- **不部分成交。** 兑换要么全部完成，要么不执行。
+- **退款。** 如果兑换无法完成，提供方会把你的充值退回到退款地址；可能扣除提供方和网络费用。因 AML 或制裁规则被标记的充值则会被冻结审核，你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+- **从交易所发送。** 请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="L2Pass RFQ 是非托管的吗？">
+    是的。L2Pass 从不持有你的代币或私钥。你把代币发送到为你的报价生成的充值地址，兑换由 NEAR Intents 上的求解器完成。
+  </Accordion>
+
+  <Accordion title="L2Pass RFQ 的费用是多少？">
+    稳定币兑换的 L2Pass 手续费为 0%，其他资产最高 0.2%。NEAR Intents 和各网络收取自己的费用。报价中显示的金额已包含这些费用。
+  </Accordion>
+
+  <Accordion title="需要连接钱包吗？">
+    不需要。你可以通过地址或二维码，从任意钱包或交易所把代币发送到充值地址来付款。也可以从已连接的钱包付款。
+  </Accordion>
+
+  <Accordion title="如果没有求解器执行我的兑换会怎样？">
+    兑换不会执行，提供方会把你的充值退回到退款地址，并扣除提供方或网络费用。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [USDT 从 Tron 到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

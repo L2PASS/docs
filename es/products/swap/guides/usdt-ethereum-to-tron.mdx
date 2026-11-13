@@ -1,0 +1,108 @@
+---
+title: "Cómo pasar USDT de Ethereum a Tron (ERC-20 a TRC-20)"
+description: "Pasa USDT de Ethereum a Tron en menos de 2 minutos. 0% de comisión de L2Pass, gas solo en ETH y sin TRX para recibir. Tres rutas comparadas."
+sidebarTitle: "USDT: Ethereum a Tron"
+---
+
+import SwapBeforeYouSend from '/snippets/es/swap-before-you-send.mdx';
+
+Puedes pasar USDT de Ethereum (ERC-20) a Tron (TRC-20) con [L2Pass Swap](https://swap.l2pass.com/), una interfaz sin custodia que muestra todas las rutas del par lado a lado. En cotizaciones de prueba ofreció tres rutas para este par: L2Pass RFQ, el puente nativo USDT0 y L2Pass Private, cada una con un tiempo estimado de unos 1,5 minutos. La comisión de L2Pass en swaps de stablecoins es 0% (hasta 0,3% en swaps privados), y la cotización muestra lo que recibirás después de comisiones antes de confirmar. Solo se pagan aparte el gas de la red de origen y la posible comisión de mensaje del puente.
+
+**Menos de 2 minutos** · **0% de comisión de L2Pass** · **Llegan 998,21 USDT por 1000 enviados** · **Sin TRX**
+
+<Note>Cifras de cotizaciones de prueba del 19 de octubre de 2026. Tu cotización siempre es en vivo.</Note>
+
+## Rutas de USDT de Ethereum a Tron
+
+L2Pass RFQ y L2Pass Private funcionan en [NEAR Intents](https://near.org/intents), donde solvers y market makers compiten por ejecutar tu swap. Private lo ejecuta en un entorno confidencial.
+
+| Ruta | Tiempo estimado | Salida | Notas |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Unos 1,5 minutos | Variable, con mínimo a recibir | Pagas a una dirección de depósito de un solo uso. |
+| USDT native bridge (USDT0) | Unos 1,5 minutos | Fija | Se firma en tu wallet de Ethereum. Añade una comisión de mensaje de LayerZero pagada en ETH. |
+| L2Pass Private | Unos 1,5 minutos | Variable, con mínimo a recibir | Dirección de depósito. Comisión de L2Pass de hasta 0,3%. |
+
+En esas cotizaciones de prueba no se ofrecieron rutas de agregadores (LI.FI, LI.FI Intents, Relay, Aori ni el agregador OKX DEX) para este par. La cotización muestra cualquier ruta que pueda ejecutar el par.
+
+Las cotizaciones de prueba de 1000 USDT mostraron estos importes recibidos: 998,21 USDT en L2Pass RFQ, 999,7 USDT en USDT0 (más una comisión de mensaje de LayerZero de unos 0,005 ETH, unos 11,92 USD) y 995,64 USDT en L2Pass Private. Por la comisión de mensaje, L2Pass puso L2Pass RFQ en primer lugar. La cotización en vivo muestra las cifras actuales para tu importe.
+
+## Cómo pasar USDT de Ethereum a Tron
+
+Nada sale de tu wallet hasta que pagas, así que puedes comparar todas las rutas primero.
+
+<Steps>
+  <Step title="Abre L2Pass Swap">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/) y rellena cuatro campos:
+
+    - **From:** USDT en Ethereum.
+    - **To:** USDT en Tron.
+    - **Amount:** cuántos USDT quieres enviar.
+    - **Dirección de recepción:** la dirección de Tron (empieza por T) que recibirá los USDT.
+  </Step>
+
+  <Step title="Compara las rutas">
+    Cada tarjeta de ruta muestra el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones. El slippage por defecto es 0,05% (editable) y no se aplica a rutas de salida fija como USDT0.
+  </Step>
+
+  <Step title="Indica una dirección de reembolso">
+    Para L2Pass RFQ y L2Pass Private, pon como dirección de reembolso una wallet de Ethereum que controles. Si el swap no puede completarse, el proveedor devuelve allí tu depósito.
+  </Step>
+
+  <Step title="Paga con wallet o dirección de depósito">
+    Cómo pagas depende de la ruta que elegiste.
+
+    <Tabs>
+      <Tab title="Ruta con wallet (USDT0)">
+        Firma la transacción en tu wallet de Ethereum.
+      </Tab>
+      <Tab title="Dirección de depósito (L2Pass RFQ, L2Pass Private)">
+        Envía USDT a la dirección de depósito de un solo uso desde tu wallet conectada, cualquier wallet de Ethereum o un exchange, por dirección o código QR. Si envías desde un exchange, comprueba que el importe que llega coincide con la cotización, porque algunos exchanges descuentan de él su comisión de retiro.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Sigue el swap">
+    Para L2Pass RFQ y L2Pass Private, sigue el estado en **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* y luego *Complete*. Una transferencia USDT0 es un mensaje de LayerZero, así que puedes seguirla en [LayerZero Scan](https://layerzeroscan.com/) con el hash de tu transacción en Ethereum.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Necesitas ETH en Ethereum para el gas y nada de TRX para recibir, y USDT0 añade una comisión de mensaje en ETH.
+
+- **Gas solo en Ethereum.** Enviar USDT ERC-20 cuesta ETH en gas. La comisión de red de Tron se descuenta del importe mostrado (1,71 USDT en las cotizaciones de prueba), así que no necesitas TRX para recibir. Necesitarás TRX más adelante para mover los USDT en Tron.
+- **Comisión de mensaje de USDT0.** La ruta USDT0 cobra una comisión de mensaje de LayerZero en ETH además del gas. Compárala con los importes de RFQ antes de elegir.
+- **Importe mínimo.** Algunas rutas tienen un importe mínimo de swap. Si tu importe está por debajo, la ruta aparece como no disponible con el mínimo indicado.
+
+<SwapBeforeYouSend />
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tarda pasar USDT de Ethereum a Tron?">
+    L2Pass RFQ, USDT0 y L2Pass Private mostraron cada una un tiempo estimado de unos 1,5 minutos en cotizaciones de prueba. Las tarjetas de ruta muestran la estimación actual antes de confirmar.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta pasar USDT de Ethereum a Tron?">
+    La comisión de L2Pass en swaps de stablecoins es 0% (hasta 0,3% en swaps privados). Los partners de rutas y las redes cobran sus propias comisiones, y el importe mostrado ya las incluye. En la prueba, L2Pass RFQ mostró una comisión de servicio de 0,1 USDT (0,01%) de la red NEAR Intents y una comisión de red de 1,71 USDT en Tron. También pagas gas de Ethereum en ETH.
+  </Accordion>
+
+  <Accordion title="¿Necesito TRX para recibir USDT en Tron?">
+    No. La comisión de red de Tron se descuenta del importe mostrado. Necesitarás TRX más adelante para enviar o usar los USDT en Tron.
+  </Accordion>
+
+  <Accordion title="¿Puedo enviar USDT ERC-20 directamente a una dirección de Tron?">
+    No. Ethereum y Tron son redes separadas con formatos de dirección distintos, así que necesitas una ruta cross-chain como las de L2Pass Swap.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [La mejor forma de pasar USDT y USDC: L2Pass frente a otros puentes](/es/products/swap/learn/compare-stablecoin-transfers)
+- [USDT de Tron a Ethereum](/es/products/swap/guides/usdt-tron-to-ethereum)
+- [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

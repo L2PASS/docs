@@ -64,7 +64,7 @@ Send the exact amount on the network shown in the quote, or the swap may not sta
 - **One deposit per quote.** The deposit address belongs to your quote. Request a new quote for a new swap.
 - **Gas on the source chain only.** You pay the source network fee when you send. Any network fee on the destination chain is deducted from the amount shown.
 - **No partial fills.** A swap completes in full or does not execute.
-- **Compliance checks.** No account or KYC is needed for regular use, though a provider may request extra checks for a specific transaction. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Compliance checks.** No account or KYC needed. A flagged address gets no quote, so nothing is sent. A deposit flagged after it arrives is held for review instead of refunded; you resolve it with NEAR Intents support. See [How screening works](/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
 
 ## FAQ
 

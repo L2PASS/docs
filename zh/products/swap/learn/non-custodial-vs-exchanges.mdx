@@ -1,0 +1,83 @@
+---
+title: "非托管兑换与中心化交易所对比：账户、KYC 和资金控制权"
+description: "像 L2Pass 这样的非托管兑换与中心化交易所有何不同：无需账户，无需 KYC，资金始终由你掌控。"
+sidebarTitle: "非托管兑换与交易所对比"
+---
+
+中心化交易所把你的资金保管在你的账户中。要交易或提现，通常需要完成身份验证（KYC），交易所在审核期间可以暂停提现或冻结账户，例如要求你说明资金来源。[L2Pass Swap](https://swap.l2pass.com/) 的运作方式不同：它是非托管的，无需账户，也无需 KYC，你的代币一直留在你自己的钱包中，直到你把它们发送去兑换。每笔兑换仍会进行 AML 和制裁风险筛查，被标记的充值可能会被冻结审核。
+
+## 并排对比
+
+主要区别在于谁持有你的资金：你，还是交易所。
+
+| | L2Pass Swap（非托管） | 中心化交易所 |
+| :-- | :-- | :-- |
+| 账户 | 不需要 | 必须 |
+| 身份验证（KYC） | 不需要 | 交易或提现通常需要 |
+| 谁持有你的资金 | 你，在你自己的钱包中 | 交易所，在你的账户中 |
+| 谁持有私钥 | 只有你 | 交易所 |
+| 跨链转账 | 一次兑换，从一条网络到另一条网络 | 充值，必要时交易，然后在新网络上提现 |
+| 费用展示 | 确认前显示所有费用和到账金额 | 交易手续费、价差和提现手续费分别在不同页面显示 |
+| 如果交易被标记 | 被标记的地址拿不到报价；被标记的充值只冻结审核这一笔兑换 | 交易所可以暂扣提现或限制账户 |
+| 法币出入金 | 不支持 | 通常支持 |
+
+## 即时兑换平台介于两者之间
+
+FixedFloat、ChangeNOW 或 StealthEX 等即时兑换平台不需要账户，但在完成兑换之前会托管你的充值。比较这些平台的 [Trocador](https://trocador.app) 会根据条款、隐私政策以及用户拒绝验证时的处理方式为每个平台评级，并指出任何平台都可能暂停兑换并要求 KYC 或 AML 检查。在我们 2026 年 10 月 19 日的实时报价中，它们在大多数交易对上给出的金额也少于 L2Pass RFQ。参见[比较：稳定币转账](/zh/products/swap/learn/compare-stablecoin-transfers)、[BTC 兑换](/zh/products/swap/learn/compare-btc-swaps)和 [ZEC 兑换](/zh/products/swap/learn/compare-zec-swaps)。
+
+## 各自适合什么场景
+
+**非托管兑换适合你，如果你：**
+- 已经持有加密货币，想把它转到另一条网络或换成另一种代币。
+- 希望在两次兑换之间始终掌控自己的资金。
+- 不想为一次性转账开户和验证身份。
+
+**中心化交易所适合你，如果你：**
+- 需要用法币买卖加密货币。
+- 需要订单簿或交易工具。
+- 能接受把资金放在交易所。
+
+你也可以两者结合：从交易所直接提现到 L2Pass 报价的一次性充值地址，代币就会到达你选择的网络。参见[从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)。
+
+## 非托管不意味着什么
+
+非托管意味着 L2Pass 从不持有你的资金，但并不意味着匿名或不受筛查。
+
+- **不是匿名。** 兑换是公开的区块链交易，提供方会收到你的钱包地址。
+- **不是不筛查。** 每笔兑换都会进行 AML 和制裁风险筛查。到账后才被标记的充值不会退回，而是冻结审核，你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+- **不是存放资金的地方。** L2Pass 不为你保管余额。你的资金一直留在你的钱包中。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="使用 L2Pass Swap 需要 KYC 吗？">
+    不需要。无需账户，也无需 KYC。如果充值被冻结审核，NEAR Intents 支持团队可能会询问资金来源。
+  </Accordion>
+
+  <Accordion title="L2Pass 能冻结我的资金吗？">
+    L2Pass 从不持有你的资金，因此没有可冻结的余额。如果 NEAR Intents 因 AML 或制裁规则标记了某笔充值，只有这一笔兑换会被冻结审核，直到你与其支持团队解决。其他一切不受影响。
+  </Accordion>
+
+  <Accordion title="L2Pass 是 DEX 吗？">
+    L2Pass Swap 是一个非托管界面，比较来自去中心化协议和求解器网络（如 NEAR Intents、Circle CCTP、USDT0、LI.FI 和 Relay）的路由。它不运行订单簿，也不持有用户资金。
+  </Accordion>
+
+  <Accordion title="可以不再做一次 KYC 就把加密货币从交易所转出吗？">
+    从交易所直接提现到 L2Pass 报价的一次性充值地址即可。L2Pass 无需账户或 KYC，代币会到达你选择的网络。提现本身仍适用你所在交易所的规则。
+  </Accordion>
+
+  <Accordion title="为什么交易所会要求资金证明？">
+    交易所是托管方，必须遵守其持牌地区的规定，其中可能包括核查充值来源。具体要求请咨询你的交易所。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass 安全吗？](/zh/products/swap/learn/is-l2pass-safe)
+- [从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)
+- [Privacy & AML Principles](https://l2pass.com/privacy-policy)
+- [在对方偏好的网络上用加密货币付款](/zh/products/swap/learn/crypto-payments)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

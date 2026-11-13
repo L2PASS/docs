@@ -1,0 +1,113 @@
+---
+title: "L2Pass Swap ücretleri"
+description: "L2Pass Swap ücretleri: stablecoin takaslarında L2Pass ücreti %0, diğer varlıklarda %0,2'ye kadar, gizli takaslarda %0,3'e kadar. Gerçek tekliflerden örnekler."
+sidebarTitle: "Ücretlerin açıklaması"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/), stablecoin takaslarında her rotada %0, diğer varlıklarda %0,2'ye kadar ve gizli takaslarda %0,3'e kadar L2Pass ücreti alır. Gizli takas ücreti %0 veya %0,2 yerine uygulanır, üstüne eklenmez. Yönlendirme ortakları ve blokzincirler kendi ücretlerini alır; onaylamadan önce teklifte gösterilen alacağınız tutar bunları zaten içerir. Yalnızca kaynak ağdaki gas ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+## L2Pass ücreti
+
+L2Pass'in kendisinin aldığı tek ücret budur. Varlığa ve takasın gizli olup olmadığına bağlıdır.
+
+| Takas | L2Pass ücreti |
+| :-- | :-- |
+| Stablecoin takasları (USDT, USDC ve diğerleri), her rota | **%0** |
+| Diğer varlıklar (ETH, BTC, SOL, ZEC ve diğerleri) | **%0,2'ye kadar** |
+| Gizli takaslar, her varlık | **%0,3'e kadar** (%0 veya %0,2 yerine, üstüne değil) |
+
+## Bir teklifte görebileceğiniz tüm ücretler
+
+Bir teklif en fazla beş ücret içerebilir. İlk üçü alacağınız tutardan düşülür. Son ikisini cüzdanınızdan ödersiniz ve rota kartı bunları gösterir.
+
+| Ücret | Kim alır | Nasıl ödenir |
+| :-- | :-- | :-- |
+| L2Pass ücreti | L2Pass | Alacağınız tutara dahil |
+| Sağlayıcı ücreti | NEAR Intents, LI.FI veya Relay gibi yönlendirme ortağı | Alacağınız tutara dahil |
+| Hedef ağ ücreti | Hedef blokzincir | Alacağınız tutara dahil |
+| Köprü mesaj ücreti | LayerZero üzerinden USDT0 gibi bazı köprüler | Kaynak ağın yerel tokenıyla ödenir, rota kartında gösterilir |
+| Kaynak gas | Kaynak blokzincir | Cüzdanınızdan yerel tokenla (ETH, TRX, BNB vb.) ödenir, rota kartında gösterilir |
+
+L2Pass ortak veya ağ ücretlerini kontrol etmez. Güncel ayrıntılar için her sağlayıcıya bakın. Rota kartı takasınızın gerçek ücretlerini her zaman gösterir.
+
+## Gerçek tekliflerden örnekler
+
+19 Ekim 2026'daki test teklifleri (yaklaşık 16:55 UTC) şu ücretleri gösterdi. Canlı teklif, sizin çiftiniz ve tutarınız için güncel rakamları gösterir.
+
+| Takas | Rota | L2Pass ücreti | Diğer ücretler | Alacağınız |
+| :-- | :-- | :-- | :-- | :-- |
+| 1.000 USDC, Arbitrum → Base | L2Pass RFQ | 0 | 0,1 USDC NEAR Intents ücreti, 0,0024 USDC ağ ücreti | 999,80 USDC |
+| 1.000 USDC, Arbitrum → Base | L2Pass Private | 3 USDC (%0,3) | NEAR Intents ücreti, 0,0024 USDC ağ ücreti | 998,20 USDC |
+| 1.000 USDC, Arbitrum → Base | USDC köprüsü (CCTP Fast) | 0 | 0,19 USDC ağ ücreti | 999,81 USDC |
+| 1.000 USDT, Ethereum → Tron | USDT native bridge (USDT0) | 0 | Yaklaşık 0,005 ETH (yaklaşık 11,92 USD) LayerZero mesaj ücreti, ETH ile ödenir | 999,7 USDT |
+| Ethereum'da 0,5 ETH → Arbitrum'da USDC | L2Pass RFQ | 0 | 0,001 ETH NEAR Intents ücreti, 0,0053 USDC ağ ücreti | 1.197,00 USDC |
+| Ethereum'da 0,5 ETH → Arbitrum'da USDC | Relay | %0,1 (yaklaşık 1,20 USD) | Yaklaşık 1,34 USD Relay ücreti | 1.195,67 USDC |
+
+Alınan tutar her sağlayıcının teklif ettiği fiyatı da yansıtır, bu yüzden listelenen ücretler farkın tamamını her zaman açıklamaz.
+
+Dikkat edilecek iki nokta:
+
+- **Farklı çiftte farklı rota kazanabilir.** ETH örneğinde L2Pass RFQ, her çiftte en ucuz rota olmasa da en fazlasını verdi.
+- **Tutarın dışında ödenen ücretlere bakın.** Ethereum'dan Tron'a en yüksek alınan tutarı USDT0 gösterdi, ancak mesaj ücreti ETH ile ayrıca ödenir. L2Pass rotaları gas sonrası alacağınız net değere göre sıraladığı için L2Pass RFQ'yu ilk sıraya koydu.
+
+## Takasınızın ücretlerini nasıl görürsünüz
+
+Hiçbir şey göndermeden önce, tam tutarınız için her ücreti üç adımda kontrol edebilirsiniz.
+
+<Steps>
+  <Step title="Teklif isteyin">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin, kaynak ve hedef token ile ağları seçin ve tutarı girin.
+  </Step>
+
+  <Step title="Rota kartını açın">
+    Her rota kartı tahmini tutarı, minimum alınacak tutarı, tahmini süreyi ve o rotanın ücret dökümünü gösterir.
+  </Step>
+
+  <Step title="Karşılaştırın ve onaylayın">
+    Rotalar alacağınız tutara göre sıralanır. En üsttekini seçin ya da hız sizin için daha önemliyse daha hızlı olanı. Gösterilen tutar, L2Pass, sağlayıcı ve hedef ağ ücretlerinden sonra alacağınız tutardır.
+  </Step>
+</Steps>
+
+## Gas, iadeler ve kayma
+
+Gas, takas başarısız olsa bile asla geri alamadığınız tek maliyettir.
+
+- **Gas iade edilmez.** Zincir üstü bir rota geri alınırsa hiçbir token takas edilmez, ancak kaynak gas harcanmış olur.
+- **İadeler ve ücretler.** Yatırma adresli bir rota tamamlanamazsa sağlayıcı yatırdığınız tutarı iade adresine geri gönderir; sağlayıcı ve ağ ücretleri düşülebilir.
+- **Kayma bir ücret değildir.** Varsayılan kayma toleransı %0,05'tir ve herhangi bir rota kartından değiştirilebilir. Minimum alınacak tutarı belirler; sabit tutarlı rotaları etkilemez.
+- **Borsadan gönderim.** Bazı borsalar çekim ücretini gönderdikleri tutardan düşer. Ulaşan tutarın teklifle eşleştiğini kontrol edin.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap stablecoin'ler için ücretsiz mi?">
+    L2Pass, stablecoin takaslarında her rotada %0 ücret alır. Yönlendirme ortakları ve blokzincirler yine kendi ücretlerini alır ve bunlar teklifte gösterilen tutara dahildir. Arbitrum'dan Base'e 1.000 USDC'lik bir test teklifinde bu ücretler yaklaşık 0,10 USDC tuttu.
+  </Accordion>
+
+  <Accordion title="Gizli takas ücreti standart ücretin üstüne mi eklenir?">
+    Hayır. Gizli takas için L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil). Teklifte gösterilen tutara zaten dahildir.
+  </Accordion>
+
+  <Accordion title="Onaylamadan önce göremediğim ücretler var mı?">
+    Rota kartı onaylamadan önce takasınızın ücretlerini gösterir ve alacağınız tutar L2Pass, sağlayıcı ve hedef ağ ücretlerini zaten içerir. Kaynak gas ve varsa köprü mesaj ücreti de rota kartında gösterilir.
+  </Accordion>
+
+  <Accordion title="Yüksek hacimde daha düşük L2Pass ücreti alabilir miyim?">
+    Evet. L2Pass ücreti hacminize göre düşürülebilir ve bir kısmı yönlendirenler ve ortaklarla paylaşılabilir. Koşullar bireysel olarak belirlenir. Bkz. [Yönlendirme ve hacim koşulları](/tr/products/swap/learn/referrals-and-partners).
+  </Accordion>
+
+  <Accordion title="Aynı takas için iki rota neden farklı tutarlar gösteriyor?">
+    Her rotanın kendi sağlayıcı ve ağ ücretleri, hızı ve likiditesi vardır. Rota kartlarını karşılaştırın ve size uygun olanı seçin. Bkz. [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes).
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'ı aç](https://swap.l2pass.com/)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [L2Pass RFQ by NEAR Intents nedir](/tr/products/swap/learn/what-is-l2pass-rfq)
+- [Swap genel bakışında ücret yapısı](/tr/products/swap/overview#fee-structure)
+- [Yönlendirme ve hacim koşulları](/tr/products/swap/learn/referrals-and-partners)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

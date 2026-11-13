@@ -1,0 +1,98 @@
+---
+title: "L2Pass 安全吗？非托管兑换如何运作"
+description: "L2Pass Swap 是非托管的：它从不持有你的代币或私钥，兑换在提供方自己的合约上执行，你只需向一次性充值地址付款。"
+sidebarTitle: "L2Pass 安全吗？"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) 是一个非托管界面：L2Pass 从不持有你的代币或私钥。每笔兑换都由路由提供方（如 NEAR Intents、Circle CCTP、USDT0、LI.FI 或 Relay）在其自己的合约上执行。你要么在自己的钱包中签署交易，要么把代币发送到为你的报价生成的一次性充值地址，兑换界面会在你确认前显示扣除费用后的到账金额。L2Pass 自 2023 年上线至今，已服务超过 650,000 个钱包、处理超过 400 万笔交易。
+
+## 你的资金如何流转
+
+无论选择哪条路由，你的私钥都不会离开你的钱包。
+
+| 步骤 | 钱包路由（CCTP、USDT0、LI.FI、Relay、Aori、OKX） | 充值地址路由（L2Pass RFQ、L2Pass Private） |
+| :-- | :-- | :-- |
+| 你如何确认 | 在钱包中签署交易 | 把代币发送到为你的报价生成的一次性充值地址 |
+| 谁来执行 | 提供方的合约 | [NEAR Intents](https://near.org/intents) 上的求解器 |
+| 谁持有你的私钥 | 只有你 | 只有你 |
+| 如果失败 | 交易回滚（Gas 不予退还） | 充值退回到你的退款地址，扣除提供方或网络费用 |
+
+<Note>
+每笔兑换都会被筛查。在 RFQ 和 Private 路由上，被标记的地址拿不到报价，因此不会发生任何转账。到账后才被标记的充值不会退回，而是冻结审核，你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+</Note>
+
+## L2Pass 做什么、不做什么
+
+**L2Pass 会：**
+- 向多家路由提供方请求报价，并排展示。
+- 在你确认前显示所有费用和到账金额。
+- 通过 NEAR Intents 为 RFQ 和 Private 报价生成一次性充值地址。
+
+**L2Pass 不会：**
+- 持有你的代币或私钥。
+- 要求注册账户或 KYC。
+- 推翻提供方的合规审核。
+
+## L2Pass 合约
+
+通过第三方路由进行的兑换由这些提供方自己的合约执行。L2Pass 仅在原生 USDT0 转账中使用自己的路由合约。Ethereum、Arbitrum、Optimism、Polygon、HyperEVM 和 Tron 上的地址请参见[合约](/zh/resources/contracts)。
+
+## 如何保障安全
+
+以下四项检查可以防止钓鱼网站、错误地址和不必要的授权。
+
+<Steps>
+  <Step title="使用官方网站">
+    直接打开 [swap.l2pass.com](https://swap.l2pass.com/)，或从 [docs.l2pass.com](https://docs.l2pass.com/) 进入。在连接钱包或发送资金前检查地址栏。
+  </Step>
+
+  <Step title="只发送到报价中的充值地址">
+    你唯一需要发送资金的地址，是兑换界面中为你的报价显示的一次性充值地址。L2Pass 支持团队绝不会要求你把资金发送到其他任何地方。
+  </Step>
+
+  <Step title="设置你控制的退款地址">
+    对于充值地址路由，请使用你在源链上控制的钱包，而不是交易所的充值地址。
+  </Step>
+
+  <Step title="检查授权">
+    在钱包路由上，请仔细阅读钱包要求你授权的内容。你可以在钱包或区块浏览器中查看并撤销代币授权。
+  </Step>
+</Steps>
+
+## 合规和第三方风险
+
+每笔兑换及其合规检查由提供方执行，而不是 L2Pass。
+
+- **合规检查。** 在 RFQ 和 Private 路由上，NEAR Intents 会对每笔兑换筛查两次：报价时和充值后，公开和私密兑换方式相同。技术故障会退款；充值后被合规标记意味着资金会被冻结审核，直到 NEAR Intents 支持团队处理完你的工单。参见 [NEAR Intents 风险与合规页面](https://docs.near-intents.org/security-compliance/risk-and-compliance)。
+- **第三方风险。** 每个提供方运行自己的合约和基础设施。L2Pass 如何处理第三方提供方，请参阅 [Terms of Service](https://l2pass.com/terms-of-service)。
+- **不部分成交。** 兑换要么全部完成，要么不执行。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="L2Pass 是托管的吗？">
+    不是。L2Pass 从不持有你的代币或私钥。兑换由路由提供方在自己的合约上执行，在 RFQ 和 Private 路由上则由 NEAR Intents 上的求解器执行。
+  </Accordion>
+
+  <Accordion title="L2Pass 靠谱吗？">
+    靠谱，而且你可以自己核实。L2Pass 自 2023 年起在主网运行，其链上历史在 [LayerZero Scan](https://layerzeroscan.com/application/l2pass) 上公开可查。合约地址列在[合约](/zh/resources/contracts)页面。由于 L2Pass 从不持有你的代币，你不需要把资金托付给它：每笔兑换都在路由提供方自己的合约上执行，并且你在确认前就能看到到账金额。
+  </Accordion>
+
+  <Accordion title="我需要向 L2Pass 提供个人数据吗？">
+    不需要。无需账户，也无需 KYC。如果充值被冻结审核，NEAR Intents 支持团队可能会询问资金来源。参见 [Privacy & AML Principles](https://l2pass.com/privacy-policy)。
+  </Accordion>
+
+  <Accordion title="如果兑换失败，我的资金会怎样？">
+    在钱包路由上，交易会回滚，只花掉 Gas。在充值地址路由上，提供方会把充值退回到你的退款地址，并扣除提供方或网络费用。参见[兑换失败会怎样](/zh/products/swap/learn/failed-swaps-and-refunds)。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [合约](/zh/resources/contracts)
+- [兑换失败会怎样](/zh/products/swap/learn/failed-swaps-and-refunds)
+- [从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

@@ -1,0 +1,162 @@
+---
+title: "USDT veya BTC'yi ZEC'e takas etmenin en iyi yolu: L2Pass ile MAYAChain, FixedFloat, ChangeNOW ve diğerleri"
+description: "Canlı teklifler karşılaştırıldı: L2Pass, MAYAChain, LI.FI ve FixedFloat, ChangeNOW gibi anlık borsalarda (Trocador üzerinden) USDT ve BTC'den ZEC'e."
+sidebarTitle: "Karşılaştırma: ZEC takasları"
+---
+
+19 Ekim 2026'da USDT ve BTC'den ZEC'e için [L2Pass Swap](https://swap.l2pass.com/) ve diğer hizmetlerden, her sağlayıcı için aynı tutarlarla canlı teklif istedik. L2Pass RFQ by NEAR Intents hem Tron'dan (0,89327 ZEC) hem Ethereum'dan (0,89332 ZEC) en çok ZEC'i verdi. Ayrıca Trocador'da karşılaştırılan ondan fazla anlık borsanın en iyisini de geçti. THORChain ve SideShift o sırada ZEC teklifi veremedi. L2Pass ücreti %0,2'ye kadar, gizli takasta %0,3'e kadardır ve aşağıdaki tüm tutarlara dahildir.
+
+## Bir bakışta sonuçlar
+
+L2Pass RFQ, BTC için MAYAChain'in ham protokol teklifi dışında üç takasın hepsinde en çok ZEC'i verdi.
+
+| Takas | En çok ulaşan | L2Pass RFQ | En iyi anlık borsa (Trocador) |
+| :-- | :-- | :-- | :-- |
+| Tron'da 1.000 USDT'den ZEC'e | L2Pass RFQ | 0,89444 ZEC | 0,89369 ZEC (Changee) |
+| Ethereum'da 1.000 USDT'den ZEC'e | L2Pass RFQ | 0,89332 ZEC | 0,89109 ZEC (Changee) |
+| 0,01 BTC'den ZEC'e | L2Pass RFQ, 0,73128 ZEC (MAYAChain protokol teklifi 0,73178 ZEC, arayüz ücretleri hariç) | 0,73128 ZEC | 0,73104 ZEC (CoinCraddle) |
+
+L2Pass ve MAYAChain teklifleri 18:21 ile 18:28 UTC arası, Trocador teklifleri 18:30 ile 18:31 UTC arasındandır. Tron satırı 18:28 UTC'de yenilenen L2Pass teklifini kullanır.
+
+## Nasıl karşılaştırdık
+
+Her sağlayıcıya aynı tutarları ve aynı teklif isteklerini gönderdik, hiçbir takas gerçekleştirmedik.
+
+- **Ne zaman:** 19 Ekim 2026, 18:21 ile 18:31 UTC arası. Her tablo için saat belirtildi.
+- **Nasıl:** her sağlayıcının web arayüzünün yaptığı aynı teklif istekleri, aynı tutarlarla. Hiçbir takas gerçekleştirilmedi.
+- **Neyi karşılaştırıyoruz:** sağlayıcı ücretleri ve hedef ağ ücretinden sonra aldığınız tutar.
+
+<Note>
+19 Ekim 2026 anlık görüntüleri. Teklifler birkaç saniyede bir değişir, güncel rakamlar için [L2Pass Swap](https://swap.l2pass.com/)'i açın.
+</Note>
+
+## Canlı teklifler
+
+L2Pass RFQ her iki ağdan da USDT karşılığı en çok ZEC'i verdi.
+
+<Tabs>
+<Tab title="Tron'da USDT'den ZEC'e">
+
+18:21 UTC teklifleri.
+
+| Sağlayıcı | Alacağınız | Tahmini süre | Gösterilen ücretler |
+| :-- | :-- | :-- | :-- |
+| **L2Pass RFQ** | **0,89327 ZEC** | Yaklaşık 3 dakika | %0,2 L2Pass ücreti, 0,00032 ZEC ağ ücreti |
+| LI.FI (NEAR Intents üzerinden) | 0,89194 ZEC | Yaklaşık 3 dakika | 2,50 USD LI.FI ücreti, 1,20 USD NEAR ücretleri |
+| L2Pass Private | 0,88702 ZEC | Yaklaşık 3 dakika | %0,3 L2Pass ücreti |
+| ChangeNOW, standart | 0,87582 ZEC | 10 ila 60 dakika | 4,8 USDT yatırma ücreti |
+| ChangeNOW, sabit kur | 0,85970 ZEC | Gösterilmiyor | Kura dahil |
+
+O sırada kullanılamayanlar: THORChain ("trading is halted"), SideShift (ZEC çifti devre dışıydı) ve MAYAChain, Relay ile deBridge (Tron'dan Zcash'e rota yok).
+
+</Tab>
+<Tab title="Ethereum'da USDT'den ZEC'e">
+
+18:21 UTC teklifleri.
+
+| Sağlayıcı | Alacağınız | Tahmini süre | Gösterilen ücretler |
+| :-- | :-- | :-- | :-- |
+| **L2Pass RFQ** | **0,89332 ZEC** | Yaklaşık 2,5 dakika | %0,2 L2Pass ücreti, 0,00032 ZEC ağ ücreti |
+| LI.FI (NEAR Intents üzerinden) | 0,89198 ZEC | Yaklaşık 2,5 dakika | 2,51 USD LI.FI ücreti, 1,20 USD NEAR ücretleri |
+| L2Pass Private | 0,88792 ZEC | Yaklaşık 2,5 dakika | %0,3 L2Pass ücreti |
+| ChangeNOW, standart | 0,87987 ZEC | 10 ila 60 dakika | Kura dahil |
+| MAYAChain protokol teklifi* | 0,87828 ZEC | Yaklaşık 30 saniye | 0,00818 ZEC (%0,92), arayüz ücreti hariç |
+| ChangeNOW, sabit kur | 0,86013 ZEC | Gösterilmiyor | Kura dahil |
+
+O sırada kullanılamayanlar: THORChain ve SideShift (yukarıdaki hatalarla aynı), Relay ve deBridge (Zcash desteği yok).
+
+</Tab>
+<Tab title="BTC'den ZEC'e">
+
+18:28 UTC (L2Pass, MAYAChain) ve 18:30 UTC ([Trocador](https://trocador.app) üzerinden anlık borsalar) teklifleri.
+
+| Sağlayıcı (Trocador notu) | Alacağınız | Kur türü |
+| :-- | :-- | :-- |
+| MAYAChain protokol teklifi* | 0,73178 ZEC | Değişken, yaklaşık 10 dakika, arayüz ücreti hariç |
+| **L2Pass RFQ** | **0,73128 ZEC** | Değişken, yaklaşık 15 dakika |
+| CoinCraddle (B) | 0,73104 ZEC | Değişken |
+| Changee (C) | 0,73104 ZEC | Değişken |
+| FixedFloat (C) | 0,72908 ZEC | Değişken |
+| L2Pass Private | 0,72710 ZEC | Değişken, %0,3 L2Pass ücreti |
+| FixedFloat (C), en iyi sabit kur | 0,72542 ZEC | Sabit |
+| ChangeNOW (C), en düşük | 0,71680 ZEC | Değişken |
+
+THORChain teklif veremedi (ZEC işlemleri durdurulmuştu).
+
+\* Protokol teklifi, protokolün teklif hizmetinden gelen ham rakamdır. Onun üzerine kurulan uygulamalar kendi ücretlerini ekler, bu yüzden kullanıcılar daha azını görür. THORChain uygulamasıyla yan yana karşılaştırıldığında L2Pass kontrol ettiğimiz her çiftte daha fazla verdi (bkz. [Karşılaştırma: BTC takasları](/tr/products/swap/learn/compare-btc-swaps)).
+
+</Tab>
+</Tabs>
+
+## Trocador üzerinden anlık borsalar: USDT'den ZEC'e
+
+18:31 UTC'de istendi. L2Pass RFQ 18:28 UTC'de yenilendi ve Tron'dan 0,89444 ZEC verdi.
+
+| Borsa (Trocador notu) | Tron'da 1.000 USDT | Ethereum'da 1.000 USDT |
+| :-- | :-- | :-- |
+| En iyi değişken | 0,89369 ZEC (Changee, C) | 0,89109 ZEC (Changee, C) |
+| İkinci | 0,89322 ZEC (CoinCraddle, B) | 0,89059 ZEC (CoinCraddle, B) |
+| En iyi sabit | 0,88751 ZEC (Simpleswap, B) | 0,88542 ZEC (FixedFloat, C) |
+| Gösterilen en düşük | 0,86743 ZEC (ChangeNOW, C) | 0,87433 ZEC (ChangeNOW, C) |
+
+Trocador'un gizlilik notu (burada A'dan C'ye) her borsanın koşullarını, gizlilik politikasını ve kullanıcı doğrulamayı reddettiğinde iade uygulamasını yansıtır. Trocador, herhangi bir borsanın yine de takası duraklatıp KYC veya AML kontrolü isteyebileceğini belirtir. Değişken tutarlar tahmindir ve yatırmanız onaylandığında yeniden fiyatlanır; sabit tutarlar kilitlidir.
+
+## Rakamlar ne gösteriyor
+
+ZEC'i az sayıda protokol destekliyor ve L2Pass RFQ her anlık borsadan fazlasını verdi.
+
+- **L2Pass RFQ her iki ağdan da USDT karşılığı en çok ZEC'i verdi,** Trocador'daki her anlık borsanın önünde. 0,01 BTC için yalnızca MAYAChain'in ham protokol teklifi, uygulama ücretleri hariç %0,07 daha yüksekti.
+- **L2Pass Private birkaç herkese açık rotayı geçti.** %0,3 ücrete rağmen, Ethereum'daki USDT için ChangeNOW ve MAYAChain'den daha fazla ZEC verdi.
+- **Tron'dan ZEC'i az sayıda cross-chain protokol destekliyor.** Yalnızca L2Pass ve LI.FI teklif verdi; LI.FI ise L2Pass RFQ'nun arkasındaki ağ olan NEAR Intents üzerinden, üstüne kendi ücretlerini ekleyerek yönlendirdi. Anlık borsalar çifti daha düşük tutarlarla destekliyor.
+- **Kullanılabilirlik değişir.** Tekliflerimiz sırasında THORChain'de ZEC işlemleri durdurulmuştu, SideShift'te ise çift devre dışıydı.
+
+## Hangisini kullanmalı
+
+L2Pass RFQ, kullanıcının işlem yapabileceği her çiftte en çok verdi.
+
+- **Tron veya Ethereum'dan USDT'den ZEC'e:** en çok L2Pass RFQ verdi.
+- **BTC'den ZEC'e:** L2Pass RFQ her anlık borsadan fazla verdi. MAYAChain'in ham protokol teklifi, uygulama ücretleri hariç %0,07 daha yüksekti.
+- **Gizli işlem:** %0,2 yerine %0,3 ile L2Pass Private.
+
+## Gizlilik, adresler ve uyum
+
+Gizli takas, herkese açık blok zincirlerinin gösterdiklerini sınırlar ama sizi anonim yapmaz.
+
+- **Gizlilik anonimlik değildir.** L2Pass Private, herkese açık blok zincirlerinin takasın nasıl gerçekleştiği hakkında gösterdiklerini sınırlar. Sağlayıcılar cüzdan adresinizi yine alır ve uyum taraması uygulanır.
+- **Alıcı adresi.** Teklif sizinkini kabul etmiyorsa şeffaf bir Zcash adresi kullanın, ardından ZEC'i cüzdanınızda korumalı (shielded) hale getirin.
+- **Uyum kontrolleri.** Gizli takaslar herkese açık olanlar gibi taranır. İşaretlenen bir adres teklif almaz; ulaştıktan sonra işaretlenen bir yatırma inceleme için tutulur ve bunu NEAR Intents desteğiyle çözersiniz.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDT ile ZEC almanın en iyi yolu nedir?">
+    19 Ekim 2026 tarihli canlı tekliflerimizde L2Pass RFQ, hem Tron'dan hem Ethereum'dan 1.000 USDT için en çok ZEC'i verdi.
+  </Accordion>
+
+  <Accordion title="BTC'yi ZEC'e takas etmenin en iyi yolu nedir?">
+    Tekliflerimizde L2Pass RFQ, 0,01 BTC için 0,73128 ZEC verdi ve Trocador'daki her anlık borsanın önündeydi. MAYAChain'in ham protokol teklifi, uygulamalarının eklediği ücret hariç 0,73178 ZEC idi.
+  </Accordion>
+
+  <Accordion title="THORChain ve SideShift neden ZEC teklifi veremedi?">
+    Tekliflerimiz sırasında THORChain ZEC için "trading is halted" döndürüyordu ve SideShift'te çift devre dışıydı. Kullanılabilirlik değişir, takas yaparken tekrar kontrol edin.
+  </Accordion>
+
+  <Accordion title="KYC olmadan ZEC alabilir miyim?">
+    Evet. L2Pass Swap hesap ve KYC gerektirmez.
+  </Accordion>
+
+  <Accordion title="Hangisi daha gizli, L2Pass Private mı korumalı cüzdan mı?">
+    Farklı şeyler yaparlar. L2Pass Private, herkese açık blok zincirlerinin takasın nasıl gerçekleştiği hakkında gösterdiklerini sınırlar. Korumalı cüzdan ise ZEC'i aldıktan sonra Zcash'teki bakiyeleri ve transferleri gizler. İkisini birlikte kullanabilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [Gizli ZEC takası nasıl yapılır](/tr/products/swap/guides/private-swaps-with-zec)
+- [Gizli cross-chain takas nedir](/tr/products/swap/learn/private-cross-chain-swaps)
+- [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees)
+- [Karşılaştırma: BTC takasları](/tr/products/swap/learn/compare-btc-swaps)
+- [Karşılaştırma: stablecoin transferleri](/tr/products/swap/learn/compare-stablecoin-transfers)
+
+*Son güncelleme: 19 Ekim 2026*

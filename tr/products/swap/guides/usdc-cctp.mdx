@@ -1,0 +1,104 @@
+---
+title: "USDC'yi Circle CCTP ile köprüleme (Ethereum, Arbitrum, Base)"
+description: "USDC'yi Circle CCTP ile yaklaşık 40 saniyede (Fast) veya 19,5 dakikada (Standard) köprüleyin. Sabit çıktı, %0 L2Pass ücreti, gas yalnızca ETH ile."
+sidebarTitle: "Circle CCTP ile USDC"
+---
+
+Yerel USDC'yi Ethereum, Arbitrum ve Base arasında Circle CCTP ile [L2Pass Swap](https://swap.l2pass.com/) üzerinden taşıyabilirsiniz; burada USDC native bridge olarak görünür. İki modu vardır: test tekliflerinde yaklaşık 40 ila 50 saniye süren Fast ve yaklaşık 19,5 dakika sürüp daha düşük ağ ücreti alan Standard. İkisi de sabit bir tutar teslim eder ve L2Pass, karşılaştırabilmeniz için onları Relay, L2Pass RFQ ve LI.FI gibi diğer rotaların yanında gösterir. Stablecoin takaslarında L2Pass ücreti %0'dır ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Fast modunda bir dakikadan kısa** · **%0 L2Pass ücreti** · **1.000 gönderilene 999,81 USDC ulaşır** · **Yerel USDC, sabit çıktı**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Circle CCTP nedir
+
+CCTP (Cross-Chain Transfer Protocol), Circle'ın USDC'yi ağlar arasında taşımak için kendi yöntemidir. USDC kaynak ağda yakılır ve hedef ağda aynı miktarda yerel USDC basılır; böylece Circle'ın orada çıkardığı USDC'yi alırsınız.
+
+| Mod | Nasıl çalışır | Test tekliflerinde tahmini süre | 1.000 USDC için ağ ücreti |
+| :-- | :-- | :-- | :-- |
+| Fast | Circle, kaynak ağ kesinliğe ulaşmadan transferi onaylar | Arbitrum'dan yaklaşık 38 saniye, Ethereum'dan yaklaşık 50 saniye | Arbitrum'dan 0,19 USDC, Ethereum'dan 0,15 USDC |
+| Standard | Kaynak ağda blok kesinliğini bekler | Yaklaşık 19,5 dakika | 0,05 USDC |
+
+## Arbitrum'dan Base'e 1.000 USDC için rotalar
+
+Test teklifleri (yaklaşık 16:55 UTC) sekiz rota döndürdü. Canlı teklif güncel rakamları gösterir.
+
+| Rota | Alacağınız | Tahmini süre | Çıktı |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,97 USDC | Gösterilmiyor | Sabit |
+| USDC native bridge, Standard | 999,95 USDC | Yaklaşık 19,5 dakika | Sabit |
+| Relay | 999,88 USDC | Yaklaşık 2 saniye | Değişken |
+| USDC native bridge, Fast | 999,81 USDC | Yaklaşık 38 saniye | Sabit |
+| L2Pass RFQ | 999,80 USDC | Yaklaşık 27 saniye | Değişken |
+| Aori | 999,28 USDC | Yaklaşık 3 saniye | Sabit |
+| L2Pass Private | 998,20 USDC | Yaklaşık 27 saniye | Değişken |
+| LI.FI | 997,50 USDC | Yaklaşık 18 dakika | Değişken |
+
+Ethereum'dan Base'e aynı sekiz rota benzer tutarlarla sunuldu. CCTP Standard 999,95 USDC, CCTP Fast 999,85 USDC gösterdi.
+
+## USDC CCTP ile nasıl köprülenir
+
+3. adımda imzalayana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** kaynak ağdaki USDC, örneğin Arbitrum.
+    - **To:** hedef ağdaki USDC, örneğin Base.
+    - **Amount:** taşımak istediğiniz USDC miktarı.
+    - **Alıcı adresi:** USDC'yi alacak hedef ağdaki adres.
+  </Step>
+
+  <Step title="Fast veya Standard seçin">
+    USDC native bridge kartlarını bulun. USDC'yi bir dakikadan kısa sürede istiyorsanız Fast'i, daha düşük ağ ücreti için yaklaşık 20 dakika bekleyebiliyorsanız Standard'ı seçin. Bunları diğer rota kartlarıyla karşılaştırın.
+  </Step>
+
+  <Step title="Onaylayın ve imzalayın">
+    İşlemi kaynak ağdaki cüzdanınızda imzalayın. Bu rotayla ilk USDC transferinizse cüzdanınız önce bir token onayı isteyebilir.
+  </Step>
+
+  <Step title="Transferi takip edin">
+    Uygulama hedef ağda son bir adım isterse onu tamamlayın; yarım kalan bir transfer daha sonra uygulamadan sürdürülebilir. USDC'nin ulaştığını, alıcı adresini hedef ağın blok gezgininde (örneğin Base için Basescan) arayarak kontrol edebilirsiniz.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+CCTP bir cüzdan imzası ve gas için ETH gerektirir, gösterilen tutarı tam olarak teslim eder.
+
+- **Gas kaynak ağda.** Gas'ı Ethereum, Arbitrum veya Base'de ETH ile ödersiniz. CCTP ağ ücreti gösterilen tutardan düşülür, bu yüzden almak için hedef ağda ETH gerekmez.
+- **Sabit çıktı.** CCTP gösterilen tutarı tam olarak teslim eder, bu yüzden kayma uygulanmaz.
+- **Yalnızca cüzdanla.** CCTP cüzdanınızda imzalanmış bir işlem gerektirir. Borsadan ödemek için tek kullanımlık adrese yatırma kabul eden L2Pass RFQ'yu kullanın.
+- **İadeler.** Zincir üstü rotalar başarısız olursa geri alınır ve gas iade edilmez.
+- **Kısmi gerçekleşme yok.** Transfer ya tamamen gerçekleşir ya da hiç yürütülmez.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="CCTP transferi ne kadar sürer?">
+    Test tekliflerinde CCTP Fast yaklaşık 38 ila 50 saniye, CCTP Standard yaklaşık 19,5 dakika sürdü. Rota kartları güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="USDC'yi CCTP ile köprülemenin maliyeti nedir?">
+    Stablecoin takaslarında L2Pass ücreti %0'dır. 1.000 USDC'lik test tekliflerinde ağ ücreti Standard'da 0,05 USDC, Fast'te 0,15 ila 0,19 USDC idi; buna ETH ile kaynak gas'ı eklenir.
+  </Accordion>
+
+  <Accordion title="CCTP ile köprülenen USDC yerel USDC midir?">
+    Evet. CCTP kaynak ağda USDC'yi yakar ve hedef ağda Circle'ın çıkardığı yerel USDC'yi basar.
+  </Accordion>
+
+  <Accordion title="USDC'yi Arbitrum'dan Base'e taşımanın en hızlı yolu hangisi?">
+    Test tekliflerinde Relay yaklaşık 2 saniye, Aori yaklaşık 3 saniye gösterdi; tutarlar biraz farklıydı. Tutarınız için rota kartlarını karşılaştırın.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

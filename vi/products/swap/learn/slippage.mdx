@@ -1,0 +1,96 @@
+---
+title: "Giải thích trượt giá, đầu ra cố định và số tiền nhận tối thiểu"
+description: "Ý nghĩa của mức chấp nhận trượt giá, số tiền nhận ước tính, số tiền nhận tối thiểu và đầu ra cố định trong L2Pass Swap, kèm ví dụ. Trượt giá mặc định 0,05%, có thể sửa."
+sidebarTitle: "Trượt giá và số tiền nhận tối thiểu"
+---
+
+Trong [L2Pass Swap](https://swap.l2pass.com/), mỗi thẻ tuyến hiển thị số tiền nhận ước tính và số tiền nhận tối thiểu. Số tiền nhận ước tính là số tiền dự kiến bạn nhận, sau mọi khoản phí trừ gas mạng nguồn và phí tin nhắn cầu nối (nếu có). Số tiền nhận tối thiểu là trường hợp xấu nhất trong mức chấp nhận trượt giá của bạn, mặc định 0,05% và có thể đổi trên bất kỳ thẻ tuyến nào. Nếu giá biến động vượt mức đó, hoán đổi không được thực hiện. Các tuyến đầu ra cố định như Circle CCTP, USDT0, Aori và LI.FI Intents giao đúng số tiền hiển thị, nên trượt giá không áp dụng.
+
+## Thuật ngữ chính
+
+Hai con số quan trọng nhất trên mỗi thẻ tuyến: số tiền nhận ước tính và số tiền nhận tối thiểu.
+
+| Thuật ngữ | Ý nghĩa |
+| :-- | :-- |
+| Số tiền nhận ước tính | Số tiền ước tính trên mạng đích, sau mọi khoản phí |
+| Số tiền nhận tối thiểu | Số tiền ít nhất bạn có thể nhận trong mức chấp nhận trượt giá |
+| Trượt giá | Chênh lệch giữa giá báo và giá thực hiện cuối cùng, do biến động thị trường |
+| Mức chấp nhận trượt giá | Mức trượt giá bạn chấp nhận. Mặc định 0,05% trong L2Pass Swap |
+| Tác động giá | Thay đổi giá do quy mô giao dịch so với thanh khoản sẵn có |
+| Đầu ra cố định | Tuyến giao đúng số tiền hiển thị, không có trượt giá |
+
+## Ví dụ từ báo giá trực tiếp
+
+Báo giá thử ngày 19 tháng 10 năm 2026, với mức chấp nhận mặc định 0,05%. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+| Hoán đổi | Tuyến | Số tiền nhận ước tính | Số tiền nhận tối thiểu | Đầu ra |
+| :-- | :-- | :-- | :-- | :-- |
+| 1.000 USDT, Tron sang Ethereum | L2Pass RFQ | 999,50 USDT | 999,00 USDT | Biến đổi |
+| 1.000 USDC, Arbitrum sang Base | USDC native bridge, Fast | 999,81 USDC | 999,81 USDC | Cố định |
+| 1 ETH trên Ethereum sang USDC trên Base | L2Pass RFQ | 2.387,76 USDC | 2.386,57 USDC | Biến đổi |
+
+Trên tuyến biến đổi, số tiền nhận tối thiểu là số tiền ước tính trừ đi mức chấp nhận. Trên tuyến cố định, hai con số bằng nhau.
+
+## Cách đặt trượt giá
+
+Bạn đặt trượt giá trên từng thẻ tuyến, qua ba bước.
+
+<Steps>
+  <Step title="Mở thẻ tuyến">
+    Yêu cầu báo giá trên [swap.l2pass.com](https://swap.l2pass.com/) và mở tuyến bạn muốn.
+  </Step>
+
+  <Step title="Thay đổi mức chấp nhận">
+    Sửa mức chấp nhận trượt giá trên thẻ tuyến. Mức cao hơn giúp hoán đổi tài sản biến động dễ được thực hiện hơn nhưng làm giảm số tiền nhận tối thiểu.
+  </Step>
+
+  <Step title="Kiểm tra số tiền nhận tối thiểu">
+    Chỉ xác nhận nếu bạn chấp nhận nhận số tiền tối thiểu trong trường hợp xấu nhất.
+  </Step>
+</Steps>
+
+## Cách chọn mức chấp nhận
+
+Mức 0,05% mặc định phù hợp với stablecoin. Tài sản biến động trên tuyến chậm hơn có thể cần mức cao hơn.
+
+- **Stablecoin sang stablecoin.** Giá hầu như không đổi, nên 0,05% mặc định thường là đủ.
+- **Tài sản biến động như ETH hoặc BTC.** Giá có thể thay đổi trong lúc hoán đổi được xử lý, nhất là trên tuyến chậm. Nếu hoán đổi liên tục thất bại vì giá, mức chấp nhận cao hơn một chút có thể giúp ích.
+- **Tuyến đầu ra cố định.** Mức chấp nhận không quan trọng: bạn nhận đúng số tiền hiển thị.
+
+## Hoán đổi thất bại và phí
+
+Hoán đổi sẽ trả ít hơn số tiền nhận tối thiểu thì hoàn toàn không được thực hiện.
+
+- **Không khớp một phần.** Nếu giá biến động vượt mức chấp nhận, hoán đổi hoàn toàn không được thực hiện.
+- **Hoàn tiền.** Tuyến on-chain thất bại sẽ bị hoàn tác (gas không được hoàn). Tuyến địa chỉ nạp thất bại sẽ trả khoản nạp về địa chỉ hoàn tiền; phí nhà cung cấp và phí mạng có thể bị trừ.
+- **Trượt giá không phải là phí.** Đó là giới hạn biến động giá. Phí được hiển thị riêng trên thẻ tuyến và đã bao gồm trong số tiền nhận ước tính.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Trượt giá mặc định trong L2Pass Swap là bao nhiêu?">
+    0,05%. Bạn có thể thay đổi trên bất kỳ thẻ tuyến nào.
+  </Accordion>
+
+  <Accordion title="Số tiền nhận tối thiểu nghĩa là gì?">
+    Số tiền ít nhất bạn sẽ nhận nếu giá biến động bất lợi trong mức chấp nhận trượt giá. Nếu thấp hơn, hoán đổi không được thực hiện.
+  </Accordion>
+
+  <Accordion title="Tuyến nào có đầu ra cố định?">
+    USDC native bridge (Circle CCTP, Fast và Standard), USDT native bridge (USDT0), Aori và LI.FI Intents. Chúng giao đúng số tiền hiển thị.
+  </Accordion>
+
+  <Accordion title="L2Pass Swap có tự động đặt trượt giá không?">
+    Không. Mức chấp nhận mặc định là 0,05%, và bạn có thể tự thay đổi trên bất kỳ thẻ tuyến nào.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [Điều gì xảy ra nếu hoán đổi thất bại](/vi/products/swap/learn/failed-swaps-and-refunds)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

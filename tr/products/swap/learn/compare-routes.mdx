@@ -1,0 +1,119 @@
+---
+title: "L2Pass rotaları nasıl karşılaştırır: NEAR Intents, Circle CCTP, USDT0, LI.FI, Relay ve Aori"
+description: "L2Pass Swap birden fazla yönlendirme kaynağına aynı anda sorar ve rotaları alacağınız tutara göre sıralar. Her rota nedir ve hangisi ne zaman öne geçer."
+sidebarTitle: "Rotalar nasıl karşılaştırılır"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) birden fazla yönlendirme kaynağına aynı anda sorar ve takasınızı gerçekleştirebilecek tüm rotaları, gas sonrası alacağınız net değere göre sıralayarak gösterir. Kaynaklar şunlardır: L2Pass RFQ ve L2Pass Private by NEAR Intents, yerel USDT0 ve Circle CCTP köprüleri, ayrıca toplayıcılar ve intent ağları LI.FI, LI.FI Intents, Relay, Aori ve OKX DEX toplayıcısı. Hiçbir rota her çiftte önde değildir, bu yüzden karşılaştırma her teklif için yapılır. Stablecoin takaslarında L2Pass ücreti her rotada %0'dır.
+
+## Rotalar
+
+Bir teklifte on rota görünebilir ve yalnızca L2Pass RFQ ile L2Pass Private yatırma adresi kullanır.
+
+| Uygulamadaki rota | Nedir | Nasıl ödersiniz | Tutar | Test tekliflerinde tahmini süre |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | [NEAR Intents](https://near.org/intents) üzerindeki çözücüler ve piyasa yapıcılar takasınızı gerçekleştirmek için yarışır | Herhangi bir cüzdandan veya borsadan tek kullanımlık yatırma adresi | Değişken, minimum alınacak tutarla | Yaklaşık 30 saniye ile 2 dakika; Bitcoin ile yaklaşık 9 ile 14 dakika |
+| L2Pass Private | Aynı çözücü ağı, gizli bir ortamda | Tek kullanımlık yatırma adresi | Değişken, minimum alınacak tutarla | L2Pass RFQ ile aynı |
+| USDT native bridge | Tron dahil, LayerZero üzerinden USDT0 transferleri | Cüzdan işlemi | Sabit | Yaklaşık 1,5 dakika |
+| USDC native bridge, Fast | Circle CCTP V2 Fast ile yerel USDC transferi | Cüzdan işlemi | Sabit | Yaklaşık 40 ile 50 saniye |
+| USDC native bridge, Standard | Blok kesinliğini bekleyen Circle CCTP V2 Standard transferi | Cüzdan işlemi | Sabit | Yaklaşık 19,5 dakika |
+| Relay | Zincirler arası relayer ağı | Cüzdan işlemi | Değişken | Yaklaşık 1 ile 2 saniye |
+| Aori | Intent tabanlı uzlaşma | Cüzdan işlemi | Sabit | Yaklaşık 3 ile 14 saniye |
+| LI.FI Intents | LI.FI'nin intent tabanlı rotası | Cüzdan işlemi | Sabit | Test tekliflerinde gösterilmedi |
+| LI.FI | Köprü ve DEX toplayıcısı | Cüzdan işlemi | Değişken | Yaklaşık 19 saniye ile 18 dakika |
+| DEX Aggregator | OKX DEX toplayıcısı | Cüzdan işlemi | Değişken | Çifte bağlı |
+
+Sabit tutarlı rotalar gösterilen tutarı aynen teslim eder, bu yüzden kayma uygulanmaz. Değişken rotalar, minimum alınacak tutarı belirlemek için kayma toleransınızı (varsayılan %0,05) kullanır.
+
+## Gerçek tekliflerden örnekler
+
+19 Ekim 2026 test teklifleri (yaklaşık 16:55 UTC). Rotalar uygulamanın gösterdiği sırayla listelenmiştir. Canlı teklif güncel rakamları gösterir.
+
+<Tabs>
+<Tab title="USDT: Tron → Ethereum">
+
+Tron'dan Ethereum'a 1.000 USDT üç rota döndürdü.
+
+| Rota | Alacağınız | Tahmini süre | Tutar | Tron'da ayrıca ödenen |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 999,50 USDT | Yaklaşık 1,5 dakika | Değişken | Yatırma adresine tek bir USDT transferinin gas'ı |
+| USDT native bridge (USDT0) | 999,70 USDT | Yaklaşık 1,5 dakika | Sabit | Yaklaşık 5,21 TRX (yaklaşık 1,73 USD) LayerZero mesaj ücreti, ayrıca onay ve köprü işlemleri için enerji |
+| L2Pass Private | 997,00 USDT | Yaklaşık 1,5 dakika | Değişken | Yatırma adresine tek bir USDT transferinin gas'ı |
+
+En yüksek alınan tutarı USDT0 gösterdi, ancak uygulama L2Pass RFQ'yu ilk sıraya koydu. USDT0 rotası düz bir USDT transferinden daha fazla Tron enerjisi gerektirir; test teklifinde TRX ile ödenirse yaklaşık 22,60 USD, artı mesaj ücreti. Zaten yeterli stake edilmiş enerjiniz varsa USDT0 size daha ucuza gelebilir. Ethereum ağ ücreti her tutara zaten dahildir (L2Pass RFQ'da 0,3 USDT).
+
+</Tab>
+<Tab title="USDC: Arbitrum → Base">
+
+Arbitrum'dan Base'e 1.000 USDC sekiz rota döndürdü.
+
+| Rota | Alacağınız | Tahmini süre | Tutar |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,97 USDC | Gösterilmedi | Sabit |
+| USDC native bridge, Standard | 999,95 USDC | Yaklaşık 19,5 dakika | Sabit |
+| Relay | 999,88 USDC | Yaklaşık 2 saniye | Değişken |
+| USDC native bridge, Fast | 999,81 USDC | Yaklaşık 38 saniye | Sabit |
+| L2Pass RFQ | 999,80 USDC | Yaklaşık 27 saniye | Değişken |
+| Aori | 999,28 USDC | Yaklaşık 3 saniye | Sabit |
+| L2Pass Private | 998,20 USDC | Yaklaşık 27 saniye | Değişken |
+| LI.FI | 997,50 USDC | Yaklaşık 18 dakika | Değişken |
+
+Rotalar arasındaki fark 2,5 USDC'nin altındaydı, ancak süreler saniyelerden yaklaşık 19,5 dakikaya kadar uzanıyordu. Hız önemliyse, hızlı bir rotada biraz daha düşük bir tutar size daha uygun olabilir.
+
+</Tab>
+</Tabs>
+
+## Hangi çiftte hangi rotalar görünür
+
+Aynı test tekliflerinde:
+
+- **Tron ile Ethereum arasında USDT:** L2Pass RFQ, USDT0 köprüsü ve L2Pass Private.
+- **EVM zincirleri arasında USDC** (Arbitrum, Base, Ethereum): iki CCTP modu dahil sekiz rota.
+- **Bitcoin'den USDT'ye veya tersi:** yalnızca L2Pass RFQ ve L2Pass Private.
+- **Ethereum'da ETH'den Arbitrum'da USDC'ye:** L2Pass RFQ, Relay, LI.FI ve L2Pass Private.
+
+Teklif, o anda çiftinizi gerçekleştirebilecek tüm rotaları listeler, bu yüzden küme değişebilir.
+
+## Sıra nasıl belirlenir
+
+Rotalar, gas sonrası alacağınız tahmini net değere göre sıralanır. Bu yüzden en yüksek alınan tutara sahip rota her zaman ilk sırada olmaz. Ethereum'dan Tron'a 1.000 USDT'lik bir test teklifinde USDT0, tüm rotalar arasında en yüksek olan 999,7 USDT'yi gösterdi, ancak ETH ile ödenen yaklaşık 0,005 ETH (yaklaşık 11,92 USD) LayerZero mesaj ücreti gerektirir. L2Pass RFQ ayrıca ödenecek bir ücret olmadan 998,21 USDT gösterdi, bu yüzden ilk sırada listelendi.
+
+## Ücretler, ödeme ve iadeler
+
+Rota, sağlayıcı ücretlerini ve ödeme şeklini değiştirir, ancak stablecoin'lerdeki %0 L2Pass ücretini değiştirmez.
+
+- **Stablecoin'lerde L2Pass ücreti rotaya bağlı değildir.** Stablecoin takaslarında her rotada %0, diğer varlıklarda %0,2'ye kadar ve gizli takaslarda %0,3'e kadardır. Bkz. [L2Pass Swap ücretleri](/tr/products/swap/learn/fees).
+- **Yatırma veya cüzdan.** Yalnızca L2Pass RFQ ve L2Pass Private yatırma adresi kullanır, dolayısıyla borsadan ödeyebileceğiniz rotalar bunlardır. Diğer rotalar cüzdanınızda imzalanmış bir işlem gerektirir.
+- **İadeler.** Zincir üstü rotalar başarısız olursa geri alınır (gas iade edilmez). Yatırma adresli rotalar yatırdığınız tutarı iade adresine geri gönderir; sağlayıcı ve ağ ücretleri düşülebilir.
+- **Kısmi gerçekleşme yok.** Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+- **Minimum tutarlar.** Bazı rotaların minimum takas tutarı vardır. Tutarınız bunun altındaysa rota, minimum tutarla birlikte kullanılamaz olarak listelenir.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Hangi rotayı seçmeliyim?">
+    Alacağınız tutarı, tahmini süreyi ve cüzdanda işlem imzalayıp imzalayamayacağınızı ya da borsadan ödemeniz gerekip gerekmediğini karşılaştırın. Rota kartı onaylamadan önce üçünü de gösterir.
+  </Accordion>
+
+  <Accordion title="Circle CCTP ile USDT0 arasındaki fark nedir?">
+    Circle CCTP, Circle tarafından çıkarılan yerel USDC'yi zincirler arasında taşır. USDT0, LayerZero üzerinden taşınan USDT'nin omnichain sürümüdür ve L2Pass Swap'ta Tron'dan transferleri de kapsar. İkisi de cüzdan işlemiyle ödenen sabit tutarlı rotalardır.
+  </Accordion>
+
+  <Accordion title="En hızlı rota neden ilk sırada değil?">
+    Liste hıza göre değil, gas sonrası net değere göre sıralanır. Her rota kartındaki tahmini süreye bakın.
+  </Accordion>
+
+  <Accordion title="Takası L2Pass'in kendisi mi gerçekleştirir?">
+    Hayır. L2Pass emanetsiz bir arayüzdür. Takası seçilen sağlayıcı gerçekleştirir ve L2Pass tokenlarınızı veya özel anahtarlarınızı asla tutmaz.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'ı aç](https://swap.l2pass.com/)
+- [L2Pass RFQ by NEAR Intents nedir](/tr/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [Circle CCTP ile USDC nasıl taşınır](/tr/products/swap/guides/usdc-cctp)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

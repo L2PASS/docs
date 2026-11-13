@@ -1,0 +1,107 @@
+---
+title: "USDT'yi Tron'dan Arbitrum'a köprüleme"
+description: "USDT'yi Tron'dan Arbitrum'a yaklaşık 80 saniyede köprüleyin. %0 L2Pass ücreti, gas yalnızca TRX ile, varışta USDT0, herhangi bir cüzdan veya borsadan ödeme."
+sidebarTitle: "USDT: Tron'dan Arbitrum'a"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+USDT'yi Tron'dan (TRC-20) Arbitrum'a, çiftin tüm rotalarını yan yana gösteren gözetimsiz bir arayüz olan [L2Pass Swap](https://swap.l2pass.com/) ile köprüleyebilirsiniz. Test tekliflerinde bu çift için üç rota sundu: L2Pass RFQ, yerel USDT0 köprüsü ve L2Pass Private; tahmini süreler yaklaşık 80 ila 90 saniye. Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Yaklaşık 80 saniye** · **%0 L2Pass ücreti** · **1.000 gönderilene 999,85 USDT0 ulaşır** · **Gas yalnızca TRX ile**
+
+<Note>Rakamlar 10 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Tron'dan Arbitrum'a USDT rotaları
+
+L2Pass RFQ ve L2Pass Private, çözücülerin ve piyasa yapıcıların takasınızı gerçekleştirmek için yarıştığı [NEAR Intents](https://near.org/intents) üzerinde çalışır. Private bunu gizli bir ortamda gerçekleştirir.
+
+| Rota | Tahmini süre | Çıktı | Notlar |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Yaklaşık 80 saniye | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresine ödersiniz. |
+| USDT native bridge (USDT0) | Yaklaşık 1,5 dakika | Sabit | Tron cüzdanınızda imzalanır. Yaklaşık 4,7 TRX LayerZero mesaj ücreti ekler. |
+| L2Pass Private | Yaklaşık 80 saniye | Değişken, minimum alınacak tutarla | Yatırma adresi. L2Pass ücreti %0,3'e kadar. |
+
+O test tekliflerinde bu çift için toplayıcı rotası (LI.FI, LI.FI Intents, Relay, Aori veya OKX DEX toplayıcısı) sunulmadı. Teklif, çifti gerçekleştirebilecek her rotayı listeler.
+
+1.000 USDT için test teklifleri şu alınan tutarları gösterdi: L2Pass RFQ'da 999,85 USDT0, USDT0 köprüsünde 999,7 USDT0 (artı LayerZero mesajı için yaklaşık 4,67 TRX) ve L2Pass Private'ta 997,29 USDT0. Canlı teklif, tutarınız için güncel rakamları gösterir.
+
+## USDT Tron'dan Arbitrum'a nasıl köprülenir
+
+Siz ödeyene kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Tron'da USDT.
+    - **To:** Arbitrum'da USDT.
+    - **Amount:** göndermek istediğiniz USDT miktarı.
+    - **Alıcı adresi:** USDT'yi alacak Arbitrum adresi.
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. Varsayılan kayma %0,05'tir (değiştirilebilir) ve USDT0 gibi sabit çıktılı rotalara uygulanmaz.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresini kontrol ettiğiniz bir Tron cüzdanı olarak ayarlayın. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya geri gönderir.
+  </Step>
+
+  <Step title="Cüzdanla veya yatırma adresiyle ödeyin">
+    Nasıl ödeyeceğiniz seçtiğiniz rotaya bağlıdır.
+
+    <Tabs>
+      <Tab title="Cüzdan rotası (USDT0)">
+        İşlemi Tron cüzdanınızda imzalayın.
+      </Tab>
+      <Tab title="Yatırma adresi (L2Pass RFQ, L2Pass Private)">
+        USDT'yi bağlı cüzdanınızdan, herhangi bir Tron cüzdanından veya bir borsadan, adres ya da QR kodla tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız, bazı borsalar çekim ücretini bundan düştüğü için ulaşan tutarın teklifle eşleştiğini kontrol edin.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Takası takip edin">
+    L2Pass RFQ ve L2Pass Private için durumu **Recent swaps** bölümünde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*. USDT0 transferi bir LayerZero mesajıdır; Tron işlem hash'inizle [LayerZero Scan](https://layerzeroscan.com/) üzerinde takip edebilirsiniz.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Gas için Tron'da TRX'e ihtiyacınız var, almak için Arbitrum'da ETH gerekmez.
+
+- **Gas yalnızca Tron'da.** TRC-20 USDT göndermek enerji ve bant genişliği için TRX'e mal olur. Hedef ağdaki ağ ücreti gösterilen tutardan düşülür, bu yüzden orada gas'a ihtiyacınız yoktur.
+- **Minimum tutar.** Bazı rotaların çifte göre değişen minimum takas tutarı vardır. Tutarınız bunun altındaysa rota, minimum gösterilerek kullanılamaz olarak listelenir.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Arbitrum'da USDT mi yoksa USDT0 mı alacağım?">
+    USDT0; LayerZero tabanlı USDT sürümü ve Arbitrum'daki standart USDT. Birçok cüzdan onu kısaca USDT olarak gösterir. Rota kartı alacağınız token'ı ve tam tutarı gösterir.
+  </Accordion>
+
+  <Accordion title="USDT'yi Tron'dan Arbitrum'a köprülemek ne kadar sürer?">
+    Test tekliflerinde L2Pass RFQ ve L2Pass Private'ın her biri yaklaşık 80 saniye, USDT0 ise yaklaşık 1,5 dakika tahmini süre gösterdi. Rota kartları onaylamadan önce güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="USDT'yi Tron'dan Arbitrum'a köprülemenin maliyeti nedir?">
+    Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar). Rota partnerleri ve ağlar kendi ücretlerini alır ve gösterilen tutar bunları zaten içerir.
+  </Accordion>
+
+  <Accordion title="USDT almak için Arbitrum'da ETH gerekir mi?">
+    Hayır. Gas'ı yalnızca Tron'da TRX ile ödersiniz ve hedef ağdaki ağ ücreti gösterilen tutardan zaten düşülmüştür. USDT'yi taşımak veya kullanmak için daha sonra Arbitrum'da ETH gerekir.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Tron'dan Ethereum'a USDT](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [Tron'dan BNB Chain'e USDT](/tr/products/swap/guides/usdt-tron-to-bnb-chain)
+- [L2Pass Swap ücretleri](/tr/products/swap/overview#fee-structure)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 10 Ekim 2026*

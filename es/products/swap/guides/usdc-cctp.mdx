@@ -1,0 +1,104 @@
+---
+title: "Cómo pasar USDC con Circle CCTP (Ethereum, Arbitrum, Base)"
+description: "Pasa USDC con Circle CCTP en unos 40 segundos (Fast) o 19,5 minutos (Standard). Resultado fijo, 0% de comisión de L2Pass, gas solo en ETH."
+sidebarTitle: "USDC con Circle CCTP"
+---
+
+Puedes mover USDC nativo entre Ethereum, Arbitrum y Base con Circle CCTP en [L2Pass Swap](https://swap.l2pass.com/), donde aparece como USDC native bridge. Tiene dos modos: Fast, que tardó unos 40 a 50 segundos en cotizaciones de prueba, y Standard, que tardó unos 19,5 minutos y cobró una comisión de red menor. Los dos entregan un importe fijo, y L2Pass los muestra junto a otras rutas como Relay, L2Pass RFQ y LI.FI para que puedas comparar. La comisión de L2Pass en swaps de stablecoins es 0%, y la cotización muestra lo que recibirás después de comisiones antes de confirmar. Solo se pagan aparte el gas de la red de origen y la posible comisión de mensaje del puente.
+
+**Menos de un minuto en modo Fast** · **0% de comisión de L2Pass** · **Llegan 999,81 USDC por 1000 enviados** · **USDC nativo, resultado fijo**
+
+<Note>Cifras de cotizaciones de prueba del 19 de octubre de 2026. Tu cotización siempre es en vivo.</Note>
+
+## Qué es Circle CCTP
+
+CCTP (Cross-Chain Transfer Protocol) es la forma propia de Circle de mover USDC entre redes. Los USDC se queman en la red de origen y se acuña la misma cantidad de USDC nativo en la red de destino, así que recibes el USDC que Circle emite allí.
+
+| Modo | Cómo funciona | Tiempo estimado en cotizaciones de prueba | Comisión de red para 1000 USDC |
+| :-- | :-- | :-- | :-- |
+| Fast | Circle confirma la transferencia antes de que la red de origen alcance la finalidad | Unos 38 segundos desde Arbitrum, unos 50 segundos desde Ethereum | 0,19 USDC desde Arbitrum, 0,15 USDC desde Ethereum |
+| Standard | Espera la finalidad de bloque en la red de origen | Unos 19,5 minutos | 0,05 USDC |
+
+## Rutas para 1000 USDC de Arbitrum a Base
+
+Las cotizaciones de prueba (hacia las 16:55 UTC) devolvieron ocho rutas. La cotización en vivo muestra las cifras actuales.
+
+| Ruta | Recibes | Tiempo estimado | Resultado |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,97 USDC | No se muestra | Fijo |
+| USDC native bridge, Standard | 999,95 USDC | Unos 19,5 minutos | Fijo |
+| Relay | 999,88 USDC | Unos 2 segundos | Variable |
+| USDC native bridge, Fast | 999,81 USDC | Unos 38 segundos | Fijo |
+| L2Pass RFQ | 999,80 USDC | Unos 27 segundos | Variable |
+| Aori | 999,28 USDC | Unos 3 segundos | Fijo |
+| L2Pass Private | 998,20 USDC | Unos 27 segundos | Variable |
+| LI.FI | 997,50 USDC | Unos 18 minutos | Variable |
+
+De Ethereum a Base se ofrecieron las mismas ocho rutas con importes similares. CCTP Standard mostró 999,95 USDC y CCTP Fast 999,85 USDC.
+
+## Cómo pasar USDC con CCTP
+
+Nada sale de tu wallet hasta que firmas en el paso 3, así que puedes comparar todas las rutas primero.
+
+<Steps>
+  <Step title="Abre L2Pass Swap">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/) y rellena cuatro campos:
+
+    - **From:** USDC en la red de origen, por ejemplo Arbitrum.
+    - **To:** USDC en la red de destino, por ejemplo Base.
+    - **Amount:** cuántos USDC quieres mover.
+    - **Dirección de recepción:** la dirección en la red de destino que recibirá los USDC.
+  </Step>
+
+  <Step title="Elige Fast o Standard">
+    Busca las tarjetas de USDC native bridge. Elige Fast si quieres los USDC en menos de un minuto, o Standard si puedes esperar unos 20 minutos a cambio de una comisión de red menor. Compáralas con las demás tarjetas de ruta.
+  </Step>
+
+  <Step title="Aprueba y firma">
+    Firma la transacción en tu wallet en la red de origen. Si es tu primera transferencia de USDC por esa ruta, tu wallet puede pedirte antes una aprobación del token.
+  </Step>
+
+  <Step title="Sigue la transferencia">
+    Si la app te pide un paso final en la red de destino, complétalo; una transferencia sin terminar puede reanudarse más tarde desde la app. Para comprobar que los USDC han llegado, busca la dirección de recepción en un explorador de bloques de la red de destino, como Basescan para Base.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+CCTP necesita una firma en la wallet y ETH para el gas, y entrega exactamente el importe mostrado.
+
+- **Gas en la red de origen.** Pagas el gas en ETH en Ethereum, Arbitrum o Base. La comisión de red de CCTP se descuenta del importe mostrado, así que no necesitas ETH en la red de destino para recibir.
+- **Resultado fijo.** CCTP entrega exactamente el importe mostrado, así que el slippage no se aplica.
+- **Solo con wallet.** CCTP necesita una transacción firmada en tu wallet. Para pagar desde un exchange, usa L2Pass RFQ, que acepta un depósito en una dirección de un solo uso.
+- **Reembolsos.** Las rutas on-chain se revierten si fallan, y el gas no se reembolsa.
+- **Sin ejecución parcial.** Una transferencia se completa entera o no se ejecuta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tarda una transferencia con CCTP?">
+    En cotizaciones de prueba, CCTP Fast tardó unos 38 a 50 segundos y CCTP Standard unos 19,5 minutos. Las tarjetas de ruta muestran la estimación actual.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta pasar USDC con CCTP?">
+    La comisión de L2Pass en swaps de stablecoins es 0%. En cotizaciones de prueba de 1000 USDC, la comisión de red fue de 0,05 USDC en Standard y de 0,15 a 0,19 USDC en Fast, más el gas de origen en ETH.
+  </Accordion>
+
+  <Accordion title="¿El USDC pasado con CCTP es USDC nativo?">
+    Sí. CCTP quema USDC en la red de origen y acuña USDC nativo emitido por Circle en la red de destino.
+  </Accordion>
+
+  <Accordion title="¿Cuál es la forma más rápida de mover USDC de Arbitrum a Base?">
+    En cotizaciones de prueba, Relay mostró unos 2 segundos y Aori unos 3 segundos, con importes algo distintos. Compara las tarjetas de ruta para tu importe.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [La mejor forma de pasar USDT y USDC: L2Pass frente a otros puentes](/es/products/swap/learn/compare-stablecoin-transfers)
+- [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

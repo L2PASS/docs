@@ -1,0 +1,93 @@
+---
+title: "Cüzdanlar ve uygulamalar için L2Pass Swap API"
+description: "L2Pass SwapKit API ile cüzdanınıza veya uygulamanıza cross-chain stablecoin takasları ekleyin: tahmin, yatırma adresli teklif, durum ve webhook'lar. Partner API anahtarı."
+sidebarTitle: "Swap API"
+---
+
+L2Pass SwapKit API, cüzdanların, uygulamaların ve yapay zekâ ajanlarının kendi ürünlerine cross-chain takas eklemesini sağlar. L2Pass RFQ by NEAR Intents ile aynı şekilde çalışır: teklif istersiniz, tek kullanımlık bir yatırma adresi alırsınız ve kullanıcı herhangi bir cüzdan veya borsadan öder. API her teklif için platform ücretini, partner ücretinizi ve net çıktıyı döndürür, durum değişikliklerini imzalı webhook'larla bildirir. Erişim için onboarding sırasında verilen bir partner API anahtarı gerekir. Referans dokümanlar [api.l2pass.com/docs](https://api.l2pass.com/docs) adresindedir.
+
+## Neler oluşturabilirsiniz
+
+Bir ağda token alıp başka bir ağda teslim eden her ürün API'yi kullanabilir.
+
+- **Cüzdanlar:** Tron, Solana, Bitcoin ve Zcash dahil, cüzdanınızın içinde cross-chain stablecoin takasları.
+- **Ödeme uygulamaları:** bir ağda USDT kabul edip başka bir ağda mutabakat yapın.
+- **Borsalar ve satıcılar:** herhangi bir cüzdan veya borsadan çalışan yatırma adresi akışları.
+- **Yapay zekâ ajanları:** REST API üzerinden takas teklifi alın ve gerçekleştirin.
+
+## Uç noktalar
+
+Yedi REST uç noktası varlıkları, tahminleri, teklifleri, durumu ve partner hesabınızı kapsar.
+
+| Uç nokta | Ne yapar |
+| :-- | :-- |
+| `GET /v1/assets` | Desteklenen varlıkları ve ağları listeler |
+| `POST /v1/swap/estimate` | Yatırma adresi olmadan bir tahmin döndürür |
+| `POST /v1/swap/quote` | Tek kullanımlık yatırma adresiyle bağlayıcı bir teklif döndürür |
+| `GET /v1/swap/status/{quoteId}` | Durumu döndürür: PENDING, COMPLETED, FAILED veya REFUNDED |
+| `GET /v1/partner/me` | Partner profilinizi ve limitlerinizi döndürür |
+| `GET /v1/partner/transactions` | Takaslarınızı listeler |
+| `GET /v1/partner/analytics` | Kullanım analitiğini döndürür |
+
+Temel URL: `https://api.l2pass.com`. Anahtarınızı `X-API-Key` başlığında gönderin. Tam OpenAPI spesifikasyonu [API referansında](https://api.l2pass.com/docs) bulunur.
+
+## API üzerinden takas nasıl çalışır
+
+API takası, uygulamadaki takasla aynı akışı izler: teklif, yatırma, durum.
+
+<Steps>
+  <Step title="Tahmin alın">
+    Kullanıcıya ne alacağını göstermek için kaynak ve hedef varlıklar ile tutarla `POST /v1/swap/estimate` çağırın.
+  </Step>
+
+  <Step title="Teklif isteyin">
+    Alıcı ve iade adresleriyle `POST /v1/swap/quote` çağırın. Yanıt, tek kullanımlık bir yatırma adresi ve ücret dökümünü içerir: `platform_fee`, `partner_fee`, `total_fee` ve `net_output`.
+  </Step>
+
+  <Step title="Kullanıcının ödemesine izin verin">
+    Kullanıcı teklif edilen tutarı herhangi bir cüzdan veya borsadan yatırma adresine gönderir.
+  </Step>
+
+  <Step title="Durumu takip edin">
+    `GET /v1/swap/status/{quoteId}` sorgulayın veya `X-Webhook-Signature` başlığında HMAC-SHA256 ile imzalanmış webhook'lar alın.
+  </Step>
+</Steps>
+
+## Ücretler, limitler ve iadeler
+
+Partner ücretinizi kendiniz belirlersiniz ve anahtarınızın kendi istek limitleri vardır.
+
+- **Partner ücreti.** Kendi ücretinizi ekleyebilirsiniz; her teklifte `partner_fee_bps` ve `partner_fee` olarak döner.
+- **İstek limitleri.** Limitler teklifler ve durum istekleri için partner bazında belirlenir. Limit aşılırsa API, `Retry-After` başlığıyla 429 döndürür.
+- **Anahtar yenileme.** Anahtarınızı `POST /v1/partner/rotate-key` ile yenileyin.
+- **İadeler ve hatalar.** Bir takas tamamlanamazsa sağlayıcı iade adresine iade eder ve durum REFUNDED olur. İşaretlenen adresler teklif almaz. Ulaştıktan sonra işaretlenen bir yatırma iade edilmez, inceleme için tutulur ve kullanıcı bunu NEAR Intents desteğiyle çözer. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="API anahtarını nasıl alırım?">
+    API anahtarları partner onboarding sırasında verilir. Erişim istemek için [L2Pass desteğiyle](/tr/resources/support) iletişime geçin.
+  </Accordion>
+
+  <Accordion title="API kullanıcı fonlarını tutar mı?">
+    Hayır. Kullanıcılar teklifleri için tek kullanımlık bir yatırma adresine öder ve takas NEAR Intents üzerindeki çözücüler tarafından gerçekleştirilir. L2Pass kullanıcı token'larını veya özel anahtarlarını asla tutmaz.
+  </Accordion>
+
+  <Accordion title="Takaslardan ücret kazanabilir miyim?">
+    Evet. Bir partner ücreti belirleyin; her teklif bunu platform ücretinin yanında `partner_fee_bps` ve `partner_fee` olarak döndürür.
+  </Accordion>
+
+  <Accordion title="SDK var mı?">
+    Evet, npm'de `@l2pass/swapkit-sdk`. Ayrıntılar için [API referansına](https://api.l2pass.com/docs) bakın.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [API referansı](https://api.l2pass.com/docs)
+- [L2Pass RFQ by NEAR Intents nedir](/tr/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees)
+- [Referanslar ve hacim koşulları](/tr/products/swap/learn/referrals-and-partners)
+- [Destekle iletişime geçin](/tr/resources/support)
+
+*Son güncelleme: 19 Ekim 2026*

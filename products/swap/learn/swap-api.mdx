@@ -60,7 +60,7 @@ You set your own partner fee, and your key has its own rate limits.
 - **Partner fee.** You can add your own fee, returned as `partner_fee_bps` and `partner_fee` in each quote.
 - **Rate limits.** Limits are set per partner for quotes and for status requests. Over the limit, the API returns 429 with a `Retry-After` header.
 - **Key rotation.** Rotate your key with `POST /v1/partner/rotate-key`.
-- **Refunds and failures.** If a swap cannot complete, the provider refunds it to the refund address and its status becomes REFUNDED. If a provider flags a swap as high risk under AML or sanctions rules, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Refunds and failures.** If a swap cannot complete, the provider refunds it to the refund address and its status becomes REFUNDED. Flagged addresses get no quote. A deposit flagged after it arrives is held for review rather than refunded, and the user resolves it with NEAR Intents support. See [How screening works](/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
 
 ## FAQ
 

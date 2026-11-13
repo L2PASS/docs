@@ -1,0 +1,97 @@
+---
+title: "Cách chuyển USDT từ Tron sang TON"
+description: "Chuyển USDT từ Tron sang TON trong khoảng 2 phút. Phí L2Pass 0%, gas chỉ bằng TRX, không cần Toncoin để nhận. Thanh toán từ bất kỳ ví hoặc sàn nào."
+sidebarTitle: "USDT: Tron sang TON"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể chuyển USDT từ Tron (TRC-20) sang TON, nơi USDT là một jetton, bằng [L2Pass Swap](https://swap.l2pass.com/), giao diện phi lưu ký hiển thị mọi tuyến của cặp cạnh nhau. Trong các báo giá thử nghiệm, cặp này có hai tuyến là L2Pass RFQ và L2Pass Private, mỗi tuyến có thời gian ước tính hơn 2 phút một chút. Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí trước khi bạn xác nhận. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+
+**Khoảng 2 phút** · **Phí L2Pass 0%** · **Gửi 1.000 nhận 998,84 USDT** · **Không cần Toncoin**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 10 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Các tuyến chuyển USDT từ Tron sang TON
+
+L2Pass RFQ và L2Pass Private đều chạy trên [NEAR Intents](https://near.org/intents), nơi các solver và nhà tạo lập thị trường cạnh tranh để khớp lệnh hoán đổi của bạn. Private thực hiện việc này trong môi trường bảo mật.
+
+| Tuyến | Thời gian ước tính | Đầu ra | Ghi chú |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Hơn 2 phút một chút | Thay đổi, có mức nhận tối thiểu | Thanh toán vào địa chỉ nạp dùng một lần. |
+| L2Pass Private | Hơn 2 phút một chút | Thay đổi, có mức nhận tối thiểu | Địa chỉ nạp. Phí L2Pass tối đa 0,3%. |
+
+Cầu nối gốc USDT0 và các tuyến tổng hợp (LI.FI, LI.FI Intents, Relay, Aori, trình tổng hợp OKX DEX) không được cung cấp cho cặp này trong các báo giá thử nghiệm đó. Báo giá liệt kê mọi tuyến có thể khớp cặp này.
+
+Báo giá thử nghiệm cho 1.000 USDT cho thấy số tiền nhận được: 998,84 USDT trên L2Pass RFQ và 997,24 USDT trên L2Pass Private. Báo giá trực tiếp hiển thị số liệu hiện tại cho số tiền của bạn.
+
+## Cách chuyển USDT từ Tron sang TON
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** USDT trên Tron.
+    - **To:** USDT trên TON.
+    - **Amount:** số USDT bạn muốn gửi.
+    - **Địa chỉ nhận:** địa chỉ TON sẽ nhận USDT.
+  </Step>
+
+  <Step title="So sánh các tuyến">
+    Mỗi thẻ tuyến hiển thị số tiền ước tính, số tiền nhận tối thiểu, thời gian ước tính và các khoản phí. Trượt giá mặc định là 0,05% (có thể chỉnh) và không áp dụng cho các tuyến có đầu ra cố định như USDT0.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Với L2Pass RFQ và L2Pass Private, đặt địa chỉ hoàn tiền là một ví Tron bạn kiểm soát. Nếu hoán đổi không thể hoàn tất, nhà cung cấp sẽ trả khoản nạp về đó.
+  </Step>
+
+  <Step title="Thanh toán vào địa chỉ nạp">
+    Gửi USDT đến địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví Tron nào hoặc từ sàn giao dịch, bằng địa chỉ hoặc mã QR. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào số tiền đó.
+  </Step>
+
+  <Step title="Theo dõi hoán đổi trong Recent swaps">
+    Theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+Bạn cần TRX trên Tron để trả gas và không cần Toncoin để nhận.
+
+- **Chỉ cần gas trên Tron.** Gửi USDT TRC-20 tốn TRX cho năng lượng và băng thông. Phí mạng trên mạng đích được trừ vào số tiền hiển thị, nên bạn không cần gas ở đó.
+- **Số tiền tối thiểu.** Một số tuyến có số tiền hoán đổi tối thiểu thay đổi theo cặp. Nếu số tiền của bạn thấp hơn mức đó, tuyến được hiển thị là không khả dụng kèm mức tối thiểu.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi sẽ nhận được gì trên TON?">
+    USDT dưới dạng jetton, tiêu chuẩn token trên TON. Hãy dùng địa chỉ ví TON làm đích.
+  </Accordion>
+
+  <Accordion title="Cầu nối USDT0 có hỗ trợ Tron sang TON không?">
+    Không có trong báo giá thử nghiệm: cầu nối gốc USDT0 không được cung cấp cho cặp này. Hãy dùng L2Pass RFQ hoặc L2Pass Private, cả hai có thời gian ước tính hơn 2 phút một chút. L2Pass Swap sẽ liệt kê USDT0 bất cứ khi nào nó khớp được cặp.
+  </Accordion>
+
+  <Accordion title="Tôi có thể gửi USDT từ Tron đến tài khoản sàn trên TON không?">
+    Địa chỉ nạp của sàn trên TON thường yêu cầu memo (bình luận) để ghi có vào tài khoản. Để an toàn, hãy gửi USDT đến ví TON bạn kiểm soát, rồi chuyển sang sàn.
+  </Accordion>
+
+  <Accordion title="Tôi có cần Toncoin để nhận USDT trên TON không?">
+    Không. Bạn chỉ trả gas trên Tron bằng TRX, và phí mạng trên mạng đích đã được trừ vào số tiền hiển thị. Bạn sẽ cần một ít Toncoin (TON) sau này để chuyển hoặc sử dụng USDT.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để chuyển USDT và USDC: L2Pass so với các cầu nối khác](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [USDT từ Tron sang Solana](/vi/products/swap/guides/usdt-tron-to-solana)
+- [USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum)
+- [Phí L2Pass Swap](/vi/products/swap/overview#fee-structure)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 10 tháng 10 năm 2026*

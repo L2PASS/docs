@@ -1,0 +1,98 @@
+---
+title: "L2Pass güvenli mi? Gözetimsiz takaslar nasıl çalışır"
+description: "L2Pass Swap gözetimsizdir: token'larınızı veya anahtarlarınızı asla tutmaz, takaslar sağlayıcıların kendi sözleşmelerinde çalışır ve yalnızca tek kullanımlık bir yatırma adresine ödeme yaparsınız."
+sidebarTitle: "L2Pass güvenli mi?"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) gözetimsiz bir arayüzdür: L2Pass token'larınızı veya özel anahtarlarınızı asla tutmaz. Her takas, NEAR Intents, Circle CCTP, USDT0, LI.FI veya Relay gibi bir rota sağlayıcısı tarafından, o sağlayıcının kendi sözleşmelerinde gerçekleştirilir. Ya kendi cüzdanınızda bir işlem imzalarsınız ya da teklifiniz için oluşturulan tek kullanımlık bir yatırma adresine token gönderirsiniz; arayüz, onaylamadan önce ücretler düşülmüş olarak alacağınız tutarı gösterir. L2Pass 2023'ten beri yayında ve 650.000'den fazla cüzdana, 4 milyondan fazla işleme hizmet verdi.
+
+## Fonlarınız nasıl hareket eder
+
+Hangi rotayı seçerseniz seçin, anahtarlarınız cüzdanınızdan asla çıkmaz.
+
+| Adım | Cüzdan rotaları (CCTP, USDT0, LI.FI, Relay, Aori, OKX) | Yatırma adresi rotaları (L2Pass RFQ, L2Pass Private) |
+| :-- | :-- | :-- |
+| Onaylarsınız | Cüzdanınızda bir işlem imzalarsınız | Teklifiniz için tek kullanımlık yatırma adresine token gönderirsiniz |
+| Kim gerçekleştirir | Sağlayıcının sözleşmeleri | [NEAR Intents](https://near.org/intents) üzerindeki çözücüler |
+| Anahtarlarınız kimde | Yalnızca sizde | Yalnızca sizde |
+| Başarısız olursa | İşlem geri alınır (gas iade edilmez) | Yatırılan tutar, sağlayıcı veya ağ ücretleri düşülerek iade adresinize döner |
+
+<Note>
+Her takas taramadan geçer. RFQ ve Private rotalarında işaretlenen bir adres teklif almaz, dolayısıyla hiçbir şey gönderilmez. Ulaştıktan sonra işaretlenen bir yatırma iade edilmez, inceleme için tutulur ve bunu NEAR Intents desteğiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+</Note>
+
+## L2Pass neyi yapar, neyi yapmaz
+
+**L2Pass şunları yapar:**
+- Birkaç rota sağlayıcısından teklif ister ve bunları yan yana gösterir.
+- Onaylamadan önce her ücreti ve alacağınız tutarı gösterir.
+- RFQ ve Private teklifleri için tek kullanımlık yatırma adresini NEAR Intents aracılığıyla oluşturur.
+
+**L2Pass şunları yapmaz:**
+- Token'larınızı veya özel anahtarlarınızı tutmaz.
+- Hesap veya KYC istemez.
+- Bir sağlayıcının uyum incelemesini geçersiz kılmaz.
+
+## L2Pass sözleşmeleri
+
+Üçüncü taraf rotalar üzerinden yapılan takaslar o sağlayıcıların kendi sözleşmeleri tarafından gerçekleştirilir. L2Pass kendi router'ını yalnızca yerel USDT0 transferleri için kullanır. Ethereum, Arbitrum, Optimism, Polygon, HyperEVM ve Tron'daki adresler için [Sözleşmeler](/tr/resources/contracts) sayfasına bakın.
+
+## Nasıl güvende kalırsınız
+
+Bu dört kontrol sizi sahte sitelerden, yanlış adreslerden ve istenmeyen onaylardan korur.
+
+<Steps>
+  <Step title="Resmi siteyi kullanın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresini doğrudan veya [docs.l2pass.com](https://docs.l2pass.com/) üzerinden açın. Cüzdan bağlamadan veya fon göndermeden önce adres çubuğunu kontrol edin.
+  </Step>
+
+  <Step title="Yalnızca teklifinizdeki yatırma adresine gönderin">
+    Fon gönderdiğiniz tek adres, arayüzde teklifiniz için gösterilen tek kullanımlık yatırma adresidir. L2Pass desteği sizden asla başka bir yere fon göndermenizi istemez.
+  </Step>
+
+  <Step title="Kontrol ettiğiniz bir iade adresi belirleyin">
+    Yatırma adresi rotalarında, kaynak ağda kontrol ettiğiniz bir cüzdan kullanın, borsa yatırma adresi değil.
+  </Step>
+
+  <Step title="Onayları kontrol edin">
+    Cüzdan rotalarında, cüzdanınızın onaylamanızı istediği şeyi okuyun. Token onaylarını cüzdanınızda veya bir blok gezgininde inceleyip iptal edebilirsiniz.
+  </Step>
+</Steps>
+
+## Uyum ve üçüncü taraf riski
+
+Her takası ve uyum kontrollerini L2Pass değil, sağlayıcılar yürütür.
+
+- **Uyum kontrolleri.** RFQ ve Private rotalarında NEAR Intents her takası iki kez tarar: teklifte ve yatırmadan sonra, herkese açık ve gizli takaslarda aynı şekilde. Teknik bir hata iade edilir; yatırmadan sonraki bir uyum işareti, NEAR Intents desteği talebinizi çözene kadar fonların inceleme için tutulması demektir. Bkz. [NEAR Intents risk ve uyum sayfası](https://docs.near-intents.org/security-compliance/risk-and-compliance).
+- **Üçüncü taraf riski.** Her sağlayıcı kendi sözleşmelerini ve altyapısını işletir. L2Pass'in üçüncü taraf sağlayıcıları nasıl ele aldığı için [Hizmet Şartları](https://l2pass.com/terms-of-service) sayfasına bakın.
+- **Kısmi gerçekleşme yok.** Bir takas ya tamamen tamamlanır ya da hiç gerçekleşmez.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="L2Pass gözetimli mi?">
+    Hayır. L2Pass token'larınızı veya özel anahtarlarınızı asla tutmaz. Takaslar rota sağlayıcıları tarafından kendi sözleşmelerinde ya da RFQ ve Private rotalarında NEAR Intents üzerindeki çözücüler tarafından gerçekleştirilir.
+  </Accordion>
+
+  <Accordion title="L2Pass güvenilir mi?">
+    Evet, ve bunu kendiniz kontrol edebilirsiniz. L2Pass 2023'ten beri mainnet'te çalışıyor ve on-chain geçmişi [LayerZero Scan](https://layerzeroscan.com/application/l2pass) üzerinde herkese açık. Sözleşme adresleri [Sözleşmeler](/tr/resources/contracts) sayfasında listeleniyor. L2Pass token'larınızı asla tutmadığı için fonlarınız konusunda ona güvenmeniz gerekmez: her takas rota sağlayıcısının kendi sözleşmelerinde çalışır ve onaylamadan önce alacağınız tutarı görürsünüz.
+  </Accordion>
+
+  <Accordion title="L2Pass'e kişisel verilerimi vermem gerekir mi?">
+    Hayır. Hesap ve KYC yoktur. Bir yatırma inceleme için tutulursa, NEAR Intents desteği fonların nereden geldiğini sorabilir. Bkz. [Gizlilik ve AML İlkeleri](https://l2pass.com/privacy-policy).
+  </Accordion>
+
+  <Accordion title="Takas başarısız olursa fonlarıma ne olur?">
+    Cüzdan rotalarında işlem geri alınır ve yalnızca gas harcanır. Yatırma adresi rotalarında sağlayıcı, sağlayıcı veya ağ ücretlerini düşerek yatırılan tutarı iade adresinize geri gönderir. Bkz. [Takas başarısız olursa ne olur](/tr/products/swap/learn/failed-swaps-and-refunds).
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [Sözleşmeler](/tr/resources/contracts)
+- [Takas başarısız olursa ne olur](/tr/products/swap/learn/failed-swaps-and-refunds)
+- [Herhangi bir cüzdan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

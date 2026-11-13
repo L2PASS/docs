@@ -1,0 +1,82 @@
+---
+title: "USDT 네트워크 설명: TRC-20, ERC-20, BEP-20, SPL, TON, USDT0"
+description: "TRC-20, ERC-20, BEP-20, SPL, TON 젯톤, USDT0: 각 USDT 네트워크가 무엇인지, 가스 토큰과 주소 형식, 네트워크 간 USDT 이동 방법을 알아보세요."
+sidebarTitle: "USDT 네트워크 설명"
+---
+
+USDT는 여러 블록체인에 존재하며, 각 버전은 자기 네트워크에서만 작동합니다. TRC-20 USDT는 Tron, ERC-20은 Ethereum, BEP-20은 BNB Chain, SPL은 Solana, 젯톤은 TON에 있습니다. USDT0은 LayerZero를 통해 체인 간 이동하는 옴니체인 USDT로, Arbitrum, Plasma 등에서 사용됩니다. 한 네트워크의 USDT를 다른 네트워크의 주소로 바로 보낼 수는 없습니다. 스테이블코인 스왑에 L2Pass 수수료 0%인 [L2Pass Swap](https://swap.l2pass.com/)에서 비교하는 것과 같은 크로스체인 경로가 필요합니다.
+
+## 네트워크별 USDT
+
+각 USDT 네트워크는 고유한 가스 토큰과 주소 형식을 가집니다.
+
+| 네트워크 | 표준 | 가스 토큰 | 주소 형식 | 가이드 |
+| :-- | :-- | :-- | :-- | :-- |
+| Tron | TRC-20 | TRX (에너지와 대역폭) | T로 시작 | [Tron에서 Ethereum으로](/ko/products/swap/guides/usdt-tron-to-ethereum) |
+| Ethereum | ERC-20 | ETH | 0x... | [Ethereum에서 Tron으로](/ko/products/swap/guides/usdt-ethereum-to-tron) |
+| BNB Chain | BEP-20 | BNB | 0x... | [Tron에서 BNB Chain으로](/ko/products/swap/guides/usdt-tron-to-bnb-chain) |
+| Solana | SPL | SOL | Base58 | [Tron에서 Solana로](/ko/products/swap/guides/usdt-tron-to-solana) |
+| TON | 젯톤 | Toncoin | UQ 또는 EQ로 시작 | [Tron에서 TON으로](/ko/products/swap/guides/usdt-tron-to-ton) |
+| Arbitrum | USDT0 | ETH | 0x... | [Tron에서 Arbitrum으로](/ko/products/swap/guides/usdt-tron-to-arbitrum) |
+| Plasma | USDT0 | XPL | 0x... | [USDT를 Plasma로](/ko/products/swap/guides/usdt-to-plasma) |
+
+EVM 네트워크(Ethereum, BNB Chain, Arbitrum, Plasma 등)는 같은 0x 주소 형식을 씁니다. 같은 주소가 모든 네트워크에서 작동하지만, 각 네트워크의 토큰은 별개입니다. ERC-20 USDT를 BNB Chain의 내 주소로 보낸다고 해서 그쪽으로 옮겨지지 않습니다.
+
+## 네트워크별 USDT 수령 비용
+
+도착 네트워크 수수료는 받는 금액에서 차감되므로, 받을 때 도착 네트워크의 가스가 필요하지 않습니다. 2026년 10월 19일(약 17:50 UTC) L2Pass RFQ에서 Tron 기준 1,000 USDT 테스트 견적:
+
+| 도착지 | 네트워크 수수료 | 예상 시간 | 수령액 |
+| :-- | :-- | :-- | :-- |
+| Arbitrum (USDT0) | 0.005 USDT0 | 약 79초 | 999.77 USDT0 |
+| Solana | 0.01 USDT | 약 77초 | 999.73 USDT |
+| Ethereum | 0.3 USDT | 약 87초 | 999.51 USDT |
+| Plasma (USDT0) | 0.0001 USDT0 미만 | 약 84초 | 997.79 USDT0 |
+
+Plasma로의 경우 NEAR Intents 제공자 수수료가 0.01%가 아닌 0.2%였기 때문에, 네트워크 수수료가 가장 낮았음에도 도착 금액이 적었습니다. 실시간 견적에서 현재 수치를 확인할 수 있습니다.
+
+## 네트워크 선택 방법
+
+USDT를 사용할 네트워크를 고른 뒤, 그 네트워크의 가스 토큰이 있는지 확인하세요.
+
+- **사용할 곳.** 결제할 거래소, 앱 또는 상대방의 네트워크를 선택하세요. 거래소는 입금 가능한 네트워크를 표시합니다.
+- **보유한 가스.** 나중에 USDT를 보내려면 네트워크의 가스 토큰이 필요합니다. Tron은 TRX, Ethereum이나 Arbitrum은 ETH, Solana는 SOL 등입니다.
+- **전송 비용.** 네트워크 수수료는 크게 다릅니다. Ethereum에서 보내는 것이 보통 가장 비싸고, Tron, Solana, 레이어 2 네트워크는 보통 더 저렴합니다.
+
+## 네트워크와 USDT0
+
+USDT를 보낼 때마다 네트워크와 주소를 맞추세요.
+
+- **거래소에서 올바른 네트워크를 선택하세요.** USDT를 출금하거나 입금할 때 선택한 네트워크가 주소와 일치해야 합니다. 잘못된 네트워크로 보낸 토큰은 잃어버리거나 수동 복구가 필요할 수 있습니다.
+- **USDT0과 USDT.** Arbitrum과 Plasma에서 L2Pass Swap이 전달하는 USDT는 USDT0입니다. L2Pass Swap은 이를 Tron, Ethereum 등의 USDT로, 또는 그 반대로 옮길 수 있습니다.
+- **이용 가능 여부.** 견적은 해당 시점에 내 페어에 사용할 수 있는 경로를 보여줍니다. 아무 경로도 없다면 나중에 다시 시도하거나 다른 도착 네트워크를 선택하세요.
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="TRC-20 USDT와 ERC-20 USDT의 차이는 무엇인가요?">
+    TRC-20 USDT는 Tron에서 작동하며 수수료로 TRX를 씁니다. ERC-20 USDT는 Ethereum에서 작동하며 ETH를 씁니다. 둘 다 Tether가 발행한 USDT지만 별도 네트워크에 있으므로, 서로 옮기려면 크로스체인 경로가 필요합니다.
+  </Accordion>
+
+  <Accordion title="TRC-20 USDT를 ERC-20 주소로 보낼 수 있나요?">
+    아니요. Tron과 Ethereum은 서로 다른 네트워크와 주소 형식을 씁니다. [Tron에서 Ethereum으로 USDT 브릿지](/ko/products/swap/guides/usdt-tron-to-ethereum) 같은 크로스체인 경로를 이용하세요.
+  </Accordion>
+
+  <Accordion title="USDT0이란 무엇인가요?">
+    USDT0은 LayerZero를 통해 체인 간 이동하는 옴니체인 USDT입니다. L2Pass Swap에서는 Arbitrum과 Plasma의 USDT이며, USDT native bridge 경로가 이를 옮깁니다. Tron에서도 가능합니다.
+  </Accordion>
+
+  <Accordion title="가장 저렴한 USDT 네트워크는 어디인가요?">
+    경로와 시점에 따라 다릅니다. 받을 때는 견적에 도착 네트워크 수수료가 이미 포함되어 있습니다. 보낼 때는 보내는 네트워크의 가스 비용을 비교하세요.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [L2Pass가 경로를 비교하는 방법](/ko/products/swap/learn/compare-routes)
+- [L2Pass Swap 수수료 설명](/ko/products/swap/learn/fees)
+- [모든 지갑이나 거래소에서 스왑](/ko/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

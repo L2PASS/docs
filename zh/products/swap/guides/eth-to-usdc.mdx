@@ -1,0 +1,141 @@
+---
+title: "如何跨链把 ETH 兑换成 USDC 或 USDT"
+description: "在 1 秒到约 80 秒内把 ETH 兑换成另一条链上的 USDC 或 USDT。L2Pass 手续费最高 0.2%，一次报价比较四条路由。"
+sidebarTitle: "ETH 到 USDC 或 USDT"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 一步把 ETH 兑换成另一条链上的 USDC 或 USDT，例如把 Ethereum 上的 ETH 换成 Base 上的 USDC，或把 Arbitrum 上的 ETH 换成 Tron 上的 USDT。在测试报价中，EVM 链之间提供了 L2Pass RFQ、Relay、LI.FI 和 L2Pass Private，预计时间从约 1 秒到不到一分钟；到 Tron 则提供了 L2Pass RFQ 和 Private。ETH 兑换的 L2Pass 手续费最高 0.2%（私密兑换最高 0.3%），报价会显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**EVM 链之间不到一分钟** · **一步完成兑换和跨链** · **1 ETH 换得 2,387.76 USDC** · **一次报价四条路由**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## ETH 兑换稳定币的路由
+
+有四条路由完成了 EVM 链之间的 ETH 兑换，其中两条也能到达 Tron。
+
+| 路由 | 预计时间 | 到账 | 付款方式 | 测试报价中的 L2Pass 手续费 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 约 34 到 80 秒 | 浮动，有最少到账 | 一次性充值地址 | 0% |
+| Relay | 约 1 到 2 秒 | 浮动 | 钱包交易 | 0.1% |
+| LI.FI | 约 6 到 26 秒 | 浮动 | 钱包交易 | 0.1% |
+| L2Pass Private | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 一次性充值地址 | 0.3% |
+
+L2Pass RFQ 和 L2Pass Private 运行在 [NEAR Intents](https://near.org/intents) 上。在这些交易对上，L2Pass RFQ 的 NEAR Intents 提供方费用为 0.2%。
+
+## 测试报价
+
+约 17:50 UTC 的 1 ETH 报价，当时 ETH 约为 2,400 USD。实时报价会显示当前数据。
+
+<Tabs>
+<Tab title="Ethereum 到 Base 上的 USDC">
+
+| 路由 | 到账 | 预计时间 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,387.76 USDC | 约 49 秒 |
+| Relay | 2,386.58 USDC | 约 2 秒 |
+| LI.FI | 2,384.78 USDC | 约 26 秒 |
+| L2Pass Private | 2,379.58 USDC | 约 49 秒 |
+
+</Tab>
+<Tab title="Base 到 Arbitrum 上的 USDC">
+
+| 路由 | 到账 | 预计时间 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,387.26 USDC | 约 34 秒 |
+| Relay | 2,387.26 USDC | 约 1 秒 |
+| LI.FI | 2,384.45 USDC | 约 6 秒 |
+| L2Pass Private | 2,379.69 USDC | 约 34 秒 |
+
+</Tab>
+<Tab title="Arbitrum 到 Tron 上的 USDT">
+
+| 路由 | 到账 | 预计时间 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,388.75 USDT | 约 80 秒 |
+| L2Pass Private | 2,378.24 USDT | 约 80 秒 |
+
+</Tab>
+</Tabs>
+
+## 如何把 ETH 兑换成另一条链上的 USDC
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** 你持有 ETH 的网络上的 ETH。
+    - **To：** 目标网络上的 USDC 或 USDT。
+    - **Amount：** 你要兑换的 ETH 数量。
+    - **收款地址：** 目标网络上接收稳定币的地址。
+  </Step>
+
+  <Step title="比较路由">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和费用。ETH 价格会波动，请留意最少到账。默认滑点为 0.05%（可修改）。
+  </Step>
+
+  <Step title="设置退款地址">
+    对于 L2Pass RFQ 和 L2Pass Private，请把退款地址设为你在源链上控制的钱包。如果兑换无法完成，提供方会把你的 ETH 退回到这里。
+  </Step>
+
+  <Step title="通过钱包或充值地址付款">
+    付款方式取决于你选择的路由。
+
+    <Tabs>
+      <Tab title="钱包路由（Relay、LI.FI）">
+        在钱包中签署交易。
+      </Tab>
+      <Tab title="充值地址（L2Pass RFQ、L2Pass Private）">
+        通过地址或二维码，从已连接的钱包、任意钱包或交易所把 ETH 发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="跟踪兑换">
+    对于 L2Pass RFQ 和 L2Pass Private，在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+请保留一些 ETH 作为 Gas，并留意最少到账，因为兑换过程中 ETH 价格会变动。
+
+- **保留 ETH 作为 Gas。** 源链 Gas 用 ETH 支付，所以在钱包路由上不要兑换全部余额。在充值地址路由上，转账的网络费同样从你的钱包扣除。
+- **价格波动。** ETH 波动较大。最少到账会保护你：如果价格变动超出你的滑点容差，兑换不会执行。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="可以一步把 ETH 兑换成 USDC 并跨链吗？">
+    可以。在源网络上选择 ETH，在目标网络上选择 USDC。路由会在一次兑换中完成兑换和跨链。
+  </Accordion>
+
+  <Accordion title="跨链把 ETH 兑换成 USDC 要多少钱？">
+    ETH 兑换的 L2Pass 手续费最高 0.2%（私密兑换最高 0.3%）。在测试报价中，L2Pass RFQ 上为 0%，Relay 和 LI.FI 上为 0.1%。提供方和网络会收取各自的费用，显示金额已包含这些费用。
+  </Accordion>
+
+  <Accordion title="可以把 Arbitrum 上的 ETH 兑换成 Tron 上的 USDT 吗？">
+    可以。在测试报价中，L2Pass RFQ 用 Arbitrum 上的 1 ETH 换得 Tron 上的 2,388.75 USDT，约需 80 秒。
+  </Accordion>
+
+  <Accordion title="哪条路由最快？">
+    在测试报价中，Relay 在 EVM 链之间约需 1 到 2 秒。L2Pass RFQ 约需 34 到 49 秒，但到账金额相同或更多。请针对你的金额比较路由卡片。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [滑点与最少到账](/zh/products/swap/learn/slippage)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

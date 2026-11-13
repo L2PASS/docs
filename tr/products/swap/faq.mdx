@@ -1,0 +1,75 @@
+---
+title: "L2Pass Swap SSS"
+sidebarTitle: "SSS"
+description: "L2Pass Swap hakkında sık sorulan sorular: ücretler (stablecoin'lerde %0), süreler, iadeler, gizli takaslar, desteklenen ağlar ve herhangi bir cüzdan veya borsadan ödeme."
+icon: "circle-question"
+iconType: "light"
+---
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap nedir ve nasıl çalışır?">
+    L2Pass Swap, tokenları zincirler arasında takas etmek için emanetsiz bir arayüzdür. Yerel köprüler, çözücü ağları ve toplayıcılar gibi birden fazla bağımsız yönlendirme sağlayıcısının tekliflerini karşılaştırır ve en iyi rotayı tek onayla gerçekleştirmenizi sağlar.
+  </Accordion>
+
+  <Accordion title="Aynı tokenı zincirler arasında taşıyabilir miyim?">
+    Evet. Tron'dan Ethereum'a USDT veya Arbitrum'dan Base'e USDC gibi aynı varlık transferleri takaslarla aynı şekilde çalışır. USDT0 ve Circle CCTP gibi yerel rotalar, mevcut olduklarında diğer rotalarla birlikte sunulur.
+  </Accordion>
+
+  <Accordion title="Hangi varlıkları ve ağları kullanabilirim?">
+    Ana odak stablecoin'lerdir, ancak ETH, BTC, SOL ve ZEC gibi büyük varlıklar da desteklenir. Güncel token ve ağ listesi
+    <a href="https://swap.l2pass.com" target="_blank">takas sayfasında</a>
+    gösterilir ve zamanla değişebilir.
+  </Accordion>
+
+  <Accordion title="Fiyat etkisi nedir?">
+    Fiyat etkisi, işlem büyüklüğünün mevcut likiditeye göre gerçekleşme fiyatında yarattığı değişimdir.
+  </Accordion>
+
+  <Accordion title="Kayma nedir?">
+    Kayma (slippage), piyasa hareketi nedeniyle teklif edilen fiyat ile nihai gerçekleşme fiyatı arasındaki farktır.
+  </Accordion>
+
+  <Accordion title="Kayma toleransını ayarlayabilir miyim?">
+    Evet. Varsayılan tolerans %0,05'tir ve herhangi bir rota kartından değiştirebilirsiniz. Yerel USDT0 ve USDC köprüleri gibi bazı rotalar sabit tutar teslim eder, bu yüzden kayma uygulanmaz.
+  </Accordion>
+
+  <Accordion title="Tahmini tutar nedir?">
+    Tahmini tutar, mevcut piyasa koşullarında hedef ağda alacağınız yaklaşık miktardır. Kaynak ağdaki gas ve varsa köprü mesaj ücreti dışındaki tüm ücretleri zaten içerir.
+  </Accordion>
+
+  <Accordion title="Minimum alınacak tutar nedir?">
+    Minimum alınacak tutar, kayma toleransınız dahilindeki en kötü sonuçtur. Fiyat bunun ötesine geçerse takas gerçekleşmez: zincir üstü rotalar geri alınır, yatırma adresli rotalar yatırdığınız tutarı iade adresinize geri gönderir.
+  </Accordion>
+
+  <Accordion title="Hangi ücretler uygulanır?">
+    L2Pass ücreti stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadar ve gizli takaslarda %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil). Yönlendirme ortakları ve blokzincirler, L2Pass'in kontrol etmediği kendi ücretlerini alabilir; güncel ayrıntılar için her sağlayıcıya bakın. Gerçek ücretler onaylamadan önce her zaman takas sayfasında gösterilir ve hedef ağdaki tahmini tutar bunları zaten içerir; yalnızca kaynak ağdaki gas ve varsa köprü mesaj ücretini ayrıca ödersiniz.
+  </Accordion>
+
+  <Accordion title="Gizli takas nedir?">
+    Gizli takas, NEAR Intents üzerinden gizli bir ortamda gerçekleştirilir ve herkese açık blokzincirlerde görünenleri sınırlar. Tam anonimlik değildir: cüzdan adresiniz sağlayıcılarla yine paylaşılır ve herkese açık bir takasla tamamen aynı şekilde taranır. Gizli takas için L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil) ve teklif edilen tutara zaten dahildir.
+  </Accordion>
+
+  <Accordion title="L2Pass Swap emanetsiz mi?">
+    Evet. L2Pass tokenlarınızı veya özel anahtarlarınızı asla tutmaz ya da kontrol etmez. Takaslar bağımsız üçüncü taraf sağlayıcılar tarafından gerçekleştirilir.
+  </Accordion>
+
+  <Accordion title="Hedef zincirde gas gerekir mi?">
+    Hayır. Gas yalnızca işleminizi veya yatırmanızı göndermek için kaynak zincirde gerekir. Hedef zincirde gas yalnızca fonlarla daha sonra yapacaklarınız için gerekir. Yatırma adresli rotalarda tokenları herhangi bir cüzdandan veya borsadan elle de gönderebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Bir takas kısmen gerçekleşebilir mi?">
+    Hayır. L2Pass kısmi gerçekleştirme kullanmaz. Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+  </Accordion>
+
+  <Accordion title="Takas başarısız olursa ne olur?">
+    Zincir üstü rotalar geri alınır, dolayısıyla hiçbir token takas edilmez, ancak ağ gas ücretleri iade edilmez. Yatırma adresli rotalarda sağlayıcı yatırdığınız tutarı iade adresinize geri gönderir; iade edilen tutardan sağlayıcı ve ağ ücretleri düşülebilir.
+  </Accordion>
+
+  <Accordion title="Takasım engellenebilir veya tutulabilir mi?">
+    Her takas AML ve yaptırım riskine karşı taranır. L2Pass RFQ ve L2Pass Private'ta işaretlenen bir adres teklif almaz, dolayısıyla hiçbir şey gönderilmez. Bir yatırma ulaştıktan sonra işaretlenirse, NEAR Intents incelerken fonlar tutulur ve bunu NEAR Intents destek ekibine talep açarak çözersiniz. Teknik nedenlerle başarısız olan takaslar otomatik olarak iade edilir. Bkz. <a href="/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works">Tarama nasıl çalışır</a>.
+  </Accordion>
+
+  <Accordion title="KYC gerekir mi?">
+    Hayır. Hesap da KYC de yoktur. Bir yatırma inceleme için tutulursa NEAR Intents destek ekibi fonların kaynağını sorabilir.
+  </Accordion>
+</AccordionGroup>

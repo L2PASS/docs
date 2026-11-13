@@ -1,0 +1,148 @@
+---
+title: "在 14 条网络间兑换加密货币，公开或私密"
+sidebarTitle: "简介"
+icon: "angle-right"
+mode: "wide"
+description: "L2Pass Swap 在 14 条网络之间转移 USDT、USDC、BTC、ETH 等资产，稳定币兑换的 L2Pass 手续费为 0%。包含教程、费用说明、私密兑换和 Swap API。"
+---
+
+<Frame>
+  ![L2Pass 简介横幅](/images/intro/l2pass_banner.png)
+</Frame>
+
+L2Pass 一步就能把你的代币转到另一条区块链：把 USDT 从 Tron 转到 Ethereum，把 BTC 换成 USDT，把 USDC 转到 Solana。它支持 **14 条网络**，包括 Bitcoin、Zcash、Tron、Solana 和 TON，并且可以选择公开兑换或私密兑换。
+
+每次兑换，L2Pass 都会向多条路由请求报价，并在你确认之前显示每条路由能给你多少、收取多少费用。L2Pass 从不托管你的资金。稳定币兑换的 L2Pass 手续费为 **0%**。钱包和应用可以通过 **L2Pass Swap API** 获得同样的路由能力。
+
+## 我们的产品
+
+<CardGroup cols={2}>
+  <Card title="L2Pass Swap" icon="right-left-large" href="/zh/products/swap/overview">
+    面向个人用户的跨链兑换和私密兑换。支持稳定币、BTC、ETH、SOL、ZEC 等资产，稳定币 L2Pass 手续费为 0%。
+  </Card>
+
+  <Card title="L2Pass Swap API" icon="code" href="/zh/products/swap/learn/swap-api">
+    为钱包、交易所和支付应用提供同样的路由：报价、充值地址、状态查询和 Webhook。合作伙伴可以按交易量获得收益。
+  </Card>
+</CardGroup>
+
+<Card title="Gas Refuel" icon="gas-pump" href="https://l2pass.com/refuel">
+  在 25+ 条 EVM 链上补充 Gas 代币。
+</Card>
+
+## 你可以做什么
+
+| 你想要 | 使用 L2Pass |
+| :-- | :-- |
+| 在网络之间转移稳定币 | 在 Tron、Ethereum、Solana、TON、BNB Chain、各类 L2 等网络之间转移 USDT 和 USDC，L2Pass 手续费 0% |
+| 原生兑换主流资产 | Bitcoin 上的 BTC、Zcash 上的 ZEC，以及 ETH、SOL 等资产，与稳定币互换，你这边无需使用包装代币 |
+| 让兑换保持私密 | 选择 L2Pass Private：兑换在机密环境中执行，减少公开区块链上可见的信息 |
+| 在对方的网络上付款 | 把对方地址设为收款地址，用你持有的任意支持代币付款 |
+| 直接从交易所兑换 | 提现到一次性充值地址，无需连接钱包 |
+| 在你的产品中加入兑换 | 集成 Swap API，或推荐用户并分享手续费 |
+
+## 工作原理
+
+每次报价，L2Pass 都会同时询问多条独立路由，并按你实际到账的金额排序：
+
+- **L2Pass RFQ 和 L2Pass Private by NEAR Intents：** 求解器（solver）和做市商竞争执行你的兑换。
+- **原生跨链桥：** 基于 LayerZero 的 USDT0，以及用于 USDC 的 Circle CCTP。
+- **聚合器和意图网络：** LI.FI、Relay、Aori 和 OKX DEX 聚合器。
+
+确认之前，你可以看到每条路由的到账金额、最少到账、预计时间和费用。显示的金额已扣除费用，只有源链 Gas 和可能存在的跨链消息费需要另外支付。[路由如何比较 →](/zh/products/swap/learn/compare-routes)
+
+## 为什么选择 L2Pass
+
+- **多个报价，而不是一个。** 每笔兑换都会同时获得 NEAR Intents 求解器、原生跨链桥和聚合器的报价，并按到账金额排序。
+- **覆盖所有链，不只是 EVM。** Bitcoin、Zcash、Tron、Solana 和 TON 与 Ethereum 及其 L2 并列。
+- **需要时就能保护隐私。** 私密兑换使用同一个界面，筛查方式与公开兑换相同。
+- **非托管。** L2Pass 从不持有你的代币或私钥。无需账户，无需 KYC。
+- **费用透明。** 稳定币兑换 0%，其他资产最高 0.2%，私密兑换最高 0.3%。[费用说明 →](/zh/products/swap/learn/fees)
+
+## 成绩
+
+<CardGroup cols={3}>
+  <Card title="650K+" icon="wallet">
+    个独立钱包使用过 L2Pass
+  </Card>
+
+  <Card title="4M+" icon="arrow-right-arrow-left">
+    笔跨链交易已处理
+  </Card>
+
+  <Card title="自 2023 年" icon="calendar">
+    上线主网
+  </Card>
+
+  <Card title="14" icon="globe">
+    条网络支持 Swap
+  </Card>
+
+  <Card title="第 9 名" icon="ranking-star" href="https://layerzeroscan.com/application/l2pass">
+    LayerZero 应用排名
+  </Card>
+</CardGroup>
+
+---
+
+## 生态合作伙伴
+
+兑换会经过 NEAR Intents、LayerZero（USDT0）、Circle CCTP、LI.FI、Relay、Aori 和 OKX DEX 聚合器进行路由。
+
+<Card title="基于领先的基础设施构建">
+  <div
+  style={{ 
+  backgroundColor: "#181818", 
+  padding: "2rem", 
+  borderRadius: "8px", 
+  display: "flex", 
+  justifyContent: "center",
+ marginTop: "1rem"
+}}
+>
+  <img src="/images/partners_light.svg" alt="L2Pass 生态合作伙伴" style={{ height: "auto" }} />
+</div>
+</Card>
+
+
+---
+
+## 从这里开始
+
+<CardGroup cols={3}>
+  <Card title="Swap 如何运作" icon="book-open" href="/zh/products/swap/overview">
+    路由、执行、退款和私密兑换。
+  </Card>
+
+  <Card title="在网络之间转移 USDT" icon="route" href="/zh/products/swap/guides/usdt-tron-to-ethereum">
+    分步路由教程，从 Tron 到 Ethereum 开始。
+  </Card>
+
+  <Card title="兑换 BTC" icon="bitcoin" href="/zh/products/swap/guides/btc-to-usdt">
+    把原生 BTC 兑换成 USDT，或反向兑换。
+  </Card>
+
+  <Card title="私密兑换" icon="user-secret" href="/zh/products/swap/learn/private-cross-chain-swaps">
+    私密兑换能隐藏什么，不能隐藏什么。
+  </Card>
+
+  <Card title="用加密货币付款" icon="money-bill-transfer" href="/zh/products/swap/learn/crypto-payments">
+    在对方偏好的网络上向任何人付款。
+  </Card>
+
+  <Card title="L2Pass 安全吗？" icon="shield-check" href="/zh/products/swap/learn/is-l2pass-safe">
+    非托管兑换如何保护你的资金。
+  </Card>
+
+  <Card title="Swap API" icon="code" href="/zh/products/swap/learn/swap-api">
+    在你的钱包或应用中加入跨链兑换。
+  </Card>
+
+  <Card title="智能合约" icon="file-code" href="/zh/resources/contracts">
+    查看并验证我们的官方部署。
+  </Card>
+
+  <Card title="支持" icon="headset" href="/zh/resources/support">
+    获取帮助，或与我们洽谈合作。
+  </Card>
+</CardGroup>

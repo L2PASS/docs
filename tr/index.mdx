@@ -1,0 +1,148 @@
+---
+title: "14 ağ arasında kripto takası, herkese açık ya da gizli"
+sidebarTitle: "Giriş"
+icon: "angle-right"
+mode: "wide"
+description: "L2Pass Swap; USDT, USDC, BTC, ETH ve daha fazlasını 14 ağ arasında taşır, stablecoin'lerde L2Pass ücreti %0. Rehberler, ücretler, gizli takaslar ve Swap API."
+---
+
+<Frame>
+  ![L2Pass Introduction Banner](/images/intro/l2pass_banner.png)
+</Frame>
+
+L2Pass, tokenlarınızı blokzincirler arasında tek adımda taşır: Tron'dan Ethereum'a USDT, BTC'den USDT'ye, Solana'ya USDC. Bitcoin, Zcash, Tron, Solana ve TON dahil **14 ağda** çalışır ve takası herkese açık ya da gizli yapabilirsiniz.
+
+Her takasta L2Pass birden fazla rotadan teklif ister ve onaylamadan önce her birinin ne ödediğini ve ne ücret aldığını gösterir. L2Pass fonlarınızı asla tutmaz. Stablecoin takaslarında **L2Pass ücreti %0**'dır. Cüzdanlar ve uygulamalar aynı yönlendirmeyi **L2Pass Swap API** ile kullanır.
+
+## Ürünlerimiz
+
+<CardGroup cols={2}>
+  <Card title="L2Pass Swap" icon="right-left-large" href="/tr/products/swap/overview">
+    Kullanıcılar için zincirler arası ve gizli takaslar. Stablecoin'ler, BTC, ETH, SOL, ZEC ve daha fazlası; stablecoin'lerde L2Pass ücreti %0.
+  </Card>
+
+  <Card title="L2Pass Swap API" icon="code" href="/tr/products/swap/learn/swap-api">
+    Cüzdanlar, borsalar ve ödeme uygulamaları için aynı yönlendirme: teklifler, yatırma adresleri, durum ve webhook'lar. Ortaklar hacimden kazanç elde edebilir.
+  </Card>
+</CardGroup>
+
+<Card title="Gas Refuel" icon="gas-pump" href="https://l2pass.com/refuel">
+  25'ten fazla EVM zincirinde gas tokenı yükleyin.
+</Card>
+
+## Neler yapabilirsiniz
+
+| İstediğiniz | L2Pass ile |
+| :-- | :-- |
+| Stablecoin'leri ağlar arasında taşımak | Tron, Ethereum, Solana, TON, BNB Chain, L2'ler ve daha fazlası arasında USDT ve USDC, L2Pass ücreti %0 |
+| Büyük varlıkları yerel olarak takas etmek | Bitcoin'de BTC, Zcash'te ZEC, ETH, SOL ve diğerleri, stablecoin'lere ve stablecoin'lerden; sizin tarafınızda sarılmış (wrapped) token yok |
+| Takası gizli tutmak | L2Pass Private'ı seçin: takas, herkese açık blokzincirlerin gösterdiklerini sınırlayan gizli bir ortamda çalışır |
+| Birine kendi ağında ödeme yapmak | Onun adresini alıcı olarak girin ve elinizdeki herhangi bir desteklenen tokenla ödeyin |
+| Doğrudan borsadan takas yapmak | Tek kullanımlık bir yatırma adresine çekim yapın, cüzdan bağlamanız gerekmez |
+| Ürününüze takas eklemek | Swap API'yi entegre edin ya da kullanıcı yönlendirip ücretleri paylaşın |
+
+## Nasıl çalışır
+
+L2Pass her teklif için birden fazla bağımsız rotaya aynı anda sorar ve onları alacağınız tutara göre sıralar:
+
+- **L2Pass RFQ ve L2Pass Private by NEAR Intents:** çözücüler (solver) ve piyasa yapıcılar takasınızı gerçekleştirmek için yarışır.
+- **Yerel köprüler:** LayerZero üzerinden USDT0 ve USDC için Circle CCTP.
+- **Toplayıcılar ve intent ağları:** LI.FI, Relay, Aori ve OKX DEX toplayıcısı.
+
+Onaylamadan önce her rota için alacağınız tutarı, minimum alınacak tutarı, tahmini süreyi ve ücretleri görürsünüz. Gösterilen tutar ücretler düşülmüş tutardır. Yalnızca kaynak ağdaki gas ve varsa köprü mesaj ücreti ayrıca ödenir. [Rotalar nasıl karşılaştırılır →](/tr/products/swap/learn/compare-routes)
+
+## Neden L2Pass
+
+- **Tek değil, birden fazla teklif.** Her takas aynı anda NEAR Intents çözücüleri, yerel köprüler ve toplayıcılar tarafından fiyatlanır ve alacağınız tutara göre sıralanır.
+- **Sadece EVM değil, tüm zincirler.** Bitcoin, Zcash, Tron, Solana ve TON, Ethereum ve L2'lerinin yanında.
+- **Gerektiğinde gizlilik.** Aynı arayüzde gizli takaslar, herkese açık takaslarla aynı şekilde taranır.
+- **Emanetsiz.** L2Pass tokenlarınızı veya anahtarlarınızı asla tutmaz. Hesap yok, KYC yok.
+- **Şeffaf ücretler.** Stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadar, gizli takaslarda %0,3'e kadar. [Ücretlerin açıklaması →](/tr/products/swap/learn/fees)
+
+## Geçmiş performans
+
+<CardGroup cols={3}>
+  <Card title="650K+" icon="wallet">
+    Benzersiz cüzdan L2Pass'i kullandı
+  </Card>
+
+  <Card title="4M+" icon="arrow-right-arrow-left">
+    Zincirler arası işlem gerçekleştirildi
+  </Card>
+
+  <Card title="2023'ten beri" icon="calendar">
+    Mainnet'te yayında
+  </Card>
+
+  <Card title="14" icon="globe">
+    Swap'taki ağ sayısı
+  </Card>
+
+  <Card title="№9" icon="ranking-star" href="https://layerzeroscan.com/application/l2pass">
+    LayerZero uygulama sıralaması
+  </Card>
+</CardGroup>
+
+---
+
+## Ekosistem ortakları
+
+Takaslar NEAR Intents, LayerZero (USDT0), Circle CCTP, LI.FI, Relay, Aori ve OKX DEX toplayıcısı üzerinden yönlendirilir.
+
+<Card title="Lider altyapı üzerine kurulu">
+  <div
+  style={{ 
+  backgroundColor: "#181818", 
+  padding: "2rem", 
+  borderRadius: "8px", 
+  display: "flex", 
+  justifyContent: "center",
+ marginTop: "1rem"
+}}
+>
+  <img src="/images/partners_light.svg" alt="L2Pass ecosystem partners" style={{ height: "auto" }} />
+</div>
+</Card>
+
+
+---
+
+## Buradan başlayın
+
+<CardGroup cols={3}>
+  <Card title="Swap nasıl çalışır" icon="book-open" href="/tr/products/swap/overview">
+    Rotalar, gerçekleştirme, iadeler ve gizli takaslar.
+  </Card>
+
+  <Card title="USDT'yi ağlar arasında taşıyın" icon="route" href="/tr/products/swap/guides/usdt-tron-to-ethereum">
+    Tron'dan Ethereum'a başlayarak adım adım rota rehberleri.
+  </Card>
+
+  <Card title="BTC takası" icon="bitcoin" href="/tr/products/swap/guides/btc-to-usdt">
+    Yerel BTC'yi USDT'ye ve geri takas edin.
+  </Card>
+
+  <Card title="Gizli takaslar" icon="user-secret" href="/tr/products/swap/learn/private-cross-chain-swaps">
+    Gizli takas neyi gizler, neyi gizlemez.
+  </Card>
+
+  <Card title="Kriptoyla ödeme" icon="money-bill-transfer" href="/tr/products/swap/learn/crypto-payments">
+    Herkese tercih ettiği ağda ödeme yapın.
+  </Card>
+
+  <Card title="L2Pass güvenli mi?" icon="shield-check" href="/tr/products/swap/learn/is-l2pass-safe">
+    Emanetsiz takaslar fonlarınızı nasıl korur.
+  </Card>
+
+  <Card title="Swap API" icon="code" href="/tr/products/swap/learn/swap-api">
+    Cüzdanınıza veya uygulamanıza zincirler arası takas ekleyin.
+  </Card>
+
+  <Card title="Akıllı sözleşmeler" icon="file-code" href="/tr/resources/contracts">
+    Resmi dağıtımlarımızı görüntüleyin ve doğrulayın.
+  </Card>
+
+  <Card title="Destek" icon="headset" href="/tr/resources/support">
+    Yardım alın veya ortaklık için bizimle konuşun.
+  </Card>
+</CardGroup>

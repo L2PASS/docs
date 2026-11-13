@@ -1,0 +1,57 @@
+---
+title: "L2Pass Swap 용어집: RFQ, 솔버, USDT0, CCTP 등"
+description: "L2Pass Swap과 이 문서에서 쓰는 용어를 쉽게 정의합니다: RFQ, 솔버, 입금 주소, 환불 주소, 최소 수령액, 슬리피지, USDT0, CCTP 등."
+sidebarTitle: "용어집"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/)과 이 문서에서 만나게 될 용어를 쉬운 말로 정리했습니다. 각 용어는 자세히 설명하는 페이지로 연결됩니다.
+
+## 경로와 제공자
+
+경로는 한 제공자가 스왑을 체결하는 방식이며, L2Pass는 모든 경로를 나란히 보여줍니다.
+
+| 용어 | 의미 |
+| :-- | :-- |
+| **경로(route)** | 한 제공자가 운영하는, 스왑을 체결하는 한 가지 방식. L2Pass는 스왑을 체결할 수 있는 모든 경로를 수령액 순으로 보여줍니다. [경로 비교 방식](/ko/products/swap/learn/compare-routes) |
+| **경로 카드** | 스왑 인터페이스에서 경로의 예상 수령액, 최소 수령액, 예상 시간, 수수료를 보여주는 상자. |
+| **NEAR Intents** | 솔버와 마켓 메이커가 크로스체인 스왑 체결을 두고 경쟁하는 네트워크. L2Pass RFQ와 L2Pass Private 경로를 운영합니다. |
+| **L2Pass RFQ** | NEAR Intents의 표준 경로. RFQ는 request for quote(견적 요청)의 약자로, 스왑이 솔버에게 제시되고 가장 좋은 견적이 체결합니다. [L2Pass RFQ란](/ko/products/swap/learn/what-is-l2pass-rfq) |
+| **L2Pass Private** | L2Pass RFQ와 같은 경로를, 퍼블릭 블록체인에 드러나는 정보를 줄이는 기밀 환경에서 실행합니다. [비공개 스왑](/ko/products/swap/learn/private-cross-chain-swaps) |
+| **솔버(solver)** | 자체 유동성으로 NEAR Intents에서 스왑을 체결하는 마켓 메이커. |
+| **USDT0** | 래핑 토큰 없이 LayerZero를 통해 체인 간 네이티브로 이동하는 USDT 버전. [USDT 네트워크 설명](/ko/products/swap/learn/usdt-networks) |
+| **Circle CCTP** | Circle의 Cross-Chain Transfer Protocol. 출발 체인에서 USDC를 소각하고 도착 체인에서 네이티브 USDC를 발행하며, Standard 또는 Fast 모드가 있습니다. [CCTP로 USDC 브릿지](/ko/products/swap/guides/usdc-cctp) |
+| **애그리게이터(aggregator)** | LI.FI나 OKX DEX 애그리게이터처럼 여러 브릿지와 거래소에서 경로를 찾는 서비스. |
+
+## 결제와 수령
+
+지갑에서 서명하거나 입금 주소로 보내서 결제합니다.
+
+| 용어 | 의미 |
+| :-- | :-- |
+| **지갑 경로** | CCTP, USDT0, LI.FI, Relay처럼 내 지갑에서 트랜잭션에 서명하는 경로. |
+| **입금 주소** | L2Pass RFQ와 L2Pass Private 경로에서 견적용으로 생성되는 일회용 주소. 지갑 연결 없이 어떤 지갑이나 거래소에서든 결제할 수 있습니다. [입금 주소 스왑](/ko/products/swap/learn/deposit-address-swaps) |
+| **환불 주소** | 출발 체인에서 직접 관리하는 지갑. 입금 주소 스왑을 완료할 수 없으면 입금액이 이곳으로 돌아옵니다. [실패한 스왑과 환불](/ko/products/swap/learn/failed-swaps-and-refunds) |
+| **비수탁** | L2Pass는 토큰이나 개인 키를 절대 보관하지 않습니다. 제공자가 각 스왑을 자체 컨트랙트에서 실행합니다. [L2Pass는 안전한가요?](/ko/products/swap/learn/is-l2pass-safe) |
+| **부분 체결** | 일부만 완료되는 스왑. L2Pass는 쓰지 않습니다. 스왑은 전부 완료되거나 실행되지 않습니다. |
+
+## 금액과 수수료
+
+표시되는 금액은 출발 가스와 브릿지 메시지 수수료(있는 경우)를 제외한 모든 수수료를 뺀 값입니다.
+
+| 용어 | 의미 |
+| :-- | :-- |
+| **예상 수령액** | 현재 시장 상황에서 수수료를 뺀 뒤 받을 것으로 예상되는 금액. |
+| **최소 수령액** | 받게 될 최소 금액. 시장이 이를 넘어 움직이면 스왑은 실행되지 않습니다. |
+| **슬리피지 허용치** | 예상 수령액보다 얼마나 낮아도 받아들일지. 최소 수령액을 정합니다. 기본값은 0.05%입니다. [슬리피지 설명](/ko/products/swap/learn/slippage) |
+| **고정 수령** | USDT0처럼 정확한 금액을 전달하는 경로. 슬리피지가 적용되지 않습니다. |
+| **L2Pass 수수료** | L2Pass가 받는 유일한 수수료: 스테이블코인 스왑 0%, 기타 자산 최대 0.2%, 비공개 스왑 최대 0.3%. [수수료 설명](/ko/products/swap/learn/fees) |
+| **제공자 수수료** | NEAR Intents, LI.FI, Relay 같은 라우팅 제공자가 받는 수수료. 수령액에 포함되어 있습니다. |
+| **네트워크 수수료** | 도착 블록체인이 받는 수수료. 수령액에 포함되어 있습니다. |
+| **출발 가스** | 출발 블록체인이 트랜잭션 전송에 받는 수수료로, 지갑에서 네이티브 토큰(ETH, TRX, BNB 등)으로 냅니다. |
+| **브릿지 메시지 수수료** | LayerZero를 통한 USDT0처럼 일부 브릿지가 크로스체인 메시지 전송에 받는 수수료. 출발 체인의 네이티브 토큰으로 냅니다. |
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [L2Pass Swap 작동 방식](/ko/products/swap/overview)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)

@@ -1,0 +1,99 @@
+---
+title: "如何进行私密 ZEC 兑换（USDT 换 ZEC，ZEC 换 USDT）"
+description: "使用 L2Pass Private，约 3 分钟把 USDT 兑换成 ZEC，或约 8.5 分钟把 ZEC 兑换成 USDT。L2Pass 手续费最高 0.3%，无需账户。"
+sidebarTitle: "使用 ZEC 私密兑换"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+在 [L2Pass Swap](https://swap.l2pass.com/) 中选择 L2Pass Private 路由，就可以在 USDT 和 ZEC 之间双向进行私密兑换。在测试报价中，它提供了从 Tron 和 Ethereum 上的 USDT 到 ZEC 的兑换，预计约 3 分钟；以及从 ZEC 到 Tron 上 USDT 的兑换，预计约 8.5 分钟。它在机密环境中执行兑换，限制公链上可见的信息。这不等于匿名：你的钱包地址仍会提供给提供方，合规筛查同样适用。私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取），已包含在报价显示的金额中。
+
+**从 USDT 约 3 分钟** · **1,000 USDT 换得 0.8096 ZEC** · **机密执行** · **无需账户**
+
+<Note>数据来自 2026 年 10 月 10 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## USDT 与 ZEC 之间的路由
+
+L2Pass RFQ 和 L2Pass Private 都运行在 [NEAR Intents](https://near.org/intents) 上，求解器和做市商在这里竞争执行你的兑换。Private 在机密环境而非公开环境中执行。
+
+| 路由 | 预计时间 | 到账 | 说明 |
+| :-- | :-- | :-- | :-- |
+| L2Pass Private | 从 USDT 约 3 分钟，从 ZEC 约 8.5 分钟 | 浮动，有最少到账 | 机密执行。充值地址。L2Pass 手续费最高 0.3%。 |
+| L2Pass RFQ | 从 USDT 约 3 分钟，从 ZEC 约 8.5 分钟 | 浮动，有最少到账 | 公开执行。充值地址。L2Pass 手续费最高 0.2%（其他资产）。 |
+
+在这些测试报价中，USDT 与 ZEC 的双向兑换都没有其他路由（聚合器或其他意图网络）。
+
+Tron 上 1,000 USDT 兑换 ZEC 的测试报价显示的到账金额为：L2Pass RFQ 0.8151 ZEC，L2Pass Private 0.8096 ZEC。实时报价会显示你的交易对和金额的当前数据。
+
+## 如何进行私密 ZEC 兑换
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap 并选择交易对">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** 你持有 USDT 的网络上的 USDT，或 Zcash 上的 ZEC。
+    - **To：** 交易对中的另一个代币。
+    - **Amount：** 你要兑换的数量。
+    - **收款地址：** 接收代币的地址，位于 Zcash 或你的 USDT 网络上。
+  </Step>
+
+  <Step title="选择 L2Pass Private">
+    选择 L2Pass Private，查看预计到账、最少到账、预计时间和费用。如果你不需要机密执行，L2Pass RFQ 的 L2Pass 手续费最高为 0.2%。
+  </Step>
+
+  <Step title="设置退款地址">
+    把退款地址设为你在付款链上（Zcash 或你的 USDT 网络）控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="向充值地址付款">
+    通过地址或二维码，从任意钱包或交易所把报价显示的金额发送到一次性充值地址。如果用 USDT 付款，也可以从已连接的钱包发送。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+  </Step>
+
+  <Step title="在 Recent swaps 中跟踪兑换">
+    在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+你只需在发送所在的链上支付 Gas，私密兑换并不会让你匿名。
+
+- **网络费。** 你只在发送所在的链上支付 Gas：Zcash 上用 ZEC，或你的 USDT 网络的原生代币，例如 Tron 上的 TRX。目标链上的网络费（如有）会从显示金额中扣除。
+- **不等于匿名。** 私密兑换会限制公链显示的信息，但你的公开钱包地址仍会包含在发送给提供方的请求中。它的筛查方式与公开兑换完全相同。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="私密兑换会隐藏我的身份吗？">
+    不会。它会限制公链显示的信息，但提供方仍会收到你的钱包地址，并以与公开兑换完全相同的方式进行筛查。
+  </Accordion>
+
+  <Accordion title="私密 ZEC 兑换要多少钱？">
+    私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取）。它已包含在报价显示的金额中，路由合作方和网络收取的费用也一样。
+  </Accordion>
+
+  <Accordion title="哪些 USDT 网络可以与 ZEC 兑换？">
+    在测试报价中，Tron 和 Ethereum 上的 USDT 支持与 ZEC 进行私密兑换。请求报价时，路由列表会显示哪些网络可以完成该交易对。
+  </Accordion>
+
+  <Accordion title="私密兑换需要账户或 KYC 吗？">
+    不需要。无论私密兑换还是公开兑换，都无需账户和 KYC。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [USDT 或 BTC 兑换 ZEC 的最佳方式：L2Pass 对比其他服务](/zh/products/swap/learn/compare-zec-swaps)
+- [私密兑换概览](/zh/products/swap/overview#private-swaps)
+- [L2Pass Swap 费用](/zh/products/swap/overview#fee-structure)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+- [USDT 从 Tron 到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT 从 Tron 到 Solana](/zh/products/swap/guides/usdt-tron-to-solana)
+- [隐私与 AML 原则](https://l2pass.com/privacy-policy) 和 [服务条款](https://l2pass.com/terms-of-service)
+
+*最后更新：2026 年 10 月 10 日*

@@ -1,0 +1,126 @@
+---
+title: "USDT'yi Ethereum'dan Arbitrum'a köprüleme (USDT0)"
+description: "USDT'yi Ethereum'dan Arbitrum'a 1 saniye ile 1,5 dakika arasında köprüleyin. Altı rota karşılaştırıldı, %0 L2Pass ücreti, USDT0 olarak ulaşır."
+sidebarTitle: "USDT: Ethereum'dan Arbitrum'a"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+USDT'yi Ethereum'dan Arbitrum'a [L2Pass Swap](https://swap.l2pass.com/) ile köprüleyebilirsiniz. Arbitrum'da USDT, USDT'nin omnichain sürümü olan USDT0 olarak ulaşır. Test tekliflerinde bu çift için altı rota sunuldu: yerel USDT0 köprüsü, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private ve LI.FI; tahmini süreler yaklaşık 1 saniye ile 1,5 dakika arasında. En iyi rotalar 1.000 USDT için birbirinden 0,3 USDT'den az farkla teslim etti. Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Tek teklifte altı rota** · **%0 L2Pass ücreti** · **1.000 gönderilene 1.000 USDT0 ulaşır** · **Arbitrum'da ETH gerekmez**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Ethereum'dan Arbitrum'a USDT rotaları
+
+Yaklaşık 17:51 UTC'de 1.000 USDT için test teklifleri. Canlı teklif güncel rakamları gösterir.
+
+<Tabs>
+<Tab title="Ethereum'dan Arbitrum'a">
+
+| Rota | Alacağınız | Tahmini süre | Ödeme |
+| :-- | :-- | :-- | :-- |
+| USDT native bridge (USDT0) | 1.000,00 USDT0 | Yaklaşık 1,5 dakika | Cüzdan işlemi, artı ETH ile yaklaşık 0,04 USD LayerZero mesaj ücreti |
+| L2Pass RFQ | 999,79 USDT0 | Yaklaşık 44 saniye | Tek kullanımlık yatırma adresi |
+| LI.FI Intents | 999,75 USDT0 | Gösterilmiyor | Cüzdan işlemi |
+| Relay | 999,68 USDT0 | Yaklaşık 1 saniye | Cüzdan işlemi |
+| L2Pass Private | 998,19 USDT0 | Yaklaşık 44 saniye | Tek kullanımlık yatırma adresi |
+| LI.FI | 997,39 USDT0 | Yaklaşık 2 saniye | Cüzdan işlemi |
+
+</Tab>
+<Tab title="Arbitrum'dan Ethereum'a">
+
+| Rota | Alacağınız | Tahmini süre | Ödeme |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,75 USDT | Gösterilmiyor | Cüzdan işlemi |
+| USDT native bridge (USDT0) | 1.000,00 USDT | Yaklaşık 1,5 dakika | Cüzdan işlemi, artı ETH ile yaklaşık 0,25 USD LayerZero mesaj ücreti |
+| Relay | 999,63 USDT | Yaklaşık 4 saniye | Cüzdan işlemi |
+| L2Pass RFQ | 999,51 USDT | Yaklaşık 32 saniye | Tek kullanımlık yatırma adresi |
+| L2Pass Private | 997,90 USDT | Yaklaşık 32 saniye | Tek kullanımlık yatırma adresi |
+| LI.FI | 997,33 USDT | Yaklaşık 9 saniye | Cüzdan işlemi |
+
+</Tab>
+</Tabs>
+
+Kaynak gas'ı ve mesaj ücretinden sonra, Ethereum'dan yerel USDT0 köprüsü ile L2Pass RFQ, Arbitrum'dan ise LI.FI Intents ile USDT0 neredeyse başa baş kaldı. Uygulama rotaları gas sonrası net değere göre sıralar.
+
+## USDT Ethereum'dan Arbitrum'a nasıl köprülenir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Ethereum'da USDT.
+    - **To:** Arbitrum'da USDT0.
+    - **Amount:** göndermek istediğiniz USDT miktarı.
+    - **Alıcı adresi:** USDT0'ı alacak Arbitrum adresi.
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. Hız önemliyse Relay test tekliflerinde yaklaşık 1 saniyede tamamlandı; tutar daha önemliyse USDT0 ile L2Pass RFQ'yu karşılaştırın.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresi olarak kontrol ettiğiniz bir Ethereum cüzdanı girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya iade eder.
+  </Step>
+
+  <Step title="Cüzdanla veya yatırma adresiyle ödeyin">
+    Nasıl ödeyeceğiniz seçtiğiniz rotaya bağlıdır.
+
+    <Tabs>
+      <Tab title="Cüzdan rotaları (USDT0, Relay, LI.FI)">
+        İşlemi Ethereum cüzdanınızda imzalayın.
+      </Tab>
+      <Tab title="Yatırma adresi (L2Pass RFQ, L2Pass Private)">
+        USDT'yi bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Takası takip edin">
+    L2Pass RFQ ve L2Pass Private için durumu **Recent swaps** içinde takip edin. USDT0 transferi bir LayerZero mesajıdır, bu yüzden Ethereum işlem hash'inizle [LayerZero Scan](https://layerzeroscan.com/) üzerinden takip edebilirsiniz.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Gas için Ethereum'da ETH gerekir, almak için Arbitrum'da ETH gerekmez.
+
+- **Gas yalnızca Ethereum'da.** Gas'ı Ethereum'da ETH ile ödersiniz. Arbitrum ağ ücreti gösterilen tutardan düşülür, bu yüzden almak için Arbitrum'da ETH gerekmez.
+- **Arbitrum'da USDT0.** L2Pass Swap'in Arbitrum'da teslim ettiği USDT, USDT0'dır.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDT'yi Ethereum'dan Arbitrum'a köprülemek ne kadar sürer?">
+    Test tekliflerinde Relay'de yaklaşık 1 saniyeden yerel USDT0 köprüsünde yaklaşık 1,5 dakikaya kadar. Rota kartları güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="USDT'yi Ethereum'dan Arbitrum'a köprülemenin maliyeti nedir?">
+    Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar). 1.000 USDT'lik test tekliflerinde yerel USDT0 köprüsü yaklaşık 0,04 USD mesaj ücretiyle 1.000 USDT0, L2Pass RFQ ise 999,79 USDT0 teslim etti. Ayrıca Ethereum gas'ı ödersiniz.
+  </Accordion>
+
+  <Accordion title="Arbitrum'daki USDT0, USDT ile aynı mı?">
+    USDT0, USDT'nin LayerZero üzerinden ağlar arasında taşınan omnichain sürümüdür. Arbitrum'da L2Pass Swap'in teslim ettiği USDT budur.
+  </Accordion>
+
+  <Accordion title="Arbitrum'dan Ethereum'a geri köprüleyebilir miyim?">
+    Evet. Test tekliflerinde aynı rotalar ters yönde de sunuldu; yukarıdaki ikinci sekmeye bakın.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Tron'dan Arbitrum'a USDT](/tr/products/swap/guides/usdt-tron-to-arbitrum)
+- [USDT ağları](/tr/products/swap/learn/usdt-networks)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

@@ -1,0 +1,107 @@
+---
+title: "如何把 USDC 跨链到 Solana"
+description: "从 Base 约 32 秒、从 Ethereum 约 42 秒把 USDC 跨链到 Solana，或把 TRC-20 USDT 兑换成 USDC。L2Pass 手续费 0%，无需 SOL。"
+sidebarTitle: "USDC 到 Solana"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDC 从 Ethereum 或 Base 跨链到 Solana，也可以把 Tron 上的 USDT 兑换成 Solana 上的 USDC。在测试报价中，这些交易对由 L2Pass RFQ 和 L2Pass Private 提供（两者都运行在 [NEAR Intents](https://near.org/intents) 上），预计时间约 30 秒到 1.5 分钟。你把代币发送到一次性充值地址即可付款，可以从已连接的钱包、任意钱包或交易所发送。稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**从 Base 约 30 秒** · **L2Pass 手续费 0%** · **发送 1,000 到账 999.65 USDC** · **无需 SOL**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## 到 Solana 的路由
+
+在测试报价中，只有 L2Pass RFQ 和 L2Pass Private 能从 Base、Ethereum 和 Tron 到达 Solana。
+
+| 路由 | 预计时间 | 到账 | 说明 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 从 Base 约 32 秒，从 Ethereum 约 42 秒，从 Tron 约 77 秒 | 浮动，有最少到账 | 求解器和做市商竞争执行你的兑换。充值地址。 |
+| L2Pass Private | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 机密执行。充值地址。L2Pass 手续费最高 0.3%。 |
+
+在这些测试报价中，这些交易对没有其他路由，包括 Circle CCTP。报价会列出能完成你的交易对的所有路由。
+
+## 测试报价
+
+约 17:17 UTC 的 1,000 USDC 或 USDT 报价。实时报价会显示当前数据。
+
+| 兑换 | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 1,000 USDC，Base 到 Solana | 999.65 USDC | 997.92 USDC |
+| 1,000 USDC，Ethereum 到 Solana | 999.55 USDC | 997.92 USDC |
+| Tron 上 1,000 USDT 到 Solana 上的 USDC | 998.67 USDC | 996.09 USDC |
+
+在 L2Pass RFQ 上，报价显示 L2Pass 手续费 0%、NEAR Intents 提供方费用 0.01%、Solana 网络费 0.28 USDC。
+
+## 如何把 USDC 跨链到 Solana
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Ethereum 或 Base 上的 USDC，或 Tron 上的 USDT。
+    - **To：** Solana 上的 USDC。
+    - **Amount：** 你要发送的数量。
+    - **收款地址：** 接收 USDC 的 Solana 地址。
+  </Step>
+
+  <Step title="比较路由">
+    在 L2Pass RFQ 和 L2Pass Private 卡片上查看预计到账、最少到账、预计时间和费用。默认滑点为 0.05%（可修改）。
+  </Step>
+
+  <Step title="设置退款地址">
+    把退款地址设为你在源链上控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="向充值地址付款">
+    通过地址或二维码，从已连接的钱包、任意钱包或交易所把报价显示的金额发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致。
+  </Step>
+
+  <Step title="跟踪兑换">
+    在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+你只需要源链上的 Gas，接收时不需要 SOL。
+
+- **只需源链 Gas。** 你在 Ethereum 或 Base 上用 ETH 支付 Gas，在 Tron 上用 TRX 支付。Solana 网络费会从显示金额中扣除，因此接收时不需要 SOL。之后在 Solana 上转移或使用 USDC 时才需要 SOL。
+- **一次兑换完成 USDT 到 USDC。** 从 Tron 出发，你可以同时更换稳定币和网络。这仍然是稳定币兑换，在 L2Pass RFQ 上 L2Pass 手续费为 0%。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="把 USDC 跨链到 Solana 需要多长时间？">
+    在测试报价中，从 Base 约 32 秒，从 Ethereum 约 42 秒，从 Tron 约 77 秒。路由卡片会显示当前预计时间。
+  </Accordion>
+
+  <Accordion title="把 USDC 跨链到 Solana 要多少钱？">
+    稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。在 1,000 USDC 的测试报价中，扣除 NEAR Intents 费用和 Solana 网络费后，L2Pass RFQ 从 Base 到账 999.65 USDC，从 Ethereum 到账 999.55 USDC。
+  </Accordion>
+
+  <Accordion title="在 Solana 上接收 USDC 需要 SOL 吗？">
+    不需要。Solana 网络费会从显示金额中扣除。之后发送或使用 USDC 时才需要 SOL。
+  </Accordion>
+
+  <Accordion title="可以把 TRC-20 USDT 兑换成 Solana 上的 USDC 吗？">
+    可以。在测试报价中，Tron 上的 1,000 USDT 通过 L2Pass RFQ 在约 77 秒内换得 Solana 上的 998.67 USDC。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [把 USDT 从 Tron 跨链到 Solana](/zh/products/swap/guides/usdt-tron-to-solana)
+- [如何通过 Circle CCTP 跨链 USDC](/zh/products/swap/guides/usdc-cctp)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

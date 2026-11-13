@@ -1,0 +1,105 @@
+---
+title: "Qué es L2Pass RFQ by NEAR Intents"
+description: "L2Pass RFQ by NEAR Intents permite que solvers y market makers compitan por ejecutar tu swap cross-chain. Cómo funciona, cuánto cuesta y qué pasa si falla."
+sidebarTitle: "L2Pass RFQ by NEAR Intents"
+---
+
+L2Pass RFQ by NEAR Intents es una ruta de swap cross-chain en [L2Pass Swap](https://swap.l2pass.com/) donde solvers y market makers compiten por ejecutar tu swap. Indicas lo que quieres recibir, ellos cotizan un precio y la mejor cotización se te muestra antes de pagar. Pagas enviando tokens a una dirección de depósito de un solo uso, desde una wallet conectada, cualquier wallet o un exchange. La comisión de L2Pass es del 0% en swaps de stablecoins y de hasta 0,2% en otros activos, y la cotización muestra lo que recibirás después de comisiones. Solo el gas en la red de origen y la comisión de mensaje del puente, si la hay, se pagan aparte.
+
+## Términos clave
+
+En un swap RFQ, los solvers cotizan tu swap exacto y tú pagas a una dirección de depósito de un solo uso.
+
+| Término | Significado |
+| :-- | :-- |
+| RFQ (request for quote, solicitud de cotización) | Una forma de operar en la que market makers profesionales cotizan un precio para tu swap exacto, en lugar de que operes contra un pool. |
+| Intent | Una declaración firmada del resultado que quieres, como "entran 1000 USDT en Tron, salen USDT en Ethereum". Dice qué, no cómo. |
+| Solver | Un market maker o bot que compite por ejecutar intents con su propio inventario y rutas. |
+| [NEAR Intents](https://near.org/intents) | La red sobre la que funciona L2Pass RFQ. Recoge intents, deja que los solvers compitan y liquida el resultado. |
+| Dirección de depósito | Una dirección de un solo uso creada para tu cotización. Enviar allí el importe cotizado inicia el swap. |
+| Dirección de reembolso | Una wallet que controlas en la red de origen. Si el swap no puede completarse, el proveedor devuelve tu depósito allí. |
+
+## Cómo funciona un swap RFQ
+
+Los solvers compiten por tu swap antes de que pagues, así que ves el precio primero.
+
+<Steps>
+  <Step title="Pides una cotización">
+    En [swap.l2pass.com](https://swap.l2pass.com/) eliges el token y la red de origen, el token y la red de destino, el importe y la dirección de recepción. L2Pass consulta a la vez todas sus fuentes de enrutamiento, y L2Pass RFQ es una de ellas.
+  </Step>
+
+  <Step title="Los solvers compiten">
+    Los solvers de NEAR Intents cotizan lo que pueden entregar. La tarjeta de ruta muestra el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones.
+  </Step>
+
+  <Step title="Indicas una dirección de reembolso y pagas">
+    Indicas una dirección de reembolso en la red de origen y luego envías el importe cotizado a la dirección de depósito de un solo uso desde la wallet, por dirección o con código QR.
+  </Step>
+
+  <Step title="El swap se liquida">
+    El solver ganador entrega los tokens de destino en tu dirección de recepción. Puedes seguir el estado en **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* y luego *Complete*.
+  </Step>
+</Steps>
+
+## L2Pass RFQ frente a L2Pass Private
+
+Ambas rutas usan la misma red de solvers de NEAR Intents y el mismo flujo con dirección de depósito.
+
+| | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| Ejecución | Pública | Entorno confidencial que limita lo que se ve en las blockchains públicas |
+| Comisión de L2Pass | 0% en stablecoins, hasta 0,2% en otros activos | Hasta 0,3% (en lugar de 0% o 0,2%, no además) |
+| Pago | Dirección de depósito de un solo uso | Dirección de depósito de un solo uso |
+| Dirección de reembolso | Obligatoria | Obligatoria |
+
+Un swap privado no es anonimato: tu dirección de wallet se sigue compartiendo con los proveedores y se revisa exactamente igual que un swap público. Consulta [Qué es un swap privado](/es/products/swap/overview#private-swaps).
+
+## Por qué usar una ruta RFQ
+
+RFQ te permite pagar desde cualquier sitio y llegar a cadenas que no tienen un puente directo entre sí.
+
+- **Un pago desde cualquier sitio.** Puedes pagar desde cualquier wallet o exchange, sin conectar una wallet ni firmar una llamada a un contrato en la red de origen.
+- **Muchas redes.** Una sola ruta puede conectar cadenas sin puente directo entre ellas, como Tron, Bitcoin, Zcash, Solana y TON.
+- **Precio por adelantado.** Ves el importe que recibirás antes de pagar. Ya incluye todas las comisiones salvo el gas en la red de origen.
+
+L2Pass también muestra otras rutas junto a RFQ, como Circle CCTP, USDT0, LI.FI y Relay. Cuál da más depende del par y del importe, así que compara las tarjetas de ruta. Consulta [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes).
+
+## Límites, tiempos y reembolsos
+
+Los swaps RFQ pueden tener un mínimo, tardar más con Bitcoin o Zcash y nunca se ejecutan parcialmente.
+
+- **Importe mínimo.** Las rutas RFQ pueden tener un importe mínimo de swap. Si tu importe es menor, la ruta aparece como no disponible con el mínimo indicado.
+- **Tiempos.** Los swaps RFQ suelen tardar desde unos 30 segundos hasta unos minutos, más en redes con confirmación de bloques lenta como Bitcoin o Zcash.
+- **Sin ejecución parcial.** Un swap se completa entero o no se ejecuta.
+- **Reembolsos.** Si un swap no puede completarse, el proveedor devuelve tu depósito a la dirección de reembolso; pueden descontarse comisiones del proveedor y de la red. Un depósito marcado por normas de AML o sanciones queda retenido para revisión, y lo resuelves con el soporte de NEAR Intents. Consulta [Cómo funciona el control](/es/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Envío desde un exchange.** Comprueba que el importe que llega coincide con la cotización, porque algunos exchanges descuentan su comisión de retiro.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿L2Pass RFQ es no custodial?">
+    Sí. L2Pass nunca custodia tus tokens ni tus claves privadas. Envías los tokens a una dirección de depósito para tu cotización y el swap lo ejecutan solvers de NEAR Intents.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta L2Pass RFQ?">
+    La comisión de L2Pass es del 0% en swaps de stablecoins y de hasta 0,2% en otros activos. NEAR Intents y las redes cobran sus propias comisiones. El importe mostrado en la cotización ya las incluye.
+  </Accordion>
+
+  <Accordion title="¿Necesito conectar una wallet?">
+    No. Puedes pagar enviando los tokens a la dirección de depósito desde cualquier wallet o exchange, con la dirección o el código QR. También puedes pagar desde una wallet conectada.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si ningún solver ejecuta mi swap?">
+    El swap no se ejecuta y el proveedor devuelve tu depósito a la dirección de reembolso, descontando las comisiones del proveedor o de la red.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes)
+- [USDT de Tron a Ethereum](/es/products/swap/guides/usdt-tron-to-ethereum)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

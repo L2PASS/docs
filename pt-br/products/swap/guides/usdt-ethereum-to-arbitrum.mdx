@@ -1,0 +1,126 @@
+---
+title: "Como transferir USDT da Ethereum para a Arbitrum (USDT0)"
+description: "Transfira USDT da Ethereum para a Arbitrum em 1 segundo a 1,5 minuto. Seis rotas comparadas, taxa L2Pass de 0%, chega como USDT0."
+sidebarTitle: "USDT: Ethereum para Arbitrum"
+---
+
+import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
+
+Você pode transferir USDT da Ethereum para a Arbitrum com o [L2Pass Swap](https://swap.l2pass.com/). Na Arbitrum, o USDT chega como USDT0, a versão omnichain do USDT. Em cotações de teste, seis rotas foram oferecidas para este par: a bridge nativa USDT0, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private e LI.FI, com tempos estimados de cerca de 1 segundo a 1,5 minuto. As melhores rotas entregaram com menos de 0,3 USDT de diferença entre si para 1.000 USDT. A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas antes de confirmar. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
+
+**Seis rotas numa cotação** · **Taxa L2Pass de 0%** · **Chegam 1.000 USDT0 para 1.000 enviados** · **Sem precisar de ETH na Arbitrum**
+
+<Note>Números de cotações de teste de 19 de outubro de 2026. A sua cotação é sempre ao vivo.</Note>
+
+## Rotas de USDT da Ethereum para a Arbitrum
+
+Cotações de teste de 1.000 USDT por volta das 17:51 UTC. A cotação ao vivo mostra os números atuais.
+
+<Tabs>
+<Tab title="Ethereum para Arbitrum">
+
+| Rota | Você recebe | Tempo estimado | Pagamento |
+| :-- | :-- | :-- | :-- |
+| USDT native bridge (USDT0) | 1.000,00 USDT0 | Cerca de 1,5 minuto | Transação na carteira, mais taxa de mensagem LayerZero de cerca de 0,04 USD em ETH |
+| L2Pass RFQ | 999,79 USDT0 | Cerca de 44 segundos | Endereço de depósito de uso único |
+| LI.FI Intents | 999,75 USDT0 | Não exibido | Transação na carteira |
+| Relay | 999,68 USDT0 | Cerca de 1 segundo | Transação na carteira |
+| L2Pass Private | 998,19 USDT0 | Cerca de 44 segundos | Endereço de depósito de uso único |
+| LI.FI | 997,39 USDT0 | Cerca de 2 segundos | Transação na carteira |
+
+</Tab>
+<Tab title="Arbitrum para Ethereum">
+
+| Rota | Você recebe | Tempo estimado | Pagamento |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,75 USDT | Não exibido | Transação na carteira |
+| USDT native bridge (USDT0) | 1.000,00 USDT | Cerca de 1,5 minuto | Transação na carteira, mais taxa de mensagem LayerZero de cerca de 0,25 USD em ETH |
+| Relay | 999,63 USDT | Cerca de 4 segundos | Transação na carteira |
+| L2Pass RFQ | 999,51 USDT | Cerca de 32 segundos | Endereço de depósito de uso único |
+| L2Pass Private | 997,90 USDT | Cerca de 32 segundos | Endereço de depósito de uso único |
+| LI.FI | 997,33 USDT | Cerca de 9 segundos | Transação na carteira |
+
+</Tab>
+</Tabs>
+
+Depois do gas de origem e da taxa de mensagem, a bridge nativa USDT0 e o L2Pass RFQ ficaram quase empatados a partir da Ethereum, e LI.FI Intents e USDT0 quase empatados a partir da Arbitrum. O app ordena as rotas pelo valor líquido depois do gas.
+
+## Como transferir USDT da Ethereum para a Arbitrum
+
+Nada sai da sua carteira até você pagar, então dá para comparar todas as rotas antes.
+
+<Steps>
+  <Step title="Abra o L2Pass Swap">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/) e preencha quatro campos:
+
+    - **From:** USDT na Ethereum.
+    - **To:** USDT0 na Arbitrum.
+    - **Amount:** quanto USDT você quer enviar.
+    - **Endereço de recebimento:** o endereço Arbitrum que vai receber o USDT0.
+  </Step>
+
+  <Step title="Compare as rotas">
+    Cada cartão de rota mostra o valor estimado, o mínimo a receber, o tempo estimado e as taxas. Se a velocidade importa, o Relay liquidou em cerca de 1 segundo em cotações de teste; se o valor importa mais, compare USDT0 e L2Pass RFQ.
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    No L2Pass RFQ e no L2Pass Private, coloque como endereço de reembolso uma carteira Ethereum que você controla. Se o swap não puder ser concluído, o provedor devolve o seu depósito para lá.
+  </Step>
+
+  <Step title="Pague pela carteira ou pelo endereço de depósito">
+    A forma de pagar depende da rota escolhida.
+
+    <Tabs>
+      <Tab title="Rotas com carteira (USDT0, Relay, LI.FI)">
+        Assine a transação na sua carteira Ethereum.
+      </Tab>
+      <Tab title="Endereço de depósito (L2Pass RFQ, L2Pass Private)">
+        Envie USDT para o endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira ou de uma exchange, por endereço ou QR code. Se enviar de uma exchange, confira se o valor que chega bate com a cotação, porque algumas exchanges descontam a taxa de saque dele.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Acompanhe o swap">
+    No L2Pass RFQ e no L2Pass Private, acompanhe o status em **Recent swaps**. Uma transferência USDT0 é uma mensagem LayerZero, então você pode acompanhá-la no [LayerZero Scan](https://layerzeroscan.com/) com o hash da sua transação na Ethereum.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Você precisa de ETH na Ethereum para o gas e de nenhum ETH na Arbitrum para receber.
+
+- **Gas só na Ethereum.** Você paga gas em ETH na Ethereum. A taxa de rede da Arbitrum é descontada do valor exibido, então você não precisa de ETH na Arbitrum para receber.
+- **USDT0 na Arbitrum.** O USDT que o L2Pass Swap entrega na Arbitrum é USDT0.
+
+<SwapBeforeYouSend />
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Quanto tempo leva para transferir USDT da Ethereum para a Arbitrum?">
+    De cerca de 1 segundo no Relay a cerca de 1,5 minuto na bridge nativa USDT0, em cotações de teste. Os cartões de rota mostram a estimativa atual.
+  </Accordion>
+
+  <Accordion title="Quanto custa transferir USDT da Ethereum para a Arbitrum?">
+    A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados). Em cotações de teste de 1.000 USDT, a bridge nativa USDT0 entregou 1.000 USDT0 mais uma taxa de mensagem de cerca de 0,04 USD, e o L2Pass RFQ entregou 999,79 USDT0. Você também paga gas da Ethereum.
+  </Accordion>
+
+  <Accordion title="O USDT0 na Arbitrum é o mesmo que USDT?">
+    O USDT0 é a versão omnichain do USDT, transferida entre redes via LayerZero. Na Arbitrum, é o USDT que o L2Pass Swap entrega.
+  </Accordion>
+
+  <Accordion title="Posso voltar da Arbitrum para a Ethereum?">
+    Sim. As mesmas rotas foram oferecidas na direção oposta em cotações de teste; veja a segunda aba acima.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Melhor forma de transferir USDT e USDC: L2Pass vs outras bridges](/pt-br/products/swap/learn/compare-stablecoin-transfers)
+- [Transferir USDT da Tron para a Arbitrum](/pt-br/products/swap/guides/usdt-tron-to-arbitrum)
+- [Redes de USDT explicadas](/pt-br/products/swap/learn/usdt-networks)
+- [Como a L2Pass compara rotas](/pt-br/products/swap/learn/compare-routes)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*

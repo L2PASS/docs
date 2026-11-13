@@ -1,0 +1,57 @@
+---
+title: "Glosario de L2Pass Swap: RFQ, solvers, USDT0, CCTP y más"
+description: "Definiciones sencillas de los términos de L2Pass Swap y de esta documentación: RFQ, solver, dirección de depósito, dirección de reembolso, mínimo a recibir, slippage, USDT0, CCTP y más."
+sidebarTitle: "Glosario"
+---
+
+Estos son los términos que encontrarás en [L2Pass Swap](https://swap.l2pass.com/) y en esta documentación, en palabras sencillas. Cada uno enlaza a la página que lo explica a fondo.
+
+## Rutas y proveedores
+
+Una ruta es la forma en que un proveedor ejecuta tu swap, y L2Pass las muestra todas lado a lado.
+
+| Término | Qué significa |
+| :-- | :-- |
+| **Ruta (route)** | Una forma de ejecutar tu swap, gestionada por un proveedor. L2Pass muestra todas las rutas que pueden ejecutar tu swap, ordenadas por lo que recibes. [Cómo se comparan las rutas](/es/products/swap/learn/compare-routes) |
+| **Tarjeta de ruta** | El recuadro de la interfaz de swap que muestra el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones de una ruta. |
+| **NEAR Intents** | Una red donde solvers y market makers compiten por ejecutar swaps cross-chain. Gestiona las rutas L2Pass RFQ y L2Pass Private. |
+| **L2Pass RFQ** | La ruta estándar en NEAR Intents. RFQ significa request for quote (solicitud de cotización): tu swap se ofrece a los solvers y la mejor cotización lo ejecuta. [Qué es L2Pass RFQ](/es/products/swap/learn/what-is-l2pass-rfq) |
+| **L2Pass Private** | La misma ruta que L2Pass RFQ, ejecutada en un entorno confidencial que limita lo que muestran las blockchains públicas. [Swaps privados](/es/products/swap/learn/private-cross-chain-swaps) |
+| **Solver** | Un market maker que ejecuta swaps en NEAR Intents con su propia liquidez. |
+| **USDT0** | La versión de USDT que se mueve de forma nativa entre redes sobre LayerZero, sin token envuelto. [Redes de USDT explicadas](/es/products/swap/learn/usdt-networks) |
+| **Circle CCTP** | El Cross-Chain Transfer Protocol de Circle. Quema USDC en la red de origen y emite USDC nativo en la de destino, en modo Standard o Fast. [Pasar USDC con CCTP](/es/products/swap/guides/usdc-cctp) |
+| **Agregador** | Un servicio que busca una ruta entre muchos puentes y exchanges, como LI.FI o el agregador OKX DEX. |
+
+## Pagar y cobrar
+
+Pagas firmando en tu wallet o enviando a una dirección de depósito.
+
+| Término | Qué significa |
+| :-- | :-- |
+| **Ruta con wallet** | Una ruta en la que firmas una transacción en tu propia wallet, como CCTP, USDT0, LI.FI o Relay. |
+| **Dirección de depósito** | Una dirección de un solo uso creada para tu cotización en las rutas L2Pass RFQ y L2Pass Private. Puedes pagarla desde cualquier wallet o exchange, sin conectar una wallet. [Swaps con dirección de depósito](/es/products/swap/learn/deposit-address-swaps) |
+| **Dirección de reembolso** | Una wallet que controlas en la red de origen. Si un swap con dirección de depósito no puede completarse, tu depósito vuelve allí. [Swaps fallidos y reembolsos](/es/products/swap/learn/failed-swaps-and-refunds) |
+| **Sin custodia** | L2Pass nunca guarda tus tokens ni tus claves privadas. Los proveedores ejecutan cada swap en sus propios contratos. [¿Es seguro L2Pass?](/es/products/swap/learn/is-l2pass-safe) |
+| **Ejecución parcial** | Un swap que se completa solo en parte. L2Pass no los usa: un swap se completa entero o no se ejecuta. |
+
+## Importes y comisiones
+
+El importe mostrado es después de todas las comisiones salvo el gas de origen y la posible comisión de mensaje del puente.
+
+| Término | Qué significa |
+| :-- | :-- |
+| **Importe estimado** | Lo que deberías recibir con las condiciones actuales del mercado, después de comisiones. |
+| **Mínimo a recibir** | Lo mínimo que recibirás. Si el mercado se mueve más allá, el swap no se ejecuta. |
+| **Tolerancia de slippage** | Cuánto por debajo del importe estimado aceptas. Fija el mínimo a recibir. Por defecto es 0,05%. [Slippage explicado](/es/products/swap/learn/slippage) |
+| **Salida fija** | Una ruta que entrega un importe exacto, como USDT0. El slippage no se aplica. |
+| **Comisión de L2Pass** | La única comisión que cobra L2Pass: 0% en swaps de stablecoins, hasta 0,2% en otros activos, hasta 0,3% en swaps privados. [Comisiones explicadas](/es/products/swap/learn/fees) |
+| **Comisión del proveedor** | La comisión que cobra el proveedor de rutas, como NEAR Intents, LI.FI o Relay. Está incluida en el importe que recibes. |
+| **Comisión de red** | La comisión que cobra la blockchain de destino. Está incluida en el importe que recibes. |
+| **Gas de origen** | La comisión que cobra la blockchain de origen por enviar tu transacción, pagada desde tu wallet en su token nativo (ETH, TRX, BNB, etc.). |
+| **Comisión de mensaje del puente** | Una comisión que cobran algunos puentes por enviar un mensaje cross-chain, como USDT0 sobre LayerZero. Se paga en el token nativo de la red de origen. |
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Cómo funciona L2Pass Swap](/es/products/swap/overview)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)

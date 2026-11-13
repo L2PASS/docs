@@ -1,0 +1,117 @@
+---
+title: "在对方偏好的网络上用加密货币向任何人付款"
+description: "使用 L2Pass Swap，以收款人想要的网络支付 USDT、USDC、BTC 或 ZEC，可从任意钱包或交易所付款，付款前即可看到费用。"
+sidebarTitle: "加密货币付款"
+---
+
+你可以用 [L2Pass Swap](https://swap.l2pass.com/) 以对方想要的代币和网络向其付款，而你自己用手上持有的任何资产支付。例如，你持有 Tron 上的 USDT，而供应商想要 Solana 上的 USDC：把对方的 Solana 地址设为收款地址，兑换会一步把 USDC 送到那里。你可以从已连接的钱包、任意钱包或交易所付款。稳定币兑换的 L2Pass 手续费为 0%，收款人扣除所有费用后将收到的金额会在你付款前显示。
+
+## 你可以做什么
+
+你用持有的任何资产付款，收款人收到他们要求的代币和网络。
+
+| 场景 | 示例 | 做法 |
+| :-- | :-- | :-- |
+| 在收款人的网络上付款 | 你持有 Tron 上的 USDT，对方想要 Ethereum 上的 USDT | 把对方的 Ethereum 地址设为收款地址 |
+| 在途中换币种 | 你持有 Tron 上的 USDT，对方想要 Solana 上的 USDC | 选择 Solana 上的 USDC 作为目标 |
+| 从交易所付款 | 你的 USDT 在交易所 | 提现到本次报价的一次性充值地址 |
+| 与主钱包分开 | 你不想用主钱包付款 | 通过私密兑换或从单独的钱包付款（见下文） |
+| 用 BTC 或 ZEC 付款或收款 | 对方想要 BTC，你持有 USDT | 选择 Bitcoin 上的 BTC 作为目标 |
+
+## 示例：从 Tron 向 Ethereum 上的供应商付款
+
+你欠供应商约 1,000 USDT，对方希望在 Ethereum 上收款。你持有 Tron 上的 USDT。2026 年 10 月 19 日的实时报价：
+
+| 路由 | 供应商收到 |
+| :-- | :-- |
+| L2Pass RFQ | 999.55 USDT |
+| Relay | 998.86 USDT |
+| deBridge | 998.12 USDT |
+| ChangeNOW, standard | 988.14 USDT |
+
+使用 L2Pass RFQ，供应商比通过 ChangeNOW 多收到约 11 USDT，而且你在付款前就看到了准确金额。所有路由请参见[比较：稳定币转账](/zh/products/swap/learn/compare-stablecoin-transfers)。
+
+## 如何向另一条网络上的人付款
+
+收款人只需给你一个地址和网络，其余五步由你完成。
+
+<Steps>
+  <Step title="询问对方地址和网络">
+    询问收款人想要哪种代币、哪条网络，以及其在该网络上的地址。请再次确认网络：错误网络上的地址可能收不到代币。
+  </Step>
+
+  <Step title="请求报价">
+    在 [swap.l2pass.com](https://swap.l2pass.com/) 上，把你用来付款的资产选为源，把对方想要的选为目标。把对方地址粘贴为收款地址。
+  </Step>
+
+  <Step title="检查对方将收到多少">
+    路由卡片上的预计到账就是扣除所有费用后到达对方地址的金额。如果需要对方收到准确金额，请调整你的金额直到预计到账匹配，或在有固定到账路由时使用该路由。
+  </Step>
+
+  <Step title="设置退款地址并付款">
+    把退款地址设为你控制的钱包。然后在钱包中签名，或从任意钱包或交易所把报价金额发送到一次性充值地址。
+  </Step>
+
+  <Step title="分享凭证">
+    当 **Recent swaps** 显示 *Complete* 时，把目标链上的交易分享给收款人。
+  </Step>
+</Steps>
+
+## 与主钱包分开
+
+当你直接从钱包付款时，收款人可以看到该钱包的地址及其公开历史。有两种方法可以减少暴露：
+
+- **私密兑换。** L2Pass Private 在 NEAR Intents 的机密环境中运行，减少公开区块链上关于兑换如何成交的信息。私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取）。
+- **从单独的钱包或交易所付款。** 充值地址路由让你可以从任意钱包付款，因此不必由主钱包发出付款。
+
+这不是匿名。提供方仍会收到你的钱包地址，并且每笔兑换无论公开还是私密，筛查方式都相同。参见[什么是私密跨链兑换](/zh/products/swap/learn/private-cross-chain-swaps)。
+
+## 费用、退款和义务
+
+退款会退回给你，而不是收款人；稳定币付款的 L2Pass 手续费为 0%。
+
+- **费用。** L2Pass 手续费为：稳定币兑换 0%，其他资产最高 0.2%，私密兑换最高 0.3%。参见 [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)。
+- **退款。** 如果兑换无法完成，提供方会把充值退回到你的退款地址，而不是收款人。
+- **不部分付款。** 兑换要么全部完成，要么不执行。
+- **合规检查。** 无需账户或 KYC。被标记的地址拿不到报价，因此不会发生任何转账。到账后才被标记的充值不会退回，而是冻结审核；你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+- **你的义务。** 在你所在地区，付款可能涉及税务或申报义务。L2Pass 不提供税务或法律建议。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="可以把 Tron 上的 USDT 发给想要另一条网络上 USDC 的人吗？">
+    可以。选择 Tron 上的 USDT 作为源，对方网络上的 USDC 作为目标，并把对方地址设为收款地址。
+  </Accordion>
+
+  <Accordion title="可以直接从交易所向别人付款吗？">
+    可以，通过充值地址路由即可。从交易所提现到本次报价的一次性充值地址，并把对方地址设为收款地址。请确认到账金额与报价一致。
+  </Accordion>
+
+  <Accordion title="收款人会因为费用损失多少？">
+    稳定币损失很少。在 2026 年 10 月 19 日的实时报价中，从 Tron 发出的 1,000 USDT 通过 L2Pass RFQ 扣除所有费用后在 Ethereum 上到账 999.55 USDT。稳定币的 L2Pass 手续费为 0%。
+  </Accordion>
+
+  <Accordion title="可以用 USDT 向别人支付 BTC 或 ZEC 吗？">
+    可以。选择 Bitcoin 上的 BTC 或 Zcash 上的 ZEC 作为目标，并把对方地址设为收款地址。参见[比较：BTC 兑换](/zh/products/swap/learn/compare-btc-swaps)和[比较：ZEC 兑换](/zh/products/swap/learn/compare-zec-swaps)。
+  </Accordion>
+
+  <Accordion title="收款人需要 L2Pass 账户吗？">
+    不需要。对方只需要一个想要收款的网络上的地址。双方都不需要账户。
+  </Accordion>
+
+  <Accordion title="可以对收款人隐藏我的钱包吗？">
+    你可以从单独的钱包付款，或使用私密兑换来减少公开区块链显示的信息。这不是匿名：提供方仍会收到你的钱包地址，合规筛查照常适用。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [从任意钱包或交易所兑换](/zh/products/swap/learn/deposit-address-swaps)
+- [什么是私密跨链兑换](/zh/products/swap/learn/private-cross-chain-swaps)
+- [USDT 网络详解](/zh/products/swap/learn/usdt-networks)
+- [比较：稳定币转账](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [非托管兑换与交易所对比](/zh/products/swap/learn/non-custodial-vs-exchanges)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

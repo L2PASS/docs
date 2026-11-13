@@ -1,0 +1,113 @@
+---
+title: "Comisiones de L2Pass Swap explicadas"
+description: "Comisiones de L2Pass Swap: 0% de comisión de L2Pass en swaps de stablecoins, hasta 0,2% en otros activos, hasta 0,3% en swaps privados. Ejemplos de cotizaciones reales."
+sidebarTitle: "Comisiones explicadas"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) cobra una comisión de L2Pass del 0% en swaps de stablecoins por cualquier ruta, de hasta 0,2% en otros activos y de hasta 0,3% en swaps privados. La comisión privada se aplica en lugar de 0% o 0,2%, no además. Los partners de enrutamiento y las blockchains cobran sus propias comisiones, y el importe que recibirás, mostrado en la cotización antes de confirmar, ya las incluye, salvo el gas en la red de origen y la comisión de mensaje del puente, si la hay, que pagas aparte.
+
+## Comisión de L2Pass
+
+Es la única comisión que cobra L2Pass. Depende del activo y de si el swap es privado.
+
+| Swap | Comisión de L2Pass |
+| :-- | :-- |
+| Swaps de stablecoins (USDT, USDC y otras), cualquier ruta | **0%** |
+| Otros activos (ETH, BTC, SOL, ZEC y otros) | **hasta 0,2%** |
+| Swaps privados, cualquier activo | **hasta 0,3%** (en lugar de 0% o 0,2%, no además) |
+
+## Todas las comisiones que puedes ver en una cotización
+
+Una cotización puede incluir hasta cinco comisiones. Las tres primeras se descuentan del importe que recibes. Las dos últimas las pagas desde tu wallet, y la tarjeta de ruta las muestra.
+
+| Comisión | Quién la cobra | Cómo la pagas |
+| :-- | :-- | :-- |
+| Comisión de L2Pass | L2Pass | Incluida en el importe que recibirás |
+| Comisión del proveedor | El partner de enrutamiento, como NEAR Intents, LI.FI o Relay | Incluida en el importe que recibirás |
+| Comisión de la red de destino | La blockchain de destino | Incluida en el importe que recibirás |
+| Comisión de mensaje del puente | Algunos puentes, como USDT0 sobre LayerZero | Se paga en el token nativo de la red de origen y se muestra en la tarjeta de ruta |
+| Gas de origen | La blockchain de origen | Se paga desde tu wallet en el token nativo (ETH, TRX, BNB, etc.) y se muestra en la tarjeta de ruta |
+
+L2Pass no controla las comisiones de partners ni de red. Consulta a cada proveedor para conocer sus detalles actuales. La tarjeta de ruta siempre muestra las comisiones reales de tu swap.
+
+## Ejemplos de cotizaciones reales
+
+Las cotizaciones de prueba del 19 de octubre de 2026 (hacia las 16:55 UTC) mostraron estas comisiones. La cotización en vivo muestra las cifras actuales para tu par e importe.
+
+| Swap | Ruta | Comisión de L2Pass | Otras comisiones | Recibes |
+| :-- | :-- | :-- | :-- | :-- |
+| 1000 USDC, Arbitrum → Base | L2Pass RFQ | 0 | 0,1 USDC de comisión de NEAR Intents, 0,0024 USDC de comisión de red | 999,80 USDC |
+| 1000 USDC, Arbitrum → Base | L2Pass Private | 3 USDC (0,3%) | Comisión de NEAR Intents, 0,0024 USDC de comisión de red | 998,20 USDC |
+| 1000 USDC, Arbitrum → Base | Puente USDC (CCTP Fast) | 0 | 0,19 USDC de comisión de red | 999,81 USDC |
+| 1000 USDT, Ethereum → Tron | USDT native bridge (USDT0) | 0 | Comisión de mensaje de LayerZero de unos 0,005 ETH (unos 11,92 USD), pagada en ETH | 999,7 USDT |
+| 0,5 ETH en Ethereum → USDC en Arbitrum | L2Pass RFQ | 0 | 0,001 ETH de comisión de NEAR Intents, 0,0053 USDC de comisión de red | 1197,00 USDC |
+| 0,5 ETH en Ethereum → USDC en Arbitrum | Relay | 0,1% (unos 1,20 USD) | Comisión de Relay de unos 1,34 USD | 1195,67 USDC |
+
+El importe recibido también refleja el precio que cotiza cada proveedor, por lo que las comisiones listadas no siempre suman toda la diferencia.
+
+Dos cosas a tener en cuenta:
+
+- **Otra ruta puede ganar en otro par.** En el ejemplo de ETH, L2Pass RFQ dio más aunque no es la ruta más barata en todos los pares.
+- **Mira las comisiones que se pagan fuera del importe.** USDT0 mostró el mayor importe recibido de Ethereum a Tron, pero su comisión de mensaje se paga aparte en ETH. L2Pass ordena las rutas por el valor neto que recibes después del gas, así que puso L2Pass RFQ primero.
+
+## Cómo ver las comisiones de tu swap
+
+Puedes comprobar cada comisión para tu importe exacto en tres pasos, antes de enviar nada.
+
+<Steps>
+  <Step title="Pide una cotización">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/), elige los tokens y redes de origen y destino e introduce el importe.
+  </Step>
+
+  <Step title="Abre la tarjeta de ruta">
+    Cada tarjeta de ruta muestra el importe estimado, el mínimo a recibir, el tiempo estimado y el desglose de comisiones de esa ruta.
+  </Step>
+
+  <Step title="Compara y confirma">
+    Las rutas están ordenadas por lo que recibes. Elige la primera, o una más rápida si te importa más la velocidad. El importe mostrado es lo que recibirás después de las comisiones de L2Pass, del proveedor y de la red de destino.
+  </Step>
+</Steps>
+
+## Gas, reembolsos y deslizamiento
+
+El gas es el único coste que nunca recuperas, incluso si el swap falla.
+
+- **El gas no es reembolsable.** Si una ruta on-chain se revierte, no se intercambia ningún token, pero el gas de origen se gasta.
+- **Reembolsos y comisiones.** Si una ruta con dirección de depósito no puede completarse, el proveedor devuelve tu depósito a la dirección de reembolso; pueden descontarse comisiones del proveedor y de la red.
+- **El deslizamiento no es una comisión.** La tolerancia por defecto es 0,05% y puede cambiarse en cualquier tarjeta de ruta. Define el mínimo a recibir, y no afecta a las rutas con importe fijo.
+- **Envío desde un exchange.** Algunos exchanges descuentan su comisión de retiro del importe que envían. Comprueba que el importe que llega coincide con la cotización.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿L2Pass Swap es gratis para stablecoins?">
+    L2Pass cobra 0% en swaps de stablecoins, por cualquier ruta. Los partners de enrutamiento y las blockchains siguen cobrando sus propias comisiones, que están incluidas en el importe mostrado en la cotización. En una cotización de prueba de 1000 USDC de Arbitrum a Base, esas comisiones sumaron unos 0,10 USDC.
+  </Accordion>
+
+  <Accordion title="¿La comisión de swap privado se suma a la comisión estándar?">
+    No. La comisión de L2Pass por un swap privado es de hasta 0,3% (en lugar de 0% o 0,2%, no además). Ya está incluida en el importe mostrado en la cotización.
+  </Accordion>
+
+  <Accordion title="¿Hay comisiones que no veo antes de confirmar?">
+    La tarjeta de ruta muestra las comisiones de tu swap antes de confirmar, y el importe que recibirás ya incluye las comisiones de L2Pass, del proveedor y de la red de destino. El gas de origen y la comisión de mensaje del puente, si la hay, también se muestran en la tarjeta de ruta.
+  </Accordion>
+
+  <Accordion title="¿Puedo tener una comisión de L2Pass más baja con mucho volumen?">
+    Sí. La comisión de L2Pass puede reducirse según tu volumen, y parte de ella puede compartirse con referidores y partners. Las condiciones se acuerdan de forma individual. Consulta [Referidos y condiciones por volumen](/es/products/swap/learn/referrals-and-partners).
+  </Accordion>
+
+  <Accordion title="¿Por qué dos rutas muestran importes distintos para el mismo swap?">
+    Cada ruta tiene sus propias comisiones de proveedor y de red, su velocidad y su liquidez. Compara las tarjetas de ruta y elige la que te convenga. Consulta [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes).
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes)
+- [Qué es L2Pass RFQ by NEAR Intents](/es/products/swap/learn/what-is-l2pass-rfq)
+- [Estructura de comisiones en la descripción general de Swap](/es/products/swap/overview#fee-structure)
+- [Referidos y condiciones por volumen](/es/products/swap/learn/referrals-and-partners)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

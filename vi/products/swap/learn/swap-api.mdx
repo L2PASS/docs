@@ -1,0 +1,93 @@
+---
+title: "L2Pass Swap API cho ví và ứng dụng"
+description: "Thêm hoán đổi stablecoin cross-chain vào ví hoặc ứng dụng của bạn với L2Pass SwapKit API: ước tính, báo giá kèm địa chỉ nạp, trạng thái và webhook. API key đối tác."
+sidebarTitle: "Swap API"
+---
+
+L2Pass SwapKit API cho phép ví, ứng dụng và AI agent thêm hoán đổi cross-chain vào sản phẩm của mình. API hoạt động giống L2Pass RFQ by NEAR Intents: bạn yêu cầu báo giá, nhận một địa chỉ nạp dùng một lần, và người dùng thanh toán từ bất kỳ ví hoặc sàn nào. API trả về phí nền tảng, phí đối tác của bạn và số tiền nhận ròng cho mỗi báo giá, đồng thời thông báo thay đổi trạng thái qua webhook có chữ ký. Để truy cập cần API key đối tác, được cấp khi onboarding. Tài liệu tham khảo có tại [api.l2pass.com/docs](https://api.l2pass.com/docs).
+
+## Bạn có thể xây dựng gì
+
+Bất kỳ sản phẩm nào nhận token trên một mạng và giao trên mạng khác đều có thể dùng API.
+
+- **Ví:** hoán đổi stablecoin cross-chain ngay trong ví, bao gồm Tron, Solana, Bitcoin và Zcash.
+- **Ứng dụng thanh toán:** nhận USDT trên một mạng và thanh toán trên mạng khác.
+- **Sàn và người bán:** luồng địa chỉ nạp hoạt động từ bất kỳ ví hoặc sàn nào.
+- **AI agent:** lấy báo giá và thực hiện hoán đổi qua REST API.
+
+## Endpoint
+
+Bảy endpoint REST bao gồm tài sản, ước tính, báo giá, trạng thái và tài khoản đối tác.
+
+| Endpoint | Chức năng |
+| :-- | :-- |
+| `GET /v1/assets` | Liệt kê tài sản và mạng được hỗ trợ |
+| `POST /v1/swap/estimate` | Trả về ước tính không kèm địa chỉ nạp |
+| `POST /v1/swap/quote` | Trả về báo giá ràng buộc kèm địa chỉ nạp dùng một lần |
+| `GET /v1/swap/status/{quoteId}` | Trả về trạng thái: PENDING, COMPLETED, FAILED hoặc REFUNDED |
+| `GET /v1/partner/me` | Trả về hồ sơ đối tác và giới hạn |
+| `GET /v1/partner/transactions` | Liệt kê các hoán đổi của bạn |
+| `GET /v1/partner/analytics` | Trả về số liệu sử dụng |
+
+URL gốc: `https://api.l2pass.com`. Gửi khóa trong header `X-API-Key`. Đặc tả OpenAPI đầy đủ có trong [tài liệu tham khảo API](https://api.l2pass.com/docs).
+
+## Hoán đổi qua API hoạt động thế nào
+
+Hoán đổi qua API theo cùng luồng như trong ứng dụng: báo giá, nạp, trạng thái.
+
+<Steps>
+  <Step title="Lấy ước tính">
+    Gọi `POST /v1/swap/estimate` với tài sản nguồn, tài sản đích và số lượng để cho người dùng thấy họ sẽ nhận bao nhiêu.
+  </Step>
+
+  <Step title="Yêu cầu báo giá">
+    Gọi `POST /v1/swap/quote` với địa chỉ nhận và địa chỉ hoàn tiền. Phản hồi gồm một địa chỉ nạp dùng một lần và chi tiết phí: `platform_fee`, `partner_fee`, `total_fee` và `net_output`.
+  </Step>
+
+  <Step title="Để người dùng thanh toán">
+    Người dùng gửi số tiền theo báo giá tới địa chỉ nạp từ bất kỳ ví hoặc sàn nào.
+  </Step>
+
+  <Step title="Theo dõi trạng thái">
+    Truy vấn `GET /v1/swap/status/{quoteId}` hoặc nhận webhook ký bằng HMAC-SHA256 trong header `X-Webhook-Signature`.
+  </Step>
+</Steps>
+
+## Phí, giới hạn và hoàn tiền
+
+Bạn tự đặt phí đối tác, và khóa của bạn có giới hạn yêu cầu riêng.
+
+- **Phí đối tác.** Bạn có thể thêm phí riêng, được trả về dưới dạng `partner_fee_bps` và `partner_fee` trong mỗi báo giá.
+- **Giới hạn yêu cầu.** Giới hạn được đặt theo từng đối tác cho báo giá và truy vấn trạng thái. Vượt giới hạn, API trả về 429 kèm header `Retry-After`.
+- **Xoay khóa.** Đổi khóa bằng `POST /v1/partner/rotate-key`.
+- **Hoàn tiền và lỗi.** Nếu hoán đổi không thể hoàn tất, nhà cung cấp hoàn tiền về địa chỉ hoàn tiền và trạng thái chuyển thành REFUNDED. Địa chỉ bị gắn cờ không nhận được báo giá. Khoản nạp bị gắn cờ sau khi đến sẽ bị giữ để xem xét thay vì hoàn trả, và người dùng giải quyết với hỗ trợ NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Làm sao để có API key?">
+    API key được cấp khi onboarding đối tác. Liên hệ [hỗ trợ L2Pass](/vi/resources/support) để yêu cầu quyền truy cập.
+  </Accordion>
+
+  <Accordion title="API có giữ tiền của người dùng không?">
+    Không. Người dùng thanh toán vào địa chỉ nạp dùng một lần cho báo giá của họ, và hoán đổi được các solver trên NEAR Intents thực hiện. L2Pass không bao giờ giữ token hay khóa riêng tư của người dùng.
+  </Accordion>
+
+  <Accordion title="Tôi có thể kiếm phí từ hoán đổi không?">
+    Có. Đặt phí đối tác, và mỗi báo giá sẽ trả về nó dưới dạng `partner_fee_bps` và `partner_fee` bên cạnh phí nền tảng.
+  </Accordion>
+
+  <Accordion title="Có SDK không?">
+    Có, `@l2pass/swapkit-sdk` trên npm. Xem [tài liệu tham khảo API](https://api.l2pass.com/docs) để biết chi tiết.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Tài liệu tham khảo API](https://api.l2pass.com/docs)
+- [L2Pass RFQ by NEAR Intents là gì](/vi/products/swap/learn/what-is-l2pass-rfq)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Giới thiệu và điều kiện theo khối lượng](/vi/products/swap/learn/referrals-and-partners)
+- [Liên hệ hỗ trợ](/vi/resources/support)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

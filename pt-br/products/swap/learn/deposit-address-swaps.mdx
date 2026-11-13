@@ -1,0 +1,97 @@
+---
+title: "Swap de qualquer carteira ou exchange: como funcionam os swaps com endereço de depósito"
+description: "Com o L2Pass Swap você paga um swap cross-chain de qualquer carteira ou exchange enviando tokens para um endereço de depósito de uso único. Sem conectar carteira."
+sidebarTitle: "Swap de qualquer carteira ou exchange"
+---
+
+O [L2Pass Swap](https://swap.l2pass.com/) permite pagar um swap cross-chain sem conectar carteira. Nas rotas L2Pass RFQ e L2Pass Private, ambas na [NEAR Intents](https://near.org/intents), você recebe um endereço de depósito de uso único para a sua cotação e envia os tokens para lá de qualquer carteira ou exchange, pelo endereço ou QR code. O swap começa quando o depósito chega, e os tokens de destino vão para o endereço de recebimento que você definir. Se o swap não puder ser concluído, o provedor devolve o depósito ao seu endereço de reembolso. A taxa L2Pass é de 0% em swaps de stablecoins, e a cotação mostra o que você vai receber depois das taxas. Só o gas na rede de origem e a taxa de mensagem da ponte, se houver, são pagos à parte.
+
+## Termos principais
+
+Três endereços importam em um swap com endereço de depósito: o de depósito, o de recebimento e o de reembolso.
+
+| Termo | Significado |
+| :-- | :-- |
+| Endereço de depósito | Um endereço de uso único na rede de origem, criado para a sua cotação. Enviar o valor cotado para ele inicia o swap. |
+| Endereço de recebimento | O endereço na rede de destino que recebe os tokens. |
+| Endereço de reembolso | Uma carteira que você controla na rede de origem. Se o swap não puder ser concluído, o provedor devolve o depósito para lá. |
+| Rota de carteira | Uma rota em que você assina uma transação em uma carteira conectada, como Circle CCTP, USDT0, Relay ou LI.FI. |
+
+## Endereço de depósito ou transação pela carteira
+
+Rotas com endereço de depósito aceitam saques de exchanges e reembolsam automaticamente. Rotas de carteira exigem sua assinatura e são revertidas se falharem.
+
+| | Rotas com endereço de depósito | Rotas de carteira |
+| :-- | :-- | :-- |
+| Rotas | L2Pass RFQ, L2Pass Private | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, agregador OKX DEX |
+| Pagar de | Carteira conectada, qualquer carteira ou exchange | Só carteira conectada |
+| O que você faz | Envia uma transferência para o endereço de depósito | Assina a transação (e às vezes uma aprovação do token) |
+| Se falhar | Depósito devolvido ao endereço de reembolso, descontadas taxas do provedor ou da rede | A transação é revertida, o gas não é reembolsável |
+| Redes | Inclui Bitcoin, Zcash, Tron, Solana e TON | Depende da rota |
+
+## Como fazer swap a partir de uma exchange ou qualquer carteira
+
+Você envia uma transferência, e o swap começa quando ela chega.
+
+<Steps>
+  <Step title="Peça uma cotação">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/), escolha o token e a rede de origem de onde vai enviar, o token e a rede de destino, o valor e o endereço de recebimento.
+  </Step>
+
+  <Step title="Escolha L2Pass RFQ ou L2Pass Private">
+    Essas rotas aceitam depósito. Confira no cartão de rota o valor estimado, o mínimo a receber, o tempo estimado e as taxas.
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    Use como endereço de reembolso uma carteira que você controla na rede de origem. Não use endereço de depósito de exchange: um reembolso enviado para lá pode não ser creditado na sua conta.
+  </Step>
+
+  <Step title="Envie o valor exato">
+    Copie o endereço de depósito ou escaneie o QR code e envie o valor da cotação na rede de origem indicada na cotação. Na exchange, escolha a rede de saque correspondente, por exemplo TRC-20 para USDT na Tron.
+  </Step>
+
+  <Step title="Acompanhe o swap">
+    Acompanhe o status em **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* e depois *Complete*.
+  </Step>
+</Steps>
+
+## Valores, redes e taxas
+
+Envie o valor exato na rede indicada na cotação, ou o swap pode não começar.
+
+- **Taxas de saque da exchange.** Algumas exchanges descontam a taxa de saque do valor enviado. Confira se o valor que chega bate com a cotação, ou saque um pouco a mais para o depósito bater.
+- **Use a rede certa.** Envie pela rede de origem indicada na cotação. Tokens enviados por outra rede não são detectados pelo swap.
+- **Um depósito por cotação.** O endereço de depósito pertence à sua cotação. Peça uma nova cotação para um novo swap.
+- **Gas só na rede de origem.** Você paga a taxa da rede de origem ao enviar. Qualquer taxa de rede no destino é descontada do valor mostrado.
+- **Sem execução parcial.** Um swap é concluído por inteiro ou não é executado.
+- **Verificações de compliance.** Não precisa de conta nem de KYC. Um endereço sinalizado não recebe cotação, então nada é enviado. Um depósito sinalizado depois de chegar fica retido para análise em vez de ser reembolsado; você resolve isso com o suporte da NEAR Intents. Veja [Como funciona a triagem](/pt-br/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Posso fazer swap de cripto sem conectar carteira?">
+    Sim. No L2Pass RFQ e no L2Pass Private você envia os tokens para um endereço de depósito de uso único de qualquer carteira ou exchange, pelo endereço ou QR code.
+  </Accordion>
+
+  <Accordion title="Posso enviar USDT de uma exchange direto para outra rede?">
+    Sim, por uma rota com endereço de depósito. Por exemplo, saque USDT TRC-20 da exchange para o endereço de depósito, e os USDT chegam na Ethereum, Arbitrum ou outra rede que você escolher.
+  </Accordion>
+
+  <Accordion title="E se a exchange enviar menos que o valor cotado?">
+    A cotação vale para o valor que você deposita. Confira o valor que chega em **Recent swaps**. Se o swap não puder ser concluído, o provedor devolve o depósito ao endereço de reembolso, descontadas eventuais taxas do provedor ou da rede.
+  </Accordion>
+
+  <Accordion title="Um swap com endereço de depósito é custodial?">
+    Não. A L2Pass nunca guarda seus tokens ou chaves privadas. O depósito é executado por solvers da NEAR Intents, e swaps com falha são reembolsados ao seu endereço de reembolso.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [O que é o L2Pass RFQ by NEAR Intents](/pt-br/products/swap/learn/what-is-l2pass-rfq)
+- [O que acontece se um swap falhar](/pt-br/products/swap/learn/failed-swaps-and-refunds)
+- [Transferir USDT da Tron para a Ethereum](/pt-br/products/swap/guides/usdt-tron-to-ethereum)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*

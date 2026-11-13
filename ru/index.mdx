@@ -1,0 +1,148 @@
+---
+title: "Обмен криптовалюты в 14 сетях, публично или приватно"
+sidebarTitle: "Введение"
+icon: "angle-right"
+mode: "wide"
+description: "L2Pass Swap переводит USDT, USDC, BTC, ETH и другие активы между 14 сетями с комиссией L2Pass 0% на стейблкоины. Гайды, комиссии, приватные свапы и Swap API."
+---
+
+<Frame>
+  ![Баннер L2Pass](/images/intro/l2pass_banner.png)
+</Frame>
+
+L2Pass переводит ваши токены между блокчейнами в один шаг: USDT из Tron в Ethereum, BTC в USDT, USDC в Solana. Сервис работает в **14 сетях**, включая Bitcoin, Zcash, Tron, Solana и TON, а свап можно сделать публично или приватно.
+
+Для каждого свапа L2Pass запрашивает котировки у нескольких маршрутов и до подтверждения показывает, сколько каждый из них выплатит и сколько возьмёт. L2Pass никогда не хранит ваши средства. На свапы стейблкоинов комиссия L2Pass **0%**. Кошельки и приложения получают ту же маршрутизацию через **L2Pass Swap API**.
+
+## Наши продукты
+
+<CardGroup cols={2}>
+  <Card title="L2Pass Swap" icon="right-left-large" href="/ru/products/swap/overview">
+    Кросс-чейн и приватные свапы для людей. Стейблкоины, BTC, ETH, SOL, ZEC и другие активы, комиссия L2Pass 0% на стейблкоины.
+  </Card>
+
+  <Card title="L2Pass Swap API" icon="code" href="/ru/products/swap/learn/swap-api">
+    Та же маршрутизация для кошельков, бирж и платёжных приложений: котировки, адреса депозита, статусы и вебхуки. Партнёры могут зарабатывать на объёме.
+  </Card>
+</CardGroup>
+
+<Card title="Gas Refuel" icon="gas-pump" href="https://l2pass.com/refuel">
+  Пополнение газа в 25+ EVM-сетях.
+</Card>
+
+## Что можно сделать
+
+| Вам нужно | С L2Pass |
+| :-- | :-- |
+| Перевести стейблкоины между сетями | USDT и USDC между Tron, Ethereum, Solana, TON, BNB Chain, L2 и другими сетями, комиссия L2Pass 0% |
+| Обменять основные активы нативно | BTC в сети Bitcoin, ZEC в сети Zcash, ETH, SOL и другие, в стейблкоины и обратно, без обёрнутых токенов на вашей стороне |
+| Сделать свап приватным | Выберите L2Pass Private: свап проходит в конфиденциальной среде, которая ограничивает то, что видно в публичных блокчейнах |
+| Заплатить кому-то в его сети | Укажите его адрес как получателя и платите тем, что у вас есть, в любом поддерживаемом токене |
+| Сделать свап прямо с биржи | Выведите средства на одноразовый адрес депозита, подключать кошелёк не нужно |
+| Добавить свапы в свой продукт | Интегрируйте Swap API или приводите пользователей и делите комиссии |
+
+## Как это работает
+
+Для каждой котировки L2Pass одновременно опрашивает несколько независимых маршрутов и сортирует их по сумме, которую вы получите:
+
+- **L2Pass RFQ и L2Pass Private by NEAR Intents:** солверы и маркет-мейкеры соревнуются за исполнение вашего свапа.
+- **Нативные мосты:** USDT0 через LayerZero и Circle CCTP для USDC.
+- **Агрегаторы и intent-сети:** LI.FI, Relay, Aori и агрегатор OKX DEX.
+
+До подтверждения вы видите по каждому маршруту сумму к получению, минимум к получению, примерное время и комиссии. Показанная сумма уже учитывает комиссии. Отдельно оплачиваются только газ в исходной сети и комиссия за сообщение моста, если она есть. [Как сравниваются маршруты →](/ru/products/swap/learn/compare-routes)
+
+## Почему L2Pass
+
+- **Несколько котировок, а не одна.** Каждый свап одновременно котируют солверы NEAR Intents, нативные мосты и агрегаторы, а результаты сортируются по сумме к получению.
+- **Все сети, а не только EVM.** Bitcoin, Zcash, Tron, Solana и TON рядом с Ethereum и его L2.
+- **Приватность, когда она нужна.** Приватные свапы в том же интерфейсе, с той же проверкой, что и публичные.
+- **Некастодиально.** L2Pass никогда не хранит ваши токены или ключи. Без аккаунта и без KYC.
+- **Прозрачные комиссии.** 0% на свапы стейблкоинов, до 0,2% на другие активы, до 0,3% на приватные свапы. [Подробнее о комиссиях →](/ru/products/swap/learn/fees)
+
+## Результаты
+
+<CardGroup cols={3}>
+  <Card title="650K+" icon="wallet">
+    Уникальных кошельков пользовались L2Pass
+  </Card>
+
+  <Card title="4M+" icon="arrow-right-arrow-left">
+    Кросс-чейн транзакций обработано
+  </Card>
+
+  <Card title="С 2023" icon="calendar">
+    Работаем в мейннете
+  </Card>
+
+  <Card title="14" icon="globe">
+    Сетей в Swap
+  </Card>
+
+  <Card title="№9" icon="ranking-star" href="https://layerzeroscan.com/application/l2pass">
+    В рейтинге приложений LayerZero
+  </Card>
+</CardGroup>
+
+---
+
+## Партнёры экосистемы
+
+Свапы проходят через NEAR Intents, LayerZero (USDT0), Circle CCTP, LI.FI, Relay, Aori и агрегатор OKX DEX.
+
+<Card title="Построено на ведущей инфраструктуре">
+  <div
+  style={{ 
+  backgroundColor: "#181818", 
+  padding: "2rem", 
+  borderRadius: "8px", 
+  display: "flex", 
+  justifyContent: "center",
+ marginTop: "1rem"
+}}
+>
+  <img src="/images/partners_light.svg" alt="Партнёры экосистемы L2Pass" style={{ height: "auto" }} />
+</div>
+</Card>
+
+
+---
+
+## С чего начать
+
+<CardGroup cols={3}>
+  <Card title="Как работает Swap" icon="book-open" href="/ru/products/swap/overview">
+    Маршруты, исполнение, возвраты и приватные свапы.
+  </Card>
+
+  <Card title="Перевод USDT между сетями" icon="route" href="/ru/products/swap/guides/usdt-tron-to-ethereum">
+    Пошаговые гайды по маршрутам, начиная с Tron → Ethereum.
+  </Card>
+
+  <Card title="Обмен BTC" icon="bitcoin" href="/ru/products/swap/guides/btc-to-usdt">
+    Обмен нативного BTC на USDT и обратно.
+  </Card>
+
+  <Card title="Приватные свапы" icon="user-secret" href="/ru/products/swap/learn/private-cross-chain-swaps">
+    Что скрывает приватный свап, а что нет.
+  </Card>
+
+  <Card title="Оплата криптовалютой" icon="money-bill-transfer" href="/ru/products/swap/learn/crypto-payments">
+    Платите кому угодно в той сети, которая ему удобна.
+  </Card>
+
+  <Card title="Безопасен ли L2Pass?" icon="shield-check" href="/ru/products/swap/learn/is-l2pass-safe">
+    Как некастодиальные свапы защищают ваши средства.
+  </Card>
+
+  <Card title="Swap API" icon="code" href="/ru/products/swap/learn/swap-api">
+    Добавьте кросс-чейн свапы в свой кошелёк или приложение.
+  </Card>
+
+  <Card title="Смарт-контракты" icon="file-code" href="/ru/resources/contracts">
+    Посмотрите и проверьте наши официальные контракты.
+  </Card>
+
+  <Card title="Поддержка" icon="headset" href="/ru/resources/support">
+    Получите помощь или обсудите с нами партнёрство.
+  </Card>
+</CardGroup>

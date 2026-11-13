@@ -1,0 +1,97 @@
+---
+title: "Herhangi bir cüzdandan veya borsadan takas: yatırma adresli takaslar nasıl çalışır"
+description: "L2Pass Swap ile tokenları tek kullanımlık bir yatırma adresine göndererek zincirler arası takası herhangi bir cüzdandan veya borsadan ödeyebilirsiniz. Cüzdan bağlamak gerekmez."
+sidebarTitle: "Her cüzdandan veya borsadan takas"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/), cüzdan bağlamadan zincirler arası takas için ödeme yapmanızı sağlar. İkisi de [NEAR Intents](https://near.org/intents) üzerinde çalışan L2Pass RFQ ve L2Pass Private rotalarında teklifiniz için tek kullanımlık bir yatırma adresi alır ve tokenları herhangi bir cüzdandan veya borsadan, adresle ya da QR kodla oraya gönderirsiniz. Takas yatırma ulaştığında başlar ve hedef tokenlar belirlediğiniz alıcı adresine gider. Takas tamamlanamazsa sağlayıcı yatırılan tutarı iade adresinize geri gönderir. Stablecoin takaslarında L2Pass ücreti %0'dır ve teklif, ücretler sonrası alacağınız tutarı gösterir. Yalnızca kaynak ağdaki gas ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+## Temel kavramlar
+
+Yatırma adresli takasta üç adres önemlidir: yatırma, alıcı ve iade adresleri.
+
+| Kavram | Anlamı |
+| :-- | :-- |
+| Yatırma adresi | Kaynak ağda, teklifiniz için oluşturulan tek kullanımlık adres. Teklif edilen tutarı oraya göndermek takası başlatır. |
+| Alıcı adresi | Hedef ağda tokenları alan adres. |
+| İade adresi | Kaynak ağda kontrol ettiğiniz bir cüzdan. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya geri gönderir. |
+| Cüzdan rotası | Circle CCTP, USDT0, Relay veya LI.FI gibi, bağlı bir cüzdanda işlem imzaladığınız rota. |
+
+## Yatırma adresi mi cüzdan işlemi mi
+
+Yatırma adresli rotalar borsa çekimlerini kabul eder ve otomatik iade yapar. Cüzdan rotaları imzanızı gerektirir ve başarısız olursa geri alınır.
+
+| | Yatırma adresli rotalar | Cüzdan rotaları |
+| :-- | :-- | :-- |
+| Rotalar | L2Pass RFQ, L2Pass Private | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX toplayıcısı |
+| Nereden ödenir | Bağlı cüzdan, herhangi bir cüzdan veya borsa | Yalnızca bağlı cüzdan |
+| Ne yaparsınız | Yatırma adresine tek bir transfer gönderirsiniz | İşlemi (bazen token onayını da) imzalarsınız |
+| Başarısız olursa | Yatırılan tutar, varsa sağlayıcı veya ağ ücretleri düşülerek iade adresine döner | İşlem geri alınır, gas iade edilmez |
+| Ağlar | Bitcoin, Zcash, Tron, Solana ve TON dahil | Rotaya bağlı |
+
+## Borsadan veya herhangi bir cüzdandan nasıl takas yapılır
+
+Tek bir transfer gönderirsiniz ve takas o ulaştığında başlar.
+
+<Steps>
+  <Step title="Teklif isteyin">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin; göndereceğiniz kaynak token ve ağı, hedef token ve ağı, tutarı ve alıcı adresini seçin.
+  </Step>
+
+  <Step title="L2Pass RFQ veya L2Pass Private'ı seçin">
+    Bu rotalar yatırma kabul eder. Rota kartında tahmini tutarı, minimum alınacak tutarı, tahmini süreyi ve ücretleri kontrol edin.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    İade adresi olarak kaynak ağda kontrol ettiğiniz bir cüzdanı girin. Borsa yatırma adresi kullanmayın: oraya gönderilen bir iade hesabınıza yansımayabilir.
+  </Step>
+
+  <Step title="Tam tutarı gönderin">
+    Yatırma adresini kopyalayın veya QR kodu okutun, ardından teklifte gösterilen tutarı teklifte gösterilen kaynak ağda gönderin. Borsada eşleşen çekim ağını seçin, örneğin Tron'daki USDT için TRC-20.
+  </Step>
+
+  <Step title="Takası takip edin">
+    Durumu **Recent swaps** bölümünden takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Tutarlar, ağlar ve ücretler
+
+Tam tutarı teklifte gösterilen ağda gönderin, aksi halde takas başlamayabilir.
+
+- **Borsa çekim ücretleri.** Bazı borsalar çekim ücretini gönderdikleri tutardan düşer. Ulaşan tutarın teklifle eşleştiğini kontrol edin ya da yatırmanın eşleşmesi için biraz fazla çekin.
+- **Doğru ağı kullanın.** Teklifte gösterilen kaynak ağda gönderin. Başka bir ağda gönderilen tokenları takas algılayamaz.
+- **Teklif başına bir yatırma.** Yatırma adresi teklifinize aittir. Yeni bir takas için yeni teklif isteyin.
+- **Gas yalnızca kaynak ağda.** Gönderirken kaynak ağ ücretini ödersiniz. Hedef zincirdeki ağ ücreti gösterilen tutardan düşülür.
+- **Kısmi gerçekleşme yok.** Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+- **Uyum kontrolleri.** Hesap veya KYC gerekmez. İşaretlenen bir adres teklif almaz, dolayısıyla hiçbir şey gönderilmez. Ulaştıktan sonra işaretlenen bir yatırma iade edilmek yerine inceleme için tutulur; bunu NEAR Intents destek ekibiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Cüzdan bağlamadan kripto takası yapabilir miyim?">
+    Evet. L2Pass RFQ ve L2Pass Private'ta tokenları herhangi bir cüzdandan veya borsadan, adresle ya da QR kodla tek kullanımlık bir yatırma adresine gönderirsiniz.
+  </Accordion>
+
+  <Accordion title="Borsadan USDT'yi doğrudan başka bir ağa gönderebilir miyim?">
+    Evet, yatırma adresli bir rota üzerinden. Örneğin borsadan yatırma adresine TRC-20 USDT çekin; USDT, seçtiğiniz Ethereum, Arbitrum veya başka bir ağa ulaşır.
+  </Accordion>
+
+  <Accordion title="Borsa teklif edilen tutardan az gönderirse ne olur?">
+    Teklif yatırdığınız tutar içindir. Ulaşan tutarı **Recent swaps** bölümünden kontrol edin. Takas tamamlanamazsa sağlayıcı, varsa sağlayıcı veya ağ ücretlerini düşerek yatırılan tutarı iade adresine geri gönderir.
+  </Accordion>
+
+  <Accordion title="Yatırma adresli takas emanetli mi?">
+    Hayır. L2Pass tokenlarınızı veya özel anahtarlarınızı asla tutmaz. Yatırmayı NEAR Intents'teki çözücüler gerçekleştirir ve başarısız takaslar iade adresinize iade edilir.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'ı aç](https://swap.l2pass.com/)
+- [L2Pass RFQ by NEAR Intents nedir](/tr/products/swap/learn/what-is-l2pass-rfq)
+- [Takas başarısız olursa ne olur](/tr/products/swap/learn/failed-swaps-and-refunds)
+- [Tron'dan Ethereum'a USDT taşıma](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

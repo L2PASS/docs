@@ -1,0 +1,117 @@
+---
+title: "Thanh toán crypto cho bất kỳ ai trên mạng họ muốn"
+description: "Dùng L2Pass Swap để thanh toán bằng USDT, USDC, BTC hoặc ZEC trên mạng người nhận muốn, từ bất kỳ ví hoặc sàn nào, với phí hiển thị trước khi bạn thanh toán."
+sidebarTitle: "Thanh toán crypto"
+---
+
+Bạn có thể dùng [L2Pass Swap](https://swap.l2pass.com/) để trả cho ai đó bằng token và trên mạng họ muốn nhận, trong khi bạn trả bằng bất cứ thứ gì bạn đang có. Ví dụ, bạn có USDT trên Tron và nhà cung cấp muốn USDC trên Solana: đặt địa chỉ Solana của họ làm địa chỉ nhận, và hoán đổi sẽ giao USDC tới đó trong một bước. Bạn có thể trả từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn. Phí L2Pass là 0% cho hoán đổi stablecoin, và số tiền người nhận sẽ nhận, sau mọi khoản phí, được hiển thị trước khi bạn thanh toán.
+
+## Bạn có thể làm gì
+
+Bạn trả bằng thứ mình có, người nhận nhận đúng token và mạng họ yêu cầu.
+
+| Trường hợp | Ví dụ | Cách làm |
+| :-- | :-- | :-- |
+| Trả trên mạng của người nhận | Bạn có USDT trên Tron, họ muốn USDT trên Ethereum | Đặt địa chỉ Ethereum của họ làm địa chỉ nhận |
+| Đổi loại tiền trên đường đi | Bạn có USDT trên Tron, họ muốn USDC trên Solana | Chọn USDC trên Solana làm đích |
+| Trả từ sàn | USDT của bạn nằm trên sàn | Rút về địa chỉ nạp dùng một lần của báo giá |
+| Giữ ví chính tách biệt | Bạn không muốn trả từ ví chính | Trả qua hoán đổi riêng tư hoặc từ ví khác (xem bên dưới) |
+| Trả bằng BTC hoặc ZEC, hoặc từ chúng | Họ muốn BTC, bạn có USDT | Chọn BTC trên Bitcoin làm đích |
+
+## Ví dụ: trả cho nhà cung cấp trên Ethereum từ Tron
+
+Bạn nợ nhà cung cấp khoảng 1.000 USDT, và họ muốn nhận trên Ethereum. Bạn có USDT trên Tron. Trong báo giá trực tiếp ngày 19 tháng 10 năm 2026:
+
+| Tuyến | Nhà cung cấp nhận |
+| :-- | :-- |
+| L2Pass RFQ | 999,55 USDT |
+| Relay | 998,86 USDT |
+| deBridge | 998,12 USDT |
+| ChangeNOW, tiêu chuẩn | 988,14 USDT |
+
+Với L2Pass RFQ, nhà cung cấp nhận nhiều hơn khoảng 11 USDT so với qua ChangeNOW, và bạn thấy số tiền chính xác trước khi trả. Xem [So sánh: chuyển stablecoin](/vi/products/swap/learn/compare-stablecoin-transfers) để biết mọi tuyến.
+
+## Cách trả cho ai đó trên mạng khác
+
+Người nhận chỉ cần cho bạn địa chỉ và mạng. Bạn làm phần còn lại trong năm bước.
+
+<Steps>
+  <Step title="Hỏi địa chỉ và mạng">
+    Hỏi người nhận họ muốn token và mạng nào, và địa chỉ của họ trên mạng đó. Kiểm tra kỹ mạng: địa chỉ trên sai mạng có thể không nhận được token.
+  </Step>
+
+  <Step title="Yêu cầu báo giá">
+    Trên [swap.l2pass.com](https://swap.l2pass.com/), chọn thứ bạn dùng để trả làm nguồn và thứ họ muốn làm đích. Dán địa chỉ của họ làm địa chỉ nhận.
+  </Step>
+
+  <Step title="Kiểm tra số tiền họ sẽ nhận">
+    Số tiền nhận ước tính trên thẻ tuyến là số tiền đến địa chỉ của họ, sau mọi khoản phí. Nếu cần họ nhận đúng một số tiền, hãy chỉnh số tiền của bạn đến khi số ước tính khớp, hoặc dùng tuyến đầu ra cố định nếu có.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền và thanh toán">
+    Đặt địa chỉ hoàn tiền là ví bạn kiểm soát. Sau đó ký trong ví, hoặc gửi số tiền theo báo giá tới địa chỉ nạp dùng một lần từ bất kỳ ví hoặc sàn nào.
+  </Step>
+
+  <Step title="Chia sẻ bằng chứng">
+    Khi **Recent swaps** hiển thị *Complete*, hãy gửi giao dịch ở mạng đích cho người nhận.
+  </Step>
+</Steps>
+
+## Giữ ví chính tách biệt
+
+Khi bạn trả trực tiếp từ một ví, người nhận có thể thấy địa chỉ ví đó và lịch sử công khai của nó. Hai cách để hạn chế:
+
+- **Hoán đổi riêng tư.** L2Pass Private chạy trên NEAR Intents trong môi trường bảo mật, hạn chế những gì blockchain công khai cho thấy về cách hoán đổi được thực hiện. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm).
+- **Trả từ ví khác hoặc từ sàn.** Tuyến địa chỉ nạp cho phép bạn trả từ bất kỳ ví nào, nên ví chính không phải gửi khoản thanh toán.
+
+Đây không phải là ẩn danh. Nhà cung cấp vẫn nhận địa chỉ ví của bạn, và mọi hoán đổi đều được sàng lọc như nhau, dù công khai hay riêng tư. Xem [Hoán đổi cross-chain riêng tư là gì](/vi/products/swap/learn/private-cross-chain-swaps).
+
+## Phí, hoàn tiền và nghĩa vụ
+
+Tiền hoàn trả về bạn, không về người nhận, và thanh toán bằng stablecoin có phí L2Pass 0%.
+
+- **Phí.** Phí L2Pass là 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác và tối đa 0,3% cho hoán đổi riêng tư. Xem [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees).
+- **Hoàn tiền.** Nếu hoán đổi không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền của bạn, không phải cho người nhận.
+- **Không thanh toán một phần.** Hoán đổi hoặc hoàn tất toàn bộ, hoặc không được thực hiện.
+- **Kiểm tra tuân thủ.** Không cần tài khoản hay KYC. Địa chỉ bị gắn cờ không nhận được báo giá, nên không có gì được gửi đi. Khoản nạp bị gắn cờ sau khi đến sẽ bị giữ để xem xét thay vì hoàn trả; bạn giải quyết với hỗ trợ NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Nghĩa vụ của bạn.** Thanh toán có thể phát sinh nghĩa vụ thuế hoặc khai báo nơi bạn sống. L2Pass không đưa ra tư vấn thuế hay pháp lý.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi có thể gửi USDT trên Tron cho người muốn USDC trên mạng khác không?">
+    Có. Chọn USDT trên Tron làm nguồn và USDC trên mạng của họ làm đích, rồi đặt địa chỉ của họ làm địa chỉ nhận.
+  </Accordion>
+
+  <Accordion title="Tôi có thể trả cho ai đó trực tiếp từ sàn không?">
+    Có, qua tuyến địa chỉ nạp. Rút từ sàn về địa chỉ nạp dùng một lần của báo giá, với địa chỉ của họ là địa chỉ nhận. Kiểm tra số tiền đến có khớp với báo giá.
+  </Accordion>
+
+  <Accordion title="Người nhận mất bao nhiêu vì phí?">
+    Rất ít với stablecoin. Trong báo giá trực tiếp ngày 19 tháng 10 năm 2026, 1.000 USDT gửi từ Tron đến Ethereum thành 999,55 USDT qua L2Pass RFQ, sau mọi khoản phí. Phí L2Pass cho stablecoin là 0%.
+  </Accordion>
+
+  <Accordion title="Tôi có thể trả cho ai đó bằng BTC hoặc ZEC từ USDT không?">
+    Có. Chọn BTC trên Bitcoin hoặc ZEC trên Zcash làm đích và đặt địa chỉ của họ làm địa chỉ nhận. Xem [So sánh: hoán đổi BTC](/vi/products/swap/learn/compare-btc-swaps) và [So sánh: hoán đổi ZEC](/vi/products/swap/learn/compare-zec-swaps).
+  </Accordion>
+
+  <Accordion title="Người nhận có cần tài khoản L2Pass không?">
+    Không. Họ chỉ cần một địa chỉ trên mạng muốn nhận. Không bên nào cần tài khoản.
+  </Accordion>
+
+  <Accordion title="Tôi có thể ẩn ví của mình khỏi người nhận không?">
+    Bạn có thể trả từ ví khác hoặc dùng hoán đổi riêng tư để hạn chế những gì blockchain công khai hiển thị. Đây không phải là ẩn danh: nhà cung cấp vẫn nhận địa chỉ ví của bạn, và sàng lọc tuân thủ vẫn áp dụng.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Hoán đổi từ bất kỳ ví hoặc sàn nào](/vi/products/swap/learn/deposit-address-swaps)
+- [Hoán đổi cross-chain riêng tư là gì](/vi/products/swap/learn/private-cross-chain-swaps)
+- [Giải thích các mạng USDT](/vi/products/swap/learn/usdt-networks)
+- [So sánh: chuyển stablecoin](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [Hoán đổi phi lưu ký so với sàn giao dịch](/vi/products/swap/learn/non-custodial-vs-exchanges)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

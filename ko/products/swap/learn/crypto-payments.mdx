@@ -1,0 +1,117 @@
+---
+title: "상대가 원하는 네트워크로 누구에게나 크립토 결제하기"
+description: "L2Pass Swap으로 상대가 원하는 네트워크에서 USDT, USDC, BTC, ZEC로 결제하세요. 어떤 지갑이나 거래소에서든 가능하며, 결제 전에 수수료가 표시됩니다."
+sidebarTitle: "크립토 결제"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/)을 이용하면 내가 가진 자산으로 결제하면서, 상대방은 원하는 토큰과 네트워크로 받게 할 수 있습니다. 예를 들어 나는 Tron의 USDT를 갖고 있고 공급업체는 Solana의 USDC를 원한다면, 상대의 Solana 주소를 수신 주소로 설정하면 스왑이 한 번에 USDC를 그곳으로 전달합니다. 연결된 지갑, 다른 어떤 지갑, 또는 거래소에서 결제할 수 있습니다. 스테이블코인 스왑의 L2Pass 수수료는 0%이며, 모든 수수료를 뺀 상대의 수령액이 결제 전에 표시됩니다.
+
+## 할 수 있는 것
+
+내가 가진 자산으로 결제하고, 상대는 요청한 토큰과 네트워크로 받습니다.
+
+| 사용 사례 | 예시 | 방법 |
+| :-- | :-- | :-- |
+| 상대 네트워크로 결제 | 나는 Tron의 USDT, 상대는 Ethereum의 USDT를 원함 | 상대의 Ethereum 주소를 수신 주소로 설정 |
+| 도중에 통화 변경 | 나는 Tron의 USDT, 상대는 Solana의 USDC를 원함 | 도착 자산으로 Solana의 USDC 선택 |
+| 거래소에서 결제 | USDT가 거래소에 있음 | 견적의 일회용 입금 주소로 출금 |
+| 메인 지갑 분리 | 메인 지갑으로 결제하고 싶지 않음 | 비공개 스왑이나 별도 지갑으로 결제(아래 참고) |
+| BTC나 ZEC로 또는 BTC나 ZEC에서 결제 | 상대는 BTC, 나는 USDT 보유 | 도착 자산으로 Bitcoin의 BTC 선택 |
+
+## 예시: Tron에서 Ethereum의 공급업체에게 결제
+
+공급업체에 약 1,000 USDT를 지급해야 하고, 상대는 Ethereum에서 받기를 원합니다. 나는 Tron의 USDT를 갖고 있습니다. 2026년 10월 19일 실시간 견적:
+
+| 경로 | 공급업체 수령액 |
+| :-- | :-- |
+| L2Pass RFQ | 999.55 USDT |
+| Relay | 998.86 USDT |
+| deBridge | 998.12 USDT |
+| ChangeNOW, 일반 | 988.14 USDT |
+
+L2Pass RFQ를 쓰면 공급업체가 ChangeNOW보다 약 11 USDT 더 받았고, 나는 결제 전에 정확한 금액을 확인했습니다. 모든 경로는 [비교: 스테이블코인 전송](/ko/products/swap/learn/compare-stablecoin-transfers)을 참고하세요.
+
+## 다른 네트워크의 상대에게 결제하는 방법
+
+상대는 주소와 네트워크만 알려주면 됩니다. 나머지는 다섯 단계로 직접 진행합니다.
+
+<Steps>
+  <Step title="주소와 네트워크 확인">
+    상대에게 원하는 토큰과 네트워크, 그리고 그 네트워크의 주소를 물어보세요. 네트워크를 꼭 다시 확인하세요. 잘못된 네트워크의 주소는 토큰을 받지 못할 수 있습니다.
+  </Step>
+
+  <Step title="견적 요청">
+    [swap.l2pass.com](https://swap.l2pass.com/)에서 결제할 자산을 출발 자산으로, 상대가 원하는 자산을 도착 자산으로 선택합니다. 상대의 주소를 수신 주소로 붙여넣습니다.
+  </Step>
+
+  <Step title="상대 수령액 확인">
+    경로 카드의 예상 수령액이 모든 수수료를 뺀 뒤 상대 주소에 도착하는 금액입니다. 정확한 금액을 받아야 한다면 예상 수령액이 맞을 때까지 금액을 조정하거나, 제공되는 경우 고정 수령 경로를 이용하세요.
+  </Step>
+
+  <Step title="환불 주소 설정 후 결제">
+    환불 주소를 직접 관리하는 지갑으로 설정합니다. 그런 다음 지갑에서 서명하거나, 어떤 지갑이나 거래소에서든 견적 금액을 일회용 입금 주소로 보냅니다.
+  </Step>
+
+  <Step title="증빙 공유">
+    **Recent swaps**에 *Complete*가 표시되면 도착 트랜잭션을 상대에게 공유합니다.
+  </Step>
+</Steps>
+
+## 메인 지갑 분리하기
+
+지갑에서 직접 결제하면 상대가 그 지갑 주소와 공개 기록을 볼 수 있습니다. 이를 줄이는 두 가지 방법이 있습니다.
+
+- **비공개 스왑.** L2Pass Private는 NEAR Intents의 기밀 환경에서 실행되어, 스왑이 어떻게 체결되는지 퍼블릭 블록체인에 드러나는 정보를 줄입니다. 비공개 스왑의 L2Pass 수수료는 최대 0.3%입니다(0% 또는 0.2% 대신 적용, 추가 아님).
+- **별도 지갑이나 거래소에서 결제.** 입금 주소 경로를 이용하면 어떤 지갑에서든 결제할 수 있으므로 메인 지갑으로 송금하지 않아도 됩니다.
+
+이것은 익명성이 아닙니다. 제공자는 여전히 지갑 주소를 받으며, 모든 스왑은 공개든 프라이빗이든 같은 방식으로 심사됩니다. [비공개 크로스체인 스왑이란](/ko/products/swap/learn/private-cross-chain-swaps)을 참고하세요.
+
+## 수수료, 환불, 의무
+
+환불은 상대가 아니라 나에게 돌아오며, 스테이블코인 결제의 L2Pass 수수료는 0%입니다.
+
+- **수수료.** L2Pass 수수료는 스테이블코인 스왑 0%, 기타 자산 최대 0.2%, 비공개 스왑 최대 0.3%입니다. [L2Pass Swap 수수료 설명](/ko/products/swap/learn/fees)을 참고하세요.
+- **환불.** 스왑을 완료할 수 없으면 제공자가 입금액을 상대가 아닌 내 환불 주소로 돌려보냅니다.
+- **부분 결제 없음.** 스왑은 전부 완료되거나 실행되지 않습니다.
+- **컴플라이언스 확인.** 계정이나 KYC는 필요 없습니다. 플래그가 지정된 주소는 견적을 받지 못하므로 아무것도 전송되지 않습니다. 도착 후 플래그가 지정된 입금은 환불되지 않고 검토를 위해 보류되며, NEAR Intents 지원팀과 함께 해결합니다. [심사 방식](/ko/products/swap/learn/failed-swaps-and-refunds#how-screening-works)을 참고하세요.
+- **본인의 의무.** 거주지에 따라 결제에 세금이나 신고 의무가 있을 수 있습니다. L2Pass는 세무나 법률 자문을 제공하지 않습니다.
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="Tron의 USDT를 다른 네트워크의 USDC를 원하는 사람에게 보낼 수 있나요?">
+    네. 출발 자산으로 Tron의 USDT, 도착 자산으로 상대 네트워크의 USDC를 선택하고, 상대 주소를 수신 주소로 설정하세요.
+  </Accordion>
+
+  <Accordion title="거래소에서 바로 결제할 수 있나요?">
+    네, 입금 주소 경로로 가능합니다. 상대 주소를 수신 주소로 설정한 뒤, 거래소에서 견적의 일회용 입금 주소로 출금하세요. 도착한 금액이 견적과 일치하는지 확인하세요.
+  </Accordion>
+
+  <Accordion title="상대는 수수료로 얼마나 손해를 보나요?">
+    스테이블코인은 아주 적습니다. 2026년 10월 19일 실시간 견적에서 Tron에서 보낸 1,000 USDT가 모든 수수료를 뺀 뒤 L2Pass RFQ로 Ethereum에 999.55 USDT로 도착했습니다. 스테이블코인의 L2Pass 수수료는 0%입니다.
+  </Accordion>
+
+  <Accordion title="USDT로 BTC나 ZEC를 결제할 수 있나요?">
+    네. 도착 자산으로 Bitcoin의 BTC나 Zcash의 ZEC를 선택하고 상대 주소를 수신 주소로 설정하세요. [비교: BTC 스왑](/ko/products/swap/learn/compare-btc-swaps)과 [비교: ZEC 스왑](/ko/products/swap/learn/compare-zec-swaps)을 참고하세요.
+  </Accordion>
+
+  <Accordion title="상대에게 L2Pass 계정이 필요한가요?">
+    아니요. 받고 싶은 네트워크의 주소만 있으면 됩니다. 양쪽 모두 계정이 필요 없습니다.
+  </Accordion>
+
+  <Accordion title="상대에게 내 지갑을 숨길 수 있나요?">
+    별도 지갑에서 결제하거나 비공개 스왑을 이용해 퍼블릭 블록체인에 드러나는 정보를 줄일 수 있습니다. 이것은 익명성이 아닙니다. 제공자는 여전히 지갑 주소를 받으며, 컴플라이언스 심사가 적용됩니다.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [모든 지갑이나 거래소에서 스왑](/ko/products/swap/learn/deposit-address-swaps)
+- [비공개 크로스체인 스왑이란](/ko/products/swap/learn/private-cross-chain-swaps)
+- [USDT 네트워크 설명](/ko/products/swap/learn/usdt-networks)
+- [비교: 스테이블코인 전송](/ko/products/swap/learn/compare-stablecoin-transfers)
+- [비수탁 스왑과 거래소 비교](/ko/products/swap/learn/non-custodial-vs-exchanges)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

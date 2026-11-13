@@ -1,0 +1,117 @@
+---
+title: "Herkese tercih ettiği ağda kripto ile ödeme yapın"
+description: "L2Pass Swap ile alıcının istediği ağda USDT, USDC, BTC veya ZEC ödeyin; herhangi bir cüzdan veya borsadan, ücretleri ödemeden önce görerek."
+sidebarTitle: "Kripto ödemeleri"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) ile birine, almak istediği token ve ağda ödeme yapabilirsiniz; siz de elinizde ne varsa onunla ödersiniz. Örneğin Tron'da USDT'niz var ve bir tedarikçi Solana'da USDC istiyor: onun Solana adresini alıcı adresi olarak girin, takas USDC'yi tek adımda oraya teslim eder. Bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan ödeyebilirsiniz. L2Pass ücreti stablecoin takaslarında %0'dır ve alıcının tüm ücretlerden sonra alacağı tutar, ödemeden önce gösterilir.
+
+## Neler yapabilirsiniz
+
+Elinizdekiyle ödersiniz, alıcı istediği token'ı ve ağı alır.
+
+| Kullanım durumu | Örnek | Nasıl |
+| :-- | :-- | :-- |
+| Alıcının ağında ödeme | Tron'da USDT'niz var, o Ethereum'da USDT istiyor | Onun Ethereum adresini alıcı adresi olarak girin |
+| Yolda para birimini değiştirme | Tron'da USDT'niz var, o Solana'da USDC istiyor | Hedef olarak Solana'da USDC seçin |
+| Borsadan ödeme | USDT'niz bir borsada | Teklifinizin tek kullanımlık yatırma adresine çekin |
+| Ana cüzdanınızı ayrı tutma | Ana cüzdanınızdan ödemek istemiyorsunuz | Gizli takasla veya ayrı bir cüzdandan ödeyin (aşağıya bakın) |
+| BTC veya ZEC ile ya da bunlara ödeme | O BTC istiyor, sizde USDT var | Hedef olarak Bitcoin'de BTC seçin |
+
+## Örnek: Tron'dan Ethereum'daki bir tedarikçiye ödeme
+
+Bir tedarikçiye yaklaşık 1.000 USDT borcunuz var ve Ethereum'da istiyor. Sizde Tron'da USDT var. 19 Ekim 2026 tarihli canlı tekliflerde:
+
+| Rota | Tedarikçinin aldığı |
+| :-- | :-- |
+| L2Pass RFQ | 999,55 USDT |
+| Relay | 998,86 USDT |
+| deBridge | 998,12 USDT |
+| ChangeNOW, standart | 988,14 USDT |
+
+L2Pass RFQ ile tedarikçi, ChangeNOW'a göre yaklaşık 11 USDT daha fazla aldı ve siz ödemeden önce tam tutarı gördünüz. Tüm rotalar için bkz. [Karşılaştırma: stablecoin transferleri](/tr/products/swap/learn/compare-stablecoin-transfers).
+
+## Başka bir ağdaki birine nasıl ödeme yapılır
+
+Alıcı size yalnızca bir adres ve ağ verir. Gerisini beş adımda siz yaparsınız.
+
+<Steps>
+  <Step title="Adresini ve ağını isteyin">
+    Alıcıya hangi token'ı ve ağı istediğini, o ağdaki adresini sorun. Ağı iki kez kontrol edin: yanlış ağdaki bir adres token'ları alamayabilir.
+  </Step>
+
+  <Step title="Teklif isteyin">
+    [swap.l2pass.com](https://swap.l2pass.com/) üzerinde ödeme yaptığınız varlığı kaynak, onun istediğini hedef olarak seçin. Adresini alıcı adresi olarak yapıştırın.
+  </Step>
+
+  <Step title="Ne alacağını kontrol edin">
+    Rota kartındaki tahmini çıktı, tüm ücretlerden sonra onun adresine ulaşacak tutardır. Tam bir tutar alması gerekiyorsa, tahmini çıktı eşleşene kadar tutarınızı ayarlayın veya varsa sabit çıktılı bir rota kullanın.
+  </Step>
+
+  <Step title="İade adresi belirleyin ve ödeyin">
+    İade adresini kontrol ettiğiniz bir cüzdan olarak ayarlayın. Sonra cüzdanınızda imzalayın veya teklif edilen tutarı herhangi bir cüzdan veya borsadan tek kullanımlık yatırma adresine gönderin.
+  </Step>
+
+  <Step title="Kanıtı paylaşın">
+    **Recent swaps** *Complete* gösterdiğinde, hedef işlemi alıcıyla paylaşın.
+  </Step>
+</Steps>
+
+## Ana cüzdanınızı ayrı tutma
+
+Doğrudan bir cüzdandan ödediğinizde alıcı o cüzdanın adresini ve herkese açık geçmişini görebilir. Bunu sınırlamanın iki yolu:
+
+- **Gizli takas.** L2Pass Private, NEAR Intents üzerinde, herkese açık blok zincirlerinin takasın nasıl gerçekleştiği hakkında gösterdiklerini sınırlayan gizli bir ortamda çalışır. Gizli takasta L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil).
+- **Ayrı bir cüzdandan veya borsadan ödeyin.** Yatırma adresi rotası herhangi bir cüzdandan ödemenizi sağlar, böylece ödemeyi ana cüzdanınızın göndermesi gerekmez.
+
+Bu anonimlik değildir. Sağlayıcılar cüzdan adresinizi yine alır ve her takas, herkese açık ya da gizli, aynı şekilde taranır. Bkz. [Gizli cross-chain takas nedir](/tr/products/swap/learn/private-cross-chain-swaps).
+
+## Ücretler, iadeler ve yükümlülükler
+
+İadeler alıcıya değil size döner ve stablecoin ödemelerinde L2Pass ücreti %0'dır.
+
+- **Ücretler.** L2Pass ücreti stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadar ve gizli takaslarda %0,3'e kadardır. Bkz. [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees).
+- **İadeler.** Bir takas tamamlanamazsa sağlayıcı yatırılan tutarı alıcıya değil, iade adresinize geri gönderir.
+- **Kısmi ödeme yok.** Bir takas ya tamamen tamamlanır ya da hiç gerçekleşmez.
+- **Uyum kontrolleri.** Hesap veya KYC gerekmez. İşaretlenen bir adres teklif almaz, dolayısıyla hiçbir şey gönderilmez. Ulaştıktan sonra işaretlenen bir yatırma iade edilmez, inceleme için tutulur; bunu NEAR Intents desteğiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Yükümlülükleriniz.** Ödemelerin yaşadığınız yerde vergi veya bildirim yükümlülükleri olabilir. L2Pass vergi veya hukuki danışmanlık vermez.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Tron'daki USDT'yi başka bir ağda USDC isteyen birine gönderebilir miyim?">
+    Evet. Kaynak olarak Tron'da USDT'yi, hedef olarak onun ağındaki USDC'yi seçin ve onun adresini alıcı adresi olarak girin.
+  </Accordion>
+
+  <Accordion title="Birine doğrudan borsadan ödeme yapabilir miyim?">
+    Evet, yatırma adresi rotasıyla. Onun adresi alıcı adresi olarak ayarlanmışken borsadan teklifinizin tek kullanımlık yatırma adresine çekin. Ulaşan tutarın teklifle eşleştiğini kontrol edin.
+  </Accordion>
+
+  <Accordion title="Alıcı ücretlere ne kadar kaybeder?">
+    Stablecoin'lerde çok az. 19 Ekim 2026 tarihli canlı tekliflerde Tron'dan gönderilen 1.000 USDT, tüm ücretlerden sonra L2Pass RFQ ile Ethereum'a 999,55 USDT olarak ulaştı. Stablecoin'lerde L2Pass ücreti %0'dır.
+  </Accordion>
+
+  <Accordion title="USDT'den birine BTC veya ZEC ödeyebilir miyim?">
+    Evet. Hedef olarak Bitcoin'de BTC veya Zcash'te ZEC seçin ve onun adresini alıcı adresi olarak girin. Bkz. [Karşılaştırma: BTC takasları](/tr/products/swap/learn/compare-btc-swaps) ve [Karşılaştırma: ZEC takasları](/tr/products/swap/learn/compare-zec-swaps).
+  </Accordion>
+
+  <Accordion title="Alıcının L2Pass hesabı olması gerekir mi?">
+    Hayır. Yalnızca almak istediği ağda bir adresi olması yeterlidir. İki tarafta da hesap gerekmez.
+  </Accordion>
+
+  <Accordion title="Cüzdanımı alıcıdan gizleyebilir miyim?">
+    Herkese açık blok zincirlerinin gösterdiklerini sınırlamak için ayrı bir cüzdandan ödeyebilir veya gizli takas kullanabilirsiniz. Bu anonimlik değildir: sağlayıcılar cüzdan adresinizi yine alır ve uyum taraması uygulanır.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [Herhangi bir cüzdan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps)
+- [Gizli cross-chain takas nedir](/tr/products/swap/learn/private-cross-chain-swaps)
+- [USDT ağları açıklaması](/tr/products/swap/learn/usdt-networks)
+- [Karşılaştırma: stablecoin transferleri](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Gözetimsiz takaslar ve borsalar](/tr/products/swap/learn/non-custodial-vs-exchanges)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

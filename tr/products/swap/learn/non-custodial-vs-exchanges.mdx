@@ -1,0 +1,83 @@
+---
+title: "Gözetimsiz takaslar ve merkezi borsalar: hesaplar, KYC ve fonların kontrolü"
+description: "L2Pass gibi gözetimsiz bir takasın merkezi borsadan farkı: hesap yok, KYC yok ve fonlarınızın kontrolü sizde."
+sidebarTitle: "Gözetimsiz ve borsalar"
+---
+
+Merkezi bir borsa fonlarınızı hesabınızda tutar. İşlem yapmak veya çekmek için genellikle kimliğinizi doğrulamanız (KYC) gerekir ve borsa, inceleme yaparken bir çekimi duraklatabilir veya hesabı dondurabilir; örneğin fonların kaynağını sorarak. [L2Pass Swap](https://swap.l2pass.com/) farklı çalışır: gözetimsizdir, hesap ve KYC gerektirmez, token'larınız siz bir takasa gönderene kadar kendi cüzdanınızda kalır. Yine de her takas AML ve yaptırım riski açısından taranır ve işaretlenen bir yatırma inceleme için tutulabilir.
+
+## Yan yana
+
+Temel fark fonlarınızı kimin tuttuğudur: siz mi, borsa mı.
+
+| | L2Pass Swap (gözetimsiz) | Merkezi borsa |
+| :-- | :-- | :-- |
+| Hesap | Gerekmez | Zorunlu |
+| Kimlik doğrulama (KYC) | Gerekmez | İşlem veya çekim için genellikle zorunlu |
+| Fonlarınızı kim tutar | Siz, kendi cüzdanınızda | Borsa, hesabınızda |
+| Anahtarlar kimde | Yalnızca sizde | Borsada |
+| Cross-chain transfer | Tek takas, bir ağdan diğerine | Yatırma, gerekirse işlem, sonra yeni ağda çekim |
+| Gösterilen ücretler | Onaylamadan önce her ücret ve alacağınız tutar | İşlem ücreti, spread ve çekim ücreti, her biri ayrı ekranda |
+| Bir işlem işaretlenirse | İşaretlenen adres teklif almaz; işaretlenen yatırma o tek takasın incelemesi için tutulur | Borsa çekimi tutabilir veya hesabı kısıtlayabilir |
+| İtibari paraya giriş ve çıkış | Hayır | Genellikle evet |
+
+## Anlık borsalar ikisinin arasında
+
+FixedFloat, ChangeNOW veya StealthEX gibi anlık borsalar hesap gerektirmez, ancak takası gönderene kadar yatırdığınız tutarın gözetimini üstlenir. Onları karşılaştıran [Trocador](https://trocador.app), her birini koşullarına, gizlilik politikasına ve kullanıcı doğrulamayı reddettiğinde ne yaptığına göre puanlar ve herhangi bir borsanın yine de takası duraklatıp KYC veya AML kontrolü isteyebileceğini belirtir. 19 Ekim 2026 tarihli canlı tekliflerimizde çoğu çiftte L2Pass RFQ'dan daha az teslim ettiler. Bkz. [Karşılaştırma: stablecoin transferleri](/tr/products/swap/learn/compare-stablecoin-transfers), [BTC takasları](/tr/products/swap/learn/compare-btc-swaps) ve [ZEC takasları](/tr/products/swap/learn/compare-zec-swaps).
+
+## Hangisi ne zaman uygun
+
+**Gözetimsiz takas şu durumlarda uygundur:**
+- Zaten kriptonuz var ve başka bir ağa veya token'a taşımak istiyorsunuz.
+- Takaslar arasında fonlarınızın gözetimini elinizde tutmak istiyorsunuz.
+- Tek seferlik bir transfer için hesap açmak veya doğrulamak istemiyorsunuz.
+
+**Merkezi borsa şu durumlarda uygundur:**
+- İtibari parayla kripto almanız veya satmanız gerekiyor.
+- Emir defteri veya işlem araçları istiyorsunuz.
+- Fonları borsada tutmakta sakınca görmüyorsunuz.
+
+İkisini birleştirebilirsiniz de: bir borsadan doğrudan L2Pass teklifinin tek kullanımlık yatırma adresine çekin, token'lar seçtiğiniz ağa ulaşır. Bkz. [Herhangi bir cüzdan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps).
+
+## Gözetimsiz ne anlama gelmez
+
+Gözetimsiz, L2Pass'in fonlarınızı asla tutmadığı anlamına gelir. Anonim veya taranmamış anlamına gelmez.
+
+- **Anonim değil.** Takaslar herkese açık blok zinciri işlemleridir ve sağlayıcılar cüzdan adresinizi alır.
+- **Taramasız değil.** Her takas AML ve yaptırım riski açısından taranır. Ulaştıktan sonra işaretlenen bir yatırma iade edilmez, inceleme için tutulur ve bunu NEAR Intents desteğiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Fon saklama yeri değil.** L2Pass sizin için bakiye tutmaz. Fonlarınız cüzdanınızda kalır.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap'i kullanmak için KYC gerekir mi?">
+    Hayır. Hesap ve KYC yoktur. Bir yatırma inceleme için tutulursa NEAR Intents desteği fonların nereden geldiğini sorabilir.
+  </Accordion>
+
+  <Accordion title="L2Pass fonlarımı dondurabilir mi?">
+    L2Pass fonlarınızı asla tutmaz, dolayısıyla dondurabileceği bir bakiye yoktur. NEAR Intents bir yatırmayı AML veya yaptırım kuralları kapsamında işaretlerse, o tek takas onların desteğiyle çözene kadar inceleme için tutulur. Başka hiçbir şey etkilenmez.
+  </Accordion>
+
+  <Accordion title="L2Pass bir DEX mi?">
+    L2Pass Swap; NEAR Intents, Circle CCTP, USDT0, LI.FI ve Relay gibi merkeziyetsiz protokollerin ve çözücü ağlarının rotalarını karşılaştıran gözetimsiz bir arayüzdür. Emir defteri işletmez ve kullanıcı fonlarını tutmaz.
+  </Accordion>
+
+  <Accordion title="Kriptoyu başka bir KYC olmadan borsadan çıkarabilir miyim?">
+    Borsanızdan doğrudan bir L2Pass teklifinin tek kullanımlık yatırma adresine çekin. L2Pass hesap veya KYC gerektirmez ve token'lar seçtiğiniz ağa ulaşır. Çekim için borsanızın kendi kuralları yine geçerlidir.
+  </Accordion>
+
+  <Accordion title="Borsalar neden fon kaynağı kanıtı istiyor?">
+    Borsalar saklayıcıdır ve lisanslı oldukları yerin kurallarına uymak zorundadır; bu, yatırmaların nereden geldiğini kontrol etmeyi içerebilir. Kesin gereklilikleri borsanıza sorun.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [L2Pass güvenli mi?](/tr/products/swap/learn/is-l2pass-safe)
+- [Herhangi bir cüzdan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps)
+- [Gizlilik ve AML İlkeleri](https://l2pass.com/privacy-policy)
+- [Herkese tercih ettiği ağda kripto ile ödeme yapın](/tr/products/swap/learn/crypto-payments)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

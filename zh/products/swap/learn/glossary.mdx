@@ -1,0 +1,57 @@
+---
+title: "L2Pass Swap 术语表：RFQ、求解器、USDT0、CCTP 等"
+description: "用通俗语言解释 L2Pass Swap 和本文档中使用的术语：RFQ、求解器、充值地址、退款地址、最少到账、滑点、USDT0、CCTP 等。"
+sidebarTitle: "术语表"
+---
+
+以下是你在 [L2Pass Swap](https://swap.l2pass.com/) 和本文档中会遇到的术语，用通俗语言解释。每个术语都链接到详细说明它的页面。
+
+## 路由和提供方
+
+路由是某个提供方完成你兑换的一种方式，L2Pass 会把所有路由并排展示。
+
+| 术语 | 含义 |
+| :-- | :-- |
+| **路由（route）** | 由一个提供方运行的、完成你兑换的一种方式。L2Pass 展示所有能完成你兑换的路由，按到账金额排序。[路由如何比较](/zh/products/swap/learn/compare-routes) |
+| **路由卡片** | 兑换界面中显示某条路由预计到账、最少到账、预计时间和费用的方框。 |
+| **NEAR Intents** | 一个求解器和做市商竞争执行跨链兑换的网络。L2Pass RFQ 和 L2Pass Private 路由运行在它上面。 |
+| **L2Pass RFQ** | NEAR Intents 上的标准路由。RFQ 即 request for quote（询价）：你的兑换会提供给求解器，由最优报价成交。[什么是 L2Pass RFQ](/zh/products/swap/learn/what-is-l2pass-rfq) |
+| **L2Pass Private** | 与 L2Pass RFQ 相同的路由，在机密环境中执行，减少公开区块链显示的信息。[私密兑换](/zh/products/swap/learn/private-cross-chain-swaps) |
+| **求解器（solver）** | 用自有流动性在 NEAR Intents 上完成兑换的做市商。 |
+| **USDT0** | 通过 LayerZero 在链之间原生转移的 USDT 版本，没有包装代币。[USDT 网络详解](/zh/products/swap/learn/usdt-networks) |
+| **Circle CCTP** | Circle 的跨链转账协议（Cross-Chain Transfer Protocol）。它在源链销毁 USDC，在目标链铸造原生 USDC，提供 Standard 和 Fast 两种模式。[通过 CCTP 跨链 USDC](/zh/products/swap/guides/usdc-cctp) |
+| **聚合器** | 在众多跨链桥和交易所中为你寻找一条路由的服务，例如 LI.FI 或 OKX DEX 聚合器。 |
+
+## 付款和收款
+
+你可以通过在钱包中签名付款，也可以发送到充值地址付款。
+
+| 术语 | 含义 |
+| :-- | :-- |
+| **钱包路由** | 需要你在自己钱包中签署交易的路由，例如 CCTP、USDT0、LI.FI 或 Relay。 |
+| **充值地址** | 在 L2Pass RFQ 和 L2Pass Private 路由上为你的报价生成的一次性地址。你可以从任意钱包或交易所向它付款，无需连接钱包。[充值地址兑换](/zh/products/swap/learn/deposit-address-swaps) |
+| **退款地址** | 你在源链上控制的钱包。如果充值地址兑换无法完成，你的充值会退回到这里。[兑换失败与退款](/zh/products/swap/learn/failed-swaps-and-refunds) |
+| **非托管** | L2Pass 从不持有你的代币或私钥。每笔兑换都由提供方在自己的合约上执行。[L2Pass 安全吗？](/zh/products/swap/learn/is-l2pass-safe) |
+| **部分成交** | 只完成一部分的兑换。L2Pass 不使用部分成交：兑换要么全部完成，要么不执行。 |
+
+## 金额和费用
+
+显示的金额已扣除除源链 Gas 和可能存在的跨链消息费以外的所有费用。
+
+| 术语 | 含义 |
+| :-- | :-- |
+| **预计到账** | 在当前市场条件下，扣除费用后你应收到的金额。 |
+| **最少到账** | 你最少会收到的金额。如果市场变动超出该值，兑换不会执行。 |
+| **滑点容忍度** | 你能接受的低于预计到账的幅度，它决定最少到账。默认 0.05%。[滑点详解](/zh/products/swap/learn/slippage) |
+| **固定到账** | 交付精确金额的路由，例如 USDT0。不涉及滑点。 |
+| **L2Pass 手续费** | L2Pass 收取的唯一费用：稳定币兑换 0%，其他资产最高 0.2%，私密兑换最高 0.3%。[费用详解](/zh/products/swap/learn/fees) |
+| **提供方费用** | 路由提供方（如 NEAR Intents、LI.FI 或 Relay）收取的费用，已包含在到账金额中。 |
+| **网络费** | 目标区块链收取的费用，已包含在到账金额中。 |
+| **源链 Gas** | 源区块链为发送你的交易收取的费用，从你的钱包以原生代币（ETH、TRX、BNB 等）支付。 |
+| **跨链消息费** | 部分跨链桥为发送跨链消息收取的费用，例如基于 LayerZero 的 USDT0。以源链原生代币支付。 |
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass Swap 如何运作](/zh/products/swap/overview)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)

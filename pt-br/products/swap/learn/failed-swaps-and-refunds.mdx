@@ -1,0 +1,107 @@
+---
+title: "O que acontece se um swap falhar: reembolsos e endereços de reembolso"
+description: "Se um swap da L2Pass não puder ser concluído, rotas on-chain são revertidas e rotas com endereço de depósito reembolsam automaticamente. Como funciona a triagem, quando fundos ficam retidos e o que verificar."
+sidebarTitle: "Swaps com falha e reembolsos"
+---
+
+Se um swap no [L2Pass Swap](https://swap.l2pass.com/) não puder ser concluído, ele não é executado: swaps nunca são executados parcialmente. Nas rotas de carteira, como Circle CCTP, USDT0, Relay ou LI.FI, a transação é revertida e nenhum token é trocado, mas o gas que você pagou não é reembolsado. Nas rotas com endereço de depósito, L2Pass RFQ e L2Pass Private, o provedor devolve seu depósito ao endereço de reembolso que você definiu, descontadas taxas do provedor ou da rede. O único caso diferente é um alerta de compliance depois do depósito: aí os fundos ficam retidos para análise em vez de reembolsados, e você resolve isso com o suporte da NEAR Intents.
+
+## O que acontece em cada tipo de rota
+
+Rotas de carteira são revertidas, rotas com endereço de depósito reembolsam, e um depósito sinalizado pelo compliance fica retido para análise.
+
+| Tipo de rota | Rotas | Se o swap não puder ser concluído | O que você perde |
+| :-- | :-- | :-- | :-- |
+| Transação pela carteira | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, agregador OKX DEX | A transação é revertida e nenhum token é trocado | O gas de origem |
+| Endereço de depósito | L2Pass RFQ, L2Pass Private | O provedor devolve o depósito ao seu endereço de reembolso | Taxas do provedor e da rede que podem ser descontadas do reembolso |
+| Sinalizado após o depósito | L2Pass RFQ, L2Pass Private | Os fundos ficam retidos enquanto a NEAR Intents analisa o swap | Por padrão nada é perdido; você abre um ticket com o suporte da NEAR Intents |
+
+## Por que um swap pode não ser concluído
+
+Um swap para quando o preço, o tempo, o depósito ou uma verificação do provedor não batem com a cotação.
+
+- **O preço passou da sua tolerância de slippage.** O mínimo a receber no cartão de rota é o pior caso dentro da sua tolerância (0,05% por padrão). Se o preço passar disso, o swap não é executado.
+- **A cotação expirou.** Uma cotação vale por tempo limitado. Um depósito que chega tarde demais pode não ser executado.
+- **O depósito não bate com a cotação.** Por exemplo, uma exchange descontou a taxa de saque, ou os tokens foram enviados por outra rede.
+- **Nenhum solver executou o swap.** Nas rotas RFQ, solvers podem recusar um swap, por exemplo quando a liquidez está baixa.
+- **Um alerta de compliance.** No L2Pass RFQ e no L2Pass Private, um endereço sinalizado não recebe cotação. Um depósito sinalizado depois de chegar fica retido para análise, não é reembolsado. Veja [Como funciona a triagem](#how-screening-works).
+
+<a id="how-screening-works"></a>
+
+## Como funciona a triagem
+
+Todo swap no L2Pass RFQ e no L2Pass Private passa pela mesma triagem, público ou privado, e não é preciso KYC.
+
+- **Na cotação.** A NEAR Intents faz a triagem do swap antes de cotar. Se algo for sinalizado, você não recebe cotação e nada é enviado. Seu endereço de reembolso também passa pela triagem, então use sua própria carteira.
+- **Depois do seu depósito.** O swap é verificado de novo quando o depósito chega.
+- **Falha técnica: reembolsado.** Se o swap falhar por motivo técnico, como variação de preço ou cotação expirada, o depósito volta automaticamente ao seu endereço de reembolso.
+- **Alerta de compliance: retido para análise.** Se o depósito for sinalizado por regras de AML ou sanções, os fundos ficam retidos enquanto a NEAR Intents analisa, e o motivo pode não ser informado. Para resolver, abra um ticket com o suporte da NEAR Intents. Eles podem perguntar a origem dos fundos.
+
+A L2Pass não pode anular uma análise, mas o [suporte da L2Pass](/pt-br/resources/support) pode ajudar você a encontrar o contato certo. Rotas de carteira como Circle CCTP, USDT0, LI.FI e Relay seguem as verificações dos próprios provedores. Veja a [página de risco e compliance da NEAR Intents](https://docs.near-intents.org/security-compliance/risk-and-compliance) para detalhes.
+
+## Como definir um endereço de reembolso
+
+Um reembolso vai só para o endereço de reembolso, então use uma carteira que você controla.
+
+<Steps>
+  <Step title="Use uma carteira que você controla">
+    Defina como endereço de reembolso uma carteira na rede de origem que você controla e com a qual pode assinar, como uma carteira Tron quando paga em USDT TRC-20.
+  </Step>
+
+  <Step title="Não use endereço de depósito de exchange">
+    Um reembolso enviado para um endereço de depósito de exchange pode não ser creditado na sua conta, porque exchanges costumam esperar depósitos de remetentes conhecidos ou com memo.
+  </Step>
+
+  <Step title="Confira antes de pagar">
+    O endereço de reembolso precisa estar correto antes de você enviar o depósito, porque o reembolso só vai para ele.
+  </Step>
+</Steps>
+
+## O que fazer se um swap travar
+
+Verifique **Recent swaps** e um explorador de blocos antes de falar com o suporte.
+
+1. Abra **Recent swaps** e verifique o status: *Awaiting deposit*, *Deposit confirmed* ou *Complete*.
+2. Se ainda mostrar *Awaiting deposit*, confira em um explorador de blocos se a sua transferência chegou ao endereço de depósito na rede certa e com o valor certo.
+3. Em uma transferência USDT0, procure o hash da transação de origem no [LayerZero Scan](https://layerzeroscan.com/).
+4. Se o swap não for concluído, verifique o depósito devolvido no seu endereço de reembolso.
+5. Se o depósito estiver retido por análise de compliance, abra um ticket com o suporte da NEAR Intents.
+6. Se ainda precisar de ajuda, fale com o [suporte da L2Pass](/pt-br/resources/support) informando o hash da transação de origem.
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Um swap da L2Pass pode ser executado parcialmente?">
+    Não. Um swap é concluído por inteiro ou não é executado.
+  </Accordion>
+
+  <Accordion title="Recebo o gas de volta se um swap falhar?">
+    Não. O gas pago na rede de origem não é reembolsável, em nenhuma rota.
+  </Accordion>
+
+  <Accordion title="Para onde vai o reembolso?">
+    Nas rotas com endereço de depósito, para o endereço de reembolso que você definiu na rede de origem. Nas rotas de carteira, se a transação for revertida nada sai da sua carteira, além do gas.
+  </Accordion>
+
+  <Accordion title="O reembolso é sempre garantido?">
+    Um swap que falha por motivo técnico é reembolsado automaticamente ao seu endereço de reembolso, descontadas taxas do provedor ou da rede. Um depósito sinalizado por regras de AML ou sanções não é reembolsado automaticamente: os fundos ficam retidos para análise, e você resolve isso abrindo um ticket com o suporte da NEAR Intents.
+  </Accordion>
+
+  <Accordion title="Por que não recebi cotação?">
+    O valor pode estar abaixo do mínimo da rota, ou nenhum solver ofereceu preço. No L2Pass RFQ e no L2Pass Private, o swap também não recebe cotação se a triagem o sinalizar. Nesse caso nada é enviado.
+  </Accordion>
+
+  <Accordion title="Preciso de KYC?">
+    Não. Não há conta nem KYC. Se um depósito ficar retido para análise, o suporte da NEAR Intents pode perguntar a origem dos fundos.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Swap de qualquer carteira ou exchange](/pt-br/products/swap/learn/deposit-address-swaps)
+- [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees)
+- [Termos de Serviço](https://l2pass.com/terms-of-service)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 11 de novembro de 2026*

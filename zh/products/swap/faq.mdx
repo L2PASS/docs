@@ -1,0 +1,75 @@
+---
+title: "L2Pass Swap 常见问题"
+sidebarTitle: "常见问题"
+description: "关于 L2Pass Swap 的常见问题：费用（稳定币 0%）、到账时间、退款、私密兑换、支持的网络，以及从任意钱包或交易所付款。"
+icon: "circle-question"
+iconType: "light"
+---
+
+<AccordionGroup>
+  <Accordion title="什么是 L2Pass Swap，它如何运作？">
+    L2Pass Swap 是一个非托管的跨链代币兑换界面。它比较多家独立路由提供方（如原生跨链桥、求解器网络和聚合器）的报价，让你一次确认即可执行最佳路由。
+  </Accordion>
+
+  <Accordion title="可以在链之间转移同一种代币吗？">
+    可以。同资产转账，例如把 USDT 从 Tron 转到 Ethereum，或把 USDC 从 Arbitrum 转到 Base，与兑换的操作方式相同。在可用时，USDT0 和 Circle CCTP 等原生路由会与其他路由一同提供。
+  </Accordion>
+
+  <Accordion title="支持哪些资产和网络？">
+    稳定币是重点，同时也支持 ETH、BTC、SOL 和 ZEC 等主流资产。当前支持的代币和网络列表显示在
+    <a href="https://swap.l2pass.com" target="_blank">兑换页面</a>
+    上，并可能随时间变化。
+  </Accordion>
+
+  <Accordion title="什么是价格影响？">
+    价格影响（price impact）是交易规模相对于可用流动性造成的成交价格变化。
+  </Accordion>
+
+  <Accordion title="什么是滑点？">
+    滑点（slippage）是由于市场波动，报价价格与最终成交价格之间的差额。
+  </Accordion>
+
+  <Accordion title="可以设置滑点容忍度吗？">
+    可以。默认容忍度为 0.05%，你可以在任意路由卡片中修改。部分路由（例如原生 USDT0 和 USDC 跨链桥）到账金额固定，因此不涉及滑点。
+  </Accordion>
+
+  <Accordion title="什么是预计到账？">
+    预计到账是在当前市场条件下，你将在目标网络上收到的估计金额。它已包含所有费用，源链 Gas 和可能存在的跨链消息费除外。
+  </Accordion>
+
+  <Accordion title="什么是最少到账？">
+    最少到账是在你的滑点容忍度范围内的最差结果。如果价格变动超出该范围，兑换不会执行：链上路由会回滚，充值地址路由会把充值退回到你的退款地址。
+  </Accordion>
+
+  <Accordion title="收取哪些费用？">
+    L2Pass 手续费：稳定币兑换 0%，其他资产最高 0.2%，私密兑换最高 0.3%（替代 0% 或 0.2%，而非额外收取）。路由合作方和区块链可能收取自己的费用，L2Pass 无法控制；最新信息请查看各提供方。实际费用始终会在你确认前显示在兑换页面上，目标网络上的预计到账金额已包含这些费用，源链 Gas 和可能存在的跨链消息费除外，这两项需要另外支付。
+  </Accordion>
+
+  <Accordion title="什么是私密兑换？">
+    私密兑换通过 NEAR Intents 在机密环境中执行，减少公开区块链上可见的信息。它不是完全匿名：你的钱包地址仍会提供给提供方，并且筛查方式与公开兑换完全相同。私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取），已包含在报价金额中。
+  </Accordion>
+
+  <Accordion title="L2Pass Swap 是非托管的吗？">
+    是的。L2Pass 从不持有或控制你的代币或私钥。兑换由独立的第三方提供方执行。
+  </Accordion>
+
+  <Accordion title="目标链上需要 Gas 吗？">
+    不需要。只有在源链上发送交易或充值时才需要 Gas。目标链的 Gas 只在你之后使用这笔资金时才需要。对于充值地址路由，你也可以从任意钱包或交易所手动发送代币。
+  </Accordion>
+
+  <Accordion title="兑换会部分成交吗？">
+    不会。L2Pass 不使用部分成交。兑换要么全部完成，要么不执行。
+  </Accordion>
+
+  <Accordion title="如果兑换失败会怎样？">
+    链上路由会回滚，因此不会发生代币兑换，但网络 Gas 费不予退还。对于充值地址路由，提供方会把你的充值退回到退款地址；退款金额中可能扣除提供方和网络费用。
+  </Accordion>
+
+  <Accordion title="我的兑换会被拦截或冻结吗？">
+    每笔兑换都会进行 AML 和制裁风险筛查。在 L2Pass RFQ 和 L2Pass Private 上，被标记的地址拿不到报价，因此不会发生任何转账。如果充值到账后才被标记，资金会在 NEAR Intents 审核期间被冻结，你需要向 NEAR Intents 支持团队提交工单处理。因技术原因失败的兑换会自动退款。参见<a href="/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works">筛查如何运作</a>。
+  </Accordion>
+
+  <Accordion title="需要 KYC 吗？">
+    不需要。无需账户，也无需 KYC。如果充值被冻结审核，NEAR Intents 支持团队可能会询问资金来源。
+  </Accordion>
+</AccordionGroup>

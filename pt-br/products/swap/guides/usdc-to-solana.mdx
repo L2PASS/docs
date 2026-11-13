@@ -1,0 +1,107 @@
+---
+title: "Como transferir USDC para a Solana"
+description: "Transfira USDC para a Solana em cerca de 32 segundos a partir da Base ou 42 a partir da Ethereum, ou troque USDT TRC-20 por USDC. Taxa L2Pass de 0%, sem SOL."
+sidebarTitle: "USDC para Solana"
+---
+
+import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
+
+Você pode transferir USDC para a Solana a partir da Ethereum ou da Base, e trocar USDT na Tron por USDC na Solana, com o [L2Pass Swap](https://swap.l2pass.com/). Em cotações de teste, esses pares foram oferecidos por L2Pass RFQ e L2Pass Private, ambos na [NEAR Intents](https://near.org/intents), com tempos estimados de cerca de 30 segundos a 1,5 minuto. Você paga enviando tokens para um endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira ou de uma exchange. A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas antes de confirmar. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
+
+**Cerca de 30 segundos a partir da Base** · **Taxa L2Pass de 0%** · **Chegam 999,65 USDC para 1.000 enviados** · **Sem precisar de SOL**
+
+<Note>Números de cotações de teste de 19 de outubro de 2026. A sua cotação é sempre ao vivo.</Note>
+
+## Rotas para a Solana
+
+Em cotações de teste, só L2Pass RFQ e L2Pass Private chegaram à Solana, a partir de Base, Ethereum e Tron.
+
+| Rota | Tempo estimado | Resultado | Observações |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Cerca de 32 segundos a partir da Base, 42 segundos a partir da Ethereum, 77 segundos a partir da Tron | Variável, com mínimo a receber | Solvers e market makers competem para executar o seu swap. Endereço de depósito. |
+| L2Pass Private | Igual ao L2Pass RFQ | Variável, com mínimo a receber | Execução confidencial. Endereço de depósito. Taxa L2Pass de até 0,3%. |
+
+Nessas cotações de teste não foram oferecidas outras rotas para esses pares, incluindo o Circle CCTP. A cotação lista qualquer rota que consiga executar o seu par.
+
+## Cotações de teste
+
+Cotações de 1.000 USDC ou USDT por volta das 17:17 UTC. A cotação ao vivo mostra os números atuais.
+
+| Swap | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 1.000 USDC, Base para Solana | 999,65 USDC | 997,92 USDC |
+| 1.000 USDC, Ethereum para Solana | 999,55 USDC | 997,92 USDC |
+| 1.000 USDT na Tron para USDC na Solana | 998,67 USDC | 996,09 USDC |
+
+No L2Pass RFQ, as cotações mostraram taxa L2Pass de 0%, taxa do provedor NEAR Intents de 0,01% e taxa de rede da Solana de 0,28 USDC.
+
+## Como transferir USDC para a Solana
+
+Nada sai da sua carteira até você pagar, então dá para comparar todas as rotas antes.
+
+<Steps>
+  <Step title="Abra o L2Pass Swap">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/) e preencha quatro campos:
+
+    - **From:** USDC na Ethereum ou na Base, ou USDT na Tron.
+    - **To:** USDC na Solana.
+    - **Amount:** quanto você quer enviar.
+    - **Endereço de recebimento:** o endereço Solana que vai receber o USDC.
+  </Step>
+
+  <Step title="Compare as rotas">
+    Confira o valor estimado, o mínimo a receber, o tempo estimado e as taxas nos cartões do L2Pass RFQ e do L2Pass Private. O slippage padrão é de 0,05% (editável).
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    Coloque como endereço de reembolso uma carteira que você controla na rede de origem. Se o swap não puder ser concluído, o provedor devolve o seu depósito para lá.
+  </Step>
+
+  <Step title="Pague no endereço de depósito">
+    Envie o valor da cotação para o endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira ou de uma exchange, por endereço ou QR code. Se enviar de uma exchange, confira se o valor que chega bate com a cotação.
+  </Step>
+
+  <Step title="Acompanhe o swap">
+    Acompanhe o status em **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* e depois *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Você só precisa de gas na rede de origem e de nenhum SOL para receber.
+
+- **Gas só na rede de origem.** Você paga gas em ETH na Ethereum ou na Base, ou em TRX na Tron. A taxa de rede da Solana é descontada do valor exibido, então você não precisa de SOL para receber. Você vai precisar de SOL depois para movimentar ou usar o USDC na Solana.
+- **De USDT para USDC num único swap.** A partir da Tron, você troca de stablecoin e de rede ao mesmo tempo. Continua sendo um swap de stablecoins, com taxa L2Pass de 0% no L2Pass RFQ.
+
+<SwapBeforeYouSend />
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Quanto tempo leva para transferir USDC para a Solana?">
+    Cerca de 32 segundos a partir da Base, 42 segundos a partir da Ethereum e 77 segundos a partir da Tron em cotações de teste. Os cartões de rota mostram a estimativa atual.
+  </Accordion>
+
+  <Accordion title="Quanto custa transferir USDC para a Solana?">
+    A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados). Em cotações de teste de 1.000 USDC, o L2Pass RFQ entregou 999,65 USDC a partir da Base e 999,55 USDC a partir da Ethereum, depois da taxa da NEAR Intents e da taxa de rede da Solana.
+  </Accordion>
+
+  <Accordion title="Preciso de SOL para receber USDC na Solana?">
+    Não. A taxa de rede da Solana é descontada do valor exibido. Você vai precisar de SOL depois para enviar ou usar o USDC.
+  </Accordion>
+
+  <Accordion title="Posso trocar USDT TRC-20 por USDC na Solana?">
+    Sim. Em cotações de teste, 1.000 USDT na Tron viraram 998,67 USDC na Solana pelo L2Pass RFQ em cerca de 77 segundos.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Melhor forma de transferir USDT e USDC: L2Pass vs outras bridges](/pt-br/products/swap/learn/compare-stablecoin-transfers)
+- [Transferir USDT da Tron para a Solana](/pt-br/products/swap/guides/usdt-tron-to-solana)
+- [Como transferir USDC com Circle CCTP](/pt-br/products/swap/guides/usdc-cctp)
+- [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*

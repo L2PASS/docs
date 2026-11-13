@@ -1,0 +1,109 @@
+---
+title: "L2Pass Swap: rotas, taxas e swaps privados"
+sidebarTitle: "Visão geral"
+icon: "bridge-water"
+description: "Como o L2Pass Swap funciona: 14 redes, várias rotas cotadas em cada swap, taxa L2Pass de 0% em stablecoins, swaps privados, reembolsos e tempos de execução."
+iconType: "light"
+---
+
+<Frame>
+  ![Docs Cross Chain Swap](/images/docs_cross-chain_swap.png)
+</Frame>
+
+O [L2Pass Swap](https://swap.l2pass.com/) move tokens entre blockchains, com foco em stablecoins. Em cada swap, ele pede cotação a vários provedores de roteamento independentes, mostra tudo lado a lado ordenado pelo valor que você recebe e permite executar a rota escolhida com uma única confirmação.
+
+A L2Pass nunca fica com a custódia dos seus tokens. Pontes de terceiros, redes de solvers e fontes de liquidez executam cada swap na própria infraestrutura.
+
+## Redes e ativos suportados
+
+Hoje o L2Pass Swap suporta **Ethereum, Bitcoin, Zcash, Tron, Solana, TON, BNB Chain, Arbitrum, Base, Polygon, Optimism, Avalanche, Plasma e HyperEVM**.
+
+Stablecoins (USDT, USDT0, USDC, DAI e outras) são o foco principal, mas você também pode fazer swap de ativos como ETH, BTC, SOL, ZEC, TRX, BNB, AVAX e POL. Tokens, redes e rotas disponíveis podem mudar a qualquer momento; a [interface de swap](https://swap.l2pass.com/) sempre mostra a lista atual.
+
+## Como o roteamento funciona
+
+Quando você pede uma cotação, a L2Pass consulta várias fontes de roteamento ao mesmo tempo e mostra todas as rotas que podem executar seu swap, ordenadas pelo valor que você vai receber:
+
+- **L2Pass RFQ by NEAR Intents:** roteamento por pedido de cotação pela rede [NEAR Intents](https://near.org/intents), onde solvers e market makers competem para executar seu swap.
+- **L2Pass Private:** a mesma rede de solvers, executada em um ambiente confidencial. Veja [Swaps privados](#private-swaps).
+- **USDT Native Bridge:** transferências nativas de USDT0 via LayerZero, inclusive a partir da Tron.
+- **USDC Native Bridge:** transferências de USDC nativo com Circle CCTP V2, nos modos Standard e Fast.
+- **Agregadores e redes de intents:** LI.FI, LI.FI Intents, Relay, Aori e o agregador OKX DEX.
+
+Cada cartão de rota mostra o valor estimado, o mínimo a receber, o tempo estimado e as taxas daquela rota, para você escolher a que preferir. Algumas rotas têm valor mínimo de swap; se o seu valor for menor, a rota aparece como indisponível com o mínimo indicado.
+
+## Como um swap é executado
+
+Dependendo da rota, o swap é executado de uma de duas formas:
+
+- **Transação pela carteira:** você assina uma transação na carteira e os contratos da rota executam o swap e a ponte on-chain.
+- **Endereço de depósito:** nas rotas RFQ e Private, você envia os tokens para um endereço de depósito de uso único da sua cotação. Pode enviar da carteira conectada ou transferir manualmente de qualquer carteira ou exchange usando o endereço ou o QR code. Se enviar de uma exchange, confira se o valor que chega bate com a cotação, porque algumas exchanges descontam a taxa de saque. Depois o swap passa por *Awaiting deposit*, *Deposit confirmed* e *Complete*, que você acompanha em **Recent swaps**.
+
+Em uma rota com endereço de depósito, você também define um endereço de reembolso na rede de origem. Se o swap não puder ser concluído, o provedor devolve seu depósito para lá.
+
+## Quanto tempo leva um swap
+
+A maioria dos swaps é liquidada em segundos ou poucos minutos, e cada cartão de rota mostra a estimativa antes de você confirmar.
+
+- **Relay, Aori e CCTP Fast:** de segundos a cerca de um minuto.
+- **L2Pass RFQ e L2Pass Private:** de 30 segundos a alguns minutos, e mais com Bitcoin ou Zcash, que esperam confirmações de bloco.
+- **USDT0:** alguns minutos.
+- **CCTP Standard:** até 20 minutos, enquanto espera a finalidade dos blocos.
+
+Congestionamento da rede ou indisponibilidade de um provedor podem fazer o swap levar mais do que o estimado.
+
+## Slippage e impacto no preço
+
+**Impacto no preço** é a variação de preço causada pelo tamanho da operação em relação à liquidez disponível. Comparar várias fontes ajuda a mantê-lo baixo.
+
+**Slippage** é a diferença entre o preço cotado e o preço final de execução.
+
+- **Tolerância de slippage:** a tolerância padrão é **0,05%**. Você pode alterá-la em qualquer cartão de rota.
+- **Valor fixo:** algumas rotas, como as pontes nativas de USDT0 e USDC, entregam um valor fixo, então o slippage não se aplica.
+- **Mínimo a receber:** cada cartão de rota mostra o mínimo a receber, o pior resultado dentro da sua tolerância. Se o preço passar disso, o swap não é executado: rotas on-chain são revertidas, e rotas com endereço de depósito devolvem o depósito ao seu endereço de reembolso.
+
+<a id="fee-structure"></a>
+
+## Estrutura de taxas
+
+O cartão de rota mostra as taxas reais do seu swap antes de você confirmar. O **valor estimado na rede de destino já inclui todas as taxas**, exceto o gas na rede de origem e a taxa de mensagem da ponte, se houver, que você paga à parte.
+
+### Taxa L2Pass
+
+| Tipo de swap | Taxa L2Pass |
+| :-- | :-- |
+| Swaps de stablecoins (qualquer rota) | **0%** |
+| Outros ativos | **até 0,2%** |
+| Swaps privados, qualquer ativo (em vez de 0% ou 0,2%, não somada) | **até 0,3%** |
+
+### Taxas de parceiros e de rede
+
+Parceiros de roteamento (pontes, redes de solvers, agregadores e provedores de liquidez) podem cobrar suas próprias taxas. A L2Pass não controla essas taxas; para informações atualizadas, consulte a documentação de cada provedor.
+
+Toda transação em blockchain também exige uma taxa de rede (gas) paga no token nativo, como ETH, POL, BNB ou TRX. O gas vai para a rede, não para a L2Pass, e não é reembolsável.
+
+<a id="private-swaps"></a>
+
+## Swaps privados
+
+Swaps privados passam por um ambiente de execução confidencial em vez de um público, o que limita o que fica visível nas blockchains públicas. Eles são possíveis graças à NEAR Intents, um protocolo de terceiros.
+
+- **Não é anonimato:** seu endereço público de carteira continua incluído nas solicitações enviadas aos provedores.
+- **Mesma triagem:** swaps privados passam pela mesma triagem dos públicos, na cotação e depois do depósito.
+- **Taxa:** a taxa L2Pass de um swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada). Como toda taxa, ela já está incluída no valor mostrado na cotação.
+
+Veja os [Termos de Serviço](https://l2pass.com/terms-of-service) e os [Princípios de Privacidade e AML](https://l2pass.com/privacy-policy) para mais detalhes.
+
+## Execução total ou reembolso total
+
+Um swap é concluído por inteiro ou não é executado, e um swap com falha é reembolsado automaticamente.
+
+- **Sem execução parcial:** a L2Pass não usa execução parcial. Um swap é concluído por inteiro ou não é executado.
+- **Reembolsos:** se um swap com endereço de depósito não puder ser concluído, por exemplo porque o preço passou da sua tolerância ou a cotação expirou, o provedor devolve o depósito ao seu endereço de reembolso, descontadas as taxas do provedor e da rede. Uma transação de carteira com falha é revertida, e o gas pago é gasto.
+- **Análises de compliance:** todo swap passa por triagem, sem KYC. No L2Pass RFQ e no L2Pass Private, um endereço sinalizado não recebe cotação. Um depósito sinalizado depois de chegar fica retido para análise em vez de ser reembolsado, e você resolve isso abrindo um ticket com o suporte da NEAR Intents. Veja [Como funciona a triagem](/pt-br/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+---
+
+<Card icon="circle-question" href="/pt-br/products/swap/faq" title="FAQ do Swap">
+  Respostas a perguntas frequentes sobre o L2Pass Swap: taxas, rotas, reembolsos e redes suportadas.
+</Card>

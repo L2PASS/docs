@@ -1,0 +1,97 @@
+---
+title: "从任意钱包或交易所兑换：充值地址兑换如何运作"
+description: "使用 L2Pass Swap，你可以把代币发送到一次性充值地址，从任意钱包或交易所为跨链兑换付款。无需连接钱包。"
+sidebarTitle: "从任意钱包或交易所兑换"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) 让你无需连接钱包即可为跨链兑换付款。在 L2Pass RFQ 和 L2Pass Private 路由上（两者都运行在 [NEAR Intents](https://near.org/intents) 上），你会获得一个为本次报价生成的一次性充值地址，然后通过地址或二维码，从任意钱包或交易所把代币发送过去。充值到账后兑换开始，目标代币会发送到你设置的收款地址。如果兑换无法完成，提供方会把充值退回到你的退款地址。稳定币兑换的 L2Pass 手续费为 0%，报价显示的是扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+## 关键术语
+
+充值地址兑换涉及三个地址：充值地址、收款地址和退款地址。
+
+| 术语 | 含义 |
+| :-- | :-- |
+| 充值地址 | 源链上为你的报价生成的一次性地址。把报价金额发送到这里即启动兑换。 |
+| 收款地址 | 目标链上接收代币的地址。 |
+| 退款地址 | 你在源链上控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。 |
+| 钱包路由 | 需要你在已连接钱包中签署交易的路由，例如 Circle CCTP、USDT0、Relay 或 LI.FI。 |
+
+## 充值地址还是钱包交易
+
+充值地址路由支持交易所提现，并会自动退款。钱包路由需要你签名，失败时会回滚。
+
+| | 充值地址路由 | 钱包路由 |
+| :-- | :-- | :-- |
+| 路由 | L2Pass RFQ、L2Pass Private | USDT0、Circle CCTP、LI.FI、LI.FI Intents、Relay、Aori、OKX DEX 聚合器 |
+| 付款来源 | 已连接的钱包、任意钱包或交易所 | 仅限已连接的钱包 |
+| 你需要做什么 | 向充值地址转账一次 | 签署交易（有时还需要代币授权） |
+| 如果失败 | 充值退回到退款地址，扣除提供方或网络费用 | 交易回滚，Gas 不予退还 |
+| 网络 | 包括 Bitcoin、Zcash、Tron、Solana 和 TON | 取决于路由 |
+
+## 如何从交易所或任意钱包兑换
+
+你只需转账一次，到账后兑换即开始。
+
+<Steps>
+  <Step title="请求报价">
+    打开 [swap.l2pass.com](https://swap.l2pass.com/)，选择你要发送的源代币和网络、目标代币和网络、金额以及收款地址。
+  </Step>
+
+  <Step title="选择 L2Pass RFQ 或 L2Pass Private">
+    这两条路由接受充值。请在路由卡片上查看预计到账、最少到账、预计时间和费用。
+  </Step>
+
+  <Step title="设置退款地址">
+    把退款地址设为你在源链上控制的钱包。不要使用交易所的充值地址：退回到那里的资金可能无法入账到你的账户。
+  </Step>
+
+  <Step title="发送准确金额">
+    复制充值地址或扫描二维码，然后在报价所示的源网络上发送报价所示的金额。在交易所提现时，请选择对应的提现网络，例如 Tron 上的 USDT 选择 TRC-20。
+  </Step>
+
+  <Step title="跟踪兑换">
+    在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 金额、网络和费用
+
+请在报价所示的网络上发送准确金额，否则兑换可能无法开始。
+
+- **交易所提现手续费。** 部分交易所会从发送金额中扣除提现手续费。请确认到账金额与报价一致，或多提一点，让充值金额匹配。
+- **使用正确的网络。** 请在报价所示的源网络上发送。在其他网络上发送的代币无法被本次兑换识别。
+- **一个报价对应一次充值。** 充值地址属于你的报价。新的兑换请重新请求报价。
+- **只需源链 Gas。** 你在发送时支付源网络费用。目标链上的网络费（如有）会从显示金额中扣除。
+- **不部分成交。** 兑换要么全部完成，要么不执行。
+- **合规检查。** 无需账户或 KYC。被标记的地址拿不到报价，因此不会发生任何转账。到账后才被标记的充值不会退回，而是冻结审核；你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="不连接钱包可以兑换加密货币吗？">
+    可以。在 L2Pass RFQ 和 L2Pass Private 上，你可以通过地址或二维码，从任意钱包或交易所把代币发送到一次性充值地址。
+  </Accordion>
+
+  <Accordion title="可以把 USDT 从交易所直接发送到另一条网络吗？">
+    可以，通过充值地址路由即可。例如，从交易所把 TRC-20 USDT 提现到充值地址，USDT 就会到达你选择的 Ethereum、Arbitrum 或其他网络。
+  </Accordion>
+
+  <Accordion title="如果交易所发送的金额少于报价怎么办？">
+    报价针对的是你充值的金额。请在 **Recent swaps** 中查看到账金额。如果兑换无法完成，提供方会把充值退回到退款地址，并扣除提供方或网络费用。
+  </Accordion>
+
+  <Accordion title="充值地址兑换是托管的吗？">
+    不是。L2Pass 从不持有你的代币或私钥。充值由 NEAR Intents 上的求解器完成，失败的兑换会退回到你的退款地址。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [什么是 L2Pass RFQ by NEAR Intents](/zh/products/swap/learn/what-is-l2pass-rfq)
+- [兑换失败会怎样](/zh/products/swap/learn/failed-swaps-and-refunds)
+- [把 USDT 从 Tron 跨链到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

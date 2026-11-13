@@ -1,0 +1,107 @@
+---
+title: "Cómo pasar USDC a Solana"
+description: "Pasa USDC a Solana en unos 32 segundos desde Base o 42 desde Ethereum, o cambia USDT TRC-20 por USDC. 0% de comisión de L2Pass, sin SOL."
+sidebarTitle: "USDC a Solana"
+---
+
+import SwapBeforeYouSend from '/snippets/es/swap-before-you-send.mdx';
+
+Puedes pasar USDC a Solana desde Ethereum o Base, y cambiar USDT en Tron por USDC en Solana, con [L2Pass Swap](https://swap.l2pass.com/). En cotizaciones de prueba, estos pares los ofrecieron L2Pass RFQ y L2Pass Private, ambos sobre [NEAR Intents](https://near.org/intents), con tiempos estimados de unos 30 segundos a 1,5 minutos. Pagas enviando tokens a una dirección de depósito de un solo uso desde tu wallet conectada, cualquier wallet o un exchange. La comisión de L2Pass en swaps de stablecoins es 0% (hasta 0,3% en swaps privados), y la cotización muestra lo que recibirás después de comisiones antes de confirmar. Solo se pagan aparte el gas de la red de origen y la posible comisión de mensaje del puente.
+
+**Unos 30 segundos desde Base** · **0% de comisión de L2Pass** · **Llegan 999,65 USDC por 1000 enviados** · **Sin SOL**
+
+<Note>Cifras de cotizaciones de prueba del 19 de octubre de 2026. Tu cotización siempre es en vivo.</Note>
+
+## Rutas a Solana
+
+En cotizaciones de prueba, solo L2Pass RFQ y L2Pass Private llegaron a Solana, desde Base, Ethereum y Tron.
+
+| Ruta | Tiempo estimado | Resultado | Notas |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Unos 32 segundos desde Base, 42 segundos desde Ethereum, 77 segundos desde Tron | Variable, con un mínimo a recibir | Solvers y market makers compiten por ejecutar tu swap. Dirección de depósito. |
+| L2Pass Private | Igual que L2Pass RFQ | Variable, con un mínimo a recibir | Ejecución confidencial. Dirección de depósito. Comisión de L2Pass de hasta 0,3%. |
+
+En esas cotizaciones de prueba no se ofrecieron otras rutas para estos pares, incluido Circle CCTP. La cotización muestra cualquier ruta que pueda ejecutar tu par.
+
+## Cotizaciones de prueba
+
+Cotizaciones de 1000 USDC o USDT hacia las 17:17 UTC. La cotización en vivo muestra las cifras actuales.
+
+| Swap | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 1000 USDC, Base a Solana | 999,65 USDC | 997,92 USDC |
+| 1000 USDC, Ethereum a Solana | 999,55 USDC | 997,92 USDC |
+| 1000 USDT en Tron a USDC en Solana | 998,67 USDC | 996,09 USDC |
+
+En L2Pass RFQ, las cotizaciones mostraron un 0% de comisión de L2Pass, una comisión del proveedor NEAR Intents del 0,01% y una comisión de red de Solana de 0,28 USDC.
+
+## Cómo pasar USDC a Solana
+
+Nada sale de tu wallet hasta que pagas, así que puedes comparar todas las rutas primero.
+
+<Steps>
+  <Step title="Abre L2Pass Swap">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/) y rellena cuatro campos:
+
+    - **From:** USDC en Ethereum o Base, o USDT en Tron.
+    - **To:** USDC en Solana.
+    - **Amount:** cuánto quieres enviar.
+    - **Dirección de recepción:** la dirección de Solana que recibirá los USDC.
+  </Step>
+
+  <Step title="Compara las rutas">
+    Revisa el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones en las tarjetas de L2Pass RFQ y L2Pass Private. El slippage por defecto es 0,05% (editable).
+  </Step>
+
+  <Step title="Indica una dirección de reembolso">
+    Pon como dirección de reembolso una wallet que controles en la red de origen. Si el swap no puede completarse, el proveedor devuelve allí tu depósito.
+  </Step>
+
+  <Step title="Paga a la dirección de depósito">
+    Envía el importe de la cotización a la dirección de depósito de un solo uso desde tu wallet conectada, cualquier wallet o un exchange, por dirección o código QR. Si envías desde un exchange, comprueba que el importe que llega coincide con la cotización.
+  </Step>
+
+  <Step title="Sigue el swap">
+    Sigue el estado en **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* y luego *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Solo necesitas gas en la red de origen y nada de SOL para recibir.
+
+- **Gas solo en la red de origen.** Pagas el gas en ETH en Ethereum o Base, o en TRX en Tron. La comisión de red de Solana se descuenta del importe mostrado, así que no necesitas SOL para recibir. Necesitarás SOL más adelante para mover o usar los USDC en Solana.
+- **De USDT a USDC en un solo swap.** Desde Tron puedes cambiar a la vez de stablecoin y de red. Sigue siendo un swap de stablecoins, con un 0% de comisión de L2Pass en L2Pass RFQ.
+
+<SwapBeforeYouSend />
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tarda pasar USDC a Solana?">
+    Unos 32 segundos desde Base, 42 segundos desde Ethereum y 77 segundos desde Tron en cotizaciones de prueba. Las tarjetas de ruta muestran la estimación actual.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta pasar USDC a Solana?">
+    La comisión de L2Pass en swaps de stablecoins es 0% (hasta 0,3% en swaps privados). En cotizaciones de prueba de 1000 USDC, L2Pass RFQ entregó 999,65 USDC desde Base y 999,55 USDC desde Ethereum, después de la comisión de NEAR Intents y la comisión de red de Solana.
+  </Accordion>
+
+  <Accordion title="¿Necesito SOL para recibir USDC en Solana?">
+    No. La comisión de red de Solana se descuenta del importe mostrado. Necesitarás SOL más adelante para enviar o usar los USDC.
+  </Accordion>
+
+  <Accordion title="¿Puedo cambiar USDT TRC-20 por USDC en Solana?">
+    Sí. En cotizaciones de prueba, 1000 USDT en Tron se convirtieron en 998,67 USDC en Solana con L2Pass RFQ en unos 77 segundos.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [La mejor forma de pasar USDT y USDC: L2Pass frente a otros puentes](/es/products/swap/learn/compare-stablecoin-transfers)
+- [Pasar USDT de Tron a Solana](/es/products/swap/guides/usdt-tron-to-solana)
+- [Cómo pasar USDC con Circle CCTP](/es/products/swap/guides/usdc-cctp)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

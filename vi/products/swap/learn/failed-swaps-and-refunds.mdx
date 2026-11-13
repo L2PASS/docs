@@ -1,0 +1,107 @@
+---
+title: "Điều gì xảy ra nếu giao dịch thất bại: hoàn tiền và địa chỉ hoàn tiền"
+description: "Nếu giao dịch L2Pass không thể hoàn tất, tuyến on-chain được hoàn tác và tuyến dùng địa chỉ nạp tự động hoàn tiền. Cách sàng lọc hoạt động, khi nào tiền bị giữ để xem xét và cần kiểm tra gì."
+sidebarTitle: "Giao dịch thất bại và hoàn tiền"
+---
+
+Nếu một giao dịch trong [L2Pass Swap](https://swap.l2pass.com/) không thể hoàn tất, nó sẽ không được thực hiện: giao dịch không bao giờ khớp một phần. Trên tuyến qua ví, như Circle CCTP, USDT0, Relay hoặc LI.FI, giao dịch được hoàn tác và không có token nào được trao đổi, nhưng gas bạn đã trả không được hoàn lại. Trên tuyến dùng địa chỉ nạp (L2Pass RFQ và L2Pass Private), nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền bạn đã đặt, sau khi trừ phí nhà cung cấp hoặc phí mạng (nếu có). Trường hợp duy nhất khác là khi khoản nạp bị gắn cờ tuân thủ sau khi đến: khi đó tiền bị giữ lại để xem xét thay vì được hoàn trả, và bạn xử lý với bộ phận hỗ trợ của NEAR Intents.
+
+## Điều gì xảy ra theo loại tuyến
+
+Tuyến qua ví được hoàn tác, tuyến dùng địa chỉ nạp hoàn tiền, còn khoản nạp bị gắn cờ tuân thủ sẽ bị giữ lại để xem xét.
+
+| Loại tuyến | Tuyến | Nếu giao dịch không thể hoàn tất | Bạn mất gì |
+| :-- | :-- | :-- | :-- |
+| Giao dịch từ ví | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, bộ tổng hợp OKX DEX | Giao dịch được hoàn tác và không token nào được trao đổi | Gas nguồn |
+| Địa chỉ nạp | L2Pass RFQ, L2Pass Private | Nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền | Phí nhà cung cấp và phí mạng có thể bị trừ vào khoản hoàn |
+| Bị gắn cờ sau khi nạp | L2Pass RFQ, L2Pass Private | Tiền bị giữ trong lúc NEAR Intents xem xét giao dịch | Mặc định không mất gì; bạn gửi yêu cầu tới bộ phận hỗ trợ của NEAR Intents |
+
+## Vì sao giao dịch có thể không hoàn tất
+
+Giao dịch dừng lại khi giá, thời gian, khoản nạp hoặc bước kiểm tra của nhà cung cấp không khớp với báo giá.
+
+- **Giá vượt mức chịu trượt giá.** Số tiền nhận tối thiểu trên thẻ tuyến là trường hợp xấu nhất trong mức chịu trượt giá của bạn (mặc định 0,05%). Nếu giá vượt quá mức này, giao dịch không được thực hiện.
+- **Báo giá hết hạn.** Báo giá chỉ có hiệu lực trong thời gian giới hạn. Khoản nạp đến quá muộn có thể không được khớp.
+- **Khoản nạp không khớp báo giá.** Ví dụ, sàn đã trừ phí rút, hoặc token được gửi trên mạng khác.
+- **Không solver nào khớp giao dịch.** Trên tuyến RFQ, solver có thể từ chối giao dịch, chẳng hạn khi thanh khoản mỏng.
+- **Gắn cờ tuân thủ.** Trên L2Pass RFQ và L2Pass Private, địa chỉ bị gắn cờ hoàn toàn không nhận được báo giá. Khoản nạp bị gắn cờ sau khi đến sẽ bị giữ lại để xem xét, không được hoàn trả. Xem [Cách sàng lọc hoạt động](#how-screening-works).
+
+<a id="how-screening-works"></a>
+
+## Cách sàng lọc hoạt động
+
+Mọi giao dịch trên L2Pass RFQ và L2Pass Private đều được sàng lọc như nhau, dù công khai hay riêng tư, và không cần KYC.
+
+- **Ở bước báo giá.** NEAR Intents sàng lọc giao dịch trước khi báo giá. Nếu có gì bị gắn cờ, bạn không nhận được báo giá và không có gì được gửi đi. Địa chỉ hoàn tiền của bạn cũng được sàng lọc, nên hãy dùng ví của chính bạn.
+- **Sau khi bạn nạp.** Giao dịch được kiểm tra lại khi khoản nạp đến.
+- **Lỗi kỹ thuật: được hoàn tiền.** Nếu giao dịch thất bại vì lý do kỹ thuật, như biến động giá hoặc báo giá hết hạn, khoản nạp tự động trở về địa chỉ hoàn tiền của bạn.
+- **Gắn cờ tuân thủ: giữ lại để xem xét.** Nếu khoản nạp bị gắn cờ theo quy tắc AML hoặc trừng phạt, tiền bị giữ lại trong lúc NEAR Intents xem xét, và lý do có thể không được chia sẻ. Để xử lý, hãy gửi yêu cầu tới bộ phận hỗ trợ của NEAR Intents. Họ có thể hỏi nguồn gốc của tiền.
+
+L2Pass không thể can thiệp vào quá trình xem xét, nhưng [bộ phận hỗ trợ L2Pass](/vi/resources/support) có thể giúp bạn tìm đúng đầu mối liên hệ. Các tuyến qua ví như Circle CCTP, USDT0, LI.FI và Relay tuân theo quy trình kiểm tra của chính nhà cung cấp. Xem [trang rủi ro và tuân thủ của NEAR Intents](https://docs.near-intents.org/security-compliance/risk-and-compliance) để biết chi tiết.
+
+## Cách đặt địa chỉ hoàn tiền
+
+Khoản hoàn chỉ đi tới địa chỉ hoàn tiền, nên hãy đặt ví bạn kiểm soát.
+
+<Steps>
+  <Step title="Dùng ví bạn kiểm soát">
+    Đặt địa chỉ hoàn tiền là ví trên chuỗi nguồn mà bạn kiểm soát và có thể ký giao dịch, như ví Tron khi bạn thanh toán bằng USDT TRC-20.
+  </Step>
+
+  <Step title="Đừng dùng địa chỉ nạp của sàn">
+    Khoản hoàn gửi đến địa chỉ nạp của sàn có thể không được ghi có vào tài khoản của bạn, vì sàn thường chỉ chờ khoản nạp từ người gửi đã biết hoặc có memo.
+  </Step>
+
+  <Step title="Kiểm tra trước khi thanh toán">
+    Địa chỉ hoàn tiền phải đúng trước khi bạn gửi khoản nạp, vì khoản hoàn chỉ đi tới đó.
+  </Step>
+</Steps>
+
+## Làm gì khi giao dịch bị kẹt
+
+Hãy kiểm tra **Recent swaps** và trình khám phá khối trước khi liên hệ hỗ trợ.
+
+1. Mở **Recent swaps** và kiểm tra trạng thái: *Awaiting deposit*, *Deposit confirmed* hoặc *Complete*.
+2. Nếu vẫn hiện *Awaiting deposit*, hãy kiểm tra trên trình khám phá khối rằng lần chuyển của bạn đã đến địa chỉ nạp trên đúng mạng với đúng số tiền.
+3. Với lần chuyển USDT0, hãy tra mã hash giao dịch nguồn trên [LayerZero Scan](https://layerzeroscan.com/).
+4. Nếu giao dịch không hoàn tất, hãy kiểm tra khoản nạp được trả về ở địa chỉ hoàn tiền.
+5. Nếu khoản nạp bị giữ để xem xét tuân thủ, hãy gửi yêu cầu tới bộ phận hỗ trợ của NEAR Intents.
+6. Nếu vẫn cần giúp, hãy liên hệ [bộ phận hỗ trợ L2Pass](/vi/resources/support) kèm mã hash giao dịch nguồn.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Giao dịch L2Pass có thể khớp một phần không?">
+    Không. Giao dịch hoặc hoàn tất toàn bộ, hoặc không thực hiện.
+  </Accordion>
+
+  <Accordion title="Tôi có lấy lại gas nếu giao dịch thất bại không?">
+    Không. Gas trả trên chuỗi nguồn không được hoàn lại, trên mọi tuyến.
+  </Accordion>
+
+  <Accordion title="Khoản hoàn đi đâu?">
+    Trên tuyến dùng địa chỉ nạp, đến địa chỉ hoàn tiền bạn đặt trên chuỗi nguồn. Trên tuyến qua ví, nếu giao dịch được hoàn tác thì không có gì rời khỏi ví ngoài gas.
+  </Accordion>
+
+  <Accordion title="Hoàn tiền có luôn được đảm bảo không?">
+    Giao dịch thất bại vì lý do kỹ thuật được tự động hoàn về địa chỉ hoàn tiền của bạn, sau khi trừ phí nhà cung cấp hoặc phí mạng (nếu có). Khoản nạp bị gắn cờ theo quy tắc AML hoặc trừng phạt không được hoàn tự động: tiền bị giữ lại để xem xét, và bạn xử lý bằng cách gửi yêu cầu tới bộ phận hỗ trợ của NEAR Intents.
+  </Accordion>
+
+  <Accordion title="Vì sao tôi không nhận được báo giá?">
+    Số tiền có thể thấp hơn mức tối thiểu của tuyến, hoặc không solver nào đưa ra giá. Trên L2Pass RFQ và L2Pass Private, giao dịch cũng không nhận được báo giá nếu bị sàng lọc gắn cờ. Khi đó không có gì được gửi đi.
+  </Accordion>
+
+  <Accordion title="Tôi có cần KYC không?">
+    Không. Không cần tài khoản và không KYC. Nếu khoản nạp bị giữ để xem xét, bộ phận hỗ trợ của NEAR Intents có thể hỏi nguồn gốc của tiền.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Hoán đổi từ mọi ví hoặc sàn](/vi/products/swap/learn/deposit-address-swaps)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Điều khoản dịch vụ](https://l2pass.com/terms-of-service)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 11 tháng 11 năm 2026*

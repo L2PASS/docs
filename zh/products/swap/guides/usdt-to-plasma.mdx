@@ -1,0 +1,143 @@
+---
+title: "如何把 USDT 跨链到 Plasma（USDT0）"
+description: "从 Ethereum 约 1 秒、从 Tron 约 1.5 分钟把 USDT 跨链到 Plasma。L2Pass 手续费 0%，以 USDT0 到账，无需 XPL。"
+sidebarTitle: "USDT 到 Plasma"
+---
+
+import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
+
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDT 从 Tron、Ethereum 或 Arbitrum 跨链到 Plasma。这是一个非托管界面，会把该交易对的所有路由并排展示。在 Plasma 上，USDT 以 USDT0（USDT 的全链版本）到账。在测试报价中，Tron 到 Plasma 由 L2Pass RFQ 和 L2Pass Private 提供，约需 1.5 分钟；从 Ethereum 或 Arbitrum 到 Plasma 还有 Relay 和 Aori，只需几秒。稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+
+**从 Ethereum 几秒到账** · **L2Pass 手续费 0%** · **发送 1,000 到账 999.68 USDT0** · **无需 XPL**
+
+<Note>数据来自 2026 年 10 月 19 日的测试报价。你看到的报价始终是实时的。</Note>
+
+## 到 Plasma 的路由
+
+L2Pass RFQ 和 L2Pass Private 都运行在 [NEAR Intents](https://near.org/intents) 上，求解器和做市商在这里竞争执行你的兑换。Private 会在机密环境中执行。
+
+| 路由 | 来源 | 预计时间 | 到账 | 付款方式 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Tron、Ethereum、Arbitrum | 从 Tron 约 1.5 分钟，从 Ethereum 或 Arbitrum 30 到 50 秒 | 浮动，有最少到账 | 一次性充值地址 |
+| L2Pass Private | Tron、Ethereum、Arbitrum | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 一次性充值地址。L2Pass 手续费最高 0.3% |
+| Relay | Ethereum、Arbitrum | 约 1 秒 | 浮动 | 钱包交易 |
+| Aori | Ethereum、Arbitrum | 约 2 到 13 秒 | 固定 | 钱包交易 |
+
+从 Ethereum 出发还提供了 LI.FI。报价会列出能完成你的交易对的所有路由。
+
+## 测试报价
+
+约 17:17 UTC 的 1,000 USDT 报价。实时报价会显示你的交易对和金额的当前数据。
+
+<Tabs>
+<Tab title="从 Tron">
+
+| 路由 | 到账 |
+| :-- | :-- |
+| L2Pass RFQ | 997.79 USDT0 |
+| L2Pass Private | 995.40 USDT0 |
+
+在这个交易对上，L2Pass RFQ 显示 L2Pass 手续费 0%、NEAR Intents 提供方费用 0.2%（2 USDT）。
+
+</Tab>
+<Tab title="从 Ethereum">
+
+| 路由 | 到账 |
+| :-- | :-- |
+| Relay | 999.68 USDT0 |
+| Aori | 999.05 USDT0 |
+| L2Pass RFQ | 997.90 USDT0 |
+| L2Pass Private | 996.30 USDT0 |
+
+</Tab>
+<Tab title="从 Arbitrum（USDT0）">
+
+| 路由 | 到账 |
+| :-- | :-- |
+| Relay | 999.58 USDT0 |
+| Aori | 999.29 USDT0 |
+| L2Pass RFQ | 997.90 USDT0 |
+| L2Pass Private | 996.30 USDT0 |
+
+</Tab>
+</Tabs>
+
+## 如何把 USDT 跨链到 Plasma
+
+在你付款之前，资金不会离开钱包，所以你可以先比较所有路由。
+
+<Steps>
+  <Step title="打开 L2Pass Swap">
+    访问 [swap.l2pass.com](https://swap.l2pass.com/)，填写四个字段：
+
+    - **From：** Tron 或 Ethereum 上的 USDT，或 Arbitrum 上的 USDT0。
+    - **To：** Plasma 上的 USDT0。
+    - **Amount：** 你要发送的数量。
+    - **收款地址：** 接收 USDT0 的 Plasma 地址（以 0x 开头的 EVM 地址）。
+  </Step>
+
+  <Step title="比较路由">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和费用。默认滑点为 0.05%（可修改），不适用于 Aori 等固定到账路由。
+  </Step>
+
+  <Step title="设置退款地址">
+    对于 L2Pass RFQ 和 L2Pass Private，请把退款地址设为你在源链上控制的钱包。如果兑换无法完成，提供方会把充值退回到这里。
+  </Step>
+
+  <Step title="通过钱包或充值地址付款">
+    付款方式取决于你选择的路由。
+
+    <Tabs>
+      <Tab title="钱包路由（Relay、Aori）">
+        在钱包中签署交易。
+      </Tab>
+      <Tab title="充值地址（L2Pass RFQ、L2Pass Private）">
+        通过地址或二维码，从已连接的钱包、任意钱包或交易所把 USDT 发送到一次性充值地址。如果从交易所发送，请确认到账金额与报价一致，因为部分交易所会从中扣除提现手续费。
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="跟踪兑换">
+    对于 L2Pass RFQ 和 L2Pass Private，在 **Recent swaps** 中跟踪状态：*Awaiting deposit*、*Deposit confirmed*，然后是 *Complete*。
+  </Step>
+</Steps>
+
+## 发送前须知
+
+你只需要源链上的 Gas，USDT 在 Plasma 上以 USDT0 到账。
+
+- **Plasma 上的 USDT0。** L2Pass Swap 在 Plasma 上提供的 USDT 是 USDT0。Plasma 的原生代币是 XPL。
+- **只需源链 Gas。** 你在 Tron 上用 TRX 支付 Gas，在 Ethereum 和 Arbitrum 上用 ETH 支付。Plasma 网络费会从显示金额中扣除，因此接收时不需要 XPL。
+
+<SwapBeforeYouSend />
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="可以把 USDT 从 Tron 跨链到 Plasma 吗？">
+    可以。在测试报价中，L2Pass RFQ 和 L2Pass Private 提供 TRC-20 USDT 到 Plasma 上 USDT0 的兑换，预计约 1.5 分钟。
+  </Accordion>
+
+  <Accordion title="把 USDT 跨链到 Plasma 要多少钱？">
+    稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。路由合作方和网络会收取各自的费用，显示金额已包含这些费用。在 1,000 USDT 的测试报价中，Relay 从 Ethereum 到账 999.68 USDT0，L2Pass RFQ 从 Tron 到账 997.79 USDT0。
+  </Accordion>
+
+  <Accordion title="在 Plasma 上接收 USDT0 需要 XPL 吗？">
+    不需要。Plasma 网络费会从显示金额中扣除。之后是否需要 XPL，取决于你在 Plasma 上如何使用 USDT0。
+  </Accordion>
+
+  <Accordion title="USDT0 和 USDT 一样吗？">
+    USDT0 是 USDT 的全链版本，通过 LayerZero 在链之间转移。在 Plasma 上，L2Pass Swap 交付的 USDT 就是 USDT0。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [跨链 USDT 和 USDC 的最佳方式：L2Pass 对比其他跨链桥](/zh/products/swap/learn/compare-stablecoin-transfers)
+- [把 USDT 从 Tron 跨链到 Ethereum](/zh/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

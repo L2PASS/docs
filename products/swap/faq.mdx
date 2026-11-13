@@ -1,5 +1,7 @@
 ---
-title: "FAQ"
+title: "L2Pass Swap FAQ"
+sidebarTitle: "FAQ"
+description: "Answers about L2Pass Swap: fees (0% on stablecoins), timing, refunds, private swaps, supported networks and paying from any wallet or exchange."
 icon: "circle-question"
 iconType: "light"
 ---
@@ -44,7 +46,7 @@ iconType: "light"
   </Accordion>
 
   <Accordion title="What is a private swap?">
-    A private swap is executed in a confidential environment through NEAR Intents, which limits what is visible on public blockchains. It is not full anonymity: your wallet address is still shared with providers, and the same compliance screening applies. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition), already included in the quoted amount.
+    A private swap is executed in a confidential environment through NEAR Intents, which limits what is visible on public blockchains. It is not full anonymity: your wallet address is still shared with providers, and it is screened exactly like a public swap. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition), already included in the quoted amount.
   </Accordion>
 
   <Accordion title="Is L2Pass Swap non-custodial?">
@@ -64,10 +66,10 @@ iconType: "light"
   </Accordion>
 
   <Accordion title="Can my swap be blocked or held?">
-    Providers apply risk-based AML and sanctions checks. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed in that case. L2Pass cannot override a provider's review. See the <a href="https://l2pass.com/privacy-policy" target="_blank">Privacy & AML Principles</a>.
+    Every swap is screened for AML and sanctions risk. On L2Pass RFQ and L2Pass Private, a flagged address gets no quote, so nothing is sent. If a deposit is flagged after it arrives, the funds are held while NEAR Intents reviews it, and you resolve it with a ticket to NEAR Intents support. Swaps that fail for technical reasons are refunded automatically. See <a href="/products/swap/learn/failed-swaps-and-refunds#how-screening-works">How screening works</a>.
   </Accordion>
 
   <Accordion title="Do I need KYC?">
-    No. L2Pass does not require an account or identity verification for regular use. A provider may request additional checks for a specific transaction under its own compliance rules.
+    No. There is no account and no KYC. If a deposit is held for review, NEAR Intents support may ask where the funds came from.
   </Accordion>
 </AccordionGroup>

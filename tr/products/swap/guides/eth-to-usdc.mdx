@@ -1,0 +1,141 @@
+---
+title: "ETH'yi ağlar arasında USDC veya USDT'ye takas etme"
+description: "ETH'yi başka bir ağda 1 saniye ile yaklaşık 80 saniye arasında USDC veya USDT'ye takas edin. L2Pass ücreti %0,2'ye kadar, tek teklifte dört rota karşılaştırılır."
+sidebarTitle: "ETH'den USDC veya USDT'ye"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/) ile ETH'yi tek adımda başka bir ağda USDC veya USDT'ye takas edebilirsiniz; örneğin Ethereum'daki ETH'yi Base'de USDC'ye veya Arbitrum'daki ETH'yi Tron'da USDT'ye. Test tekliflerinde EVM ağları arasında L2Pass RFQ, Relay, LI.FI ve L2Pass Private sunuldu; tahmini süreler yaklaşık 1 saniyeden bir dakikanın altına kadar. Tron'a ise L2Pass RFQ ve Private sunuldu. ETH takaslarında L2Pass ücreti %0,2'ye kadardır (gizli takaslarda %0,3'e kadar) ve teklif, ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**EVM ağları arasında bir dakikadan kısa** · **Takas ve köprü tek adımda** · **1 ETH için 2.387,76 USDC** · **Tek teklifte dört rota**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## ETH'den stablecoin'e rotalar
+
+EVM ağları arasında ETH takaslarını dört rota gerçekleştirdi, bunların ikisi Tron'a da ulaştı.
+
+| Rota | Tahmini süre | Çıktı | Ödeme | Test tekliflerinde L2Pass ücreti |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Yaklaşık 34 ila 80 saniye | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi | %0 |
+| Relay | Yaklaşık 1 ila 2 saniye | Değişken | Cüzdan işlemi | %0,1 |
+| LI.FI | Yaklaşık 6 ila 26 saniye | Değişken | Cüzdan işlemi | %0,1 |
+| L2Pass Private | L2Pass RFQ ile aynı | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi | %0,3 |
+
+L2Pass RFQ ve L2Pass Private, [NEAR Intents](https://near.org/intents) üzerinde çalışır. L2Pass RFQ'da NEAR Intents sağlayıcı ücreti bu çiftlerde %0,2 idi.
+
+## Test teklifleri
+
+ETH'nin yaklaşık 2.400 USD olduğu, yaklaşık 17:50 UTC'de 1 ETH için teklifler. Canlı teklif güncel rakamları gösterir.
+
+<Tabs>
+<Tab title="Ethereum'dan Base'de USDC'ye">
+
+| Rota | Alacağınız | Tahmini süre |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2.387,76 USDC | Yaklaşık 49 saniye |
+| Relay | 2.386,58 USDC | Yaklaşık 2 saniye |
+| LI.FI | 2.384,78 USDC | Yaklaşık 26 saniye |
+| L2Pass Private | 2.379,58 USDC | Yaklaşık 49 saniye |
+
+</Tab>
+<Tab title="Base'den Arbitrum'da USDC'ye">
+
+| Rota | Alacağınız | Tahmini süre |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2.387,26 USDC | Yaklaşık 34 saniye |
+| Relay | 2.387,26 USDC | Yaklaşık 1 saniye |
+| LI.FI | 2.384,45 USDC | Yaklaşık 6 saniye |
+| L2Pass Private | 2.379,69 USDC | Yaklaşık 34 saniye |
+
+</Tab>
+<Tab title="Arbitrum'dan Tron'da USDT'ye">
+
+| Rota | Alacağınız | Tahmini süre |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2.388,75 USDT | Yaklaşık 80 saniye |
+| L2Pass Private | 2.378,24 USDT | Yaklaşık 80 saniye |
+
+</Tab>
+</Tabs>
+
+## ETH başka bir ağda USDC'ye nasıl takas edilir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** ETH'nin bulunduğu ağdaki ETH.
+    - **To:** hedef ağdaki USDC veya USDT.
+    - **Amount:** takas etmek istediğiniz ETH miktarı.
+    - **Alıcı adresi:** stablecoin'leri alacak hedef ağdaki adres.
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. ETH fiyatı değişir, bu yüzden minimum alınacak tutarı kontrol edin. Varsayılan kayma %0,05'tir (değiştirilebilir).
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresi olarak kaynak ağda kontrol ettiğiniz bir cüzdan girin. Takas tamamlanamazsa sağlayıcı ETH'nizi oraya iade eder.
+  </Step>
+
+  <Step title="Cüzdanla veya yatırma adresiyle ödeyin">
+    Nasıl ödeyeceğiniz seçtiğiniz rotaya bağlıdır.
+
+    <Tabs>
+      <Tab title="Cüzdan rotaları (Relay, LI.FI)">
+        İşlemi cüzdanınızda imzalayın.
+      </Tab>
+      <Tab title="Yatırma adresi (L2Pass RFQ, L2Pass Private)">
+        ETH'yi bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Takası takip edin">
+    L2Pass RFQ ve L2Pass Private için durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Gas için biraz ETH ayırın ve minimum alınacak tutarı kontrol edin, çünkü ETH fiyatı takas sırasında değişir.
+
+- **Gas için biraz ETH ayırın.** Kaynak gas'ını ETH ile ödersiniz, bu yüzden cüzdan rotasında bakiyenizin tamamını takas etmeyin. Yatırma adresli rotada da transferinizin ağ ücreti cüzdanınızdan çıkar.
+- **Fiyat hareketleri.** ETH oynaktır. Minimum alınacak tutar sizi korur: fiyat kayma toleransınızın ötesine geçerse takas gerçekleşmez.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="ETH'yi tek adımda USDC'ye takas edip başka ağa köprüleyebilir miyim?">
+    Evet. Kaynak ağda ETH'yi, hedef ağda USDC'yi seçin. Rota tek takasta hem değiştirir hem taşır.
+  </Accordion>
+
+  <Accordion title="ETH'yi ağlar arasında USDC'ye takas etmenin maliyeti nedir?">
+    ETH takaslarında L2Pass ücreti %0,2'ye kadardır (gizli takaslarda %0,3'e kadar). Test tekliflerinde L2Pass RFQ'da %0, Relay ve LI.FI'da %0,1 idi. Sağlayıcılar ve ağlar kendi ücretlerini alır; gösterilen tutar bunları zaten içerir.
+  </Accordion>
+
+  <Accordion title="Arbitrum'daki ETH'yi Tron'da USDT'ye takas edebilir miyim?">
+    Evet. Test tekliflerinde L2Pass RFQ, Arbitrum'daki 1 ETH için Tron'da 2.388,75 USDT'yi yaklaşık 80 saniyede teslim etti.
+  </Accordion>
+
+  <Accordion title="En hızlı rota hangisi?">
+    Test tekliflerinde Relay, EVM ağları arasında yaklaşık 1 ila 2 saniye gösterdi. L2Pass RFQ yaklaşık 34 ila 49 saniye sürdü ama aynı veya daha fazla tutar teslim etti. Tutarınız için rota kartlarını karşılaştırın.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [Kayma ve minimum alınacak tutar](/tr/products/swap/learn/slippage)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

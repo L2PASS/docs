@@ -1,0 +1,109 @@
+---
+title: "L2Pass Swap: rutas, comisiones y swaps privados"
+sidebarTitle: "Descripción general"
+icon: "bridge-water"
+description: "Cómo funciona L2Pass Swap: 14 redes, varias rutas cotizadas en cada swap, 0% de comisión de L2Pass en stablecoins, swaps privados, reembolsos y tiempos de ejecución."
+iconType: "light"
+---
+
+<Frame>
+  ![Docs Cross Chain Swap](/images/docs_cross-chain_swap.png)
+</Frame>
+
+[L2Pass Swap](https://swap.l2pass.com/) mueve tokens entre blockchains, con foco en las stablecoins. En cada swap pide cotización a varios proveedores de enrutamiento independientes, las muestra lado a lado ordenadas por lo que recibes y te permite ejecutar la que elijas con una sola confirmación.
+
+L2Pass nunca custodia tus tokens. Puentes de terceros, redes de solvers y fuentes de liquidez ejecutan cada swap en su propia infraestructura.
+
+## Redes y activos compatibles
+
+L2Pass Swap es compatible actualmente con **Ethereum, Bitcoin, Zcash, Tron, Solana, TON, BNB Chain, Arbitrum, Base, Polygon, Optimism, Avalanche, Plasma e HyperEVM**.
+
+Las stablecoins (USDT, USDT0, USDC, DAI y otras) son el foco principal, pero también puedes hacer swaps de activos principales como ETH, BTC, SOL, ZEC, TRX, BNB, AVAX y POL. Los tokens, redes y rutas disponibles pueden cambiar en cualquier momento; la [interfaz de swap](https://swap.l2pass.com/) siempre muestra la lista actual.
+
+## Cómo funciona el enrutamiento
+
+Cuando pides una cotización, L2Pass consulta a la vez varias fuentes de enrutamiento y muestra todas las rutas que pueden ejecutar tu swap, ordenadas por lo que recibirás:
+
+- **L2Pass RFQ by NEAR Intents:** enrutamiento por solicitud de cotización a través de la red [NEAR Intents](https://near.org/intents), donde solvers y market makers compiten por ejecutar tu swap.
+- **L2Pass Private:** la misma red de solvers, ejecutada en un entorno confidencial. Consulta [Swaps privados](#private-swaps).
+- **USDT Native Bridge:** transferencias nativas de USDT0 sobre LayerZero, también desde Tron.
+- **USDC Native Bridge:** transferencias de USDC nativo con Circle CCTP V2, en modos Standard y Fast.
+- **Agregadores y redes de intents:** LI.FI, LI.FI Intents, Relay, Aori y el agregador OKX DEX.
+
+Cada tarjeta de ruta muestra el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones de esa ruta, para que elijas la que más te convenga. Algunas rutas tienen un importe mínimo de swap; si tu importe es menor, la ruta aparece como no disponible con el mínimo indicado.
+
+## Cómo se ejecuta un swap
+
+Según la ruta, un swap se ejecuta de una de dos formas:
+
+- **Transacción desde la wallet:** firmas una transacción en tu wallet y los contratos de la ruta ejecutan el swap y el puente on-chain.
+- **Dirección de depósito:** en las rutas RFQ y Private envías los tokens a una dirección de depósito de un solo uso para tu cotización. Puedes enviarlos desde tu wallet conectada o transferirlos manualmente desde cualquier wallet o exchange con la dirección o el código QR. Si envías desde un exchange, comprueba que el importe que llega coincide con la cotización, porque algunos exchanges descuentan su comisión de retiro. Después el swap pasa por *Awaiting deposit*, *Deposit confirmed* y *Complete*, y puedes seguirlo en **Recent swaps**.
+
+En una ruta con dirección de depósito también indicas una dirección de reembolso en la red de origen. Si el swap no puede completarse, el proveedor devuelve tu depósito allí.
+
+## Cuánto tarda un swap
+
+La mayoría de los swaps se liquidan en segundos o pocos minutos, y cada tarjeta de ruta muestra su estimación antes de confirmar.
+
+- **Relay, Aori y CCTP Fast:** de segundos a un minuto aproximadamente.
+- **L2Pass RFQ y L2Pass Private:** de 30 segundos a unos minutos, y más con Bitcoin o Zcash, que esperan confirmaciones de bloque.
+- **USDT0:** unos minutos.
+- **CCTP Standard:** hasta 20 minutos, mientras espera la finalidad de los bloques.
+
+La congestión de la red o la caída de un proveedor pueden hacer que un swap tarde más de lo estimado.
+
+## Deslizamiento e impacto en el precio
+
+El **impacto en el precio** es la variación del precio causada por el tamaño de la operación frente a la liquidez disponible. Comparar varias fuentes ayuda a mantenerlo bajo.
+
+El **deslizamiento (slippage)** es la diferencia entre el precio cotizado y el precio final de ejecución.
+
+- **Tolerancia al deslizamiento:** la tolerancia por defecto es **0,05%**. Puedes cambiarla desde cualquier tarjeta de ruta.
+- **Importe fijo:** algunas rutas, como los puentes nativos de USDT0 y USDC, entregan un importe fijo, así que el deslizamiento no aplica.
+- **Mínimo a recibir:** cada tarjeta de ruta muestra el mínimo a recibir, el peor resultado dentro de tu tolerancia. Si el precio se mueve más allá, el swap no se ejecuta: las rutas on-chain se revierten y las rutas con dirección de depósito devuelven tu depósito a tu dirección de reembolso.
+
+<a id="fee-structure"></a>
+
+## Estructura de comisiones
+
+La tarjeta de ruta muestra las comisiones reales de tu swap antes de confirmar. El **importe estimado en la red de destino ya incluye todas las comisiones**, salvo el gas en la red de origen y la comisión de mensaje del puente, si la hay, que pagas aparte.
+
+### Comisión de L2Pass
+
+| Tipo de swap | Comisión de L2Pass |
+| :-- | :-- |
+| Swaps de stablecoins (cualquier ruta) | **0%** |
+| Otros activos | **hasta 0,2%** |
+| Swaps privados, cualquier activo (en lugar de 0% o 0,2%, no además) | **hasta 0,3%** |
+
+### Comisiones de partners y de red
+
+Los partners de enrutamiento (puentes, redes de solvers, agregadores y proveedores de liquidez) pueden cobrar sus propias comisiones. L2Pass no controla estas comisiones; para la información más actualizada, consulta la documentación de cada proveedor.
+
+Cada transacción en blockchain también requiere una comisión de red (gas) que se paga en el token nativo, como ETH, POL, BNB o TRX. El gas va a la red, no a L2Pass, y no es reembolsable.
+
+<a id="private-swaps"></a>
+
+## Swaps privados
+
+Los swaps privados ejecutan tu swap en un entorno de ejecución confidencial en lugar de uno público, lo que limita lo que se ve en las blockchains públicas. Son posibles gracias a NEAR Intents, un protocolo de terceros.
+
+- **No es anonimato:** tu dirección pública de wallet se sigue incluyendo en las solicitudes enviadas a los proveedores.
+- **El mismo control:** los swaps privados se revisan exactamente igual que los públicos, en la cotización y después del depósito.
+- **Comisión:** la comisión de L2Pass por un swap privado es de hasta 0,3% (en lugar de 0% o 0,2%, no además). Como toda comisión, ya está incluida en el importe mostrado en la cotización.
+
+Consulta los [Términos de servicio](https://l2pass.com/terms-of-service) y los [Principios de privacidad y AML](https://l2pass.com/privacy-policy) para más detalles.
+
+## Ejecución completa o reembolso completo
+
+Un swap se completa entero o no se ejecuta, y un swap fallido se reembolsa automáticamente.
+
+- **Sin ejecución parcial:** L2Pass no usa ejecución parcial. Un swap se completa entero o no se ejecuta.
+- **Reembolsos:** si un swap con dirección de depósito no puede completarse, por ejemplo porque el precio se movió más allá de tu tolerancia o la cotización caducó, el proveedor devuelve tu depósito a tu dirección de reembolso, descontando las comisiones del proveedor y de la red. Una transacción de wallet fallida se revierte, y el gas que pagaste se pierde.
+- **Revisiones de cumplimiento:** cada swap se revisa, sin KYC. En L2Pass RFQ y L2Pass Private, una dirección marcada no recibe cotización. Un depósito marcado después de llegar queda retenido para revisión en lugar de reembolsarse, y lo resuelves abriendo un ticket con el soporte de NEAR Intents. Consulta [Cómo funciona el control](/es/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+---
+
+<Card icon="circle-question" href="/es/products/swap/faq" title="FAQ de Swap">
+  Respuestas a preguntas frecuentes sobre L2Pass Swap: comisiones, rutas, reembolsos y redes compatibles.
+</Card>

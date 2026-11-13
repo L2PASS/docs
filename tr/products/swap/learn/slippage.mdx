@@ -1,0 +1,96 @@
+---
+title: "Kayma, sabit çıktı ve minimum alınacak tutar açıklaması"
+description: "L2Pass Swap'te kayma toleransı, tahmini çıktı, minimum alınacak tutar ve sabit çıktının anlamı, örneklerle. Varsayılan kayma %0,05, değiştirilebilir."
+sidebarTitle: "Kayma ve minimum alınacak tutar"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) üzerinde her rota kartı bir tahmini çıktı ve bir minimum alınacak tutar gösterir. Tahmini çıktı, kaynak ağ gas'ı ve varsa köprü mesaj ücreti dışındaki tüm ücretlerden sonra alacağınız tahmini tutardır. Minimum alınacak tutar, kayma toleransınız içindeki en kötü durumdur; tolerans varsayılan olarak %0,05'tir ve her rota kartında değiştirilebilir. Fiyat bunun ötesine geçerse takas gerçekleşmez. Circle CCTP, USDT0, Aori ve LI.FI Intents gibi sabit çıktılı rotalar tam olarak gösterilen tutarı teslim eder, bu yüzden kayma onlara uygulanmaz.
+
+## Temel terimler
+
+Her rota kartındaki iki sayı en önemlisidir: tahmini çıktı ve minimum alınacak tutar.
+
+| Terim | Anlamı |
+| :-- | :-- |
+| Tahmini çıktı | Tüm ücretlerden sonra hedef ağda tahmin edilen tutar |
+| Minimum alınacak tutar | Kayma toleransınız içinde alabileceğiniz en düşük tutar |
+| Kayma | Piyasa hareketinden kaynaklanan, teklif fiyatı ile son işlem fiyatı arasındaki fark |
+| Kayma toleransı | Kabul ettiğiniz kayma miktarı. L2Pass Swap'te varsayılan %0,05 |
+| Fiyat etkisi | İşleminizin büyüklüğünün mevcut likiditeye göre fiyatta yarattığı değişim |
+| Sabit çıktı | Kayma olmadan tam olarak gösterilen tutarı teslim eden rota |
+
+## Canlı tekliflerden örnekler
+
+19 Ekim 2026 tarihli test teklifleri, varsayılan %0,05 tolerans ile. Canlı teklif güncel rakamları gösterir.
+
+| Takas | Rota | Tahmini çıktı | Minimum alınacak | Çıktı |
+| :-- | :-- | :-- | :-- | :-- |
+| 1.000 USDT, Tron'dan Ethereum'a | L2Pass RFQ | 999,50 USDT | 999,00 USDT | Değişken |
+| 1.000 USDC, Arbitrum'dan Base'e | USDC native bridge, Fast | 999,81 USDC | 999,81 USDC | Sabit |
+| Ethereum'da 1 ETH'den Base'de USDC'ye | L2Pass RFQ | 2.387,76 USDC | 2.386,57 USDC | Değişken |
+
+Değişken rotada minimum alınacak tutar, tahmini çıktıdan toleransınızın düşülmesiyle bulunur. Sabit rotada iki sayı aynıdır.
+
+## Kayma nasıl ayarlanır
+
+Kaymayı her rota kartında üç adımda ayarlarsınız.
+
+<Steps>
+  <Step title="Rota kartını açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) üzerinde teklif isteyin ve istediğiniz rotayı açın.
+  </Step>
+
+  <Step title="Toleransı değiştirin">
+    Rota kartında kayma toleransını düzenleyin. Daha yüksek tolerans, volatil bir takasın gerçekleşme olasılığını artırır ancak minimum alınacak tutarı düşürür.
+  </Step>
+
+  <Step title="Minimum alınacak tutarı kontrol edin">
+    Yalnızca en kötü durumda minimum alınacak tutarı almak sizin için uygunsa onaylayın.
+  </Step>
+</Steps>
+
+## Tolerans nasıl seçilir
+
+Varsayılan %0,05 stablecoin'lere uygundur. Daha yavaş rotalardaki volatil varlıklar daha fazlasına ihtiyaç duyabilir.
+
+- **Stablecoin'den stablecoin'e.** Fiyatlar neredeyse hiç oynamaz, bu yüzden varsayılan %0,05 genellikle yeterlidir.
+- **ETH veya BTC gibi volatil varlıklar.** Takas sonuçlanırken fiyat değişebilir, özellikle yavaş rotalarda. Bir takas fiyat yüzünden sürekli başarısız oluyorsa biraz daha yüksek tolerans yardımcı olabilir.
+- **Sabit çıktılı rotalar.** Toleransın önemi yoktur: tam olarak gösterilen tutarı alırsınız.
+
+## Başarısız takaslar ve ücretler
+
+Minimum alınacak tutardan az ödeyecek bir takas hiç gerçekleşmez.
+
+- **Kısmi gerçekleşme yok.** Fiyat toleransınızın ötesine geçerse takas hiç gerçekleşmez.
+- **İadeler.** Başarısız bir on-chain rota geri alınır (gas iade edilmez). Başarısız bir yatırma adresi rotası yatırdığınız tutarı iade adresine geri gönderir; sağlayıcı ve ağ ücretleri düşülebilir.
+- **Kayma bir ücret değildir.** Fiyat hareketine konan bir sınırdır. Ücretler rota kartında ayrıca gösterilir ve tahmini çıktıya zaten dahildir.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap'te varsayılan kayma nedir?">
+    %0,05. Herhangi bir rota kartında değiştirebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Minimum alınacak tutar ne demek?">
+    Fiyat kayma toleransınız içinde aleyhinize hareket ederse alacağınız en düşük tutar. Daha az olacaksa takas gerçekleşmez.
+  </Accordion>
+
+  <Accordion title="Hangi rotaların sabit çıktısı var?">
+    USDC native bridge (Circle CCTP, Fast ve Standard), USDT native bridge (USDT0), Aori ve LI.FI Intents. Tam olarak gösterilen tutarı teslim ederler.
+  </Accordion>
+
+  <Accordion title="L2Pass Swap kaymayı otomatik ayarlıyor mu?">
+    Hayır. Tolerans varsayılan olarak %0,05'tir ve herhangi bir rota kartında kendiniz değiştirebilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [Takas başarısız olursa ne olur](/tr/products/swap/learn/failed-swaps-and-refunds)
+- [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

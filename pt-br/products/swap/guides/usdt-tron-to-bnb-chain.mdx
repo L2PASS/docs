@@ -1,0 +1,97 @@
+---
+title: "Como transferir USDT da Tron para a BNB Chain (TRC-20 para BEP-20)"
+description: "Transfira USDT da Tron para a BNB Chain (BEP-20) em menos de 2 minutos. Taxa L2Pass de 0%, gas só em TRX, sem precisar de BNB para receber."
+sidebarTitle: "USDT: Tron para BNB Chain"
+---
+
+import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
+
+Você pode transferir USDT da Tron (TRC-20) para a BNB Chain (BEP-20) com o [L2Pass Swap](https://swap.l2pass.com/), uma interface não custodial que mostra todas as rotas do par lado a lado. Em cotações de teste, ele ofereceu duas rotas para este par, L2Pass RFQ e L2Pass Private, cada uma com tempo estimado de cerca de 1,5 minuto. A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas antes de confirmar. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
+
+**Menos de 2 minutos** · **Taxa L2Pass de 0%** · **Chegam 1.008,88 USDT para 1.010 enviados** · **Sem precisar de BNB**
+
+<Note>Números de cotações de teste de 10 de outubro de 2026. A sua cotação é sempre ao vivo.</Note>
+
+## Rotas de USDT da Tron para a BNB Chain
+
+L2Pass RFQ e L2Pass Private rodam na [NEAR Intents](https://near.org/intents), onde solvers e market makers competem para executar o seu swap. O Private executa em um ambiente confidencial.
+
+| Rota | Tempo estimado | Resultado | Observações |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Cerca de 1,5 minuto | Variável, com mínimo a receber | Pagamento para um endereço de depósito de uso único. |
+| L2Pass Private | Cerca de 1,5 minuto | Variável, com mínimo a receber | Endereço de depósito. Taxa L2Pass de até 0,3%. Mínimo de cerca de 1.000 USD. |
+
+A bridge nativa USDT0 e as rotas de agregadores (LI.FI, LI.FI Intents, Relay, Aori, agregador OKX DEX) não foram oferecidas para este par nessas cotações de teste. A cotação lista qualquer rota que consiga executar o par.
+
+Cotações de teste de 1.010 USDT mostraram estes valores recebidos: 1.008,88 USDT no L2Pass RFQ e 1.007,26 USDT no L2Pass Private. A cotação ao vivo mostra os números atuais para o seu valor.
+
+## Como transferir USDT da Tron para a BNB Chain
+
+Nada sai da sua carteira até você pagar, então dá para comparar todas as rotas antes.
+
+<Steps>
+  <Step title="Abra o L2Pass Swap">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/) e preencha quatro campos:
+
+    - **From:** USDT na Tron.
+    - **To:** USDT na BNB Chain.
+    - **Amount:** quanto USDT você quer enviar.
+    - **Endereço de recebimento:** o endereço BNB Chain que vai receber o USDT.
+  </Step>
+
+  <Step title="Compare as rotas">
+    Cada cartão de rota mostra o valor estimado, o mínimo a receber, o tempo estimado e as taxas. O slippage padrão é de 0,05% (editável) e não se aplica a rotas de valor fixo como USDT0.
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    No L2Pass RFQ e no L2Pass Private, coloque como endereço de reembolso uma carteira Tron que você controla. Se o swap não puder ser concluído, o provedor devolve o seu depósito para lá.
+  </Step>
+
+  <Step title="Pague no endereço de depósito">
+    Envie USDT para o endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira Tron ou de uma exchange, por endereço ou QR code. Se enviar de uma exchange, confira se o valor que chega bate com a cotação, porque algumas exchanges descontam a taxa de saque dele.
+  </Step>
+
+  <Step title="Acompanhe o swap em Recent swaps">
+    Acompanhe o status em **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* e depois *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Você precisa de TRX na Tron para o gas e de nenhum BNB para receber, e o L2Pass Private exige pelo menos cerca de 1.000 USD.
+
+- **Gas só na Tron.** Enviar USDT TRC-20 custa TRX em energia e largura de banda. A taxa de rede na rede de destino é descontada do valor exibido, então você não precisa de gas lá.
+- **Valor mínimo.** Em cotações de teste, o L2Pass Private exigiu pelo menos 1.000 USD para este par. Se o seu valor estiver abaixo do mínimo de uma rota, ela aparece como indisponível com o mínimo indicado.
+
+<SwapBeforeYouSend />
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="USDT BEP-20 é o mesmo que USDT ERC-20?">
+    Os dois são USDT, em redes diferentes: BEP-20 na BNB Chain e ERC-20 na Ethereum. Ambos usam endereços 0x, então confira se a BNB Chain é a rede de destino.
+  </Accordion>
+
+  <Accordion title="Quanto tempo leva para transferir USDT da Tron para a BNB Chain?">
+    L2Pass RFQ e L2Pass Private mostraram cada um um tempo estimado de cerca de 1,5 minuto em cotações de teste. Os cartões de rota mostram a estimativa atual antes de confirmar.
+  </Accordion>
+
+  <Accordion title="Quanto custa transferir USDT da Tron para a BNB Chain?">
+    A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados). Os parceiros de roteamento e as redes cobram as próprias taxas, e o valor exibido já as inclui.
+  </Accordion>
+
+  <Accordion title="Preciso de BNB para receber USDT na BNB Chain?">
+    Não. Você paga gas só na Tron, em TRX, e qualquer taxa de rede na rede de destino já é descontada do valor exibido. Você vai precisar de BNB depois para movimentar ou usar o USDT.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Melhor forma de transferir USDT e USDC: L2Pass vs outras bridges](/pt-br/products/swap/learn/compare-stablecoin-transfers)
+- [USDT da Tron para a Ethereum](/pt-br/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT da Tron para a Arbitrum](/pt-br/products/swap/guides/usdt-tron-to-arbitrum)
+- [Taxas do L2Pass Swap](/pt-br/products/swap/overview#fee-structure)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 10 de outubro de 2026*

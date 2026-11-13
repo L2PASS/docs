@@ -1,0 +1,113 @@
+---
+title: "L2Pass Swap 费用详解"
+description: "L2Pass Swap 费用：稳定币兑换 L2Pass 手续费 0%，其他资产最高 0.2%，私密兑换最高 0.3%。附实时报价示例。"
+sidebarTitle: "费用详解"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) 对任意路由上的稳定币兑换收取 0% 的 L2Pass 手续费，其他资产最高 0.2%，私密兑换最高 0.3%。私密兑换手续费是替代 0% 或 0.2%，而非额外收取。路由合作方和区块链会收取自己的费用，你在确认前看到的报价到账金额已包含这些费用，源链 Gas 和可能存在的跨链消息费除外，这两项需要另外支付。
+
+## L2Pass 手续费
+
+这是 L2Pass 自身收取的唯一费用，取决于资产类型以及是否为私密兑换。
+
+| 兑换 | L2Pass 手续费 |
+| :-- | :-- |
+| 稳定币兑换（USDT、USDC 等），任意路由 | **0%** |
+| 其他资产（ETH、BTC、SOL、ZEC 等） | **最高 0.2%** |
+| 私密兑换，任意资产 | **最高 0.3%**（替代 0% 或 0.2%，而非额外收取） |
+
+## 报价中可以看到的所有费用
+
+一个报价最多可能包含五种费用。前三种从到账金额中扣除；后两种由你的钱包支付，并显示在路由卡片上。
+
+| 费用 | 收取方 | 支付方式 |
+| :-- | :-- | :-- |
+| L2Pass 手续费 | L2Pass | 已包含在到账金额中 |
+| 提供方费用 | 路由合作方，例如 NEAR Intents、LI.FI 或 Relay | 已包含在到账金额中 |
+| 目标网络费用 | 目标区块链 | 已包含在到账金额中 |
+| 跨链消息费 | 部分跨链桥，例如基于 LayerZero 的 USDT0 | 以源链原生代币支付，显示在路由卡片上 |
+| 源链 Gas | 源区块链 | 从你的钱包以原生代币（ETH、TRX、BNB 等）支付，显示在路由卡片上 |
+
+L2Pass 不控制合作方和网络费用。最新详情请查看各提供方。路由卡片始终显示你这笔兑换的实际费用。
+
+## 实时报价示例
+
+以下费用来自 2026 年 10 月 19 日（约 16:55 UTC）的测试报价。实时报价会显示你的交易对和金额的当前数据。
+
+| 兑换 | 路由 | L2Pass 手续费 | 其他费用 | 到账 |
+| :-- | :-- | :-- | :-- | :-- |
+| 1,000 USDC，Arbitrum 到 Base | L2Pass RFQ | 0 | 0.1 USDC NEAR Intents 费用，0.0024 USDC 网络费 | 999.80 USDC |
+| 1,000 USDC，Arbitrum 到 Base | L2Pass Private | 3 USDC（0.3%） | NEAR Intents 费用，0.0024 USDC 网络费 | 998.20 USDC |
+| 1,000 USDC，Arbitrum 到 Base | USDC 跨链桥（CCTP Fast） | 0 | 0.19 USDC 网络费 | 999.81 USDC |
+| 1,000 USDT，Ethereum 到 Tron | USDT 原生跨链桥（USDT0） | 0 | LayerZero 消息费约 0.005 ETH（约 11.92 USD），以 ETH 支付 | 999.7 USDT |
+| Ethereum 上 0.5 ETH 到 Arbitrum 上 USDC | L2Pass RFQ | 0 | 0.001 ETH NEAR Intents 费用，0.0053 USDC 网络费 | 1,197.00 USDC |
+| Ethereum 上 0.5 ETH 到 Arbitrum 上 USDC | Relay | 0.1%（约 1.20 USD） | Relay 费用约 1.34 USD | 1,195.67 USDC |
+
+到账金额还反映了各提供方报出的价格，因此列出的费用加起来不一定等于全部差额。
+
+有两点值得注意：
+
+- **不同交易对上胜出的路由可能不同。** 在 ETH 示例中，L2Pass RFQ 给出的金额最多，尽管它并不是每个交易对上最便宜的路由。
+- **留意在到账金额之外支付的费用。** 从 Ethereum 到 Tron，USDT0 显示的到账金额最高，但它的消息费需要另外以 ETH 支付。L2Pass 按扣除 Gas 后你实际获得的净值排序，所以把 L2Pass RFQ 排在第一。
+
+## 如何查看你这笔兑换的费用
+
+在发送任何资金之前，你可以通过三步查看你具体金额的每一项费用。
+
+<Steps>
+  <Step title="请求报价">
+    打开 [swap.l2pass.com](https://swap.l2pass.com/)，选择源代币和网络、目标代币和网络，然后输入金额。
+  </Step>
+
+  <Step title="打开路由卡片">
+    每张路由卡片都会显示预计到账、最少到账、预计时间和该路由的费用明细。
+  </Step>
+
+  <Step title="比较并确认">
+    路由按到账金额排序。选择排在最前面的，或者如果你更看重速度，选择更快的一条。显示的金额就是扣除 L2Pass、提供方和目标网络费用后你将收到的金额。
+  </Step>
+</Steps>
+
+## Gas、退款和滑点
+
+Gas 是唯一永远拿不回来的成本，即使兑换失败也一样。
+
+- **Gas 不予退还。** 如果链上路由回滚，不会发生代币兑换，但源链 Gas 已经花掉。
+- **退款和费用。** 如果充值地址路由无法完成，提供方会把你的充值退回到退款地址；可能扣除提供方和网络费用。
+- **滑点不是费用。** 默认滑点容忍度为 0.05%，可以在任意路由卡片中修改。它决定最少到账，对固定到账的路由没有影响。
+- **从交易所发送。** 部分交易所会从发送金额中扣除提现手续费。请确认到账金额与报价一致。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap 兑换稳定币免费吗？">
+    L2Pass 对任意路由上的稳定币兑换收取 0%。路由合作方和区块链仍会收取自己的费用，这些费用已包含在报价显示的金额中。在一笔从 Arbitrum 到 Base 的 1,000 USDC 测试报价中，这些费用约为 0.10 USDC。
+  </Accordion>
+
+  <Accordion title="私密兑换手续费是在标准手续费之外额外收取的吗？">
+    不是。私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取），已包含在报价显示的金额中。
+  </Accordion>
+
+  <Accordion title="有没有确认前看不到的费用？">
+    路由卡片会在你确认前显示本次兑换的费用，到账金额已包含 L2Pass、提供方和目标网络费用。源链 Gas 和可能存在的跨链消息费也会显示在路由卡片上。
+  </Accordion>
+
+  <Accordion title="交易量大可以获得更低的 L2Pass 手续费吗？">
+    可以。L2Pass 手续费可根据你的交易量下调，其中一部分也可以与推荐人和合作伙伴分享。条款单独协商。参见[推荐和交易量条款](/zh/products/swap/learn/referrals-and-partners)。
+  </Accordion>
+
+  <Accordion title="为什么同一笔兑换，两条路由显示的金额不同？">
+    每条路由都有各自的提供方和网络费用、速度和流动性。比较路由卡片，选择适合你的那一条。参见 [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass 如何比较路由](/zh/products/swap/learn/compare-routes)
+- [什么是 L2Pass RFQ by NEAR Intents](/zh/products/swap/learn/what-is-l2pass-rfq)
+- [Swap 概览中的费用结构](/zh/products/swap/overview#fee-structure)
+- [推荐和交易量条款](/zh/products/swap/learn/referrals-and-partners)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

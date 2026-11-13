@@ -1,0 +1,93 @@
+---
+title: "面向钱包和应用的 L2Pass Swap API"
+description: "通过 L2Pass SwapKit API 在你的钱包或应用中加入跨链稳定币兑换：估价、带充值地址的报价、状态查询和 Webhook。需要合作伙伴 API 密钥。"
+sidebarTitle: "Swap API"
+---
+
+L2Pass SwapKit API 让钱包、应用和 AI 智能体在自己的产品中加入跨链兑换。它的运作方式与 L2Pass RFQ by NEAR Intents 相同：你请求报价，获得一次性充值地址，用户从任意钱包或交易所付款。每个报价都会返回平台费、你的合作伙伴费和净到账金额，状态变化会通过签名 Webhook 通知你。访问需要合作伙伴 API 密钥，在入驻时发放。参考文档见 [api.l2pass.com/docs](https://api.l2pass.com/docs)。
+
+## 你可以构建什么
+
+任何在一条网络上接收代币、在另一条网络上交付的产品都可以使用该 API。
+
+- **钱包：** 在你的钱包内实现跨链稳定币兑换，包括 Tron、Solana、Bitcoin 和 Zcash。
+- **支付应用：** 在一条网络上收取 USDT，在另一条网络上结算。
+- **交易所和商户：** 支持从任意钱包或交易所付款的充值地址流程。
+- **AI 智能体：** 通过 REST API 获取报价并执行兑换。
+
+## 接口
+
+七个 REST 接口涵盖资产、估价、报价、状态和你的合作伙伴账户。
+
+| 接口 | 作用 |
+| :-- | :-- |
+| `GET /v1/assets` | 列出支持的资产和网络 |
+| `POST /v1/swap/estimate` | 返回不含充值地址的估价 |
+| `POST /v1/swap/quote` | 返回带一次性充值地址的确定报价 |
+| `GET /v1/swap/status/{quoteId}` | 返回状态：PENDING、COMPLETED、FAILED 或 REFUNDED |
+| `GET /v1/partner/me` | 返回你的合作伙伴资料和限额 |
+| `GET /v1/partner/transactions` | 列出你的兑换记录 |
+| `GET /v1/partner/analytics` | 返回使用分析数据 |
+
+基础 URL：`https://api.l2pass.com`。在 `X-API-Key` 请求头中发送你的密钥。完整的 OpenAPI 规范见 [API 参考](https://api.l2pass.com/docs)。
+
+## 通过 API 兑换的流程
+
+API 兑换与应用内兑换流程相同：报价、充值、状态。
+
+<Steps>
+  <Step title="获取估价">
+    使用源资产、目标资产和金额调用 `POST /v1/swap/estimate`，向用户展示他们将收到多少。
+  </Step>
+
+  <Step title="请求报价">
+    带上收款地址和退款地址调用 `POST /v1/swap/quote`。响应包含一次性充值地址和费用明细：`platform_fee`、`partner_fee`、`total_fee` 和 `net_output`。
+  </Step>
+
+  <Step title="让用户付款">
+    用户从任意钱包或交易所把报价金额发送到充值地址。
+  </Step>
+
+  <Step title="跟踪状态">
+    轮询 `GET /v1/swap/status/{quoteId}`，或接收在 `X-Webhook-Signature` 请求头中以 HMAC-SHA256 签名的 Webhook。
+  </Step>
+</Steps>
+
+## 费用、限额和退款
+
+你可以自行设定合作伙伴费，你的密钥有独立的速率限制。
+
+- **合作伙伴费。** 你可以加收自己的费用，每个报价中以 `partner_fee_bps` 和 `partner_fee` 返回。
+- **速率限制。** 每个合作伙伴的报价和状态请求分别设有限额。超出限额时，API 返回 429，并附带 `Retry-After` 请求头。
+- **密钥轮换。** 使用 `POST /v1/partner/rotate-key` 轮换密钥。
+- **退款和失败。** 如果兑换无法完成，提供方会退款到退款地址，状态变为 REFUNDED。被标记的地址拿不到报价。到账后才被标记的充值不会退回，而是冻结审核，用户需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="如何获取 API 密钥？">
+    API 密钥在合作伙伴入驻时发放。请联系 [L2Pass 支持](/zh/resources/support)申请访问权限。
+  </Accordion>
+
+  <Accordion title="API 会托管用户资金吗？">
+    不会。用户向为其报价生成的一次性充值地址付款，兑换由 NEAR Intents 上的求解器完成。L2Pass 从不持有用户的代币或私钥。
+  </Accordion>
+
+  <Accordion title="我可以从兑换中赚取费用吗？">
+    可以。设置合作伙伴费后，每个报价都会在平台费旁边以 `partner_fee_bps` 和 `partner_fee` 返回该费用。
+  </Accordion>
+
+  <Accordion title="有 SDK 吗？">
+    有，npm 上的 `@l2pass/swapkit-sdk`。详情见 [API 参考](https://api.l2pass.com/docs)。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [API 参考](https://api.l2pass.com/docs)
+- [什么是 L2Pass RFQ by NEAR Intents](/zh/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [推荐和交易量条款](/zh/products/swap/learn/referrals-and-partners)
+- [联系支持](/zh/resources/support)
+
+*最后更新：2026 年 10 月 19 日*

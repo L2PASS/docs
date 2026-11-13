@@ -1,0 +1,93 @@
+---
+title: "L2Pass Swap API para carteiras e apps"
+description: "Adicione swaps cross-chain de stablecoins à sua carteira ou app com a API L2Pass SwapKit: estimativa, cotação com endereço de depósito, status e webhooks. API key de parceiro."
+sidebarTitle: "Swap API"
+---
+
+A API L2Pass SwapKit permite que carteiras, apps e agentes de IA adicionem swaps cross-chain ao próprio produto. Ela funciona como o L2Pass RFQ by NEAR Intents: você pede uma cotação, recebe um endereço de depósito de uso único e o usuário paga de qualquer carteira ou exchange. A API retorna a taxa da plataforma, a sua taxa de parceiro e o valor líquido de cada cotação, e avisa sobre mudanças de status por webhooks assinados. O acesso exige uma API key de parceiro, emitida no onboarding. A documentação de referência está em [api.l2pass.com/docs](https://api.l2pass.com/docs).
+
+## O que você pode construir
+
+Qualquer produto que recebe tokens numa rede e entrega em outra pode usar a API.
+
+- **Carteiras:** swaps cross-chain de stablecoins dentro da sua carteira, incluindo Tron, Solana, Bitcoin e Zcash.
+- **Apps de pagamento:** aceite USDT numa rede e liquide em outra.
+- **Exchanges e lojistas:** fluxos com endereço de depósito que funcionam de qualquer carteira ou exchange.
+- **Agentes de IA:** cote e execute swaps por uma API REST.
+
+## Endpoints
+
+Sete endpoints REST cobrem ativos, estimativas, cotações, status e a sua conta de parceiro.
+
+| Endpoint | O que faz |
+| :-- | :-- |
+| `GET /v1/assets` | Lista os ativos e redes suportados |
+| `POST /v1/swap/estimate` | Retorna uma estimativa sem endereço de depósito |
+| `POST /v1/swap/quote` | Retorna uma cotação vinculante com um endereço de depósito de uso único |
+| `GET /v1/swap/status/{quoteId}` | Retorna o status: PENDING, COMPLETED, FAILED ou REFUNDED |
+| `GET /v1/partner/me` | Retorna o seu perfil de parceiro e limites |
+| `GET /v1/partner/transactions` | Lista os seus swaps |
+| `GET /v1/partner/analytics` | Retorna análises de uso |
+
+URL base: `https://api.l2pass.com`. Envie a sua chave no header `X-API-Key`. A especificação OpenAPI completa está na [referência da API](https://api.l2pass.com/docs).
+
+## Como funciona um swap pela API
+
+Um swap pela API segue o mesmo fluxo do app: cotação, depósito, status.
+
+<Steps>
+  <Step title="Obtenha uma estimativa">
+    Chame `POST /v1/swap/estimate` com os ativos de origem e destino e o valor, para mostrar ao usuário quanto ele vai receber.
+  </Step>
+
+  <Step title="Peça uma cotação">
+    Chame `POST /v1/swap/quote` com os endereços de recebimento e de reembolso. A resposta inclui um endereço de depósito de uso único e o detalhamento das taxas: `platform_fee`, `partner_fee`, `total_fee` e `net_output`.
+  </Step>
+
+  <Step title="Deixe o usuário pagar">
+    O usuário envia o valor cotado para o endereço de depósito a partir de qualquer carteira ou exchange.
+  </Step>
+
+  <Step title="Acompanhe o status">
+    Consulte `GET /v1/swap/status/{quoteId}` ou receba webhooks assinados com HMAC-SHA256 no header `X-Webhook-Signature`.
+  </Step>
+</Steps>
+
+## Taxas, limites e reembolsos
+
+Você define a sua própria taxa de parceiro, e a sua chave tem limites de requisição próprios.
+
+- **Taxa de parceiro.** Você pode adicionar a sua própria taxa, retornada como `partner_fee_bps` e `partner_fee` em cada cotação.
+- **Limites de requisição.** Os limites são definidos por parceiro para cotações e consultas de status. Acima do limite, a API retorna 429 com o header `Retry-After`.
+- **Rotação de chave.** Troque a sua chave com `POST /v1/partner/rotate-key`.
+- **Reembolsos e falhas.** Se um swap não puder ser concluído, o provedor reembolsa no endereço de reembolso e o status passa a REFUNDED. Endereços sinalizados não recebem cotação. Um depósito sinalizado depois de chegar fica retido para análise em vez de reembolsado, e o usuário resolve isso com o suporte da NEAR Intents. Veja [Como funciona a triagem](/pt-br/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Como consigo uma API key?">
+    As API keys são emitidas no onboarding de parceiros. Fale com o [suporte da L2Pass](/pt-br/resources/support) para pedir acesso.
+  </Accordion>
+
+  <Accordion title="A API guarda fundos dos usuários?">
+    Não. Os usuários pagam para um endereço de depósito de uso único da cotação, e o swap é executado por solvers na NEAR Intents. A L2Pass nunca guarda tokens nem chaves privadas dos usuários.
+  </Accordion>
+
+  <Accordion title="Posso ganhar uma taxa nos swaps?">
+    Sim. Defina uma taxa de parceiro, e cada cotação a retorna como `partner_fee_bps` e `partner_fee` ao lado da taxa da plataforma.
+  </Accordion>
+
+  <Accordion title="Existe um SDK?">
+    Sim, `@l2pass/swapkit-sdk` no npm. Veja a [referência da API](https://api.l2pass.com/docs) para detalhes.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Referência da API](https://api.l2pass.com/docs)
+- [O que é o L2Pass RFQ by NEAR Intents](/pt-br/products/swap/learn/what-is-l2pass-rfq)
+- [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees)
+- [Indicações e condições por volume](/pt-br/products/swap/learn/referrals-and-partners)
+- [Falar com o suporte](/pt-br/resources/support)
+
+*Última atualização: 19 de outubro de 2026*

@@ -1,0 +1,117 @@
+---
+title: "Paga a cualquiera en cripto en la red que prefiera"
+description: "Usa L2Pass Swap para pagar en USDT, USDC, BTC o ZEC en la red que quiere el destinatario, desde cualquier wallet o exchange, con las comisiones visibles antes de pagar."
+sidebarTitle: "Pagos en cripto"
+---
+
+Puedes usar [L2Pass Swap](https://swap.l2pass.com/) para pagar a alguien en el token y la red en que quiere recibir, mientras tú pagas con lo que tengas. Por ejemplo, tienes USDT en Tron y un proveedor quiere USDC en Solana: pon su dirección de Solana como dirección de recepción, y el swap entrega USDC allí en un solo paso. Puedes pagar desde tu wallet conectada, cualquier wallet o un exchange. La comisión de L2Pass es 0% en swaps de stablecoins, y el importe que recibirá el destinatario, después de todas las comisiones, se muestra antes de pagar.
+
+## Qué puedes hacer
+
+Pagas con lo que tienes y el destinatario recibe el token y la red que pidió.
+
+| Caso de uso | Ejemplo | Cómo |
+| :-- | :-- | :-- |
+| Pagar en la red del destinatario | Tienes USDT en Tron, quiere USDT en Ethereum | Pon su dirección de Ethereum como dirección de recepción |
+| Cambiar la moneda por el camino | Tienes USDT en Tron, quiere USDC en Solana | Elige USDC en Solana como destino |
+| Pagar desde un exchange | Tus USDT están en un exchange | Retira a la dirección de depósito de un solo uso de tu cotización |
+| Mantener separada tu wallet principal | No quieres pagar desde tu wallet principal | Paga con un swap privado o desde otra wallet (ver abajo) |
+| Pagar en BTC o ZEC, o desde ellos | Quiere BTC, tienes USDT | Elige BTC en Bitcoin como destino |
+
+## Ejemplo: pagar a un proveedor en Ethereum desde Tron
+
+Debes a un proveedor unos 1000 USDT y los quiere en Ethereum. Tienes USDT en Tron. En cotizaciones en vivo del 19 de octubre de 2026:
+
+| Ruta | El proveedor recibe |
+| :-- | :-- |
+| L2Pass RFQ | 999,55 USDT |
+| Relay | 998,86 USDT |
+| deBridge | 998,12 USDT |
+| ChangeNOW, estándar | 988,14 USDT |
+
+Con L2Pass RFQ, el proveedor recibió unos 11 USDT más que con ChangeNOW, y tú viste el importe exacto antes de pagar. Consulta [Comparativa: transferencias de stablecoins](/es/products/swap/learn/compare-stablecoin-transfers) para ver todas las rutas.
+
+## Cómo pagar a alguien en otra red
+
+El destinatario solo te da una dirección y una red. Tú haces el resto en cinco pasos.
+
+<Steps>
+  <Step title="Pide su dirección y su red">
+    Pregunta al destinatario qué token y qué red quiere, y su dirección en esa red. Comprueba bien la red: una dirección en la red equivocada puede no recibir los tokens.
+  </Step>
+
+  <Step title="Pide una cotización">
+    En [swap.l2pass.com](https://swap.l2pass.com/), elige como origen con qué pagas y como destino lo que quiere. Pega su dirección como dirección de recepción.
+  </Step>
+
+  <Step title="Revisa lo que recibirá">
+    El importe estimado de la tarjeta de ruta es lo que llega a su dirección, después de todas las comisiones. Si necesitas que reciba un importe exacto, ajusta tu importe hasta que el estimado coincida, o usa una ruta de salida fija si hay alguna.
+  </Step>
+
+  <Step title="Indica una dirección de reembolso y paga">
+    Pon como dirección de reembolso una wallet que controles. Luego firma en tu wallet, o envía el importe cotizado a la dirección de depósito de un solo uso desde cualquier wallet o exchange.
+  </Step>
+
+  <Step title="Comparte el comprobante">
+    Cuando **Recent swaps** muestre *Complete*, comparte la transacción de destino con el destinatario.
+  </Step>
+</Steps>
+
+## Mantener separada tu wallet principal
+
+Cuando pagas directamente desde una wallet, el destinatario puede ver su dirección y su historial público. Dos formas de limitarlo:
+
+- **Swap privado.** L2Pass Private funciona en NEAR Intents en un entorno confidencial que limita lo que las blockchains públicas muestran sobre cómo se ejecuta el swap. La comisión de L2Pass en un swap privado es de hasta 0,3% (en lugar de 0% o 0,2%, no además).
+- **Paga desde otra wallet o un exchange.** Una ruta con dirección de depósito te permite pagar desde cualquier wallet, así que tu wallet principal no tiene que enviar el pago.
+
+Esto no es anonimato. Los proveedores siguen recibiendo tu dirección de wallet, y cada swap pasa por el mismo control, sea público o privado. Consulta [Qué es un swap cross-chain privado](/es/products/swap/learn/private-cross-chain-swaps).
+
+## Comisiones, reembolsos y obligaciones
+
+Los reembolsos vuelven a ti, no al destinatario, y los pagos en stablecoins tienen 0% de comisión de L2Pass.
+
+- **Comisiones.** La comisión de L2Pass es 0% en swaps de stablecoins, hasta 0,2% en otros activos y hasta 0,3% en swaps privados. Consulta [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees).
+- **Reembolsos.** Si un swap no puede completarse, el proveedor devuelve el depósito a tu dirección de reembolso, no al destinatario.
+- **Sin pagos parciales.** Un swap se completa entero o no se ejecuta.
+- **Controles de cumplimiento.** No necesitas cuenta ni KYC. Una dirección marcada no recibe cotización, así que no se envía nada. Un depósito marcado después de llegar queda retenido para revisión en lugar de reembolsarse; lo resuelves con el soporte de NEAR Intents. Consulta [Cómo funciona el control](/es/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Tus obligaciones.** Los pagos pueden tener obligaciones fiscales o de declaración donde vives. L2Pass no da asesoramiento fiscal ni legal.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo enviar USDT en Tron a alguien que quiere USDC en otra red?">
+    Sí. Elige USDT en Tron como origen y USDC en su red como destino, y pon su dirección como dirección de recepción.
+  </Accordion>
+
+  <Accordion title="¿Puedo pagar a alguien directamente desde un exchange?">
+    Sí, con una ruta con dirección de depósito. Retira del exchange a la dirección de depósito de un solo uso de tu cotización, con su dirección como dirección de recepción. Comprueba que el importe que llega coincide con la cotización.
+  </Accordion>
+
+  <Accordion title="¿Cuánto pierde el destinatario en comisiones?">
+    Muy poco con stablecoins. En cotizaciones en vivo del 19 de octubre de 2026, 1000 USDT enviados desde Tron llegaron como 999,55 USDT en Ethereum con L2Pass RFQ, después de todas las comisiones. La comisión de L2Pass en stablecoins es 0%.
+  </Accordion>
+
+  <Accordion title="¿Puedo pagar a alguien en BTC o ZEC desde USDT?">
+    Sí. Elige BTC en Bitcoin o ZEC en Zcash como destino y pon su dirección como dirección de recepción. Consulta [Comparativa: swaps de BTC](/es/products/swap/learn/compare-btc-swaps) y [Comparativa: swaps de ZEC](/es/products/swap/learn/compare-zec-swaps).
+  </Accordion>
+
+  <Accordion title="¿El destinatario necesita una cuenta de L2Pass?">
+    No. Solo necesita una dirección en la red en la que quiere recibir. No hace falta cuenta en ningún lado.
+  </Accordion>
+
+  <Accordion title="¿Puedo ocultar mi wallet al destinatario?">
+    Puedes pagar desde otra wallet o usar un swap privado para limitar lo que muestran las blockchains públicas. Esto no es anonimato: los proveedores siguen recibiendo tu dirección de wallet y se aplica el control de cumplimiento.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Swap desde cualquier wallet o exchange](/es/products/swap/learn/deposit-address-swaps)
+- [Qué es un swap cross-chain privado](/es/products/swap/learn/private-cross-chain-swaps)
+- [Redes de USDT explicadas](/es/products/swap/learn/usdt-networks)
+- [Comparativa: transferencias de stablecoins](/es/products/swap/learn/compare-stablecoin-transfers)
+- [Swaps sin custodia frente a exchanges](/es/products/swap/learn/non-custodial-vs-exchanges)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

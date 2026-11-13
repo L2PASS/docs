@@ -1,0 +1,110 @@
+---
+title: "BTC를 USDT로 (그리고 USDT를 BTC로) 스왑하는 방법"
+description: "네이티브 BTC를 약 14분 만에 USDT로, USDT를 약 9분 만에 BTC로 스왑하세요. L2Pass 수수료 최대 0.2%, 계정 불필요, 아무 지갑이나 거래소에서 결제."
+sidebarTitle: "BTC ↔ USDT"
+---
+
+import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/)으로 Bitcoin의 네이티브 BTC를 Tron이나 Ethereum의 USDT로, USDT를 다시 BTC로 스왑할 수 있습니다. 테스트 견적에서 이 쌍들에는 모두 [NEAR Intents](https://near.org/intents)에서 실행되는 L2Pass RFQ와 L2Pass Private 두 경로가 제시되었습니다. BTC에서 출발하는 스왑은 약 13.5~14분, BTC로 받는 스왑은 약 9분이 걸렸고, 대부분은 Bitcoin 블록 확인을 기다리는 시간입니다. 계정 없이 아무 지갑이나 거래소에서 일회용 입금 주소로 BTC나 USDT를 보내 결제합니다. L2Pass 수수료는 최대 0.2%(비공개 스왑은 최대 0.3%)이며, 견적은 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+
+**네이티브 BTC, 래핑 없음** · **0.01 BTC에 817.64 USDT** · **계정 불필요** · **아무 지갑이나 거래소에서 결제**
+
+<Note>수치는 2026년 10월 19일 테스트 견적 기준입니다. 실제 견적은 항상 실시간입니다.</Note>
+
+## BTC와 USDT 경로
+
+테스트 견적에서는 모두 NEAR Intents 기반인 두 경로가 BTC와 USDT 스왑을 체결했습니다.
+
+| 경로 | 예상 시간 | 수령액 | 비고 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | BTC에서 약 13.5~14분, BTC로 약 9분 | 변동, 최소 수령액 있음 | 솔버와 마켓 메이커가 스왑 체결을 두고 경쟁합니다. 입금 주소. L2Pass 수수료 최대 0.2%. |
+| L2Pass Private | L2Pass RFQ와 동일 | 변동, 최소 수령액 있음 | 기밀 실행. 입금 주소. L2Pass 수수료 최대 0.3%(0% 또는 0.2% 대신 적용, 추가 아님). |
+
+해당 테스트 견적에서는 이 쌍들에 다른 경로가 제시되지 않았습니다. 견적에는 해당 쌍을 체결할 수 있는 모든 경로가 표시됩니다.
+
+## 테스트 견적
+
+앱에 BTC가 약 81,935 USD로 표시되던 약 16:55 UTC 기준 견적입니다. 실시간 견적에 보내는 쌍과 금액 기준의 현재 수치가 표시됩니다.
+
+| 스왑 | L2Pass RFQ | L2Pass Private | 도착 네트워크 수수료 |
+| :-- | :-- | :-- | :-- |
+| 0.01 BTC → Tron의 USDT | 816.18 USDT | 812.52 USDT | 1.71 USDT |
+| 0.01 BTC → Ethereum의 USDT | 817.64 USDT | 814.70 USDT | 0.3 USDT |
+| Tron의 1,000 USDT → BTC | 0.01215466 BTC | 0.01209267 BTC | 0.000019 BTC |
+
+이 견적에서 L2Pass RFQ는 L2Pass 수수료 0%와 NEAR Intents 제공자 수수료 0.2%를, L2Pass Private는 L2Pass 수수료 0.3%를 표시했습니다.
+
+## BTC를 USDT로 스왑하는 방법
+
+결제하기 전까지는 지갑에서 아무것도 나가지 않으므로 먼저 모든 경로를 비교할 수 있습니다.
+
+<Steps>
+  <Step title="L2Pass Swap 열기">
+    [swap.l2pass.com](https://swap.l2pass.com/)에 접속해 네 개 필드를 채웁니다.
+
+    - **From:** Bitcoin의 BTC.
+    - **To:** Tron 또는 Ethereum의 USDT.
+    - **Amount:** 스왑할 BTC 수량.
+    - **수신 주소:** USDT를 받을 Tron 또는 Ethereum 주소.
+  </Step>
+
+  <Step title="경로 비교">
+    L2Pass RFQ와 L2Pass Private 카드에서 예상 수령액, 최소 수령액, 예상 시간, 수수료를 확인하세요. 기본 슬리피지는 0.05%(변경 가능)입니다.
+  </Step>
+
+  <Step title="환불 주소 설정">
+    직접 관리하는 Bitcoin 주소를 환불 주소로 지정하세요. 스왑을 완료할 수 없으면 제공자가 BTC를 그 주소로 돌려줍니다.
+  </Step>
+
+  <Step title="입금 주소로 BTC 보내기">
+    아무 Bitcoin 지갑이나 거래소에서 주소나 QR 코드로 견적 금액을 일회용 Bitcoin 입금 주소에 보냅니다. 거래소에서 보낸다면 일부 거래소는 출금 수수료를 송금액에서 빼므로 도착 금액이 견적과 일치하는지 확인하세요.
+  </Step>
+
+  <Step title="스왑 추적">
+    **Recent swaps**에서 상태를 확인하세요: *Awaiting deposit*, *Deposit confirmed*, 그다음 *Complete*. 입금은 Bitcoin이 트랜잭션을 확인한 뒤에 확정됩니다.
+  </Step>
+</Steps>
+
+USDT를 BTC로 스왑하려면 출발 자산으로 Tron 또는 Ethereum의 USDT를, 도착 자산으로 BTC를 고르고, Bitcoin 수신 주소와 USDT 네트워크의 환불 주소를 지정한 뒤 같은 방식으로 입금 주소에 USDT를 보내세요.
+
+## 보내기 전에
+
+속도는 Bitcoin 블록이 좌우하며, BTC를 보낼 때 Bitcoin 네트워크 수수료를 냅니다.
+
+- **Bitcoin 수수료.** BTC를 보낼 때 Bitcoin 네트워크 수수료를 냅니다. BTC를 받을 때는 Bitcoin 네트워크 수수료가 표시된 금액에서 차감됩니다.
+- **소요 시간.** Bitcoin 블록은 약 10분마다 생성되므로 BTC에서 출발하거나 BTC로 받는 스왑은 다른 체인 간 스테이블코인 전송보다 오래 걸립니다.
+- **최소 금액.** 일부 경로에는 최소 스왑 금액이 있습니다. 금액이 그보다 적으면 해당 경로는 최소 금액과 함께 이용 불가로 표시됩니다.
+
+<SwapBeforeYouSend />
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="BTC를 USDT로 스왑하려면 래핑해야 하나요?">
+    아니요. Bitcoin의 네이티브 BTC를 입금 주소로 보내면 Tron이나 Ethereum으로 USDT가 도착합니다.
+  </Accordion>
+
+  <Accordion title="BTC를 USDT로 스왑하는 비용은 얼마인가요?">
+    L2Pass 수수료는 최대 0.2%(비공개 스왑은 최대 0.3%)입니다. 테스트 견적에서 L2Pass RFQ는 L2Pass 수수료 0%, NEAR Intents 제공자 수수료 0.2%, 도착 네트워크 수수료를 표시했습니다. 표시된 금액에 이미 모두 포함되어 있습니다. 보낼 때 Bitcoin 네트워크 수수료도 냅니다.
+  </Accordion>
+
+  <Accordion title="BTC에서 USDT로 스왑하는 데 얼마나 걸리나요?">
+    테스트 견적에서 약 13.5~14분, USDT에서 BTC로는 약 9분이었습니다. 경로 카드에 현재 예상 시간이 표시됩니다.
+  </Accordion>
+
+  <Accordion title="계정이 필요한가요?">
+    아니요. 계정이나 KYC가 필요 없으며, 아무 지갑이나 거래소에서 결제할 수 있습니다.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [BTC를 USDT로 스왑하는 가장 좋은 방법: L2Pass vs 다른 서비스](/ko/products/swap/learn/compare-btc-swaps)
+- [L2Pass RFQ by NEAR Intents란](/ko/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap 수수료 설명](/ko/products/swap/learn/fees)
+- [ZEC로 비공개 스왑](/ko/products/swap/guides/private-swaps-with-zec)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

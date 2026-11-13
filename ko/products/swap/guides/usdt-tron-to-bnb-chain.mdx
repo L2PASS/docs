@@ -1,0 +1,97 @@
+---
+title: "Tron에서 BNB Chain으로 USDT 브릿지하는 방법 (TRC-20 → BEP-20)"
+description: "Tron에서 BNB Chain(BEP-20)으로 USDT를 2분 이내에 브릿지하세요. L2Pass 수수료 0%, 가스비는 TRX로만, 받을 때 BNB 불필요."
+sidebarTitle: "USDT: Tron → BNB Chain"
+---
+
+import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
+
+쌍의 모든 경로를 나란히 보여주는 비수탁형 인터페이스인 [L2Pass Swap](https://swap.l2pass.com/)으로 Tron(TRC-20)에서 BNB Chain(BEP-20)으로 USDT를 브릿지할 수 있습니다. 테스트 견적에서 이 쌍에는 L2Pass RFQ와 L2Pass Private 두 경로가 제시되었고, 예상 시간은 각각 약 1.5분이었습니다. 스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+
+**2분 이내** · **L2Pass 수수료 0%** · **1,010 보내면 1,008.88 USDT 도착** · **BNB 불필요**
+
+<Note>수치는 2026년 10월 10일 테스트 견적 기준입니다. 실제 견적은 항상 실시간입니다.</Note>
+
+## Tron에서 BNB Chain으로 가는 USDT 경로
+
+L2Pass RFQ와 L2Pass Private는 모두 솔버와 마켓 메이커가 스왑 체결을 두고 경쟁하는 [NEAR Intents](https://near.org/intents)에서 실행됩니다. Private는 이를 기밀 환경에서 실행합니다.
+
+| 경로 | 예상 시간 | 수령액 | 비고 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 약 1.5분 | 변동, 최소 수령액 있음 | 일회용 입금 주소로 결제. |
+| L2Pass Private | 약 1.5분 | 변동, 최소 수령액 있음 | 입금 주소. L2Pass 수수료 최대 0.3%. 최소 약 1,000 USD. |
+
+이 테스트 견적에서는 USDT0 네이티브 브릿지와 애그리게이터 경로(LI.FI, LI.FI Intents, Relay, Aori, OKX DEX 애그리게이터)가 이 쌍에 제시되지 않았습니다. 견적에는 해당 쌍을 체결할 수 있는 모든 경로가 표시됩니다.
+
+1,010 USDT 테스트 견적의 수령액은 L2Pass RFQ 1,008.88 USDT, L2Pass Private 1,007.26 USDT였습니다. 실시간 견적에 보내는 금액 기준의 현재 수치가 표시됩니다.
+
+## Tron에서 BNB Chain으로 USDT 브릿지하는 방법
+
+결제하기 전까지는 지갑에서 아무것도 나가지 않으므로 먼저 모든 경로를 비교할 수 있습니다.
+
+<Steps>
+  <Step title="L2Pass Swap 열기">
+    [swap.l2pass.com](https://swap.l2pass.com/)에 접속해 네 개 필드를 채웁니다.
+
+    - **From:** Tron의 USDT.
+    - **To:** BNB Chain의 USDT.
+    - **Amount:** 보낼 USDT 수량.
+    - **수신 주소:** USDT를 받을 BNB Chain 주소.
+  </Step>
+
+  <Step title="경로 비교">
+    각 경로 카드에 예상 수령액, 최소 수령액, 예상 시간, 수수료가 표시됩니다. 기본 슬리피지는 0.05%(변경 가능)이며 USDT0처럼 수령액이 고정된 경로에는 적용되지 않습니다.
+  </Step>
+
+  <Step title="환불 주소 설정">
+    L2Pass RFQ와 L2Pass Private에서는 직접 관리하는 Tron 지갑을 환불 주소로 지정하세요. 스왑을 완료할 수 없으면 제공자가 입금액을 그 주소로 돌려줍니다.
+  </Step>
+
+  <Step title="입금 주소로 결제">
+    연결된 지갑, 아무 Tron 지갑 또는 거래소에서 주소나 QR 코드로 일회용 입금 주소에 USDT를 보냅니다. 거래소에서 보낸다면 일부 거래소는 출금 수수료를 송금액에서 빼므로 도착 금액이 견적과 일치하는지 확인하세요.
+  </Step>
+
+  <Step title="Recent swaps에서 스왑 추적">
+    **Recent swaps**에서 상태를 확인하세요: *Awaiting deposit*, *Deposit confirmed*, 그다음 *Complete*.
+  </Step>
+</Steps>
+
+## 보내기 전에
+
+가스비로 Tron의 TRX가 필요하고 받을 때 BNB는 필요 없으며, L2Pass Private는 최소 약 1,000 USD가 필요합니다.
+
+- **가스비는 Tron에서만.** TRC-20 USDT를 보내려면 에너지와 대역폭에 TRX가 듭니다. 도착 네트워크의 네트워크 수수료는 표시된 금액에서 차감되므로 그쪽 가스비는 필요 없습니다.
+- **최소 금액.** 테스트 견적에서 L2Pass Private는 이 쌍에 최소 1,000 USD가 필요했습니다. 금액이 경로의 최소 금액보다 적으면 해당 경로는 최소 금액과 함께 이용 불가로 표시됩니다.
+
+<SwapBeforeYouSend />
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="BEP-20 USDT와 ERC-20 USDT는 같은가요?">
+    둘 다 USDT이지만 네트워크가 다릅니다. BEP-20은 BNB Chain, ERC-20은 Ethereum입니다. 둘 다 0x 주소를 쓰므로 도착 네트워크가 BNB Chain인지 확인하세요.
+  </Accordion>
+
+  <Accordion title="Tron에서 BNB Chain으로 USDT를 브릿지하는 데 얼마나 걸리나요?">
+    테스트 견적에서 L2Pass RFQ와 L2Pass Private 모두 예상 시간이 약 1.5분이었습니다. 경로 카드에서 확인 전에 현재 예상 시간을 볼 수 있습니다.
+  </Accordion>
+
+  <Accordion title="Tron에서 BNB Chain으로 USDT를 브릿지하는 비용은 얼마인가요?">
+    스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)입니다. 라우팅 파트너와 네트워크는 각자 수수료를 받으며, 표시된 금액에 이미 포함되어 있습니다.
+  </Accordion>
+
+  <Accordion title="BNB Chain에서 USDT를 받으려면 BNB가 필요한가요?">
+    아니요. 가스비는 Tron에서 TRX로만 내며, 도착 네트워크의 수수료는 표시된 금액에서 이미 차감됩니다. 나중에 USDT를 옮기거나 사용할 때 BNB가 필요합니다.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [USDT와 USDC를 브릿지하는 가장 좋은 방법: L2Pass vs 다른 브릿지](/ko/products/swap/learn/compare-stablecoin-transfers)
+- [Tron에서 Ethereum으로 USDT](/ko/products/swap/guides/usdt-tron-to-ethereum)
+- [Tron에서 Arbitrum으로 USDT](/ko/products/swap/guides/usdt-tron-to-arbitrum)
+- [L2Pass Swap 수수료](/ko/products/swap/overview#fee-structure)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 10일*

@@ -1,0 +1,148 @@
+---
+title: "Faça swaps de cripto entre 14 redes, de forma pública ou privada"
+sidebarTitle: "Introdução"
+icon: "angle-right"
+mode: "wide"
+description: "O L2Pass Swap move USDT, USDC, BTC, ETH e mais entre 14 redes com taxa L2Pass de 0% em stablecoins. Guias, taxas, swaps privados e a Swap API."
+---
+
+<Frame>
+  ![L2Pass Introduction Banner](/images/intro/l2pass_banner.png)
+</Frame>
+
+A L2Pass move seus tokens entre blockchains em um único passo: USDT da Tron para a Ethereum, BTC para USDT, USDC para a Solana. Funciona em **14 redes**, incluindo Bitcoin, Zcash, Tron, Solana e TON, e você pode fazer swaps de forma pública ou privada.
+
+Em cada swap, a L2Pass pede cotação a várias rotas e mostra quanto cada uma entrega e cobra antes de você confirmar. A L2Pass nunca custodia seus fundos. Swaps de stablecoins têm **taxa L2Pass de 0%**. Carteiras e apps têm o mesmo roteamento pela **L2Pass Swap API**.
+
+## Nossos produtos
+
+<CardGroup cols={2}>
+  <Card title="L2Pass Swap" icon="right-left-large" href="/pt-br/products/swap/overview">
+    Swaps cross-chain e privados para pessoas. Stablecoins, BTC, ETH, SOL, ZEC e mais, com taxa L2Pass de 0% em stablecoins.
+  </Card>
+
+  <Card title="L2Pass Swap API" icon="code" href="/pt-br/products/swap/learn/swap-api">
+    O mesmo roteamento para carteiras, exchanges e apps de pagamento: cotações, endereços de depósito, status e webhooks. Parceiros podem ganhar com o volume.
+  </Card>
+</CardGroup>
+
+<Card title="Gas Refuel" icon="gas-pump" href="https://l2pass.com/refuel">
+  Recarregue tokens de gas em mais de 25 redes EVM.
+</Card>
+
+## O que você pode fazer
+
+| Você quer | Com a L2Pass |
+| :-- | :-- |
+| Mover stablecoins entre redes | USDT e USDC entre Tron, Ethereum, Solana, TON, BNB Chain, L2s e mais, com taxa L2Pass de 0% |
+| Fazer swap de ativos principais de forma nativa | BTC na Bitcoin, ZEC na Zcash, ETH, SOL e outros, de e para stablecoins, sem tokens embrulhados do seu lado |
+| Manter um swap privado | Escolha o L2Pass Private: o swap é executado em um ambiente confidencial que limita o que as blockchains públicas mostram |
+| Pagar alguém na rede dessa pessoa | Defina o endereço dela como destinatário e pague com o que você tiver, em qualquer token suportado |
+| Fazer swap direto de uma exchange | Saque para um endereço de depósito de uso único, sem conectar carteira |
+| Adicionar swaps ao seu produto | Integre a Swap API ou indique usuários e divida taxas |
+
+## Como funciona
+
+Em cada cotação, a L2Pass consulta várias rotas independentes ao mesmo tempo e as ordena pelo valor que você recebe:
+
+- **L2Pass RFQ e L2Pass Private by NEAR Intents:** solvers e market makers competem para executar seu swap.
+- **Pontes nativas:** USDT0 via LayerZero e Circle CCTP para USDC.
+- **Agregadores e redes de intents:** LI.FI, Relay, Aori e o agregador OKX DEX.
+
+Antes de confirmar, você vê para cada rota o valor que recebe, o mínimo a receber, o tempo estimado e as taxas. O valor mostrado já desconta as taxas. Só o gas na rede de origem e a taxa de mensagem da ponte, se houver, são pagos à parte. [Como as rotas são comparadas →](/pt-br/products/swap/learn/compare-routes)
+
+## Por que a L2Pass
+
+- **Várias cotações, não uma.** Cada swap é cotado ao mesmo tempo por solvers da NEAR Intents, pontes nativas e agregadores, e ordenado pelo valor que você recebe.
+- **Todas as redes, não só EVM.** Bitcoin, Zcash, Tron, Solana e TON ao lado da Ethereum e suas L2s.
+- **Privacidade quando você precisa.** Swaps privados na mesma interface, com a mesma triagem dos públicos.
+- **Não custodial.** A L2Pass nunca guarda seus tokens ou chaves. Sem conta e sem KYC.
+- **Taxas transparentes.** 0% em swaps de stablecoins, até 0,2% em outros ativos, até 0,3% em swaps privados. [Taxas explicadas →](/pt-br/products/swap/learn/fees)
+
+## Histórico
+
+<CardGroup cols={3}>
+  <Card title="650K+" icon="wallet">
+    Carteiras únicas já usaram a L2Pass
+  </Card>
+
+  <Card title="4M+" icon="arrow-right-arrow-left">
+    Transações cross-chain processadas
+  </Card>
+
+  <Card title="Desde 2023" icon="calendar">
+    Na mainnet
+  </Card>
+
+  <Card title="14" icon="globe">
+    Redes no Swap
+  </Card>
+
+  <Card title="№9" icon="ranking-star" href="https://layerzeroscan.com/application/l2pass">
+    App da LayerZero no ranking
+  </Card>
+</CardGroup>
+
+---
+
+## Parceiros do ecossistema
+
+Os swaps passam por NEAR Intents, LayerZero (USDT0), Circle CCTP, LI.FI, Relay, Aori e o agregador OKX DEX.
+
+<Card title="Construído sobre infraestrutura líder">
+  <div
+  style={{ 
+  backgroundColor: "#181818", 
+  padding: "2rem", 
+  borderRadius: "8px", 
+  display: "flex", 
+  justifyContent: "center",
+ marginTop: "1rem"
+}}
+>
+  <img src="/images/partners_light.svg" alt="L2Pass ecosystem partners" style={{ height: "auto" }} />
+</div>
+</Card>
+
+
+---
+
+## Comece aqui
+
+<CardGroup cols={3}>
+  <Card title="Como o Swap funciona" icon="book-open" href="/pt-br/products/swap/overview">
+    Rotas, execução, reembolsos e swaps privados.
+  </Card>
+
+  <Card title="Mova USDT entre redes" icon="route" href="/pt-br/products/swap/guides/usdt-tron-to-ethereum">
+    Guias passo a passo por rota, começando por Tron para Ethereum.
+  </Card>
+
+  <Card title="Swap de BTC" icon="bitcoin" href="/pt-br/products/swap/guides/btc-to-usdt">
+    Troque BTC nativo por USDT e vice-versa.
+  </Card>
+
+  <Card title="Swaps privados" icon="user-secret" href="/pt-br/products/swap/learn/private-cross-chain-swaps">
+    O que um swap privado oculta e o que não oculta.
+  </Card>
+
+  <Card title="Pague com cripto" icon="money-bill-transfer" href="/pt-br/products/swap/learn/crypto-payments">
+    Pague qualquer pessoa na rede que ela preferir.
+  </Card>
+
+  <Card title="A L2Pass é segura?" icon="shield-check" href="/pt-br/products/swap/learn/is-l2pass-safe">
+    Como swaps não custodiais protegem seus fundos.
+  </Card>
+
+  <Card title="Swap API" icon="code" href="/pt-br/products/swap/learn/swap-api">
+    Adicione swaps cross-chain à sua carteira ou app.
+  </Card>
+
+  <Card title="Contratos inteligentes" icon="file-code" href="/pt-br/resources/contracts">
+    Veja e verifique nossos deploys oficiais.
+  </Card>
+
+  <Card title="Suporte" icon="headset" href="/pt-br/resources/support">
+    Peça ajuda ou fale conosco sobre parcerias.
+  </Card>
+</CardGroup>

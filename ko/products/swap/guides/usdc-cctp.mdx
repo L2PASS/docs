@@ -1,0 +1,104 @@
+---
+title: "Circle CCTP로 USDC 브릿지하는 방법 (Ethereum, Arbitrum, Base)"
+description: "Circle CCTP로 USDC를 약 40초(Fast) 또는 19.5분(Standard)에 브릿지하세요. 고정 수령액, L2Pass 수수료 0%, 가스비는 ETH로만."
+sidebarTitle: "Circle CCTP로 USDC"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/)에서 Circle CCTP로 Ethereum, Arbitrum, Base 간에 네이티브 USDC를 옮길 수 있으며, 앱에는 USDC native bridge로 표시됩니다. 모드는 두 가지입니다. 테스트 견적에서 약 40~50초가 걸린 Fast와, 약 19.5분이 걸리지만 네트워크 수수료가 더 낮은 Standard입니다. 둘 다 고정 금액을 전달하며, L2Pass는 비교할 수 있도록 Relay, L2Pass RFQ, LI.FI 같은 다른 경로와 나란히 보여줍니다. 스테이블코인 스왑의 L2Pass 수수료는 0%이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+
+**Fast 모드는 1분 이내** · **L2Pass 수수료 0%** · **1,000 보내면 999.81 USDC 도착** · **네이티브 USDC, 고정 수령액**
+
+<Note>수치는 2026년 10월 19일 테스트 견적 기준입니다. 실제 견적은 항상 실시간입니다.</Note>
+
+## Circle CCTP란
+
+CCTP(Cross-Chain Transfer Protocol)는 Circle이 직접 제공하는 USDC 체인 간 이동 방식입니다. 출발 체인에서 USDC를 소각하고 도착 체인에서 같은 양의 네이티브 USDC를 발행하므로, 그 체인에서 Circle이 발행한 USDC를 받게 됩니다.
+
+| 모드 | 작동 방식 | 테스트 견적의 예상 시간 | 1,000 USDC 기준 네트워크 수수료 |
+| :-- | :-- | :-- | :-- |
+| Fast | 출발 체인이 완결성에 도달하기 전에 Circle이 전송을 확인 | Arbitrum에서 약 38초, Ethereum에서 약 50초 | Arbitrum에서 0.19 USDC, Ethereum에서 0.15 USDC |
+| Standard | 출발 체인의 블록 완결성을 기다림 | 약 19.5분 | 0.05 USDC |
+
+## Arbitrum에서 Base로 1,000 USDC를 보내는 경로
+
+테스트 견적(약 16:55 UTC)에서 8개 경로가 나왔습니다. 실시간 견적에 현재 수치가 표시됩니다.
+
+| 경로 | 수령액 | 예상 시간 | 수령 방식 |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.97 USDC | 표시 안 됨 | 고정 |
+| USDC native bridge, Standard | 999.95 USDC | 약 19.5분 | 고정 |
+| Relay | 999.88 USDC | 약 2초 | 변동 |
+| USDC native bridge, Fast | 999.81 USDC | 약 38초 | 고정 |
+| L2Pass RFQ | 999.80 USDC | 약 27초 | 변동 |
+| Aori | 999.28 USDC | 약 3초 | 고정 |
+| L2Pass Private | 998.20 USDC | 약 27초 | 변동 |
+| LI.FI | 997.50 USDC | 약 18분 | 변동 |
+
+Ethereum에서 Base로도 같은 8개 경로가 비슷한 금액으로 제시되었습니다. CCTP Standard는 999.95 USDC, CCTP Fast는 999.85 USDC였습니다.
+
+## CCTP로 USDC 브릿지하는 방법
+
+3단계에서 서명하기 전까지는 지갑에서 아무것도 나가지 않으므로 먼저 모든 경로를 비교할 수 있습니다.
+
+<Steps>
+  <Step title="L2Pass Swap 열기">
+    [swap.l2pass.com](https://swap.l2pass.com/)에 접속해 네 개 필드를 채웁니다.
+
+    - **From:** 출발 네트워크의 USDC(예: Arbitrum).
+    - **To:** 도착 네트워크의 USDC(예: Base).
+    - **Amount:** 옮길 USDC 수량.
+    - **수신 주소:** USDC를 받을 도착 네트워크의 주소.
+  </Step>
+
+  <Step title="Fast 또는 Standard 선택">
+    USDC native bridge 카드를 찾으세요. 1분 안에 USDC를 받고 싶다면 Fast를, 더 낮은 네트워크 수수료를 위해 약 20분 기다릴 수 있다면 Standard를 고르세요. 다른 경로 카드와도 비교해 보세요.
+  </Step>
+
+  <Step title="승인 및 서명">
+    출발 네트워크의 지갑에서 트랜잭션에 서명합니다. 이 경로로 처음 USDC를 보내는 경우 지갑이 먼저 토큰 승인을 요청할 수 있습니다.
+  </Step>
+
+  <Step title="전송 추적">
+    앱이 도착 네트워크에서 마지막 단계를 요청하면 진행하세요. 끝나지 않은 전송은 나중에 앱에서 이어서 할 수 있습니다. USDC 도착 여부는 도착 네트워크의 블록 탐색기(예: Base는 Basescan)에서 수신 주소를 조회해 확인할 수 있습니다.
+  </Step>
+</Steps>
+
+## 보내기 전에
+
+CCTP에는 지갑 서명과 가스비용 ETH가 필요하며, 표시된 금액을 정확히 전달합니다.
+
+- **가스비는 출발 체인에서.** 가스비는 Ethereum, Arbitrum 또는 Base에서 ETH로 냅니다. CCTP 네트워크 수수료는 표시된 금액에서 차감되므로 받을 때 도착 체인의 ETH는 필요 없습니다.
+- **고정 수령액.** CCTP는 표시된 금액을 정확히 전달하므로 슬리피지가 적용되지 않습니다.
+- **지갑으로만.** CCTP는 지갑에서 서명한 트랜잭션이 필요합니다. 거래소에서 결제하려면 일회용 주소로 입금을 받는 L2Pass RFQ를 이용하세요.
+- **환불.** 온체인 경로는 실패하면 되돌려지며, 가스비는 환불되지 않습니다.
+- **부분 체결 없음.** 전송은 전부 완료되거나 아예 실행되지 않습니다.
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="CCTP 전송은 얼마나 걸리나요?">
+    테스트 견적에서 CCTP Fast는 약 38~50초, CCTP Standard는 약 19.5분이었습니다. 경로 카드에 현재 예상 시간이 표시됩니다.
+  </Accordion>
+
+  <Accordion title="CCTP로 USDC를 브릿지하는 비용은 얼마인가요?">
+    스테이블코인 스왑의 L2Pass 수수료는 0%입니다. 1,000 USDC 테스트 견적에서 네트워크 수수료는 Standard 0.05 USDC, Fast 0.15~0.19 USDC였고, 여기에 출발 체인 가스비(ETH)가 더해집니다.
+  </Accordion>
+
+  <Accordion title="CCTP로 브릿지한 USDC는 네이티브 USDC인가요?">
+    네. CCTP는 출발 체인에서 USDC를 소각하고 도착 체인에서 Circle이 발행하는 네이티브 USDC를 발행합니다.
+  </Accordion>
+
+  <Accordion title="Arbitrum에서 Base로 USDC를 옮기는 가장 빠른 방법은 무엇인가요?">
+    테스트 견적에서 Relay는 약 2초, Aori는 약 3초였고 금액은 조금씩 달랐습니다. 보내는 금액 기준으로 경로 카드를 비교하세요.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [USDT와 USDC를 브릿지하는 가장 좋은 방법: L2Pass vs 다른 브릿지](/ko/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass가 경로를 비교하는 방법](/ko/products/swap/learn/compare-routes)
+- [L2Pass Swap 수수료 설명](/ko/products/swap/learn/fees)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

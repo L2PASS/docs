@@ -7,7 +7,7 @@ sidebarTitle: "Private cross-chain swaps"
 A private cross-chain swap in [L2Pass Swap](https://swap.l2pass.com/) limits what public blockchains show about how your swap is filled. It runs on the L2Pass Private route, inside a confidential execution environment on [NEAR Intents](https://near.org/intents).
 
 <Warning>
-A private swap is not anonymous. Your deposit and the tokens you receive are still normal transactions on their chains. Providers still receive your wallet address and screen the swap for AML and sanctions risk, as on any other route.
+A private swap is not anonymous. Your deposit and the tokens you receive are still normal transactions on their chains. Providers still receive your wallet address and screen the swap for AML and sanctions risk exactly as on a public swap.
 </Warning>
 
 The L2Pass fee for a private swap is up to 0.3%. It applies instead of 0% or 0.2%, not in addition, and it is already included in the amount shown in the quote.
@@ -38,7 +38,7 @@ In test quotes for 1,000 USDC from Arbitrum to Base on October 19, 2026, L2Pass 
 
 **It does not:**
 - Make you anonymous. Providers still receive your wallet address.
-- Skip compliance. Swaps are screened under the same AML and sanctions controls.
+- Skip screening. Private and public swaps go through the same checks, at the quote and after the deposit.
 - Hide your deposit or your receipt. The transfer to the deposit address and the tokens arriving at your receiving address are normal transactions on their chains.
 
 ## How to make a private swap
@@ -71,7 +71,7 @@ A private swap takes the same five steps as any deposit-address swap. You just p
 
 Private swaps follow the same refund rules as L2Pass RFQ.
 
-- **Refunds.** If a swap cannot complete, the provider sends your deposit back to the refund address; provider and network fees may be deducted. If a provider flags a swap as high risk, it decides whether to complete, refund or hold it, and a refund is not guaranteed.
+- **Refunds.** If a swap cannot complete, the provider sends your deposit back to the refund address; provider and network fees may be deducted. A deposit flagged under AML or sanctions rules is held for review instead, and you resolve it with NEAR Intents support. See [How screening works](/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
 - **No partial fills.** A swap completes in full or does not execute.
 - **Legal terms.** See the [Terms of Service](https://l2pass.com/terms-of-service) and the [Privacy & AML Principles](https://l2pass.com/privacy-policy).
 
@@ -79,7 +79,7 @@ Private swaps follow the same refund rules as L2Pass RFQ.
 
 <AccordionGroup>
   <Accordion title="Is a private swap anonymous?">
-    No. It limits what public blockchains show, but providers still receive your wallet address and screen the swap like any other.
+    No. It limits what public blockchains show, but providers still receive your wallet address and screen the swap exactly like a public one.
   </Accordion>
 
   <Accordion title="How much does a private swap cost?">

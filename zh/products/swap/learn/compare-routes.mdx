@@ -1,0 +1,119 @@
+---
+title: "L2Pass 如何比较路由：NEAR Intents、Circle CCTP、USDT0、LI.FI、Relay 和 Aori"
+description: "L2Pass Swap 同时询问多个路由渠道，并按到账金额对路由排序。介绍每条路由是什么，以及各自在什么情况下胜出。"
+sidebarTitle: "路由比较"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) 会同时询问多个路由渠道，并展示所有能完成你兑换的路由，按扣除 Gas 后你实际获得的净值排序。这些渠道包括 L2Pass RFQ 和 L2Pass Private by NEAR Intents、原生 USDT0 和 Circle CCTP 跨链桥，以及聚合器和意图网络 LI.FI、LI.FI Intents、Relay、Aori 和 OKX DEX 聚合器。没有一条路由能在所有交易对上胜出，因此每次报价都会重新比较。任意路由上的稳定币兑换，L2Pass 手续费均为 0%。
+
+## 路由
+
+报价中最多可能出现十条路由，其中只有 L2Pass RFQ 和 L2Pass Private 使用充值地址。
+
+| 应用中的路由 | 是什么 | 付款方式 | 到账 | 测试报价中的预计时间 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | [NEAR Intents](https://near.org/intents) 上的求解器和做市商竞争执行你的兑换 | 一次性充值地址，可从任意钱包或交易所付款 | 浮动，有最少到账 | 约 30 秒到 2 分钟；涉及 Bitcoin 时约 9 到 14 分钟 |
+| L2Pass Private | 同一个求解器网络，在机密环境中执行 | 一次性充值地址 | 浮动，有最少到账 | 与 L2Pass RFQ 相同 |
+| USDT native bridge | 基于 LayerZero 的 USDT0 转账，包括从 Tron 转出 | 钱包交易 | 固定 | 约 1.5 分钟 |
+| USDC native bridge, Fast | 通过 Circle CCTP V2 Fast 转移原生 USDC | 钱包交易 | 固定 | 约 40 到 50 秒 |
+| USDC native bridge, Standard | Circle CCTP V2 Standard 转账，等待区块最终确认 | 钱包交易 | 固定 | 约 19.5 分钟 |
+| Relay | 跨链中继网络 | 钱包交易 | 浮动 | 约 1 到 2 秒 |
+| Aori | 基于意图的结算 | 钱包交易 | 固定 | 约 3 到 14 秒 |
+| LI.FI Intents | LI.FI 基于意图的路由 | 钱包交易 | 固定 | 测试报价中未显示 |
+| LI.FI | 跨链桥和 DEX 聚合器 | 钱包交易 | 浮动 | 约 19 秒到 18 分钟 |
+| DEX Aggregator | OKX DEX 聚合器 | 钱包交易 | 浮动 | 取决于交易对 |
+
+固定到账的路由会准确交付显示的金额，因此不涉及滑点。浮动路由使用你的滑点容忍度（默认 0.05%）来设定最少到账。
+
+## 实时报价示例
+
+以下为 2026 年 10 月 19 日（约 16:55 UTC）的测试报价。路由按应用中的显示顺序列出。实时报价会显示当前数据。
+
+<Tabs>
+<Tab title="USDT：Tron 到 Ethereum">
+
+从 Tron 到 Ethereum 兑换 1,000 USDT，返回了三条路由。
+
+| 路由 | 到账 | 预计时间 | 到账类型 | 在 Tron 上另付 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 999.50 USDT | 约 1.5 分钟 | 浮动 | 向充值地址转一笔 USDT 的 Gas |
+| USDT 原生跨链桥（USDT0） | 999.70 USDT | 约 1.5 分钟 | 固定 | LayerZero 消息费约 5.21 TRX（约 1.73 USD），另加授权和跨链交易所需的能量 |
+| L2Pass Private | 997.00 USDT | 约 1.5 分钟 | 浮动 | 向充值地址转一笔 USDT 的 Gas |
+
+USDT0 显示的到账 USDT 最多，但应用把 L2Pass RFQ 排在第一。USDT0 路由比普通 USDT 转账需要更多 Tron 能量，在测试报价中如果用 TRX 支付约为 22.60 USD，另加消息费。如果你已经有足够的质押能量，USDT0 可能更便宜。Ethereum 网络费已包含在每个金额中（L2Pass RFQ 上为 0.3 USDT）。
+
+</Tab>
+<Tab title="USDC：Arbitrum 到 Base">
+
+从 Arbitrum 到 Base 兑换 1,000 USDC，返回了八条路由。
+
+| 路由 | 到账 | 预计时间 | 到账类型 |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.97 USDC | 未显示 | 固定 |
+| USDC native bridge, Standard | 999.95 USDC | 约 19.5 分钟 | 固定 |
+| Relay | 999.88 USDC | 约 2 秒 | 浮动 |
+| USDC native bridge, Fast | 999.81 USDC | 约 38 秒 | 固定 |
+| L2Pass RFQ | 999.80 USDC | 约 27 秒 | 浮动 |
+| Aori | 999.28 USDC | 约 3 秒 | 固定 |
+| L2Pass Private | 998.20 USDC | 约 27 秒 | 浮动 |
+| LI.FI | 997.50 USDC | 约 18 分钟 | 浮动 |
+
+各路由之间的差额不到 2.5 USDC，但时间从几秒到约 19.5 分钟不等。如果你看重速度，快速路由上略低的金额可能更适合你。
+
+</Tab>
+</Tabs>
+
+## 哪些交易对会出现哪些路由
+
+在同一批测试报价中：
+
+- **Tron 和 Ethereum 之间的 USDT：** L2Pass RFQ、USDT0 跨链桥和 L2Pass Private。
+- **EVM 链之间的 USDC**（Arbitrum、Base、Ethereum）：八条路由，包括 CCTP 的两种模式。
+- **Bitcoin 与 USDT 互换：** 仅 L2Pass RFQ 和 L2Pass Private。
+- **Ethereum 上的 ETH 到 Arbitrum 上的 USDC：** L2Pass RFQ、Relay、LI.FI 和 L2Pass Private。
+
+报价会列出当时能完成你这个交易对的所有路由，因此路由组合可能变化。
+
+## 排序如何决定
+
+路由按扣除 Gas 后的预计净值排序。这就是到账金额最高的路由不一定排第一的原因。在一笔从 Ethereum 到 Tron 的 1,000 USDT 测试报价中，USDT0 显示 999.7 USDT，是所有路由中最多的，但它需要约 0.005 ETH（约 11.92 USD）的 LayerZero 消息费，以 ETH 支付。L2Pass RFQ 显示 998.21 USDT，且无需另付费用，所以排在第一。
+
+## 费用、付款和退款
+
+路由会影响提供方费用和付款方式，但不影响稳定币 0% 的 L2Pass 手续费。
+
+- **稳定币的 L2Pass 手续费与路由无关。** 任意路由上的稳定币兑换为 0%，其他资产最高 0.2%，私密兑换最高 0.3%。参见 [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)。
+- **充值还是钱包。** 只有 L2Pass RFQ 和 L2Pass Private 使用充值地址，所以只有它们可以从交易所付款。其他路由需要在钱包中签署交易。
+- **退款。** 链上路由失败时会回滚（Gas 不予退还）。充值地址路由会把充值退回到退款地址；可能扣除提供方和网络费用。
+- **不部分成交。** 兑换要么全部完成，要么不执行。
+- **最低金额。** 部分路由设有最低兑换金额。如果你的金额低于该值，路由会显示为不可用，并标出最低金额。
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="我应该选择哪条路由？">
+    比较到账金额、预计时间，以及你能否签署钱包交易、是否需要从交易所付款。路由卡片会在确认前显示这三项信息。
+  </Accordion>
+
+  <Accordion title="Circle CCTP 和 USDT0 有什么区别？">
+    Circle CCTP 在链之间转移由 Circle 发行的原生 USDC。USDT0 是 USDT 的全链版本，通过 LayerZero 转移；在 L2Pass Swap 中它也支持从 Tron 转出。两者都是固定到账、通过钱包交易付款的路由。
+  </Accordion>
+
+  <Accordion title="为什么最快的路由没有排第一？">
+    列表按扣除 Gas 后的净值排序，而不是按速度。请查看每张路由卡片上的预计时间。
+  </Accordion>
+
+  <Accordion title="兑换是由 L2Pass 自己执行的吗？">
+    不是。L2Pass 是非托管界面。兑换由所选提供方执行，L2Pass 从不持有你的代币或私钥。
+  </Accordion>
+</AccordionGroup>
+
+## 链接
+
+- [打开 L2Pass Swap](https://swap.l2pass.com/)
+- [什么是 L2Pass RFQ by NEAR Intents](/zh/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)
+- [如何通过 Circle CCTP 跨链 USDC](/zh/products/swap/guides/usdc-cctp)
+- [L2Pass Swap 常见问题](/zh/products/swap/faq)
+
+*最后更新：2026 年 10 月 19 日*

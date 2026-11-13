@@ -1,0 +1,82 @@
+---
+title: "Giải thích các mạng USDT: TRC-20, ERC-20, BEP-20, SPL, TON và USDT0"
+description: "TRC-20, ERC-20, BEP-20, SPL, jetton TON và USDT0: mỗi mạng USDT là gì, token gas và định dạng địa chỉ, và cách chuyển USDT giữa các mạng."
+sidebarTitle: "Giải thích các mạng USDT"
+---
+
+USDT tồn tại trên nhiều blockchain, và mỗi phiên bản chỉ hoạt động trên mạng của nó. USDT TRC-20 nằm trên Tron, ERC-20 trên Ethereum, BEP-20 trên BNB Chain, SPL trên Solana và jetton trên TON. USDT0 là phiên bản omnichain của USDT, di chuyển giữa các chuỗi qua LayerZero, được dùng trên Arbitrum, Plasma và các mạng khác. Bạn không thể gửi USDT trên một mạng thẳng tới địa chỉ trên mạng khác: bạn cần một tuyến cross-chain, như các tuyến được so sánh trên [L2Pass Swap](https://swap.l2pass.com/), với phí L2Pass 0% cho hoán đổi stablecoin.
+
+## USDT theo mạng
+
+Mỗi mạng USDT có token gas và định dạng địa chỉ riêng.
+
+| Mạng | Chuẩn | Token gas | Định dạng địa chỉ | Hướng dẫn |
+| :-- | :-- | :-- | :-- | :-- |
+| Tron | TRC-20 | TRX (năng lượng và băng thông) | Bắt đầu bằng T | [Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum) |
+| Ethereum | ERC-20 | ETH | 0x... | [Ethereum sang Tron](/vi/products/swap/guides/usdt-ethereum-to-tron) |
+| BNB Chain | BEP-20 | BNB | 0x... | [Tron sang BNB Chain](/vi/products/swap/guides/usdt-tron-to-bnb-chain) |
+| Solana | SPL | SOL | Base58 | [Tron sang Solana](/vi/products/swap/guides/usdt-tron-to-solana) |
+| TON | Jetton | Toncoin | Bắt đầu bằng UQ hoặc EQ | [Tron sang TON](/vi/products/swap/guides/usdt-tron-to-ton) |
+| Arbitrum | USDT0 | ETH | 0x... | [Tron sang Arbitrum](/vi/products/swap/guides/usdt-tron-to-arbitrum) |
+| Plasma | USDT0 | XPL | 0x... | [USDT sang Plasma](/vi/products/swap/guides/usdt-to-plasma) |
+
+Các mạng EVM (Ethereum, BNB Chain, Arbitrum, Plasma và các mạng khác) dùng chung định dạng địa chỉ 0x. Cùng một địa chỉ hoạt động trên tất cả, nhưng token trên mỗi mạng là riêng biệt. Gửi USDT ERC-20 tới địa chỉ của bạn trên BNB Chain không chuyển chúng sang đó.
+
+## Chi phí nhận USDT trên mỗi mạng
+
+Phí mạng đích được trừ vào số tiền bạn nhận, nên bạn không cần gas trên mạng đích để nhận. Báo giá thử 1.000 USDT từ Tron trên L2Pass RFQ ngày 19 tháng 10 năm 2026 (khoảng 17:50 UTC):
+
+| Đích | Phí mạng | Thời gian ước tính | Bạn nhận |
+| :-- | :-- | :-- | :-- |
+| Arbitrum (USDT0) | 0,005 USDT0 | Khoảng 79 giây | 999,77 USDT0 |
+| Solana | 0,01 USDT | Khoảng 77 giây | 999,73 USDT |
+| Ethereum | 0,3 USDT | Khoảng 87 giây | 999,51 USDT |
+| Plasma (USDT0) | Dưới 0,0001 USDT0 | Khoảng 84 giây | 997,79 USDT0 |
+
+Sang Plasma, phí nhà cung cấp NEAR Intents là 0,2% thay vì 0,01%, nên số tiền đến ít hơn dù phí mạng thấp nhất. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+## Cách chọn mạng
+
+Chọn mạng nơi bạn sẽ dùng USDT, rồi kiểm tra bạn có token gas của mạng đó.
+
+- **Nơi bạn sẽ dùng.** Chọn mạng của sàn, ứng dụng hoặc người bạn thanh toán. Sàn giao dịch hiển thị các mạng họ chấp nhận để nạp.
+- **Gas bạn có.** Để gửi USDT sau này, bạn cần token gas của mạng: TRX trên Tron, ETH trên Ethereum hoặc Arbitrum, SOL trên Solana, v.v.
+- **Chi phí gửi.** Phí mạng chênh lệch rất nhiều. Gửi từ Ethereum thường đắt nhất; Tron, Solana và các mạng lớp 2 thường rẻ hơn.
+
+## Mạng và USDT0
+
+Luôn khớp mạng với địa chỉ mỗi khi bạn gửi USDT.
+
+- **Chọn đúng mạng trên sàn.** Khi rút hoặc nạp USDT, mạng bạn chọn phải khớp với địa chỉ. Token gửi qua sai mạng có thể bị mất hoặc cần khôi phục thủ công.
+- **USDT0 và USDT.** Trên Arbitrum và Plasma, USDT mà L2Pass Swap giao là USDT0. L2Pass Swap có thể chuyển nó sang và từ USDT trên Tron, Ethereum và các mạng khác.
+- **Tính khả dụng.** Báo giá cho thấy tuyến nào khả dụng cho cặp của bạn tại thời điểm đó. Nếu không có tuyến nào, hãy thử lại sau hoặc chọn mạng đích khác.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="USDT TRC-20 và ERC-20 khác nhau thế nào?">
+    USDT TRC-20 chạy trên Tron và dùng TRX để trả phí. ERC-20 chạy trên Ethereum và dùng ETH. Cả hai đều là USDT do Tether phát hành, nhưng nằm trên các mạng riêng biệt, nên bạn cần một tuyến cross-chain để chuyển giữa chúng.
+  </Accordion>
+
+  <Accordion title="Tôi có thể gửi USDT TRC-20 tới địa chỉ ERC-20 không?">
+    Không. Tron và Ethereum dùng mạng và định dạng địa chỉ khác nhau. Hãy dùng một tuyến cross-chain, như [Chuyển USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum).
+  </Accordion>
+
+  <Accordion title="USDT0 là gì?">
+    USDT0 là phiên bản omnichain của USDT, di chuyển giữa các chuỗi qua LayerZero. Trên L2Pass Swap, đó là USDT trên Arbitrum và Plasma, và tuyến USDT native bridge chuyển nó, kể cả từ Tron.
+  </Accordion>
+
+  <Accordion title="Mạng USDT nào rẻ nhất?">
+    Tùy vào tuyến và thời điểm. Khi nhận, báo giá đã bao gồm phí mạng đích. Khi gửi, hãy so sánh chi phí gas của mạng bạn gửi đi.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Hoán đổi từ bất kỳ ví hoặc sàn nào](/vi/products/swap/learn/deposit-address-swaps)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

@@ -1,0 +1,105 @@
+---
+title: "L2Pass RFQ by NEAR Intents là gì"
+description: "L2Pass RFQ by NEAR Intents để các solver và nhà tạo lập thị trường cạnh tranh khớp giao dịch xuyên chuỗi của bạn. Cách hoạt động, chi phí và điều gì xảy ra nếu thất bại."
+sidebarTitle: "L2Pass RFQ by NEAR Intents"
+---
+
+L2Pass RFQ by NEAR Intents là một tuyến hoán đổi xuyên chuỗi trong [L2Pass Swap](https://swap.l2pass.com/), nơi các solver và nhà tạo lập thị trường cạnh tranh để khớp giao dịch của bạn. Bạn nêu số tiền muốn nhận, họ báo giá, và báo giá thắng được hiển thị trước khi bạn thanh toán. Bạn thanh toán bằng cách gửi token đến địa chỉ nạp dùng một lần, từ ví đã kết nối, bất kỳ ví nào hoặc sàn giao dịch. Phí L2Pass là 0% cho hoán đổi stablecoin và tối đa 0,2% cho tài sản khác, và báo giá hiển thị số tiền bạn sẽ nhận sau phí. Chỉ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) được trả riêng.
+
+## Thuật ngữ chính
+
+Trong giao dịch RFQ, solver báo giá đúng giao dịch của bạn, và bạn thanh toán vào địa chỉ nạp dùng một lần.
+
+| Thuật ngữ | Ý nghĩa |
+| :-- | :-- |
+| RFQ (request for quote, yêu cầu báo giá) | Cách giao dịch trong đó nhà tạo lập thị trường chuyên nghiệp báo giá cho đúng giao dịch của bạn, thay vì bạn giao dịch với một pool. |
+| Intent | Một tuyên bố đã ký về kết quả bạn muốn, ví dụ "vào 1.000 USDT trên Tron, ra USDT trên Ethereum". Nó nói cái gì, không nói bằng cách nào. |
+| Solver | Nhà tạo lập thị trường hoặc bot cạnh tranh để khớp intent bằng nguồn hàng và tuyến của riêng mình. |
+| [NEAR Intents](https://near.org/intents) | Mạng mà L2Pass RFQ chạy trên đó. Mạng thu thập intent, để solver cạnh tranh và thanh toán kết quả. |
+| Địa chỉ nạp | Địa chỉ dùng một lần được tạo cho báo giá của bạn. Gửi đúng số tiền báo giá đến đó sẽ bắt đầu giao dịch. |
+| Địa chỉ hoàn tiền | Ví bạn kiểm soát trên chuỗi nguồn. Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về đó. |
+
+## Giao dịch RFQ hoạt động thế nào
+
+Các solver cạnh tranh cho giao dịch của bạn trước khi bạn thanh toán, nên bạn thấy giá trước.
+
+<Steps>
+  <Step title="Bạn yêu cầu báo giá">
+    Trên [swap.l2pass.com](https://swap.l2pass.com/), bạn chọn token và mạng nguồn, token và mạng đích, số tiền và địa chỉ nhận. L2Pass hỏi tất cả nguồn định tuyến cùng lúc, và L2Pass RFQ là một trong số đó.
+  </Step>
+
+  <Step title="Các solver cạnh tranh">
+    Solver trên NEAR Intents báo số tiền họ có thể giao. Thẻ tuyến hiển thị số tiền dự kiến, số tiền nhận tối thiểu, thời gian ước tính và phí.
+  </Step>
+
+  <Step title="Bạn đặt địa chỉ hoàn tiền và thanh toán">
+    Bạn đặt địa chỉ hoàn tiền trên chuỗi nguồn, rồi gửi số tiền báo giá đến địa chỉ nạp dùng một lần qua ví, địa chỉ hoặc mã QR.
+  </Step>
+
+  <Step title="Giao dịch được thanh toán">
+    Solver thắng giao token đích đến địa chỉ nhận của bạn. Bạn có thể theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## So sánh L2Pass RFQ và L2Pass Private
+
+Cả hai tuyến dùng cùng mạng solver NEAR Intents và cùng quy trình địa chỉ nạp.
+
+| | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| Thực thi | Công khai | Môi trường bảo mật, hạn chế những gì hiển thị trên blockchain công khai |
+| Phí L2Pass | 0% cho stablecoin, tối đa 0,2% cho tài sản khác | Tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm) |
+| Thanh toán | Địa chỉ nạp dùng một lần | Địa chỉ nạp dùng một lần |
+| Địa chỉ hoàn tiền | Bắt buộc | Bắt buộc |
+
+Hoán đổi riêng tư không phải ẩn danh: địa chỉ ví của bạn vẫn được chia sẻ với nhà cung cấp và được sàng lọc giống hệt giao dịch công khai. Xem [Hoán đổi riêng tư là gì](/vi/products/swap/overview#private-swaps).
+
+## Vì sao dùng tuyến RFQ
+
+RFQ cho phép bạn thanh toán từ bất cứ đâu và đến được các chuỗi không có cầu nối trực tiếp với nhau.
+
+- **Một lần thanh toán từ bất cứ đâu.** Bạn có thể thanh toán từ bất kỳ ví hay sàn nào, không cần kết nối ví hay ký lệnh gọi hợp đồng trên chuỗi nguồn.
+- **Nhiều mạng.** Một tuyến có thể nối các chuỗi không có cầu trực tiếp, như Tron, Bitcoin, Zcash, Solana và TON.
+- **Thấy giá trước.** Bạn thấy số tiền sẽ nhận trước khi thanh toán. Số tiền này đã bao gồm mọi khoản phí trừ gas trên chuỗi nguồn.
+
+L2Pass cũng hiển thị các tuyến khác bên cạnh RFQ, như Circle CCTP, USDT0, LI.FI và Relay. Tuyến nào cho nhiều nhất phụ thuộc vào cặp và số tiền, nên hãy so sánh các thẻ tuyến. Xem [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes).
+
+## Giới hạn, thời gian và hoàn tiền
+
+Giao dịch RFQ có thể có mức tối thiểu, lâu hơn với Bitcoin hoặc Zcash, và không bao giờ khớp một phần.
+
+- **Số tiền tối thiểu.** Tuyến RFQ có thể có số tiền hoán đổi tối thiểu. Nếu số tiền của bạn thấp hơn, tuyến sẽ hiện là không khả dụng kèm mức tối thiểu.
+- **Thời gian.** Giao dịch RFQ thường mất khoảng 30 giây đến vài phút, lâu hơn với các mạng xác nhận khối chậm như Bitcoin hoặc Zcash.
+- **Không khớp một phần.** Giao dịch hoặc hoàn tất toàn bộ, hoặc không thực hiện.
+- **Hoàn tiền.** Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền; phí nhà cung cấp và phí mạng có thể bị trừ. Khoản nạp bị gắn cờ theo quy tắc AML hoặc trừng phạt sẽ bị giữ lại để xem xét, và bạn xử lý với bộ phận hỗ trợ của NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Gửi từ sàn.** Hãy kiểm tra số tiền đến có khớp với báo giá không, vì một số sàn trừ phí rút.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="L2Pass RFQ có phải phi lưu ký không?">
+    Có. L2Pass không bao giờ giữ token hay khóa riêng của bạn. Bạn gửi token đến địa chỉ nạp cho báo giá của mình, và giao dịch được các solver trên NEAR Intents khớp.
+  </Accordion>
+
+  <Accordion title="L2Pass RFQ tốn bao nhiêu?">
+    Phí L2Pass là 0% cho hoán đổi stablecoin và tối đa 0,2% cho tài sản khác. NEAR Intents và các mạng thu phí riêng. Số tiền hiển thị trong báo giá đã bao gồm các khoản này.
+  </Accordion>
+
+  <Accordion title="Tôi có cần kết nối ví không?">
+    Không. Bạn có thể thanh toán bằng cách gửi token đến địa chỉ nạp từ bất kỳ ví hay sàn nào, dùng địa chỉ hoặc mã QR. Bạn cũng có thể thanh toán từ ví đã kết nối.
+  </Accordion>
+
+  <Accordion title="Điều gì xảy ra nếu không solver nào khớp giao dịch của tôi?">
+    Giao dịch không được thực hiện, và nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền, sau khi trừ phí nhà cung cấp hoặc phí mạng (nếu có).
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

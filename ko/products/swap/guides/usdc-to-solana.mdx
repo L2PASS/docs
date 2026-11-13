@@ -1,0 +1,107 @@
+---
+title: "Solana로 USDC 브릿지하는 방법"
+description: "Base에서 약 32초, Ethereum에서 약 42초 만에 USDC를 Solana로 브릿지하거나 TRC-20 USDT를 USDC로 스왑하세요. L2Pass 수수료 0%, SOL 불필요."
+sidebarTitle: "Solana로 USDC"
+---
+
+import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/)으로 Ethereum이나 Base에서 Solana로 USDC를 브릿지하고, Tron의 USDT를 Solana의 USDC로 스왑할 수 있습니다. 테스트 견적에서 이 쌍들은 모두 [NEAR Intents](https://near.org/intents)에서 실행되는 L2Pass RFQ와 L2Pass Private가 제공했으며, 예상 시간은 약 30초에서 1.5분이었습니다. 연결된 지갑, 아무 지갑 또는 거래소에서 일회용 입금 주소로 토큰을 보내 결제합니다. 스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+
+**Base에서 약 30초** · **L2Pass 수수료 0%** · **1,000 보내면 999.65 USDC 도착** · **SOL 불필요**
+
+<Note>수치는 2026년 10월 19일 테스트 견적 기준입니다. 실제 견적은 항상 실시간입니다.</Note>
+
+## Solana로 가는 경로
+
+테스트 견적에서 Base, Ethereum, Tron에서 Solana까지 가는 경로는 L2Pass RFQ와 L2Pass Private뿐이었습니다.
+
+| 경로 | 예상 시간 | 수령액 | 비고 |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Base에서 약 32초, Ethereum에서 42초, Tron에서 77초 | 변동, 최소 수령액 있음 | 솔버와 마켓 메이커가 스왑 체결을 두고 경쟁합니다. 입금 주소. |
+| L2Pass Private | L2Pass RFQ와 동일 | 변동, 최소 수령액 있음 | 기밀 실행. 입금 주소. L2Pass 수수료 최대 0.3%. |
+
+해당 테스트 견적에서는 Circle CCTP를 포함해 이 쌍들에 다른 경로가 없었습니다. 견적에는 해당 쌍을 체결할 수 있는 모든 경로가 표시됩니다.
+
+## 테스트 견적
+
+약 17:17 UTC 기준 1,000 USDC 또는 USDT 견적입니다. 실시간 견적에 현재 수치가 표시됩니다.
+
+| 스왑 | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 1,000 USDC, Base → Solana | 999.65 USDC | 997.92 USDC |
+| 1,000 USDC, Ethereum → Solana | 999.55 USDC | 997.92 USDC |
+| Tron의 1,000 USDT → Solana의 USDC | 998.67 USDC | 996.09 USDC |
+
+L2Pass RFQ 견적에는 L2Pass 수수료 0%, NEAR Intents 제공자 수수료 0.01%, Solana 네트워크 수수료 0.28 USDC가 표시되었습니다.
+
+## Solana로 USDC 브릿지하는 방법
+
+결제하기 전까지는 지갑에서 아무것도 나가지 않으므로 먼저 모든 경로를 비교할 수 있습니다.
+
+<Steps>
+  <Step title="L2Pass Swap 열기">
+    [swap.l2pass.com](https://swap.l2pass.com/)에 접속해 네 개 필드를 채웁니다.
+
+    - **From:** Ethereum 또는 Base의 USDC, 혹은 Tron의 USDT.
+    - **To:** Solana의 USDC.
+    - **Amount:** 보낼 수량.
+    - **수신 주소:** USDC를 받을 Solana 주소.
+  </Step>
+
+  <Step title="경로 비교">
+    L2Pass RFQ와 L2Pass Private 카드에서 예상 수령액, 최소 수령액, 예상 시간, 수수료를 확인하세요. 기본 슬리피지는 0.05%(변경 가능)입니다.
+  </Step>
+
+  <Step title="환불 주소 설정">
+    출발 체인에서 직접 관리하는 지갑을 환불 주소로 지정하세요. 스왑을 완료할 수 없으면 제공자가 입금액을 그 주소로 돌려줍니다.
+  </Step>
+
+  <Step title="입금 주소로 결제">
+    연결된 지갑, 아무 지갑 또는 거래소에서 주소나 QR 코드로 견적 금액을 일회용 입금 주소에 보냅니다. 거래소에서 보낸다면 도착 금액이 견적과 일치하는지 확인하세요.
+  </Step>
+
+  <Step title="스왑 추적">
+    **Recent swaps**에서 상태를 확인하세요: *Awaiting deposit*, *Deposit confirmed*, 그다음 *Complete*.
+  </Step>
+</Steps>
+
+## 보내기 전에
+
+출발 체인의 가스비만 필요하고, 받을 때 SOL은 필요 없습니다.
+
+- **가스비는 출발 체인에서만.** 가스비는 Ethereum이나 Base에서는 ETH로, Tron에서는 TRX로 냅니다. Solana 네트워크 수수료는 표시된 금액에서 차감되므로 받을 때 SOL이 필요 없습니다. 나중에 Solana에서 USDC를 옮기거나 사용할 때 SOL이 필요합니다.
+- **한 번의 스왑으로 USDT에서 USDC로.** Tron에서 출발하면 스테이블코인과 네트워크를 한 번에 바꿀 수 있습니다. 이것도 스테이블코인 스왑이므로 L2Pass RFQ에서 L2Pass 수수료는 0%입니다.
+
+<SwapBeforeYouSend />
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="Solana로 USDC를 브릿지하는 데 얼마나 걸리나요?">
+    테스트 견적에서 Base에서 약 32초, Ethereum에서 42초, Tron에서 77초였습니다. 경로 카드에 현재 예상 시간이 표시됩니다.
+  </Accordion>
+
+  <Accordion title="Solana로 USDC를 브릿지하는 비용은 얼마인가요?">
+    스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)입니다. 1,000 USDC 테스트 견적에서 L2Pass RFQ는 NEAR Intents 수수료와 Solana 네트워크 수수료를 뺀 뒤 Base에서 999.65 USDC, Ethereum에서 999.55 USDC를 전달했습니다.
+  </Accordion>
+
+  <Accordion title="Solana에서 USDC를 받으려면 SOL이 필요한가요?">
+    아니요. Solana 네트워크 수수료는 표시된 금액에서 차감됩니다. 나중에 USDC를 보내거나 사용할 때 SOL이 필요합니다.
+  </Accordion>
+
+  <Accordion title="TRC-20 USDT를 Solana의 USDC로 스왑할 수 있나요?">
+    네. 테스트 견적에서 Tron의 1,000 USDT가 L2Pass RFQ로 약 77초 만에 Solana의 998.67 USDC가 되었습니다.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [USDT와 USDC를 브릿지하는 가장 좋은 방법: L2Pass vs 다른 브릿지](/ko/products/swap/learn/compare-stablecoin-transfers)
+- [Tron에서 Solana로 USDT 브릿지](/ko/products/swap/guides/usdt-tron-to-solana)
+- [Circle CCTP로 USDC 브릿지하는 방법](/ko/products/swap/guides/usdc-cctp)
+- [L2Pass Swap 수수료 설명](/ko/products/swap/learn/fees)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

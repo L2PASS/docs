@@ -1,0 +1,154 @@
+---
+title: "La mejor forma de pasar USDT y USDC entre redes: L2Pass frente a deBridge, Relay, LI.FI y más"
+description: "Cotizaciones en vivo comparadas: 1000 USDT de Tron a Ethereum y 1000 USDC de Arbitrum a Base en L2Pass, deBridge, Relay, LI.FI, THORChain y otros."
+sidebarTitle: "Comparativa: transferencias de stablecoins"
+---
+
+Pedimos cotizaciones en vivo para las mismas dos transferencias de stablecoins en [L2Pass Swap](https://swap.l2pass.com/) y en otros puentes y servicios de intercambio, el 19 de octubre de 2026, con los mismos importes para todos los proveedores. Para 1000 USDT de Tron a Ethereum, L2Pass RFQ by NEAR Intents dio 999,55 USDT, más que deBridge, Relay, THORChain, LI.FI, ChangeNOW y SideShift. Para 1000 USDC de Arbitrum a Base, L2Pass mostró ocho rutas, y la mejor (Circle CCTP, 999,95 USDC) igualó o superó a todos los demás proveedores. La comisión de L2Pass es 0% en swaps de stablecoins en todas las rutas.
+
+## Resultados de un vistazo
+
+L2Pass entregó más en ambas transferencias, contando las comisiones que pagas fuera de la cotización.
+
+| Transferencia | Lo que más llegó | Resultado de L2Pass | Mejor exchange instantáneo |
+| :-- | :-- | :-- | :-- |
+| 1000 USDT, Tron a Ethereum | L2Pass RFQ, 999,55 USDT (tras la comisión de mensaje extra de USDT0) | 999,55 USDT, 0% de comisión de L2Pass | 994,65 USDT (FixedFloat) |
+| 1000 USDC, Arbitrum a Base | Circle CCTP a través de L2Pass, 999,95 USDC | 999,95 USDC, ocho rutas en una cotización | 987,50 USDC (ChangeNOW, estándar) |
+
+## Cómo comparamos
+
+Enviamos los mismos importes y las mismas solicitudes de cotización a todos los proveedores, sin ejecutar ningún swap.
+
+- **Cuándo:** 19 de octubre de 2026, desde las 18:21 UTC. Cada tabla indica su hora.
+- **Cómo:** las mismas solicitudes de cotización que hace la propia interfaz web de cada proveedor, con los mismos importes. No se ejecutó ningún swap.
+- **Qué comparamos:** el importe que recibes, que ya incluye las comisiones de cada proveedor y la comisión de la red de destino. El gas que pagas en la red de origen se indica aparte.
+
+<Note>
+Capturas del 19 de octubre de 2026. Las cotizaciones cambian cada pocos segundos, así que abre [L2Pass Swap](https://swap.l2pass.com/) para ver las cifras actuales.
+</Note>
+
+## Cotizaciones en vivo
+
+L2Pass RFQ fue lo más barato desde Tron, y CCTP Standard a través de L2Pass empató con LI.FI Intents en la mayor cantidad de USDC entre redes EVM.
+
+<Tabs>
+<Tab title="USDT: Tron a Ethereum">
+
+Cotizaciones a las 18:21 UTC.
+
+| Proveedor | Recibes | Tiempo estimado | Comisiones mostradas |
+| :-- | :-- | :-- | :-- |
+| L2Pass, USDT native bridge (USDT0) | 999,70 USDT | Unos 1,5 minutos | Más una comisión de mensaje de LayerZero de 5,21 TRX (unos 1,73 USD) y energía de Tron |
+| **L2Pass RFQ** | **999,55 USDT** | Unos 1,5 minutos | 0% de comisión de L2Pass, 0,01% de comisión de NEAR Intents, 0,3 USDT de comisión de red de Ethereum |
+| Relay | 998,86 USDT | Unos 4 segundos | 1,14 USDT de comisión del relayer, más unos 6,1 TRX de gas |
+| Cotización del protocolo THORChain | 998,55 USDT | Alrededor de 1 minuto | 0,66 USDT, antes de la comisión de la app de THORChain |
+| deBridge | 998,12 USDT | Unos 15 segundos | 4 TRX de comisión fija, más 4,35 USDT en comisiones de protocolo, taker y operación |
+| L2Pass Private | 997,00 USDT | Unos 1,5 minutos | 0,3% de comisión de L2Pass |
+| LI.FI (vía LayerSwap) | 996,66 USDT | Unos 30 segundos | 2,50 USD de comisión de LI.FI, 0,84 USD de comisión de LayerSwap |
+| ChangeNOW, estándar | 988,14 USDT | De 10 a 60 minutos | 4,8 USDT de comisión de depósito |
+| ChangeNOW, tasa fija | 987,13 USDT | No se muestra | 4,8 USDT de comisión de depósito |
+| SideShift | 978,64 USDT | No se muestra | Incluida en la tasa |
+
+MAYAChain no es compatible con Tron.
+
+USDT0 entrega más USDT, pero pagas aparte la comisión de mensaje de LayerZero y más energía de Tron. Con eso incluido, L2Pass RFQ es lo más barato.
+
+</Tab>
+<Tab title="USDC: Arbitrum a Base">
+
+Cotizaciones a las 18:21 UTC.
+
+| Proveedor | Recibes | Tiempo estimado | Comisiones mostradas |
+| :-- | :-- | :-- | :-- |
+| **L2Pass, USDC native bridge (CCTP), Standard** | **999,95 USDC** | Unos 19,5 minutos | 0,05 USDC |
+| L2Pass, LI.FI Intents | 999,95 USDC | No se muestra | Gas de unos 0,01 USD |
+| L2Pass, Relay | 999,88 USDC | Unos 2 segundos | Incluidas en el importe |
+| Relay (directo) | 999,88 USDC | Unos 2 segundos | 0,12 USDC de comisión del relayer |
+| L2Pass, USDC native bridge (CCTP), Fast | 999,81 USDC | Unos 40 segundos | 0,19 USDC |
+| L2Pass RFQ | 999,80 USDC | Unos 30 segundos | 0% de comisión de L2Pass, 0,1 USDC de comisión de NEAR Intents |
+| L2Pass, Aori | 999,29 USDC | Unos 3 segundos | Incluidas en el importe |
+| deBridge | 999,20 USDC | Unos 2 segundos | 0,001 ETH de comisión fija (unos 2,40 USD) aparte, más 1,10 USDC |
+| L2Pass Private | 998,20 USDC | Unos 30 segundos | 0,3% de comisión de L2Pass |
+| LI.FI (directo y en L2Pass) | 997,50 USDC | Unos 18 minutos | 2,50 USD de comisión de LI.FI |
+| ChangeNOW, estándar | 987,50 USDC | De 10 a 60 minutos | 0,8 USDC de comisión de depósito |
+| SideShift | 981,00 USDC | No se muestra | Incluida en la tasa |
+| ChangeNOW, tasa fija | 964,37 USDC | No se muestra | 0,8 USDC de comisión de depósito |
+
+THORChain no tiene pool en Arbitrum, y MAYAChain no es compatible con Base.
+
+Relay a través de L2Pass dio el mismo importe que Relay directamente: L2Pass no añade comisión en stablecoins.
+
+</Tab>
+</Tabs>
+
+## Exchanges instantáneos a través de Trocador
+
+[Trocador](https://trocador.app) compara exchanges instantáneos como FixedFloat, StealthEX y ChangeNOW. Pedimos allí la misma transferencia a las 18:34 UTC, unos 13 minutos después de las cotizaciones anteriores.
+
+| Exchange (calificación de Trocador) | 1000 USDT de Tron a Ethereum | Tipo de tasa |
+| :-- | :-- | :-- |
+| FixedFloat (C) | 994,65 USDT | Flotante |
+| CCECash (B) | 994,47 USDT | Flotante |
+| Baltex (B) | 993,98 USDT | Flotante |
+| Simpleswap (B), mejor tasa fija | 989,66 USDT | Fija |
+| Swapuz (A), la más baja | 973,00 USDT | Fija |
+
+El mejor exchange instantáneo dio unos 4,9 USDT menos que L2Pass RFQ (999,55 USDT).
+
+La calificación de privacidad de Trocador (aquí de A a C) refleja las condiciones de cada exchange, su política de privacidad y su práctica de reembolso cuando un usuario se niega a verificarse. Trocador señala que cualquier exchange puede pausar un swap y pedir KYC o controles AML. Los importes flotantes son estimaciones y se recalculan cuando se confirma tu depósito; los fijos quedan bloqueados.
+
+## Qué muestran las cifras
+
+Lo que llega después de todas las comisiones importa más que la velocidad o la comisión anunciada.
+
+- **L2Pass compara proveedores por ti.** De Arbitrum a Base, una sola cotización de L2Pass dio ocho rutas, incluidas Relay, LI.FI y Circle CCTP, así que puedes compararlas sin visitar cada sitio.
+- **Lo más rápido no es lo más barato.** Relay y deBridge tardaron segundos. CCTP Standard pagó más, pero tardó unos 19,5 minutos.
+- **Los exchanges instantáneos cuestan más.** ChangeNOW y SideShift dieron entre 12 y 36 USDT menos en una transferencia de 1000 USDT.
+- **La compatibilidad con Tron varía.** MAYAChain no es compatible con Tron, y LI.FI enrutó a través de LayerSwap.
+- **El total importa más que la comisión anunciada.** deBridge añade una comisión fija en el token nativo de la red de origen además de su cotización, y USDT0 añade una comisión de mensaje de LayerZero, así que compara lo que llega después de todo lo que pagas.
+
+## Cuál usar
+
+Elige según lo que más te importe: coste total, velocidad o pagar desde un exchange.
+
+- **Menor coste total desde Tron:** L2Pass RFQ.
+- **Velocidad en segundos entre redes EVM:** Relay, directamente o dentro de L2Pass al mismo precio.
+- **Mayor cantidad de USDC si puedes esperar:** Circle CCTP Standard, unos 19,5 minutos.
+- **Pagar desde una cuenta de exchange:** una ruta con dirección de depósito como L2Pass RFQ, porque los puentes solo con wallet exigen firmar desde tu propia wallet.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuál es la forma más barata de pasar USDT de Tron a Ethereum?">
+    En nuestras cotizaciones en vivo del 19 de octubre de 2026, L2Pass RFQ dio 999,55 USDT por 1000 USDT, el importe más alto después de todas las comisiones. USDT0 dio 999,70 USDT, pero requiere una comisión de mensaje de LayerZero aparte de unos 1,73 USD.
+  </Accordion>
+
+  <Accordion title="¿L2Pass es más barato que usar Relay directamente?">
+    En stablecoins, es lo mismo. Relay a través de L2Pass dio exactamente los mismos 999,88 USDC que Relay directamente, porque la comisión de L2Pass en stablecoins es 0%.
+  </Accordion>
+
+  <Accordion title="¿Cuál es la forma más rápida de pasar USDT desde Tron?">
+    Relay cotizó unos 4 segundos y deBridge unos 15 segundos, pero ambos dieron menos USDT que L2Pass RFQ, que tardó unos 1,5 minutos.
+  </Accordion>
+
+  <Accordion title="¿Los exchanges instantáneos como ChangeNOW o FixedFloat son más baratos?">
+    No en nuestras cotizaciones. El mejor exchange instantáneo en Trocador dio 994,65 USDT por 1000 USDT de Tron a Ethereum, unos 4,9 USDT menos que L2Pass RFQ.
+  </Accordion>
+
+  <Accordion title="¿Necesito una cuenta?">
+    No. L2Pass Swap no necesita cuenta ni KYC.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Comparar rutas cross-chain](/es/products/swap/learn/compare-routes)
+- [USDT de Tron a Ethereum](/es/products/swap/guides/usdt-tron-to-ethereum)
+- [Pasar USDC con Circle CCTP](/es/products/swap/guides/usdc-cctp)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Comparativa: swaps de BTC](/es/products/swap/learn/compare-btc-swaps)
+- [Comparativa: swaps de ZEC](/es/products/swap/learn/compare-zec-swaps)
+- [Paga a cualquiera en cripto en la red que prefiera](/es/products/swap/learn/crypto-payments)
+
+*Última actualización: 19 de octubre de 2026*

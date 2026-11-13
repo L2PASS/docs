@@ -1,0 +1,82 @@
+---
+title: "Redes de USDT explicadas: TRC-20, ERC-20, BEP-20, SPL, TON e USDT0"
+description: "TRC-20, ERC-20, BEP-20, SPL, jetton da TON e USDT0: o que é cada rede de USDT, seu token de gas e formato de endereço, e como mover USDT entre elas."
+sidebarTitle: "Redes de USDT explicadas"
+---
+
+O USDT existe em muitas blockchains, e cada versão só funciona na própria rede. O USDT TRC-20 fica na Tron, o ERC-20 na Ethereum, o BEP-20 na BNB Chain, o SPL na Solana e o jetton na TON. O USDT0 é a versão omnichain do USDT que se move entre redes via LayerZero, usada na Arbitrum, na Plasma e em outras redes. Você não pode enviar USDT de uma rede direto para um endereço de outra: precisa de uma rota cross-chain, como as comparadas no [L2Pass Swap](https://swap.l2pass.com/), que tem taxa L2Pass de 0% em swaps de stablecoins.
+
+## USDT por rede
+
+Cada rede de USDT tem seu próprio token de gas e formato de endereço.
+
+| Rede | Padrão | Token de gas | Formato de endereço | Guia |
+| :-- | :-- | :-- | :-- | :-- |
+| Tron | TRC-20 | TRX (energia e bandwidth) | Começa com T | [Tron para Ethereum](/pt-br/products/swap/guides/usdt-tron-to-ethereum) |
+| Ethereum | ERC-20 | ETH | 0x... | [Ethereum para Tron](/pt-br/products/swap/guides/usdt-ethereum-to-tron) |
+| BNB Chain | BEP-20 | BNB | 0x... | [Tron para BNB Chain](/pt-br/products/swap/guides/usdt-tron-to-bnb-chain) |
+| Solana | SPL | SOL | Base58 | [Tron para Solana](/pt-br/products/swap/guides/usdt-tron-to-solana) |
+| TON | Jetton | Toncoin | Começa com UQ ou EQ | [Tron para TON](/pt-br/products/swap/guides/usdt-tron-to-ton) |
+| Arbitrum | USDT0 | ETH | 0x... | [Tron para Arbitrum](/pt-br/products/swap/guides/usdt-tron-to-arbitrum) |
+| Plasma | USDT0 | XPL | 0x... | [USDT para Plasma](/pt-br/products/swap/guides/usdt-to-plasma) |
+
+Redes EVM (Ethereum, BNB Chain, Arbitrum, Plasma e outras) compartilham o mesmo formato de endereço 0x. O mesmo endereço funciona em todas, mas os tokens de cada rede são separados. Enviar USDT ERC-20 para o seu endereço na BNB Chain não os leva para lá.
+
+## Quanto custa receber USDT em cada rede
+
+A taxa da rede de destino é descontada do valor que você recebe, então você não precisa de gas na rede de destino para receber. Cotações de teste de 1.000 USDT a partir da Tron no L2Pass RFQ em 19 de outubro de 2026 (por volta das 17:50 UTC):
+
+| Destino | Taxa de rede | Tempo estimado | Você recebe |
+| :-- | :-- | :-- | :-- |
+| Arbitrum (USDT0) | 0,005 USDT0 | Cerca de 79 segundos | 999,77 USDT0 |
+| Solana | 0,01 USDT | Cerca de 77 segundos | 999,73 USDT |
+| Ethereum | 0,3 USDT | Cerca de 87 segundos | 999,51 USDT |
+| Plasma (USDT0) | Menos de 0,0001 USDT0 | Cerca de 84 segundos | 997,79 USDT0 |
+
+Para a Plasma, a taxa do provedor NEAR Intents foi de 0,2% em vez de 0,01%, então chegou menos mesmo com a menor taxa de rede. A cotação ao vivo mostra os números atuais.
+
+## Como escolher uma rede
+
+Escolha a rede onde o USDT vai ser usado e depois confira se você tem o token de gas dela.
+
+- **Onde você vai usar.** Escolha a rede da exchange, do app ou da pessoa que você vai pagar. Uma exchange mostra quais redes aceita para depósito.
+- **Gas que você tem.** Para enviar USDT depois, você precisa do token de gas da rede: TRX na Tron, ETH na Ethereum ou Arbitrum, SOL na Solana e assim por diante.
+- **Custo de envio.** As taxas de rede variam muito. Enviar da Ethereum costuma ser o mais caro; Tron, Solana e as redes de camada 2 costumam ser mais baratas.
+
+## Redes e USDT0
+
+Confira se a rede bate com o endereço sempre que enviar USDT.
+
+- **Escolha a rede certa na exchange.** Ao sacar ou depositar USDT, a rede escolhida precisa bater com o endereço. Tokens enviados pela rede errada podem ser perdidos ou exigir recuperação manual.
+- **USDT0 e USDT.** Na Arbitrum e na Plasma, o USDT que o L2Pass Swap entrega é USDT0. O L2Pass Swap pode movê-lo de e para USDT na Tron, na Ethereum e em outras redes.
+- **Disponibilidade.** A cotação mostra quais rotas estão disponíveis para o seu par no momento. Se nenhuma aparecer, tente mais tarde ou escolha outra rede de destino.
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Qual a diferença entre USDT TRC-20 e ERC-20?">
+    O USDT TRC-20 roda na Tron e usa TRX para as taxas. O ERC-20 roda na Ethereum e usa ETH. Ambos são USDT emitidos pela Tether, mas ficam em redes separadas, então você precisa de uma rota cross-chain para mover entre elas.
+  </Accordion>
+
+  <Accordion title="Posso enviar USDT TRC-20 para um endereço ERC-20?">
+    Não. Tron e Ethereum usam redes e formatos de endereço diferentes. Use uma rota cross-chain, como [Transferir USDT da Tron para a Ethereum](/pt-br/products/swap/guides/usdt-tron-to-ethereum).
+  </Accordion>
+
+  <Accordion title="O que é USDT0?">
+    O USDT0 é a versão omnichain do USDT, transferida entre redes via LayerZero. No L2Pass Swap ele é o USDT da Arbitrum e da Plasma, e a rota USDT native bridge o movimenta, inclusive a partir da Tron.
+  </Accordion>
+
+  <Accordion title="Qual rede de USDT é a mais barata?">
+    Depende da rota e do momento. Para receber, a cotação já inclui a taxa da rede de destino. Para enviar, compare o custo de gas da rede de onde você envia.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Como a L2Pass compara rotas](/pt-br/products/swap/learn/compare-routes)
+- [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees)
+- [Swap de qualquer carteira ou exchange](/pt-br/products/swap/learn/deposit-address-swaps)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*
