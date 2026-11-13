@@ -1,0 +1,107 @@
+---
+title: "Cách chuyển USDT từ Tron sang Arbitrum"
+description: "Chuyển USDT từ Tron sang Arbitrum trong khoảng 80 giây. Phí L2Pass 0%, gas chỉ bằng TRX, nhận USDT0, thanh toán từ bất kỳ ví hoặc sàn nào."
+sidebarTitle: "USDT: Tron sang Arbitrum"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể chuyển USDT từ Tron (TRC-20) sang Arbitrum bằng [L2Pass Swap](https://swap.l2pass.com/), giao diện phi lưu ký hiển thị mọi tuyến của cặp cạnh nhau. Trong báo giá thử, nó đưa ra ba tuyến cho cặp này: L2Pass RFQ, cầu nối gốc USDT0 và L2Pass Private, với thời gian ước tính khoảng 80 đến 90 giây. Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá cho thấy số tiền bạn sẽ nhận sau phí trước khi xác nhận. Chỉ gas mạng nguồn và phí tin nhắn cầu nối (nếu có) được trả riêng.
+
+**Khoảng 80 giây** · **Phí L2Pass 0%** · **Gửi 1.000, nhận 999,85 USDT0** · **Gas chỉ bằng TRX**
+
+<Note>Số liệu từ báo giá thử ngày 10 tháng 10 năm 2026. Báo giá của bạn luôn là trực tiếp.</Note>
+
+## Các tuyến chuyển USDT từ Tron sang Arbitrum
+
+L2Pass RFQ và L2Pass Private đều chạy trên [NEAR Intents](https://near.org/intents), nơi các solver và nhà tạo lập thị trường cạnh tranh để thực hiện hoán đổi của bạn. Private thực hiện trong môi trường bảo mật.
+
+| Tuyến | Thời gian ước tính | Đầu ra | Ghi chú |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Khoảng 80 giây | Biến đổi, có số tiền nhận tối thiểu | Thanh toán vào địa chỉ nạp dùng một lần. |
+| USDT native bridge (USDT0) | Khoảng 1,5 phút | Cố định | Ký trong ví Tron. Thêm phí tin nhắn LayerZero khoảng 4,7 TRX. |
+| L2Pass Private | Khoảng 80 giây | Biến đổi, có số tiền nhận tối thiểu | Địa chỉ nạp. Phí L2Pass tối đa 0,3%. |
+
+Trong các báo giá thử đó, không có tuyến trình tổng hợp nào (LI.FI, LI.FI Intents, Relay, Aori hay trình tổng hợp OKX DEX) cho cặp này. Báo giá liệt kê mọi tuyến có thể thực hiện cặp.
+
+Báo giá thử cho 1.000 USDT cho thấy số tiền nhận: 999,85 USDT0 trên L2Pass RFQ, 999,7 USDT0 trên cầu nối USDT0 (cộng khoảng 4,67 TRX cho tin nhắn LayerZero) và 997,29 USDT0 trên L2Pass Private. Báo giá trực tiếp hiển thị số liệu hiện tại cho số tiền của bạn.
+
+## Cách chuyển USDT từ Tron sang Arbitrum
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** USDT trên Tron.
+    - **To:** USDT trên Arbitrum.
+    - **Amount:** số USDT bạn muốn gửi.
+    - **Địa chỉ nhận:** địa chỉ Arbitrum sẽ nhận USDT.
+  </Step>
+
+  <Step title="So sánh các tuyến">
+    Mỗi thẻ tuyến hiển thị số tiền nhận ước tính, số tiền nhận tối thiểu, thời gian ước tính và phí. Trượt giá mặc định là 0,05% (có thể sửa) và không áp dụng cho tuyến đầu ra cố định như USDT0.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Với L2Pass RFQ và L2Pass Private, đặt địa chỉ hoàn tiền là ví Tron bạn kiểm soát. Nếu hoán đổi không thể hoàn tất, nhà cung cấp gửi khoản nạp về đó.
+  </Step>
+
+  <Step title="Thanh toán qua ví hoặc địa chỉ nạp">
+    Cách thanh toán tùy vào tuyến bạn chọn.
+
+    <Tabs>
+      <Tab title="Tuyến qua ví (USDT0)">
+        Ký giao dịch trong ví Tron của bạn.
+      </Tab>
+      <Tab title="Địa chỉ nạp (L2Pass RFQ, L2Pass Private)">
+        Gửi USDT tới địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví Tron nào hoặc từ sàn, qua địa chỉ hoặc mã QR. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào đó.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Theo dõi hoán đổi">
+    Với L2Pass RFQ và L2Pass Private, theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*. Giao dịch chuyển USDT0 là một tin nhắn LayerZero, nên bạn có thể theo dõi trên [LayerZero Scan](https://layerzeroscan.com/) bằng hash giao dịch Tron.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+Bạn cần TRX trên Tron để trả gas, không cần ETH trên Arbitrum để nhận.
+
+- **Gas chỉ trên Tron.** Gửi USDT TRC-20 tốn TRX cho năng lượng và băng thông. Phí mạng ở mạng đích được trừ vào số tiền hiển thị, nên bạn không cần gas ở đó.
+- **Số tiền tối thiểu.** Một số tuyến có số tiền hoán đổi tối thiểu, tùy theo cặp. Nếu số tiền thấp hơn, tuyến đó được hiển thị là không khả dụng kèm mức tối thiểu.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi sẽ nhận USDT hay USDT0 trên Arbitrum?">
+    USDT0, phiên bản USDT dựa trên LayerZero và là USDT tiêu chuẩn trên Arbitrum. Nhiều ví chỉ ghi là USDT. Thẻ tuyến hiển thị chính xác token và số tiền bạn sẽ nhận.
+  </Accordion>
+
+  <Accordion title="Chuyển USDT từ Tron sang Arbitrum mất bao lâu?">
+    Trong báo giá thử, L2Pass RFQ và L2Pass Private đều có thời gian ước tính khoảng 80 giây, còn USDT0 khoảng 1,5 phút. Thẻ tuyến hiển thị ước tính hiện tại trước khi bạn xác nhận.
+  </Accordion>
+
+  <Accordion title="Chuyển USDT từ Tron sang Arbitrum tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư). Đối tác tuyến và các mạng thu phí riêng, và số tiền hiển thị đã bao gồm chúng.
+  </Accordion>
+
+  <Accordion title="Tôi có cần ETH trên Arbitrum để nhận USDT không?">
+    Không. Bạn chỉ trả gas trên Tron, bằng TRX, và phí mạng ở mạng đích đã được trừ vào số tiền hiển thị. Bạn sẽ cần ETH trên Arbitrum sau này để chuyển hoặc dùng USDT.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để chuyển USDT và USDC: L2Pass so với các cầu nối khác](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT từ Tron sang BNB Chain](/vi/products/swap/guides/usdt-tron-to-bnb-chain)
+- [Phí L2Pass Swap](/vi/products/swap/overview#fee-structure)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 10 tháng 10 năm 2026*

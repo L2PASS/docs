@@ -1,0 +1,108 @@
+---
+title: "USDT'yi Ethereum'dan Tron'a köprüleme (ERC-20'den TRC-20'ye)"
+description: "USDT'yi Ethereum'dan Tron'a 2 dakikadan kısa sürede köprüleyin. %0 L2Pass ücreti, gas yalnızca ETH ile, almak için TRX gerekmez. Üç rota karşılaştırıldı."
+sidebarTitle: "USDT: Ethereum'dan Tron'a"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+USDT'yi Ethereum'dan (ERC-20) Tron'a (TRC-20), çiftin tüm rotalarını yan yana gösteren gözetimsiz bir arayüz olan [L2Pass Swap](https://swap.l2pass.com/) ile köprüleyebilirsiniz. Test tekliflerinde bu çift için üç rota sundu: L2Pass RFQ, yerel USDT0 köprüsü ve L2Pass Private; her birinin tahmini süresi yaklaşık 1,5 dakika. Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**2 dakikadan kısa** · **%0 L2Pass ücreti** · **1.000 gönderilene 998,21 USDT ulaşır** · **TRX gerekmez**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Ethereum'dan Tron'a USDT rotaları
+
+L2Pass RFQ ve L2Pass Private, çözücülerin ve piyasa yapıcıların takasınızı gerçekleştirmek için yarıştığı [NEAR Intents](https://near.org/intents) üzerinde çalışır. Private bunu gizli bir ortamda gerçekleştirir.
+
+| Rota | Tahmini süre | Çıktı | Notlar |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Yaklaşık 1,5 dakika | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresine ödersiniz. |
+| USDT native bridge (USDT0) | Yaklaşık 1,5 dakika | Sabit | Ethereum cüzdanınızda imzalanır. ETH ile ödenen LayerZero mesaj ücreti ekler. |
+| L2Pass Private | Yaklaşık 1,5 dakika | Değişken, minimum alınacak tutarla | Yatırma adresi. L2Pass ücreti %0,3'e kadar. |
+
+O test tekliflerinde bu çift için toplayıcı rotası (LI.FI, LI.FI Intents, Relay, Aori veya OKX DEX toplayıcısı) sunulmadı. Teklif, çifti gerçekleştirebilecek her rotayı listeler.
+
+1.000 USDT için test teklifleri şu alınan tutarları gösterdi: L2Pass RFQ'da 998,21 USDT, USDT0'da 999,7 USDT (artı yaklaşık 0,005 ETH, yani yaklaşık 11,92 USD LayerZero mesaj ücreti) ve L2Pass Private'ta 995,64 USDT. Mesaj ücreti nedeniyle L2Pass, L2Pass RFQ'yu ilk sıraya koydu. Canlı teklif, tutarınız için güncel rakamları gösterir.
+
+## USDT Ethereum'dan Tron'a nasıl köprülenir
+
+Siz ödeyene kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Ethereum'da USDT.
+    - **To:** Tron'da USDT.
+    - **Amount:** göndermek istediğiniz USDT miktarı.
+    - **Alıcı adresi:** USDT'yi alacak Tron adresi (T ile başlar).
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. Varsayılan kayma %0,05'tir (değiştirilebilir) ve USDT0 gibi sabit çıktılı rotalara uygulanmaz.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresini kontrol ettiğiniz bir Ethereum cüzdanı olarak ayarlayın. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya geri gönderir.
+  </Step>
+
+  <Step title="Cüzdanla veya yatırma adresiyle ödeyin">
+    Nasıl ödeyeceğiniz seçtiğiniz rotaya bağlıdır.
+
+    <Tabs>
+      <Tab title="Cüzdan rotası (USDT0)">
+        İşlemi Ethereum cüzdanınızda imzalayın.
+      </Tab>
+      <Tab title="Yatırma adresi (L2Pass RFQ, L2Pass Private)">
+        USDT'yi bağlı cüzdanınızdan, herhangi bir Ethereum cüzdanından veya bir borsadan, adres ya da QR kodla tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız, bazı borsalar çekim ücretini bundan düştüğü için ulaşan tutarın teklifle eşleştiğini kontrol edin.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Takası takip edin">
+    L2Pass RFQ ve L2Pass Private için durumu **Recent swaps** bölümünde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*. USDT0 transferi bir LayerZero mesajıdır; Ethereum işlem hash'inizle [LayerZero Scan](https://layerzeroscan.com/) üzerinde takip edebilirsiniz.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Gas için Ethereum'da ETH'ye ihtiyacınız var, almak için TRX gerekmez; USDT0 ise ETH cinsinden bir mesaj ücreti ekler.
+
+- **Gas yalnızca Ethereum'da.** ERC-20 USDT göndermek gas için ETH'ye mal olur. Tron ağ ücreti gösterilen tutardan düşülür (test tekliflerinde 1,71 USDT), bu yüzden almak için TRX gerekmez. USDT'yi Tron'da taşımak için daha sonra TRX gerekir.
+- **USDT0 mesaj ücreti.** USDT0 rotası gas'a ek olarak ETH cinsinden LayerZero mesaj ücreti alır. Seçmeden önce RFQ tutarlarıyla karşılaştırın.
+- **Minimum tutar.** Bazı rotaların minimum takas tutarı vardır. Tutarınız bunun altındaysa rota, minimum gösterilerek kullanılamaz olarak listelenir.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDT'yi Ethereum'dan Tron'a köprülemek ne kadar sürer?">
+    Test tekliflerinde L2Pass RFQ, USDT0 ve L2Pass Private'ın her biri yaklaşık 1,5 dakikalık tahmini süre gösterdi. Rota kartları onaylamadan önce güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="USDT'yi Ethereum'dan Tron'a köprülemenin maliyeti nedir?">
+    Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar). Rota partnerleri ve ağlar kendi ücretlerini alır ve gösterilen tutar bunları zaten içerir. Testte L2Pass RFQ, NEAR Intents ağından 0,1 USDT (%0,01) hizmet ücreti ve Tron'da 1,71 USDT ağ ücreti gösterdi. Ayrıca ETH ile Ethereum gas'ı ödersiniz.
+  </Accordion>
+
+  <Accordion title="Tron'da USDT almak için TRX gerekir mi?">
+    Hayır. Tron ağ ücreti gösterilen tutardan düşülür. USDT'yi Tron'da göndermek veya kullanmak için daha sonra TRX gerekir.
+  </Accordion>
+
+  <Accordion title="ERC-20 USDT'yi doğrudan bir Tron adresine gönderebilir miyim?">
+    Hayır. Ethereum ve Tron farklı adres formatlarına sahip ayrı ağlardır, bu yüzden L2Pass Swap'tekiler gibi cross-chain bir rotaya ihtiyacınız var.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Tron'dan Ethereum'a USDT](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

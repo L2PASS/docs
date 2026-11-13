@@ -1,0 +1,104 @@
+---
+title: "Cách chuyển USDC bằng Circle CCTP (Ethereum, Arbitrum, Base)"
+description: "Chuyển USDC bằng Circle CCTP trong khoảng 40 giây (Fast) hoặc 19,5 phút (Standard). Đầu ra cố định, phí L2Pass 0%, gas chỉ bằng ETH."
+sidebarTitle: "USDC qua Circle CCTP"
+---
+
+Bạn có thể chuyển USDC gốc giữa Ethereum, Arbitrum và Base bằng Circle CCTP trong [L2Pass Swap](https://swap.l2pass.com/), nơi nó hiển thị là USDC native bridge. Có hai chế độ: Fast, mất khoảng 40 đến 50 giây trong báo giá thử nghiệm, và Standard, mất khoảng 19,5 phút nhưng phí mạng thấp hơn. Cả hai đều giao một số tiền cố định, và L2Pass hiển thị chúng cạnh các tuyến khác như Relay, L2Pass RFQ và LI.FI để bạn so sánh. Phí L2Pass cho hoán đổi stablecoin là 0%, và báo giá hiển thị số tiền bạn nhận sau phí trước khi bạn xác nhận. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+
+**Dưới một phút ở chế độ Fast** · **Phí L2Pass 0%** · **Gửi 1.000 nhận 999,81 USDC** · **USDC gốc, đầu ra cố định**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 19 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Circle CCTP là gì
+
+CCTP (Cross-Chain Transfer Protocol) là cách riêng của Circle để chuyển USDC giữa các mạng. USDC bị đốt trên mạng nguồn và cùng lượng USDC gốc được đúc trên mạng đích, nên bạn nhận đúng USDC do Circle phát hành ở đó.
+
+| Chế độ | Cách hoạt động | Thời gian ước tính trong báo giá thử nghiệm | Phí mạng cho 1.000 USDC |
+| :-- | :-- | :-- | :-- |
+| Fast | Circle xác nhận giao dịch trước khi mạng nguồn đạt tính hoàn tất | Khoảng 38 giây từ Arbitrum, khoảng 50 giây từ Ethereum | 0,19 USDC từ Arbitrum, 0,15 USDC từ Ethereum |
+| Standard | Chờ khối đạt tính hoàn tất trên mạng nguồn | Khoảng 19,5 phút | 0,05 USDC |
+
+## Các tuyến cho 1.000 USDC từ Arbitrum sang Base
+
+Báo giá thử nghiệm (khoảng 16:55 UTC) trả về tám tuyến. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+| Tuyến | Bạn nhận | Thời gian ước tính | Đầu ra |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,97 USDC | Không hiển thị | Cố định |
+| USDC native bridge, Standard | 999,95 USDC | Khoảng 19,5 phút | Cố định |
+| Relay | 999,88 USDC | Khoảng 2 giây | Thay đổi |
+| USDC native bridge, Fast | 999,81 USDC | Khoảng 38 giây | Cố định |
+| L2Pass RFQ | 999,80 USDC | Khoảng 27 giây | Thay đổi |
+| Aori | 999,28 USDC | Khoảng 3 giây | Cố định |
+| L2Pass Private | 998,20 USDC | Khoảng 27 giây | Thay đổi |
+| LI.FI | 997,50 USDC | Khoảng 18 phút | Thay đổi |
+
+Từ Ethereum sang Base, cùng tám tuyến được cung cấp với số tiền tương tự. CCTP Standard hiển thị 999,95 USDC và CCTP Fast 999,85 USDC.
+
+## Cách chuyển USDC bằng CCTP
+
+Không có gì rời khỏi ví cho đến khi bạn ký ở bước 3, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** USDC trên mạng nguồn, ví dụ Arbitrum.
+    - **To:** USDC trên mạng đích, ví dụ Base.
+    - **Amount:** số USDC bạn muốn chuyển.
+    - **Địa chỉ nhận:** địa chỉ trên mạng đích sẽ nhận USDC.
+  </Step>
+
+  <Step title="Chọn Fast hoặc Standard">
+    Tìm các thẻ USDC native bridge. Chọn Fast nếu muốn nhận USDC trong chưa đầy một phút, hoặc Standard nếu bạn có thể chờ khoảng 20 phút để trả phí mạng thấp hơn. So sánh chúng với các thẻ tuyến khác.
+  </Step>
+
+  <Step title="Phê duyệt và ký">
+    Ký giao dịch trong ví của bạn trên mạng nguồn. Nếu đây là lần đầu bạn chuyển USDC qua tuyến này, ví có thể yêu cầu phê duyệt token trước.
+  </Step>
+
+  <Step title="Theo dõi giao dịch chuyển">
+    Nếu ứng dụng yêu cầu một bước cuối trên mạng đích, hãy thực hiện; giao dịch chưa hoàn tất có thể được tiếp tục sau trong ứng dụng. Bạn có thể kiểm tra USDC đã đến bằng cách tra địa chỉ nhận trên trình khám phá khối của mạng đích, như Basescan cho Base.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+CCTP cần chữ ký ví và ETH để trả gas, và giao đúng số tiền hiển thị.
+
+- **Gas trên mạng nguồn.** Bạn trả gas bằng ETH trên Ethereum, Arbitrum hoặc Base. Phí mạng CCTP được trừ vào số tiền hiển thị, nên bạn không cần ETH trên mạng đích để nhận.
+- **Đầu ra cố định.** CCTP giao đúng số tiền hiển thị, nên trượt giá không áp dụng.
+- **Chỉ qua ví.** CCTP cần một giao dịch được ký trong ví của bạn. Để thanh toán từ sàn, hãy dùng L2Pass RFQ, tuyến nhận tiền nạp vào địa chỉ dùng một lần.
+- **Hoàn tiền.** Các tuyến on-chain sẽ hoàn nguyên nếu thất bại, và gas không được hoàn lại.
+- **Không khớp một phần.** Giao dịch chuyển hoặc hoàn tất toàn bộ, hoặc không được thực hiện.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Một giao dịch chuyển qua CCTP mất bao lâu?">
+    Trong báo giá thử nghiệm, CCTP Fast mất khoảng 38 đến 50 giây và CCTP Standard khoảng 19,5 phút. Thẻ tuyến hiển thị ước tính hiện tại.
+  </Accordion>
+
+  <Accordion title="Chuyển USDC bằng CCTP tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi stablecoin là 0%. Trong báo giá thử nghiệm cho 1.000 USDC, phí mạng là 0,05 USDC với Standard và 0,15 đến 0,19 USDC với Fast, cộng gas nguồn bằng ETH.
+  </Accordion>
+
+  <Accordion title="USDC chuyển qua CCTP có phải USDC gốc không?">
+    Có. CCTP đốt USDC trên mạng nguồn và đúc USDC gốc do Circle phát hành trên mạng đích.
+  </Accordion>
+
+  <Accordion title="Cách nhanh nhất để chuyển USDC từ Arbitrum sang Base là gì?">
+    Trong báo giá thử nghiệm, Relay hiển thị khoảng 2 giây và Aori khoảng 3 giây, với số tiền hơi khác nhau. Hãy so sánh các thẻ tuyến cho số tiền của bạn.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để chuyển USDT và USDC: L2Pass so với các cầu nối khác](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

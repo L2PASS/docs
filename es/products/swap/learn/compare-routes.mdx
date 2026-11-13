@@ -1,0 +1,119 @@
+---
+title: "Cómo compara L2Pass las rutas: NEAR Intents, Circle CCTP, USDT0, LI.FI, Relay y Aori"
+description: "L2Pass Swap consulta varias fuentes de enrutamiento a la vez y ordena las rutas por lo que recibes. Qué es cada ruta y cuándo sale ganando cada una."
+sidebarTitle: "Cómo se comparan las rutas"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) consulta a la vez varias fuentes de enrutamiento y muestra todas las rutas que pueden ejecutar tu swap, ordenadas por el valor neto que recibes después del gas. Las fuentes son L2Pass RFQ y L2Pass Private by NEAR Intents, los puentes nativos USDT0 y Circle CCTP, y los agregadores y redes de intents LI.FI, LI.FI Intents, Relay, Aori y el agregador OKX DEX. Ninguna ruta gana en todos los pares, así que la comparación se hace en cada cotización. La comisión de L2Pass es del 0% en swaps de stablecoins por cualquier ruta.
+
+## Las rutas
+
+En una cotización pueden aparecer diez rutas, y solo L2Pass RFQ y L2Pass Private usan dirección de depósito.
+
+| Ruta en la app | Qué es | Cómo pagas | Importe | Tiempo estimado en cotizaciones de prueba |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Solvers y market makers en [NEAR Intents](https://near.org/intents) compiten por ejecutar tu swap | Dirección de depósito de un solo uso, desde cualquier wallet o exchange | Variable, con mínimo a recibir | Unos 30 segundos a 2 minutos; unos 9 a 14 minutos con Bitcoin |
+| L2Pass Private | La misma red de solvers, en un entorno confidencial | Dirección de depósito de un solo uso | Variable, con mínimo a recibir | Igual que L2Pass RFQ |
+| USDT native bridge | Transferencias de USDT0 sobre LayerZero, también desde Tron | Transacción desde la wallet | Fijo | Unos 1,5 minutos |
+| USDC native bridge, Fast | Transferencia Fast de USDC nativo con Circle CCTP V2 | Transacción desde la wallet | Fijo | Unos 40 a 50 segundos |
+| USDC native bridge, Standard | Transferencia Standard de Circle CCTP V2, espera la finalidad de los bloques | Transacción desde la wallet | Fijo | Unos 19,5 minutos |
+| Relay | Red de relayers cross-chain | Transacción desde la wallet | Variable | Unos 1 a 2 segundos |
+| Aori | Liquidación basada en intents | Transacción desde la wallet | Fijo | Unos 3 a 14 segundos |
+| LI.FI Intents | Ruta de LI.FI basada en intents | Transacción desde la wallet | Fijo | No se mostró en las cotizaciones de prueba |
+| LI.FI | Agregador de puentes y DEX | Transacción desde la wallet | Variable | De unos 19 segundos a 18 minutos |
+| DEX Aggregator | El agregador OKX DEX | Transacción desde la wallet | Variable | Depende del par |
+
+Las rutas de importe fijo entregan exactamente el importe mostrado, así que el deslizamiento no aplica. Las rutas variables usan tu tolerancia al deslizamiento (0,05% por defecto) para fijar el mínimo a recibir.
+
+## Ejemplos de cotizaciones reales
+
+Cotizaciones de prueba del 19 de octubre de 2026 (hacia las 16:55 UTC). Las rutas aparecen en el orden en que las mostró la app. La cotización en vivo muestra las cifras actuales.
+
+<Tabs>
+<Tab title="USDT: Tron → Ethereum">
+
+1000 USDT de Tron a Ethereum devolvieron tres rutas.
+
+| Ruta | Recibes | Tiempo estimado | Importe | Se paga aparte en Tron |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 999,50 USDT | Unos 1,5 minutos | Variable | Gas de una transferencia de USDT a la dirección de depósito |
+| USDT native bridge (USDT0) | 999,70 USDT | Unos 1,5 minutos | Fijo | Comisión de mensaje de LayerZero de unos 5,21 TRX (unos 1,73 USD), más la energía para las transacciones de aprobación y de puente |
+| L2Pass Private | 997,00 USDT | Unos 1,5 minutos | Variable | Gas de una transferencia de USDT a la dirección de depósito |
+
+USDT0 mostró el mayor importe recibido, pero la app puso L2Pass RFQ primero. La ruta USDT0 necesita más energía de Tron que una transferencia simple de USDT, unos 22,60 USD en la cotización de prueba si se paga en TRX, más la comisión de mensaje. Si ya tienes suficiente energía en staking, USDT0 puede salirte más barato. La comisión de red de Ethereum ya está incluida en cada importe (0,3 USDT en L2Pass RFQ).
+
+</Tab>
+<Tab title="USDC: Arbitrum → Base">
+
+1000 USDC de Arbitrum a Base devolvieron ocho rutas.
+
+| Ruta | Recibes | Tiempo estimado | Importe |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,97 USDC | No se mostró | Fijo |
+| USDC native bridge, Standard | 999,95 USDC | Unos 19,5 minutos | Fijo |
+| Relay | 999,88 USDC | Unos 2 segundos | Variable |
+| USDC native bridge, Fast | 999,81 USDC | Unos 38 segundos | Fijo |
+| L2Pass RFQ | 999,80 USDC | Unos 27 segundos | Variable |
+| Aori | 999,28 USDC | Unos 3 segundos | Fijo |
+| L2Pass Private | 998,20 USDC | Unos 27 segundos | Variable |
+| LI.FI | 997,50 USDC | Unos 18 minutos | Variable |
+
+La diferencia entre rutas fue de menos de 2,5 USDC, pero los tiempos iban de segundos a unos 19,5 minutos. Si te importa la velocidad, un importe algo menor en una ruta rápida puede convenirte más.
+
+</Tab>
+</Tabs>
+
+## Qué rutas aparecen para cada par
+
+En las mismas cotizaciones de prueba:
+
+- **USDT entre Tron y Ethereum:** L2Pass RFQ, el puente USDT0 y L2Pass Private.
+- **USDC entre cadenas EVM** (Arbitrum, Base, Ethereum): ocho rutas, incluidos los dos modos de CCTP.
+- **Bitcoin desde o hacia USDT:** solo L2Pass RFQ y L2Pass Private.
+- **ETH en Ethereum a USDC en Arbitrum:** L2Pass RFQ, Relay, LI.FI y L2Pass Private.
+
+La cotización lista todas las rutas que pueden ejecutar tu par en ese momento, así que el conjunto puede cambiar.
+
+## Cómo se decide el orden
+
+Las rutas se ordenan por el valor neto estimado que recibes después del gas. Por eso la ruta con el mayor importe recibido no siempre va primera. En una cotización de prueba de 1000 USDT de Ethereum a Tron, USDT0 mostró 999,7 USDT, el mayor de todas las rutas, pero requiere una comisión de mensaje de LayerZero de unos 0,005 ETH (unos 11,92 USD), pagada en ETH. L2Pass RFQ mostró 998,21 USDT sin comisión aparte, así que apareció primero.
+
+## Comisiones, pago y reembolsos
+
+La ruta cambia las comisiones del proveedor y la forma de pago, pero no el 0% de comisión de L2Pass en stablecoins.
+
+- **En stablecoins, la comisión de L2Pass no depende de la ruta.** Es del 0% en swaps de stablecoins por cualquier ruta, de hasta 0,2% en otros activos y de hasta 0,3% en swaps privados. Consulta [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees).
+- **Depósito o wallet.** Solo L2Pass RFQ y L2Pass Private usan dirección de depósito, así que son las rutas que puedes pagar desde un exchange. Las demás requieren una transacción firmada en tu wallet.
+- **Reembolsos.** Las rutas on-chain se revierten si fallan (el gas no es reembolsable). Las rutas con dirección de depósito devuelven tu depósito a la dirección de reembolso; pueden descontarse comisiones del proveedor y de la red.
+- **Sin ejecución parcial.** Un swap se completa entero o no se ejecuta.
+- **Importes mínimos.** Algunas rutas tienen un importe mínimo de swap. Si tu importe es menor, la ruta aparece como no disponible con el mínimo indicado.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué ruta debo elegir?">
+    Compara el importe que recibes, el tiempo estimado y si puedes firmar una transacción en tu wallet o necesitas pagar desde un exchange. La tarjeta de ruta muestra las tres cosas antes de confirmar.
+  </Accordion>
+
+  <Accordion title="¿Qué diferencia hay entre Circle CCTP y USDT0?">
+    Circle CCTP mueve USDC nativo emitido por Circle entre cadenas. USDT0 es la versión omnichain de USDT, que se mueve sobre LayerZero, y en L2Pass Swap también cubre transferencias desde Tron. Ambas son rutas de importe fijo que se pagan con una transacción desde la wallet.
+  </Accordion>
+
+  <Accordion title="¿Por qué la ruta más rápida no aparece primera?">
+    La lista se ordena por valor neto después del gas, no por velocidad. Revisa el tiempo estimado en cada tarjeta de ruta.
+  </Accordion>
+
+  <Accordion title="¿L2Pass ejecuta el swap por sí mismo?">
+    No. L2Pass es una interfaz no custodial. El proveedor seleccionado ejecuta el swap, y L2Pass nunca custodia tus tokens ni tus claves privadas.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Qué es L2Pass RFQ by NEAR Intents](/es/products/swap/learn/what-is-l2pass-rfq)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Cómo pasar USDC con Circle CCTP](/es/products/swap/guides/usdc-cctp)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

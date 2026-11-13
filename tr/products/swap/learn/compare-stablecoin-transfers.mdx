@@ -1,0 +1,154 @@
+---
+title: "USDT ve USDC köprülemenin en iyi yolu: L2Pass ile deBridge, Relay, LI.FI ve diğerleri"
+description: "Canlı teklifler karşılaştırıldı: L2Pass, deBridge, Relay, LI.FI, THORChain ve diğerlerinde Tron'dan Ethereum'a 1.000 USDT ve Arbitrum'dan Base'e 1.000 USDC."
+sidebarTitle: "Karşılaştırma: stablecoin transferleri"
+---
+
+19 Ekim 2026'da aynı iki stablecoin transferi için [L2Pass Swap](https://swap.l2pass.com/) ile diğer köprülerden ve takas hizmetlerinden, her sağlayıcı için aynı tutarlarla canlı teklif istedik. Tron'dan Ethereum'a 1.000 USDT için L2Pass RFQ by NEAR Intents 999,55 USDT verdi; bu deBridge, Relay, THORChain, LI.FI, ChangeNOW ve SideShift'ten fazlaydı. Arbitrum'dan Base'e 1.000 USDC için L2Pass sekiz rota gösterdi ve en iyisi (Circle CCTP, 999,95 USDC) diğer tüm sağlayıcılara eşit geldi ya da onları geçti. L2Pass ücreti her rotada stablecoin takaslarında %0'dır.
+
+## Bir bakışta sonuçlar
+
+Teklif dışında ödediğiniz ücretler de sayıldığında L2Pass her iki transferde de en fazlasını verdi.
+
+| Transfer | En çok ulaşan | L2Pass sonucu | En iyi anlık borsa |
+| :-- | :-- | :-- | :-- |
+| 1.000 USDT, Tron'dan Ethereum'a | L2Pass RFQ, 999,55 USDT (USDT0'ın ek mesaj ücreti sonrası) | 999,55 USDT, %0 L2Pass ücreti | 994,65 USDT (FixedFloat) |
+| 1.000 USDC, Arbitrum'dan Base'e | L2Pass üzerinden Circle CCTP, 999,95 USDC | 999,95 USDC, tek teklifte sekiz rota | 987,50 USDC (ChangeNOW, standart) |
+
+## Nasıl karşılaştırdık
+
+Her sağlayıcıya aynı tutarları ve aynı teklif isteklerini gönderdik, hiçbir takas gerçekleştirmedik.
+
+- **Ne zaman:** 19 Ekim 2026, 18:21 UTC'den itibaren. Her tablo için saat belirtildi.
+- **Nasıl:** her sağlayıcının kendi web arayüzünün yaptığı aynı teklif istekleri, aynı tutarlarla. Hiçbir takas gerçekleştirilmedi.
+- **Neyi karşılaştırıyoruz:** aldığınız tutar; her sağlayıcının ücretlerini ve hedef ağ ücretini zaten içerir. Kaynak ağda ödediğiniz gas ayrıca listelenir.
+
+<Note>
+19 Ekim 2026 anlık görüntüleri. Teklifler birkaç saniyede bir değişir, güncel rakamlar için [L2Pass Swap](https://swap.l2pass.com/)'i açın.
+</Note>
+
+## Canlı teklifler
+
+Tron'dan en ucuzu L2Pass RFQ oldu; EVM ağları arasında en çok USDC'yi L2Pass üzerinden CCTP Standard ve LI.FI Intents eşit verdi.
+
+<Tabs>
+<Tab title="USDT: Tron'dan Ethereum'a">
+
+18:21 UTC teklifleri.
+
+| Sağlayıcı | Alacağınız | Tahmini süre | Gösterilen ücretler |
+| :-- | :-- | :-- | :-- |
+| L2Pass, USDT native bridge (USDT0) | 999,70 USDT | Yaklaşık 1,5 dakika | Ayrıca 5,21 TRX (yaklaşık 1,73 USD) LayerZero mesaj ücreti ve Tron enerjisi |
+| **L2Pass RFQ** | **999,55 USDT** | Yaklaşık 1,5 dakika | %0 L2Pass ücreti, %0,01 NEAR Intents ücreti, 0,3 USDT Ethereum ağ ücreti |
+| Relay | 998,86 USDT | Yaklaşık 4 saniye | 1,14 USDT relayer ücreti, ayrıca yaklaşık 6,1 TRX gas |
+| THORChain protokol teklifi | 998,55 USDT | Yaklaşık 1 dakika | 0,66 USDT, THORChain uygulama ücreti hariç |
+| deBridge | 998,12 USDT | Yaklaşık 15 saniye | 4 TRX sabit ücret, ayrıca 4,35 USDT protokol, taker ve işletim ücreti |
+| L2Pass Private | 997,00 USDT | Yaklaşık 1,5 dakika | %0,3 L2Pass ücreti |
+| LI.FI (LayerSwap üzerinden) | 996,66 USDT | Yaklaşık 30 saniye | 2,50 USD LI.FI ücreti, 0,84 USD LayerSwap ücreti |
+| ChangeNOW, standart | 988,14 USDT | 10 ila 60 dakika | 4,8 USDT yatırma ücreti |
+| ChangeNOW, sabit kur | 987,13 USDT | Gösterilmiyor | 4,8 USDT yatırma ücreti |
+| SideShift | 978,64 USDT | Gösterilmiyor | Kura dahil |
+
+MAYAChain Tron'u desteklemiyor.
+
+USDT0 en çok USDT'yi teslim eder, ancak LayerZero mesaj ücretini ve ek Tron enerjisini ayrıca ödersiniz. Bunlar dahil edildiğinde en ucuzu L2Pass RFQ'dur.
+
+</Tab>
+<Tab title="USDC: Arbitrum'dan Base'e">
+
+18:21 UTC teklifleri.
+
+| Sağlayıcı | Alacağınız | Tahmini süre | Gösterilen ücretler |
+| :-- | :-- | :-- | :-- |
+| **L2Pass, USDC native bridge (CCTP), Standard** | **999,95 USDC** | Yaklaşık 19,5 dakika | 0,05 USDC |
+| L2Pass, LI.FI Intents | 999,95 USDC | Gösterilmiyor | Yaklaşık 0,01 USD gas |
+| L2Pass, Relay | 999,88 USDC | Yaklaşık 2 saniye | Tutara dahil |
+| Relay (doğrudan) | 999,88 USDC | Yaklaşık 2 saniye | 0,12 USDC relayer ücreti |
+| L2Pass, USDC native bridge (CCTP), Fast | 999,81 USDC | Yaklaşık 40 saniye | 0,19 USDC |
+| L2Pass RFQ | 999,80 USDC | Yaklaşık 30 saniye | %0 L2Pass ücreti, 0,1 USDC NEAR Intents ücreti |
+| L2Pass, Aori | 999,29 USDC | Yaklaşık 3 saniye | Tutara dahil |
+| deBridge | 999,20 USDC | Yaklaşık 2 saniye | Ayrıca 0,001 ETH sabit ücret (yaklaşık 2,40 USD), artı 1,10 USDC |
+| L2Pass Private | 998,20 USDC | Yaklaşık 30 saniye | %0,3 L2Pass ücreti |
+| LI.FI (doğrudan ve L2Pass'te) | 997,50 USDC | Yaklaşık 18 dakika | 2,50 USD LI.FI ücreti |
+| ChangeNOW, standart | 987,50 USDC | 10 ila 60 dakika | 0,8 USDC yatırma ücreti |
+| SideShift | 981,00 USDC | Gösterilmiyor | Kura dahil |
+| ChangeNOW, sabit kur | 964,37 USDC | Gösterilmiyor | 0,8 USDC yatırma ücreti |
+
+THORChain'in Arbitrum havuzu yok ve MAYAChain Base'i desteklemiyor.
+
+L2Pass üzerinden Relay, doğrudan Relay ile aynı tutarı verdi: L2Pass stablecoin'lerde ücret eklemez.
+
+</Tab>
+</Tabs>
+
+## Trocador üzerinden anlık borsalar
+
+[Trocador](https://trocador.app), FixedFloat, StealthEX ve ChangeNOW gibi anlık borsaları karşılaştırır. Aynı transferi orada 18:34 UTC'de, yukarıdaki tekliflerden yaklaşık 13 dakika sonra istedik.
+
+| Borsa (Trocador notu) | Tron'dan Ethereum'a 1.000 USDT | Kur türü |
+| :-- | :-- | :-- |
+| FixedFloat (C) | 994,65 USDT | Değişken |
+| CCECash (B) | 994,47 USDT | Değişken |
+| Baltex (B) | 993,98 USDT | Değişken |
+| Simpleswap (B), en iyi sabit kur | 989,66 USDT | Sabit |
+| Swapuz (A), en düşük | 973,00 USDT | Sabit |
+
+En iyi anlık borsa, L2Pass RFQ'dan (999,55 USDT) yaklaşık 4,9 USDT daha az verdi.
+
+Trocador'un gizlilik notu (burada A'dan C'ye) her borsanın koşullarını, gizlilik politikasını ve kullanıcı doğrulamayı reddettiğinde iade uygulamasını yansıtır. Trocador, herhangi bir borsanın yine de takası duraklatıp KYC veya AML kontrolü isteyebileceğini belirtir. Değişken tutarlar tahmindir ve yatırmanız onaylandığında yeniden fiyatlanır; sabit tutarlar kilitlidir.
+
+## Rakamlar ne gösteriyor
+
+Tüm ücretlerden sonra ulaşan tutar, hızdan veya ilan edilen ücretten daha önemlidir.
+
+- **L2Pass sağlayıcıları sizin için karşılaştırır.** Arbitrum'dan Base'e tek bir L2Pass teklifi Relay, LI.FI ve Circle CCTP dahil sekiz rota verdi; böylece her siteyi ziyaret etmeden karşılaştırabilirsiniz.
+- **En hızlı en ucuz değildir.** Relay ve deBridge saniyeler sürdü. CCTP Standard en çok ödedi ama yaklaşık 19,5 dakika sürdü.
+- **Anlık borsalar daha pahalıdır.** ChangeNOW ve SideShift, 1.000 USDT'lik transferde 12 ila 36 USDT daha az verdi.
+- **Tron desteği değişkendir.** MAYAChain Tron'u desteklemiyor ve LI.FI, LayerSwap üzerinden yönlendirdi.
+- **Toplam, ilan edilen ücretten önemlidir.** deBridge teklifinin üstüne kaynak ağın yerel token'ında sabit bir ücret ekler, USDT0 ise LayerZero mesaj ücreti ekler; bu yüzden ödediğiniz her şeyden sonra ulaşanı karşılaştırın.
+
+## Hangisini kullanmalı
+
+Sizin için en önemli olana göre seçin: toplam maliyet, hız veya borsadan ödeme.
+
+- **Tron'dan en düşük toplam maliyet:** L2Pass RFQ.
+- **EVM ağları arasında saniyeler içinde:** Relay, doğrudan veya L2Pass içinde aynı fiyata.
+- **Bekleyebiliyorsanız en yüksek USDC tutarı:** Circle CCTP Standard, yaklaşık 19,5 dakika.
+- **Borsa hesabından ödeme:** L2Pass RFQ gibi bir yatırma adresi rotası, çünkü yalnızca cüzdanla çalışan köprüler kendi cüzdanınızdan imzalamanızı gerektirir.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDT'yi Tron'dan Ethereum'a köprülemenin en ucuz yolu nedir?">
+    19 Ekim 2026 tarihli canlı tekliflerimizde L2Pass RFQ, 1.000 USDT için tüm ücretlerden sonraki en yüksek tutar olan 999,55 USDT verdi. USDT0 999,70 USDT verdi ancak yaklaşık 1,73 USD'lik ayrı bir LayerZero mesaj ücreti gerektirir.
+  </Accordion>
+
+  <Accordion title="L2Pass, Relay'i doğrudan kullanmaktan daha mı ucuz?">
+    Stablecoin'lerde aynı. L2Pass üzerinden Relay, doğrudan Relay ile tam olarak aynı 999,88 USDC'yi verdi, çünkü stablecoin'lerde L2Pass ücreti %0'dır.
+  </Accordion>
+
+  <Accordion title="USDT'yi Tron'dan köprülemenin en hızlı yolu nedir?">
+    Relay yaklaşık 4 saniye, deBridge yaklaşık 15 saniye teklif etti, ancak ikisi de yaklaşık 1,5 dakika süren L2Pass RFQ'dan daha az USDT verdi.
+  </Accordion>
+
+  <Accordion title="ChangeNOW veya FixedFloat gibi anlık borsalar daha ucuz mu?">
+    Tekliflerimizde hayır. Trocador'daki en iyi anlık borsa, Tron'dan Ethereum'a 1.000 USDT için 994,65 USDT verdi; bu L2Pass RFQ'dan yaklaşık 4,9 USDT az.
+  </Accordion>
+
+  <Accordion title="Hesap gerekir mi?">
+    Hayır. L2Pass Swap hesap ve KYC gerektirmez.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [Cross-chain rotaları karşılaştırın](/tr/products/swap/learn/compare-routes)
+- [Tron'dan Ethereum'a USDT](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [Circle CCTP ile USDC köprüleyin](/tr/products/swap/guides/usdc-cctp)
+- [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees)
+- [Karşılaştırma: BTC takasları](/tr/products/swap/learn/compare-btc-swaps)
+- [Karşılaştırma: ZEC takasları](/tr/products/swap/learn/compare-zec-swaps)
+- [Herkese tercih ettiği ağda kripto ile ödeme yapın](/tr/products/swap/learn/crypto-payments)
+
+*Son güncelleme: 19 Ekim 2026*

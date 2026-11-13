@@ -1,0 +1,106 @@
+---
+title: "Hoán đổi xuyên chuỗi riêng tư là gì"
+description: "Hoán đổi riêng tư của L2Pass hạn chế những gì blockchain công khai hiển thị về cách giao dịch được khớp. Ẩn được gì, điều gì vẫn hiển thị, phí và cách thực hiện."
+sidebarTitle: "Hoán đổi xuyên chuỗi riêng tư"
+---
+
+Hoán đổi xuyên chuỗi riêng tư trong [L2Pass Swap](https://swap.l2pass.com/) hạn chế những gì blockchain công khai hiển thị về cách giao dịch của bạn được khớp. Nó chạy trên tuyến L2Pass Private, trong môi trường thực thi bảo mật trên [NEAR Intents](https://near.org/intents).
+
+<Warning>
+Hoán đổi riêng tư không phải ẩn danh. Khoản nạp và token bạn nhận vẫn là giao dịch bình thường trên các chuỗi của chúng. Nhà cung cấp vẫn nhận địa chỉ ví của bạn và sàng lọc rủi ro AML và trừng phạt giống hệt giao dịch công khai.
+</Warning>
+
+Phí L2Pass cho hoán đổi riêng tư tối đa 0,3%. Phí này áp dụng thay cho 0% hoặc 0,2%, không cộng thêm, và đã được tính vào số tiền hiển thị trong báo giá.
+
+## So sánh hoán đổi riêng tư và tiêu chuẩn
+
+L2Pass Private và tuyến tiêu chuẩn L2Pass RFQ chạy trên cùng mạng và dùng cùng quy trình nạp. Khác biệt nằm ở cách thực thi và phí.
+
+| | L2Pass Private | L2Pass RFQ |
+| :-- | :-- | :-- |
+| Mạng | NEAR Intents | NEAR Intents |
+| Thực thi | Môi trường bảo mật | Công khai |
+| Blockchain công khai hiển thị | Hạn chế | Không hạn chế |
+| Nhà cung cấp thấy địa chỉ ví của bạn | Có | Có |
+| Sàng lọc tuân thủ | Có | Có |
+| Phí L2Pass | Tối đa 0,3%, mọi tài sản | 0% cho stablecoin, tối đa 0,2% cho tài sản khác |
+| Thanh toán | Địa chỉ nạp dùng một lần | Địa chỉ nạp dùng một lần |
+| Thời gian ước tính | Như L2Pass RFQ cho cùng cặp | Khoảng 30 giây đến vài phút, lâu hơn với Bitcoin hoặc Zcash |
+
+Trong báo giá thử nghiệm 1.000 USDC từ Arbitrum sang Base ngày 19 tháng 10 năm 2026, L2Pass Private cho 998,20 USDC và L2Pass RFQ cho 999,80 USDC, cả hai khoảng 27 giây. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+## Hoán đổi riêng tư làm được gì và không làm được gì
+
+**Làm được:**
+- Thực hiện giao dịch trong môi trường bảo mật thay vì công khai.
+- Hạn chế những gì blockchain công khai hiển thị về cách giao dịch được khớp.
+- Hoạt động với stablecoin và tài sản khác, gồm ZEC, BTC và USDT trên Tron.
+
+**Không làm được:**
+- Không khiến bạn ẩn danh. Nhà cung cấp vẫn nhận địa chỉ ví của bạn.
+- Không bỏ qua sàng lọc. Giao dịch riêng tư và công khai qua cùng các bước kiểm tra, ở bước báo giá và sau khi nạp.
+- Không ẩn khoản nạp hay khoản nhận. Lần chuyển đến địa chỉ nạp và token đến địa chỉ nhận là giao dịch bình thường trên các chuỗi của chúng.
+
+## Cách thực hiện hoán đổi riêng tư
+
+Hoán đổi riêng tư gồm năm bước giống mọi giao dịch qua địa chỉ nạp. Bạn chỉ cần chọn L2Pass Private.
+
+<Steps>
+  <Step title="Yêu cầu báo giá">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/), chọn token và mạng nguồn, đích, số tiền và địa chỉ nhận.
+  </Step>
+
+  <Step title="Chọn L2Pass Private">
+    So sánh với L2Pass RFQ và các tuyến khác. Private hiển thị số tiền dự kiến, số tiền nhận tối thiểu, thời gian ước tính và phí như mọi tuyến.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Đặt địa chỉ hoàn tiền là ví bạn kiểm soát trên chuỗi nguồn. Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về đó.
+  </Step>
+
+  <Step title="Thanh toán vào địa chỉ nạp">
+    Gửi số tiền báo giá đến địa chỉ nạp dùng một lần bằng địa chỉ hoặc mã QR. Bạn có thể thanh toán từ ví đã kết nối, từ ví khác hoặc trực tiếp từ sàn.
+  </Step>
+
+  <Step title="Theo dõi giao dịch">
+    Theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## Hoàn tiền và điều khoản pháp lý
+
+Hoán đổi riêng tư áp dụng cùng quy tắc hoàn tiền như L2Pass RFQ.
+
+- **Hoàn tiền.** Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền; phí nhà cung cấp và phí mạng có thể bị trừ. Khoản nạp bị gắn cờ theo quy tắc AML hoặc trừng phạt sẽ bị giữ lại để xem xét, và bạn xử lý với bộ phận hỗ trợ của NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Không khớp một phần.** Giao dịch hoặc hoàn tất toàn bộ, hoặc không thực hiện.
+- **Điều khoản pháp lý.** Xem [Điều khoản dịch vụ](https://l2pass.com/terms-of-service) và [Nguyên tắc quyền riêng tư và AML](https://l2pass.com/privacy-policy).
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Hoán đổi riêng tư có ẩn danh không?">
+    Không. Nó hạn chế những gì blockchain công khai hiển thị, nhưng nhà cung cấp vẫn nhận địa chỉ ví của bạn và sàng lọc giao dịch giống hệt giao dịch công khai.
+  </Accordion>
+
+  <Accordion title="Hoán đổi riêng tư tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm). Phí đã được tính vào số tiền hiển thị trong báo giá.
+  </Accordion>
+
+  <Accordion title="Tôi có thể hoán đổi stablecoin riêng tư không?">
+    Có. L2Pass Private cũng hoạt động với stablecoin. Khi đó phí L2Pass tối đa 0,3% thay vì 0%.
+  </Accordion>
+
+  <Accordion title="Mạng nào hỗ trợ hoán đổi riêng tư?">
+    Trong báo giá thử nghiệm, hoán đổi riêng tư hoạt động với USDT trên Tron và Ethereum, USDC trên Arbitrum, Base và Ethereum, BTC và ZEC. Với các cặp khác, hãy xem báo giá: L2Pass Private sẽ có trong danh sách bất cứ khi nào nó khớp được giao dịch của bạn.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách hoán đổi ZEC riêng tư](/vi/products/swap/guides/private-swaps-with-zec)
+- [L2Pass RFQ by NEAR Intents là gì](/vi/products/swap/learn/what-is-l2pass-rfq)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Hoán đổi riêng tư trong phần tổng quan Swap](/vi/products/swap/overview#private-swaps)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

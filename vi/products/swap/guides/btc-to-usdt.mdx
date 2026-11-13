@@ -1,0 +1,110 @@
+---
+title: "Cách hoán đổi BTC sang USDT (và USDT sang BTC)"
+description: "Hoán đổi BTC gốc sang USDT trong khoảng 14 phút, hoặc USDT sang BTC trong khoảng 9 phút. Phí L2Pass tối đa 0,2%, không cần tài khoản, thanh toán từ bất kỳ ví hoặc sàn nào."
+sidebarTitle: "BTC sang USDT và ngược lại"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể hoán đổi BTC gốc trên Bitcoin sang USDT trên Tron hoặc Ethereum, và đổi USDT ngược lại sang BTC, bằng [L2Pass Swap](https://swap.l2pass.com/). Trong báo giá thử nghiệm, các cặp này có hai tuyến là L2Pass RFQ và L2Pass Private, cả hai chạy trên [NEAR Intents](https://near.org/intents). Hoán đổi từ BTC mất khoảng 13,5 đến 14 phút, và hoán đổi sang BTC khoảng 9 phút, phần lớn là thời gian chờ xác nhận khối Bitcoin. Bạn thanh toán bằng cách gửi BTC hoặc USDT đến địa chỉ nạp dùng một lần từ bất kỳ ví hoặc sàn nào, không cần tài khoản. Phí L2Pass tối đa 0,2% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+
+**BTC gốc, không cần wrap** · **817,64 USDT cho 0,01 BTC** · **Không cần tài khoản** · **Thanh toán từ bất kỳ ví hoặc sàn nào**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 19 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Các tuyến cho BTC và USDT
+
+Trong báo giá thử nghiệm, hai tuyến, đều trên NEAR Intents, đã khớp các lệnh hoán đổi BTC và USDT.
+
+| Tuyến | Thời gian ước tính | Đầu ra | Ghi chú |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Khoảng 13,5 đến 14 phút từ BTC, khoảng 9 phút sang BTC | Thay đổi, có mức nhận tối thiểu | Các solver và nhà tạo lập thị trường cạnh tranh để khớp lệnh hoán đổi của bạn. Địa chỉ nạp. Phí L2Pass tối đa 0,2%. |
+| L2Pass Private | Giống L2Pass RFQ | Thay đổi, có mức nhận tối thiểu | Thực thi bảo mật. Địa chỉ nạp. Phí L2Pass tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm). |
+
+Trong các báo giá thử nghiệm đó, không có tuyến nào khác cho các cặp này. Báo giá liệt kê mọi tuyến có thể khớp cặp này.
+
+## Báo giá thử nghiệm
+
+Báo giá vào khoảng 16:55 UTC, khi ứng dụng hiển thị giá BTC khoảng 81.935 USD. Báo giá trực tiếp hiển thị số liệu hiện tại cho cặp và số tiền của bạn.
+
+| Hoán đổi | L2Pass RFQ | L2Pass Private | Phí mạng ở đích |
+| :-- | :-- | :-- | :-- |
+| 0,01 BTC sang USDT trên Tron | 816,18 USDT | 812,52 USDT | 1,71 USDT |
+| 0,01 BTC sang USDT trên Ethereum | 817,64 USDT | 814,70 USDT | 0,3 USDT |
+| 1.000 USDT trên Tron sang BTC | 0,01215466 BTC | 0,01209267 BTC | 0,000019 BTC |
+
+Trong các báo giá này, L2Pass RFQ hiển thị phí L2Pass 0% và phí nhà cung cấp NEAR Intents 0,2%. L2Pass Private hiển thị phí L2Pass 0,3%.
+
+## Cách hoán đổi BTC sang USDT
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** BTC trên Bitcoin.
+    - **To:** USDT trên Tron hoặc Ethereum.
+    - **Amount:** số BTC bạn muốn hoán đổi.
+    - **Địa chỉ nhận:** địa chỉ Tron hoặc Ethereum sẽ nhận USDT.
+  </Step>
+
+  <Step title="So sánh các tuyến">
+    Kiểm tra số tiền ước tính, số tiền nhận tối thiểu, thời gian ước tính và phí trên thẻ L2Pass RFQ và L2Pass Private. Trượt giá mặc định là 0,05% (có thể chỉnh).
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Đặt địa chỉ hoàn tiền là một địa chỉ Bitcoin bạn kiểm soát. Nếu hoán đổi không thể hoàn tất, nhà cung cấp sẽ trả BTC của bạn về đó.
+  </Step>
+
+  <Step title="Gửi BTC đến địa chỉ nạp">
+    Gửi số tiền trong báo giá đến địa chỉ nạp Bitcoin dùng một lần từ bất kỳ ví Bitcoin nào hoặc từ sàn, bằng địa chỉ hoặc mã QR. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào số tiền đó.
+  </Step>
+
+  <Step title="Theo dõi hoán đổi">
+    Theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*. Khoản nạp được xác nhận sau khi Bitcoin xác nhận giao dịch của bạn.
+  </Step>
+</Steps>
+
+Để hoán đổi USDT sang BTC, chọn USDT trên Tron hoặc Ethereum làm nguồn và BTC làm đích, nhập địa chỉ nhận Bitcoin, đặt địa chỉ hoàn tiền trên mạng USDT của bạn và gửi USDT đến địa chỉ nạp theo cách tương tự.
+
+## Trước khi gửi
+
+Các khối Bitcoin quyết định tốc độ, và bạn trả phí mạng Bitcoin khi gửi BTC.
+
+- **Phí Bitcoin.** Bạn trả phí mạng Bitcoin khi gửi BTC. Khi nhận BTC, phí mạng Bitcoin được trừ vào số tiền hiển thị.
+- **Thời gian.** Khối Bitcoin được tạo khoảng 10 phút một lần, nên hoán đổi từ hoặc sang BTC lâu hơn chuyển stablecoin giữa các mạng khác.
+- **Số tiền tối thiểu.** Một số tuyến có số tiền hoán đổi tối thiểu. Nếu số tiền của bạn thấp hơn mức đó, tuyến được hiển thị là không khả dụng kèm mức tối thiểu.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi có cần wrap BTC để hoán đổi sang USDT không?">
+    Không. Bạn gửi BTC gốc trên Bitcoin đến địa chỉ nạp, và USDT sẽ đến trên Tron hoặc Ethereum.
+  </Accordion>
+
+  <Accordion title="Hoán đổi BTC sang USDT tốn bao nhiêu?">
+    Phí L2Pass tối đa 0,2% (tối đa 0,3% cho hoán đổi riêng tư). Trong báo giá thử nghiệm, L2Pass RFQ hiển thị phí L2Pass 0%, phí nhà cung cấp NEAR Intents 0,2% và phí mạng ở đích. Số tiền hiển thị đã bao gồm tất cả. Bạn cũng trả phí mạng Bitcoin khi gửi.
+  </Accordion>
+
+  <Accordion title="Hoán đổi BTC sang USDT mất bao lâu?">
+    Khoảng 13,5 đến 14 phút trong báo giá thử nghiệm, và khoảng 9 phút từ USDT sang BTC. Thẻ tuyến hiển thị ước tính hiện tại.
+  </Accordion>
+
+  <Accordion title="Tôi có cần tài khoản không?">
+    Không. Bạn không cần tài khoản hay KYC, và có thể thanh toán từ bất kỳ ví hoặc sàn nào.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để hoán đổi BTC sang USDT: L2Pass so với các dịch vụ khác](/vi/products/swap/learn/compare-btc-swaps)
+- [L2Pass RFQ by NEAR Intents là gì](/vi/products/swap/learn/what-is-l2pass-rfq)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Hoán đổi riêng tư với ZEC](/vi/products/swap/guides/private-swaps-with-zec)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

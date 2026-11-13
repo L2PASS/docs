@@ -1,0 +1,82 @@
+---
+title: "USDT ağları açıklaması: TRC-20, ERC-20, BEP-20, SPL, TON ve USDT0"
+description: "TRC-20, ERC-20, BEP-20, SPL, TON jetton ve USDT0: her USDT ağı nedir, gas token'ı ve adres formatı ne, USDT ağlar arasında nasıl taşınır."
+sidebarTitle: "USDT ağları açıklaması"
+---
+
+USDT birçok blok zincirinde bulunur ve her sürüm yalnızca kendi ağında çalışır. TRC-20 USDT Tron'da, ERC-20 Ethereum'da, BEP-20 BNB Chain'de, SPL Solana'da, jetton ise TON'da yaşar. USDT0, LayerZero üzerinden zincirler arasında taşınan omnichain USDT sürümüdür ve Arbitrum, Plasma ile diğer ağlarda kullanılır. Bir ağdaki USDT'yi doğrudan başka bir ağdaki adrese gönderemezsiniz: stablecoin takaslarında %0 L2Pass ücretiyle [L2Pass Swap](https://swap.l2pass.com/) üzerinde karşılaştırılanlar gibi bir cross-chain rotaya ihtiyacınız var.
+
+## Ağlara göre USDT
+
+Her USDT ağının kendi gas token'ı ve adres formatı vardır.
+
+| Ağ | Standart | Gas token'ı | Adres formatı | Rehber |
+| :-- | :-- | :-- | :-- | :-- |
+| Tron | TRC-20 | TRX (enerji ve bant genişliği) | T ile başlar | [Tron'dan Ethereum'a](/tr/products/swap/guides/usdt-tron-to-ethereum) |
+| Ethereum | ERC-20 | ETH | 0x... | [Ethereum'dan Tron'a](/tr/products/swap/guides/usdt-ethereum-to-tron) |
+| BNB Chain | BEP-20 | BNB | 0x... | [Tron'dan BNB Chain'e](/tr/products/swap/guides/usdt-tron-to-bnb-chain) |
+| Solana | SPL | SOL | Base58 | [Tron'dan Solana'ya](/tr/products/swap/guides/usdt-tron-to-solana) |
+| TON | Jetton | Toncoin | UQ veya EQ ile başlar | [Tron'dan TON'a](/tr/products/swap/guides/usdt-tron-to-ton) |
+| Arbitrum | USDT0 | ETH | 0x... | [Tron'dan Arbitrum'a](/tr/products/swap/guides/usdt-tron-to-arbitrum) |
+| Plasma | USDT0 | XPL | 0x... | [Plasma'ya USDT](/tr/products/swap/guides/usdt-to-plasma) |
+
+EVM ağları (Ethereum, BNB Chain, Arbitrum, Plasma ve diğerleri) aynı 0x adres formatını paylaşır. Aynı adres hepsinde çalışır, ancak her ağdaki token'lar ayrıdır. ERC-20 USDT'yi BNB Chain'deki adresinize göndermek onları oraya taşımaz.
+
+## Her ağda USDT almanın maliyeti
+
+Hedef ağ ücreti aldığınız tutardan düşülür, bu yüzden almak için hedef ağda gas'a ihtiyacınız yoktur. 19 Ekim 2026'da (yaklaşık 17:50 UTC) L2Pass RFQ üzerinde Tron'dan 1.000 USDT için test teklifleri:
+
+| Hedef | Ağ ücreti | Tahmini süre | Alacağınız |
+| :-- | :-- | :-- | :-- |
+| Arbitrum (USDT0) | 0,005 USDT0 | Yaklaşık 79 saniye | 999,77 USDT0 |
+| Solana | 0,01 USDT | Yaklaşık 77 saniye | 999,73 USDT |
+| Ethereum | 0,3 USDT | Yaklaşık 87 saniye | 999,51 USDT |
+| Plasma (USDT0) | 0,0001 USDT0'dan az | Yaklaşık 84 saniye | 997,79 USDT0 |
+
+Plasma'ya NEAR Intents sağlayıcı ücreti %0,01 yerine %0,2 oldu, bu yüzden ağ ücreti en düşük olmasına rağmen daha az ulaştı. Canlı teklif güncel rakamları gösterir.
+
+## Ağ nasıl seçilir
+
+USDT'yi kullanacağınız ağı seçin, sonra o ağın gas token'ına sahip olduğunuzu kontrol edin.
+
+- **Nerede kullanacağınız.** Ödeme yaptığınız borsanın, uygulamanın veya kişinin ağını seçin. Borsalar yatırma için hangi ağları kabul ettiklerini gösterir.
+- **Sahip olduğunuz gas.** USDT'yi daha sonra göndermek için ağın gas token'ı gerekir: Tron'da TRX, Ethereum veya Arbitrum'da ETH, Solana'da SOL vb.
+- **Gönderme maliyeti.** Ağ ücretleri büyük farklılık gösterir. Ethereum'dan göndermek genellikle en pahalısıdır; Tron, Solana ve katman 2 ağları genellikle daha ucuzdur.
+
+## Ağlar ve USDT0
+
+USDT gönderdiğiniz her seferde ağı adresle eşleştirin.
+
+- **Borsada doğru ağı seçin.** USDT çekerken veya yatırırken seçtiğiniz ağ adresle eşleşmelidir. Yanlış ağdan gönderilen token'lar kaybolabilir veya manuel kurtarma gerektirebilir.
+- **USDT0 ve USDT.** Arbitrum ve Plasma'da L2Pass Swap'in teslim ettiği USDT, USDT0'dır. L2Pass Swap bunu Tron, Ethereum ve diğer ağlardaki USDT'ye ve onlardan taşıyabilir.
+- **Kullanılabilirlik.** Teklif, o anda çiftiniz için hangi rotaların mevcut olduğunu gösterir. Hiçbiri görünmüyorsa daha sonra deneyin veya başka bir hedef ağ seçin.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="TRC-20 ve ERC-20 USDT arasındaki fark nedir?">
+    TRC-20 USDT Tron'da çalışır ve ücretler için TRX kullanır. ERC-20 USDT Ethereum'da çalışır ve ETH kullanır. İkisi de Tether tarafından çıkarılan USDT'dir, ancak ayrı ağlarda yaşarlar, bu yüzden aralarında taşımak için cross-chain bir rota gerekir.
+  </Accordion>
+
+  <Accordion title="TRC-20 USDT'yi ERC-20 adresine gönderebilir miyim?">
+    Hayır. Tron ve Ethereum farklı ağlar ve adres formatları kullanır. [USDT'yi Tron'dan Ethereum'a köprüleme](/tr/products/swap/guides/usdt-tron-to-ethereum) gibi cross-chain bir rota kullanın.
+  </Accordion>
+
+  <Accordion title="USDT0 nedir?">
+    USDT0, zincirler arasında LayerZero üzerinden taşınan omnichain USDT sürümüdür. L2Pass Swap'te Arbitrum ve Plasma'daki USDT'dir ve USDT native bridge rotası onu taşır, Tron'dan da dahil.
+  </Accordion>
+
+  <Accordion title="En ucuz USDT ağı hangisi?">
+    Rotaya ve zamana bağlıdır. Almak için teklif hedef ağ ücretini zaten içerir. Göndermek için, gönderdiğiniz ağın gas maliyetini karşılaştırın.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees)
+- [Herhangi bir cüzdan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

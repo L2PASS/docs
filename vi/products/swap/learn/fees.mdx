@@ -1,0 +1,113 @@
+---
+title: "Giải thích phí L2Pass Swap"
+description: "Phí L2Pass Swap: phí L2Pass 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác, tối đa 0,3% cho hoán đổi riêng tư. Ví dụ từ báo giá thực."
+sidebarTitle: "Giải thích phí"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) thu phí L2Pass 0% cho hoán đổi stablecoin trên mọi tuyến, tối đa 0,2% cho tài sản khác và tối đa 0,3% cho hoán đổi riêng tư. Phí riêng tư áp dụng thay cho 0% hoặc 0,2%, không cộng thêm. Đối tác định tuyến và blockchain thu phí riêng, và số tiền bạn sẽ nhận, hiển thị trong báo giá trước khi xác nhận, đã bao gồm các khoản đó, trừ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) mà bạn trả riêng.
+
+## Phí L2Pass
+
+Đây là khoản phí duy nhất do chính L2Pass thu. Mức phí phụ thuộc vào tài sản và việc giao dịch có riêng tư hay không.
+
+| Giao dịch | Phí L2Pass |
+| :-- | :-- |
+| Hoán đổi stablecoin (USDT, USDC và các loại khác), mọi tuyến | **0%** |
+| Tài sản khác (ETH, BTC, SOL, ZEC và các loại khác) | **tối đa 0,2%** |
+| Hoán đổi riêng tư, mọi tài sản | **tối đa 0,3%** (thay cho 0% hoặc 0,2%, không cộng thêm) |
+
+## Mọi khoản phí bạn thấy trong báo giá
+
+Một báo giá có thể gồm tối đa năm khoản phí. Ba khoản đầu được trừ vào số tiền bạn nhận. Hai khoản cuối bạn trả từ ví, và thẻ tuyến hiển thị chúng.
+
+| Phí | Ai thu | Cách bạn trả |
+| :-- | :-- | :-- |
+| Phí L2Pass | L2Pass | Đã tính vào số tiền bạn sẽ nhận |
+| Phí nhà cung cấp | Đối tác định tuyến, như NEAR Intents, LI.FI hoặc Relay | Đã tính vào số tiền bạn sẽ nhận |
+| Phí mạng đích | Blockchain đích | Đã tính vào số tiền bạn sẽ nhận |
+| Phí tin nhắn cầu nối | Một số cầu nối, như USDT0 qua LayerZero | Trả bằng token gốc của chuỗi nguồn, hiển thị trên thẻ tuyến |
+| Gas nguồn | Blockchain nguồn | Trả từ ví bằng token gốc (ETH, TRX, BNB, v.v.), hiển thị trên thẻ tuyến |
+
+L2Pass không kiểm soát phí đối tác hay phí mạng. Hãy xem từng nhà cung cấp để biết chi tiết mới nhất. Thẻ tuyến luôn hiển thị phí thực tế của giao dịch.
+
+## Ví dụ từ báo giá thực
+
+Báo giá thử nghiệm ngày 19 tháng 10 năm 2026 (khoảng 16:55 UTC) cho thấy các khoản phí sau. Báo giá trực tiếp hiển thị số liệu hiện tại cho cặp và số tiền của bạn.
+
+| Giao dịch | Tuyến | Phí L2Pass | Phí khác | Bạn nhận |
+| :-- | :-- | :-- | :-- | :-- |
+| 1.000 USDC, Arbitrum → Base | L2Pass RFQ | 0 | Phí NEAR Intents 0,1 USDC, phí mạng 0,0024 USDC | 999,80 USDC |
+| 1.000 USDC, Arbitrum → Base | L2Pass Private | 3 USDC (0,3%) | Phí NEAR Intents, phí mạng 0,0024 USDC | 998,20 USDC |
+| 1.000 USDC, Arbitrum → Base | Cầu USDC (CCTP Fast) | 0 | Phí mạng 0,19 USDC | 999,81 USDC |
+| 1.000 USDT, Ethereum → Tron | USDT native bridge (USDT0) | 0 | Phí tin nhắn LayerZero khoảng 0,005 ETH (khoảng 11,92 USD), trả bằng ETH | 999,7 USDT |
+| 0,5 ETH trên Ethereum → USDC trên Arbitrum | L2Pass RFQ | 0 | Phí NEAR Intents 0,001 ETH, phí mạng 0,0053 USDC | 1.197,00 USDC |
+| 0,5 ETH trên Ethereum → USDC trên Arbitrum | Relay | 0,1% (khoảng 1,20 USD) | Phí Relay khoảng 1,34 USD | 1.195,67 USDC |
+
+Số tiền nhận được cũng phản ánh mức giá mỗi nhà cung cấp báo, nên các khoản phí liệt kê không phải lúc nào cũng cộng lại bằng toàn bộ chênh lệch.
+
+Hai điểm cần lưu ý:
+
+- **Cặp khác có thể có tuyến thắng khác.** Trong ví dụ ETH, L2Pass RFQ cho nhiều nhất dù không phải tuyến rẻ nhất trên mọi cặp.
+- **Xem cả phí trả ngoài số tiền.** USDT0 cho số tiền nhận cao nhất từ Ethereum sang Tron, nhưng phí tin nhắn của nó được trả riêng bằng ETH. L2Pass sắp xếp tuyến theo giá trị ròng bạn nhận sau gas, nên đã xếp L2Pass RFQ đầu tiên.
+
+## Cách xem phí cho giao dịch của bạn
+
+Bạn có thể kiểm tra mọi khoản phí cho đúng số tiền của mình trong ba bước, trước khi gửi bất cứ thứ gì.
+
+<Steps>
+  <Step title="Yêu cầu báo giá">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/), chọn token và mạng nguồn, đích, rồi nhập số tiền.
+  </Step>
+
+  <Step title="Mở thẻ tuyến">
+    Mỗi thẻ tuyến hiển thị số tiền dự kiến, số tiền nhận tối thiểu, thời gian ước tính và chi tiết phí của tuyến đó.
+  </Step>
+
+  <Step title="So sánh và xác nhận">
+    Các tuyến được sắp xếp theo số tiền bạn nhận. Chọn tuyến đầu tiên, hoặc tuyến nhanh hơn nếu tốc độ quan trọng hơn với bạn. Số tiền hiển thị là số bạn sẽ nhận sau phí L2Pass, phí nhà cung cấp và phí mạng đích.
+  </Step>
+</Steps>
+
+## Gas, hoàn tiền và trượt giá
+
+Gas là chi phí duy nhất bạn không bao giờ lấy lại, kể cả khi giao dịch thất bại.
+
+- **Gas không được hoàn lại.** Nếu tuyến on-chain bị hoàn tác, không có token nào được trao đổi, nhưng gas nguồn đã bị tiêu.
+- **Hoàn tiền và phí.** Nếu tuyến dùng địa chỉ nạp không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền; phí nhà cung cấp và phí mạng có thể bị trừ.
+- **Trượt giá không phải là phí.** Mức chịu trượt giá mặc định là 0,05% và có thể đổi trên bất kỳ thẻ tuyến nào. Nó quyết định số tiền nhận tối thiểu, và không ảnh hưởng đến tuyến có số tiền cố định.
+- **Gửi từ sàn.** Một số sàn trừ phí rút vào số tiền họ gửi. Hãy kiểm tra số tiền đến có khớp với báo giá không.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap có miễn phí cho stablecoin không?">
+    L2Pass thu 0% cho hoán đổi stablecoin trên mọi tuyến. Đối tác định tuyến và blockchain vẫn thu phí riêng, và các khoản này đã được tính vào số tiền hiển thị trong báo giá. Trong một báo giá thử nghiệm 1.000 USDC từ Arbitrum sang Base, các khoản phí này khoảng 0,10 USDC.
+  </Accordion>
+
+  <Accordion title="Phí hoán đổi riêng tư có cộng thêm vào phí tiêu chuẩn không?">
+    Không. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm). Nó đã được tính vào số tiền hiển thị trong báo giá.
+  </Accordion>
+
+  <Accordion title="Có khoản phí nào tôi không thấy trước khi xác nhận không?">
+    Thẻ tuyến hiển thị phí giao dịch trước khi bạn xác nhận, và số tiền bạn sẽ nhận đã bao gồm phí L2Pass, phí nhà cung cấp và phí mạng đích. Gas nguồn và phí tin nhắn cầu nối (nếu có) cũng hiển thị trên thẻ tuyến.
+  </Accordion>
+
+  <Accordion title="Tôi có được phí L2Pass thấp hơn khi khối lượng lớn không?">
+    Có. Phí L2Pass có thể được giảm tùy theo khối lượng của bạn, và một phần có thể được chia sẻ với người giới thiệu và đối tác. Điều khoản được thỏa thuận riêng. Xem [Giới thiệu và điều khoản theo khối lượng](/vi/products/swap/learn/referrals-and-partners).
+  </Accordion>
+
+  <Accordion title="Vì sao hai tuyến hiển thị số tiền khác nhau cho cùng một giao dịch?">
+    Mỗi tuyến có phí nhà cung cấp, phí mạng, tốc độ và thanh khoản riêng. Hãy so sánh các thẻ tuyến và chọn tuyến phù hợp. Xem [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes).
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [L2Pass RFQ by NEAR Intents là gì](/vi/products/swap/learn/what-is-l2pass-rfq)
+- [Cấu trúc phí trong phần tổng quan Swap](/vi/products/swap/overview#fee-structure)
+- [Giới thiệu và điều khoản theo khối lượng](/vi/products/swap/learn/referrals-and-partners)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

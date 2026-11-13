@@ -1,0 +1,73 @@
+---
+title: "Câu hỏi thường gặp"
+icon: "circle-question"
+iconType: "light"
+---
+
+<AccordionGroup>
+  <Accordion title="L2Pass Swap là gì và hoạt động thế nào?">
+    L2Pass Swap là giao diện phi lưu ký để hoán đổi token giữa các chuỗi. Nó so sánh báo giá từ nhiều nhà cung cấp định tuyến độc lập, như cầu nối gốc, mạng solver và bộ tổng hợp, và cho phép bạn thực hiện tuyến tốt nhất chỉ với một lần xác nhận.
+  </Accordion>
+
+  <Accordion title="Tôi có thể chuyển cùng một token giữa các chuỗi không?">
+    Có. Chuyển cùng tài sản, như USDT từ Tron sang Ethereum hay USDC từ Arbitrum sang Base, hoạt động giống như hoán đổi. Các tuyến gốc như USDT0 và Circle CCTP được hiển thị cùng các tuyến khác khi khả dụng.
+  </Accordion>
+
+  <Accordion title="Tôi có thể dùng những tài sản và mạng nào?">
+    Stablecoin là trọng tâm chính, nhưng các tài sản lớn như ETH, BTC, SOL và ZEC cũng được hỗ trợ. Danh sách token và mạng hiện tại được hiển thị trên
+    <a href="https://swap.l2pass.com" target="_blank">trang hoán đổi</a>
+    và có thể thay đổi theo thời gian.
+  </Accordion>
+
+  <Accordion title="Tác động giá là gì?">
+    Tác động giá là mức thay đổi giá thực hiện do quy mô giao dịch so với thanh khoản sẵn có.
+  </Accordion>
+
+  <Accordion title="Trượt giá là gì?">
+    Trượt giá (slippage) là chênh lệch giữa giá báo và giá thực hiện cuối cùng do biến động thị trường.
+  </Accordion>
+
+  <Accordion title="Tôi có thể cài đặt mức chịu trượt giá không?">
+    Có. Mặc định là 0,05% và bạn có thể đổi trên bất kỳ thẻ tuyến nào. Một số tuyến, như cầu nối gốc USDT0 và USDC, giao số tiền cố định nên không áp dụng trượt giá.
+  </Accordion>
+
+  <Accordion title="Số tiền dự kiến là gì?">
+    Số tiền dự kiến là lượng ước tính bạn sẽ nhận trên mạng đích theo điều kiện thị trường hiện tại. Nó đã bao gồm mọi khoản phí, trừ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có).
+  </Accordion>
+
+  <Accordion title="Số tiền nhận tối thiểu là gì?">
+    Số tiền nhận tối thiểu là kết quả xấu nhất trong mức chịu trượt giá của bạn. Nếu giá vượt quá mức này, giao dịch không được thực hiện: tuyến on-chain được hoàn tác, còn tuyến dùng địa chỉ nạp trả khoản nạp về địa chỉ hoàn tiền của bạn.
+  </Accordion>
+
+  <Accordion title="Những khoản phí nào được áp dụng?">
+    Phí L2Pass là 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác và tối đa 0,3% cho hoán đổi riêng tư (thay cho 0% hoặc 0,2%, không cộng thêm). Đối tác định tuyến và blockchain có thể thu phí riêng mà L2Pass không kiểm soát; hãy xem từng nhà cung cấp để biết chi tiết mới nhất. Phí thực tế luôn hiển thị trên trang hoán đổi trước khi bạn xác nhận, và số tiền dự kiến trên mạng đích đã bao gồm chúng, trừ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) mà bạn trả riêng.
+  </Accordion>
+
+  <Accordion title="Hoán đổi riêng tư là gì?">
+    Hoán đổi riêng tư được thực hiện trong môi trường bảo mật qua NEAR Intents, giúp hạn chế những gì hiển thị trên blockchain công khai. Đây không phải ẩn danh hoàn toàn: địa chỉ ví của bạn vẫn được chia sẻ với nhà cung cấp và được sàng lọc giống hệt giao dịch công khai. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm) và đã được tính vào số tiền báo giá.
+  </Accordion>
+
+  <Accordion title="L2Pass Swap có phải phi lưu ký không?">
+    Có. L2Pass không bao giờ giữ hay kiểm soát token hoặc khóa riêng của bạn. Giao dịch được thực hiện bởi các nhà cung cấp bên thứ ba độc lập.
+  </Accordion>
+
+  <Accordion title="Tôi có cần gas trên chuỗi đích không?">
+    Không. Gas chỉ cần trên chuỗi nguồn để gửi giao dịch hoặc khoản nạp. Gas trên chuỗi đích chỉ cần cho những gì bạn làm với tiền sau đó. Với tuyến dùng địa chỉ nạp, bạn cũng có thể gửi token thủ công từ bất kỳ ví hay sàn nào.
+  </Accordion>
+
+  <Accordion title="Giao dịch có thể được khớp một phần không?">
+    Không. L2Pass không dùng khớp lệnh một phần. Giao dịch hoặc hoàn tất toàn bộ, hoặc không thực hiện.
+  </Accordion>
+
+  <Accordion title="Điều gì xảy ra nếu giao dịch thất bại?">
+    Tuyến on-chain được hoàn tác nên không có token nào được trao đổi, nhưng phí gas mạng không được hoàn lại. Với tuyến dùng địa chỉ nạp, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền của bạn; phí nhà cung cấp và phí mạng có thể bị trừ vào số tiền hoàn.
+  </Accordion>
+
+  <Accordion title="Giao dịch của tôi có thể bị chặn hoặc giữ lại không?">
+    Mọi giao dịch đều được sàng lọc rủi ro AML và trừng phạt. Trên L2Pass RFQ và L2Pass Private, địa chỉ bị gắn cờ không nhận được báo giá, nên không có gì được gửi đi. Nếu khoản nạp bị gắn cờ sau khi đến nơi, tiền sẽ bị giữ lại trong lúc NEAR Intents xem xét, và bạn xử lý bằng cách gửi yêu cầu tới bộ phận hỗ trợ của NEAR Intents. Giao dịch thất bại vì lý do kỹ thuật được hoàn tiền tự động. Xem <a href="/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works">Cách sàng lọc hoạt động</a>.
+  </Accordion>
+
+  <Accordion title="Tôi có cần KYC không?">
+    Không. Không cần tài khoản và không KYC. Nếu khoản nạp bị giữ lại để xem xét, bộ phận hỗ trợ của NEAR Intents có thể hỏi nguồn gốc của tiền.
+  </Accordion>
+</AccordionGroup>

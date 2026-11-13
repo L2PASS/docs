@@ -1,0 +1,119 @@
+---
+title: "Cách L2Pass so sánh các tuyến: NEAR Intents, Circle CCTP, USDT0, LI.FI, Relay và Aori"
+description: "L2Pass Swap hỏi nhiều nguồn định tuyến cùng lúc và sắp xếp các tuyến theo số tiền bạn nhận. Mỗi tuyến là gì và khi nào tuyến nào chiếm ưu thế."
+sidebarTitle: "So sánh các tuyến"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) hỏi nhiều nguồn định tuyến cùng lúc và hiển thị mọi tuyến có thể thực hiện giao dịch của bạn, sắp xếp theo giá trị ròng bạn nhận sau gas. Các nguồn gồm L2Pass RFQ và L2Pass Private by NEAR Intents, cầu nối gốc USDT0 và Circle CCTP, cùng các bộ tổng hợp và mạng intent LI.FI, LI.FI Intents, Relay, Aori và bộ tổng hợp OKX DEX. Không tuyến nào thắng trên mọi cặp, nên việc so sánh được thực hiện cho từng báo giá. Phí L2Pass là 0% cho hoán đổi stablecoin trên mọi tuyến.
+
+## Các tuyến
+
+Một báo giá có thể hiển thị mười tuyến, và chỉ L2Pass RFQ cùng L2Pass Private dùng địa chỉ nạp.
+
+| Tuyến trong ứng dụng | Là gì | Cách bạn thanh toán | Số tiền nhận | Thời gian ước tính trong báo giá thử nghiệm |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Solver và nhà tạo lập thị trường trên [NEAR Intents](https://near.org/intents) cạnh tranh để khớp giao dịch | Địa chỉ nạp dùng một lần, từ bất kỳ ví hay sàn nào | Biến đổi, có số tiền nhận tối thiểu | Khoảng 30 giây đến 2 phút; khoảng 9 đến 14 phút với Bitcoin |
+| L2Pass Private | Cùng mạng solver, trong môi trường bảo mật | Địa chỉ nạp dùng một lần | Biến đổi, có số tiền nhận tối thiểu | Như L2Pass RFQ |
+| USDT native bridge | Chuyển USDT0 qua LayerZero, kể cả từ Tron | Giao dịch từ ví | Cố định | Khoảng 1,5 phút |
+| USDC native bridge, Fast | Chuyển USDC gốc bằng Circle CCTP V2 Fast | Giao dịch từ ví | Cố định | Khoảng 40 đến 50 giây |
+| USDC native bridge, Standard | Chuyển Circle CCTP V2 Standard, chờ khối được chốt | Giao dịch từ ví | Cố định | Khoảng 19,5 phút |
+| Relay | Mạng relayer xuyên chuỗi | Giao dịch từ ví | Biến đổi | Khoảng 1 đến 2 giây |
+| Aori | Thanh toán dựa trên intent | Giao dịch từ ví | Cố định | Khoảng 3 đến 14 giây |
+| LI.FI Intents | Tuyến dựa trên intent của LI.FI | Giao dịch từ ví | Cố định | Không hiển thị trong báo giá thử nghiệm |
+| LI.FI | Bộ tổng hợp cầu nối và DEX | Giao dịch từ ví | Biến đổi | Khoảng 19 giây đến 18 phút |
+| DEX Aggregator | Bộ tổng hợp OKX DEX | Giao dịch từ ví | Biến đổi | Tùy cặp |
+
+Tuyến có số tiền cố định giao đúng số tiền hiển thị, nên không áp dụng trượt giá. Tuyến biến đổi dùng mức chịu trượt giá của bạn (mặc định 0,05%) để đặt số tiền nhận tối thiểu.
+
+## Ví dụ từ báo giá thực
+
+Báo giá thử nghiệm ngày 19 tháng 10 năm 2026 (khoảng 16:55 UTC). Các tuyến được liệt kê theo thứ tự ứng dụng hiển thị. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+<Tabs>
+<Tab title="USDT: Tron → Ethereum">
+
+1.000 USDT từ Tron sang Ethereum trả về ba tuyến.
+
+| Tuyến | Bạn nhận | Thời gian ước tính | Số tiền nhận | Trả riêng trên Tron |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 999,50 USDT | Khoảng 1,5 phút | Biến đổi | Gas cho một lần chuyển USDT đến địa chỉ nạp |
+| USDT native bridge (USDT0) | 999,70 USDT | Khoảng 1,5 phút | Cố định | Phí tin nhắn LayerZero khoảng 5,21 TRX (khoảng 1,73 USD), cộng năng lượng cho giao dịch phê duyệt và giao dịch cầu |
+| L2Pass Private | 997,00 USDT | Khoảng 1,5 phút | Biến đổi | Gas cho một lần chuyển USDT đến địa chỉ nạp |
+
+USDT0 cho số tiền nhận cao nhất, nhưng ứng dụng xếp L2Pass RFQ đầu tiên. Tuyến USDT0 cần nhiều năng lượng Tron hơn một lần chuyển USDT thông thường, khoảng 22,60 USD trong báo giá thử nghiệm nếu trả bằng TRX, cộng phí tin nhắn. Nếu bạn đã có đủ năng lượng stake, USDT0 có thể rẻ hơn với bạn. Phí mạng Ethereum đã được tính vào mỗi số tiền (0,3 USDT trên L2Pass RFQ).
+
+</Tab>
+<Tab title="USDC: Arbitrum → Base">
+
+1.000 USDC từ Arbitrum sang Base trả về tám tuyến.
+
+| Tuyến | Bạn nhận | Thời gian ước tính | Số tiền nhận |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,97 USDC | Không hiển thị | Cố định |
+| USDC native bridge, Standard | 999,95 USDC | Khoảng 19,5 phút | Cố định |
+| Relay | 999,88 USDC | Khoảng 2 giây | Biến đổi |
+| USDC native bridge, Fast | 999,81 USDC | Khoảng 38 giây | Cố định |
+| L2Pass RFQ | 999,80 USDC | Khoảng 27 giây | Biến đổi |
+| Aori | 999,28 USDC | Khoảng 3 giây | Cố định |
+| L2Pass Private | 998,20 USDC | Khoảng 27 giây | Biến đổi |
+| LI.FI | 997,50 USDC | Khoảng 18 phút | Biến đổi |
+
+Chênh lệch giữa các tuyến dưới 2,5 USDC, nhưng thời gian dao động từ vài giây đến khoảng 19,5 phút. Nếu tốc độ quan trọng, nhận ít hơn một chút trên tuyến nhanh có thể phù hợp hơn.
+
+</Tab>
+</Tabs>
+
+## Tuyến nào xuất hiện với cặp nào
+
+Trong cùng các báo giá thử nghiệm:
+
+- **USDT giữa Tron và Ethereum:** L2Pass RFQ, cầu USDT0 và L2Pass Private.
+- **USDC giữa các chuỗi EVM** (Arbitrum, Base, Ethereum): tám tuyến, gồm cả hai chế độ CCTP.
+- **Bitcoin sang hoặc từ USDT:** chỉ L2Pass RFQ và L2Pass Private.
+- **ETH trên Ethereum sang USDC trên Arbitrum:** L2Pass RFQ, Relay, LI.FI và L2Pass Private.
+
+Báo giá liệt kê mọi tuyến có thể thực hiện cặp của bạn tại thời điểm đó, nên danh sách có thể thay đổi.
+
+## Thứ tự được quyết định thế nào
+
+Các tuyến được sắp xếp theo giá trị ròng ước tính bạn nhận sau gas. Vì vậy tuyến có số tiền nhận cao nhất không phải lúc nào cũng đứng đầu. Trong một báo giá thử nghiệm 1.000 USDT từ Ethereum sang Tron, USDT0 cho 999,7 USDT, cao nhất trong các tuyến, nhưng cần phí tin nhắn LayerZero khoảng 0,005 ETH (khoảng 11,92 USD), trả bằng ETH. L2Pass RFQ cho 998,21 USDT mà không có phí trả riêng, nên được xếp đầu.
+
+## Phí, thanh toán và hoàn tiền
+
+Tuyến thay đổi phí nhà cung cấp và cách thanh toán, nhưng không thay đổi phí L2Pass 0% cho stablecoin.
+
+- **Với stablecoin, phí L2Pass không phụ thuộc vào tuyến.** Phí là 0% cho hoán đổi stablecoin trên mọi tuyến, tối đa 0,2% cho tài sản khác và tối đa 0,3% cho hoán đổi riêng tư. Xem [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees).
+- **Nạp hay ví.** Chỉ L2Pass RFQ và L2Pass Private dùng địa chỉ nạp, nên đây là các tuyến bạn có thể thanh toán từ sàn. Các tuyến khác cần giao dịch được ký trong ví.
+- **Hoàn tiền.** Tuyến on-chain được hoàn tác nếu thất bại (gas không được hoàn lại). Tuyến dùng địa chỉ nạp trả khoản nạp về địa chỉ hoàn tiền; phí nhà cung cấp và phí mạng có thể bị trừ.
+- **Không khớp một phần.** Giao dịch hoặc hoàn tất toàn bộ, hoặc không thực hiện.
+- **Số tiền tối thiểu.** Một số tuyến có số tiền hoán đổi tối thiểu. Nếu số tiền của bạn thấp hơn, tuyến sẽ hiện là không khả dụng kèm mức tối thiểu.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi nên chọn tuyến nào?">
+    So sánh số tiền bạn nhận, thời gian ước tính và việc bạn có thể ký giao dịch trong ví hay cần thanh toán từ sàn. Thẻ tuyến hiển thị cả ba trước khi bạn xác nhận.
+  </Accordion>
+
+  <Accordion title="Circle CCTP và USDT0 khác nhau thế nào?">
+    Circle CCTP chuyển USDC gốc do Circle phát hành giữa các chuỗi. USDT0 là phiên bản đa chuỗi (omnichain) của USDT, chuyển qua LayerZero, và trong L2Pass Swap còn hỗ trợ chuyển từ Tron. Cả hai đều là tuyến số tiền cố định, thanh toán bằng giao dịch từ ví.
+  </Accordion>
+
+  <Accordion title="Vì sao tuyến nhanh nhất không đứng đầu?">
+    Danh sách được sắp xếp theo giá trị ròng sau gas, không theo tốc độ. Hãy xem thời gian ước tính trên từng thẻ tuyến.
+  </Accordion>
+
+  <Accordion title="L2Pass có tự thực hiện giao dịch không?">
+    Không. L2Pass là giao diện phi lưu ký. Nhà cung cấp được chọn sẽ thực hiện giao dịch, và L2Pass không bao giờ giữ token hay khóa riêng của bạn.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass RFQ by NEAR Intents là gì](/vi/products/swap/learn/what-is-l2pass-rfq)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Cách chuyển USDC bằng Circle CCTP](/vi/products/swap/guides/usdc-cctp)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

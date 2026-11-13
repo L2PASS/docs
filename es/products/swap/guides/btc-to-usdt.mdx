@@ -1,0 +1,110 @@
+---
+title: "Cómo cambiar BTC por USDT (y USDT por BTC)"
+description: "Cambia BTC nativo por USDT en unos 14 minutos, o USDT por BTC en unos 9. Comisión de L2Pass de hasta 0,2%, sin cuenta, paga desde cualquier wallet o exchange."
+sidebarTitle: "BTC a USDT y viceversa"
+---
+
+import SwapBeforeYouSend from '/snippets/es/swap-before-you-send.mdx';
+
+Puedes cambiar BTC nativo en Bitcoin por USDT en Tron o Ethereum, y USDT de vuelta a BTC, con [L2Pass Swap](https://swap.l2pass.com/). En cotizaciones de prueba se ofrecieron dos rutas para estos pares, L2Pass RFQ y L2Pass Private, ambas sobre [NEAR Intents](https://near.org/intents). Un swap desde BTC tardó unos 13,5 a 14 minutos y un swap a BTC unos 9 minutos, casi todo esperando confirmaciones de bloques de Bitcoin. Pagas enviando BTC o USDT a una dirección de depósito de un solo uso desde cualquier wallet o exchange, sin cuenta. La comisión de L2Pass es de hasta 0,2% (hasta 0,3% en swaps privados), y la cotización muestra lo que recibirás después de comisiones. Solo se pagan aparte el gas de la red de origen y la posible comisión de mensaje del puente.
+
+**BTC nativo, sin wrapping** · **817,64 USDT por 0,01 BTC** · **Sin cuenta** · **Paga desde cualquier wallet o exchange**
+
+<Note>Cifras de cotizaciones de prueba del 19 de octubre de 2026. Tu cotización siempre es en vivo.</Note>
+
+## Rutas para BTC y USDT
+
+Dos rutas, ambas sobre NEAR Intents, ejecutaron swaps de BTC y USDT en cotizaciones de prueba.
+
+| Ruta | Tiempo estimado | Resultado | Notas |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Unos 13,5 a 14 minutos desde BTC, unos 9 minutos a BTC | Variable, con un mínimo a recibir | Solvers y market makers compiten por ejecutar tu swap. Dirección de depósito. Comisión de L2Pass de hasta 0,2%. |
+| L2Pass Private | Igual que L2Pass RFQ | Variable, con un mínimo a recibir | Ejecución confidencial. Dirección de depósito. Comisión de L2Pass de hasta 0,3% (en lugar de 0% o 0,2%, no además). |
+
+En esas cotizaciones de prueba no se ofrecieron otras rutas para estos pares. La cotización muestra cualquier ruta que pueda ejecutar el par.
+
+## Cotizaciones de prueba
+
+Cotizaciones hacia las 16:55 UTC, cuando la app mostraba BTC a unos 81.935 USD. La cotización en vivo muestra las cifras actuales para tu par e importe.
+
+| Swap | L2Pass RFQ | L2Pass Private | Comisión de red en destino |
+| :-- | :-- | :-- | :-- |
+| 0,01 BTC a USDT en Tron | 816,18 USDT | 812,52 USDT | 1,71 USDT |
+| 0,01 BTC a USDT en Ethereum | 817,64 USDT | 814,70 USDT | 0,3 USDT |
+| 1000 USDT en Tron a BTC | 0,01215466 BTC | 0,01209267 BTC | 0,000019 BTC |
+
+En estas cotizaciones, L2Pass RFQ mostró un 0% de comisión de L2Pass y una comisión del proveedor NEAR Intents del 0,2%. L2Pass Private mostró una comisión de L2Pass del 0,3%.
+
+## Cómo cambiar BTC por USDT
+
+Nada sale de tu wallet hasta que pagas, así que puedes comparar todas las rutas primero.
+
+<Steps>
+  <Step title="Abre L2Pass Swap">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/) y rellena cuatro campos:
+
+    - **From:** BTC en Bitcoin.
+    - **To:** USDT en Tron o Ethereum.
+    - **Amount:** cuántos BTC quieres cambiar.
+    - **Dirección de recepción:** la dirección de Tron o Ethereum que recibirá los USDT.
+  </Step>
+
+  <Step title="Compara las rutas">
+    Revisa el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones en las tarjetas de L2Pass RFQ y L2Pass Private. El slippage por defecto es 0,05% (editable).
+  </Step>
+
+  <Step title="Indica una dirección de reembolso">
+    Pon como dirección de reembolso una dirección de Bitcoin que controles. Si el swap no puede completarse, el proveedor te devuelve allí los BTC.
+  </Step>
+
+  <Step title="Envía BTC a la dirección de depósito">
+    Envía el importe de la cotización a la dirección de depósito de Bitcoin de un solo uso desde cualquier wallet de Bitcoin o un exchange, por dirección o código QR. Si envías desde un exchange, comprueba que el importe que llega coincide con la cotización, porque algunos exchanges descuentan de él su comisión de retiro.
+  </Step>
+
+  <Step title="Sigue el swap">
+    Sigue el estado en **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* y luego *Complete*. El depósito se confirma cuando Bitcoin confirma tu transacción.
+  </Step>
+</Steps>
+
+Para cambiar USDT por BTC, elige USDT en Tron o Ethereum como origen y BTC como destino, indica una dirección de recepción de Bitcoin, pon una dirección de reembolso en tu red de USDT y envía los USDT a la dirección de depósito de la misma forma.
+
+## Antes de enviar
+
+Los bloques de Bitcoin marcan el ritmo, y pagas la comisión de red de Bitcoin al enviar BTC.
+
+- **Comisiones de Bitcoin.** Pagas la comisión de red de Bitcoin al enviar BTC. Cuando recibes BTC, la comisión de red de Bitcoin se descuenta del importe mostrado.
+- **Tiempos.** En Bitcoin sale un bloque cada 10 minutos aproximadamente, así que los swaps desde o hacia BTC tardan más que las transferencias de stablecoins entre otras redes.
+- **Importe mínimo.** Algunas rutas tienen un importe mínimo de swap. Si tu importe está por debajo, la ruta aparece como no disponible con el mínimo indicado.
+
+<SwapBeforeYouSend />
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que hacer wrap de BTC para cambiarlo por USDT?">
+    No. Envías BTC nativo en Bitcoin a la dirección de depósito y los USDT llegan a Tron o Ethereum.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta cambiar BTC por USDT?">
+    La comisión de L2Pass es de hasta 0,2% (hasta 0,3% en swaps privados). En cotizaciones de prueba, L2Pass RFQ mostró un 0% de comisión de L2Pass, una comisión del proveedor NEAR Intents del 0,2% y una comisión de red en destino. El importe mostrado ya las incluye todas. También pagas la comisión de red de Bitcoin al enviar.
+  </Accordion>
+
+  <Accordion title="¿Cuánto tarda un swap de BTC a USDT?">
+    Unos 13,5 a 14 minutos en cotizaciones de prueba, y unos 9 minutos de USDT a BTC. Las tarjetas de ruta muestran la estimación actual.
+  </Accordion>
+
+  <Accordion title="¿Necesito una cuenta?">
+    No. No necesitas cuenta ni KYC, y puedes pagar desde cualquier wallet o exchange.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [La mejor forma de cambiar BTC por USDT: L2Pass frente a otros servicios](/es/products/swap/learn/compare-btc-swaps)
+- [Qué es L2Pass RFQ by NEAR Intents](/es/products/swap/learn/what-is-l2pass-rfq)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Swaps privados con ZEC](/es/products/swap/guides/private-swaps-with-zec)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

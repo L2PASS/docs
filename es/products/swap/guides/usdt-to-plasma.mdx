@@ -1,0 +1,143 @@
+---
+title: "Cómo pasar USDT a Plasma (USDT0)"
+description: "Pasa USDT a Plasma en alrededor de 1 segundo desde Ethereum o 1,5 minutos desde Tron. 0% de comisión de L2Pass, llega como USDT0, sin XPL."
+sidebarTitle: "USDT a Plasma"
+---
+
+import SwapBeforeYouSend from '/snippets/es/swap-before-you-send.mdx';
+
+Puedes pasar USDT a Plasma desde Tron, Ethereum o Arbitrum con [L2Pass Swap](https://swap.l2pass.com/), una interfaz no custodial que muestra todas las rutas del par una al lado de otra. En Plasma, USDT llega como USDT0, la versión omnichain de USDT. En cotizaciones de prueba, Tron a Plasma lo ofrecieron L2Pass RFQ y L2Pass Private en unos 1,5 minutos, y Ethereum o Arbitrum a Plasma también Relay y Aori en segundos. La comisión de L2Pass en swaps de stablecoins es 0% (hasta 0,3% en swaps privados), y la cotización muestra lo que recibirás después de comisiones antes de confirmar. Solo se pagan aparte el gas de la red de origen y la posible comisión de mensaje del puente.
+
+**Segundos desde Ethereum** · **0% de comisión de L2Pass** · **Llegan 999,68 USDT0 por 1000 enviados** · **Sin XPL**
+
+<Note>Cifras de cotizaciones de prueba del 19 de octubre de 2026. Tu cotización siempre es en vivo.</Note>
+
+## Rutas a Plasma
+
+L2Pass RFQ y L2Pass Private funcionan sobre [NEAR Intents](https://near.org/intents), donde solvers y market makers compiten por ejecutar tu swap. Private lo ejecuta en un entorno confidencial.
+
+| Ruta | Desde | Tiempo estimado | Resultado | Pago |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Tron, Ethereum, Arbitrum | Unos 1,5 minutos desde Tron, de 30 a 50 segundos desde Ethereum o Arbitrum | Variable, con un mínimo a recibir | Dirección de depósito de un solo uso |
+| L2Pass Private | Tron, Ethereum, Arbitrum | Igual que L2Pass RFQ | Variable, con un mínimo a recibir | Dirección de depósito de un solo uso. Comisión de L2Pass de hasta 0,3% |
+| Relay | Ethereum, Arbitrum | Alrededor de 1 segundo | Variable | Transacción en wallet |
+| Aori | Ethereum, Arbitrum | De 2 a 13 segundos | Fijo | Transacción en wallet |
+
+Desde Ethereum también se ofreció LI.FI. La cotización muestra cualquier ruta que pueda ejecutar tu par.
+
+## Cotizaciones de prueba
+
+Cotizaciones de 1000 USDT hacia las 17:17 UTC. La cotización en vivo muestra las cifras actuales para tu par e importe.
+
+<Tabs>
+<Tab title="Desde Tron">
+
+| Ruta | Recibes |
+| :-- | :-- |
+| L2Pass RFQ | 997,79 USDT0 |
+| L2Pass Private | 995,40 USDT0 |
+
+En este par, L2Pass RFQ mostró un 0% de comisión de L2Pass y una comisión del proveedor NEAR Intents del 0,2% (2 USDT).
+
+</Tab>
+<Tab title="Desde Ethereum">
+
+| Ruta | Recibes |
+| :-- | :-- |
+| Relay | 999,68 USDT0 |
+| Aori | 999,05 USDT0 |
+| L2Pass RFQ | 997,90 USDT0 |
+| L2Pass Private | 996,30 USDT0 |
+
+</Tab>
+<Tab title="Desde Arbitrum (USDT0)">
+
+| Ruta | Recibes |
+| :-- | :-- |
+| Relay | 999,58 USDT0 |
+| Aori | 999,29 USDT0 |
+| L2Pass RFQ | 997,90 USDT0 |
+| L2Pass Private | 996,30 USDT0 |
+
+</Tab>
+</Tabs>
+
+## Cómo pasar USDT a Plasma
+
+Nada sale de tu wallet hasta que pagas, así que puedes comparar todas las rutas primero.
+
+<Steps>
+  <Step title="Abre L2Pass Swap">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/) y rellena cuatro campos:
+
+    - **From:** USDT en Tron o Ethereum, o USDT0 en Arbitrum.
+    - **To:** USDT0 en Plasma.
+    - **Amount:** cuánto quieres enviar.
+    - **Dirección de recepción:** la dirección de Plasma (una dirección EVM que empieza por 0x) que recibirá los USDT0.
+  </Step>
+
+  <Step title="Compara las rutas">
+    Cada tarjeta de ruta muestra el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones. El slippage por defecto es 0,05% (editable) y no se aplica a rutas de salida fija como Aori.
+  </Step>
+
+  <Step title="Indica una dirección de reembolso">
+    Para L2Pass RFQ y L2Pass Private, pon como dirección de reembolso una wallet que controles en la red de origen. Si el swap no puede completarse, el proveedor devuelve allí tu depósito.
+  </Step>
+
+  <Step title="Paga con wallet o dirección de depósito">
+    Cómo pagas depende de la ruta que elegiste.
+
+    <Tabs>
+      <Tab title="Rutas con wallet (Relay, Aori)">
+        Firma la transacción en tu wallet.
+      </Tab>
+      <Tab title="Dirección de depósito (L2Pass RFQ, L2Pass Private)">
+        Envía USDT a la dirección de depósito de un solo uso desde tu wallet conectada, cualquier wallet o un exchange, por dirección o código QR. Si envías desde un exchange, comprueba que el importe que llega coincide con la cotización, porque algunos exchanges descuentan de él su comisión de retiro.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Sigue el swap">
+    Para L2Pass RFQ y L2Pass Private, sigue el estado en **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* y luego *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Solo necesitas gas en la red de origen, y tus USDT llegan a Plasma como USDT0.
+
+- **USDT0 en Plasma.** L2Pass Swap ofrece USDT en Plasma como USDT0. El token nativo de Plasma es XPL.
+- **Gas solo en la red de origen.** Pagas el gas en TRX en Tron o en ETH en Ethereum y Arbitrum. La comisión de red de Plasma se descuenta del importe mostrado, así que no necesitas XPL para recibir.
+
+<SwapBeforeYouSend />
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo pasar USDT de Tron a Plasma?">
+    Sí. En cotizaciones de prueba, L2Pass RFQ y L2Pass Private ofrecieron USDT TRC-20 a USDT0 en Plasma, con un tiempo estimado de unos 1,5 minutos.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta pasar USDT a Plasma?">
+    La comisión de L2Pass en swaps de stablecoins es 0% (hasta 0,3% en swaps privados). Los socios de enrutamiento y las redes cobran sus propias comisiones, y el importe mostrado ya las incluye. En cotizaciones de prueba de 1000 USDT, Relay desde Ethereum entregó 999,68 USDT0 y L2Pass RFQ desde Tron 997,79 USDT0.
+  </Accordion>
+
+  <Accordion title="¿Necesito XPL para recibir USDT0 en Plasma?">
+    No. La comisión de red de Plasma se descuenta del importe mostrado. Puede que necesites XPL más adelante, según lo que hagas con los USDT0 en Plasma.
+  </Accordion>
+
+  <Accordion title="¿USDT0 es lo mismo que USDT?">
+    USDT0 es la versión omnichain de USDT, que se mueve entre redes sobre LayerZero. En Plasma es el USDT que entrega L2Pass Swap.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [La mejor forma de pasar USDT y USDC: L2Pass frente a otros puentes](/es/products/swap/learn/compare-stablecoin-transfers)
+- [Pasar USDT de Tron a Ethereum](/es/products/swap/guides/usdt-tron-to-ethereum)
+- [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

@@ -1,0 +1,57 @@
+---
+title: "Thuật ngữ L2Pass Swap: RFQ, solver, USDT0, CCTP và hơn nữa"
+description: "Định nghĩa dễ hiểu cho các thuật ngữ dùng trong L2Pass Swap và tài liệu này: RFQ, solver, địa chỉ nạp, địa chỉ hoàn tiền, số tiền nhận tối thiểu, trượt giá, USDT0, CCTP và hơn nữa."
+sidebarTitle: "Thuật ngữ"
+---
+
+Đây là các thuật ngữ bạn sẽ gặp trong [L2Pass Swap](https://swap.l2pass.com/) và trong tài liệu này, giải thích bằng lời đơn giản. Mỗi thuật ngữ dẫn tới trang giải thích đầy đủ.
+
+## Tuyến và nhà cung cấp
+
+Tuyến là cách một nhà cung cấp thực hiện hoán đổi của bạn, và L2Pass hiển thị tất cả cạnh nhau.
+
+| Thuật ngữ | Ý nghĩa |
+| :-- | :-- |
+| **Tuyến (route)** | Một cách thực hiện hoán đổi của bạn, do một nhà cung cấp vận hành. L2Pass hiển thị mọi tuyến có thể thực hiện hoán đổi, sắp xếp theo số tiền bạn nhận. [Cách so sánh các tuyến](/vi/products/swap/learn/compare-routes) |
+| **Thẻ tuyến** | Ô trong giao diện hoán đổi hiển thị số tiền nhận ước tính, số tiền nhận tối thiểu, thời gian ước tính và phí của một tuyến. |
+| **NEAR Intents** | Mạng nơi các solver và nhà tạo lập thị trường cạnh tranh để thực hiện hoán đổi cross-chain. Mạng này vận hành tuyến L2Pass RFQ và L2Pass Private. |
+| **L2Pass RFQ** | Tuyến tiêu chuẩn trên NEAR Intents. RFQ là viết tắt của request for quote (yêu cầu báo giá): hoán đổi của bạn được đưa ra cho các solver, và báo giá tốt nhất sẽ thực hiện nó. [L2Pass RFQ là gì](/vi/products/swap/learn/what-is-l2pass-rfq) |
+| **L2Pass Private** | Cùng tuyến với L2Pass RFQ, được thực hiện trong môi trường bảo mật, hạn chế những gì blockchain công khai hiển thị. [Hoán đổi riêng tư](/vi/products/swap/learn/private-cross-chain-swaps) |
+| **Solver** | Nhà tạo lập thị trường thực hiện hoán đổi trên NEAR Intents bằng thanh khoản của mình. |
+| **USDT0** | Phiên bản USDT di chuyển gốc giữa các chuỗi qua LayerZero, không có token wrapped. [Giải thích các mạng USDT](/vi/products/swap/learn/usdt-networks) |
+| **Circle CCTP** | Cross-Chain Transfer Protocol của Circle. Giao thức đốt USDC trên mạng nguồn và đúc USDC gốc ở mạng đích, ở chế độ Standard hoặc Fast. [Chuyển USDC qua CCTP](/vi/products/swap/guides/usdc-cctp) |
+| **Trình tổng hợp (aggregator)** | Dịch vụ tìm một tuyến qua nhiều cầu nối và sàn, như LI.FI hoặc trình tổng hợp OKX DEX. |
+
+## Thanh toán và nhận tiền
+
+Bạn thanh toán bằng cách ký trong ví hoặc gửi tới một địa chỉ nạp.
+
+| Thuật ngữ | Ý nghĩa |
+| :-- | :-- |
+| **Tuyến qua ví** | Tuyến mà bạn ký giao dịch trong ví của mình, như CCTP, USDT0, LI.FI hoặc Relay. |
+| **Địa chỉ nạp** | Địa chỉ dùng một lần được tạo cho báo giá của bạn trên tuyến L2Pass RFQ và L2Pass Private. Bạn có thể trả từ bất kỳ ví hoặc sàn nào, không cần kết nối ví. [Hoán đổi qua địa chỉ nạp](/vi/products/swap/learn/deposit-address-swaps) |
+| **Địa chỉ hoàn tiền** | Ví bạn kiểm soát trên mạng nguồn. Nếu hoán đổi qua địa chỉ nạp không thể hoàn tất, khoản nạp sẽ trở về đó. [Hoán đổi thất bại và hoàn tiền](/vi/products/swap/learn/failed-swaps-and-refunds) |
+| **Phi lưu ký** | L2Pass không bao giờ giữ token hay khóa riêng tư của bạn. Nhà cung cấp thực hiện mỗi hoán đổi trên hợp đồng của họ. [L2Pass có an toàn không?](/vi/products/swap/learn/is-l2pass-safe) |
+| **Khớp một phần** | Hoán đổi chỉ hoàn tất một phần. L2Pass không dùng cơ chế này: hoán đổi hoặc hoàn tất toàn bộ, hoặc không được thực hiện. |
+
+## Số tiền và phí
+
+Số tiền hiển thị đã trừ mọi khoản phí, trừ gas mạng nguồn và phí tin nhắn cầu nối (nếu có).
+
+| Thuật ngữ | Ý nghĩa |
+| :-- | :-- |
+| **Số tiền nhận ước tính** | Số tiền bạn sẽ nhận trong điều kiện thị trường hiện tại, sau phí. |
+| **Số tiền nhận tối thiểu** | Số tiền ít nhất bạn sẽ nhận. Nếu thị trường biến động vượt mức đó, hoán đổi không được thực hiện. |
+| **Mức chấp nhận trượt giá** | Mức thấp hơn số tiền ước tính mà bạn chấp nhận. Nó quyết định số tiền nhận tối thiểu. Mặc định 0,05%. [Giải thích trượt giá](/vi/products/swap/learn/slippage) |
+| **Đầu ra cố định** | Tuyến giao đúng một số tiền, như USDT0. Trượt giá không áp dụng. |
+| **Phí L2Pass** | Khoản phí duy nhất L2Pass thu: 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác, tối đa 0,3% cho hoán đổi riêng tư. [Giải thích phí](/vi/products/swap/learn/fees) |
+| **Phí nhà cung cấp** | Phí do nhà cung cấp tuyến thu, như NEAR Intents, LI.FI hoặc Relay. Đã bao gồm trong số tiền bạn nhận. |
+| **Phí mạng** | Phí do blockchain đích thu. Đã bao gồm trong số tiền bạn nhận. |
+| **Gas mạng nguồn** | Phí blockchain nguồn thu để gửi giao dịch của bạn, trả từ ví bằng token gốc (ETH, TRX, BNB, v.v.). |
+| **Phí tin nhắn cầu nối** | Phí một số cầu nối thu để gửi tin nhắn cross-chain, như USDT0 qua LayerZero. Trả bằng token gốc của mạng nguồn. |
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass Swap hoạt động thế nào](/vi/products/swap/overview)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)

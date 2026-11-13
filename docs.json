@@ -310,6 +310,476 @@
             "href": "https://swap.l2pass.com"
           }
         }
+      },
+      {
+        "language": "es",
+        "tabs": [
+          {
+            "tab": "Guías",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "Primeros pasos",
+                "pages": [
+                  "es/index"
+                ]
+              },
+              {
+                "group": "Productos",
+                "pages": [
+                  {
+                    "group": "Swap entre redes",
+                    "icon": "bridge",
+                    "tag": "0% EN STABLES",
+                    "expanded": true,
+                    "pages": [
+                      "es/products/swap/overview",
+                      "es/products/swap/faq",
+                      {
+                        "group": "Aprende",
+                        "pages": [
+                          "es/products/swap/learn/fees",
+                          "es/products/swap/learn/what-is-l2pass-rfq",
+                          "es/products/swap/learn/compare-routes",
+                          "es/products/swap/learn/deposit-address-swaps",
+                          "es/products/swap/learn/failed-swaps-and-refunds",
+                          "es/products/swap/learn/private-cross-chain-swaps",
+                          "es/products/swap/learn/usdt-networks",
+                          "es/products/swap/learn/slippage",
+                          "es/products/swap/learn/is-l2pass-safe",
+                          "es/products/swap/learn/swap-api",
+                          "es/products/swap/learn/referrals-and-partners",
+                          "es/products/swap/learn/crypto-payments",
+                          "es/products/swap/learn/non-custodial-vs-exchanges",
+                          "es/products/swap/learn/compare-stablecoin-transfers",
+                          "es/products/swap/learn/compare-btc-swaps",
+                          "es/products/swap/learn/compare-zec-swaps",
+                          "es/products/swap/learn/glossary"
+                        ]
+                      },
+                      {
+                        "group": "Guías",
+                        "pages": [
+                          "es/products/swap/guides/usdt-tron-to-ethereum",
+                          "es/products/swap/guides/usdt-ethereum-to-tron",
+                          "es/products/swap/guides/usdt-tron-to-arbitrum",
+                          "es/products/swap/guides/usdt-ethereum-to-arbitrum",
+                          "es/products/swap/guides/usdt-tron-to-bnb-chain",
+                          "es/products/swap/guides/usdt-tron-to-solana",
+                          "es/products/swap/guides/usdt-tron-to-ton",
+                          "es/products/swap/guides/usdc-cctp",
+                          "es/products/swap/guides/usdc-to-solana",
+                          "es/products/swap/guides/usdt-to-plasma",
+                          "es/products/swap/guides/usdc-to-hyperevm",
+                          "es/products/swap/guides/btc-to-usdt",
+                          "es/products/swap/guides/eth-to-usdc",
+                          "es/products/swap/guides/private-swaps-with-zec"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Recursos",
+                "pages": [
+                  "es/resources/contracts",
+                  "es/resources/brand-assets",
+                  "es/resources/support"
+                ]
+              }
+            ]
+          }
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "Soporte",
+              "href": "/es/resources/support"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Hacer swap",
+            "href": "https://swap.l2pass.com"
+          }
+        }
+      },
+      {
+        "language": "pt-BR",
+        "tabs": [
+          {
+            "tab": "Guias",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "Primeiros passos",
+                "pages": [
+                  "pt-br/index"
+                ]
+              },
+              {
+                "group": "Produtos",
+                "pages": [
+                  {
+                    "group": "Swap entre redes",
+                    "icon": "bridge",
+                    "tag": "0% EM STABLES",
+                    "expanded": true,
+                    "pages": [
+                      "pt-br/products/swap/overview",
+                      "pt-br/products/swap/faq",
+                      {
+                        "group": "Aprenda",
+                        "pages": [
+                          "pt-br/products/swap/learn/fees",
+                          "pt-br/products/swap/learn/what-is-l2pass-rfq",
+                          "pt-br/products/swap/learn/compare-routes",
+                          "pt-br/products/swap/learn/deposit-address-swaps",
+                          "pt-br/products/swap/learn/failed-swaps-and-refunds",
+                          "pt-br/products/swap/learn/private-cross-chain-swaps",
+                          "pt-br/products/swap/learn/usdt-networks",
+                          "pt-br/products/swap/learn/slippage",
+                          "pt-br/products/swap/learn/is-l2pass-safe",
+                          "pt-br/products/swap/learn/swap-api",
+                          "pt-br/products/swap/learn/referrals-and-partners",
+                          "pt-br/products/swap/learn/crypto-payments",
+                          "pt-br/products/swap/learn/non-custodial-vs-exchanges",
+                          "pt-br/products/swap/learn/compare-stablecoin-transfers",
+                          "pt-br/products/swap/learn/compare-btc-swaps",
+                          "pt-br/products/swap/learn/compare-zec-swaps",
+                          "pt-br/products/swap/learn/glossary"
+                        ]
+                      },
+                      {
+                        "group": "Guias",
+                        "pages": [
+                          "pt-br/products/swap/guides/usdt-tron-to-ethereum",
+                          "pt-br/products/swap/guides/usdt-ethereum-to-tron",
+                          "pt-br/products/swap/guides/usdt-tron-to-arbitrum",
+                          "pt-br/products/swap/guides/usdt-ethereum-to-arbitrum",
+                          "pt-br/products/swap/guides/usdt-tron-to-bnb-chain",
+                          "pt-br/products/swap/guides/usdt-tron-to-solana",
+                          "pt-br/products/swap/guides/usdt-tron-to-ton",
+                          "pt-br/products/swap/guides/usdc-cctp",
+                          "pt-br/products/swap/guides/usdc-to-solana",
+                          "pt-br/products/swap/guides/usdt-to-plasma",
+                          "pt-br/products/swap/guides/usdc-to-hyperevm",
+                          "pt-br/products/swap/guides/btc-to-usdt",
+                          "pt-br/products/swap/guides/eth-to-usdc",
+                          "pt-br/products/swap/guides/private-swaps-with-zec"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Recursos",
+                "pages": [
+                  "pt-br/resources/contracts",
+                  "pt-br/resources/brand-assets",
+                  "pt-br/resources/support"
+                ]
+              }
+            ]
+          }
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "Suporte",
+              "href": "/pt-br/resources/support"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Fazer swap",
+            "href": "https://swap.l2pass.com"
+          }
+        }
+      },
+      {
+        "language": "tr",
+        "tabs": [
+          {
+            "tab": "Rehberler",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "Başlarken",
+                "pages": [
+                  "tr/index"
+                ]
+              },
+              {
+                "group": "Ürünler",
+                "pages": [
+                  {
+                    "group": "Zincirler arası takas",
+                    "icon": "bridge",
+                    "tag": "STABLE'LARDA %0",
+                    "expanded": true,
+                    "pages": [
+                      "tr/products/swap/overview",
+                      "tr/products/swap/faq",
+                      {
+                        "group": "Öğren",
+                        "pages": [
+                          "tr/products/swap/learn/fees",
+                          "tr/products/swap/learn/what-is-l2pass-rfq",
+                          "tr/products/swap/learn/compare-routes",
+                          "tr/products/swap/learn/deposit-address-swaps",
+                          "tr/products/swap/learn/failed-swaps-and-refunds",
+                          "tr/products/swap/learn/private-cross-chain-swaps",
+                          "tr/products/swap/learn/usdt-networks",
+                          "tr/products/swap/learn/slippage",
+                          "tr/products/swap/learn/is-l2pass-safe",
+                          "tr/products/swap/learn/swap-api",
+                          "tr/products/swap/learn/referrals-and-partners",
+                          "tr/products/swap/learn/crypto-payments",
+                          "tr/products/swap/learn/non-custodial-vs-exchanges",
+                          "tr/products/swap/learn/compare-stablecoin-transfers",
+                          "tr/products/swap/learn/compare-btc-swaps",
+                          "tr/products/swap/learn/compare-zec-swaps",
+                          "tr/products/swap/learn/glossary"
+                        ]
+                      },
+                      {
+                        "group": "Rehberler",
+                        "pages": [
+                          "tr/products/swap/guides/usdt-tron-to-ethereum",
+                          "tr/products/swap/guides/usdt-ethereum-to-tron",
+                          "tr/products/swap/guides/usdt-tron-to-arbitrum",
+                          "tr/products/swap/guides/usdt-ethereum-to-arbitrum",
+                          "tr/products/swap/guides/usdt-tron-to-bnb-chain",
+                          "tr/products/swap/guides/usdt-tron-to-solana",
+                          "tr/products/swap/guides/usdt-tron-to-ton",
+                          "tr/products/swap/guides/usdc-cctp",
+                          "tr/products/swap/guides/usdc-to-solana",
+                          "tr/products/swap/guides/usdt-to-plasma",
+                          "tr/products/swap/guides/usdc-to-hyperevm",
+                          "tr/products/swap/guides/btc-to-usdt",
+                          "tr/products/swap/guides/eth-to-usdc",
+                          "tr/products/swap/guides/private-swaps-with-zec"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Kaynaklar",
+                "pages": [
+                  "tr/resources/contracts",
+                  "tr/resources/brand-assets",
+                  "tr/resources/support"
+                ]
+              }
+            ]
+          }
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "Destek",
+              "href": "/tr/resources/support"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Hemen takas et",
+            "href": "https://swap.l2pass.com"
+          }
+        }
+      },
+      {
+        "language": "vi",
+        "tabs": [
+          {
+            "tab": "Hướng dẫn",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "Bắt đầu",
+                "pages": [
+                  "vi/index"
+                ]
+              },
+              {
+                "group": "Sản phẩm",
+                "pages": [
+                  {
+                    "group": "Hoán đổi xuyên chuỗi",
+                    "icon": "bridge",
+                    "tag": "0% CHO STABLECOIN",
+                    "expanded": true,
+                    "pages": [
+                      "vi/products/swap/overview",
+                      "vi/products/swap/faq",
+                      {
+                        "group": "Tìm hiểu",
+                        "pages": [
+                          "vi/products/swap/learn/fees",
+                          "vi/products/swap/learn/what-is-l2pass-rfq",
+                          "vi/products/swap/learn/compare-routes",
+                          "vi/products/swap/learn/deposit-address-swaps",
+                          "vi/products/swap/learn/failed-swaps-and-refunds",
+                          "vi/products/swap/learn/private-cross-chain-swaps",
+                          "vi/products/swap/learn/usdt-networks",
+                          "vi/products/swap/learn/slippage",
+                          "vi/products/swap/learn/is-l2pass-safe",
+                          "vi/products/swap/learn/swap-api",
+                          "vi/products/swap/learn/referrals-and-partners",
+                          "vi/products/swap/learn/crypto-payments",
+                          "vi/products/swap/learn/non-custodial-vs-exchanges",
+                          "vi/products/swap/learn/compare-stablecoin-transfers",
+                          "vi/products/swap/learn/compare-btc-swaps",
+                          "vi/products/swap/learn/compare-zec-swaps",
+                          "vi/products/swap/learn/glossary"
+                        ]
+                      },
+                      {
+                        "group": "Hướng dẫn",
+                        "pages": [
+                          "vi/products/swap/guides/usdt-tron-to-ethereum",
+                          "vi/products/swap/guides/usdt-ethereum-to-tron",
+                          "vi/products/swap/guides/usdt-tron-to-arbitrum",
+                          "vi/products/swap/guides/usdt-ethereum-to-arbitrum",
+                          "vi/products/swap/guides/usdt-tron-to-bnb-chain",
+                          "vi/products/swap/guides/usdt-tron-to-solana",
+                          "vi/products/swap/guides/usdt-tron-to-ton",
+                          "vi/products/swap/guides/usdc-cctp",
+                          "vi/products/swap/guides/usdc-to-solana",
+                          "vi/products/swap/guides/usdt-to-plasma",
+                          "vi/products/swap/guides/usdc-to-hyperevm",
+                          "vi/products/swap/guides/btc-to-usdt",
+                          "vi/products/swap/guides/eth-to-usdc",
+                          "vi/products/swap/guides/private-swaps-with-zec"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Tài nguyên",
+                "pages": [
+                  "vi/resources/contracts",
+                  "vi/resources/brand-assets",
+                  "vi/resources/support"
+                ]
+              }
+            ]
+          }
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "Hỗ trợ",
+              "href": "/vi/resources/support"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Hoán đổi ngay",
+            "href": "https://swap.l2pass.com"
+          }
+        }
+      },
+      {
+        "language": "ko",
+        "tabs": [
+          {
+            "tab": "가이드",
+            "icon": "book",
+            "groups": [
+              {
+                "group": "시작하기",
+                "pages": [
+                  "ko/index"
+                ]
+              },
+              {
+                "group": "제품",
+                "pages": [
+                  {
+                    "group": "크로스체인 스왑",
+                    "icon": "bridge",
+                    "tag": "스테이블코인 0%",
+                    "expanded": true,
+                    "pages": [
+                      "ko/products/swap/overview",
+                      "ko/products/swap/faq",
+                      {
+                        "group": "알아보기",
+                        "pages": [
+                          "ko/products/swap/learn/fees",
+                          "ko/products/swap/learn/what-is-l2pass-rfq",
+                          "ko/products/swap/learn/compare-routes",
+                          "ko/products/swap/learn/deposit-address-swaps",
+                          "ko/products/swap/learn/failed-swaps-and-refunds",
+                          "ko/products/swap/learn/private-cross-chain-swaps",
+                          "ko/products/swap/learn/usdt-networks",
+                          "ko/products/swap/learn/slippage",
+                          "ko/products/swap/learn/is-l2pass-safe",
+                          "ko/products/swap/learn/swap-api",
+                          "ko/products/swap/learn/referrals-and-partners",
+                          "ko/products/swap/learn/crypto-payments",
+                          "ko/products/swap/learn/non-custodial-vs-exchanges",
+                          "ko/products/swap/learn/compare-stablecoin-transfers",
+                          "ko/products/swap/learn/compare-btc-swaps",
+                          "ko/products/swap/learn/compare-zec-swaps",
+                          "ko/products/swap/learn/glossary"
+                        ]
+                      },
+                      {
+                        "group": "가이드",
+                        "pages": [
+                          "ko/products/swap/guides/usdt-tron-to-ethereum",
+                          "ko/products/swap/guides/usdt-ethereum-to-tron",
+                          "ko/products/swap/guides/usdt-tron-to-arbitrum",
+                          "ko/products/swap/guides/usdt-ethereum-to-arbitrum",
+                          "ko/products/swap/guides/usdt-tron-to-bnb-chain",
+                          "ko/products/swap/guides/usdt-tron-to-solana",
+                          "ko/products/swap/guides/usdt-tron-to-ton",
+                          "ko/products/swap/guides/usdc-cctp",
+                          "ko/products/swap/guides/usdc-to-solana",
+                          "ko/products/swap/guides/usdt-to-plasma",
+                          "ko/products/swap/guides/usdc-to-hyperevm",
+                          "ko/products/swap/guides/btc-to-usdt",
+                          "ko/products/swap/guides/eth-to-usdc",
+                          "ko/products/swap/guides/private-swaps-with-zec"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "리소스",
+                "pages": [
+                  "ko/resources/contracts",
+                  "ko/resources/brand-assets",
+                  "ko/resources/support"
+                ]
+              }
+            ]
+          }
+        ],
+        "navbar": {
+          "links": [
+            {
+              "label": "지원",
+              "href": "/ko/resources/support"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "지금 스왑",
+            "href": "https://swap.l2pass.com"
+          }
+        }
       }
     ]
   },

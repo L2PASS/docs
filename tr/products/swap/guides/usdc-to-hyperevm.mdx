@@ -1,0 +1,133 @@
+---
+title: "USDC'yi HyperEVM'e köprüleme"
+description: "USDC'yi Arbitrum'dan yaklaşık 35 saniyede HyperEVM'e köprüleyin veya TRC-20 USDT'yi USDC'ye takas edin. L2Pass RFQ'da %0 L2Pass ücreti, HYPE gerekmez."
+sidebarTitle: "HyperEVM'e USDC"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/) ile USDC'yi Arbitrum'dan Hyperliquid'in EVM ağı HyperEVM'e köprüleyebilir, Tron'daki USDT'yi HyperEVM'de USDC'ye takas edebilirsiniz. Test tekliflerinde Arbitrum'dan HyperEVM'i L2Pass RFQ ve L2Pass Private yaklaşık 35 saniyede sundu; Relay ve LI.FI de sundu. Tron'dan HyperEVM'i L2Pass RFQ ve L2Pass Private yaklaşık 1,5 dakikada sundu. L2Pass RFQ bu çiftlerde %0 L2Pass ücreti gösterdi ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Arbitrum'dan yaklaşık 35 saniye** · **%0 L2Pass ücreti** · **1.000 gönderilene 999,68 USDC ulaşır** · **HYPE gerekmez**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## HyperEVM'e rotalar
+
+Arbitrum'dan HyperEVM'e dört rota ulaştı, bunların ikisi Tron'dan da ulaştı.
+
+| Rota | Kaynak | Tahmini süre | Çıktı | Ödeme |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Arbitrum, Tron | Arbitrum'dan yaklaşık 35 saniye, Tron'dan 1,5 dakika | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi |
+| L2Pass Private | Arbitrum, Tron | L2Pass RFQ ile aynı | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi. L2Pass ücreti %0,3'e kadar |
+| Relay | Arbitrum | Yaklaşık 2 saniye | Değişken | Cüzdan işlemi |
+| LI.FI | Arbitrum | Yaklaşık 18 dakika | Değişken | Cüzdan işlemi |
+
+L2Pass RFQ ve L2Pass Private, [NEAR Intents](https://near.org/intents) üzerinde çalışır. Bu test tekliflerinde HyperEVM'e Circle CCTP sunulmadı. Teklif, çiftinizi gerçekleştirebilen her rotayı listeler.
+
+## Test teklifleri
+
+Yaklaşık 17:17 UTC'de teklifler. Canlı teklif güncel rakamları gösterir.
+
+<Tabs>
+<Tab title="Arbitrum'dan 1.000 USDC">
+
+| Rota | Alacağınız | Tahmini süre |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 999,68 USDC | Yaklaşık 35 saniye |
+| L2Pass Private | 998,18 USDC | Yaklaşık 35 saniye |
+| Relay | 997,87 USDC | Yaklaşık 2 saniye |
+| LI.FI | 995,50 USDC | Yaklaşık 18 dakika |
+
+L2Pass RFQ bu çiftte sağlayıcı ücreti göstermedi, yalnızca 0,32 USDC HyperEVM ağ ücreti gösterdi.
+
+</Tab>
+<Tab title="Tron'dan 1.000 USDT">
+
+| Rota | Alacağınız | Tahmini süre |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 998,59 USDC | Yaklaşık 1,5 dakika |
+| L2Pass Private | 996,07 USDC | Yaklaşık 1,5 dakika |
+
+</Tab>
+</Tabs>
+
+## USDC HyperEVM'e nasıl köprülenir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Arbitrum'da USDC veya Tron'da USDT.
+    - **To:** HyperEVM'de USDC.
+    - **Amount:** göndermek istediğiniz miktar.
+    - **Alıcı adresi:** USDC'yi alacak HyperEVM adresi (0x ile başlayan bir EVM adresi).
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. Varsayılan kayma %0,05'tir (değiştirilebilir).
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresi olarak kaynak ağda kontrol ettiğiniz bir cüzdan girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya iade eder.
+  </Step>
+
+  <Step title="Cüzdanla veya yatırma adresiyle ödeyin">
+    Nasıl ödeyeceğiniz seçtiğiniz rotaya bağlıdır.
+
+    <Tabs>
+      <Tab title="Cüzdan rotaları (Relay, LI.FI)">
+        İşlemi cüzdanınızda imzalayın.
+      </Tab>
+      <Tab title="Yatırma adresi (L2Pass RFQ, L2Pass Private)">
+        Tokenları bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Takası takip edin">
+    L2Pass RFQ ve L2Pass Private için durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+HyperEVM'de yalnızca USDC alabilirsiniz ve yalnızca kaynak ağda gas gerekir.
+
+- **Yalnızca USDC.** L2Pass Swap, HyperEVM'de USDC sunar. USDT ile başlamak için USDT'yi tek adımda USDC'ye takas eden Tron'dan HyperEVM'e çiftini kullanın.
+- **Gas yalnızca kaynak ağda.** Gas'ı Arbitrum'da ETH ile, Tron'da TRX ile ödersiniz. HyperEVM ağ ücreti gösterilen tutardan düşülür, bu yüzden almak için HYPE gerekmez. HYPE, HyperEVM'in gas tokenıdır ve orada USDC'yi daha sonra göndermek veya kullanmak için gerekir.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDC'yi HyperEVM'e köprülemek ne kadar sürer?">
+    Test tekliflerinde Arbitrum'dan L2Pass RFQ ile yaklaşık 35 saniye, Relay ile yaklaşık 2 saniye. Rota kartları güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="USDC'yi HyperEVM'e köprülemenin maliyeti nedir?">
+    Arbitrum'dan 1.000 USDC'lik test tekliflerinde L2Pass RFQ, %0 L2Pass ücreti ve 0,32 USDC HyperEVM ağ ücretiyle 999,68 USDC teslim etti. Diğer rotalar kendi ücretlerini gösterdi. Gösterilen tutar bunları zaten içerir.
+  </Accordion>
+
+  <Accordion title="HyperEVM'de USDC almak için HYPE gerekir mi?">
+    Hayır. HyperEVM ağ ücreti gösterilen tutardan düşülür. USDC'yi HyperEVM'de daha sonra göndermek veya kullanmak için HYPE gerekir.
+  </Accordion>
+
+  <Accordion title="TRC-20 USDT'yi HyperEVM'e gönderebilir miyim?">
+    Evet, USDC'ye takas olarak. Test tekliflerinde Tron'daki 1.000 USDT, L2Pass RFQ ile HyperEVM'de 998,59 USDC'ye dönüştü.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [Herhangi bir cüzdandan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

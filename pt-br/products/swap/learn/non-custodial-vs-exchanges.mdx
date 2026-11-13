@@ -1,0 +1,83 @@
+---
+title: "Swaps não custodiais vs exchanges centralizadas: contas, KYC e controle dos fundos"
+description: "Como um swap não custodial como a L2Pass difere de uma exchange centralizada: sem conta, sem KYC e com você no controle dos seus fundos."
+sidebarTitle: "Não custodial vs exchanges"
+---
+
+Uma exchange centralizada guarda seus fundos na sua conta. Para negociar ou sacar, normalmente você precisa verificar sua identidade (KYC), e a exchange pode pausar um saque ou congelar uma conta enquanto analisa, por exemplo pedindo a origem dos fundos. O [L2Pass Swap](https://swap.l2pass.com/) funciona de outro jeito: é não custodial, não exige conta nem KYC, e seus tokens ficam na sua própria carteira até você enviá-los para um swap. Mesmo assim, cada swap passa por triagem de risco de AML e sanções, e um depósito sinalizado pode ficar retido para análise.
+
+## Lado a lado
+
+A principal diferença é quem guarda os seus fundos: você ou a exchange.
+
+| | L2Pass Swap (não custodial) | Exchange centralizada |
+| :-- | :-- | :-- |
+| Conta | Não precisa | Obrigatória |
+| Verificação de identidade (KYC) | Não precisa | Normalmente obrigatória para negociar ou sacar |
+| Quem guarda seus fundos | Você, na sua própria carteira | A exchange, na sua conta |
+| Quem tem as chaves | Só você | A exchange |
+| Transferência cross-chain | Um swap, de uma rede para outra | Depositar, negociar se preciso e sacar na nova rede |
+| Taxas exibidas | Cada taxa e o valor que você vai receber, antes de confirmar | Taxa de negociação, spread e taxa de saque, cada uma numa tela |
+| Se uma transação for sinalizada | Um endereço sinalizado não recebe cotação; um depósito sinalizado fica retido para análise daquele swap | A exchange pode reter o saque ou restringir a conta |
+| Entrada e saída em moeda fiduciária | Não | Normalmente sim |
+
+## Exchanges instantâneas ficam no meio
+
+Exchanges instantâneas como FixedFloat, ChangeNOW ou StealthEX não exigem conta, mas ficam com a custódia do seu depósito até enviar o swap. A [Trocador](https://trocador.app), que as compara, avalia cada uma pelos termos, pela política de privacidade e pelo que faz quando um usuário se recusa a se verificar, e observa que qualquer exchange ainda pode pausar um swap e pedir KYC ou verificações de AML. Nas nossas cotações ao vivo de 19 de outubro de 2026, elas também entregaram menos que o L2Pass RFQ na maioria dos pares. Veja [Comparativo: transferências de stablecoins](/pt-br/products/swap/learn/compare-stablecoin-transfers), [swaps de BTC](/pt-br/products/swap/learn/compare-btc-swaps) e [swaps de ZEC](/pt-br/products/swap/learn/compare-zec-swaps).
+
+## Quando cada um faz sentido
+
+**Um swap não custodial faz sentido quando você:**
+- Já tem cripto e quer movê-la para outra rede ou token.
+- Quer manter a custódia dos seus fundos entre swaps.
+- Não quer abrir nem verificar uma conta para uma transferência pontual.
+
+**Uma exchange centralizada faz sentido quando você:**
+- Precisa comprar ou vender cripto com moeda fiduciária.
+- Quer um livro de ofertas ou ferramentas de trading.
+- Não se importa em deixar fundos na exchange.
+
+Você também pode combinar os dois: saque de uma exchange direto para o endereço de depósito de uso único de uma cotação L2Pass, e os tokens chegam na rede que você escolheu. Veja [Swap de qualquer carteira ou exchange](/pt-br/products/swap/learn/deposit-address-swaps).
+
+## O que não custodial não significa
+
+Não custodial significa que a L2Pass nunca guarda seus fundos. Não significa anônimo nem sem triagem.
+
+- **Não é anônimo.** Swaps são transações públicas em blockchain, e os provedores recebem o endereço da sua carteira.
+- **Não é sem triagem.** Todo swap passa por triagem de risco de AML e sanções. Um depósito sinalizado depois de chegar fica retido para análise em vez de reembolsado, e você resolve isso com o suporte da NEAR Intents. Veja [Como funciona a triagem](/pt-br/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Não é lugar para guardar fundos.** A L2Pass não mantém saldo para você. Seus fundos ficam na sua carteira.
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Preciso de KYC para usar o L2Pass Swap?">
+    Não. Não há conta nem KYC. Se um depósito ficar retido para análise, o suporte da NEAR Intents pode perguntar a origem dos fundos.
+  </Accordion>
+
+  <Accordion title="A L2Pass pode congelar meus fundos?">
+    A L2Pass nunca guarda seus fundos, então não tem saldo para congelar. Se a NEAR Intents sinalizar um depósito por regras de AML ou sanções, aquele swap fica retido para análise até você resolver com o suporte deles. Nada mais é afetado.
+  </Accordion>
+
+  <Accordion title="A L2Pass é uma DEX?">
+    O L2Pass Swap é uma interface não custodial que compara rotas de protocolos descentralizados e redes de solvers, como NEAR Intents, Circle CCTP, USDT0, LI.FI e Relay. Não tem livro de ofertas nem guarda fundos de usuários.
+  </Accordion>
+
+  <Accordion title="Posso tirar cripto de uma exchange sem outro KYC?">
+    Saque da sua exchange direto para o endereço de depósito de uso único de uma cotação L2Pass. A L2Pass não exige conta nem KYC, e os tokens chegam na rede que você escolheu. As regras da sua exchange continuam valendo para o saque.
+  </Accordion>
+
+  <Accordion title="Por que as exchanges pedem comprovação de fundos?">
+    Exchanges são custodiantes e precisam seguir as regras de onde são licenciadas, o que pode incluir verificar a origem dos depósitos. Pergunte à sua exchange quais são as exigências exatas.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [A L2Pass é segura?](/pt-br/products/swap/learn/is-l2pass-safe)
+- [Swap de qualquer carteira ou exchange](/pt-br/products/swap/learn/deposit-address-swaps)
+- [Princípios de privacidade e AML](https://l2pass.com/privacy-policy)
+- [Pague qualquer pessoa em cripto na rede que ela preferir](/pt-br/products/swap/learn/crypto-payments)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*

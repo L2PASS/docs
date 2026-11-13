@@ -1,0 +1,113 @@
+---
+title: "Taxas do L2Pass Swap explicadas"
+description: "Taxas do L2Pass Swap: taxa L2Pass de 0% em swaps de stablecoins, até 0,2% em outros ativos, até 0,3% em swaps privados. Exemplos de cotações reais."
+sidebarTitle: "Taxas explicadas"
+---
+
+O [L2Pass Swap](https://swap.l2pass.com/) cobra taxa L2Pass de 0% em swaps de stablecoins por qualquer rota, até 0,2% em outros ativos e até 0,3% em swaps privados. A taxa privada se aplica em vez de 0% ou 0,2%, não somada. Parceiros de roteamento e blockchains cobram taxas próprias, e o valor que você vai receber, mostrado na cotação antes de confirmar, já as inclui, exceto o gas na rede de origem e a taxa de mensagem da ponte, se houver, que você paga à parte.
+
+## Taxa L2Pass
+
+É a única taxa que a própria L2Pass cobra. Ela depende do ativo e de o swap ser privado ou não.
+
+| Swap | Taxa L2Pass |
+| :-- | :-- |
+| Swaps de stablecoins (USDT, USDC e outras), qualquer rota | **0%** |
+| Outros ativos (ETH, BTC, SOL, ZEC e outros) | **até 0,2%** |
+| Swaps privados, qualquer ativo | **até 0,3%** (em vez de 0% ou 0,2%, não somada) |
+
+## Todas as taxas que aparecem em uma cotação
+
+Uma cotação pode incluir até cinco taxas. As três primeiras saem do valor que você recebe. As duas últimas você paga da sua carteira, e o cartão de rota as mostra.
+
+| Taxa | Quem cobra | Como você paga |
+| :-- | :-- | :-- |
+| Taxa L2Pass | L2Pass | Incluída no valor que você vai receber |
+| Taxa do provedor | O parceiro de roteamento, como NEAR Intents, LI.FI ou Relay | Incluída no valor que você vai receber |
+| Taxa da rede de destino | A blockchain de destino | Incluída no valor que você vai receber |
+| Taxa de mensagem da ponte | Algumas pontes, como USDT0 via LayerZero | Paga no token nativo da rede de origem, mostrada no cartão de rota |
+| Gas de origem | A blockchain de origem | Paga da sua carteira no token nativo (ETH, TRX, BNB etc.), mostrada no cartão de rota |
+
+A L2Pass não controla taxas de parceiros nem de rede. Consulte cada provedor para os detalhes atualizados. O cartão de rota sempre mostra as taxas reais do seu swap.
+
+## Exemplos de cotações reais
+
+Cotações de teste de 19 de outubro de 2026 (por volta das 16:55 UTC) mostraram estas taxas. A cotação ao vivo mostra os números atuais para o seu par e valor.
+
+| Swap | Rota | Taxa L2Pass | Outras taxas | Você recebe |
+| :-- | :-- | :-- | :-- | :-- |
+| 1.000 USDC, Arbitrum → Base | L2Pass RFQ | 0 | 0,1 USDC de taxa da NEAR Intents, 0,0024 USDC de taxa de rede | 999,80 USDC |
+| 1.000 USDC, Arbitrum → Base | L2Pass Private | 3 USDC (0,3%) | Taxa da NEAR Intents, 0,0024 USDC de taxa de rede | 998,20 USDC |
+| 1.000 USDC, Arbitrum → Base | Ponte USDC (CCTP Fast) | 0 | 0,19 USDC de taxa de rede | 999,81 USDC |
+| 1.000 USDT, Ethereum → Tron | USDT native bridge (USDT0) | 0 | Taxa de mensagem da LayerZero de cerca de 0,005 ETH (cerca de 11,92 USD), paga em ETH | 999,7 USDT |
+| 0,5 ETH na Ethereum → USDC na Arbitrum | L2Pass RFQ | 0 | 0,001 ETH de taxa da NEAR Intents, 0,0053 USDC de taxa de rede | 1.197,00 USDC |
+| 0,5 ETH na Ethereum → USDC na Arbitrum | Relay | 0,1% (cerca de 1,20 USD) | Taxa da Relay de cerca de 1,34 USD | 1.195,67 USDC |
+
+O valor recebido também reflete o preço que cada provedor cota, então as taxas listadas nem sempre somam toda a diferença.
+
+Dois pontos de atenção:
+
+- **Outra rota pode vencer em outro par.** No exemplo de ETH, o L2Pass RFQ entregou mais, embora não seja a rota mais barata em todo par.
+- **Veja as taxas pagas fora do valor.** O USDT0 mostrou o maior valor recebido de Ethereum para Tron, mas sua taxa de mensagem é paga à parte em ETH. A L2Pass ordena as rotas pelo valor líquido que você recebe depois do gas, então colocou o L2Pass RFQ em primeiro.
+
+## Como ver as taxas do seu swap
+
+Você pode conferir cada taxa para o seu valor exato em três passos, antes de enviar qualquer coisa.
+
+<Steps>
+  <Step title="Peça uma cotação">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/), escolha os tokens e redes de origem e destino e digite o valor.
+  </Step>
+
+  <Step title="Abra o cartão de rota">
+    Cada cartão de rota mostra o valor estimado, o mínimo a receber, o tempo estimado e o detalhamento das taxas daquela rota.
+  </Step>
+
+  <Step title="Compare e confirme">
+    As rotas são ordenadas pelo valor que você recebe. Escolha a primeira, ou uma mais rápida se a velocidade importar mais. O valor mostrado é o que você vai receber depois das taxas da L2Pass, do provedor e da rede de destino.
+  </Step>
+</Steps>
+
+## Gas, reembolsos e slippage
+
+O gas é o único custo que você nunca recupera, mesmo quando o swap falha.
+
+- **Gas não é reembolsável.** Se uma rota on-chain for revertida, nenhum token é trocado, mas o gas de origem é gasto.
+- **Reembolsos e taxas.** Se uma rota com endereço de depósito não puder ser concluída, o provedor devolve o depósito ao endereço de reembolso; taxas do provedor e da rede podem ser descontadas.
+- **Slippage não é taxa.** A tolerância padrão é 0,05% e pode ser alterada em qualquer cartão de rota. Ela define o mínimo a receber, e rotas com valor fixo não são afetadas.
+- **Envio a partir de exchange.** Algumas exchanges descontam a taxa de saque do valor enviado. Confira se o valor que chega bate com a cotação.
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="O L2Pass Swap é gratuito para stablecoins?">
+    A L2Pass cobra 0% em swaps de stablecoins, por qualquer rota. Parceiros de roteamento e blockchains ainda cobram taxas próprias, incluídas no valor mostrado na cotação. Em uma cotação de teste de 1.000 USDC da Arbitrum para a Base, essas taxas somaram cerca de 0,10 USDC.
+  </Accordion>
+
+  <Accordion title="A taxa de swap privado é somada à taxa padrão?">
+    Não. A taxa L2Pass de um swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada). Ela já está incluída no valor mostrado na cotação.
+  </Accordion>
+
+  <Accordion title="Existem taxas que não vejo antes de confirmar?">
+    O cartão de rota mostra as taxas do seu swap antes de você confirmar, e o valor que você vai receber já inclui as taxas da L2Pass, do provedor e da rede de destino. O gas de origem e a taxa de mensagem da ponte, se houver, também aparecem no cartão de rota.
+  </Accordion>
+
+  <Accordion title="Posso ter uma taxa L2Pass menor com alto volume?">
+    Sim. A taxa L2Pass pode ser reduzida conforme o seu volume, e parte dela pode ser dividida com indicadores e parceiros. As condições são combinadas individualmente. Veja [Indicações e condições por volume](/pt-br/products/swap/learn/referrals-and-partners).
+  </Accordion>
+
+  <Accordion title="Por que duas rotas mostram valores diferentes para o mesmo swap?">
+    Cada rota tem suas próprias taxas de provedor e de rede, velocidade e liquidez. Compare os cartões de rota e escolha o que fizer mais sentido para você. Veja [Como a L2Pass compara rotas](/pt-br/products/swap/learn/compare-routes).
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Como a L2Pass compara rotas](/pt-br/products/swap/learn/compare-routes)
+- [O que é o L2Pass RFQ by NEAR Intents](/pt-br/products/swap/learn/what-is-l2pass-rfq)
+- [Estrutura de taxas na visão geral do Swap](/pt-br/products/swap/overview#fee-structure)
+- [Indicações e condições por volume](/pt-br/products/swap/learn/referrals-and-partners)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*

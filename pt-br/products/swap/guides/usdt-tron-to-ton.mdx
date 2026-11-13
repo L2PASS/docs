@@ -1,0 +1,97 @@
+---
+title: "Como transferir USDT da Tron para a TON"
+description: "Transfira USDT da Tron para a TON em cerca de 2 minutos. Taxa L2Pass de 0%, gas só em TRX, sem precisar de Toncoin para receber. Pague de qualquer carteira ou exchange."
+sidebarTitle: "USDT: Tron para TON"
+---
+
+import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
+
+Você pode transferir USDT da Tron (TRC-20) para a TON, onde o USDT é um jetton, com o [L2Pass Swap](https://swap.l2pass.com/), uma interface não custodial que mostra todas as rotas do par lado a lado. Em cotações de teste, ele ofereceu duas rotas para este par, L2Pass RFQ e L2Pass Private, cada uma com tempo estimado de pouco mais de 2 minutos. A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas antes de confirmar. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
+
+**Cerca de 2 minutos** · **Taxa L2Pass de 0%** · **Chegam 998,84 USDT para 1.000 enviados** · **Sem precisar de Toncoin**
+
+<Note>Números de cotações de teste de 10 de outubro de 2026. A sua cotação é sempre ao vivo.</Note>
+
+## Rotas de USDT da Tron para a TON
+
+L2Pass RFQ e L2Pass Private rodam na [NEAR Intents](https://near.org/intents), onde solvers e market makers competem para executar o seu swap. O Private executa em um ambiente confidencial.
+
+| Rota | Tempo estimado | Resultado | Observações |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Pouco mais de 2 minutos | Variável, com mínimo a receber | Pagamento para um endereço de depósito de uso único. |
+| L2Pass Private | Pouco mais de 2 minutos | Variável, com mínimo a receber | Endereço de depósito. Taxa L2Pass de até 0,3%. |
+
+A bridge nativa USDT0 e as rotas de agregadores (LI.FI, LI.FI Intents, Relay, Aori, agregador OKX DEX) não foram oferecidas para este par nessas cotações de teste. A cotação lista qualquer rota que consiga executar o par.
+
+Cotações de teste de 1.000 USDT mostraram estes valores recebidos: 998,84 USDT no L2Pass RFQ e 997,24 USDT no L2Pass Private. A cotação ao vivo mostra os números atuais para o seu valor.
+
+## Como transferir USDT da Tron para a TON
+
+Nada sai da sua carteira até você pagar, então dá para comparar todas as rotas antes.
+
+<Steps>
+  <Step title="Abra o L2Pass Swap">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/) e preencha quatro campos:
+
+    - **From:** USDT na Tron.
+    - **To:** USDT na TON.
+    - **Amount:** quanto USDT você quer enviar.
+    - **Endereço de recebimento:** o endereço TON que vai receber o USDT.
+  </Step>
+
+  <Step title="Compare as rotas">
+    Cada cartão de rota mostra o valor estimado, o mínimo a receber, o tempo estimado e as taxas. O slippage padrão é de 0,05% (editável) e não se aplica a rotas de valor fixo como USDT0.
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    No L2Pass RFQ e no L2Pass Private, coloque como endereço de reembolso uma carteira Tron que você controla. Se o swap não puder ser concluído, o provedor devolve o seu depósito para lá.
+  </Step>
+
+  <Step title="Pague no endereço de depósito">
+    Envie USDT para o endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira Tron ou de uma exchange, por endereço ou QR code. Se enviar de uma exchange, confira se o valor que chega bate com a cotação, porque algumas exchanges descontam a taxa de saque dele.
+  </Step>
+
+  <Step title="Acompanhe o swap em Recent swaps">
+    Acompanhe o status em **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* e depois *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Você precisa de TRX na Tron para o gas e de nenhum Toncoin para receber.
+
+- **Gas só na Tron.** Enviar USDT TRC-20 custa TRX em energia e largura de banda. A taxa de rede na rede de destino é descontada do valor exibido, então você não precisa de gas lá.
+- **Valor mínimo.** Algumas rotas têm um valor mínimo de swap que varia conforme o par. Se o seu valor estiver abaixo dele, a rota aparece como indisponível com o mínimo indicado.
+
+<SwapBeforeYouSend />
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="O que vou receber na TON?">
+    USDT como jetton, o padrão de tokens da TON. Use o endereço de uma carteira TON como destino.
+  </Accordion>
+
+  <Accordion title="A bridge USDT0 está disponível da Tron para a TON?">
+    Não nas cotações de teste: a bridge nativa USDT0 não foi oferecida para este par. Use L2Pass RFQ ou L2Pass Private, que mostraram tempo estimado de pouco mais de 2 minutos. O L2Pass Swap lista o USDT0 sempre que ele consegue executar o par.
+  </Accordion>
+
+  <Accordion title="Posso enviar USDT da Tron para uma conta de exchange na TON?">
+    Os endereços de depósito de exchanges na TON costumam exigir um memo (comentário) para creditar a sua conta. Por segurança, envie o USDT para uma carteira TON que você controla e depois mova para a exchange.
+  </Accordion>
+
+  <Accordion title="Preciso de Toncoin para receber USDT na TON?">
+    Não. Você paga gas só na Tron, em TRX, e qualquer taxa de rede na rede de destino já é descontada do valor exibido. Você vai precisar de um pouco de Toncoin (TON) depois para movimentar ou usar o USDT.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Melhor forma de transferir USDT e USDC: L2Pass vs outras bridges](/pt-br/products/swap/learn/compare-stablecoin-transfers)
+- [USDT da Tron para a Solana](/pt-br/products/swap/guides/usdt-tron-to-solana)
+- [USDT da Tron para a Ethereum](/pt-br/products/swap/guides/usdt-tron-to-ethereum)
+- [Taxas do L2Pass Swap](/pt-br/products/swap/overview#fee-structure)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 10 de outubro de 2026*

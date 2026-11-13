@@ -1,0 +1,98 @@
+---
+title: "¿Es seguro L2Pass? Cómo funcionan los swaps sin custodia"
+description: "L2Pass Swap no custodia: nunca guarda tus tokens ni tus claves, los swaps se ejecutan en los contratos de los proveedores y solo pagas a una dirección de depósito de un solo uso."
+sidebarTitle: "¿Es seguro L2Pass?"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) es una interfaz sin custodia: L2Pass nunca guarda tus tokens ni tus claves privadas. Cada swap lo ejecuta un proveedor de rutas, como NEAR Intents, Circle CCTP, USDT0, LI.FI o Relay, en sus propios contratos. O firmas una transacción en tu wallet o envías tokens a una dirección de depósito de un solo uso creada para tu cotización, y la interfaz muestra el importe que recibirás, después de comisiones, antes de que confirmes. L2Pass funciona desde 2023 y ha atendido a más de 650.000 wallets y más de 4 millones de transacciones.
+
+## Cómo se mueven tus fondos
+
+Tus claves nunca salen de tu wallet, elijas la ruta que elijas.
+
+| Paso | Rutas con wallet (CCTP, USDT0, LI.FI, Relay, Aori, OKX) | Rutas con dirección de depósito (L2Pass RFQ, L2Pass Private) |
+| :-- | :-- | :-- |
+| Confirmas | Firmas una transacción en tu wallet | Envías tokens a una dirección de depósito de un solo uso para tu cotización |
+| Quién ejecuta | Los contratos del proveedor | Solvers en [NEAR Intents](https://near.org/intents) |
+| Quién tiene tus claves | Solo tú | Solo tú |
+| Si falla | La transacción se revierte (el gas no se reembolsa) | El depósito vuelve a tu dirección de reembolso, menos las comisiones del proveedor o de red |
+
+<Note>
+Todos los swaps pasan por un control. En las rutas RFQ y Private, una dirección marcada no recibe cotización, así que no se envía nada. Un depósito marcado después de llegar queda retenido para revisión en lugar de reembolsarse, y lo resuelves con el soporte de NEAR Intents. Consulta [Cómo funciona el control](/es/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+</Note>
+
+## Qué hace y qué no hace L2Pass
+
+**L2Pass sí:**
+- Pide cotizaciones a varios proveedores de rutas y las muestra lado a lado.
+- Muestra cada comisión y el importe que recibirás antes de que confirmes.
+- Crea la dirección de depósito de un solo uso para las cotizaciones RFQ y Private a través de NEAR Intents.
+
+**L2Pass no:**
+- Guarda tus tokens ni tus claves privadas.
+- Necesita cuenta ni KYC.
+- Anula la revisión de cumplimiento de un proveedor.
+
+## Contratos de L2Pass
+
+Los swaps por rutas de terceros los ejecutan los propios contratos de esos proveedores. L2Pass usa su propio router solo para transferencias nativas de USDT0. Consulta [Contratos](/es/resources/contracts) para ver las direcciones en Ethereum, Arbitrum, Optimism, Polygon, HyperEVM y Tron.
+
+## Cómo protegerte
+
+Estas cuatro comprobaciones te protegen de sitios falsos, direcciones equivocadas y aprobaciones no deseadas.
+
+<Steps>
+  <Step title="Usa el sitio oficial">
+    Abre [swap.l2pass.com](https://swap.l2pass.com/) directamente o desde [docs.l2pass.com](https://docs.l2pass.com/). Revisa la barra de direcciones antes de conectar una wallet o enviar fondos.
+  </Step>
+
+  <Step title="Envía solo a la dirección de depósito de tu cotización">
+    La única dirección a la que envías fondos es la dirección de depósito de un solo uso que muestra la interfaz para tu cotización. El soporte de L2Pass nunca te pedirá que envíes fondos a otro lugar.
+  </Step>
+
+  <Step title="Indica una dirección de reembolso que controles">
+    En las rutas con dirección de depósito, usa una wallet que controles en la red de origen, no una dirección de depósito de un exchange.
+  </Step>
+
+  <Step title="Revisa las aprobaciones">
+    En las rutas con wallet, lee lo que tu wallet te pide aprobar. Puedes revisar y revocar aprobaciones de tokens en tu wallet o en un explorador de bloques.
+  </Step>
+</Steps>
+
+## Cumplimiento y riesgo de terceros
+
+Los proveedores, no L2Pass, ejecutan cada swap y sus controles de cumplimiento.
+
+- **Controles de cumplimiento.** En las rutas RFQ y Private, NEAR Intents revisa cada swap dos veces, en la cotización y después del depósito, igual para swaps públicos y privados. Un fallo técnico se reembolsa; una alerta de cumplimiento tras el depósito significa que los fondos quedan retenidos para revisión hasta que el soporte de NEAR Intents resuelva tu ticket. Consulta la [página de riesgo y cumplimiento de NEAR Intents](https://docs.near-intents.org/security-compliance/risk-and-compliance).
+- **Riesgo de terceros.** Cada proveedor gestiona sus propios contratos e infraestructura. Consulta los [Términos del servicio](https://l2pass.com/terms-of-service) para ver cómo trata L2Pass a los proveedores externos.
+- **Sin ejecución parcial.** Un swap se completa entero o no se ejecuta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿L2Pass es custodial?">
+    No. L2Pass nunca guarda tus tokens ni tus claves privadas. Los swaps los ejecutan los proveedores de rutas en sus propios contratos o, en las rutas RFQ y Private, los solvers de NEAR Intents.
+  </Accordion>
+
+  <Accordion title="¿L2Pass es legítimo?">
+    Sí, y puedes comprobarlo tú mismo. L2Pass funciona en mainnet desde 2023 y su historial on-chain es público en [LayerZero Scan](https://layerzeroscan.com/application/l2pass). Sus direcciones de contrato están en [Contratos](/es/resources/contracts). Como L2Pass nunca guarda tus tokens, no tienes que confiarle tus fondos: cada swap se ejecuta en los contratos del proveedor de rutas y ves el importe que recibirás antes de confirmar.
+  </Accordion>
+
+  <Accordion title="¿Tengo que dar mis datos personales a L2Pass?">
+    No. No hay cuenta ni KYC. Si un depósito queda retenido para revisión, el soporte de NEAR Intents puede preguntar de dónde vienen los fondos. Consulta los [Principios de privacidad y AML](https://l2pass.com/privacy-policy).
+  </Accordion>
+
+  <Accordion title="¿Qué pasa con mis fondos si un swap falla?">
+    En las rutas con wallet, la transacción se revierte y solo se gasta el gas. En las rutas con dirección de depósito, el proveedor devuelve el depósito a tu dirección de reembolso, menos las comisiones del proveedor o de red. Consulta [Qué pasa si un swap falla](/es/products/swap/learn/failed-swaps-and-refunds).
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [Contratos](/es/resources/contracts)
+- [Qué pasa si un swap falla](/es/products/swap/learn/failed-swaps-and-refunds)
+- [Swap desde cualquier wallet o exchange](/es/products/swap/learn/deposit-address-swaps)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

@@ -1,0 +1,83 @@
+---
+title: "Hoán đổi phi lưu ký so với sàn tập trung: tài khoản, KYC và quyền kiểm soát tiền"
+description: "Hoán đổi phi lưu ký như L2Pass khác sàn tập trung thế nào: không tài khoản, không KYC và bạn giữ quyền kiểm soát tiền của mình."
+sidebarTitle: "Phi lưu ký so với sàn"
+---
+
+Sàn tập trung giữ tiền của bạn trong tài khoản. Để giao dịch hoặc rút tiền, bạn thường phải xác minh danh tính (KYC), và sàn có thể tạm dừng lệnh rút hoặc đóng băng tài khoản trong lúc xem xét, chẳng hạn bằng cách hỏi nguồn gốc tiền. [L2Pass Swap](https://swap.l2pass.com/) hoạt động khác: phi lưu ký, không cần tài khoản hay KYC, và token của bạn nằm trong ví của bạn cho đến khi bạn gửi vào một hoán đổi. Dù vậy, mỗi hoán đổi vẫn được sàng lọc rủi ro AML và trừng phạt, và khoản nạp bị gắn cờ có thể bị giữ để xem xét.
+
+## So sánh trực tiếp
+
+Khác biệt chính là ai giữ tiền của bạn: bạn hay sàn.
+
+| | L2Pass Swap (phi lưu ký) | Sàn tập trung |
+| :-- | :-- | :-- |
+| Tài khoản | Không cần | Bắt buộc |
+| Xác minh danh tính (KYC) | Không cần | Thường bắt buộc để giao dịch hoặc rút |
+| Ai giữ tiền của bạn | Bạn, trong ví của bạn | Sàn, trong tài khoản của bạn |
+| Ai giữ khóa | Chỉ bạn | Sàn |
+| Chuyển cross-chain | Một hoán đổi, từ mạng này sang mạng khác | Nạp, giao dịch nếu cần, rồi rút trên mạng mới |
+| Phí hiển thị | Mọi khoản phí và số tiền bạn sẽ nhận, trước khi xác nhận | Phí giao dịch, chênh lệch giá và phí rút, mỗi thứ ở một màn hình |
+| Nếu giao dịch bị gắn cờ | Địa chỉ bị gắn cờ không nhận được báo giá; khoản nạp bị gắn cờ bị giữ để xem xét riêng hoán đổi đó | Sàn có thể giữ lệnh rút hoặc hạn chế tài khoản |
+| Nạp và rút tiền pháp định | Không | Thường có |
+
+## Sàn hoán đổi tức thì nằm ở giữa
+
+Các sàn hoán đổi tức thì như FixedFloat, ChangeNOW hoặc StealthEX không cần tài khoản, nhưng họ giữ khoản nạp của bạn cho đến khi gửi hoán đổi. [Trocador](https://trocador.app), trang so sánh các sàn này, chấm điểm từng sàn theo điều khoản, chính sách quyền riêng tư và cách xử lý khi người dùng từ chối xác minh, đồng thời lưu ý rằng bất kỳ sàn nào vẫn có thể tạm dừng hoán đổi và yêu cầu KYC hoặc kiểm tra AML. Trong báo giá trực tiếp của chúng tôi ngày 19 tháng 10 năm 2026, các sàn này cũng trả ít hơn L2Pass RFQ ở hầu hết các cặp. Xem [So sánh: chuyển stablecoin](/vi/products/swap/learn/compare-stablecoin-transfers), [hoán đổi BTC](/vi/products/swap/learn/compare-btc-swaps) và [hoán đổi ZEC](/vi/products/swap/learn/compare-zec-swaps).
+
+## Khi nào dùng loại nào
+
+**Hoán đổi phi lưu ký phù hợp khi bạn:**
+- Đã có crypto và muốn chuyển sang mạng hoặc token khác.
+- Muốn tự giữ tiền giữa các lần hoán đổi.
+- Không muốn mở hay xác minh tài khoản cho một lần chuyển.
+
+**Sàn tập trung phù hợp khi bạn:**
+- Cần mua hoặc bán crypto bằng tiền pháp định.
+- Muốn sổ lệnh hoặc công cụ giao dịch.
+- Chấp nhận để tiền trên sàn.
+
+Bạn cũng có thể kết hợp: rút từ sàn thẳng tới địa chỉ nạp dùng một lần của một báo giá L2Pass, và token sẽ đến mạng bạn đã chọn. Xem [Hoán đổi từ bất kỳ ví hoặc sàn nào](/vi/products/swap/learn/deposit-address-swaps).
+
+## Phi lưu ký không có nghĩa là gì
+
+Phi lưu ký nghĩa là L2Pass không bao giờ giữ tiền của bạn. Không có nghĩa là ẩn danh hay không bị sàng lọc.
+
+- **Không ẩn danh.** Hoán đổi là giao dịch blockchain công khai, và nhà cung cấp nhận địa chỉ ví của bạn.
+- **Không phải không sàng lọc.** Mọi hoán đổi đều được sàng lọc rủi ro AML và trừng phạt. Khoản nạp bị gắn cờ sau khi đến sẽ bị giữ để xem xét thay vì hoàn trả, và bạn giải quyết với hỗ trợ NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Không phải nơi cất tiền.** L2Pass không giữ số dư cho bạn. Tiền của bạn nằm trong ví của bạn.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi có cần KYC để dùng L2Pass Swap không?">
+    Không. Không có tài khoản và không KYC. Nếu khoản nạp bị giữ để xem xét, hỗ trợ NEAR Intents có thể hỏi nguồn gốc tiền.
+  </Accordion>
+
+  <Accordion title="L2Pass có thể đóng băng tiền của tôi không?">
+    L2Pass không bao giờ giữ tiền của bạn, nên không có số dư nào để đóng băng. Nếu NEAR Intents gắn cờ khoản nạp theo quy tắc AML hoặc trừng phạt, riêng hoán đổi đó bị giữ để xem xét cho đến khi bạn giải quyết với bộ phận hỗ trợ của họ. Không có gì khác bị ảnh hưởng.
+  </Accordion>
+
+  <Accordion title="L2Pass có phải là DEX không?">
+    L2Pass Swap là giao diện phi lưu ký so sánh các tuyến từ giao thức phi tập trung và mạng solver, như NEAR Intents, Circle CCTP, USDT0, LI.FI và Relay. Nó không vận hành sổ lệnh và không giữ tiền của người dùng.
+  </Accordion>
+
+  <Accordion title="Tôi có thể chuyển crypto ra khỏi sàn mà không phải KYC thêm không?">
+    Rút từ sàn thẳng tới địa chỉ nạp dùng một lần của một báo giá L2Pass. L2Pass không cần tài khoản hay KYC, và token đến mạng bạn đã chọn. Quy tắc riêng của sàn vẫn áp dụng cho lệnh rút.
+  </Accordion>
+
+  <Accordion title="Vì sao sàn yêu cầu chứng minh nguồn tiền?">
+    Sàn là bên lưu ký và phải tuân theo quy định nơi họ được cấp phép, có thể gồm việc kiểm tra nguồn gốc khoản nạp. Hãy hỏi sàn của bạn về yêu cầu cụ thể.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass có an toàn không?](/vi/products/swap/learn/is-l2pass-safe)
+- [Hoán đổi từ bất kỳ ví hoặc sàn nào](/vi/products/swap/learn/deposit-address-swaps)
+- [Nguyên tắc quyền riêng tư và AML](https://l2pass.com/privacy-policy)
+- [Thanh toán crypto cho bất kỳ ai trên mạng họ muốn](/vi/products/swap/learn/crypto-payments)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

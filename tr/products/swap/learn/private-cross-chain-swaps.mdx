@@ -1,0 +1,106 @@
+---
+title: "Gizli zincirler arası takas nedir"
+description: "L2Pass gizli takasları, takasınızın nasıl gerçekleştiği hakkında herkese açık blokzincirlerin gösterdiklerini sınırlar. Neyi gizler, ne görünür kalır, ücreti ve nasıl yapılır."
+sidebarTitle: "Gizli zincirler arası takaslar"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) içindeki gizli zincirler arası takas, takasınızın nasıl gerçekleştiği hakkında herkese açık blokzincirlerin gösterdiklerini sınırlar. L2Pass Private rotasında, [NEAR Intents](https://near.org/intents) üzerindeki gizli bir gerçekleştirme ortamında çalışır.
+
+<Warning>
+Gizli takas anonim değildir. Yatırmanız ve aldığınız tokenlar kendi zincirlerinde yine normal işlemlerdir. Sağlayıcılar cüzdan adresinizi yine alır ve takası, herkese açık bir takasta olduğu gibi AML ve yaptırım riskine karşı tarar.
+</Warning>
+
+Gizli takas için L2Pass ücreti %0,3'e kadardır. %0 veya %0,2 yerine uygulanır, üstüne eklenmez ve teklifte gösterilen tutara zaten dahildir.
+
+## Gizli ve standart takasların karşılaştırması
+
+L2Pass Private ve standart L2Pass RFQ rotası aynı ağda çalışır ve aynı yatırma akışını kullanır. Farklı olan gerçekleştirme ve ücrettir.
+
+| | L2Pass Private | L2Pass RFQ |
+| :-- | :-- | :-- |
+| Ağ | NEAR Intents | NEAR Intents |
+| Gerçekleştirme | Gizli ortam | Herkese açık |
+| Herkese açık blokzincirlerin gösterdikleri | Sınırlı | Sınırsız |
+| Sağlayıcı cüzdan adresinizi görür | Evet | Evet |
+| Uyum taraması | Evet | Evet |
+| L2Pass ücreti | Her varlıkta %0,3'e kadar | Stablecoin'lerde %0, diğer varlıklarda %0,2'ye kadar |
+| Ödeme | Tek kullanımlık yatırma adresi | Tek kullanımlık yatırma adresi |
+| Tahmini süre | Çift için L2Pass RFQ ile aynı | Yaklaşık 30 saniye ile birkaç dakika, Bitcoin veya Zcash ile daha uzun |
+
+19 Ekim 2026'da Arbitrum'dan Base'e 1.000 USDC'lik test tekliflerinde L2Pass Private 998,20 USDC, L2Pass RFQ 999,80 USDC gösterdi; ikisi de yaklaşık 27 saniye. Canlı teklif güncel rakamları gösterir.
+
+## Gizli takas neyi yapar, neyi yapmaz
+
+**Yapar:**
+- Takası herkese açık yerine gizli bir ortamda gerçekleştirir.
+- Takasın nasıl gerçekleştiği hakkında herkese açık blokzincirlerin gösterdiklerini sınırlar.
+- ZEC, BTC ve Tron'daki USDT dahil stablecoin'ler ve diğer varlıklar için çalışır.
+
+**Yapmaz:**
+- Sizi anonim yapmaz. Sağlayıcılar cüzdan adresinizi yine alır.
+- Taramayı atlamaz. Gizli ve herkese açık takaslar teklif aşamasında ve yatırmadan sonra aynı kontrollerden geçer.
+- Yatırmanızı veya aldığınızı gizlemez. Yatırma adresine yapılan transfer ve alıcı adresinize ulaşan tokenlar kendi zincirlerinde normal işlemlerdir.
+
+## Gizli takas nasıl yapılır
+
+Gizli takas, her yatırma adresli takasla aynı beş adımdan oluşur. Sadece L2Pass Private'ı seçersiniz.
+
+<Steps>
+  <Step title="Teklif isteyin">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin; kaynak ve hedef token ile ağları, tutarı ve alıcı adresini seçin.
+  </Step>
+
+  <Step title="L2Pass Private'ı seçin">
+    L2Pass RFQ ve diğer rotalarla karşılaştırın. Private, her rota gibi tahmini tutarı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    İade adresi olarak kaynak ağda kontrol ettiğiniz bir cüzdanı girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya geri gönderir.
+  </Step>
+
+  <Step title="Yatırma adresine ödeyin">
+    Teklif edilen tutarı adresle veya QR kodla tek kullanımlık yatırma adresine gönderin. Bağlı cüzdanınızdan, başka bir cüzdandan veya doğrudan borsadan ödeyebilirsiniz.
+  </Step>
+
+  <Step title="Takası takip edin">
+    Durumu **Recent swaps** bölümünden takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## İadeler ve yasal şartlar
+
+Gizli takaslar L2Pass RFQ ile aynı iade kurallarına tabidir.
+
+- **İadeler.** Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı iade adresine geri gönderir; sağlayıcı ve ağ ücretleri düşülebilir. AML veya yaptırım kuralları kapsamında işaretlenen bir yatırma ise inceleme için tutulur ve bunu NEAR Intents destek ekibiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Kısmi gerçekleşme yok.** Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+- **Yasal şartlar.** [Hizmet Şartları](https://l2pass.com/terms-of-service) ve [Gizlilik ve AML İlkeleri](https://l2pass.com/privacy-policy) sayfalarına bakın.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Gizli takas anonim mi?">
+    Hayır. Herkese açık blokzincirlerin gösterdiklerini sınırlar, ancak sağlayıcılar cüzdan adresinizi yine alır ve takası herkese açık bir takasla tamamen aynı şekilde tarar.
+  </Accordion>
+
+  <Accordion title="Gizli takasın maliyeti nedir?">
+    Gizli takas için L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil). Teklifte gösterilen tutara zaten dahildir.
+  </Accordion>
+
+  <Accordion title="Gizli stablecoin takası yapabilir miyim?">
+    Evet. L2Pass Private stablecoin'ler için de çalışır. Bu durumda L2Pass ücreti %0 yerine %0,3'e kadardır.
+  </Accordion>
+
+  <Accordion title="Hangi ağlar gizli takası destekler?">
+    Test tekliflerinde gizli takaslar Tron ve Ethereum'da USDT, Arbitrum, Base ve Ethereum'da USDC, BTC ve ZEC için çalıştı. Diğer çiftler için teklife bakın: L2Pass Private takasınızı gerçekleştirebildiğinde listede görünür.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'ı aç](https://swap.l2pass.com/)
+- [Gizli ZEC takası nasıl yapılır](/tr/products/swap/guides/private-swaps-with-zec)
+- [L2Pass RFQ by NEAR Intents nedir](/tr/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [Swap genel bakışında gizli takaslar](/tr/products/swap/overview#private-swaps)
+
+*Son güncelleme: 19 Ekim 2026*

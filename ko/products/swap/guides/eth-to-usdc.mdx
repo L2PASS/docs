@@ -1,0 +1,141 @@
+---
+title: "체인 간 ETH를 USDC 또는 USDT로 스왑하는 방법"
+description: "ETH를 다른 체인의 USDC나 USDT로 1초에서 약 80초 사이에 스왑하세요. L2Pass 수수료 최대 0.2%, 한 번의 견적으로 4개 경로 비교."
+sidebarTitle: "ETH → USDC 또는 USDT"
+---
+
+import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/)으로 ETH를 다른 체인의 USDC나 USDT로 한 번에 스왑할 수 있습니다. 예를 들어 Ethereum의 ETH를 Base의 USDC로, Arbitrum의 ETH를 Tron의 USDT로 바꿀 수 있습니다. 테스트 견적에서 EVM 체인 간에는 L2Pass RFQ, Relay, LI.FI, L2Pass Private가 약 1초에서 1분 미만의 예상 시간으로 제시되었고, Tron으로는 L2Pass RFQ와 Private가 제시되었습니다. ETH 스왑의 L2Pass 수수료는 최대 0.2%(비공개 스왑은 최대 0.3%)이며, 견적은 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+
+**EVM 체인 간 1분 이내** · **스왑과 브릿지를 한 번에** · **1 ETH에 2,387.76 USDC** · **한 번의 견적에 4개 경로**
+
+<Note>수치는 2026년 10월 19일 테스트 견적 기준입니다. 실제 견적은 항상 실시간입니다.</Note>
+
+## ETH에서 스테이블코인으로 가는 경로
+
+EVM 체인 간 ETH 스왑은 4개 경로가 체결했고, 그중 2개는 Tron까지 갔습니다.
+
+| 경로 | 예상 시간 | 수령액 | 결제 | 테스트 견적의 L2Pass 수수료 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 약 34~80초 | 변동, 최소 수령액 있음 | 일회용 입금 주소 | 0% |
+| Relay | 약 1~2초 | 변동 | 지갑 트랜잭션 | 0.1% |
+| LI.FI | 약 6~26초 | 변동 | 지갑 트랜잭션 | 0.1% |
+| L2Pass Private | L2Pass RFQ와 동일 | 변동, 최소 수령액 있음 | 일회용 입금 주소 | 0.3% |
+
+L2Pass RFQ와 L2Pass Private는 [NEAR Intents](https://near.org/intents)에서 실행됩니다. L2Pass RFQ에서 NEAR Intents 제공자 수수료는 이 쌍들에서 0.2%였습니다.
+
+## 테스트 견적
+
+ETH가 약 2,400 USD였던 약 17:50 UTC 기준 1 ETH 견적입니다. 실시간 견적에 현재 수치가 표시됩니다.
+
+<Tabs>
+<Tab title="Ethereum → Base의 USDC">
+
+| 경로 | 수령액 | 예상 시간 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,387.76 USDC | 약 49초 |
+| Relay | 2,386.58 USDC | 약 2초 |
+| LI.FI | 2,384.78 USDC | 약 26초 |
+| L2Pass Private | 2,379.58 USDC | 약 49초 |
+
+</Tab>
+<Tab title="Base → Arbitrum의 USDC">
+
+| 경로 | 수령액 | 예상 시간 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,387.26 USDC | 약 34초 |
+| Relay | 2,387.26 USDC | 약 1초 |
+| LI.FI | 2,384.45 USDC | 약 6초 |
+| L2Pass Private | 2,379.69 USDC | 약 34초 |
+
+</Tab>
+<Tab title="Arbitrum → Tron의 USDT">
+
+| 경로 | 수령액 | 예상 시간 |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 2,388.75 USDT | 약 80초 |
+| L2Pass Private | 2,378.24 USDT | 약 80초 |
+
+</Tab>
+</Tabs>
+
+## ETH를 다른 체인의 USDC로 스왑하는 방법
+
+결제하기 전까지는 지갑에서 아무것도 나가지 않으므로 먼저 모든 경로를 비교할 수 있습니다.
+
+<Steps>
+  <Step title="L2Pass Swap 열기">
+    [swap.l2pass.com](https://swap.l2pass.com/)에 접속해 네 개 필드를 채웁니다.
+
+    - **From:** ETH를 보유한 네트워크의 ETH.
+    - **To:** 도착 네트워크의 USDC 또는 USDT.
+    - **Amount:** 스왑할 ETH 수량.
+    - **수신 주소:** 스테이블코인을 받을 도착 네트워크의 주소.
+  </Step>
+
+  <Step title="경로 비교">
+    각 경로 카드에 예상 수령액, 최소 수령액, 예상 시간, 수수료가 표시됩니다. ETH 가격은 움직이므로 최소 수령액을 확인하세요. 기본 슬리피지는 0.05%(변경 가능)입니다.
+  </Step>
+
+  <Step title="환불 주소 설정">
+    L2Pass RFQ와 L2Pass Private에서는 출발 체인에서 직접 관리하는 지갑을 환불 주소로 지정하세요. 스왑을 완료할 수 없으면 제공자가 ETH를 그 주소로 돌려줍니다.
+  </Step>
+
+  <Step title="지갑 또는 입금 주소로 결제">
+    결제 방법은 선택한 경로에 따라 다릅니다.
+
+    <Tabs>
+      <Tab title="지갑 경로 (Relay, LI.FI)">
+        지갑에서 트랜잭션에 서명합니다.
+      </Tab>
+      <Tab title="입금 주소 (L2Pass RFQ, L2Pass Private)">
+        연결된 지갑, 아무 지갑 또는 거래소에서 주소나 QR 코드로 일회용 입금 주소에 ETH를 보냅니다. 거래소에서 보낸다면 일부 거래소는 출금 수수료를 송금액에서 빼므로 도착 금액이 견적과 일치하는지 확인하세요.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="스왑 추적">
+    L2Pass RFQ와 L2Pass Private는 **Recent swaps**에서 상태를 확인하세요: *Awaiting deposit*, *Deposit confirmed*, 그다음 *Complete*.
+  </Step>
+</Steps>
+
+## 보내기 전에
+
+가스비용 ETH를 조금 남겨 두고, 스왑 중에도 ETH 가격이 움직이므로 최소 수령액을 확인하세요.
+
+- **가스비용 ETH를 남겨 두세요.** 출발 가스비는 ETH로 내므로 지갑 경로에서는 잔액 전체를 스왑하지 마세요. 입금 주소 경로에서도 전송에 드는 네트워크 수수료는 지갑에서 나갑니다.
+- **가격 변동.** ETH는 변동성이 큽니다. 최소 수령액이 보호 장치입니다. 가격이 슬리피지 허용 범위를 넘어 움직이면 스왑은 실행되지 않습니다.
+
+<SwapBeforeYouSend />
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="ETH를 USDC로 스왑하면서 한 번에 다른 체인으로 옮길 수 있나요?">
+    네. 출발 네트워크의 ETH와 도착 네트워크의 USDC를 고르세요. 경로가 한 번의 스왑으로 바꾸고 옮깁니다.
+  </Accordion>
+
+  <Accordion title="체인 간 ETH를 USDC로 스왑하는 비용은 얼마인가요?">
+    ETH 스왑의 L2Pass 수수료는 최대 0.2%(비공개 스왑은 최대 0.3%)입니다. 테스트 견적에서는 L2Pass RFQ 0%, Relay와 LI.FI 0.1%였습니다. 제공자와 네트워크는 각자 수수료를 받으며, 표시된 금액에 이미 포함되어 있습니다.
+  </Accordion>
+
+  <Accordion title="Arbitrum의 ETH를 Tron의 USDT로 스왑할 수 있나요?">
+    네. 테스트 견적에서 L2Pass RFQ는 Arbitrum의 1 ETH에 대해 Tron에서 2,388.75 USDT를 약 80초 만에 전달했습니다.
+  </Accordion>
+
+  <Accordion title="어느 경로가 가장 빠른가요?">
+    테스트 견적에서 Relay는 EVM 체인 간 약 1~2초였습니다. L2Pass RFQ는 약 34~49초가 걸렸지만 같거나 더 많은 금액을 전달했습니다. 보내는 금액 기준으로 경로 카드를 비교하세요.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [USDT와 USDC를 브릿지하는 가장 좋은 방법: L2Pass vs 다른 브릿지](/ko/products/swap/learn/compare-stablecoin-transfers)
+- [L2Pass Swap 수수료 설명](/ko/products/swap/learn/fees)
+- [L2Pass가 경로를 비교하는 방법](/ko/products/swap/learn/compare-routes)
+- [슬리피지와 최소 수령액](/ko/products/swap/learn/slippage)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

@@ -1,0 +1,99 @@
+---
+title: "Gizli ZEC takası nasıl yapılır (USDT'den ZEC'e ve ZEC'ten USDT'ye)"
+description: "L2Pass Private ile USDT'yi yaklaşık 3 dakikada ZEC'e, ZEC'i yaklaşık 8,5 dakikada USDT'ye takas edin. L2Pass ücreti %0,3'e kadar, hesap gerekmez."
+sidebarTitle: "ZEC ile gizli takaslar"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/) üzerinde L2Pass Private rotasını seçerek USDT ile ZEC arasında her iki yönde gizli takas yapabilirsiniz. Test tekliflerinde Tron ve Ethereum'daki USDT'den ZEC'e yaklaşık 3 dakikalık, ZEC'ten Tron'da USDT'ye yaklaşık 8,5 dakikalık tahmini süreyle sunuldu. Takası, herkese açık blokzincirlerde görünenleri sınırlayan gizli bir ortamda gerçekleştirir. Bu anonimlik değildir: cüzdan adresiniz yine sağlayıcılarla paylaşılır ve uyumluluk taraması yine uygulanır. Gizli takasta L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil). Teklifte gösterilen tutara zaten dahildir.
+
+**USDT'den yaklaşık 3 dakika** · **1.000 USDT için 0,8096 ZEC** · **Gizli yürütme** · **Hesap yok**
+
+<Note>Rakamlar 10 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## USDT ile ZEC arasındaki takaslar için rotalar
+
+L2Pass RFQ ve L2Pass Private, çözücülerin ve piyasa yapıcıların takasınızı gerçekleştirmek için yarıştığı [NEAR Intents](https://near.org/intents) üzerinde çalışır. Private bunu herkese açık değil, gizli bir ortamda gerçekleştirir.
+
+| Rota | Tahmini süre | Çıktı | Notlar |
+| :-- | :-- | :-- | :-- |
+| L2Pass Private | USDT'den yaklaşık 3 dakika, ZEC'ten yaklaşık 8,5 dakika | Değişken, minimum alınacak tutarla | Gizli yürütme. Yatırma adresi. L2Pass ücreti %0,3'e kadar. |
+| L2Pass RFQ | USDT'den yaklaşık 3 dakika, ZEC'ten yaklaşık 8,5 dakika | Değişken, minimum alınacak tutarla | Herkese açık yürütme. Yatırma adresi. L2Pass ücreti %0,2'ye kadar (diğer varlıklar). |
+
+Bu test tekliflerinde USDT ve ZEC için iki yönde de başka rota (toplayıcılar veya diğer intent ağları) sunulmadı.
+
+Tron'da 1.000 USDT'den ZEC'e test teklifleri şu alınan tutarları gösterdi: L2Pass RFQ'da 0,8151 ZEC ve L2Pass Private'ta 0,8096 ZEC. Canlı teklif, çiftiniz ve tutarınız için güncel rakamları gösterir.
+
+## Gizli ZEC takası nasıl yapılır
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın ve çifti seçin">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** bulunduğu ağdaki USDT ya da Zcash'te ZEC.
+    - **To:** çiftin diğer tokenı.
+    - **Amount:** takas etmek istediğiniz miktar.
+    - **Alıcı adresi:** tokenları alacak adres, Zcash'te veya USDT ağınızda.
+  </Step>
+
+  <Step title="L2Pass Private'ı seçin">
+    L2Pass Private'ı seçin ve tahmini çıktısını, minimum alınacak tutarı, tahmini süreyi ve ücretleri kontrol edin. Gizli yürütmeye ihtiyacınız yoksa L2Pass RFQ bunun yerine %0,2'ye kadar L2Pass ücreti alır.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    İade adresi olarak ödeme yaptığınız ağda (Zcash veya USDT ağınız) kontrol ettiğiniz bir cüzdan girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya iade eder.
+  </Step>
+
+  <Step title="Yatırma adresine ödeyin">
+    Teklifteki tutarı herhangi bir cüzdandan veya borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. USDT ile ödüyorsanız bağlı cüzdanınızdan da gönderebilirsiniz. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+  </Step>
+
+  <Step title="Takası Recent swaps içinde takip edin">
+    Durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Yalnızca gönderdiğiniz ağda gas ödersiniz ve gizli takas sizi anonim yapmaz.
+
+- **Ağ ücretleri.** Gas'ı yalnızca gönderdiğiniz yerde ödersiniz: Zcash'te ZEC ile veya USDT ağınızın yerel tokenı ile, örneğin Tron'da TRX. Hedef ağdaki ağ ücreti gösterilen tutardan düşülür.
+- **Anonimlik değildir.** Gizli takas, herkese açık blokzincirlerin gösterdiklerini sınırlar, ancak herkese açık cüzdan adresiniz sağlayıcılara gönderilen isteklerde yer almaya devam eder. Herkese açık bir takasla tamamen aynı şekilde taranır.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Gizli takas kimliğimi gizler mi?">
+    Hayır. Herkese açık blokzincirlerin gösterdiklerini sınırlar, ancak sağlayıcılar cüzdan adresinizi almaya devam eder ve takası herkese açık bir takasla tamamen aynı şekilde tarar.
+  </Accordion>
+
+  <Accordion title="Gizli ZEC takası ne kadara mal olur?">
+    Gizli takasta L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil). Yönlendirme ortaklarının ve ağların aldığı ücretler gibi, teklifte gösterilen tutara zaten dahildir.
+  </Accordion>
+
+  <Accordion title="Hangi USDT ağlarıyla ZEC takası yapabilirim?">
+    Test tekliflerinde ZEC ile gizli takaslar Tron ve Ethereum'daki USDT için sunuldu. Teklif istediğinizde rota listesi, çifti hangi ağların gerçekleştirebileceğini gösterir.
+  </Accordion>
+
+  <Accordion title="Gizli takas için hesap veya KYC gerekir mi?">
+    Hayır. Gizli ya da herkese açık takaslar için hesap ve KYC yoktur.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT veya BTC'yi ZEC'e takas etmenin en iyi yolu: L2Pass ile diğer hizmetler](/tr/products/swap/learn/compare-zec-swaps)
+- [Genel bakışta gizli takaslar](/tr/products/swap/overview#private-swaps)
+- [L2Pass Swap ücretleri](/tr/products/swap/overview#fee-structure)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+- [Tron'dan Ethereum'a USDT](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [Tron'dan Solana'ya USDT](/tr/products/swap/guides/usdt-tron-to-solana)
+- [Gizlilik ve AML İlkeleri](https://l2pass.com/privacy-policy) ve [Hizmet Şartları](https://l2pass.com/terms-of-service)
+
+*Son güncelleme: 10 Ekim 2026*

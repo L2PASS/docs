@@ -1,0 +1,99 @@
+---
+title: "Como fazer um swap privado de ZEC (USDT para ZEC e ZEC para USDT)"
+description: "Troque USDT por ZEC em cerca de 3 minutos, ou ZEC por USDT em cerca de 8,5, com o L2Pass Private. Taxa L2Pass de até 0,3%, sem conta."
+sidebarTitle: "Swaps privados com ZEC"
+---
+
+import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
+
+Você pode fazer um swap privado entre USDT e ZEC, em qualquer direção, com o [L2Pass Swap](https://swap.l2pass.com/) escolhendo a rota L2Pass Private. Em cotações de teste, ela foi oferecida de USDT na Tron e na Ethereum para ZEC, com tempo estimado de cerca de 3 minutos, e de ZEC para USDT na Tron, com cerca de 8,5 minutos. Ela executa o swap em um ambiente confidencial que limita o que fica visível nas blockchains públicas. Não é anonimato: o endereço da sua carteira continua sendo compartilhado com os provedores, e a triagem de compliance continua valendo. A taxa L2Pass de um swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada). Ela já está incluída no valor mostrado na cotação.
+
+**Cerca de 3 minutos a partir de USDT** · **0,8096 ZEC por 1.000 USDT** · **Execução confidencial** · **Sem conta**
+
+<Note>Números de cotações de teste de 10 de outubro de 2026. A sua cotação é sempre ao vivo.</Note>
+
+## Rotas para swaps entre USDT e ZEC
+
+L2Pass RFQ e L2Pass Private rodam na [NEAR Intents](https://near.org/intents), onde solvers e market makers competem para executar o seu swap. O Private executa em um ambiente confidencial em vez de um público.
+
+| Rota | Tempo estimado | Resultado | Observações |
+| :-- | :-- | :-- | :-- |
+| L2Pass Private | Cerca de 3 minutos a partir de USDT, cerca de 8,5 minutos a partir de ZEC | Variável, com mínimo a receber | Execução confidencial. Endereço de depósito. Taxa L2Pass de até 0,3%. |
+| L2Pass RFQ | Cerca de 3 minutos a partir de USDT, cerca de 8,5 minutos a partir de ZEC | Variável, com mínimo a receber | Execução pública. Endereço de depósito. Taxa L2Pass de até 0,2% (outros ativos). |
+
+Nessas cotações de teste não foram oferecidas outras rotas (agregadores ou outras redes de intents) para USDT e ZEC em nenhuma direção.
+
+Cotações de teste de 1.000 USDT na Tron para ZEC mostraram estes valores recebidos: 0,8151 ZEC no L2Pass RFQ e 0,8096 ZEC no L2Pass Private. A cotação ao vivo mostra os números atuais para o seu par e valor.
+
+## Como fazer um swap privado de ZEC
+
+Nada sai da sua carteira até você pagar, então dá para comparar todas as rotas antes.
+
+<Steps>
+  <Step title="Abra o L2Pass Swap e escolha o par">
+    Acesse [swap.l2pass.com](https://swap.l2pass.com/) e preencha quatro campos:
+
+    - **From:** USDT na rede em que você o tem, ou ZEC na Zcash.
+    - **To:** o outro token do par.
+    - **Amount:** quanto você quer trocar.
+    - **Endereço de recebimento:** o endereço que vai receber os tokens, na Zcash ou na sua rede de USDT.
+  </Step>
+
+  <Step title="Selecione o L2Pass Private">
+    Selecione o L2Pass Private e confira o valor estimado, o mínimo a receber, o tempo estimado e as taxas. Se você não precisa de execução confidencial, o L2Pass RFQ cobra em vez disso uma taxa L2Pass de até 0,2%.
+  </Step>
+
+  <Step title="Defina um endereço de reembolso">
+    Coloque como endereço de reembolso uma carteira que você controla na rede de onde paga (Zcash ou a sua rede de USDT). Se o swap não puder ser concluído, o provedor devolve o seu depósito para lá.
+  </Step>
+
+  <Step title="Pague no endereço de depósito">
+    Envie o valor da cotação para o endereço de depósito de uso único a partir de qualquer carteira ou exchange, pelo endereço ou QR code. Se pagar em USDT, também pode enviar da carteira conectada. Se enviar de uma exchange, confira se o valor que chega bate com a cotação, porque algumas exchanges descontam a taxa de saque dele.
+  </Step>
+
+  <Step title="Acompanhe o swap em Recent swaps">
+    Acompanhe o status em **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* e depois *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+Você só paga gas na rede de onde envia, e um swap privado não torna você anônimo.
+
+- **Taxas de rede.** Você só paga gas onde envia: ZEC na Zcash, ou o token nativo da sua rede de USDT, como TRX na Tron. Qualquer taxa de rede na rede de destino é descontada do valor exibido.
+- **Não é anonimato.** Um swap privado limita o que as blockchains públicas mostram, mas o endereço público da sua carteira continua incluído nas solicitações enviadas aos provedores. Ele passa exatamente pela mesma triagem que um swap público.
+
+<SwapBeforeYouSend />
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Um swap privado esconde a minha identidade?">
+    Não. Ele limita o que as blockchains públicas mostram, mas os provedores continuam recebendo o endereço da sua carteira e fazem a triagem do swap exatamente como num público.
+  </Accordion>
+
+  <Accordion title="Quanto custa um swap privado de ZEC?">
+    A taxa L2Pass de um swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada). Ela já está incluída no valor mostrado na cotação, assim como as taxas cobradas pelos parceiros de roteamento e pelas redes.
+  </Accordion>
+
+  <Accordion title="Com quais redes de USDT posso fazer swap com ZEC?">
+    Em cotações de teste, swaps privados com ZEC foram oferecidos para USDT na Tron e na Ethereum. Ao pedir uma cotação, a lista de rotas mostra quais redes conseguem executar o par.
+  </Accordion>
+
+  <Accordion title="Preciso de conta ou KYC para um swap privado?">
+    Não. Não há conta nem KYC, nem para swaps privados nem para públicos.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Melhor forma de trocar USDT ou BTC por ZEC: L2Pass vs outros serviços](/pt-br/products/swap/learn/compare-zec-swaps)
+- [Swaps privados na visão geral](/pt-br/products/swap/overview#private-swaps)
+- [Taxas do L2Pass Swap](/pt-br/products/swap/overview#fee-structure)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+- [USDT da Tron para a Ethereum](/pt-br/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT da Tron para a Solana](/pt-br/products/swap/guides/usdt-tron-to-solana)
+- [Princípios de privacidade e AML](https://l2pass.com/privacy-policy) e [Termos de Serviço](https://l2pass.com/terms-of-service)
+
+*Última atualização: 10 de outubro de 2026*

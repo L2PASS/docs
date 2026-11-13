@@ -1,0 +1,83 @@
+---
+title: "Swaps sin custodia frente a exchanges centralizados: cuentas, KYC y control de los fondos"
+description: "En qué se diferencia un swap sin custodia como L2Pass de un exchange centralizado: sin cuenta, sin KYC y con el control de tus fondos."
+sidebarTitle: "Sin custodia frente a exchanges"
+---
+
+Un exchange centralizado guarda tus fondos en tu cuenta. Para operar o retirar, normalmente tienes que verificar tu identidad (KYC), y el exchange puede pausar un retiro o congelar una cuenta mientras la revisa, por ejemplo pidiendo el origen de los fondos. [L2Pass Swap](https://swap.l2pass.com/) funciona de otra manera: no custodia, no necesita cuenta ni KYC, y tus tokens se quedan en tu propia wallet hasta que los envías a un swap. Aun así, cada swap pasa un control de riesgo AML y de sanciones, y un depósito marcado puede quedar retenido para revisión.
+
+## Comparación directa
+
+La diferencia principal es quién guarda tus fondos: tú o el exchange.
+
+| | L2Pass Swap (sin custodia) | Exchange centralizado |
+| :-- | :-- | :-- |
+| Cuenta | No hace falta | Obligatoria |
+| Verificación de identidad (KYC) | No hace falta | Normalmente obligatoria para operar o retirar |
+| Quién guarda tus fondos | Tú, en tu propia wallet | El exchange, en tu cuenta |
+| Quién tiene las claves | Solo tú | El exchange |
+| Transferencia cross-chain | Un swap, de una red a otra | Depositar, operar si hace falta y retirar en la nueva red |
+| Comisiones visibles | Cada comisión y el importe que recibirás, antes de confirmar | Comisión de trading, spread y comisión de retiro, cada una en su pantalla |
+| Si una transacción se marca | Una dirección marcada no recibe cotización; un depósito marcado queda retenido para revisar ese swap | El exchange puede retener el retiro o restringir la cuenta |
+| Entrada y salida a dinero fiat | No | Normalmente sí |
+
+## Los exchanges instantáneos están en medio
+
+Los exchanges instantáneos como FixedFloat, ChangeNOW o StealthEX no necesitan cuenta, pero custodian tu depósito hasta que envían el swap. [Trocador](https://trocador.app), que los compara, valora cada uno por sus condiciones, su política de privacidad y lo que hace cuando un usuario se niega a verificarse, y señala que cualquier exchange puede pausar un swap y pedir KYC o controles AML. En nuestras cotizaciones en vivo del 19 de octubre de 2026, además entregaron menos que L2Pass RFQ en la mayoría de pares. Consulta [Comparativa: transferencias de stablecoins](/es/products/swap/learn/compare-stablecoin-transfers), [swaps de BTC](/es/products/swap/learn/compare-btc-swaps) y [swaps de ZEC](/es/products/swap/learn/compare-zec-swaps).
+
+## Cuándo encaja cada uno
+
+**Un swap sin custodia encaja cuando:**
+- Ya tienes cripto y quieres moverla a otra red o token.
+- Quieres mantener la custodia de tus fondos entre swaps.
+- No quieres abrir ni verificar una cuenta para una transferencia puntual.
+
+**Un exchange centralizado encaja cuando:**
+- Necesitas comprar o vender cripto con dinero fiat.
+- Quieres un libro de órdenes o herramientas de trading.
+- Te parece bien dejar los fondos en el exchange.
+
+También puedes combinarlos: retira de un exchange directamente a la dirección de depósito de un solo uso de una cotización de L2Pass, y los tokens llegan a la red que elegiste. Consulta [Swap desde cualquier wallet o exchange](/es/products/swap/learn/deposit-address-swaps).
+
+## Qué no significa sin custodia
+
+Sin custodia significa que L2Pass nunca guarda tus fondos. No significa anónimo ni sin control.
+
+- **No es anónimo.** Los swaps son transacciones públicas en blockchain, y los proveedores reciben tu dirección de wallet.
+- **No está libre de control.** Cada swap pasa un control de riesgo AML y de sanciones. Un depósito marcado después de llegar queda retenido para revisión en lugar de reembolsarse, y lo resuelves con el soporte de NEAR Intents. Consulta [Cómo funciona el control](/es/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **No es un lugar para guardar fondos.** L2Pass no te guarda un saldo. Tus fondos se quedan en tu wallet.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito KYC para usar L2Pass Swap?">
+    No. No hay cuenta ni KYC. Si un depósito queda retenido para revisión, el soporte de NEAR Intents puede preguntar de dónde vienen los fondos.
+  </Accordion>
+
+  <Accordion title="¿Puede L2Pass congelar mis fondos?">
+    L2Pass nunca guarda tus fondos, así que no tiene saldo que congelar. Si NEAR Intents marca un depósito por normas AML o de sanciones, ese swap queda retenido para revisión hasta que lo resuelvas con su soporte. Nada más se ve afectado.
+  </Accordion>
+
+  <Accordion title="¿L2Pass es un DEX?">
+    L2Pass Swap es una interfaz sin custodia que compara rutas de protocolos descentralizados y redes de solvers, como NEAR Intents, Circle CCTP, USDT0, LI.FI y Relay. No tiene libro de órdenes ni guarda fondos de usuarios.
+  </Accordion>
+
+  <Accordion title="¿Puedo sacar cripto de un exchange sin otro KYC?">
+    Retira desde tu exchange directamente a la dirección de depósito de un solo uso de una cotización de L2Pass. L2Pass no necesita cuenta ni KYC, y los tokens llegan a la red que elegiste. Las reglas de tu exchange siguen aplicándose al retiro.
+  </Accordion>
+
+  <Accordion title="¿Por qué los exchanges piden justificar el origen de los fondos?">
+    Los exchanges son custodios y deben cumplir las normas de donde tienen licencia, lo que puede incluir comprobar de dónde vienen los depósitos. Pregunta a tu exchange por sus requisitos exactos.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [¿Es seguro L2Pass?](/es/products/swap/learn/is-l2pass-safe)
+- [Swap desde cualquier wallet o exchange](/es/products/swap/learn/deposit-address-swaps)
+- [Principios de privacidad y AML](https://l2pass.com/privacy-policy)
+- [Paga a cualquiera en cripto en la red que prefiera](/es/products/swap/learn/crypto-payments)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

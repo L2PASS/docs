@@ -1,0 +1,143 @@
+---
+title: "Cách chuyển USDT sang Plasma (USDT0)"
+description: "Chuyển USDT sang Plasma trong khoảng 1 giây từ Ethereum hoặc 1,5 phút từ Tron. Phí L2Pass 0%, nhận về dưới dạng USDT0, không cần XPL."
+sidebarTitle: "USDT sang Plasma"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể chuyển USDT sang Plasma từ Tron, Ethereum hoặc Arbitrum bằng [L2Pass Swap](https://swap.l2pass.com/), giao diện phi lưu ký hiển thị mọi tuyến của cặp cạnh nhau. Trên Plasma, USDT được nhận dưới dạng USDT0, phiên bản omnichain của USDT. Trong báo giá thử nghiệm, Tron sang Plasma do L2Pass RFQ và L2Pass Private cung cấp trong khoảng 1,5 phút, còn Ethereum hoặc Arbitrum sang Plasma có thêm Relay và Aori chỉ trong vài giây. Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí trước khi bạn xác nhận. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+
+**Vài giây từ Ethereum** · **Phí L2Pass 0%** · **Gửi 1.000 nhận 999,68 USDT0** · **Không cần XPL**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 19 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Các tuyến sang Plasma
+
+L2Pass RFQ và L2Pass Private đều chạy trên [NEAR Intents](https://near.org/intents), nơi các solver và nhà tạo lập thị trường cạnh tranh để khớp lệnh hoán đổi của bạn. Private thực hiện việc này trong môi trường bảo mật.
+
+| Tuyến | Từ | Thời gian ước tính | Đầu ra | Thanh toán |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Tron, Ethereum, Arbitrum | Khoảng 1,5 phút từ Tron, 30 đến 50 giây từ Ethereum hoặc Arbitrum | Thay đổi, có mức nhận tối thiểu | Địa chỉ nạp dùng một lần |
+| L2Pass Private | Tron, Ethereum, Arbitrum | Giống L2Pass RFQ | Thay đổi, có mức nhận tối thiểu | Địa chỉ nạp dùng một lần. Phí L2Pass tối đa 0,3% |
+| Relay | Ethereum, Arbitrum | Khoảng 1 giây | Thay đổi | Giao dịch ví |
+| Aori | Ethereum, Arbitrum | Khoảng 2 đến 13 giây | Cố định | Giao dịch ví |
+
+LI.FI cũng được cung cấp từ Ethereum. Báo giá liệt kê mọi tuyến có thể khớp cặp của bạn.
+
+## Báo giá thử nghiệm
+
+Báo giá cho 1.000 USDT vào khoảng 17:17 UTC. Báo giá trực tiếp hiển thị số liệu hiện tại cho cặp và số tiền của bạn.
+
+<Tabs>
+<Tab title="Từ Tron">
+
+| Tuyến | Bạn nhận |
+| :-- | :-- |
+| L2Pass RFQ | 997,79 USDT0 |
+| L2Pass Private | 995,40 USDT0 |
+
+Với cặp này, L2Pass RFQ hiển thị phí L2Pass 0% và phí nhà cung cấp NEAR Intents 0,2% (2 USDT).
+
+</Tab>
+<Tab title="Từ Ethereum">
+
+| Tuyến | Bạn nhận |
+| :-- | :-- |
+| Relay | 999,68 USDT0 |
+| Aori | 999,05 USDT0 |
+| L2Pass RFQ | 997,90 USDT0 |
+| L2Pass Private | 996,30 USDT0 |
+
+</Tab>
+<Tab title="Từ Arbitrum (USDT0)">
+
+| Tuyến | Bạn nhận |
+| :-- | :-- |
+| Relay | 999,58 USDT0 |
+| Aori | 999,29 USDT0 |
+| L2Pass RFQ | 997,90 USDT0 |
+| L2Pass Private | 996,30 USDT0 |
+
+</Tab>
+</Tabs>
+
+## Cách chuyển USDT sang Plasma
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** USDT trên Tron hoặc Ethereum, hoặc USDT0 trên Arbitrum.
+    - **To:** USDT0 trên Plasma.
+    - **Amount:** số tiền bạn muốn gửi.
+    - **Địa chỉ nhận:** địa chỉ Plasma (địa chỉ EVM bắt đầu bằng 0x) sẽ nhận USDT0.
+  </Step>
+
+  <Step title="So sánh các tuyến">
+    Mỗi thẻ tuyến hiển thị số tiền ước tính, số tiền nhận tối thiểu, thời gian ước tính và các khoản phí. Trượt giá mặc định là 0,05% (có thể chỉnh) và không áp dụng cho các tuyến có đầu ra cố định như Aori.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Với L2Pass RFQ và L2Pass Private, đặt địa chỉ hoàn tiền là một ví bạn kiểm soát trên mạng nguồn. Nếu hoán đổi không thể hoàn tất, nhà cung cấp sẽ trả khoản nạp về đó.
+  </Step>
+
+  <Step title="Thanh toán qua ví hoặc địa chỉ nạp">
+    Cách thanh toán phụ thuộc vào tuyến bạn chọn.
+
+    <Tabs>
+      <Tab title="Tuyến qua ví (Relay, Aori)">
+        Ký giao dịch trong ví của bạn.
+      </Tab>
+      <Tab title="Địa chỉ nạp (L2Pass RFQ, L2Pass Private)">
+        Gửi USDT đến địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn giao dịch, bằng địa chỉ hoặc mã QR. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào số tiền đó.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Theo dõi hoán đổi">
+    Với L2Pass RFQ và L2Pass Private, theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+Bạn chỉ cần gas trên mạng nguồn, và USDT của bạn đến Plasma dưới dạng USDT0.
+
+- **USDT0 trên Plasma.** L2Pass Swap cung cấp USDT trên Plasma dưới dạng USDT0. Token gốc của Plasma là XPL.
+- **Chỉ cần gas trên mạng nguồn.** Bạn trả gas bằng TRX trên Tron hoặc bằng ETH trên Ethereum và Arbitrum. Phí mạng Plasma được trừ vào số tiền hiển thị, nên bạn không cần XPL để nhận.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi có thể chuyển USDT từ Tron sang Plasma không?">
+    Có. Trong báo giá thử nghiệm, L2Pass RFQ và L2Pass Private cung cấp USDT TRC-20 sang USDT0 trên Plasma, với thời gian ước tính khoảng 1,5 phút.
+  </Accordion>
+
+  <Accordion title="Chuyển USDT sang Plasma tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư). Các đối tác định tuyến và mạng lưới thu phí riêng, và số tiền hiển thị đã bao gồm các khoản đó. Trong báo giá thử nghiệm cho 1.000 USDT, Relay từ Ethereum giao 999,68 USDT0 và L2Pass RFQ từ Tron giao 997,79 USDT0.
+  </Accordion>
+
+  <Accordion title="Tôi có cần XPL để nhận USDT0 trên Plasma không?">
+    Không. Phí mạng Plasma được trừ vào số tiền hiển thị. Bạn có thể cần XPL sau này, tùy vào việc bạn làm gì với USDT0 trên Plasma.
+  </Accordion>
+
+  <Accordion title="USDT0 có giống USDT không?">
+    USDT0 là phiên bản omnichain của USDT, di chuyển giữa các mạng qua LayerZero. Trên Plasma, đây là USDT mà L2Pass Swap giao.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để chuyển USDT và USDC: L2Pass so với các cầu nối khác](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [Chuyển USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

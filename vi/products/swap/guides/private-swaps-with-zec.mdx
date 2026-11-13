@@ -1,0 +1,99 @@
+---
+title: "Cách hoán đổi ZEC riêng tư (USDT sang ZEC và ZEC sang USDT)"
+description: "Hoán đổi USDT sang ZEC trong khoảng 3 phút, hoặc ZEC sang USDT trong khoảng 8,5 phút, với L2Pass Private. Phí L2Pass tối đa 0,3%, không cần tài khoản."
+sidebarTitle: "Hoán đổi riêng tư với ZEC"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể hoán đổi riêng tư giữa USDT và ZEC, theo cả hai chiều, bằng [L2Pass Swap](https://swap.l2pass.com/) khi chọn tuyến L2Pass Private. Trong báo giá thử nghiệm, tuyến này được cung cấp từ USDT trên Tron và Ethereum sang ZEC với thời gian ước tính khoảng 3 phút, và từ ZEC sang USDT trên Tron với khoảng 8,5 phút. Tuyến thực hiện hoán đổi trong môi trường bảo mật, hạn chế những gì hiển thị trên các blockchain công khai. Đây không phải là ẩn danh: địa chỉ ví của bạn vẫn được chia sẻ với các nhà cung cấp, và việc sàng lọc tuân thủ vẫn được áp dụng. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm). Phí này đã nằm trong số tiền hiển thị trong báo giá.
+
+**Khoảng 3 phút từ USDT** · **0,8096 ZEC cho 1.000 USDT** · **Thực thi bảo mật** · **Không cần tài khoản**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 10 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Các tuyến hoán đổi giữa USDT và ZEC
+
+L2Pass RFQ và L2Pass Private đều chạy trên [NEAR Intents](https://near.org/intents), nơi các solver và nhà tạo lập thị trường cạnh tranh để khớp lệnh hoán đổi của bạn. Private thực hiện việc này trong môi trường bảo mật thay vì công khai.
+
+| Tuyến | Thời gian ước tính | Đầu ra | Ghi chú |
+| :-- | :-- | :-- | :-- |
+| L2Pass Private | Khoảng 3 phút từ USDT, khoảng 8,5 phút từ ZEC | Thay đổi, có mức nhận tối thiểu | Thực thi bảo mật. Địa chỉ nạp. Phí L2Pass tối đa 0,3%. |
+| L2Pass RFQ | Khoảng 3 phút từ USDT, khoảng 8,5 phút từ ZEC | Thay đổi, có mức nhận tối thiểu | Thực thi công khai. Địa chỉ nạp. Phí L2Pass tối đa 0,2% (tài sản khác). |
+
+Trong các báo giá thử nghiệm đó, không có tuyến nào khác (trình tổng hợp hay mạng intent khác) cho USDT và ZEC ở cả hai chiều.
+
+Báo giá thử nghiệm cho 1.000 USDT trên Tron sang ZEC cho thấy số tiền nhận được: 0,8151 ZEC trên L2Pass RFQ và 0,8096 ZEC trên L2Pass Private. Báo giá trực tiếp hiển thị số liệu hiện tại cho cặp và số tiền của bạn.
+
+## Cách hoán đổi ZEC riêng tư
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap và chọn cặp">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** USDT trên mạng bạn đang giữ, hoặc ZEC trên Zcash.
+    - **To:** token còn lại của cặp.
+    - **Amount:** số tiền bạn muốn hoán đổi.
+    - **Địa chỉ nhận:** địa chỉ sẽ nhận token, trên Zcash hoặc trên mạng USDT của bạn.
+  </Step>
+
+  <Step title="Chọn L2Pass Private">
+    Chọn L2Pass Private và kiểm tra số tiền ước tính, số tiền nhận tối thiểu, thời gian ước tính và phí. Nếu không cần thực thi bảo mật, L2Pass RFQ thay vào đó tính phí L2Pass tối đa 0,2%.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Đặt địa chỉ hoàn tiền là một ví bạn kiểm soát trên mạng bạn thanh toán (Zcash hoặc mạng USDT của bạn). Nếu hoán đổi không thể hoàn tất, nhà cung cấp sẽ trả khoản nạp về đó.
+  </Step>
+
+  <Step title="Thanh toán vào địa chỉ nạp">
+    Gửi số tiền trong báo giá đến địa chỉ nạp dùng một lần từ bất kỳ ví hoặc sàn nào, bằng địa chỉ hoặc mã QR. Nếu thanh toán bằng USDT, bạn cũng có thể gửi từ ví đã kết nối. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào số tiền đó.
+  </Step>
+
+  <Step title="Theo dõi hoán đổi trong Recent swaps">
+    Theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+Bạn chỉ trả gas trên mạng bạn gửi đi, và hoán đổi riêng tư không khiến bạn ẩn danh.
+
+- **Phí mạng.** Bạn chỉ trả gas ở nơi gửi: ZEC trên Zcash, hoặc token gốc của mạng USDT của bạn, như TRX trên Tron. Phí mạng trên mạng đích được trừ vào số tiền hiển thị.
+- **Không phải ẩn danh.** Hoán đổi riêng tư hạn chế những gì blockchain công khai hiển thị, nhưng địa chỉ ví công khai của bạn vẫn có trong các yêu cầu gửi đến nhà cung cấp. Nó được sàng lọc giống hệt một hoán đổi công khai.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Hoán đổi riêng tư có che giấu danh tính của tôi không?">
+    Không. Nó hạn chế những gì blockchain công khai hiển thị, nhưng nhà cung cấp vẫn nhận địa chỉ ví của bạn và sàng lọc hoán đổi giống hệt một hoán đổi công khai.
+  </Accordion>
+
+  <Accordion title="Hoán đổi ZEC riêng tư tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm). Phí này đã nằm trong số tiền hiển thị trong báo giá, cũng như phí của các đối tác định tuyến và mạng lưới.
+  </Accordion>
+
+  <Accordion title="Tôi có thể hoán đổi ZEC với USDT trên những mạng nào?">
+    Trong báo giá thử nghiệm, hoán đổi riêng tư với ZEC được cung cấp cho USDT trên Tron và Ethereum. Khi bạn yêu cầu báo giá, danh sách tuyến sẽ cho biết mạng nào có thể khớp cặp.
+  </Accordion>
+
+  <Accordion title="Tôi có cần tài khoản hoặc KYC cho hoán đổi riêng tư không?">
+    Không. Không có tài khoản và không KYC, cho cả hoán đổi riêng tư lẫn công khai.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để hoán đổi USDT hoặc BTC sang ZEC: L2Pass so với các dịch vụ khác](/vi/products/swap/learn/compare-zec-swaps)
+- [Hoán đổi riêng tư trong phần tổng quan](/vi/products/swap/overview#private-swaps)
+- [Phí L2Pass Swap](/vi/products/swap/overview#fee-structure)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+- [USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum)
+- [USDT từ Tron sang Solana](/vi/products/swap/guides/usdt-tron-to-solana)
+- [Nguyên tắc quyền riêng tư và AML](https://l2pass.com/privacy-policy) và [Điều khoản dịch vụ](https://l2pass.com/terms-of-service)
+
+*Cập nhật lần cuối: ngày 10 tháng 10 năm 2026*

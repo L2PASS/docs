@@ -1,0 +1,133 @@
+---
+title: "Cómo pasar USDC a HyperEVM"
+description: "Pasa USDC a HyperEVM en unos 35 segundos desde Arbitrum, o cambia USDT TRC-20 por USDC. 0% de comisión de L2Pass en L2Pass RFQ, sin HYPE."
+sidebarTitle: "USDC a HyperEVM"
+---
+
+import SwapBeforeYouSend from '/snippets/es/swap-before-you-send.mdx';
+
+Puedes pasar USDC a HyperEVM, la red EVM de Hyperliquid, desde Arbitrum, y cambiar USDT en Tron por USDC en HyperEVM, con [L2Pass Swap](https://swap.l2pass.com/). En cotizaciones de prueba, Arbitrum a HyperEVM lo ofrecieron L2Pass RFQ y L2Pass Private en unos 35 segundos, y también Relay y LI.FI. Tron a HyperEVM lo ofrecieron L2Pass RFQ y L2Pass Private en unos 1,5 minutos. L2Pass RFQ mostró un 0% de comisión de L2Pass en estos pares, y la cotización muestra lo que recibirás después de comisiones antes de confirmar. Solo se pagan aparte el gas de la red de origen y la posible comisión de mensaje del puente.
+
+**Unos 35 segundos desde Arbitrum** · **0% de comisión de L2Pass** · **Llegan 999,68 USDC por 1000 enviados** · **Sin HYPE**
+
+<Note>Cifras de cotizaciones de prueba del 19 de octubre de 2026. Tu cotización siempre es en vivo.</Note>
+
+## Rutas a HyperEVM
+
+Cuatro rutas llegaron a HyperEVM desde Arbitrum, y dos de ellas también desde Tron.
+
+| Ruta | Desde | Tiempo estimado | Resultado | Pago |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Arbitrum, Tron | Unos 35 segundos desde Arbitrum, 1,5 minutos desde Tron | Variable, con un mínimo a recibir | Dirección de depósito de un solo uso |
+| L2Pass Private | Arbitrum, Tron | Igual que L2Pass RFQ | Variable, con un mínimo a recibir | Dirección de depósito de un solo uso. Comisión de L2Pass de hasta 0,3% |
+| Relay | Arbitrum | Unos 2 segundos | Variable | Transacción en wallet |
+| LI.FI | Arbitrum | Unos 18 minutos | Variable | Transacción en wallet |
+
+L2Pass RFQ y L2Pass Private funcionan sobre [NEAR Intents](https://near.org/intents). Circle CCTP no se ofreció hacia HyperEVM en esas cotizaciones de prueba. La cotización muestra cualquier ruta que pueda ejecutar tu par.
+
+## Cotizaciones de prueba
+
+Cotizaciones hacia las 17:17 UTC. La cotización en vivo muestra las cifras actuales.
+
+<Tabs>
+<Tab title="1000 USDC desde Arbitrum">
+
+| Ruta | Recibes | Tiempo estimado |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 999,68 USDC | Unos 35 segundos |
+| L2Pass Private | 998,18 USDC | Unos 35 segundos |
+| Relay | 997,87 USDC | Unos 2 segundos |
+| LI.FI | 995,50 USDC | Unos 18 minutos |
+
+L2Pass RFQ no mostró comisión de proveedor en este par, solo una comisión de red de HyperEVM de 0,32 USDC.
+
+</Tab>
+<Tab title="1000 USDT desde Tron">
+
+| Ruta | Recibes | Tiempo estimado |
+| :-- | :-- | :-- |
+| L2Pass RFQ | 998,59 USDC | Unos 1,5 minutos |
+| L2Pass Private | 996,07 USDC | Unos 1,5 minutos |
+
+</Tab>
+</Tabs>
+
+## Cómo pasar USDC a HyperEVM
+
+Nada sale de tu wallet hasta que pagas, así que puedes comparar todas las rutas primero.
+
+<Steps>
+  <Step title="Abre L2Pass Swap">
+    Ve a [swap.l2pass.com](https://swap.l2pass.com/) y rellena cuatro campos:
+
+    - **From:** USDC en Arbitrum o USDT en Tron.
+    - **To:** USDC en HyperEVM.
+    - **Amount:** cuánto quieres enviar.
+    - **Dirección de recepción:** la dirección de HyperEVM (una dirección EVM que empieza por 0x) que recibirá los USDC.
+  </Step>
+
+  <Step title="Compara las rutas">
+    Cada tarjeta de ruta muestra el importe estimado, el mínimo a recibir, el tiempo estimado y las comisiones. El slippage por defecto es 0,05% (editable).
+  </Step>
+
+  <Step title="Indica una dirección de reembolso">
+    Para L2Pass RFQ y L2Pass Private, pon como dirección de reembolso una wallet que controles en la red de origen. Si el swap no puede completarse, el proveedor devuelve allí tu depósito.
+  </Step>
+
+  <Step title="Paga con wallet o dirección de depósito">
+    Cómo pagas depende de la ruta que elegiste.
+
+    <Tabs>
+      <Tab title="Rutas con wallet (Relay, LI.FI)">
+        Firma la transacción en tu wallet.
+      </Tab>
+      <Tab title="Dirección de depósito (L2Pass RFQ, L2Pass Private)">
+        Envía los tokens a la dirección de depósito de un solo uso desde tu wallet conectada, cualquier wallet o un exchange, por dirección o código QR. Si envías desde un exchange, comprueba que el importe que llega coincide con la cotización, porque algunos exchanges descuentan de él su comisión de retiro.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Sigue el swap">
+    Para L2Pass RFQ y L2Pass Private, sigue el estado en **Recent swaps**: *Awaiting deposit*, *Deposit confirmed* y luego *Complete*.
+  </Step>
+</Steps>
+
+## Antes de enviar
+
+En HyperEVM solo puedes recibir USDC, y solo necesitas gas en la red de origen.
+
+- **Solo USDC.** L2Pass Swap ofrece USDC en HyperEVM. Para empezar desde USDT, usa el par Tron a HyperEVM, que cambia USDT por USDC en un solo paso.
+- **Gas solo en la red de origen.** Pagas el gas en ETH en Arbitrum o en TRX en Tron. La comisión de red de HyperEVM se descuenta del importe mostrado, así que no necesitas HYPE para recibir. HYPE es el token de gas de HyperEVM, necesario más adelante para enviar o usar los USDC allí.
+
+<SwapBeforeYouSend />
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tarda pasar USDC a HyperEVM?">
+    Unos 35 segundos desde Arbitrum con L2Pass RFQ, o unos 2 segundos con Relay, en cotizaciones de prueba. Las tarjetas de ruta muestran la estimación actual.
+  </Accordion>
+
+  <Accordion title="¿Cuánto cuesta pasar USDC a HyperEVM?">
+    En cotizaciones de prueba de 1000 USDC desde Arbitrum, L2Pass RFQ entregó 999,68 USDC con un 0% de comisión de L2Pass y una comisión de red de HyperEVM de 0,32 USDC. Las demás rutas mostraron sus propias comisiones. El importe mostrado ya las incluye.
+  </Accordion>
+
+  <Accordion title="¿Necesito HYPE para recibir USDC en HyperEVM?">
+    No. La comisión de red de HyperEVM se descuenta del importe mostrado. Necesitarás HYPE más adelante para enviar o usar los USDC en HyperEVM.
+  </Accordion>
+
+  <Accordion title="¿Puedo enviar USDT TRC-20 a HyperEVM?">
+    Sí, como swap a USDC. En cotizaciones de prueba, 1000 USDT en Tron se convirtieron en 998,59 USDC en HyperEVM con L2Pass RFQ.
+  </Accordion>
+</AccordionGroup>
+
+## Enlaces
+
+- [Abrir L2Pass Swap](https://swap.l2pass.com/)
+- [La mejor forma de pasar USDT y USDC: L2Pass frente a otros puentes](/es/products/swap/learn/compare-stablecoin-transfers)
+- [Cómo compara L2Pass las rutas](/es/products/swap/learn/compare-routes)
+- [Haz swaps desde cualquier wallet o exchange](/es/products/swap/learn/deposit-address-swaps)
+- [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees)
+- [Preguntas frecuentes de L2Pass Swap](/es/products/swap/faq)
+
+*Última actualización: 19 de octubre de 2026*

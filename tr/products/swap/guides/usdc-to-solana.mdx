@@ -1,0 +1,107 @@
+---
+title: "USDC'yi Solana'ya köprüleme"
+description: "USDC'yi Base'den yaklaşık 32, Ethereum'dan 42 saniyede Solana'ya köprüleyin veya TRC-20 USDT'yi USDC'ye takas edin. %0 L2Pass ücreti, SOL gerekmez."
+sidebarTitle: "Solana'ya USDC"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/) ile USDC'yi Ethereum veya Base'den Solana'ya köprüleyebilir, Tron'daki USDT'yi Solana'da USDC'ye takas edebilirsiniz. Test tekliflerinde bu çiftleri, ikisi de [NEAR Intents](https://near.org/intents) üzerinde çalışan L2Pass RFQ ve L2Pass Private sundu; tahmini süreler yaklaşık 30 saniye ile 1,5 dakika arasında. Ödemeyi, bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan tek kullanımlık bir yatırma adresine token göndererek yaparsınız. Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Base'den yaklaşık 30 saniye** · **%0 L2Pass ücreti** · **1.000 gönderilene 999,65 USDC ulaşır** · **SOL gerekmez**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Solana'ya rotalar
+
+Test tekliflerinde Base, Ethereum ve Tron'dan Solana'ya yalnızca L2Pass RFQ ve L2Pass Private ulaştı.
+
+| Rota | Tahmini süre | Çıktı | Notlar |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Base'den yaklaşık 32 saniye, Ethereum'dan 42 saniye, Tron'dan 77 saniye | Değişken, minimum alınacak tutarla | Çözücüler ve piyasa yapıcılar takasınızı gerçekleştirmek için yarışır. Yatırma adresi. |
+| L2Pass Private | L2Pass RFQ ile aynı | Değişken, minimum alınacak tutarla | Gizli yürütme. Yatırma adresi. L2Pass ücreti %0,3'e kadar. |
+
+Bu test tekliflerinde, Circle CCTP dahil, bu çiftler için başka rota sunulmadı. Teklif, çiftinizi gerçekleştirebilen her rotayı listeler.
+
+## Test teklifleri
+
+Yaklaşık 17:17 UTC'de 1.000 USDC veya USDT için teklifler. Canlı teklif güncel rakamları gösterir.
+
+| Takas | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| 1.000 USDC, Base'den Solana'ya | 999,65 USDC | 997,92 USDC |
+| 1.000 USDC, Ethereum'dan Solana'ya | 999,55 USDC | 997,92 USDC |
+| Tron'da 1.000 USDT'den Solana'da USDC'ye | 998,67 USDC | 996,09 USDC |
+
+L2Pass RFQ'da teklifler %0 L2Pass ücreti, %0,01 NEAR Intents sağlayıcı ücreti ve 0,28 USDC Solana ağ ücreti gösterdi.
+
+## USDC Solana'ya nasıl köprülenir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Ethereum veya Base'de USDC ya da Tron'da USDT.
+    - **To:** Solana'da USDC.
+    - **Amount:** göndermek istediğiniz miktar.
+    - **Alıcı adresi:** USDC'yi alacak Solana adresi.
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    L2Pass RFQ ve L2Pass Private kartlarında tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri kontrol edin. Varsayılan kayma %0,05'tir (değiştirilebilir).
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    İade adresi olarak kaynak ağda kontrol ettiğiniz bir cüzdan girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya iade eder.
+  </Step>
+
+  <Step title="Yatırma adresine ödeyin">
+    Teklifteki tutarı bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin.
+  </Step>
+
+  <Step title="Takası takip edin">
+    Durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Yalnızca kaynak ağda gas gerekir, almak için SOL gerekmez.
+
+- **Gas yalnızca kaynak ağda.** Gas'ı Ethereum veya Base'de ETH ile, Tron'da TRX ile ödersiniz. Solana ağ ücreti gösterilen tutardan düşülür, bu yüzden almak için SOL gerekmez. USDC'yi Solana'da daha sonra taşımak veya kullanmak için SOL gerekir.
+- **Tek takasta USDT'den USDC'ye.** Tron'dan hem stablecoin'i hem ağı aynı anda değiştirebilirsiniz. Bu yine bir stablecoin takasıdır ve L2Pass RFQ'da L2Pass ücreti %0'dır.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDC'yi Solana'ya köprülemek ne kadar sürer?">
+    Test tekliflerinde Base'den yaklaşık 32 saniye, Ethereum'dan 42 saniye ve Tron'dan 77 saniye. Rota kartları güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="USDC'yi Solana'ya köprülemenin maliyeti nedir?">
+    Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar). 1.000 USDC'lik test tekliflerinde L2Pass RFQ, NEAR Intents ücreti ve Solana ağ ücretinden sonra Base'den 999,65 USDC, Ethereum'dan 999,55 USDC teslim etti.
+  </Accordion>
+
+  <Accordion title="Solana'da USDC almak için SOL gerekir mi?">
+    Hayır. Solana ağ ücreti gösterilen tutardan düşülür. USDC'yi daha sonra göndermek veya kullanmak için SOL gerekir.
+  </Accordion>
+
+  <Accordion title="TRC-20 USDT'yi Solana'da USDC'ye takas edebilir miyim?">
+    Evet. Test tekliflerinde Tron'daki 1.000 USDT, L2Pass RFQ ile yaklaşık 77 saniyede Solana'da 998,67 USDC'ye dönüştü.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Tron'dan Solana'ya USDT](/tr/products/swap/guides/usdt-tron-to-solana)
+- [USDC'yi Circle CCTP ile köprüleme](/tr/products/swap/guides/usdc-cctp)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

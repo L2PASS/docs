@@ -1,0 +1,73 @@
+---
+title: "Preguntas frecuentes"
+icon: "circle-question"
+iconType: "light"
+---
+
+<AccordionGroup>
+  <Accordion title="¿Qué es L2Pass Swap y cómo funciona?">
+    L2Pass Swap es una interfaz no custodial para hacer swaps de tokens entre cadenas. Compara cotizaciones de varios proveedores de enrutamiento independientes, como puentes nativos, redes de solvers y agregadores, y te permite ejecutar la mejor ruta con una sola confirmación.
+  </Accordion>
+
+  <Accordion title="¿Puedo pasar el mismo token entre cadenas?">
+    Sí. Las transferencias del mismo activo, como USDT de Tron a Ethereum o USDC de Arbitrum a Base, funcionan igual que los swaps. Las rutas nativas como USDT0 y Circle CCTP se ofrecen junto a otras rutas cuando están disponibles.
+  </Accordion>
+
+  <Accordion title="¿Qué activos y redes puedo usar?">
+    Las stablecoins son el foco principal, pero también se admiten activos principales como ETH, BTC, SOL y ZEC. La lista actual de tokens y redes se muestra en la
+    <a href="https://swap.l2pass.com" target="_blank">página de swap</a>
+    y puede cambiar con el tiempo.
+  </Accordion>
+
+  <Accordion title="¿Qué es el impacto en el precio?">
+    El impacto en el precio es el cambio en el precio de ejecución causado por el tamaño de la operación frente a la liquidez disponible.
+  </Accordion>
+
+  <Accordion title="¿Qué es el deslizamiento?">
+    El deslizamiento (slippage) es la diferencia entre el precio cotizado y el precio final de ejecución debida al movimiento del mercado.
+  </Accordion>
+
+  <Accordion title="¿Puedo configurar la tolerancia al deslizamiento?">
+    Sí. La tolerancia por defecto es 0,05% y puedes cambiarla desde cualquier tarjeta de ruta. Algunas rutas, como los puentes nativos de USDT0 y USDC, tienen un importe fijo, así que el deslizamiento no aplica.
+  </Accordion>
+
+  <Accordion title="¿Qué es el importe estimado?">
+    El importe estimado es la cantidad aproximada que recibirás en la red de destino con las condiciones actuales del mercado. Ya incluye todas las comisiones, salvo el gas en la red de origen y la comisión de mensaje del puente, si la hay.
+  </Accordion>
+
+  <Accordion title="¿Qué es el mínimo a recibir?">
+    El mínimo a recibir es el peor resultado dentro de tu tolerancia al deslizamiento. Si el precio se mueve más allá, el swap no se ejecuta: las rutas on-chain se revierten y las rutas con dirección de depósito devuelven tu depósito a tu dirección de reembolso.
+  </Accordion>
+
+  <Accordion title="¿Qué comisiones se aplican?">
+    La comisión de L2Pass es del 0% en swaps de stablecoins, de hasta 0,2% en otros activos y de hasta 0,3% en swaps privados (en lugar de 0% o 0,2%, no además). Los partners de enrutamiento y las blockchains pueden cobrar sus propias comisiones, que L2Pass no controla; consulta a cada proveedor para conocer los detalles actuales. Las comisiones reales siempre se muestran en la página de swap antes de confirmar, y el importe estimado en la red de destino ya las incluye, salvo el gas en la red de origen y la comisión de mensaje del puente, si la hay, que pagas aparte.
+  </Accordion>
+
+  <Accordion title="¿Qué es un swap privado?">
+    Un swap privado se ejecuta en un entorno confidencial a través de NEAR Intents, lo que limita lo que se ve en las blockchains públicas. No es anonimato total: tu dirección de wallet se sigue compartiendo con los proveedores y se revisa exactamente igual que un swap público. La comisión de L2Pass por un swap privado es de hasta 0,3% (en lugar de 0% o 0,2%, no además) y ya está incluida en el importe cotizado.
+  </Accordion>
+
+  <Accordion title="¿L2Pass Swap es no custodial?">
+    Sí. L2Pass nunca custodia ni controla tus tokens ni tus claves privadas. Los swaps los ejecutan proveedores externos independientes.
+  </Accordion>
+
+  <Accordion title="¿Necesito gas en la cadena de destino?">
+    No. El gas solo hace falta en la cadena de origen para enviar tu transacción o tu depósito. El gas de destino solo lo necesitas para lo que hagas después con los fondos. En las rutas con dirección de depósito también puedes enviar los tokens manualmente desde cualquier wallet o exchange.
+  </Accordion>
+
+  <Accordion title="¿Un swap puede ejecutarse parcialmente?">
+    No. L2Pass no usa ejecución parcial. Un swap se completa entero o no se ejecuta.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si un swap falla?">
+    Las rutas on-chain se revierten, así que no se intercambia ningún token, pero el gas de la red no es reembolsable. En las rutas con dirección de depósito, el proveedor devuelve tu depósito a tu dirección de reembolso; del importe reembolsado pueden descontarse comisiones del proveedor y de la red.
+  </Accordion>
+
+  <Accordion title="¿Pueden bloquear o retener mi swap?">
+    Cada swap se revisa por riesgos de AML y sanciones. En L2Pass RFQ y L2Pass Private, una dirección marcada no recibe cotización, así que no se envía nada. Si un depósito se marca después de llegar, los fondos quedan retenidos mientras NEAR Intents lo revisa, y lo resuelves abriendo un ticket con el soporte de NEAR Intents. Los swaps que fallan por motivos técnicos se reembolsan automáticamente. Consulta <a href="/es/products/swap/learn/failed-swaps-and-refunds#how-screening-works">Cómo funciona el control</a>.
+  </Accordion>
+
+  <Accordion title="¿Necesito KYC?">
+    No. No hay cuenta ni KYC. Si un depósito queda retenido para revisión, el soporte de NEAR Intents puede preguntarte por el origen de los fondos.
+  </Accordion>
+</AccordionGroup>

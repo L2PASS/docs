@@ -1,0 +1,110 @@
+---
+title: "BTC'yi USDT'ye (ve USDT'yi BTC'ye) takas etme"
+description: "Yerel BTC'yi yaklaşık 14 dakikada USDT'ye, USDT'yi yaklaşık 9 dakikada BTC'ye takas edin. L2Pass ücreti %0,2'ye kadar, hesap yok, herhangi bir cüzdan veya borsadan ödeyin."
+sidebarTitle: "BTC'den USDT'ye ve geri"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+[L2Pass Swap](https://swap.l2pass.com/) ile Bitcoin'deki yerel BTC'yi Tron veya Ethereum'da USDT'ye, USDT'yi de tekrar BTC'ye takas edebilirsiniz. Test tekliflerinde bu çiftler için ikisi de [NEAR Intents](https://near.org/intents) üzerinde çalışan iki rota sunuldu: L2Pass RFQ ve L2Pass Private. BTC'den takas yaklaşık 13,5 ila 14 dakika, BTC'ye takas yaklaşık 9 dakika sürdü; bu sürenin çoğu Bitcoin blok onaylarını beklemekle geçer. Ödemeyi, hesap açmadan, herhangi bir cüzdandan veya borsadan tek kullanımlık bir yatırma adresine BTC ya da USDT göndererek yaparsınız. L2Pass ücreti %0,2'ye kadardır (gizli takaslarda %0,3'e kadar) ve teklif, ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Yerel BTC, wrap yok** · **0,01 BTC için 817,64 USDT** · **Hesap yok** · **Herhangi bir cüzdan veya borsadan ödeme**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## BTC ve USDT için rotalar
+
+Test tekliflerinde BTC ve USDT takaslarını, ikisi de NEAR Intents üzerinde olan iki rota gerçekleştirdi.
+
+| Rota | Tahmini süre | Çıktı | Notlar |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | BTC'den yaklaşık 13,5 ila 14 dakika, BTC'ye yaklaşık 9 dakika | Değişken, minimum alınacak tutarla | Çözücüler ve piyasa yapıcılar takasınızı gerçekleştirmek için yarışır. Yatırma adresi. L2Pass ücreti %0,2'ye kadar. |
+| L2Pass Private | L2Pass RFQ ile aynı | Değişken, minimum alınacak tutarla | Gizli yürütme. Yatırma adresi. L2Pass ücreti %0,3'e kadar (%0 veya %0,2 yerine, üstüne değil). |
+
+Bu test tekliflerinde bu çiftler için başka rota sunulmadı. Teklif, çifti gerçekleştirebilen her rotayı listeler.
+
+## Test teklifleri
+
+Uygulamanın BTC'yi yaklaşık 81.935 USD gösterdiği, yaklaşık 16:55 UTC'deki teklifler. Canlı teklif, çiftiniz ve tutarınız için güncel rakamları gösterir.
+
+| Takas | L2Pass RFQ | L2Pass Private | Hedefteki ağ ücreti |
+| :-- | :-- | :-- | :-- |
+| 0,01 BTC'den Tron'da USDT'ye | 816,18 USDT | 812,52 USDT | 1,71 USDT |
+| 0,01 BTC'den Ethereum'da USDT'ye | 817,64 USDT | 814,70 USDT | 0,3 USDT |
+| Tron'da 1.000 USDT'den BTC'ye | 0,01215466 BTC | 0,01209267 BTC | 0,000019 BTC |
+
+Bu tekliflerde L2Pass RFQ, %0 L2Pass ücreti ve %0,2 NEAR Intents sağlayıcı ücreti gösterdi. L2Pass Private %0,3 L2Pass ücreti gösterdi.
+
+## BTC, USDT'ye nasıl takas edilir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Bitcoin'de BTC.
+    - **To:** Tron veya Ethereum'da USDT.
+    - **Amount:** takas etmek istediğiniz BTC miktarı.
+    - **Alıcı adresi:** USDT'yi alacak Tron veya Ethereum adresi.
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    L2Pass RFQ ve L2Pass Private kartlarında tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri kontrol edin. Varsayılan kayma %0,05'tir (değiştirilebilir).
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    İade adresi olarak kontrol ettiğiniz bir Bitcoin adresi girin. Takas tamamlanamazsa sağlayıcı BTC'nizi oraya iade eder.
+  </Step>
+
+  <Step title="Yatırma adresine BTC gönderin">
+    Teklifteki tutarı herhangi bir Bitcoin cüzdanından veya bir borsadan, adres ya da QR kod ile tek kullanımlık Bitcoin yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+  </Step>
+
+  <Step title="Takası takip edin">
+    Durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*. Yatırma, Bitcoin işleminizi onayladıktan sonra onaylanır.
+  </Step>
+</Steps>
+
+USDT'yi BTC'ye takas etmek için kaynak olarak Tron veya Ethereum'da USDT'yi, hedef olarak BTC'yi seçin, bir Bitcoin alıcı adresi girin, USDT ağınızda bir iade adresi belirleyin ve USDT'yi aynı şekilde yatırma adresine gönderin.
+
+## Göndermeden önce
+
+Hızı Bitcoin blokları belirler ve BTC gönderirken Bitcoin ağ ücretini siz ödersiniz.
+
+- **Bitcoin ücretleri.** BTC gönderirken Bitcoin ağ ücretini ödersiniz. BTC alırken Bitcoin ağ ücreti gösterilen tutardan düşülür.
+- **Süre.** Bitcoin blokları yaklaşık her 10 dakikada bir gelir, bu yüzden BTC'den veya BTC'ye takaslar diğer ağlar arasındaki stablecoin transferlerinden uzun sürer.
+- **Minimum tutar.** Bazı rotaların minimum takas tutarı vardır. Tutarınız bunun altındaysa rota, minimum gösterilerek kullanılamaz olarak listelenir.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="BTC'yi USDT'ye takas etmek için wrap etmem gerekir mi?">
+    Hayır. Bitcoin'deki yerel BTC'yi yatırma adresine gönderirsiniz, USDT Tron veya Ethereum'a ulaşır.
+  </Accordion>
+
+  <Accordion title="BTC'yi USDT'ye takas etmenin maliyeti nedir?">
+    L2Pass ücreti %0,2'ye kadardır (gizli takaslarda %0,3'e kadar). Test tekliflerinde L2Pass RFQ, %0 L2Pass ücreti, %0,2 NEAR Intents sağlayıcı ücreti ve bir hedef ağ ücreti gösterdi. Gösterilen tutar bunların hepsini zaten içerir. Gönderirken Bitcoin ağ ücretini de ödersiniz.
+  </Accordion>
+
+  <Accordion title="BTC'den USDT'ye takas ne kadar sürer?">
+    Test tekliflerinde yaklaşık 13,5 ila 14 dakika, USDT'den BTC'ye ise yaklaşık 9 dakika. Rota kartları güncel tahmini gösterir.
+  </Accordion>
+
+  <Accordion title="Hesap gerekir mi?">
+    Hayır. Hesap veya KYC gerekmez ve herhangi bir cüzdan ya da borsadan ödeyebilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [BTC'yi USDT'ye takas etmenin en iyi yolu: L2Pass ile diğer hizmetler](/tr/products/swap/learn/compare-btc-swaps)
+- [L2Pass RFQ by NEAR Intents nedir](/tr/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [ZEC ile gizli takaslar](/tr/products/swap/guides/private-swaps-with-zec)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

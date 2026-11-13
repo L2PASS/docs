@@ -1,0 +1,143 @@
+---
+title: "USDT'yi Plasma'ya köprüleme (USDT0)"
+description: "USDT'yi Ethereum'dan yaklaşık 1 saniyede veya Tron'dan 1,5 dakikada Plasma'ya köprüleyin. %0 L2Pass ücreti, USDT0 olarak ulaşır, XPL gerekmez."
+sidebarTitle: "Plasma'ya USDT"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+USDT'yi Tron, Ethereum veya Arbitrum'dan Plasma'ya, çiftin tüm rotalarını yan yana gösteren gözetimsiz bir arayüz olan [L2Pass Swap](https://swap.l2pass.com/) ile köprüleyebilirsiniz. Plasma'da USDT, USDT'nin omnichain sürümü olan USDT0 olarak ulaşır. Test tekliflerinde Tron'dan Plasma'yı L2Pass RFQ ve L2Pass Private yaklaşık 1,5 dakikada, Ethereum veya Arbitrum'dan Plasma'yı ayrıca Relay ve Aori saniyeler içinde sundu. Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Ethereum'dan saniyeler içinde** · **%0 L2Pass ücreti** · **1.000 gönderilene 999,68 USDT0 ulaşır** · **XPL gerekmez**
+
+<Note>Rakamlar 19 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Plasma'ya rotalar
+
+L2Pass RFQ ve L2Pass Private, çözücülerin ve piyasa yapıcıların takasınızı gerçekleştirmek için yarıştığı [NEAR Intents](https://near.org/intents) üzerinde çalışır. Private bunu gizli bir ortamda gerçekleştirir.
+
+| Rota | Kaynak | Tahmini süre | Çıktı | Ödeme |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Tron, Ethereum, Arbitrum | Tron'dan yaklaşık 1,5 dakika, Ethereum veya Arbitrum'dan 30 ila 50 saniye | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi |
+| L2Pass Private | Tron, Ethereum, Arbitrum | L2Pass RFQ ile aynı | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi. L2Pass ücreti %0,3'e kadar |
+| Relay | Ethereum, Arbitrum | Yaklaşık 1 saniye | Değişken | Cüzdan işlemi |
+| Aori | Ethereum, Arbitrum | Yaklaşık 2 ila 13 saniye | Sabit | Cüzdan işlemi |
+
+Ethereum'dan LI.FI de sunuldu. Teklif, çiftinizi gerçekleştirebilen her rotayı listeler.
+
+## Test teklifleri
+
+Yaklaşık 17:17 UTC'de 1.000 USDT için teklifler. Canlı teklif, çiftiniz ve tutarınız için güncel rakamları gösterir.
+
+<Tabs>
+<Tab title="Tron'dan">
+
+| Rota | Alacağınız |
+| :-- | :-- |
+| L2Pass RFQ | 997,79 USDT0 |
+| L2Pass Private | 995,40 USDT0 |
+
+Bu çiftte L2Pass RFQ, %0 L2Pass ücreti ve %0,2 NEAR Intents sağlayıcı ücreti (2 USDT) gösterdi.
+
+</Tab>
+<Tab title="Ethereum'dan">
+
+| Rota | Alacağınız |
+| :-- | :-- |
+| Relay | 999,68 USDT0 |
+| Aori | 999,05 USDT0 |
+| L2Pass RFQ | 997,90 USDT0 |
+| L2Pass Private | 996,30 USDT0 |
+
+</Tab>
+<Tab title="Arbitrum'dan (USDT0)">
+
+| Rota | Alacağınız |
+| :-- | :-- |
+| Relay | 999,58 USDT0 |
+| Aori | 999,29 USDT0 |
+| L2Pass RFQ | 997,90 USDT0 |
+| L2Pass Private | 996,30 USDT0 |
+
+</Tab>
+</Tabs>
+
+## USDT Plasma'ya nasıl köprülenir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Tron veya Ethereum'da USDT ya da Arbitrum'da USDT0.
+    - **To:** Plasma'da USDT0.
+    - **Amount:** göndermek istediğiniz miktar.
+    - **Alıcı adresi:** USDT0'ı alacak Plasma adresi (0x ile başlayan bir EVM adresi).
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. Varsayılan kayma %0,05'tir (değiştirilebilir) ve Aori gibi sabit çıktılı rotalara uygulanmaz.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresi olarak kaynak ağda kontrol ettiğiniz bir cüzdan girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya iade eder.
+  </Step>
+
+  <Step title="Cüzdanla veya yatırma adresiyle ödeyin">
+    Nasıl ödeyeceğiniz seçtiğiniz rotaya bağlıdır.
+
+    <Tabs>
+      <Tab title="Cüzdan rotaları (Relay, Aori)">
+        İşlemi cüzdanınızda imzalayın.
+      </Tab>
+      <Tab title="Yatırma adresi (L2Pass RFQ, L2Pass Private)">
+        USDT'yi bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Takası takip edin">
+    L2Pass RFQ ve L2Pass Private için durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Yalnızca kaynak ağda gas gerekir ve USDT'niz Plasma'ya USDT0 olarak ulaşır.
+
+- **Plasma'da USDT0.** L2Pass Swap, Plasma'da USDT'yi USDT0 olarak sunar. Plasma'nın yerel tokenı XPL'dir.
+- **Gas yalnızca kaynak ağda.** Gas'ı Tron'da TRX ile, Ethereum ve Arbitrum'da ETH ile ödersiniz. Plasma ağ ücreti gösterilen tutardan düşülür, bu yüzden almak için XPL gerekmez.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="USDT'yi Tron'dan Plasma'ya köprüleyebilir miyim?">
+    Evet. Test tekliflerinde L2Pass RFQ ve L2Pass Private, TRC-20 USDT'den Plasma'da USDT0'a yaklaşık 1,5 dakikalık tahmini süreyle rota sundu.
+  </Accordion>
+
+  <Accordion title="USDT'yi Plasma'ya köprülemenin maliyeti nedir?">
+    Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar). Yönlendirme ortakları ve ağlar kendi ücretlerini alır; gösterilen tutar bunları zaten içerir. 1.000 USDT'lik test tekliflerinde Ethereum'dan Relay 999,68 USDT0, Tron'dan L2Pass RFQ 997,79 USDT0 teslim etti.
+  </Accordion>
+
+  <Accordion title="Plasma'da USDT0 almak için XPL gerekir mi?">
+    Hayır. Plasma ağ ücreti gösterilen tutardan düşülür. Plasma'da USDT0 ile ne yapacağınıza bağlı olarak daha sonra XPL gerekebilir.
+  </Accordion>
+
+  <Accordion title="USDT0, USDT ile aynı mı?">
+    USDT0, USDT'nin LayerZero üzerinden ağlar arasında taşınan omnichain sürümüdür. Plasma'da L2Pass Swap'in teslim ettiği USDT budur.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Tron'dan Ethereum'a USDT köprüleme](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

@@ -1,0 +1,108 @@
+---
+title: "Genel bakış"
+icon: "bridge-water"
+description: "L2Pass Swap nasıl çalışır: 14 ağ, her takas için birden fazla rota teklifi, stablecoin'lerde L2Pass ücreti %0, gizli takaslar, iadeler ve gerçekleşme süreleri."
+iconType: "light"
+---
+
+<Frame>
+  ![Docs Cross Chain Swap](/images/docs_cross-chain_swap.png)
+</Frame>
+
+[L2Pass Swap](https://swap.l2pass.com/), stablecoin'lere odaklanarak tokenları blokzincirler arasında taşır. Her takas için birden fazla bağımsız yönlendirme sağlayıcısından teklif ister, bunları alacağınız tutara göre sıralayıp yan yana gösterir ve seçtiğinizi tek onayla gerçekleştirmenizi sağlar.
+
+L2Pass tokenlarınızı asla emanetinde tutmaz. Her takası üçüncü taraf köprüler, çözücü ağları ve likidite kaynakları kendi altyapılarında gerçekleştirir.
+
+## Desteklenen ağlar ve varlıklar
+
+L2Pass Swap şu anda **Ethereum, Bitcoin, Zcash, Tron, Solana, TON, BNB Chain, Arbitrum, Base, Polygon, Optimism, Avalanche, Plasma ve HyperEVM** ağlarını destekler.
+
+Ana odak stablecoin'lerdir (USDT, USDT0, USDC, DAI ve diğerleri), ancak ETH, BTC, SOL, ZEC, TRX, BNB, AVAX ve POL gibi büyük varlıkları da takas edebilirsiniz. Kullanılabilir tokenlar, ağlar ve rotalar her an değişebilir; güncel liste her zaman [takas arayüzünde](https://swap.l2pass.com/) görünür.
+
+## Yönlendirme nasıl çalışır
+
+Teklif istediğinizde L2Pass birden fazla yönlendirme kaynağına aynı anda sorar ve takasınızı gerçekleştirebilecek tüm rotaları alacağınız tutara göre sıralayarak gösterir:
+
+- **L2Pass RFQ by NEAR Intents:** [NEAR Intents](https://near.org/intents) ağı üzerinden teklif talebi (RFQ) yönlendirmesi; burada çözücüler ve piyasa yapıcılar takasınızı gerçekleştirmek için yarışır.
+- **L2Pass Private:** aynı çözücü ağı, gizli bir ortamda çalışır. Bkz. [Gizli takaslar](#private-swaps).
+- **USDT Native Bridge:** Tron dahil, LayerZero üzerinden yerel USDT0 transferleri.
+- **USDC Native Bridge:** Standard ve Fast modlarında Circle CCTP V2 ile yerel USDC transferleri.
+- **Toplayıcılar ve intent ağları:** LI.FI, LI.FI Intents, Relay, Aori ve OKX DEX toplayıcısı.
+
+Her rota kartı o rotanın tahmini tutarını, minimum alınacak tutarı, tahmini süresini ve ücretlerini gösterir; böylece size uygun olanı seçersiniz. Bazı rotaların minimum takas tutarı vardır; tutarınız bunun altındaysa rota, minimum tutarla birlikte kullanılamaz olarak listelenir.
+
+## Takas nasıl gerçekleşir
+
+Rotaya bağlı olarak takas iki yoldan biriyle gerçekleşir:
+
+- **Cüzdan işlemi:** cüzdanınızda bir işlem imzalarsınız ve rotanın sözleşmeleri takası ve köprüyü zincir üzerinde gerçekleştirir.
+- **Yatırma adresi:** RFQ ve Private rotalarında tokenları teklifinize ait tek kullanımlık bir yatırma adresine gönderirsiniz. Bağlı cüzdanınızdan gönderebilir ya da adresi veya QR kodu kullanarak herhangi bir cüzdandan veya borsadan elle aktarabilirsiniz. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini düşer. Ardından takas *Awaiting deposit*, *Deposit confirmed* ve *Complete* aşamalarından geçer; bunu **Recent swaps** bölümünden takip edebilirsiniz.
+
+Yatırma adresli rotada kaynak ağda bir iade adresi de belirlersiniz. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya geri gönderir.
+
+## Takas ne kadar sürer
+
+Çoğu takas saniyeler ile birkaç dakika arasında tamamlanır ve her rota kartı onaylamadan önce tahminini gösterir.
+
+- **Relay, Aori ve CCTP Fast:** saniyelerden yaklaşık bir dakikaya kadar.
+- **L2Pass RFQ ve L2Pass Private:** 30 saniye ile birkaç dakika arası; blok onayı bekleyen Bitcoin veya Zcash ile daha uzun.
+- **USDT0:** birkaç dakika.
+- **CCTP Standard:** blok kesinliğini beklerken 20 dakikaya kadar.
+
+Ağ yoğunluğu veya sağlayıcı kesintileri takasın tahminden uzun sürmesine neden olabilir.
+
+## Kayma ve fiyat etkisi
+
+**Fiyat etkisi**, işlem büyüklüğünün mevcut likiditeye göre neden olduğu fiyat değişimidir. Birden fazla kaynağı karşılaştırmak onu düşük tutmaya yardımcı olur.
+
+**Kayma (slippage)**, teklif edilen fiyat ile nihai gerçekleşme fiyatı arasındaki farktır.
+
+- **Kayma toleransı:** varsayılan tolerans **%0,05**'tir. Herhangi bir rota kartından değiştirebilirsiniz.
+- **Sabit tutar:** yerel USDT0 ve USDC köprüleri gibi bazı rotalar sabit tutar teslim eder, bu yüzden kayma uygulanmaz.
+- **Minimum alınacak tutar:** her rota kartı, toleransınız dahilindeki en kötü sonuç olan minimum alınacak tutarı gösterir. Fiyat bunun ötesine geçerse takas gerçekleşmez: zincir üstü rotalar geri alınır, yatırma adresli rotalar ise yatırdığınız tutarı iade adresinize geri gönderir.
+
+<a id="fee-structure"></a>
+
+## Ücret yapısı
+
+Rota kartı, onaylamadan önce takasınızın gerçek ücretlerini gösterir. **Hedef ağdaki tahmini tutar, kaynak ağdaki gas ve varsa köprü mesaj ücreti dışındaki tüm ücretleri zaten içerir**; bu ikisini ayrıca ödersiniz.
+
+### L2Pass ücreti
+
+| Takas türü | L2Pass ücreti |
+| :-- | :-- |
+| Stablecoin takasları (her rota) | **%0** |
+| Diğer varlıklar | **%0,2'ye kadar** |
+| Gizli takaslar, her varlık (%0 veya %0,2 yerine, üstüne değil) | **%0,3'e kadar** |
+
+### Ortak ve ağ ücretleri
+
+Yönlendirme ortakları (köprüler, çözücü ağları, toplayıcılar ve likidite sağlayıcıları) kendi ücretlerini alabilir. L2Pass bu ücretleri kontrol etmez; en güncel bilgi için her sağlayıcının belgelerine bakın.
+
+Her blokzincir işlemi ayrıca ETH, POL, BNB veya TRX gibi yerel tokenla ödenen bir ağ (gas) ücreti gerektirir. Gas ücretleri L2Pass'e değil ağa gider ve iade edilmez.
+
+<a id="private-swaps"></a>
+
+## Gizli takaslar
+
+Gizli takaslar, takasınızı herkese açık yerine gizli bir gerçekleştirme ortamından geçirir ve herkese açık blokzincirlerde görünenleri sınırlar. Bunu üçüncü taraf bir protokol olan NEAR Intents mümkün kılar.
+
+- **Anonimlik değildir:** herkese açık cüzdan adresiniz sağlayıcılara gönderilen taleplerde yine yer alır.
+- **Aynı tarama:** gizli takaslar, teklif aşamasında ve yatırmadan sonra herkese açık takaslarla tamamen aynı şekilde taranır.
+- **Ücret:** gizli takas için L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil). Her ücret gibi, teklifte gösterilen tutara zaten dahildir.
+
+Ayrıntılar için [Hizmet Şartları](https://l2pass.com/terms-of-service) ve [Gizlilik ve AML İlkeleri](https://l2pass.com/privacy-policy) sayfalarına bakın.
+
+## Ya tamamen gerçekleşir ya tamamen iade edilir
+
+Bir takas ya tamamen gerçekleşir ya hiç gerçekleşmez; başarısız takas otomatik olarak iade edilir.
+
+- **Kısmi gerçekleşme yok:** L2Pass kısmi gerçekleştirme kullanmaz. Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+- **İadeler:** yatırma adresli bir takas tamamlanamazsa (örneğin fiyat toleransınızın ötesine geçtiği veya teklifin süresi dolduğu için), sağlayıcı yatırdığınız tutarı sağlayıcı ve ağ ücretlerini düşerek iade adresinize geri gönderir. Başarısız bir cüzdan işlemi geri alınır ve ödediğiniz gas harcanmış olur.
+- **Uyum incelemeleri:** her takas KYC olmadan taranır. L2Pass RFQ ve L2Pass Private'ta işaretlenen bir adres teklif almaz. Ulaştıktan sonra işaretlenen bir yatırma iade edilmek yerine inceleme için tutulur ve bunu NEAR Intents destek ekibine talep açarak çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+---
+
+<Card icon="circle-question" href="/tr/products/swap/faq" title="Swap SSS">
+  L2Pass Swap hakkında sık sorulan sorular: ücretler, rotalar, iadeler ve desteklenen ağlar.
+</Card>

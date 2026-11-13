@@ -1,0 +1,98 @@
+---
+title: "L2Pass có an toàn không? Cách hoán đổi phi lưu ký hoạt động"
+description: "L2Pass Swap là phi lưu ký: không bao giờ giữ token hay khóa của bạn, hoán đổi chạy trên hợp đồng của nhà cung cấp và bạn chỉ thanh toán vào một địa chỉ nạp dùng một lần."
+sidebarTitle: "L2Pass có an toàn không?"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) là giao diện phi lưu ký: L2Pass không bao giờ giữ token hay khóa riêng tư của bạn. Mỗi hoán đổi được thực hiện bởi một nhà cung cấp tuyến, như NEAR Intents, Circle CCTP, USDT0, LI.FI hoặc Relay, trên hợp đồng của chính nhà cung cấp đó. Bạn ký giao dịch trong ví của mình hoặc gửi token tới một địa chỉ nạp dùng một lần được tạo cho báo giá của bạn, và giao diện hiển thị số tiền bạn sẽ nhận, sau phí, trước khi bạn xác nhận. L2Pass hoạt động từ năm 2023 và đã phục vụ hơn 650.000 ví với hơn 4 triệu giao dịch.
+
+## Tiền của bạn di chuyển thế nào
+
+Khóa của bạn không bao giờ rời khỏi ví, dù bạn chọn tuyến nào.
+
+| Bước | Tuyến qua ví (CCTP, USDT0, LI.FI, Relay, Aori, OKX) | Tuyến địa chỉ nạp (L2Pass RFQ, L2Pass Private) |
+| :-- | :-- | :-- |
+| Bạn xác nhận | Ký giao dịch trong ví | Gửi token tới địa chỉ nạp dùng một lần của báo giá |
+| Ai thực hiện | Hợp đồng của nhà cung cấp | Các solver trên [NEAR Intents](https://near.org/intents) |
+| Ai giữ khóa của bạn | Chỉ bạn | Chỉ bạn |
+| Nếu thất bại | Giao dịch bị hoàn tác (gas không được hoàn) | Khoản nạp trở về địa chỉ hoàn tiền của bạn, trừ phí nhà cung cấp hoặc phí mạng |
+
+<Note>
+Mọi hoán đổi đều được sàng lọc. Trên tuyến RFQ và Private, địa chỉ bị gắn cờ không nhận được báo giá, nên không có gì được gửi đi. Khoản nạp bị gắn cờ sau khi đến sẽ bị giữ lại để xem xét thay vì hoàn trả, và bạn giải quyết với bộ phận hỗ trợ NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+</Note>
+
+## L2Pass làm gì và không làm gì
+
+**L2Pass có:**
+- Lấy báo giá từ nhiều nhà cung cấp tuyến và hiển thị cạnh nhau.
+- Hiển thị mọi khoản phí và số tiền bạn sẽ nhận trước khi bạn xác nhận.
+- Tạo địa chỉ nạp dùng một lần cho báo giá RFQ và Private thông qua NEAR Intents.
+
+**L2Pass không:**
+- Giữ token hay khóa riêng tư của bạn.
+- Yêu cầu tài khoản hay KYC.
+- Bỏ qua quy trình xem xét tuân thủ của nhà cung cấp.
+
+## Hợp đồng của L2Pass
+
+Hoán đổi qua tuyến bên thứ ba được thực hiện bởi chính hợp đồng của các nhà cung cấp đó. L2Pass chỉ dùng router riêng cho các giao dịch chuyển USDT0 gốc. Xem [Hợp đồng](/vi/resources/contracts) để biết địa chỉ trên Ethereum, Arbitrum, Optimism, Polygon, HyperEVM và Tron.
+
+## Cách giữ an toàn
+
+Bốn bước kiểm tra này bảo vệ bạn khỏi trang giả mạo, sai địa chỉ và phê duyệt không mong muốn.
+
+<Steps>
+  <Step title="Dùng trang chính thức">
+    Mở [swap.l2pass.com](https://swap.l2pass.com/) trực tiếp hoặc từ [docs.l2pass.com](https://docs.l2pass.com/). Kiểm tra thanh địa chỉ trước khi kết nối ví hoặc gửi tiền.
+  </Step>
+
+  <Step title="Chỉ gửi tới địa chỉ nạp trong báo giá">
+    Địa chỉ duy nhất bạn gửi tiền tới là địa chỉ nạp dùng một lần hiển thị trong giao diện cho báo giá của bạn. Hỗ trợ L2Pass không bao giờ yêu cầu bạn gửi tiền đi nơi khác.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền bạn kiểm soát">
+    Với tuyến địa chỉ nạp, hãy dùng ví bạn kiểm soát trên mạng nguồn, không dùng địa chỉ nạp của sàn.
+  </Step>
+
+  <Step title="Kiểm tra phê duyệt">
+    Với tuyến qua ví, hãy đọc kỹ những gì ví yêu cầu bạn phê duyệt. Bạn có thể xem lại và thu hồi phê duyệt token trong ví hoặc trên trình khám phá khối.
+  </Step>
+</Steps>
+
+## Tuân thủ và rủi ro bên thứ ba
+
+Nhà cung cấp, chứ không phải L2Pass, thực hiện từng hoán đổi và các bước kiểm tra tuân thủ.
+
+- **Kiểm tra tuân thủ.** Trên tuyến RFQ và Private, NEAR Intents sàng lọc mỗi hoán đổi hai lần, khi báo giá và sau khi nạp, như nhau cho hoán đổi công khai và riêng tư. Lỗi kỹ thuật được hoàn tiền; gắn cờ tuân thủ sau khi nạp nghĩa là tiền bị giữ để xem xét cho đến khi hỗ trợ NEAR Intents xử lý yêu cầu của bạn. Xem [trang rủi ro và tuân thủ của NEAR Intents](https://docs.near-intents.org/security-compliance/risk-and-compliance).
+- **Rủi ro bên thứ ba.** Mỗi nhà cung cấp vận hành hợp đồng và hạ tầng riêng. Xem [Điều khoản dịch vụ](https://l2pass.com/terms-of-service) để biết L2Pass xử lý nhà cung cấp bên thứ ba thế nào.
+- **Không khớp một phần.** Hoán đổi hoặc hoàn tất toàn bộ, hoặc không được thực hiện.
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="L2Pass có lưu ký không?">
+    Không. L2Pass không bao giờ giữ token hay khóa riêng tư của bạn. Hoán đổi được thực hiện bởi nhà cung cấp tuyến trên hợp đồng của họ, hoặc trên tuyến RFQ và Private, bởi các solver trên NEAR Intents.
+  </Accordion>
+
+  <Accordion title="L2Pass có uy tín không?">
+    Có, và bạn có thể tự kiểm tra. L2Pass chạy trên mainnet từ năm 2023, và lịch sử on-chain công khai trên [LayerZero Scan](https://layerzeroscan.com/application/l2pass). Địa chỉ hợp đồng được liệt kê tại [Hợp đồng](/vi/resources/contracts). Vì L2Pass không bao giờ giữ token của bạn, bạn không phải giao tiền cho L2Pass: mỗi hoán đổi chạy trên hợp đồng của nhà cung cấp tuyến, và bạn thấy số tiền sẽ nhận trước khi xác nhận.
+  </Accordion>
+
+  <Accordion title="Tôi có phải cung cấp dữ liệu cá nhân cho L2Pass không?">
+    Không. Không có tài khoản và không KYC. Nếu khoản nạp bị giữ để xem xét, hỗ trợ NEAR Intents có thể hỏi nguồn gốc tiền. Xem [Nguyên tắc quyền riêng tư và AML](https://l2pass.com/privacy-policy).
+  </Accordion>
+
+  <Accordion title="Tiền của tôi sẽ ra sao nếu hoán đổi thất bại?">
+    Trên tuyến qua ví, giao dịch bị hoàn tác và chỉ tốn gas. Trên tuyến địa chỉ nạp, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền của bạn, trừ phí nhà cung cấp hoặc phí mạng. Xem [Điều gì xảy ra nếu hoán đổi thất bại](/vi/products/swap/learn/failed-swaps-and-refunds).
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Hợp đồng](/vi/resources/contracts)
+- [Điều gì xảy ra nếu hoán đổi thất bại](/vi/products/swap/learn/failed-swaps-and-refunds)
+- [Hoán đổi từ bất kỳ ví hoặc sàn nào](/vi/products/swap/learn/deposit-address-swaps)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

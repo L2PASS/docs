@@ -1,0 +1,107 @@
+---
+title: "Takas başarısız olursa ne olur: iadeler ve iade adresleri"
+description: "Bir L2Pass takası tamamlanamazsa zincir üstü rotalar geri alınır, yatırma adresli rotalar otomatik iade yapar. Tarama nasıl çalışır, fonlar ne zaman incelemeye alınır ve neleri kontrol etmeli."
+sidebarTitle: "Başarısız takaslar ve iadeler"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) içindeki bir takas tamamlanamazsa hiç gerçekleşmez: takaslar asla kısmen gerçekleşmez. Circle CCTP, USDT0, Relay veya LI.FI gibi cüzdan rotalarında işlem geri alınır ve hiçbir token takas edilmez, ancak ödediğiniz gas iade edilmez. Yatırma adresli rotalarda (L2Pass RFQ ve L2Pass Private) sağlayıcı, varsa sağlayıcı veya ağ ücretlerini düşerek yatırdığınız tutarı belirlediğiniz iade adresine geri gönderir. Farklı işleyen tek durum, yatırmanızdan sonra gelen bir uyum işaretidir: bu durumda fonlar iade edilmek yerine inceleme için tutulur ve bunu NEAR Intents destek ekibiyle çözersiniz.
+
+## Rota türüne göre ne olur
+
+Cüzdan rotaları geri alınır, yatırma adresli rotalar iade yapar, uyum nedeniyle işaretlenen bir yatırma ise inceleme için tutulur.
+
+| Rota türü | Rotalar | Takas tamamlanamazsa | Ne kaybedersiniz |
+| :-- | :-- | :-- | :-- |
+| Cüzdan işlemi | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, OKX DEX toplayıcısı | İşlem geri alınır ve hiçbir token takas edilmez | Kaynak gas |
+| Yatırma adresi | L2Pass RFQ, L2Pass Private | Sağlayıcı yatırılan tutarı iade adresinize geri gönderir | İadeden düşülebilecek sağlayıcı ve ağ ücretleri |
+| Yatırmadan sonra işaretlenen | L2Pass RFQ, L2Pass Private | NEAR Intents takası incelerken fonlar tutulur | Varsayılan olarak hiçbir şey kaybedilmez; NEAR Intents destek ekibine talep açarsınız |
+
+## Bir takas neden tamamlanamayabilir
+
+Fiyat, zamanlama, yatırma veya sağlayıcı kontrolü teklife uymadığında takas durur.
+
+- **Fiyat kayma toleransınızın ötesine geçti.** Rota kartındaki minimum alınacak tutar, toleransınız (varsayılan %0,05) dahilindeki en kötü durumdur. Fiyat bunun ötesine geçerse takas gerçekleşmez.
+- **Teklifin süresi doldu.** Teklif sınırlı bir süre geçerlidir. Çok geç ulaşan bir yatırma gerçekleştirilmeyebilir.
+- **Yatırma teklifle eşleşmiyor.** Örneğin bir borsa çekim ücretini düştü veya tokenlar başka bir ağda gönderildi.
+- **Hiçbir çözücü takası gerçekleştirmedi.** RFQ rotalarında çözücüler, örneğin likidite zayıfken, bir takası reddedebilir.
+- **Uyum işareti.** L2Pass RFQ ve L2Pass Private'ta işaretlenen bir adres hiç teklif almaz. Ulaştıktan sonra işaretlenen bir yatırma iade edilmez, inceleme için tutulur. Bkz. [Tarama nasıl çalışır](#how-screening-works).
+
+<a id="how-screening-works"></a>
+
+## Tarama nasıl çalışır
+
+L2Pass RFQ ve L2Pass Private'taki her takas, herkese açık ya da gizli olsun, aynı şekilde taranır ve KYC gerekmez.
+
+- **Teklif aşamasında.** NEAR Intents takası teklif vermeden önce tarar. Bir şey işaretlenirse teklif almazsınız ve hiçbir şey gönderilmez. İade adresiniz de taranır, bu yüzden kendi cüzdanınızı kullanın.
+- **Yatırmanızdan sonra.** Yatırmanız ulaştığında takas yeniden kontrol edilir.
+- **Teknik hata: iade edilir.** Takas fiyat hareketi veya süresi dolmuş teklif gibi teknik bir nedenle başarısız olursa yatırılan tutar otomatik olarak iade adresinize döner.
+- **Uyum işareti: inceleme için tutulur.** Yatırma AML veya yaptırım kuralları kapsamında işaretlenirse NEAR Intents incelerken fonlar tutulur ve nedeni paylaşılmayabilir. Çözmek için NEAR Intents destek ekibine talep açın. Fonların kaynağını sorabilirler.
+
+L2Pass bir incelemeyi geçersiz kılamaz, ancak [L2Pass desteği](/tr/resources/support) doğru kişiye ulaşmanıza yardımcı olabilir. Circle CCTP, USDT0, LI.FI ve Relay gibi cüzdan rotaları kendi sağlayıcılarının kontrollerine tabidir. Ayrıntılar için [NEAR Intents risk ve uyum sayfasına](https://docs.near-intents.org/security-compliance/risk-and-compliance) bakın.
+
+## İade adresi nasıl belirlenir
+
+İade yalnızca iade adresine gider, bu yüzden kontrol ettiğiniz bir cüzdanı girin.
+
+<Steps>
+  <Step title="Kontrol ettiğiniz bir cüzdan kullanın">
+    İade adresi olarak kaynak ağda kontrol ettiğiniz ve imza atabildiğiniz bir cüzdan girin; örneğin TRC-20 USDT ile ödüyorsanız bir Tron cüzdanı.
+  </Step>
+
+  <Step title="Borsa yatırma adresi kullanmayın">
+    Borsa yatırma adresine gönderilen bir iade hesabınıza yansımayabilir, çünkü borsalar genellikle bilinen göndericilerden veya memo içeren yatırmalar bekler.
+  </Step>
+
+  <Step title="Ödemeden önce kontrol edin">
+    İade yalnızca oraya gittiği için iade adresi yatırmayı göndermeden önce doğru olmalıdır.
+  </Step>
+</Steps>
+
+## Takas takılırsa ne yapmalı
+
+Desteğe başvurmadan önce **Recent swaps** bölümünü ve bir blok gezginini kontrol edin.
+
+1. **Recent swaps** bölümünü açın ve durumu kontrol edin: *Awaiting deposit*, *Deposit confirmed* veya *Complete*.
+2. Hâlâ *Awaiting deposit* görünüyorsa, transferinizin yatırma adresine doğru ağda ve doğru tutarla ulaştığını bir blok gezgininde kontrol edin.
+3. USDT0 transferi için kaynak işlem hash'inizi [LayerZero Scan](https://layerzeroscan.com/) üzerinde arayın.
+4. Takas tamamlanmazsa iade edilen tutarı iade adresinizde kontrol edin.
+5. Yatırma bir uyum incelemesi için tutuluyorsa NEAR Intents destek ekibine talep açın.
+6. Hâlâ yardıma ihtiyacınız varsa kaynak işlem hash'iyle [L2Pass desteğine](/tr/resources/support) başvurun.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Bir L2Pass takası kısmen gerçekleşebilir mi?">
+    Hayır. Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+  </Accordion>
+
+  <Accordion title="Takas başarısız olursa gas'ımı geri alır mıyım?">
+    Hayır. Kaynak zincirde ödenen gas hiçbir rotada iade edilmez.
+  </Accordion>
+
+  <Accordion title="İade nereye gider?">
+    Yatırma adresli rotalarda, kaynak ağda belirlediğiniz iade adresine. Cüzdan rotalarında işlem geri alınırsa gas dışında cüzdanınızdan hiçbir şey çıkmaz.
+  </Accordion>
+
+  <Accordion title="İade her zaman garanti mi?">
+    Teknik bir nedenle başarısız olan takas, varsa sağlayıcı veya ağ ücretleri düşülerek otomatik olarak iade adresinize iade edilir. AML veya yaptırım kuralları kapsamında işaretlenen bir yatırma otomatik iade edilmez: fonlar inceleme için tutulur ve bunu NEAR Intents destek ekibine talep açarak çözersiniz.
+  </Accordion>
+
+  <Accordion title="Neden teklif almadım?">
+    Tutar rotanın minimumunun altında olabilir ya da hiçbir çözücü fiyat vermemiş olabilir. L2Pass RFQ ve L2Pass Private'ta tarama işaretlerse takas da teklif almaz. Bu durumda hiçbir şey gönderilmez.
+  </Accordion>
+
+  <Accordion title="KYC gerekir mi?">
+    Hayır. Hesap da KYC de yoktur. Bir yatırma inceleme için tutulursa NEAR Intents destek ekibi fonların kaynağını sorabilir.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'ı aç](https://swap.l2pass.com/)
+- [Her cüzdandan veya borsadan takas](/tr/products/swap/learn/deposit-address-swaps)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [Hizmet Şartları](https://l2pass.com/terms-of-service)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 11 Kasım 2026*

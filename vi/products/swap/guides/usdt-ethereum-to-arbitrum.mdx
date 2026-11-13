@@ -1,0 +1,126 @@
+---
+title: "Cách chuyển USDT từ Ethereum sang Arbitrum (USDT0)"
+description: "Chuyển USDT từ Ethereum sang Arbitrum trong khoảng 1 giây đến 1,5 phút. So sánh sáu tuyến, phí L2Pass 0%, nhận về dưới dạng USDT0."
+sidebarTitle: "USDT: Ethereum sang Arbitrum"
+---
+
+import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
+
+Bạn có thể chuyển USDT từ Ethereum sang Arbitrum bằng [L2Pass Swap](https://swap.l2pass.com/). Trên Arbitrum, USDT được nhận dưới dạng USDT0, phiên bản omnichain của USDT. Trong các báo giá thử nghiệm, cặp này có sáu tuyến: cầu nối gốc USDT0, L2Pass RFQ, LI.FI Intents, Relay, L2Pass Private và LI.FI, với thời gian ước tính từ khoảng 1 giây đến 1,5 phút. Các tuyến tốt nhất chênh nhau chưa đến 0,3 USDT cho 1.000 USDT. Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí trước khi bạn xác nhận. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+
+**Sáu tuyến trong một báo giá** · **Phí L2Pass 0%** · **Gửi 1.000 nhận 1.000 USDT0** · **Không cần ETH trên Arbitrum**
+
+<Note>Số liệu từ báo giá thử nghiệm ngày 19 tháng 10 năm 2026. Báo giá của bạn luôn là báo giá trực tiếp.</Note>
+
+## Các tuyến chuyển USDT từ Ethereum sang Arbitrum
+
+Báo giá thử nghiệm cho 1.000 USDT vào khoảng 17:51 UTC. Báo giá trực tiếp hiển thị số liệu hiện tại.
+
+<Tabs>
+<Tab title="Ethereum sang Arbitrum">
+
+| Tuyến | Bạn nhận | Thời gian ước tính | Thanh toán |
+| :-- | :-- | :-- | :-- |
+| USDT native bridge (USDT0) | 1.000,00 USDT0 | Khoảng 1,5 phút | Giao dịch ví, cộng phí tin nhắn LayerZero khoảng 0,04 USD bằng ETH |
+| L2Pass RFQ | 999,79 USDT0 | Khoảng 44 giây | Địa chỉ nạp dùng một lần |
+| LI.FI Intents | 999,75 USDT0 | Không hiển thị | Giao dịch ví |
+| Relay | 999,68 USDT0 | Khoảng 1 giây | Giao dịch ví |
+| L2Pass Private | 998,19 USDT0 | Khoảng 44 giây | Địa chỉ nạp dùng một lần |
+| LI.FI | 997,39 USDT0 | Khoảng 2 giây | Giao dịch ví |
+
+</Tab>
+<Tab title="Arbitrum sang Ethereum">
+
+| Tuyến | Bạn nhận | Thời gian ước tính | Thanh toán |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999,75 USDT | Không hiển thị | Giao dịch ví |
+| USDT native bridge (USDT0) | 1.000,00 USDT | Khoảng 1,5 phút | Giao dịch ví, cộng phí tin nhắn LayerZero khoảng 0,25 USD bằng ETH |
+| Relay | 999,63 USDT | Khoảng 4 giây | Giao dịch ví |
+| L2Pass RFQ | 999,51 USDT | Khoảng 32 giây | Địa chỉ nạp dùng một lần |
+| L2Pass Private | 997,90 USDT | Khoảng 32 giây | Địa chỉ nạp dùng một lần |
+| LI.FI | 997,33 USDT | Khoảng 9 giây | Giao dịch ví |
+
+</Tab>
+</Tabs>
+
+Sau gas nguồn và phí tin nhắn, cầu nối gốc USDT0 và L2Pass RFQ gần như ngang nhau khi đi từ Ethereum, còn LI.FI Intents và USDT0 gần như ngang nhau khi đi từ Arbitrum. Ứng dụng sắp xếp các tuyến theo giá trị ròng sau gas.
+
+## Cách chuyển USDT từ Ethereum sang Arbitrum
+
+Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có thể so sánh mọi tuyến trước.
+
+<Steps>
+  <Step title="Mở L2Pass Swap">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/) và điền bốn trường:
+
+    - **From:** USDT trên Ethereum.
+    - **To:** USDT0 trên Arbitrum.
+    - **Amount:** số USDT bạn muốn gửi.
+    - **Địa chỉ nhận:** địa chỉ Arbitrum sẽ nhận USDT0.
+  </Step>
+
+  <Step title="So sánh các tuyến">
+    Mỗi thẻ tuyến hiển thị số tiền ước tính, số tiền nhận tối thiểu, thời gian ước tính và các khoản phí. Nếu cần tốc độ, Relay hoàn tất trong khoảng 1 giây ở báo giá thử nghiệm; nếu số tiền quan trọng hơn, hãy so sánh USDT0 và L2Pass RFQ.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Với L2Pass RFQ và L2Pass Private, đặt địa chỉ hoàn tiền là một ví Ethereum bạn kiểm soát. Nếu hoán đổi không thể hoàn tất, nhà cung cấp sẽ trả khoản nạp về đó.
+  </Step>
+
+  <Step title="Thanh toán qua ví hoặc địa chỉ nạp">
+    Cách thanh toán phụ thuộc vào tuyến bạn chọn.
+
+    <Tabs>
+      <Tab title="Tuyến qua ví (USDT0, Relay, LI.FI)">
+        Ký giao dịch trong ví Ethereum của bạn.
+      </Tab>
+      <Tab title="Địa chỉ nạp (L2Pass RFQ, L2Pass Private)">
+        Gửi USDT đến địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn giao dịch, bằng địa chỉ hoặc mã QR. Nếu gửi từ sàn, hãy kiểm tra số tiền đến khớp với báo giá, vì một số sàn trừ phí rút vào số tiền đó.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Theo dõi hoán đổi">
+    Với L2Pass RFQ và L2Pass Private, theo dõi trạng thái trong **Recent swaps**. Giao dịch chuyển USDT0 là một tin nhắn LayerZero, nên bạn có thể theo dõi trên [LayerZero Scan](https://layerzeroscan.com/) bằng hash giao dịch Ethereum của mình.
+  </Step>
+</Steps>
+
+## Trước khi gửi
+
+Bạn cần ETH trên Ethereum để trả gas và không cần ETH trên Arbitrum để nhận.
+
+- **Chỉ cần gas trên Ethereum.** Bạn trả gas bằng ETH trên Ethereum. Phí mạng Arbitrum được trừ vào số tiền hiển thị, nên bạn không cần ETH trên Arbitrum để nhận.
+- **USDT0 trên Arbitrum.** USDT mà L2Pass Swap giao trên Arbitrum là USDT0.
+
+<SwapBeforeYouSend />
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Chuyển USDT từ Ethereum sang Arbitrum mất bao lâu?">
+    Từ khoảng 1 giây trên Relay đến khoảng 1,5 phút trên cầu nối gốc USDT0, theo báo giá thử nghiệm. Thẻ tuyến hiển thị ước tính hiện tại.
+  </Accordion>
+
+  <Accordion title="Chuyển USDT từ Ethereum sang Arbitrum tốn bao nhiêu?">
+    Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư). Trong báo giá thử nghiệm cho 1.000 USDT, cầu nối gốc USDT0 giao 1.000 USDT0 cộng phí tin nhắn khoảng 0,04 USD, còn L2Pass RFQ giao 999,79 USDT0. Bạn cũng trả gas trên Ethereum.
+  </Accordion>
+
+  <Accordion title="USDT0 trên Arbitrum có giống USDT không?">
+    USDT0 là phiên bản omnichain của USDT, di chuyển giữa các mạng qua LayerZero. Trên Arbitrum, đây là USDT mà L2Pass Swap giao.
+  </Accordion>
+
+  <Accordion title="Tôi có thể chuyển ngược từ Arbitrum về Ethereum không?">
+    Có. Báo giá thử nghiệm cũng có các tuyến tương tự theo chiều ngược lại; xem tab thứ hai ở trên.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [Cách tốt nhất để chuyển USDT và USDC: L2Pass so với các cầu nối khác](/vi/products/swap/learn/compare-stablecoin-transfers)
+- [USDT từ Tron sang Arbitrum](/vi/products/swap/guides/usdt-tron-to-arbitrum)
+- [Giải thích các mạng USDT](/vi/products/swap/learn/usdt-networks)
+- [Cách L2Pass so sánh các tuyến](/vi/products/swap/learn/compare-routes)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

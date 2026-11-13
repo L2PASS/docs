@@ -1,0 +1,119 @@
+---
+title: "L2Pass의 경로 비교 방식: NEAR Intents, Circle CCTP, USDT0, LI.FI, Relay, Aori"
+description: "L2Pass Swap은 여러 라우팅 소스에 동시에 요청하고 수령액 순으로 경로를 정렬합니다. 각 경로가 무엇이며 언제 유리한지 알아보세요."
+sidebarTitle: "경로 비교 방식"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/)은 여러 라우팅 소스에 동시에 요청하고, 스왑을 체결할 수 있는 모든 경로를 가스 이후 실제로 받는 순가치 순으로 보여 줍니다. 소스는 L2Pass RFQ와 L2Pass Private by NEAR Intents, 네이티브 USDT0와 Circle CCTP 브리지, 그리고 애그리게이터와 인텐트 네트워크인 LI.FI, LI.FI Intents, Relay, Aori, OKX DEX 애그리게이터입니다. 모든 페어에서 이기는 경로는 없으므로 견적마다 비교합니다. 스테이블코인 스왑의 L2Pass 수수료는 경로와 관계없이 0%입니다.
+
+## 경로
+
+견적에는 열 가지 경로가 나타날 수 있으며, 입금 주소를 쓰는 경로는 L2Pass RFQ와 L2Pass Private뿐입니다.
+
+| 앱의 경로 | 설명 | 결제 방식 | 수령액 | 테스트 견적의 예상 시간 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | [NEAR Intents](https://near.org/intents)의 솔버와 마켓 메이커가 스왑 체결을 두고 경쟁 | 일회용 입금 주소, 아무 지갑이나 거래소에서 | 변동, 최소 수령액 있음 | 약 30초~2분, Bitcoin은 약 9~14분 |
+| L2Pass Private | 같은 솔버 네트워크를 기밀 환경에서 실행 | 일회용 입금 주소 | 변동, 최소 수령액 있음 | L2Pass RFQ와 동일 |
+| USDT native bridge | Tron 포함, LayerZero 기반 USDT0 전송 | 지갑 트랜잭션 | 고정 | 약 1.5분 |
+| USDC native bridge, Fast | Circle CCTP V2 Fast 네이티브 USDC 전송 | 지갑 트랜잭션 | 고정 | 약 40~50초 |
+| USDC native bridge, Standard | 블록 완결성을 기다리는 Circle CCTP V2 Standard 전송 | 지갑 트랜잭션 | 고정 | 약 19.5분 |
+| Relay | 크로스체인 릴레이어 네트워크 | 지갑 트랜잭션 | 변동 | 약 1~2초 |
+| Aori | 인텐트 기반 정산 | 지갑 트랜잭션 | 고정 | 약 3~14초 |
+| LI.FI Intents | LI.FI의 인텐트 기반 경로 | 지갑 트랜잭션 | 고정 | 테스트 견적에 표시되지 않음 |
+| LI.FI | 브리지 및 DEX 애그리게이터 | 지갑 트랜잭션 | 변동 | 약 19초~18분 |
+| DEX Aggregator | OKX DEX 애그리게이터 | 지갑 트랜잭션 | 변동 | 페어에 따라 다름 |
+
+고정 수령액 경로는 표시된 금액을 정확히 전달하므로 슬리피지가 적용되지 않습니다. 변동 경로는 슬리피지 허용치(기본 0.05%)로 최소 수령액을 정합니다.
+
+## 실제 견적 예시
+
+2026년 10월 19일(약 16:55 UTC) 테스트 견적입니다. 경로는 앱에 표시된 순서대로 나열했습니다. 실시간 견적에는 현재 수치가 표시됩니다.
+
+<Tabs>
+<Tab title="USDT: Tron → Ethereum">
+
+Tron에서 Ethereum으로 1,000 USDT를 보내는 견적에서 세 가지 경로가 나왔습니다.
+
+| 경로 | 수령액 | 예상 시간 | 수령액 유형 | Tron에서 별도로 내는 비용 |
+| :-- | :-- | :-- | :-- | :-- |
+| L2Pass RFQ | 999.50 USDT | 약 1.5분 | 변동 | 입금 주소로 USDT를 한 번 보내는 가스 |
+| USDT native bridge(USDT0) | 999.70 USDT | 약 1.5분 | 고정 | 약 5.21 TRX(약 1.73 USD)의 LayerZero 메시지 수수료, 그리고 승인 및 브리지 트랜잭션용 에너지 |
+| L2Pass Private | 997.00 USDT | 약 1.5분 | 변동 | 입금 주소로 USDT를 한 번 보내는 가스 |
+
+수령액은 USDT0가 가장 높았지만 앱은 L2Pass RFQ를 맨 위에 두었습니다. USDT0 경로는 일반 USDT 전송보다 Tron 에너지가 더 필요하며, 테스트 견적에서 TRX로 내면 약 22.60 USD에 메시지 수수료가 더해집니다. 이미 스테이킹한 에너지가 충분하다면 USDT0가 더 저렴할 수 있습니다. Ethereum 네트워크 수수료는 각 금액에 이미 포함되어 있습니다(L2Pass RFQ는 0.3 USDT).
+
+</Tab>
+<Tab title="USDC: Arbitrum → Base">
+
+Arbitrum에서 Base로 1,000 USDC를 보내는 견적에서 여덟 가지 경로가 나왔습니다.
+
+| 경로 | 수령액 | 예상 시간 | 수령액 유형 |
+| :-- | :-- | :-- | :-- |
+| LI.FI Intents | 999.97 USDC | 표시되지 않음 | 고정 |
+| USDC native bridge, Standard | 999.95 USDC | 약 19.5분 | 고정 |
+| Relay | 999.88 USDC | 약 2초 | 변동 |
+| USDC native bridge, Fast | 999.81 USDC | 약 38초 | 고정 |
+| L2Pass RFQ | 999.80 USDC | 약 27초 | 변동 |
+| Aori | 999.28 USDC | 약 3초 | 고정 |
+| L2Pass Private | 998.20 USDC | 약 27초 | 변동 |
+| LI.FI | 997.50 USDC | 약 18분 | 변동 |
+
+경로 간 차이는 2.5 USDC 미만이었지만 시간은 몇 초에서 약 19.5분까지 다양했습니다. 속도가 중요하다면 빠른 경로에서 조금 적게 받는 편이 나을 수 있습니다.
+
+</Tab>
+</Tabs>
+
+## 페어별로 나타나는 경로
+
+같은 테스트 견적에서:
+
+- **Tron과 Ethereum 간 USDT:** L2Pass RFQ, USDT0 브리지, L2Pass Private.
+- **EVM 체인 간 USDC**(Arbitrum, Base, Ethereum): CCTP 두 모드를 포함한 여덟 가지 경로.
+- **Bitcoin과 USDT 간 스왑:** L2Pass RFQ와 L2Pass Private만.
+- **Ethereum의 ETH에서 Arbitrum의 USDC로:** L2Pass RFQ, Relay, LI.FI, L2Pass Private.
+
+견적에는 그 시점에 페어를 체결할 수 있는 모든 경로가 표시되므로 구성은 바뀔 수 있습니다.
+
+## 순서가 정해지는 방식
+
+경로는 가스 이후 실제로 받는 예상 순가치 순으로 정렬됩니다. 그래서 수령액이 가장 높은 경로가 항상 맨 위에 오지는 않습니다. Ethereum에서 Tron으로 1,000 USDT를 보내는 테스트 견적에서 USDT0는 모든 경로 중 가장 높은 999.7 USDT를 보였지만, ETH로 내는 약 0.005 ETH(약 11.92 USD)의 LayerZero 메시지 수수료가 필요합니다. L2Pass RFQ는 별도 수수료 없이 998.21 USDT를 보여 맨 위에 올랐습니다.
+
+## 수수료, 결제, 환불
+
+경로에 따라 제공자 수수료와 결제 방식은 달라지지만, 스테이블코인의 L2Pass 수수료 0%는 그대로입니다.
+
+- **스테이블코인의 L2Pass 수수료는 경로와 무관합니다.** 스테이블코인 스왑은 모든 경로에서 0%, 기타 자산은 최대 0.2%, 비공개 스왑은 최대 0.3%입니다. [L2Pass Swap 수수료 안내](/ko/products/swap/learn/fees)를 참고하세요.
+- **입금 또는 지갑.** 입금 주소를 쓰는 경로는 L2Pass RFQ와 L2Pass Private뿐이므로 거래소에서 결제할 수 있는 경로도 이 둘입니다. 다른 경로는 지갑에서 서명한 트랜잭션이 필요합니다.
+- **환불.** 온체인 경로는 실패하면 되돌려집니다(가스는 환불되지 않음). 입금 주소 경로는 입금액을 환불 주소로 돌려보내며, 제공자 수수료와 네트워크 수수료가 차감될 수 있습니다.
+- **부분 체결 없음.** 스왑은 전부 완료되거나 실행되지 않습니다.
+- **최소 금액.** 일부 경로에는 최소 스왑 금액이 있습니다. 금액이 그보다 적으면 최소 금액과 함께 사용할 수 없음으로 표시됩니다.
+
+## 자주 묻는 질문
+
+<AccordionGroup>
+  <Accordion title="어떤 경로를 골라야 하나요?">
+    수령액, 예상 시간, 그리고 지갑에서 트랜잭션에 서명할 수 있는지 아니면 거래소에서 결제해야 하는지를 비교하세요. 경로 카드에 확인 전 세 가지가 모두 표시됩니다.
+  </Accordion>
+
+  <Accordion title="Circle CCTP와 USDT0는 무엇이 다른가요?">
+    Circle CCTP는 Circle이 발행한 네이티브 USDC를 체인 간에 옮깁니다. USDT0는 LayerZero로 이동하는 USDT의 옴니체인 버전이며, L2Pass Swap에서는 Tron에서의 전송도 지원합니다. 둘 다 지갑 트랜잭션으로 결제하는 고정 수령액 경로입니다.
+  </Accordion>
+
+  <Accordion title="왜 가장 빠른 경로가 맨 위에 없나요?">
+    목록은 속도가 아니라 가스 이후 순가치 순으로 정렬됩니다. 각 경로 카드의 예상 시간을 확인하세요.
+  </Accordion>
+
+  <Accordion title="L2Pass가 직접 스왑을 실행하나요?">
+    아니요. L2Pass는 비수탁형 인터페이스입니다. 선택한 제공자가 스왑을 실행하며, L2Pass는 토큰이나 개인 키를 절대 보관하지 않습니다.
+  </Accordion>
+</AccordionGroup>
+
+## 링크
+
+- [L2Pass Swap 열기](https://swap.l2pass.com/)
+- [L2Pass RFQ by NEAR Intents란](/ko/products/swap/learn/what-is-l2pass-rfq)
+- [L2Pass Swap 수수료 안내](/ko/products/swap/learn/fees)
+- [Circle CCTP로 USDC 옮기는 방법](/ko/products/swap/guides/usdc-cctp)
+- [L2Pass Swap 자주 묻는 질문](/ko/products/swap/faq)
+
+*최종 업데이트: 2026년 10월 19일*

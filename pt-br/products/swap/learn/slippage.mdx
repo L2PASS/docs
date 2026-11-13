@@ -1,0 +1,96 @@
+---
+title: "Slippage, saída fixa e mínimo a receber explicados"
+description: "O que significam tolerância de slippage, valor estimado, mínimo a receber e saída fixa no L2Pass Swap, com exemplos. Slippage padrão de 0,05%, editável."
+sidebarTitle: "Slippage e mínimo a receber"
+---
+
+No [L2Pass Swap](https://swap.l2pass.com/), cada cartão de rota mostra um valor estimado e um mínimo a receber. O valor estimado é quanto você deve receber, depois de todas as taxas exceto o gas da rede de origem e a eventual taxa de mensagem da bridge. O mínimo a receber é o pior caso dentro da sua tolerância de slippage, que é de 0,05% por padrão e pode ser alterada em qualquer cartão de rota. Se o preço se mover além disso, o swap não é executado. Rotas de saída fixa, como Circle CCTP, USDT0, Aori e LI.FI Intents, entregam exatamente o valor mostrado, então o slippage não se aplica a elas.
+
+## Termos principais
+
+Dois números em cada cartão de rota importam mais: o valor estimado e o mínimo a receber.
+
+| Termo | Significado |
+| :-- | :-- |
+| Valor estimado | O valor estimado na rede de destino, depois de todas as taxas |
+| Mínimo a receber | O mínimo que você pode receber dentro da sua tolerância de slippage |
+| Slippage | A diferença entre o preço cotado e o preço final de execução, causada pelo movimento do mercado |
+| Tolerância de slippage | Quanto slippage você aceita. Padrão de 0,05% no L2Pass Swap |
+| Impacto no preço | A mudança de preço causada pelo tamanho da sua operação em relação à liquidez disponível |
+| Saída fixa | Uma rota que entrega exatamente o valor mostrado, sem slippage |
+
+## Exemplos de cotações ao vivo
+
+Cotações de teste em 19 de outubro de 2026, com a tolerância padrão de 0,05%. A cotação ao vivo mostra os números atuais.
+
+| Swap | Rota | Valor estimado | Mínimo a receber | Saída |
+| :-- | :-- | :-- | :-- | :-- |
+| 1.000 USDT, Tron para Ethereum | L2Pass RFQ | 999,50 USDT | 999,00 USDT | Variável |
+| 1.000 USDC, Arbitrum para Base | USDC native bridge, Fast | 999,81 USDC | 999,81 USDC | Fixa |
+| 1 ETH na Ethereum para USDC na Base | L2Pass RFQ | 2.387,76 USDC | 2.386,57 USDC | Variável |
+
+Numa rota variável, o mínimo a receber é o valor estimado menos a sua tolerância. Numa rota fixa, os dois números são iguais.
+
+## Como ajustar o slippage
+
+Você ajusta o slippage em cada cartão de rota, em três passos.
+
+<Steps>
+  <Step title="Abra o cartão de rota">
+    Peça uma cotação em [swap.l2pass.com](https://swap.l2pass.com/) e abra a rota que quiser.
+  </Step>
+
+  <Step title="Altere a tolerância">
+    Edite a tolerância de slippage no cartão de rota. Uma tolerância maior aumenta a chance de um swap volátil ser executado, mas reduz o mínimo a receber.
+  </Step>
+
+  <Step title="Confira o mínimo a receber">
+    Confirme só se estiver tudo bem receber o mínimo a receber no pior caso.
+  </Step>
+</Steps>
+
+## Como escolher a tolerância
+
+Os 0,05% padrão servem para stablecoins. Ativos voláteis em rotas mais lentas podem precisar de mais.
+
+- **De stablecoin para stablecoin.** Os preços quase não se movem, então os 0,05% padrão costumam bastar.
+- **Ativos voláteis, como ETH ou BTC.** O preço pode mudar enquanto o swap é liquidado, principalmente em rotas mais lentas. Se um swap falhar repetidamente por preço, uma tolerância um pouco maior pode ajudar.
+- **Rotas de saída fixa.** A tolerância não importa: você recebe exatamente o valor mostrado.
+
+## Swaps com falha e taxas
+
+Um swap que pagaria menos que o mínimo a receber não é executado.
+
+- **Sem execução parcial.** Se o preço se mover além da sua tolerância, o swap não é executado.
+- **Reembolsos.** Uma rota on-chain com falha é revertida (o gas não é reembolsado). Uma rota com endereço de depósito com falha devolve o seu depósito ao endereço de reembolso; taxas do provedor e da rede podem ser descontadas.
+- **Slippage não é taxa.** É um limite para o movimento do preço. As taxas aparecem separadas no cartão de rota e já estão incluídas no valor estimado.
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Qual é o slippage padrão no L2Pass Swap?">
+    0,05%. Você pode alterá-lo em qualquer cartão de rota.
+  </Accordion>
+
+  <Accordion title="O que significa mínimo a receber?">
+    O mínimo que você vai receber se o preço se mover contra você dentro da sua tolerância de slippage. Se for menos, o swap não é executado.
+  </Accordion>
+
+  <Accordion title="Quais rotas têm saída fixa?">
+    USDC native bridge (Circle CCTP, Fast e Standard), USDT native bridge (USDT0), Aori e LI.FI Intents. Elas entregam exatamente o valor mostrado.
+  </Accordion>
+
+  <Accordion title="O L2Pass Swap define o slippage automaticamente?">
+    Não. A tolerância é de 0,05% por padrão, e você mesmo pode alterá-la em qualquer cartão de rota.
+  </Accordion>
+</AccordionGroup>
+
+## Links
+
+- [Abrir o L2Pass Swap](https://swap.l2pass.com/)
+- [Como a L2Pass compara rotas](/pt-br/products/swap/learn/compare-routes)
+- [O que acontece se um swap falhar](/pt-br/products/swap/learn/failed-swaps-and-refunds)
+- [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees)
+- [Perguntas frequentes do L2Pass Swap](/pt-br/products/swap/faq)
+
+*Última atualização: 19 de outubro de 2026*

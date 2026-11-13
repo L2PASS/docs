@@ -1,0 +1,105 @@
+---
+title: "L2Pass RFQ by NEAR Intents nedir"
+description: "L2Pass RFQ by NEAR Intents, zincirler arası takasınızı gerçekleştirmek için çözücüleri ve piyasa yapıcıları yarıştırır. Nasıl çalışır, maliyeti nedir, başarısız olursa ne olur."
+sidebarTitle: "L2Pass RFQ by NEAR Intents"
+---
+
+L2Pass RFQ by NEAR Intents, [L2Pass Swap](https://swap.l2pass.com/) içinde çözücülerin ve piyasa yapıcıların takasınızı gerçekleştirmek için yarıştığı bir zincirler arası takas rotasıdır. Ne almak istediğinizi belirtirsiniz, onlar fiyat teklif eder ve kazanan teklif ödeme yapmadan önce size gösterilir. Tokenları bağlı cüzdandan, herhangi bir cüzdandan veya borsadan tek kullanımlık bir yatırma adresine göndererek ödersiniz. L2Pass ücreti stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadardır ve teklif, ücretler sonrası alacağınız tutarı gösterir. Yalnızca kaynak ağdaki gas ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+## Temel kavramlar
+
+RFQ takasında çözücüler tam olarak sizin takasınız için fiyat verir, siz de tek kullanımlık bir yatırma adresine ödeme yaparsınız.
+
+| Kavram | Anlamı |
+| :-- | :-- |
+| RFQ (request for quote, teklif talebi) | Bir havuza karşı işlem yapmak yerine, profesyonel piyasa yapıcıların tam olarak sizin takasınız için fiyat verdiği işlem yöntemi. |
+| Intent | İstediğiniz sonucun imzalı ifadesi, örneğin "Tron'da 1.000 USDT girer, Ethereum'da USDT çıkar". Neyi söyler, nasılı söylemez. |
+| Çözücü (solver) | Kendi envanteri ve rotalarıyla intent'leri gerçekleştirmek için yarışan piyasa yapıcı veya bot. |
+| [NEAR Intents](https://near.org/intents) | L2Pass RFQ'nun çalıştığı ağ. Intent'leri toplar, çözücüleri yarıştırır ve sonucu uzlaştırır. |
+| Yatırma adresi | Teklifiniz için oluşturulan tek kullanımlık adres. Teklif edilen tutarı oraya göndermek takası başlatır. |
+| İade adresi | Kaynak ağda kontrol ettiğiniz bir cüzdan. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya geri gönderir. |
+
+## RFQ takası nasıl çalışır
+
+Çözücüler siz ödeme yapmadan önce takasınız için yarışır, böylece fiyatı önce görürsünüz.
+
+<Steps>
+  <Step title="Teklif istersiniz">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresinde kaynak token ve ağı, hedef token ve ağı, tutarı ve alıcı adresini seçersiniz. L2Pass tüm yönlendirme kaynaklarına aynı anda sorar; L2Pass RFQ bunlardan biridir.
+  </Step>
+
+  <Step title="Çözücüler yarışır">
+    NEAR Intents'teki çözücüler teslim edebilecekleri tutarı teklif eder. Rota kartı tahmini tutarı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir.
+  </Step>
+
+  <Step title="İade adresi belirler ve ödersiniz">
+    Kaynak ağda bir iade adresi belirlersiniz, ardından teklif edilen tutarı cüzdanla, adresle veya QR kodla tek kullanımlık yatırma adresine gönderirsiniz.
+  </Step>
+
+  <Step title="Takas uzlaşır">
+    Kazanan çözücü hedef tokenları alıcı adresinize teslim eder. Durumu **Recent swaps** bölümünden takip edebilirsiniz: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## L2Pass RFQ ile L2Pass Private karşılaştırması
+
+İki rota da aynı NEAR Intents çözücü ağını ve aynı yatırma adresi akışını kullanır.
+
+| | L2Pass RFQ | L2Pass Private |
+| :-- | :-- | :-- |
+| Gerçekleştirme | Herkese açık | Herkese açık blokzincirlerde görünenleri sınırlayan gizli ortam |
+| L2Pass ücreti | Stablecoin'lerde %0, diğer varlıklarda %0,2'ye kadar | %0,3'e kadar (%0 veya %0,2 yerine, üstüne değil) |
+| Ödeme | Tek kullanımlık yatırma adresi | Tek kullanımlık yatırma adresi |
+| İade adresi | Zorunlu | Zorunlu |
+
+Gizli takas anonimlik değildir: cüzdan adresiniz sağlayıcılarla yine paylaşılır ve herkese açık bir takasla tamamen aynı şekilde taranır. Bkz. [Gizli takas nedir](/tr/products/swap/overview#private-swaps).
+
+## Neden RFQ rotası kullanılır
+
+RFQ her yerden ödeme yapmanızı ve aralarında doğrudan köprü olmayan zincirlere ulaşmanızı sağlar.
+
+- **Her yerden tek ödeme.** Kaynak ağda cüzdan bağlamadan veya sözleşme çağrısı imzalamadan herhangi bir cüzdandan ya da borsadan ödeyebilirsiniz.
+- **Çok sayıda ağ.** Tek rota, Tron, Bitcoin, Zcash, Solana ve TON gibi aralarında doğrudan köprü olmayan zincirleri bağlayabilir.
+- **Fiyat baştan görünür.** Ödemeden önce alacağınız tutarı görürsünüz. Bu tutar, kaynak ağdaki gas dışındaki tüm ücretleri zaten içerir.
+
+L2Pass, RFQ'nun yanında Circle CCTP, USDT0, LI.FI ve Relay gibi diğer rotaları da gösterir. Hangisinin en fazlasını verdiği çifte ve tutara bağlıdır, bu yüzden rota kartlarını karşılaştırın. Bkz. [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes).
+
+## Limitler, süre ve iadeler
+
+RFQ takaslarının minimumu olabilir, Bitcoin veya Zcash ile daha uzun sürebilir ve asla kısmen gerçekleşmez.
+
+- **Minimum tutar.** RFQ rotalarının minimum takas tutarı olabilir. Tutarınız bunun altındaysa rota, minimum tutarla birlikte kullanılamaz olarak listelenir.
+- **Süre.** RFQ takasları genellikle yaklaşık 30 saniye ile birkaç dakika sürer; Bitcoin veya Zcash gibi blok onayı yavaş ağlarda daha uzun sürer.
+- **Kısmi gerçekleşme yok.** Takas ya tamamen gerçekleşir ya hiç gerçekleşmez.
+- **İadeler.** Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı iade adresine geri gönderir; sağlayıcı ve ağ ücretleri düşülebilir. AML veya yaptırım kuralları kapsamında işaretlenen bir yatırma ise inceleme için tutulur ve bunu NEAR Intents destek ekibiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+- **Borsadan gönderim.** Bazı borsalar çekim ücretini düştüğü için ulaşan tutarın teklifle eşleştiğini kontrol edin.
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="L2Pass RFQ emanetsiz mi?">
+    Evet. L2Pass tokenlarınızı veya özel anahtarlarınızı asla tutmaz. Tokenları teklifinize ait yatırma adresine gönderirsiniz ve takas NEAR Intents'teki çözücüler tarafından gerçekleştirilir.
+  </Accordion>
+
+  <Accordion title="L2Pass RFQ'nun maliyeti nedir?">
+    L2Pass ücreti stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadardır. NEAR Intents ve ağlar kendi ücretlerini alır. Teklifte gösterilen tutar bunları zaten içerir.
+  </Accordion>
+
+  <Accordion title="Cüzdan bağlamam gerekir mi?">
+    Hayır. Adresi veya QR kodu kullanarak herhangi bir cüzdandan ya da borsadan tokenları yatırma adresine göndererek ödeyebilirsiniz. Bağlı bir cüzdandan da ödeyebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Hiçbir çözücü takasımı gerçekleştirmezse ne olur?">
+    Takas gerçekleşmez ve sağlayıcı, varsa sağlayıcı veya ağ ücretlerini düşerek yatırdığınız tutarı iade adresine geri gönderir.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'ı aç](https://swap.l2pass.com/)
+- [L2Pass Swap ücretleri](/tr/products/swap/learn/fees)
+- [L2Pass rotaları nasıl karşılaştırır](/tr/products/swap/learn/compare-routes)
+- [Tron'dan Ethereum'a USDT](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 19 Ekim 2026*

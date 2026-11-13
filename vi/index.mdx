@@ -1,0 +1,148 @@
+---
+title: "Hoán đổi crypto giữa 14 mạng, công khai hoặc riêng tư"
+sidebarTitle: "Giới thiệu"
+icon: "angle-right"
+mode: "wide"
+description: "L2Pass Swap chuyển USDT, USDC, BTC, ETH và nhiều tài sản khác giữa 14 mạng, phí L2Pass 0% cho stablecoin. Hướng dẫn, phí, hoán đổi riêng tư và Swap API."
+---
+
+<Frame>
+  ![L2Pass Introduction Banner](/images/intro/l2pass_banner.png)
+</Frame>
+
+L2Pass chuyển token của bạn giữa các blockchain chỉ trong một bước: USDT từ Tron sang Ethereum, BTC sang USDT, USDC sang Solana. L2Pass hoạt động trên **14 mạng**, bao gồm Bitcoin, Zcash, Tron, Solana và TON, và bạn có thể hoán đổi công khai hoặc riêng tư.
+
+Với mỗi giao dịch, L2Pass hỏi báo giá từ nhiều tuyến và cho bạn thấy mỗi tuyến trả bao nhiêu và thu phí bao nhiêu trước khi bạn xác nhận. L2Pass không bao giờ giữ tiền của bạn. Hoán đổi stablecoin có **phí L2Pass 0%**. Ví và ứng dụng dùng cùng cơ chế định tuyến qua **L2Pass Swap API**.
+
+## Sản phẩm của chúng tôi
+
+<CardGroup cols={2}>
+  <Card title="L2Pass Swap" icon="right-left-large" href="/vi/products/swap/overview">
+    Hoán đổi xuyên chuỗi và riêng tư cho người dùng. Stablecoin, BTC, ETH, SOL, ZEC và nhiều hơn nữa, phí L2Pass 0% cho stablecoin.
+  </Card>
+
+  <Card title="L2Pass Swap API" icon="code" href="/vi/products/swap/learn/swap-api">
+    Cùng cơ chế định tuyến cho ví, sàn giao dịch và ứng dụng thanh toán: báo giá, địa chỉ nạp, trạng thái và webhook. Đối tác có thể kiếm thu nhập theo khối lượng.
+  </Card>
+</CardGroup>
+
+<Card title="Gas Refuel" icon="gas-pump" href="https://l2pass.com/refuel">
+  Nạp token gas trên hơn 25 chuỗi EVM.
+</Card>
+
+## Bạn có thể làm gì
+
+| Bạn muốn | Với L2Pass |
+| :-- | :-- |
+| Chuyển stablecoin giữa các mạng | USDT và USDC giữa Tron, Ethereum, Solana, TON, BNB Chain, các L2 và nhiều mạng khác, phí L2Pass 0% |
+| Hoán đổi tài sản lớn ở dạng gốc | BTC trên Bitcoin, ZEC trên Zcash, ETH, SOL và các tài sản khác, sang và từ stablecoin, bạn không cần token bọc (wrapped) |
+| Giữ giao dịch riêng tư | Chọn L2Pass Private: giao dịch chạy trong môi trường bảo mật, hạn chế những gì blockchain công khai hiển thị |
+| Thanh toán cho ai đó trên mạng của họ | Đặt địa chỉ của họ làm người nhận và thanh toán bằng bất kỳ token được hỗ trợ nào bạn đang có |
+| Hoán đổi trực tiếp từ sàn giao dịch | Rút về địa chỉ nạp dùng một lần, không cần kết nối ví |
+| Thêm tính năng hoán đổi vào sản phẩm | Tích hợp Swap API, hoặc giới thiệu người dùng và chia sẻ phí |
+
+## Cách hoạt động
+
+Với mỗi báo giá, L2Pass đồng thời hỏi nhiều tuyến độc lập và sắp xếp chúng theo số tiền bạn nhận:
+
+- **L2Pass RFQ và L2Pass Private by NEAR Intents:** các solver và nhà tạo lập thị trường cạnh tranh để khớp giao dịch của bạn.
+- **Cầu nối gốc:** USDT0 qua LayerZero và Circle CCTP cho USDC.
+- **Bộ tổng hợp và mạng intent:** LI.FI, Relay, Aori và bộ tổng hợp OKX DEX.
+
+Trước khi xác nhận, bạn thấy số tiền nhận được, số tiền nhận tối thiểu, thời gian ước tính và phí của từng tuyến. Số tiền hiển thị đã trừ phí. Chỉ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) được trả riêng. [Cách so sánh các tuyến →](/vi/products/swap/learn/compare-routes)
+
+## Vì sao chọn L2Pass
+
+- **Nhiều báo giá, không chỉ một.** Mỗi giao dịch được các solver của NEAR Intents, cầu nối gốc và bộ tổng hợp báo giá cùng lúc, rồi sắp xếp theo số tiền bạn nhận.
+- **Mọi chuỗi, không chỉ EVM.** Bitcoin, Zcash, Tron, Solana và TON cùng với Ethereum và các L2.
+- **Riêng tư khi bạn cần.** Hoán đổi riêng tư trên cùng giao diện, được sàng lọc giống như giao dịch công khai.
+- **Phi lưu ký.** L2Pass không bao giờ giữ token hay khóa của bạn. Không tài khoản, không KYC.
+- **Phí minh bạch.** 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác, tối đa 0,3% cho hoán đổi riêng tư. [Giải thích về phí →](/vi/products/swap/learn/fees)
+
+## Thành tích
+
+<CardGroup cols={3}>
+  <Card title="650K+" icon="wallet">
+    Ví duy nhất đã dùng L2Pass
+  </Card>
+
+  <Card title="4M+" icon="arrow-right-arrow-left">
+    Giao dịch xuyên chuỗi đã xử lý
+  </Card>
+
+  <Card title="Từ 2023" icon="calendar">
+    Hoạt động trên mainnet
+  </Card>
+
+  <Card title="14" icon="globe">
+    Mạng trong Swap
+  </Card>
+
+  <Card title="№9" icon="ranking-star" href="https://layerzeroscan.com/application/l2pass">
+    Ứng dụng LayerZero theo xếp hạng
+  </Card>
+</CardGroup>
+
+---
+
+## Đối tác hệ sinh thái
+
+Giao dịch được định tuyến qua NEAR Intents, LayerZero (USDT0), Circle CCTP, LI.FI, Relay, Aori và bộ tổng hợp OKX DEX.
+
+<Card title="Xây dựng trên hạ tầng hàng đầu">
+  <div
+  style={{ 
+  backgroundColor: "#181818", 
+  padding: "2rem", 
+  borderRadius: "8px", 
+  display: "flex", 
+  justifyContent: "center",
+ marginTop: "1rem"
+}}
+>
+  <img src="/images/partners_light.svg" alt="L2Pass ecosystem partners" style={{ height: "auto" }} />
+</div>
+</Card>
+
+
+---
+
+## Bắt đầu tại đây
+
+<CardGroup cols={3}>
+  <Card title="Swap hoạt động thế nào" icon="book-open" href="/vi/products/swap/overview">
+    Tuyến, thực thi, hoàn tiền và hoán đổi riêng tư.
+  </Card>
+
+  <Card title="Chuyển USDT giữa các mạng" icon="route" href="/vi/products/swap/guides/usdt-tron-to-ethereum">
+    Hướng dẫn từng bước theo tuyến, bắt đầu với Tron sang Ethereum.
+  </Card>
+
+  <Card title="Hoán đổi BTC" icon="bitcoin" href="/vi/products/swap/guides/btc-to-usdt">
+    Đổi BTC gốc sang USDT và ngược lại.
+  </Card>
+
+  <Card title="Hoán đổi riêng tư" icon="user-secret" href="/vi/products/swap/learn/private-cross-chain-swaps">
+    Hoán đổi riêng tư ẩn được gì và không ẩn được gì.
+  </Card>
+
+  <Card title="Thanh toán bằng crypto" icon="money-bill-transfer" href="/vi/products/swap/learn/crypto-payments">
+    Thanh toán cho bất kỳ ai trên mạng họ muốn.
+  </Card>
+
+  <Card title="L2Pass có an toàn không?" icon="shield-check" href="/vi/products/swap/learn/is-l2pass-safe">
+    Cách hoán đổi phi lưu ký bảo vệ tiền của bạn.
+  </Card>
+
+  <Card title="Swap API" icon="code" href="/vi/products/swap/learn/swap-api">
+    Thêm hoán đổi xuyên chuỗi vào ví hoặc ứng dụng của bạn.
+  </Card>
+
+  <Card title="Hợp đồng thông minh" icon="file-code" href="/vi/resources/contracts">
+    Xem và xác minh các bản triển khai chính thức.
+  </Card>
+
+  <Card title="Hỗ trợ" icon="headset" href="/vi/resources/support">
+    Nhận trợ giúp hoặc trao đổi với chúng tôi về hợp tác.
+  </Card>
+</CardGroup>

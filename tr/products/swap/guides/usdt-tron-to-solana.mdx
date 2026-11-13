@@ -1,0 +1,97 @@
+---
+title: "USDT'yi Tron'dan Solana'ya köprüleme (TRC-20'den SPL'e)"
+description: "USDT'yi Tron'dan Solana'ya yaklaşık 80 saniyede köprüleyin. %0 L2Pass ücreti, gas yalnızca TRX ile, almak için SOL gerekmez. Herhangi bir cüzdan veya borsadan ödeyin."
+sidebarTitle: "USDT: Tron'dan Solana'ya"
+---
+
+import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
+
+USDT'yi Tron'dan (TRC-20) Solana'ya (SPL), çiftin tüm rotalarını yan yana gösteren gözetimsiz bir arayüz olan [L2Pass Swap](https://swap.l2pass.com/) ile köprüleyebilirsiniz. Test tekliflerinde bu çift için iki rota sundu: L2Pass RFQ ve L2Pass Private; her birinin tahmini süresi yaklaşık 80 saniye. Stablecoin takaslarında L2Pass ücreti %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, onaylamadan önce ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+
+**Yaklaşık 80 saniye** · **%0 L2Pass ücreti** · **1.000 gönderilene 999,87 USDT ulaşır** · **SOL gerekmez**
+
+<Note>Rakamlar 10 Ekim 2026 tarihli test tekliflerinden. Sizin teklifiniz her zaman canlıdır.</Note>
+
+## Tron'dan Solana'ya USDT rotaları
+
+L2Pass RFQ ve L2Pass Private, çözücülerin ve piyasa yapıcıların takasınızı gerçekleştirmek için yarıştığı [NEAR Intents](https://near.org/intents) üzerinde çalışır. Private bunu gizli bir ortamda gerçekleştirir.
+
+| Rota | Tahmini süre | Çıktı | Notlar |
+| :-- | :-- | :-- | :-- |
+| L2Pass RFQ | Yaklaşık 80 saniye | Değişken, minimum alınacak tutarla | Tek kullanımlık bir yatırma adresine ödeme. |
+| L2Pass Private | Yaklaşık 80 saniye | Değişken, minimum alınacak tutarla | Yatırma adresi. L2Pass ücreti %0,3'e kadar. |
+
+Yerel USDT0 köprüsü ve toplayıcı rotaları (LI.FI, LI.FI Intents, Relay, Aori, OKX DEX toplayıcısı) bu test tekliflerinde bu çift için sunulmadı. Teklif, çifti gerçekleştirebilen her rotayı listeler.
+
+1.000 USDT için test teklifleri şu alınan tutarları gösterdi: L2Pass RFQ'da 999,87 USDT ve L2Pass Private'ta 997,29 USDT. Canlı teklif, tutarınız için güncel rakamları gösterir.
+
+## USDT Tron'dan Solana'ya nasıl köprülenir
+
+Siz ödeme yapana kadar cüzdanınızdan hiçbir şey çıkmaz, bu yüzden önce tüm rotaları karşılaştırabilirsiniz.
+
+<Steps>
+  <Step title="L2Pass Swap'i açın">
+    [swap.l2pass.com](https://swap.l2pass.com/) adresine gidin ve dört alanı doldurun:
+
+    - **From:** Tron'da USDT.
+    - **To:** Solana'da USDT.
+    - **Amount:** göndermek istediğiniz USDT miktarı.
+    - **Alıcı adresi:** USDT'yi alacak Solana adresi.
+  </Step>
+
+  <Step title="Rotaları karşılaştırın">
+    Her rota kartı tahmini çıktıyı, minimum alınacak tutarı, tahmini süreyi ve ücretleri gösterir. Varsayılan kayma %0,05'tir (değiştirilebilir) ve USDT0 gibi sabit çıktılı rotalara uygulanmaz.
+  </Step>
+
+  <Step title="İade adresi belirleyin">
+    L2Pass RFQ ve L2Pass Private için iade adresi olarak kontrol ettiğiniz bir Tron cüzdanı girin. Takas tamamlanamazsa sağlayıcı yatırdığınız tutarı oraya iade eder.
+  </Step>
+
+  <Step title="Yatırma adresine ödeyin">
+    USDT'yi bağlı cüzdanınızdan, herhangi bir Tron cüzdanından veya bir borsadan, adres ya da QR kod ile tek kullanımlık yatırma adresine gönderin. Borsadan gönderiyorsanız ulaşan tutarın teklifle eşleştiğini kontrol edin, çünkü bazı borsalar çekim ücretini bu tutardan düşer.
+  </Step>
+
+  <Step title="Takası Recent swaps içinde takip edin">
+    Durumu **Recent swaps** içinde takip edin: *Awaiting deposit*, *Deposit confirmed*, ardından *Complete*.
+  </Step>
+</Steps>
+
+## Göndermeden önce
+
+Gas için Tron'da TRX gerekir, almak için SOL gerekmez.
+
+- **Gas yalnızca Tron'da.** TRC-20 USDT göndermek enerji ve bant genişliği için TRX gerektirir. Hedef ağdaki ağ ücreti gösterilen tutardan düşülür, bu yüzden orada gas gerekmez.
+- **Minimum tutar.** Bazı rotaların çifte göre değişen bir minimum takas tutarı vardır. Tutarınız bunun altındaysa rota, minimum gösterilerek kullanılamaz olarak listelenir.
+
+<SwapBeforeYouSend />
+
+## SSS
+
+<AccordionGroup>
+  <Accordion title="Solana'da ne alacağım?">
+    Solana'nın token standardı olan SPL token olarak USDT. Hedef olarak bir Solana adresi kullanın; Tron ve 0x adresleri çalışmaz.
+  </Accordion>
+
+  <Accordion title="Solana'da USDT almak için SOL gerekir mi?">
+    Hayır. Gas'ı yalnızca Tron'da TRX ile ödersiniz; hedef ağdaki ağ ücreti gösterilen tutardan zaten düşülmüştür. USDT'yi daha sonra taşımak veya kullanmak için biraz SOL gerekir.
+  </Accordion>
+
+  <Accordion title="Bunun yerine Solana'da USDC veya SOL alabilir miyim?">
+    Evet, bir rota çifti gerçekleştirebiliyorsa: başka bir hedef token seçin, teklif güncellenir. L2Pass ücreti USDT'den USDC'ye gibi stablecoin takaslarında %0, SOL gibi diğer varlıklarda %0,2'ye kadardır.
+  </Accordion>
+
+  <Accordion title="USDT'yi Tron'dan Solana'ya köprülemek ne kadar sürer?">
+    Test tekliflerinde L2Pass RFQ ve L2Pass Private'ın her biri yaklaşık 80 saniyelik tahmini süre gösterdi. Rota kartları, onaylamadan önce güncel tahmini gösterir.
+  </Accordion>
+</AccordionGroup>
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [USDT ve USDC köprülemenin en iyi yolu: L2Pass ile diğer köprüler](/tr/products/swap/learn/compare-stablecoin-transfers)
+- [Tron'dan TON'a USDT](/tr/products/swap/guides/usdt-tron-to-ton)
+- [Tron'dan Ethereum'a USDT](/tr/products/swap/guides/usdt-tron-to-ethereum)
+- [L2Pass Swap ücretleri](/tr/products/swap/overview#fee-structure)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
+
+*Son güncelleme: 10 Ekim 2026*

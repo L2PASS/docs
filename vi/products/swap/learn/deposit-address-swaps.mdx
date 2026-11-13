@@ -1,0 +1,97 @@
+---
+title: "Hoán đổi từ bất kỳ ví hay sàn nào: cách hoạt động của giao dịch qua địa chỉ nạp"
+description: "Với L2Pass Swap, bạn có thể thanh toán giao dịch xuyên chuỗi từ bất kỳ ví hay sàn nào bằng cách gửi token đến địa chỉ nạp dùng một lần. Không cần kết nối ví."
+sidebarTitle: "Hoán đổi từ mọi ví hoặc sàn"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/) cho phép bạn thanh toán giao dịch xuyên chuỗi mà không cần kết nối ví. Trên tuyến L2Pass RFQ và L2Pass Private, cả hai chạy trên [NEAR Intents](https://near.org/intents), bạn nhận một địa chỉ nạp dùng một lần cho báo giá và gửi token đến đó từ bất kỳ ví hay sàn nào, bằng địa chỉ hoặc mã QR. Giao dịch bắt đầu khi khoản nạp đến, và token đích được gửi tới địa chỉ nhận bạn đã đặt. Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền của bạn. Phí L2Pass là 0% cho hoán đổi stablecoin, và báo giá hiển thị số tiền bạn sẽ nhận sau phí. Chỉ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) được trả riêng.
+
+## Thuật ngữ chính
+
+Ba địa chỉ quan trọng trong giao dịch qua địa chỉ nạp: địa chỉ nạp, địa chỉ nhận và địa chỉ hoàn tiền.
+
+| Thuật ngữ | Ý nghĩa |
+| :-- | :-- |
+| Địa chỉ nạp | Địa chỉ dùng một lần trên chuỗi nguồn, tạo cho báo giá của bạn. Gửi đúng số tiền báo giá đến đó sẽ bắt đầu giao dịch. |
+| Địa chỉ nhận | Địa chỉ trên chuỗi đích nhận token. |
+| Địa chỉ hoàn tiền | Ví bạn kiểm soát trên chuỗi nguồn. Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về đó. |
+| Tuyến qua ví | Tuyến mà bạn ký giao dịch trong ví đã kết nối, như Circle CCTP, USDT0, Relay hoặc LI.FI. |
+
+## Địa chỉ nạp hay giao dịch từ ví
+
+Tuyến dùng địa chỉ nạp chấp nhận rút tiền từ sàn và tự động hoàn tiền. Tuyến qua ví cần chữ ký của bạn và được hoàn tác nếu thất bại.
+
+| | Tuyến dùng địa chỉ nạp | Tuyến qua ví |
+| :-- | :-- | :-- |
+| Tuyến | L2Pass RFQ, L2Pass Private | USDT0, Circle CCTP, LI.FI, LI.FI Intents, Relay, Aori, bộ tổng hợp OKX DEX |
+| Thanh toán từ | Ví đã kết nối, bất kỳ ví nào hoặc sàn | Chỉ ví đã kết nối |
+| Bạn làm gì | Gửi một lần chuyển đến địa chỉ nạp | Ký giao dịch (đôi khi cả phê duyệt token) |
+| Nếu thất bại | Khoản nạp trả về địa chỉ hoàn tiền, trừ phí nhà cung cấp hoặc phí mạng (nếu có) | Giao dịch được hoàn tác, gas không được hoàn lại |
+| Mạng | Bao gồm Bitcoin, Zcash, Tron, Solana và TON | Tùy tuyến |
+
+## Cách hoán đổi từ sàn hoặc bất kỳ ví nào
+
+Bạn gửi một lần chuyển, và giao dịch bắt đầu khi tiền đến.
+
+<Steps>
+  <Step title="Yêu cầu báo giá">
+    Truy cập [swap.l2pass.com](https://swap.l2pass.com/), chọn token và mạng nguồn bạn sẽ gửi từ đó, token và mạng đích, số tiền và địa chỉ nhận.
+  </Step>
+
+  <Step title="Chọn L2Pass RFQ hoặc L2Pass Private">
+    Các tuyến này nhận khoản nạp. Kiểm tra số tiền dự kiến, số tiền nhận tối thiểu, thời gian ước tính và phí trên thẻ tuyến.
+  </Step>
+
+  <Step title="Đặt địa chỉ hoàn tiền">
+    Đặt địa chỉ hoàn tiền là ví bạn kiểm soát trên chuỗi nguồn. Đừng dùng địa chỉ nạp của sàn: khoản hoàn gửi đến đó có thể không được ghi có vào tài khoản của bạn.
+  </Step>
+
+  <Step title="Gửi đúng số tiền">
+    Sao chép địa chỉ nạp hoặc quét mã QR, rồi gửi số tiền trong báo giá trên mạng nguồn được ghi trong báo giá. Trên sàn, hãy chọn mạng rút tương ứng, ví dụ TRC-20 cho USDT trên Tron.
+  </Step>
+
+  <Step title="Theo dõi giao dịch">
+    Theo dõi trạng thái trong **Recent swaps**: *Awaiting deposit*, *Deposit confirmed*, rồi *Complete*.
+  </Step>
+</Steps>
+
+## Số tiền, mạng và phí
+
+Hãy gửi đúng số tiền trên đúng mạng ghi trong báo giá, nếu không giao dịch có thể không bắt đầu.
+
+- **Phí rút của sàn.** Một số sàn trừ phí rút vào số tiền họ gửi. Hãy kiểm tra số tiền đến có khớp với báo giá, hoặc rút nhiều hơn một chút để khoản nạp khớp.
+- **Dùng đúng mạng.** Gửi trên mạng nguồn ghi trong báo giá. Token gửi trên mạng khác sẽ không được giao dịch phát hiện.
+- **Mỗi báo giá một khoản nạp.** Địa chỉ nạp thuộc về báo giá của bạn. Hãy yêu cầu báo giá mới cho giao dịch mới.
+- **Gas chỉ trên chuỗi nguồn.** Bạn trả phí mạng nguồn khi gửi. Phí mạng trên chuỗi đích (nếu có) được trừ vào số tiền hiển thị.
+- **Không khớp một phần.** Giao dịch hoặc hoàn tất toàn bộ, hoặc không thực hiện.
+- **Kiểm tra tuân thủ.** Không cần tài khoản hay KYC. Địa chỉ bị gắn cờ không nhận được báo giá, nên không có gì được gửi đi. Khoản nạp bị gắn cờ sau khi đến nơi sẽ bị giữ lại để xem xét thay vì được hoàn trả; bạn xử lý với bộ phận hỗ trợ của NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
+
+## Câu hỏi thường gặp
+
+<AccordionGroup>
+  <Accordion title="Tôi có thể hoán đổi crypto mà không kết nối ví không?">
+    Có. Trên L2Pass RFQ và L2Pass Private, bạn gửi token đến địa chỉ nạp dùng một lần từ bất kỳ ví hay sàn nào, bằng địa chỉ hoặc mã QR.
+  </Accordion>
+
+  <Accordion title="Tôi có thể gửi USDT từ sàn thẳng sang mạng khác không?">
+    Có, qua tuyến dùng địa chỉ nạp. Ví dụ, rút USDT TRC-20 từ sàn đến địa chỉ nạp, và USDT sẽ đến Ethereum, Arbitrum hoặc mạng khác bạn chọn.
+  </Accordion>
+
+  <Accordion title="Nếu sàn gửi ít hơn số tiền báo giá thì sao?">
+    Báo giá áp dụng cho số tiền bạn nạp. Hãy kiểm tra số tiền đến trong **Recent swaps**. Nếu giao dịch không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền, sau khi trừ phí nhà cung cấp hoặc phí mạng (nếu có).
+  </Accordion>
+
+  <Accordion title="Giao dịch qua địa chỉ nạp có phải lưu ký không?">
+    Không. L2Pass không bao giờ giữ token hay khóa riêng của bạn. Khoản nạp được các solver trên NEAR Intents khớp, và giao dịch thất bại được hoàn về địa chỉ hoàn tiền của bạn.
+  </Accordion>
+</AccordionGroup>
+
+## Liên kết
+
+- [Mở L2Pass Swap](https://swap.l2pass.com/)
+- [L2Pass RFQ by NEAR Intents là gì](/vi/products/swap/learn/what-is-l2pass-rfq)
+- [Điều gì xảy ra nếu giao dịch thất bại](/vi/products/swap/learn/failed-swaps-and-refunds)
+- [Chuyển USDT từ Tron sang Ethereum](/vi/products/swap/guides/usdt-tron-to-ethereum)
+- [Câu hỏi thường gặp về L2Pass Swap](/vi/products/swap/faq)
+
+*Cập nhật lần cuối: ngày 19 tháng 10 năm 2026*

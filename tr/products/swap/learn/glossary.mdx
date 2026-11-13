@@ -1,0 +1,57 @@
+---
+title: "L2Pass Swap sözlüğü: RFQ, çözücüler, USDT0, CCTP ve daha fazlası"
+description: "L2Pass Swap'te ve bu dokümanlarda kullanılan terimlerin sade tanımları: RFQ, çözücü, yatırma adresi, iade adresi, minimum alınacak tutar, kayma, USDT0, CCTP ve daha fazlası."
+sidebarTitle: "Sözlük"
+---
+
+[L2Pass Swap](https://swap.l2pass.com/)'te ve bu dokümanlarda karşılaşacağınız terimler, sade bir dille. Her biri, konuyu ayrıntılı anlatan sayfaya bağlanır.
+
+## Rotalar ve sağlayıcılar
+
+Rota, bir sağlayıcının takasınızı gerçekleştirme yoludur ve L2Pass hepsini yan yana gösterir.
+
+| Terim | Anlamı |
+| :-- | :-- |
+| **Rota (route)** | Takasınızı gerçekleştirmenin, bir sağlayıcının işlettiği bir yolu. L2Pass, takasınızı gerçekleştirebilecek tüm rotaları alacağınız tutara göre sıralı gösterir. [Rotalar nasıl karşılaştırılır](/tr/products/swap/learn/compare-routes) |
+| **Rota kartı** | Takas arayüzünde bir rotanın tahmini çıktısını, minimum alınacak tutarını, tahmini süresini ve ücretlerini gösteren kutu. |
+| **NEAR Intents** | Çözücülerin ve piyasa yapıcıların cross-chain takasları gerçekleştirmek için yarıştığı bir ağ. L2Pass RFQ ve L2Pass Private rotalarını çalıştırır. |
+| **L2Pass RFQ** | NEAR Intents üzerindeki standart rota. RFQ, request for quote (teklif talebi) anlamına gelir: takasınız çözücülere sunulur ve en iyi teklif onu gerçekleştirir. [L2Pass RFQ nedir](/tr/products/swap/learn/what-is-l2pass-rfq) |
+| **L2Pass Private** | L2Pass RFQ ile aynı rota, herkese açık blok zincirlerinin gösterdiklerini sınırlayan gizli bir ortamda gerçekleştirilir. [Gizli takaslar](/tr/products/swap/learn/private-cross-chain-swaps) |
+| **Çözücü (solver)** | NEAR Intents'te kendi likiditesiyle takas gerçekleştiren bir piyasa yapıcı. |
+| **USDT0** | LayerZero üzerinden zincirler arasında wrapped token olmadan yerel olarak taşınan USDT sürümü. [USDT ağları açıklaması](/tr/products/swap/learn/usdt-networks) |
+| **Circle CCTP** | Circle'ın Cross-Chain Transfer Protocol'ü. Kaynak ağda USDC'yi yakar ve hedefte Standard veya Fast modda yerel USDC basar. [CCTP ile USDC köprüleme](/tr/products/swap/guides/usdc-cctp) |
+| **Toplayıcı (aggregator)** | LI.FI veya OKX DEX toplayıcısı gibi, birçok köprü ve borsa arasında rota arayan bir hizmet. |
+
+## Ödeme yapma ve ödeme alma
+
+Ya cüzdanınızda imzalayarak ya da bir yatırma adresine göndererek ödersiniz.
+
+| Terim | Anlamı |
+| :-- | :-- |
+| **Cüzdan rotası** | CCTP, USDT0, LI.FI veya Relay gibi, kendi cüzdanınızda bir işlem imzaladığınız rota. |
+| **Yatırma adresi** | L2Pass RFQ ve L2Pass Private rotalarında teklifiniz için oluşturulan tek kullanımlık adres. Cüzdan bağlamadan herhangi bir cüzdan veya borsadan ödeyebilirsiniz. [Yatırma adresiyle takaslar](/tr/products/swap/learn/deposit-address-swaps) |
+| **İade adresi** | Kaynak ağda kontrol ettiğiniz bir cüzdan. Yatırma adresli bir takas tamamlanamazsa yatırdığınız tutar oraya döner. [Başarısız takaslar ve iadeler](/tr/products/swap/learn/failed-swaps-and-refunds) |
+| **Gözetimsiz** | L2Pass token'larınızı veya özel anahtarlarınızı asla tutmaz. Sağlayıcılar her takası kendi sözleşmelerinde gerçekleştirir. [L2Pass güvenli mi?](/tr/products/swap/learn/is-l2pass-safe) |
+| **Kısmi gerçekleşme** | Yalnızca bir kısmı tamamlanan takas. L2Pass bunu kullanmaz: takas ya tamamen tamamlanır ya da hiç gerçekleşmez. |
+
+## Tutarlar ve ücretler
+
+Gösterilen tutar, kaynak gas ve varsa köprü mesaj ücreti dışındaki tüm ücretlerden sonradır.
+
+| Terim | Anlamı |
+| :-- | :-- |
+| **Tahmini çıktı** | Mevcut piyasa koşullarında, ücretlerden sonra almanız beklenen tutar. |
+| **Minimum alınacak tutar** | Alacağınız en düşük tutar. Piyasa bunun ötesine geçerse takas gerçekleşmez. |
+| **Kayma toleransı** | Tahmini çıktının ne kadar altını kabul ettiğiniz. Minimum alınacak tutarı belirler. Varsayılan %0,05'tir. [Kayma açıklaması](/tr/products/swap/learn/slippage) |
+| **Sabit çıktı** | USDT0 gibi tam bir tutar teslim eden rota. Kayma uygulanmaz. |
+| **L2Pass ücreti** | L2Pass'in aldığı tek ücret: stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadar, gizli takaslarda %0,3'e kadar. [Ücretler açıklaması](/tr/products/swap/learn/fees) |
+| **Sağlayıcı ücreti** | NEAR Intents, LI.FI veya Relay gibi rota sağlayıcısının aldığı ücret. Alacağınız tutara dahildir. |
+| **Ağ ücreti** | Hedef blok zincirinin aldığı ücret. Alacağınız tutara dahildir. |
+| **Kaynak gas** | Kaynak blok zincirinin işleminizi göndermek için aldığı, cüzdanınızdan yerel token'ıyla (ETH, TRX, BNB vb.) ödenen ücret. |
+| **Köprü mesaj ücreti** | Bazı köprülerin cross-chain mesaj göndermek için aldığı ücret, örneğin LayerZero üzerinden USDT0. Kaynak ağın yerel token'ıyla ödenir. |
+
+## Bağlantılar
+
+- [L2Pass Swap'i açın](https://swap.l2pass.com/)
+- [L2Pass Swap nasıl çalışır](/tr/products/swap/overview)
+- [L2Pass Swap SSS](/tr/products/swap/faq)
