@@ -1,20 +1,19 @@
 ---
 title: "Giải thích phí L2Pass Swap"
-description: "Phí L2Pass Swap: phí L2Pass 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác, tối đa 0,3% cho hoán đổi riêng tư. Ví dụ từ báo giá thực."
+description: "Phí L2Pass Swap: phí L2Pass 0% cho mọi hoán đổi công khai, mọi tài sản và mọi tuyến. Chỉ hoán đổi riêng tư có phí tối đa 0,3%. Ví dụ từ báo giá thực."
 sidebarTitle: "Giải thích phí"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) thu phí L2Pass 0% cho hoán đổi stablecoin trên mọi tuyến, tối đa 0,2% cho tài sản khác và tối đa 0,3% cho hoán đổi riêng tư. Phí riêng tư áp dụng thay cho 0% hoặc 0,2%, không cộng thêm. Đối tác định tuyến và blockchain thu phí riêng, và số tiền bạn sẽ nhận, hiển thị trong báo giá trước khi xác nhận, đã bao gồm các khoản đó, trừ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) mà bạn trả riêng.
+[L2Pass Swap](https://swap.l2pass.com/) thu phí L2Pass 0% cho mọi hoán đổi công khai, mọi tài sản và mọi tuyến. L2Pass chỉ thu phí với hoán đổi riêng tư, tối đa 0,3%, áp dụng thay cho 0%, không cộng thêm. Đối tác định tuyến và blockchain thu phí riêng, và số tiền bạn sẽ nhận, hiển thị trong báo giá trước khi xác nhận, đã bao gồm các khoản đó, trừ gas trên chuỗi nguồn và phí tin nhắn cầu nối (nếu có) mà bạn trả riêng.
 
 ## Phí L2Pass
 
-Đây là khoản phí duy nhất do chính L2Pass thu. Mức phí phụ thuộc vào tài sản và việc giao dịch có riêng tư hay không.
+Đây là khoản phí duy nhất do chính L2Pass thu. Mức phí chỉ phụ thuộc vào việc giao dịch có riêng tư hay không.
 
 | Giao dịch | Phí L2Pass |
 | :-- | :-- |
-| Hoán đổi stablecoin (USDT, USDC và các loại khác), mọi tuyến | **0%** |
-| Tài sản khác (ETH, BTC, SOL, ZEC và các loại khác) | **tối đa 0,2%** |
-| Hoán đổi riêng tư, mọi tài sản | **tối đa 0,3%** (thay cho 0% hoặc 0,2%, không cộng thêm) |
+| Hoán đổi công khai: stablecoin, BTC, ETH, SOL, ZEC và mọi tài sản khác, mọi tuyến | **0%** |
+| Hoán đổi riêng tư, mọi tài sản | **tối đa 0,3%** (thay cho 0%, không cộng thêm) |
 
 ## Mọi khoản phí bạn thấy trong báo giá
 
@@ -32,7 +31,7 @@ L2Pass không kiểm soát phí đối tác hay phí mạng. Hãy xem từng nh�
 
 ## Ví dụ từ báo giá thực
 
-Báo giá thử nghiệm ngày 19 tháng 10 năm 2026 (khoảng 16:55 UTC) cho thấy các khoản phí sau. Báo giá trực tiếp hiển thị số liệu hiện tại cho cặp và số tiền của bạn.
+Báo giá thử nghiệm ngày 19 tháng 10 năm 2026 (khoảng 16:55 UTC) cho thấy các khoản phí sau. Từ đó đến nay, phí L2Pass cho hoán đổi công khai đã giảm xuống 0% với mọi tài sản, nên dòng Relay giờ sẽ không còn phí L2Pass. Báo giá trực tiếp hiển thị số liệu hiện tại cho cặp và số tiền của bạn.
 
 | Giao dịch | Tuyến | Phí L2Pass | Phí khác | Bạn nhận |
 | :-- | :-- | :-- | :-- | :-- |
@@ -41,7 +40,7 @@ Báo giá thử nghiệm ngày 19 tháng 10 năm 2026 (khoảng 16:55 UTC) cho t
 | 1.000 USDC, Arbitrum → Base | Cầu USDC (CCTP Fast) | 0 | Phí mạng 0,19 USDC | 999,81 USDC |
 | 1.000 USDT, Ethereum → Tron | USDT native bridge (USDT0) | 0 | Phí tin nhắn LayerZero khoảng 0,005 ETH (khoảng 11,92 USD), trả bằng ETH | 999,7 USDT |
 | 0,5 ETH trên Ethereum → USDC trên Arbitrum | L2Pass RFQ | 0 | Phí NEAR Intents 0,001 ETH, phí mạng 0,0053 USDC | 1.197,00 USDC |
-| 0,5 ETH trên Ethereum → USDC trên Arbitrum | Relay | 0,1% (khoảng 1,20 USD) | Phí Relay khoảng 1,34 USD | 1.195,67 USDC |
+| 0,5 ETH trên Ethereum → USDC trên Arbitrum | Relay | 0,1% vào thời điểm đó (nay là 0%) | Phí Relay khoảng 1,34 USD | 1.195,67 USDC |
 
 Số tiền nhận được cũng phản ánh mức giá mỗi nhà cung cấp báo, nên các khoản phí liệt kê không phải lúc nào cũng cộng lại bằng toàn bộ chênh lệch.
 
@@ -80,12 +79,12 @@ Gas là chi phí duy nhất bạn không bao giờ lấy lại, kể cả khi gi
 ## Câu hỏi thường gặp
 
 <AccordionGroup>
-  <Accordion title="L2Pass Swap có miễn phí cho stablecoin không?">
-    L2Pass thu 0% cho hoán đổi stablecoin trên mọi tuyến. Đối tác định tuyến và blockchain vẫn thu phí riêng, và các khoản này đã được tính vào số tiền hiển thị trong báo giá. Trong một báo giá thử nghiệm 1.000 USDC từ Arbitrum sang Base, các khoản phí này khoảng 0,10 USDC.
+  <Accordion title="Hoán đổi công khai trên L2Pass Swap có miễn phí không?">
+    Có, về phía L2Pass. L2Pass thu 0% cho mọi hoán đổi công khai, mọi tài sản và mọi tuyến. Đối tác định tuyến và blockchain vẫn thu phí riêng, và các khoản này đã được tính vào số tiền hiển thị trong báo giá. Trong một báo giá thử nghiệm 1.000 USDC từ Arbitrum sang Base, các khoản phí này khoảng 0,10 USDC.
   </Accordion>
 
   <Accordion title="Phí hoán đổi riêng tư có cộng thêm vào phí tiêu chuẩn không?">
-    Không. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm). Nó đã được tính vào số tiền hiển thị trong báo giá.
+    Không. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0%, không cộng thêm). Nó đã được tính vào số tiền hiển thị trong báo giá.
   </Accordion>
 
   <Accordion title="Có khoản phí nào tôi không thấy trước khi xác nhận không?">

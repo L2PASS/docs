@@ -1,12 +1,12 @@
 ---
 title: "如何把 BTC 兑换成 USDT（以及 USDT 换回 BTC）"
-description: "约 14 分钟把原生 BTC 兑换成 USDT，或约 9 分钟把 USDT 兑换成 BTC。L2Pass 手续费最高 0.2%，无需账户，可从任意钱包或交易所付款。"
+description: "约 14 分钟把原生 BTC 兑换成 USDT，或约 9 分钟把 USDT 兑换成 BTC。L2Pass 手续费 0%，无需账户，可从任意钱包或交易所付款。"
 sidebarTitle: "BTC 与 USDT 互换"
 ---
 
 import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
 
-你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 Bitcoin 上的原生 BTC 兑换成 Tron 或 Ethereum 上的 USDT，也可以把 USDT 换回 BTC。在测试报价中，这些交易对有两条路由：L2Pass RFQ 和 L2Pass Private，两者都运行在 [NEAR Intents](https://near.org/intents) 上。从 BTC 兑换约需 13.5 到 14 分钟，兑换成 BTC 约需 9 分钟，大部分时间用于等待 Bitcoin 区块确认。你把 BTC 或 USDT 发送到一次性充值地址即可付款，可以从任意钱包或交易所发送，无需账户。L2Pass 手续费最高 0.2%（私密兑换最高 0.3%），报价会显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 Bitcoin 上的原生 BTC 兑换成 Tron 或 Ethereum 上的 USDT，也可以把 USDT 换回 BTC。在测试报价中，这些交易对有两条路由：L2Pass RFQ 和 L2Pass Private，两者都运行在 [NEAR Intents](https://near.org/intents) 上。从 BTC 兑换约需 13.5 到 14 分钟，兑换成 BTC 约需 9 分钟，大部分时间用于等待 Bitcoin 区块确认。你把 BTC 或 USDT 发送到一次性充值地址即可付款，可以从任意钱包或交易所发送，无需账户。公开兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
 
 **原生 BTC，无需包装** · **0.01 BTC 换得 817.64 USDT** · **无需账户** · **可从任意钱包或交易所付款**
 
@@ -18,8 +18,8 @@ import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
 
 | 路由 | 预计时间 | 到账 | 说明 |
 | :-- | :-- | :-- | :-- |
-| L2Pass RFQ | 从 BTC 约 13.5 到 14 分钟，兑换成 BTC 约 9 分钟 | 浮动，有最少到账 | 求解器和做市商竞争执行你的兑换。充值地址。L2Pass 手续费最高 0.2%。 |
-| L2Pass Private | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 机密执行。充值地址。L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取）。 |
+| L2Pass RFQ | 从 BTC 约 13.5 到 14 分钟，兑换成 BTC 约 9 分钟 | 浮动，有最少到账 | 求解器和做市商竞争执行你的兑换。充值地址。L2Pass 手续费 0%。 |
+| L2Pass Private | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 机密执行。充值地址。L2Pass 手续费最高 0.3%（替代 0%，而非额外收取）。 |
 
 在这些测试报价中，这些交易对没有其他路由。报价会列出能完成该交易对的所有路由。
 
@@ -86,7 +86,7 @@ import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
   </Accordion>
 
   <Accordion title="把 BTC 兑换成 USDT 要多少钱？">
-    L2Pass 手续费最高 0.2%（私密兑换最高 0.3%）。在测试报价中，L2Pass RFQ 显示 L2Pass 手续费 0%、NEAR Intents 提供方费用 0.2% 以及目标链网络费。显示金额已包含所有这些费用。发送时你还需支付 Bitcoin 网络费。
+    公开兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。在测试报价中，L2Pass RFQ 显示 L2Pass 手续费 0%、NEAR Intents 提供方费用 0.2% 以及目标链网络费。显示金额已包含所有这些费用。发送时你还需支付 Bitcoin 网络费。
   </Accordion>
 
   <Accordion title="BTC 兑换 USDT 需要多长时间？">

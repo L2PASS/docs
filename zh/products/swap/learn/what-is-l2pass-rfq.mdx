@@ -4,7 +4,7 @@ description: "在 L2Pass RFQ by NEAR Intents 中，求解器和做市商竞争�
 sidebarTitle: "L2Pass RFQ by NEAR Intents"
 ---
 
-L2Pass RFQ by NEAR Intents 是 [L2Pass Swap](https://swap.l2pass.com/) 中的一条跨链兑换路由，求解器和做市商在这里竞争执行你的兑换。你说明想收到什么，他们给出价格，胜出的报价会在你付款前展示给你。付款方式是把代币发送到一次性充值地址，可以从已连接的钱包、任意钱包或交易所发送。稳定币兑换的 L2Pass 手续费为 0%，其他资产最高 0.2%，报价显示的是扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+L2Pass RFQ by NEAR Intents 是 [L2Pass Swap](https://swap.l2pass.com/) 中的一条跨链兑换路由，求解器和做市商在这里竞争执行你的兑换。你说明想收到什么，他们给出价格，胜出的报价会在你付款前展示给你。付款方式是把代币发送到一次性充值地址，可以从已连接的钱包、任意钱包或交易所发送。任意资产的 L2Pass 手续费均为 0%，报价显示的是扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
 
 ## 关键术语
 
@@ -48,7 +48,7 @@ L2Pass RFQ by NEAR Intents 是 [L2Pass Swap](https://swap.l2pass.com/) 中的一
 | | L2Pass RFQ | L2Pass Private |
 | :-- | :-- | :-- |
 | 执行 | 公开 | 机密环境，减少公开区块链上可见的信息 |
-| L2Pass 手续费 | 稳定币 0%，其他资产最高 0.2% | 最高 0.3%（替代 0% 或 0.2%，而非额外收取） |
+| L2Pass 手续费 | 0%，任意资产 | 最高 0.3%（替代 0%，而非额外收取） |
 | 付款 | 一次性充值地址 | 一次性充值地址 |
 | 退款地址 | 必填 | 必填 |
 
@@ -82,7 +82,7 @@ RFQ 兑换可能有最低金额，涉及 Bitcoin 或 Zcash 时耗时更长，并
   </Accordion>
 
   <Accordion title="L2Pass RFQ 的费用是多少？">
-    稳定币兑换的 L2Pass 手续费为 0%，其他资产最高 0.2%。NEAR Intents 和各网络收取自己的费用。报价中显示的金额已包含这些费用。
+    任意资产的 L2Pass 手续费均为 0%。NEAR Intents 和各网络收取自己的费用。报价中显示的金额已包含这些费用。
   </Accordion>
 
   <Accordion title="需要连接钱包吗？">

@@ -6,7 +6,7 @@ sidebarTitle: "USDT: Tron to Solana"
 
 import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
 
-You can bridge USDT from Tron (TRC-20) to Solana (SPL) with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. In test quotes, it offered two routes for this pair, L2Pass RFQ and L2Pass Private, each with an estimated time of about 80 seconds. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+You can bridge USDT from Tron (TRC-20) to Solana (SPL) with [L2Pass Swap](https://swap.l2pass.com/), a non-custodial interface that shows every route for the pair side by side. In test quotes, it offered two routes for this pair, L2Pass RFQ and L2Pass Private, each with an estimated time of about 80 seconds. There is a 0% L2Pass fee on public swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
 
 **About 80 seconds** · **0% L2Pass fee** · **999.87 USDT arrives for 1,000 sent** · **No SOL needed**
 
@@ -77,7 +77,7 @@ You need TRX on Tron for gas and no SOL to receive.
   </Accordion>
 
   <Accordion title="Can I receive USDC or SOL on Solana instead?">
-    Yes, if a route can fill the pair: pick another destination token and the quote updates. There is a 0% L2Pass fee on stablecoin swaps, such as USDT to USDC, and up to 0.2% on other assets, such as SOL.
+    Yes, if a route can fill the pair: pick another destination token and the quote updates. Either way, a public swap carries a 0% L2Pass fee, whether you pick USDC or SOL.
   </Accordion>
 
   <Accordion title="How long does it take to bridge USDT from Tron to Solana?">

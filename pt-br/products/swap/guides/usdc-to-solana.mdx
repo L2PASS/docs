@@ -6,7 +6,7 @@ sidebarTitle: "USDC para Solana"
 
 import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
 
-Você pode transferir USDC para a Solana a partir da Ethereum ou da Base, e trocar USDT na Tron por USDC na Solana, com o [L2Pass Swap](https://swap.l2pass.com/). Em cotações de teste, esses pares foram oferecidos por L2Pass RFQ e L2Pass Private, ambos na [NEAR Intents](https://near.org/intents), com tempos estimados de cerca de 30 segundos a 1,5 minuto. Você paga enviando tokens para um endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira ou de uma exchange. A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas antes de confirmar. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
+Você pode transferir USDC para a Solana a partir da Ethereum ou da Base, e trocar USDT na Tron por USDC na Solana, com o [L2Pass Swap](https://swap.l2pass.com/). Em cotações de teste, esses pares foram oferecidos por L2Pass RFQ e L2Pass Private, ambos na [NEAR Intents](https://near.org/intents), com tempos estimados de cerca de 30 segundos a 1,5 minuto. Você paga enviando tokens para um endereço de depósito de uso único a partir da carteira conectada, de qualquer carteira ou de uma exchange. A taxa L2Pass em swaps públicos é de 0% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas antes de confirmar. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
 
 **Cerca de 30 segundos a partir da Base** · **Taxa L2Pass de 0%** · **Chegam 999,65 USDC para 1.000 enviados** · **Sem precisar de SOL**
 
@@ -71,7 +71,7 @@ Nada sai da sua carteira até você pagar, então dá para comparar todas as rot
 Você só precisa de gas na rede de origem e de nenhum SOL para receber.
 
 - **Gas só na rede de origem.** Você paga gas em ETH na Ethereum ou na Base, ou em TRX na Tron. A taxa de rede da Solana é descontada do valor exibido, então você não precisa de SOL para receber. Você vai precisar de SOL depois para movimentar ou usar o USDC na Solana.
-- **De USDT para USDC num único swap.** A partir da Tron, você troca de stablecoin e de rede ao mesmo tempo. Continua sendo um swap de stablecoins, com taxa L2Pass de 0% no L2Pass RFQ.
+- **De USDT para USDC num único swap.** A partir da Tron, você troca de stablecoin e de rede ao mesmo tempo. Como todo swap público, tem taxa L2Pass de 0%.
 
 <SwapBeforeYouSend />
 
@@ -83,7 +83,7 @@ Você só precisa de gas na rede de origem e de nenhum SOL para receber.
   </Accordion>
 
   <Accordion title="Quanto custa transferir USDC para a Solana?">
-    A taxa L2Pass em swaps de stablecoins é de 0% (até 0,3% em swaps privados). Em cotações de teste de 1.000 USDC, o L2Pass RFQ entregou 999,65 USDC a partir da Base e 999,55 USDC a partir da Ethereum, depois da taxa da NEAR Intents e da taxa de rede da Solana.
+    A taxa L2Pass em swaps públicos é de 0% (até 0,3% em swaps privados). Em cotações de teste de 1.000 USDC, o L2Pass RFQ entregou 999,65 USDC a partir da Base e 999,55 USDC a partir da Ethereum, depois da taxa da NEAR Intents e da taxa de rede da Solana.
   </Accordion>
 
   <Accordion title="Preciso de SOL para receber USDC na Solana?">

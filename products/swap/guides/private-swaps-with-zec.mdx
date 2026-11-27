@@ -6,7 +6,7 @@ sidebarTitle: "Private swaps with ZEC"
 
 import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
 
-You can make a private swap between USDT and ZEC, in either direction, with [L2Pass Swap](https://swap.l2pass.com/) by choosing the L2Pass Private route. In test quotes, it was offered from USDT on Tron and Ethereum to ZEC, with an estimated time of about 3 minutes, and from ZEC to USDT on Tron, with about 8.5 minutes. It executes the swap in a confidential environment that limits what is visible on public blockchains. It is not anonymity: your wallet address is still shared with providers, and compliance screening still applies. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). It is already included in the amount shown in the quote.
+You can make a private swap between USDT and ZEC, in either direction, with [L2Pass Swap](https://swap.l2pass.com/) by choosing the L2Pass Private route. In test quotes, it was offered from USDT on Tron and Ethereum to ZEC, with an estimated time of about 3 minutes, and from ZEC to USDT on Tron, with about 8.5 minutes. It executes the swap in a confidential environment that limits what is visible on public blockchains. It is not anonymity: your wallet address is still shared with providers, and compliance screening still applies. The L2Pass fee for a private swap is up to 0.3% (instead of 0%, not in addition). It is already included in the amount shown in the quote.
 
 **About 3 minutes from USDT** · **0.8096 ZEC for 1,000 USDT** · **Confidential execution** · **No account**
 
@@ -19,7 +19,7 @@ L2Pass RFQ and L2Pass Private both run on [NEAR Intents](https://near.org/intent
 | Route | Estimated time | Output | Notes |
 | :-- | :-- | :-- | :-- |
 | L2Pass Private | About 3 minutes from USDT, about 8.5 minutes from ZEC | Variable, with a minimum received | Confidential execution. Deposit address. L2Pass fee up to 0.3%. |
-| L2Pass RFQ | About 3 minutes from USDT, about 8.5 minutes from ZEC | Variable, with a minimum received | Public execution. Deposit address. L2Pass fee up to 0.2% (other assets). |
+| L2Pass RFQ | About 3 minutes from USDT, about 8.5 minutes from ZEC | Variable, with a minimum received | Public execution. Deposit address. 0% L2Pass fee. |
 
 No other routes (aggregators or other intent networks) were offered for USDT and ZEC in either direction in those test quotes.
 
@@ -40,7 +40,7 @@ Nothing leaves your wallet until you pay, so you can compare every route first.
   </Step>
 
   <Step title="Select L2Pass Private">
-    Select L2Pass Private and check its expected output, minimum received, estimated time and fees. If you do not need confidential execution, L2Pass RFQ carries an L2Pass fee of up to 0.2% instead.
+    Select L2Pass Private and check its expected output, minimum received, estimated time and fees. If you do not need confidential execution, L2Pass RFQ carries a 0% L2Pass fee instead.
   </Step>
 
   <Step title="Set a refund address">
@@ -73,7 +73,7 @@ You pay gas only on the chain you send from, and a private swap does not make yo
   </Accordion>
 
   <Accordion title="How much does a private ZEC swap cost?">
-    The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition). It is already included in the amount shown in the quote, and so are the fees that routing partners and networks charge.
+    The L2Pass fee for a private swap is up to 0.3% (instead of 0%, not in addition). It is already included in the amount shown in the quote, and so are the fees that routing partners and networks charge.
   </Accordion>
 
   <Accordion title="Which USDT networks can I swap with ZEC?">

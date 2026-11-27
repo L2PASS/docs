@@ -1,12 +1,12 @@
 ---
 title: "체인 간 ETH를 USDC 또는 USDT로 스왑하는 방법"
-description: "ETH를 다른 체인의 USDC나 USDT로 1초에서 약 80초 사이에 스왑하세요. L2Pass 수수료 최대 0.2%, 한 번의 견적으로 4개 경로 비교."
+description: "ETH를 다른 체인의 USDC나 USDT로 1초에서 약 80초 사이에 스왑하세요. L2Pass 수수료 0%, 한 번의 견적으로 4개 경로 비교."
 sidebarTitle: "ETH → USDC 또는 USDT"
 ---
 
 import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
 
-[L2Pass Swap](https://swap.l2pass.com/)으로 ETH를 다른 체인의 USDC나 USDT로 한 번에 스왑할 수 있습니다. 예를 들어 Ethereum의 ETH를 Base의 USDC로, Arbitrum의 ETH를 Tron의 USDT로 바꿀 수 있습니다. 테스트 견적에서 EVM 체인 간에는 L2Pass RFQ, Relay, LI.FI, L2Pass Private가 약 1초에서 1분 미만의 예상 시간으로 제시되었고, Tron으로는 L2Pass RFQ와 Private가 제시되었습니다. ETH 스왑의 L2Pass 수수료는 최대 0.2%(비공개 스왑은 최대 0.3%)이며, 견적은 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+[L2Pass Swap](https://swap.l2pass.com/)으로 ETH를 다른 체인의 USDC나 USDT로 한 번에 스왑할 수 있습니다. 예를 들어 Ethereum의 ETH를 Base의 USDC로, Arbitrum의 ETH를 Tron의 USDT로 바꿀 수 있습니다. 테스트 견적에서 EVM 체인 간에는 L2Pass RFQ, Relay, LI.FI, L2Pass Private가 약 1초에서 1분 미만의 예상 시간으로 제시되었고, Tron으로는 L2Pass RFQ와 Private가 제시되었습니다. ETH 스왑의 L2Pass 수수료는 모든 공개 경로에서 0%(비공개 스왑은 최대 0.3%)이며, 견적은 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
 
 **EVM 체인 간 1분 이내** · **스왑과 브릿지를 한 번에** · **1 ETH에 2,387.76 USDC** · **한 번의 견적에 4개 경로**
 
@@ -23,7 +23,7 @@ EVM 체인 간 ETH 스왑은 4개 경로가 체결했고, 그중 2개는 Tron까
 | LI.FI | 약 6~26초 | 변동 | 지갑 트랜잭션 | 0.1% |
 | L2Pass Private | L2Pass RFQ와 동일 | 변동, 최소 수령액 있음 | 일회용 입금 주소 | 0.3% |
 
-L2Pass RFQ와 L2Pass Private는 [NEAR Intents](https://near.org/intents)에서 실행됩니다. L2Pass RFQ에서 NEAR Intents 제공자 수수료는 이 쌍들에서 0.2%였습니다.
+L2Pass RFQ와 L2Pass Private는 [NEAR Intents](https://near.org/intents)에서 실행됩니다. L2Pass RFQ에서 NEAR Intents 제공자 수수료는 이 쌍들에서 0.2%였습니다. 지금은 Relay와 LI.FI를 포함한 모든 공개 경로에서 L2Pass 수수료가 0%이므로, 이 견적보다 약 0.1% 더 받게 됩니다.
 
 ## 테스트 견적
 
@@ -117,7 +117,7 @@ ETH가 약 2,400 USD였던 약 17:50 UTC 기준 1 ETH 견적입니다. 실시간
   </Accordion>
 
   <Accordion title="체인 간 ETH를 USDC로 스왑하는 비용은 얼마인가요?">
-    ETH 스왑의 L2Pass 수수료는 최대 0.2%(비공개 스왑은 최대 0.3%)입니다. 테스트 견적에서는 L2Pass RFQ 0%, Relay와 LI.FI 0.1%였습니다. 제공자와 네트워크는 각자 수수료를 받으며, 표시된 금액에 이미 포함되어 있습니다.
+    ETH 스왑의 L2Pass 수수료는 L2Pass RFQ, Relay, LI.FI를 포함한 모든 공개 경로에서 0%(비공개 스왑은 최대 0.3%)입니다. 제공자와 네트워크는 각자 수수료를 받으며, 표시된 금액에 이미 포함되어 있습니다.
   </Accordion>
 
   <Accordion title="Arbitrum의 ETH를 Tron의 USDT로 스왑할 수 있나요?">

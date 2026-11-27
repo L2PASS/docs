@@ -4,7 +4,7 @@ description: "L2Pass Swap consulta varias fuentes de enrutamiento a la vez y ord
 sidebarTitle: "Cómo se comparan las rutas"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) consulta a la vez varias fuentes de enrutamiento y muestra todas las rutas que pueden ejecutar tu swap, ordenadas por el valor neto que recibes después del gas. Las fuentes son L2Pass RFQ y L2Pass Private by NEAR Intents, los puentes nativos USDT0 y Circle CCTP, y los agregadores y redes de intents LI.FI, LI.FI Intents, Relay, Aori y el agregador OKX DEX. Ninguna ruta gana en todos los pares, así que la comparación se hace en cada cotización. La comisión de L2Pass es del 0% en swaps de stablecoins por cualquier ruta.
+[L2Pass Swap](https://swap.l2pass.com/) consulta a la vez varias fuentes de enrutamiento y muestra todas las rutas que pueden ejecutar tu swap, ordenadas por el valor neto que recibes después del gas. Las fuentes son L2Pass RFQ y L2Pass Private by NEAR Intents, los puentes nativos USDT0 y Circle CCTP, y los agregadores y redes de intents LI.FI, LI.FI Intents, Relay, Aori y el agregador OKX DEX. Ninguna ruta gana en todos los pares, así que la comparación se hace en cada cotización. La comisión de L2Pass es del 0% en cualquier swap público, por cualquier ruta.
 
 ## Las rutas
 
@@ -80,9 +80,9 @@ Las rutas se ordenan por el valor neto estimado que recibes después del gas. Po
 
 ## Comisiones, pago y reembolsos
 
-La ruta cambia las comisiones del proveedor y la forma de pago, pero no el 0% de comisión de L2Pass en stablecoins.
+La ruta cambia las comisiones del proveedor y la forma de pago, pero no el 0% de comisión de L2Pass en swaps públicos.
 
-- **En stablecoins, la comisión de L2Pass no depende de la ruta.** Es del 0% en swaps de stablecoins por cualquier ruta, de hasta 0,2% en otros activos y de hasta 0,3% en swaps privados. Consulta [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees).
+- **La comisión de L2Pass no depende de la ruta.** Es del 0% en cualquier swap público, cualquier activo y cualquier ruta, y de hasta 0,3% en swaps privados. Consulta [Comisiones de L2Pass Swap explicadas](/es/products/swap/learn/fees).
 - **Depósito o wallet.** Solo L2Pass RFQ y L2Pass Private usan dirección de depósito, así que son las rutas que puedes pagar desde un exchange. Las demás requieren una transacción firmada en tu wallet.
 - **Reembolsos.** Las rutas on-chain se revierten si fallan (el gas no es reembolsable). Las rutas con dirección de depósito devuelven tu depósito a la dirección de reembolso; pueden descontarse comisiones del proveedor y de la red.
 - **Sin ejecución parcial.** Un swap se completa entero o no se ejecuta.

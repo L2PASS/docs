@@ -1,12 +1,12 @@
 ---
 title: "ETH'yi ağlar arasında USDC veya USDT'ye takas etme"
-description: "ETH'yi başka bir ağda 1 saniye ile yaklaşık 80 saniye arasında USDC veya USDT'ye takas edin. L2Pass ücreti %0,2'ye kadar, tek teklifte dört rota karşılaştırılır."
+description: "ETH'yi başka bir ağda 1 saniye ile yaklaşık 80 saniye arasında USDC veya USDT'ye takas edin. L2Pass ücreti %0, tek teklifte dört rota karşılaştırılır."
 sidebarTitle: "ETH'den USDC veya USDT'ye"
 ---
 
 import SwapBeforeYouSend from '/snippets/tr/swap-before-you-send.mdx';
 
-[L2Pass Swap](https://swap.l2pass.com/) ile ETH'yi tek adımda başka bir ağda USDC veya USDT'ye takas edebilirsiniz; örneğin Ethereum'daki ETH'yi Base'de USDC'ye veya Arbitrum'daki ETH'yi Tron'da USDT'ye. Test tekliflerinde EVM ağları arasında L2Pass RFQ, Relay, LI.FI ve L2Pass Private sunuldu; tahmini süreler yaklaşık 1 saniyeden bir dakikanın altına kadar. Tron'a ise L2Pass RFQ ve Private sunuldu. ETH takaslarında L2Pass ücreti %0,2'ye kadardır (gizli takaslarda %0,3'e kadar) ve teklif, ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
+[L2Pass Swap](https://swap.l2pass.com/) ile ETH'yi tek adımda başka bir ağda USDC veya USDT'ye takas edebilirsiniz; örneğin Ethereum'daki ETH'yi Base'de USDC'ye veya Arbitrum'daki ETH'yi Tron'da USDT'ye. Test tekliflerinde EVM ağları arasında L2Pass RFQ, Relay, LI.FI ve L2Pass Private sunuldu; tahmini süreler yaklaşık 1 saniyeden bir dakikanın altına kadar. Tron'a ise L2Pass RFQ ve Private sunuldu. ETH takaslarında L2Pass ücreti herkese açık her rotada %0'dır (gizli takaslarda %0,3'e kadar) ve teklif, ücretlerden sonra alacağınızı gösterir. Yalnızca kaynak ağ gas'ı ve varsa köprü mesaj ücreti ayrıca ödenir.
 
 **EVM ağları arasında bir dakikadan kısa** · **Takas ve köprü tek adımda** · **1 ETH için 2.387,76 USDC** · **Tek teklifte dört rota**
 
@@ -23,7 +23,7 @@ EVM ağları arasında ETH takaslarını dört rota gerçekleştirdi, bunların 
 | LI.FI | Yaklaşık 6 ila 26 saniye | Değişken | Cüzdan işlemi | %0,1 |
 | L2Pass Private | L2Pass RFQ ile aynı | Değişken, minimum alınacak tutarla | Tek kullanımlık yatırma adresi | %0,3 |
 
-L2Pass RFQ ve L2Pass Private, [NEAR Intents](https://near.org/intents) üzerinde çalışır. L2Pass RFQ'da NEAR Intents sağlayıcı ücreti bu çiftlerde %0,2 idi.
+L2Pass RFQ ve L2Pass Private, [NEAR Intents](https://near.org/intents) üzerinde çalışır. L2Pass RFQ'da NEAR Intents sağlayıcı ücreti bu çiftlerde %0,2 idi. Bugün Relay ve LI.FI dahil herkese açık her rotada L2Pass ücreti %0, yani bu rotalar bu tekliflerdekinden yaklaşık %0,1 daha fazla verir.
 
 ## Test teklifleri
 
@@ -117,7 +117,7 @@ Gas için biraz ETH ayırın ve minimum alınacak tutarı kontrol edin, çünkü
   </Accordion>
 
   <Accordion title="ETH'yi ağlar arasında USDC'ye takas etmenin maliyeti nedir?">
-    ETH takaslarında L2Pass ücreti %0,2'ye kadardır (gizli takaslarda %0,3'e kadar). Test tekliflerinde L2Pass RFQ'da %0, Relay ve LI.FI'da %0,1 idi. Sağlayıcılar ve ağlar kendi ücretlerini alır; gösterilen tutar bunları zaten içerir.
+    ETH takaslarında L2Pass ücreti L2Pass RFQ, Relay ve LI.FI dahil herkese açık her rotada %0'dır (gizli takaslarda %0,3'e kadar). Sağlayıcılar ve ağlar kendi ücretlerini alır; gösterilen tutar bunları zaten içerir.
   </Accordion>
 
   <Accordion title="Arbitrum'daki ETH'yi Tron'da USDT'ye takas edebilir miyim?">

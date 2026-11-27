@@ -4,7 +4,7 @@ description: "Use o L2Pass Swap para pagar em USDT, USDC, BTC ou ZEC na rede que
 sidebarTitle: "Pagamentos em cripto"
 ---
 
-Você pode usar o [L2Pass Swap](https://swap.l2pass.com/) para pagar alguém no token e na rede em que a pessoa quer receber, enquanto você paga com o que tiver. Por exemplo, você tem USDT na Tron e um fornecedor quer USDC na Solana: coloque o endereço Solana dele como endereço de recebimento, e o swap entrega USDC lá em uma só etapa. Você pode pagar da carteira conectada, de qualquer carteira ou de uma exchange. A taxa L2Pass é de 0% em swaps de stablecoins, e o valor que o destinatário vai receber, depois de todas as taxas, aparece antes de você pagar.
+Você pode usar o [L2Pass Swap](https://swap.l2pass.com/) para pagar alguém no token e na rede em que a pessoa quer receber, enquanto você paga com o que tiver. Por exemplo, você tem USDT na Tron e um fornecedor quer USDC na Solana: coloque o endereço Solana dele como endereço de recebimento, e o swap entrega USDC lá em uma só etapa. Você pode pagar da carteira conectada, de qualquer carteira ou de uma exchange. A taxa L2Pass é de 0% em swaps públicos, e o valor que o destinatário vai receber, depois de todas as taxas, aparece antes de você pagar.
 
 ## O que você pode fazer
 
@@ -61,16 +61,16 @@ O destinatário só precisa passar um endereço e uma rede. Você faz o resto em
 
 Quando você paga direto de uma carteira, o destinatário pode ver o endereço dela e o histórico público. Duas formas de limitar isso:
 
-- **Swap privado.** O L2Pass Private roda na NEAR Intents num ambiente confidencial que limita o que as blockchains públicas mostram sobre como o swap é executado. A taxa L2Pass num swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada).
+- **Swap privado.** O L2Pass Private roda na NEAR Intents num ambiente confidencial que limita o que as blockchains públicas mostram sobre como o swap é executado. A taxa L2Pass num swap privado é de até 0,3% (em vez de 0%, não somada).
 - **Pague de outra carteira ou de uma exchange.** Uma rota com endereço de depósito permite pagar de qualquer carteira, então a sua carteira principal não precisa enviar o pagamento.
 
 Isso não é anonimato. Os provedores continuam recebendo o endereço da sua carteira, e todo swap passa pela mesma triagem, público ou privado. Veja [O que é um swap cross-chain privado](/pt-br/products/swap/learn/private-cross-chain-swaps).
 
 ## Taxas, reembolsos e obrigações
 
-Reembolsos voltam para você, não para o destinatário, e pagamentos em stablecoins têm taxa L2Pass de 0%.
+Reembolsos voltam para você, não para o destinatário, e pagamentos feitos como swap público têm taxa L2Pass de 0% em qualquer token.
 
-- **Taxas.** A taxa L2Pass é de 0% em swaps de stablecoins, até 0,2% em outros ativos e até 0,3% em swaps privados. Veja [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees).
+- **Taxas.** A taxa L2Pass é de 0% em qualquer swap público, qualquer ativo e qualquer rota, e de até 0,3% em swaps privados. Veja [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees).
 - **Reembolsos.** Se um swap não puder ser concluído, o provedor devolve o depósito ao seu endereço de reembolso, não ao destinatário.
 - **Sem pagamentos parciais.** Um swap é concluído por inteiro ou não é executado.
 - **Verificações de compliance.** Não é preciso conta nem KYC. Um endereço sinalizado não recebe cotação, então nada é enviado. Um depósito sinalizado depois de chegar fica retido para análise em vez de reembolsado; você resolve isso com o suporte da NEAR Intents. Veja [Como funciona a triagem](/pt-br/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
@@ -88,7 +88,7 @@ Reembolsos voltam para você, não para o destinatário, e pagamentos em stablec
   </Accordion>
 
   <Accordion title="Quanto o destinatário perde em taxas?">
-    Muito pouco com stablecoins. Em cotações ao vivo de 19 de outubro de 2026, 1.000 USDT enviados da Tron chegaram como 999,55 USDT na Ethereum pelo L2Pass RFQ, depois de todas as taxas. A taxa L2Pass em stablecoins é de 0%.
+    Muito pouco com stablecoins. Em cotações ao vivo de 19 de outubro de 2026, 1.000 USDT enviados da Tron chegaram como 999,55 USDT na Ethereum pelo L2Pass RFQ, depois de todas as taxas. A taxa L2Pass em swaps públicos é de 0%.
   </Accordion>
 
   <Accordion title="Posso pagar alguém em BTC ou ZEC a partir de USDT?">

@@ -819,6 +819,16 @@
       "telegram": "https://t.me/l2pass"
     }
   },
+  "seo": {
+    "metatags": {
+      "og:image": "https://docs.l2pass.com/images/og.jpg",
+      "og:image:width": "2400",
+      "og:image:height": "1260",
+      "og:image:type": "image/jpeg",
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://docs.l2pass.com/images/og.jpg"
+    }
+  },
   "redirects": [
     {
       "source": "/products/bridge/overview",

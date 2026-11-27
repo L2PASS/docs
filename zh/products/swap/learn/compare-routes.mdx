@@ -4,7 +4,7 @@ description: "L2Pass Swap 同时询问多个路由渠道，并按到账金额对
 sidebarTitle: "路由比较"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) 会同时询问多个路由渠道，并展示所有能完成你兑换的路由，按扣除 Gas 后你实际获得的净值排序。这些渠道包括 L2Pass RFQ 和 L2Pass Private by NEAR Intents、原生 USDT0 和 Circle CCTP 跨链桥，以及聚合器和意图网络 LI.FI、LI.FI Intents、Relay、Aori 和 OKX DEX 聚合器。没有一条路由能在所有交易对上胜出，因此每次报价都会重新比较。任意路由上的稳定币兑换，L2Pass 手续费均为 0%。
+[L2Pass Swap](https://swap.l2pass.com/) 会同时询问多个路由渠道，并展示所有能完成你兑换的路由，按扣除 Gas 后你实际获得的净值排序。这些渠道包括 L2Pass RFQ 和 L2Pass Private by NEAR Intents、原生 USDT0 和 Circle CCTP 跨链桥，以及聚合器和意图网络 LI.FI、LI.FI Intents、Relay、Aori 和 OKX DEX 聚合器。没有一条路由能在所有交易对上胜出，因此每次报价都会重新比较。任意路由上的公开兑换，L2Pass 手续费均为 0%。
 
 ## 路由
 
@@ -80,9 +80,9 @@ USDT0 显示的到账 USDT 最多，但应用把 L2Pass RFQ 排在第一。USDT0
 
 ## 费用、付款和退款
 
-路由会影响提供方费用和付款方式，但不影响稳定币 0% 的 L2Pass 手续费。
+路由会影响提供方费用和付款方式，但不影响公开兑换 0% 的 L2Pass 手续费。
 
-- **稳定币的 L2Pass 手续费与路由无关。** 任意路由上的稳定币兑换为 0%，其他资产最高 0.2%，私密兑换最高 0.3%。参见 [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)。
+- **L2Pass 手续费与路由无关。** 任意资产、任意路由的公开兑换均为 0%，私密兑换最高 0.3%。参见 [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)。
 - **充值还是钱包。** 只有 L2Pass RFQ 和 L2Pass Private 使用充值地址，所以只有它们可以从交易所付款。其他路由需要在钱包中签署交易。
 - **退款。** 链上路由失败时会回滚（Gas 不予退还）。充值地址路由会把充值退回到退款地址；可能扣除提供方和网络费用。
 - **不部分成交。** 兑换要么全部完成，要么不执行。

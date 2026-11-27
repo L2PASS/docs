@@ -1,12 +1,12 @@
 ---
 title: "Como trocar ETH por USDC ou USDT entre redes"
-description: "Troque ETH por USDC ou USDT em outra rede em 1 segundo a cerca de 80 segundos. Taxa L2Pass de até 0,2%, quatro rotas comparadas numa cotação."
+description: "Troque ETH por USDC ou USDT em outra rede em 1 segundo a cerca de 80 segundos. Taxa L2Pass de 0%, quatro rotas comparadas numa cotação."
 sidebarTitle: "ETH para USDC ou USDT"
 ---
 
 import SwapBeforeYouSend from '/snippets/pt-br/swap-before-you-send.mdx';
 
-Você pode trocar ETH por USDC ou USDT em outra rede numa única etapa com o [L2Pass Swap](https://swap.l2pass.com/), por exemplo ETH na Ethereum por USDC na Base, ou ETH na Arbitrum por USDT na Tron. Em cotações de teste, L2Pass RFQ, Relay, LI.FI e L2Pass Private foram oferecidos entre redes EVM, com tempos estimados de cerca de 1 segundo a menos de um minuto, e L2Pass RFQ e Private foram oferecidos para a Tron. A taxa L2Pass em swaps de ETH é de até 0,2% (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
+Você pode trocar ETH por USDC ou USDT em outra rede numa única etapa com o [L2Pass Swap](https://swap.l2pass.com/), por exemplo ETH na Ethereum por USDC na Base, ou ETH na Arbitrum por USDT na Tron. Em cotações de teste, L2Pass RFQ, Relay, LI.FI e L2Pass Private foram oferecidos entre redes EVM, com tempos estimados de cerca de 1 segundo a menos de um minuto, e L2Pass RFQ e Private foram oferecidos para a Tron. A taxa L2Pass em swaps de ETH é de 0% em qualquer rota pública (até 0,3% em swaps privados), e a cotação mostra quanto você vai receber depois das taxas. Só o gas da rede de origem e a eventual taxa de mensagem da bridge são pagos à parte.
 
 **Menos de um minuto entre redes EVM** · **Swap e bridge numa etapa** · **2.387,76 USDC por 1 ETH** · **Quatro rotas numa cotação**
 
@@ -23,7 +23,7 @@ Quatro rotas executaram swaps de ETH entre redes EVM, e duas delas também chega
 | LI.FI | Cerca de 6 a 26 segundos | Variável | Transação na carteira | 0,1% |
 | L2Pass Private | Igual ao L2Pass RFQ | Variável, com mínimo a receber | Endereço de depósito de uso único | 0,3% |
 
-L2Pass RFQ e L2Pass Private rodam na [NEAR Intents](https://near.org/intents). No L2Pass RFQ, a taxa do provedor NEAR Intents foi de 0,2% nesses pares.
+L2Pass RFQ e L2Pass Private rodam na [NEAR Intents](https://near.org/intents). No L2Pass RFQ, a taxa do provedor NEAR Intents foi de 0,2% nesses pares. Hoje a taxa L2Pass é de 0% em qualquer rota pública, incluindo Relay e LI.FI, então elas entregariam cerca de 0,1% a mais do que nessas cotações.
 
 ## Cotações de teste
 
@@ -117,7 +117,7 @@ Guarde um pouco de ETH para o gas e confira o mínimo a receber, porque o preço
   </Accordion>
 
   <Accordion title="Quanto custa trocar ETH por USDC entre redes?">
-    A taxa L2Pass em swaps de ETH é de até 0,2% (até 0,3% em swaps privados). Em cotações de teste, foi de 0% no L2Pass RFQ e de 0,1% no Relay e no LI.FI. Os provedores e as redes cobram as próprias taxas, e o valor exibido já as inclui.
+    A taxa L2Pass em swaps de ETH é de 0% em qualquer rota pública, incluindo L2Pass RFQ, Relay e LI.FI (até 0,3% em swaps privados). Os provedores e as redes cobram as próprias taxas, e o valor exibido já as inclui.
   </Accordion>
 
   <Accordion title="Posso trocar ETH na Arbitrum por USDT na Tron?">

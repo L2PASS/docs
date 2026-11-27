@@ -4,7 +4,7 @@ description: "Use L2Pass Swap to pay in USDT, USDC, BTC or ZEC on the network th
 sidebarTitle: "Crypto payments"
 ---
 
-You can use [L2Pass Swap](https://swap.l2pass.com/) to pay someone in the token and on the network they want to receive, while you pay from whatever you hold. For example, you hold USDT on Tron and a supplier wants USDC on Solana: set their Solana address as the receiving address, and the swap delivers USDC there in one step. You can pay from your connected wallet, any wallet or an exchange. The L2Pass fee is 0% on stablecoin swaps, and the amount the recipient will get, after all fees, is shown before you pay.
+You can use [L2Pass Swap](https://swap.l2pass.com/) to pay someone in the token and on the network they want to receive, while you pay from whatever you hold. For example, you hold USDT on Tron and a supplier wants USDC on Solana: set their Solana address as the receiving address, and the swap delivers USDC there in one step. You can pay from your connected wallet, any wallet or an exchange. The L2Pass fee is 0% on public swaps, and the amount the recipient will get, after all fees, is shown before you pay.
 
 ## What you can do
 
@@ -61,16 +61,16 @@ The recipient only gives you an address and a network. You do the rest in five s
 
 When you pay directly from a wallet, the recipient can see that wallet's address and its public history. Two ways to limit that:
 
-- **Private swap.** L2Pass Private runs on NEAR Intents in a confidential environment that limits what public blockchains show about how the swap is filled. The L2Pass fee for a private swap is up to 0.3% (instead of 0% or 0.2%, not in addition).
+- **Private swap.** L2Pass Private runs on NEAR Intents in a confidential environment that limits what public blockchains show about how the swap is filled. The L2Pass fee for a private swap is up to 0.3% (instead of 0%, not in addition).
 - **Pay from a separate wallet or an exchange.** A deposit-address route lets you pay from any wallet, so your main wallet does not have to send the payment.
 
 This is not anonymity. Providers still receive your wallet address, and every swap is screened the same way, public or private. See [What is a private cross-chain swap](/products/swap/learn/private-cross-chain-swaps).
 
 ## Fees, refunds and obligations
 
-Refunds come back to you, not to the recipient, and stablecoin payments carry a 0% L2Pass fee.
+Refunds come back to you, not to the recipient, and payments made as public swaps carry a 0% L2Pass fee in any token.
 
-- **Fees.** The L2Pass fee is 0% on stablecoin swaps, up to 0.2% on other assets and up to 0.3% on private swaps. See [L2Pass Swap fees explained](/products/swap/learn/fees).
+- **Fees.** The L2Pass fee is 0% on every public swap, any asset and any route, and up to 0.3% on private swaps. See [L2Pass Swap fees explained](/products/swap/learn/fees).
 - **Refunds.** If a swap cannot complete, the provider sends the deposit back to your refund address, not to the recipient.
 - **No partial payments.** A swap completes in full or does not execute.
 - **Compliance checks.** No account or KYC needed. A flagged address gets no quote, so nothing is sent. A deposit flagged after it arrives is held for review instead of refunded; you resolve it with NEAR Intents support. See [How screening works](/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
@@ -88,7 +88,7 @@ Refunds come back to you, not to the recipient, and stablecoin payments carry a 
   </Accordion>
 
   <Accordion title="How much does the recipient lose to fees?">
-    Very little on stablecoins. In live quotes on October 19, 2026, 1,000 USDT sent from Tron arrived as 999.55 USDT on Ethereum through L2Pass RFQ, after all fees. The L2Pass fee on stablecoins is 0%.
+    Very little on stablecoins. In live quotes on October 19, 2026, 1,000 USDT sent from Tron arrived as 999.55 USDT on Ethereum through L2Pass RFQ, after all fees. The L2Pass fee on public swaps is 0%.
   </Accordion>
 
   <Accordion title="Can I pay someone in BTC or ZEC from USDT?">
