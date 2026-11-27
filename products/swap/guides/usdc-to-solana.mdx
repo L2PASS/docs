@@ -6,7 +6,7 @@ sidebarTitle: "USDC to Solana"
 
 import SwapBeforeYouSend from '/snippets/swap-before-you-send.mdx';
 
-You can bridge USDC to Solana from Ethereum or Base, and swap USDT on Tron to USDC on Solana, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes, these pairs were offered by L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents), with estimated times of about 30 seconds to 1.5 minutes. You pay by sending tokens to a one-time deposit address from your connected wallet, any wallet or an exchange. There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
+You can bridge USDC to Solana from Ethereum or Base, and swap USDT on Tron to USDC on Solana, with [L2Pass Swap](https://swap.l2pass.com/). In test quotes, these pairs were offered by L2Pass RFQ and L2Pass Private, both run on [NEAR Intents](https://near.org/intents), with estimated times of about 30 seconds to 1.5 minutes. You pay by sending tokens to a one-time deposit address from your connected wallet, any wallet or an exchange. There is a 0% L2Pass fee on public swaps (up to 0.3% on private swaps), and the quote shows what you will receive after fees before you confirm. Only source-chain gas and any bridge message fee are paid separately.
 
 **About 30 seconds from Base** · **0% L2Pass fee** · **999.65 USDC arrives for 1,000 sent** · **No SOL needed**
 
@@ -71,7 +71,7 @@ Nothing leaves your wallet until you pay, so you can compare every route first.
 You need gas only on the source chain and no SOL to receive.
 
 - **Gas on the source chain only.** You pay gas in ETH on Ethereum or Base, or in TRX on Tron. The Solana network fee is deducted from the amount shown, so you do not need SOL to receive. You need SOL later to move or use the USDC on Solana.
-- **USDT to USDC in one swap.** From Tron, you can change the stablecoin and the network at once. It is still a stablecoin swap, with a 0% L2Pass fee on L2Pass RFQ.
+- **USDT to USDC in one swap.** From Tron, you can change the stablecoin and the network at once. Like every public swap, it carries a 0% L2Pass fee.
 
 <SwapBeforeYouSend />
 
@@ -83,7 +83,7 @@ You need gas only on the source chain and no SOL to receive.
   </Accordion>
 
   <Accordion title="How much does it cost to bridge USDC to Solana?">
-    There is a 0% L2Pass fee on stablecoin swaps (up to 0.3% on private swaps). In test quotes for 1,000 USDC, L2Pass RFQ delivered 999.65 USDC from Base and 999.55 USDC from Ethereum, after the NEAR Intents fee and the Solana network fee.
+    There is a 0% L2Pass fee on public swaps (up to 0.3% on private swaps). In test quotes for 1,000 USDC, L2Pass RFQ delivered 999.65 USDC from Base and 999.55 USDC from Ethereum, after the NEAR Intents fee and the Solana network fee.
   </Accordion>
 
   <Accordion title="Do I need SOL to receive USDC on Solana?">

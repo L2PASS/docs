@@ -4,7 +4,7 @@ description: "Dùng L2Pass Swap để thanh toán bằng USDT, USDC, BTC hoặc 
 sidebarTitle: "Thanh toán crypto"
 ---
 
-Bạn có thể dùng [L2Pass Swap](https://swap.l2pass.com/) để trả cho ai đó bằng token và trên mạng họ muốn nhận, trong khi bạn trả bằng bất cứ thứ gì bạn đang có. Ví dụ, bạn có USDT trên Tron và nhà cung cấp muốn USDC trên Solana: đặt địa chỉ Solana của họ làm địa chỉ nhận, và hoán đổi sẽ giao USDC tới đó trong một bước. Bạn có thể trả từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn. Phí L2Pass là 0% cho hoán đổi stablecoin, và số tiền người nhận sẽ nhận, sau mọi khoản phí, được hiển thị trước khi bạn thanh toán.
+Bạn có thể dùng [L2Pass Swap](https://swap.l2pass.com/) để trả cho ai đó bằng token và trên mạng họ muốn nhận, trong khi bạn trả bằng bất cứ thứ gì bạn đang có. Ví dụ, bạn có USDT trên Tron và nhà cung cấp muốn USDC trên Solana: đặt địa chỉ Solana của họ làm địa chỉ nhận, và hoán đổi sẽ giao USDC tới đó trong một bước. Bạn có thể trả từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn. Phí L2Pass là 0% cho hoán đổi công khai, và số tiền người nhận sẽ nhận, sau mọi khoản phí, được hiển thị trước khi bạn thanh toán.
 
 ## Bạn có thể làm gì
 
@@ -61,16 +61,16 @@ Người nhận chỉ cần cho bạn địa chỉ và mạng. Bạn làm phần
 
 Khi bạn trả trực tiếp từ một ví, người nhận có thể thấy địa chỉ ví đó và lịch sử công khai của nó. Hai cách để hạn chế:
 
-- **Hoán đổi riêng tư.** L2Pass Private chạy trên NEAR Intents trong môi trường bảo mật, hạn chế những gì blockchain công khai cho thấy về cách hoán đổi được thực hiện. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0% hoặc 0,2%, không cộng thêm).
+- **Hoán đổi riêng tư.** L2Pass Private chạy trên NEAR Intents trong môi trường bảo mật, hạn chế những gì blockchain công khai cho thấy về cách hoán đổi được thực hiện. Phí L2Pass cho hoán đổi riêng tư tối đa 0,3% (thay cho 0%, không cộng thêm).
 - **Trả từ ví khác hoặc từ sàn.** Tuyến địa chỉ nạp cho phép bạn trả từ bất kỳ ví nào, nên ví chính không phải gửi khoản thanh toán.
 
 Đây không phải là ẩn danh. Nhà cung cấp vẫn nhận địa chỉ ví của bạn, và mọi hoán đổi đều được sàng lọc như nhau, dù công khai hay riêng tư. Xem [Hoán đổi cross-chain riêng tư là gì](/vi/products/swap/learn/private-cross-chain-swaps).
 
 ## Phí, hoàn tiền và nghĩa vụ
 
-Tiền hoàn trả về bạn, không về người nhận, và thanh toán bằng stablecoin có phí L2Pass 0%.
+Tiền hoàn trả về bạn, không về người nhận, và thanh toán qua hoán đổi công khai có phí L2Pass 0% với mọi token.
 
-- **Phí.** Phí L2Pass là 0% cho hoán đổi stablecoin, tối đa 0,2% cho tài sản khác và tối đa 0,3% cho hoán đổi riêng tư. Xem [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees).
+- **Phí.** Phí L2Pass là 0% cho mọi hoán đổi công khai, mọi tài sản và mọi tuyến, và tối đa 0,3% cho hoán đổi riêng tư. Xem [Giải thích phí L2Pass Swap](/vi/products/swap/learn/fees).
 - **Hoàn tiền.** Nếu hoán đổi không thể hoàn tất, nhà cung cấp gửi khoản nạp về địa chỉ hoàn tiền của bạn, không phải cho người nhận.
 - **Không thanh toán một phần.** Hoán đổi hoặc hoàn tất toàn bộ, hoặc không được thực hiện.
 - **Kiểm tra tuân thủ.** Không cần tài khoản hay KYC. Địa chỉ bị gắn cờ không nhận được báo giá, nên không có gì được gửi đi. Khoản nạp bị gắn cờ sau khi đến sẽ bị giữ để xem xét thay vì hoàn trả; bạn giải quyết với hỗ trợ NEAR Intents. Xem [Cách sàng lọc hoạt động](/vi/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
@@ -88,7 +88,7 @@ Tiền hoàn trả về bạn, không về người nhận, và thanh toán bằ
   </Accordion>
 
   <Accordion title="Người nhận mất bao nhiêu vì phí?">
-    Rất ít với stablecoin. Trong báo giá trực tiếp ngày 19 tháng 10 năm 2026, 1.000 USDT gửi từ Tron đến Ethereum thành 999,55 USDT qua L2Pass RFQ, sau mọi khoản phí. Phí L2Pass cho stablecoin là 0%.
+    Rất ít với stablecoin. Trong báo giá trực tiếp ngày 19 tháng 10 năm 2026, 1.000 USDT gửi từ Tron đến Ethereum thành 999,55 USDT qua L2Pass RFQ, sau mọi khoản phí. Phí L2Pass cho hoán đổi công khai là 0%.
   </Accordion>
 
   <Accordion title="Tôi có thể trả cho ai đó bằng BTC hoặc ZEC từ USDT không?">

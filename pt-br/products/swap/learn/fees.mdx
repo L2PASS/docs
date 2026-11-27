@@ -1,20 +1,19 @@
 ---
 title: "Taxas do L2Pass Swap explicadas"
-description: "Taxas do L2Pass Swap: taxa L2Pass de 0% em swaps de stablecoins, até 0,2% em outros ativos, até 0,3% em swaps privados. Exemplos de cotações reais."
+description: "Taxas do L2Pass Swap: taxa L2Pass de 0% em qualquer swap público, qualquer ativo e qualquer rota. Até 0,3% só em swaps privados. Exemplos de cotações reais."
 sidebarTitle: "Taxas explicadas"
 ---
 
-O [L2Pass Swap](https://swap.l2pass.com/) cobra taxa L2Pass de 0% em swaps de stablecoins por qualquer rota, até 0,2% em outros ativos e até 0,3% em swaps privados. A taxa privada se aplica em vez de 0% ou 0,2%, não somada. Parceiros de roteamento e blockchains cobram taxas próprias, e o valor que você vai receber, mostrado na cotação antes de confirmar, já as inclui, exceto o gas na rede de origem e a taxa de mensagem da ponte, se houver, que você paga à parte.
+O [L2Pass Swap](https://swap.l2pass.com/) cobra taxa L2Pass de 0% em qualquer swap público, qualquer ativo e qualquer rota. A L2Pass só ganha em swaps privados, até 0,3%, que se aplica em vez de 0%, não somada. Parceiros de roteamento e blockchains cobram taxas próprias, e o valor que você vai receber, mostrado na cotação antes de confirmar, já as inclui, exceto o gas na rede de origem e a taxa de mensagem da ponte, se houver, que você paga à parte.
 
 ## Taxa L2Pass
 
-É a única taxa que a própria L2Pass cobra. Ela depende do ativo e de o swap ser privado ou não.
+É a única taxa que a própria L2Pass cobra. Ela depende só de o swap ser privado ou não.
 
 | Swap | Taxa L2Pass |
 | :-- | :-- |
-| Swaps de stablecoins (USDT, USDC e outras), qualquer rota | **0%** |
-| Outros ativos (ETH, BTC, SOL, ZEC e outros) | **até 0,2%** |
-| Swaps privados, qualquer ativo | **até 0,3%** (em vez de 0% ou 0,2%, não somada) |
+| Swaps públicos: stablecoins, BTC, ETH, SOL, ZEC e qualquer outro ativo, qualquer rota | **0%** |
+| Swaps privados, qualquer ativo | **até 0,3%** (em vez de 0%, não somada) |
 
 ## Todas as taxas que aparecem em uma cotação
 
@@ -32,7 +31,7 @@ A L2Pass não controla taxas de parceiros nem de rede. Consulte cada provedor pa
 
 ## Exemplos de cotações reais
 
-Cotações de teste de 19 de outubro de 2026 (por volta das 16:55 UTC) mostraram estas taxas. A cotação ao vivo mostra os números atuais para o seu par e valor.
+Cotações de teste de 19 de outubro de 2026 (por volta das 16:55 UTC) mostraram estas taxas. Desde então, a taxa L2Pass em swaps públicos caiu para 0% em qualquer ativo, então a linha da Relay já não mostraria taxa L2Pass. A cotação ao vivo mostra os números atuais para o seu par e valor.
 
 | Swap | Rota | Taxa L2Pass | Outras taxas | Você recebe |
 | :-- | :-- | :-- | :-- | :-- |
@@ -41,7 +40,7 @@ Cotações de teste de 19 de outubro de 2026 (por volta das 16:55 UTC) mostraram
 | 1.000 USDC, Arbitrum → Base | Ponte USDC (CCTP Fast) | 0 | 0,19 USDC de taxa de rede | 999,81 USDC |
 | 1.000 USDT, Ethereum → Tron | USDT native bridge (USDT0) | 0 | Taxa de mensagem da LayerZero de cerca de 0,005 ETH (cerca de 11,92 USD), paga em ETH | 999,7 USDT |
 | 0,5 ETH na Ethereum → USDC na Arbitrum | L2Pass RFQ | 0 | 0,001 ETH de taxa da NEAR Intents, 0,0053 USDC de taxa de rede | 1.197,00 USDC |
-| 0,5 ETH na Ethereum → USDC na Arbitrum | Relay | 0,1% (cerca de 1,20 USD) | Taxa da Relay de cerca de 1,34 USD | 1.195,67 USDC |
+| 0,5 ETH na Ethereum → USDC na Arbitrum | Relay | 0,1% na época (hoje 0%) | Taxa da Relay de cerca de 1,34 USD | 1.195,67 USDC |
 
 O valor recebido também reflete o preço que cada provedor cota, então as taxas listadas nem sempre somam toda a diferença.
 
@@ -80,12 +79,12 @@ O gas é o único custo que você nunca recupera, mesmo quando o swap falha.
 ## Perguntas frequentes
 
 <AccordionGroup>
-  <Accordion title="O L2Pass Swap é gratuito para stablecoins?">
-    A L2Pass cobra 0% em swaps de stablecoins, por qualquer rota. Parceiros de roteamento e blockchains ainda cobram taxas próprias, incluídas no valor mostrado na cotação. Em uma cotação de teste de 1.000 USDC da Arbitrum para a Base, essas taxas somaram cerca de 0,10 USDC.
+  <Accordion title="Swaps públicos no L2Pass Swap são gratuitos?">
+    Sim, da parte da L2Pass. A L2Pass cobra 0% em qualquer swap público, qualquer ativo e qualquer rota. Parceiros de roteamento e blockchains ainda cobram taxas próprias, incluídas no valor mostrado na cotação. Em uma cotação de teste de 1.000 USDC da Arbitrum para a Base, essas taxas somaram cerca de 0,10 USDC.
   </Accordion>
 
   <Accordion title="A taxa de swap privado é somada à taxa padrão?">
-    Não. A taxa L2Pass de um swap privado é de até 0,3% (em vez de 0% ou 0,2%, não somada). Ela já está incluída no valor mostrado na cotação.
+    Não. A taxa L2Pass de um swap privado é de até 0,3% (em vez de 0%, não somada). Ela já está incluída no valor mostrado na cotação.
   </Accordion>
 
   <Accordion title="Existem taxas que não vejo antes de confirmar?">

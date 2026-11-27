@@ -6,7 +6,7 @@ sidebarTitle: "Solana로 USDC"
 
 import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
 
-[L2Pass Swap](https://swap.l2pass.com/)으로 Ethereum이나 Base에서 Solana로 USDC를 브릿지하고, Tron의 USDT를 Solana의 USDC로 스왑할 수 있습니다. 테스트 견적에서 이 쌍들은 모두 [NEAR Intents](https://near.org/intents)에서 실행되는 L2Pass RFQ와 L2Pass Private가 제공했으며, 예상 시간은 약 30초에서 1.5분이었습니다. 연결된 지갑, 아무 지갑 또는 거래소에서 일회용 입금 주소로 토큰을 보내 결제합니다. 스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+[L2Pass Swap](https://swap.l2pass.com/)으로 Ethereum이나 Base에서 Solana로 USDC를 브릿지하고, Tron의 USDT를 Solana의 USDC로 스왑할 수 있습니다. 테스트 견적에서 이 쌍들은 모두 [NEAR Intents](https://near.org/intents)에서 실행되는 L2Pass RFQ와 L2Pass Private가 제공했으며, 예상 시간은 약 30초에서 1.5분이었습니다. 연결된 지갑, 아무 지갑 또는 거래소에서 일회용 입금 주소로 토큰을 보내 결제합니다. 공개 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
 
 **Base에서 약 30초** · **L2Pass 수수료 0%** · **1,000 보내면 999.65 USDC 도착** · **SOL 불필요**
 
@@ -71,7 +71,7 @@ L2Pass RFQ 견적에는 L2Pass 수수료 0%, NEAR Intents 제공자 수수료 0.
 출발 체인의 가스비만 필요하고, 받을 때 SOL은 필요 없습니다.
 
 - **가스비는 출발 체인에서만.** 가스비는 Ethereum이나 Base에서는 ETH로, Tron에서는 TRX로 냅니다. Solana 네트워크 수수료는 표시된 금액에서 차감되므로 받을 때 SOL이 필요 없습니다. 나중에 Solana에서 USDC를 옮기거나 사용할 때 SOL이 필요합니다.
-- **한 번의 스왑으로 USDT에서 USDC로.** Tron에서 출발하면 스테이블코인과 네트워크를 한 번에 바꿀 수 있습니다. 이것도 스테이블코인 스왑이므로 L2Pass RFQ에서 L2Pass 수수료는 0%입니다.
+- **한 번의 스왑으로 USDT에서 USDC로.** Tron에서 출발하면 스테이블코인과 네트워크를 한 번에 바꿀 수 있습니다. 모든 공개 스왑과 마찬가지로 L2Pass 수수료는 0%입니다.
 
 <SwapBeforeYouSend />
 
@@ -83,7 +83,7 @@ L2Pass RFQ 견적에는 L2Pass 수수료 0%, NEAR Intents 제공자 수수료 0.
   </Accordion>
 
   <Accordion title="Solana로 USDC를 브릿지하는 비용은 얼마인가요?">
-    스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)입니다. 1,000 USDC 테스트 견적에서 L2Pass RFQ는 NEAR Intents 수수료와 Solana 네트워크 수수료를 뺀 뒤 Base에서 999.65 USDC, Ethereum에서 999.55 USDC를 전달했습니다.
+    공개 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)입니다. 1,000 USDC 테스트 견적에서 L2Pass RFQ는 NEAR Intents 수수료와 Solana 네트워크 수수료를 뺀 뒤 Base에서 999.65 USDC, Ethereum에서 999.55 USDC를 전달했습니다.
   </Accordion>
 
   <Accordion title="Solana에서 USDC를 받으려면 SOL이 필요한가요?">

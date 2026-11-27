@@ -1,12 +1,12 @@
 ---
 title: "如何跨链把 ETH 兑换成 USDC 或 USDT"
-description: "在 1 秒到约 80 秒内把 ETH 兑换成另一条链上的 USDC 或 USDT。L2Pass 手续费最高 0.2%，一次报价比较四条路由。"
+description: "在 1 秒到约 80 秒内把 ETH 兑换成另一条链上的 USDC 或 USDT。L2Pass 手续费 0%，一次报价比较四条路由。"
 sidebarTitle: "ETH 到 USDC 或 USDT"
 ---
 
 import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
 
-你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 一步把 ETH 兑换成另一条链上的 USDC 或 USDT，例如把 Ethereum 上的 ETH 换成 Base 上的 USDC，或把 Arbitrum 上的 ETH 换成 Tron 上的 USDT。在测试报价中，EVM 链之间提供了 L2Pass RFQ、Relay、LI.FI 和 L2Pass Private，预计时间从约 1 秒到不到一分钟；到 Tron 则提供了 L2Pass RFQ 和 Private。ETH 兑换的 L2Pass 手续费最高 0.2%（私密兑换最高 0.3%），报价会显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 一步把 ETH 兑换成另一条链上的 USDC 或 USDT，例如把 Ethereum 上的 ETH 换成 Base 上的 USDC，或把 Arbitrum 上的 ETH 换成 Tron 上的 USDT。在测试报价中，EVM 链之间提供了 L2Pass RFQ、Relay、LI.FI 和 L2Pass Private，预计时间从约 1 秒到不到一分钟；到 Tron 则提供了 L2Pass RFQ 和 Private。ETH 兑换在任意公开路由上的 L2Pass 手续费均为 0%（私密兑换最高 0.3%），报价会显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
 
 **EVM 链之间不到一分钟** · **一步完成兑换和跨链** · **1 ETH 换得 2,387.76 USDC** · **一次报价四条路由**
 
@@ -23,7 +23,7 @@ import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
 | LI.FI | 约 6 到 26 秒 | 浮动 | 钱包交易 | 0.1% |
 | L2Pass Private | 与 L2Pass RFQ 相同 | 浮动，有最少到账 | 一次性充值地址 | 0.3% |
 
-L2Pass RFQ 和 L2Pass Private 运行在 [NEAR Intents](https://near.org/intents) 上。在这些交易对上，L2Pass RFQ 的 NEAR Intents 提供方费用为 0.2%。
+L2Pass RFQ 和 L2Pass Private 运行在 [NEAR Intents](https://near.org/intents) 上。在这些交易对上，L2Pass RFQ 的 NEAR Intents 提供方费用为 0.2%。现在所有公开路由（包括 Relay 和 LI.FI）的 L2Pass 手续费均为 0%，因此它们的到账金额会比这些报价高约 0.1%。
 
 ## 测试报价
 
@@ -117,7 +117,7 @@ L2Pass RFQ 和 L2Pass Private 运行在 [NEAR Intents](https://near.org/intents)
   </Accordion>
 
   <Accordion title="跨链把 ETH 兑换成 USDC 要多少钱？">
-    ETH 兑换的 L2Pass 手续费最高 0.2%（私密兑换最高 0.3%）。在测试报价中，L2Pass RFQ 上为 0%，Relay 和 LI.FI 上为 0.1%。提供方和网络会收取各自的费用，显示金额已包含这些费用。
+    ETH 兑换在任意公开路由上（包括 L2Pass RFQ、Relay 和 LI.FI）的 L2Pass 手续费均为 0%（私密兑换最高 0.3%）。提供方和网络会收取各自的费用，显示金额已包含这些费用。
   </Accordion>
 
   <Accordion title="可以把 Arbitrum 上的 ETH 兑换成 Tron 上的 USDT 吗？">

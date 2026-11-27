@@ -4,7 +4,7 @@ description: "使用 L2Pass Swap，以收款人想要的网络支付 USDT、USDC
 sidebarTitle: "加密货币付款"
 ---
 
-你可以用 [L2Pass Swap](https://swap.l2pass.com/) 以对方想要的代币和网络向其付款，而你自己用手上持有的任何资产支付。例如，你持有 Tron 上的 USDT，而供应商想要 Solana 上的 USDC：把对方的 Solana 地址设为收款地址，兑换会一步把 USDC 送到那里。你可以从已连接的钱包、任意钱包或交易所付款。稳定币兑换的 L2Pass 手续费为 0%，收款人扣除所有费用后将收到的金额会在你付款前显示。
+你可以用 [L2Pass Swap](https://swap.l2pass.com/) 以对方想要的代币和网络向其付款，而你自己用手上持有的任何资产支付。例如，你持有 Tron 上的 USDT，而供应商想要 Solana 上的 USDC：把对方的 Solana 地址设为收款地址，兑换会一步把 USDC 送到那里。你可以从已连接的钱包、任意钱包或交易所付款。公开兑换的 L2Pass 手续费为 0%，收款人扣除所有费用后将收到的金额会在你付款前显示。
 
 ## 你可以做什么
 
@@ -61,16 +61,16 @@ sidebarTitle: "加密货币付款"
 
 当你直接从钱包付款时，收款人可以看到该钱包的地址及其公开历史。有两种方法可以减少暴露：
 
-- **私密兑换。** L2Pass Private 在 NEAR Intents 的机密环境中运行，减少公开区块链上关于兑换如何成交的信息。私密兑换的 L2Pass 手续费最高 0.3%（替代 0% 或 0.2%，而非额外收取）。
+- **私密兑换。** L2Pass Private 在 NEAR Intents 的机密环境中运行，减少公开区块链上关于兑换如何成交的信息。私密兑换的 L2Pass 手续费最高 0.3%（替代 0%，而非额外收取）。
 - **从单独的钱包或交易所付款。** 充值地址路由让你可以从任意钱包付款，因此不必由主钱包发出付款。
 
 这不是匿名。提供方仍会收到你的钱包地址，并且每笔兑换无论公开还是私密，筛查方式都相同。参见[什么是私密跨链兑换](/zh/products/swap/learn/private-cross-chain-swaps)。
 
 ## 费用、退款和义务
 
-退款会退回给你，而不是收款人；稳定币付款的 L2Pass 手续费为 0%。
+退款会退回给你，而不是收款人；以公开兑换完成的付款，无论用什么代币，L2Pass 手续费均为 0%。
 
-- **费用。** L2Pass 手续费为：稳定币兑换 0%，其他资产最高 0.2%，私密兑换最高 0.3%。参见 [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)。
+- **费用。** 任意资产、任意路由的公开兑换 L2Pass 手续费为 0%，私密兑换最高 0.3%。参见 [L2Pass Swap 费用详解](/zh/products/swap/learn/fees)。
 - **退款。** 如果兑换无法完成，提供方会把充值退回到你的退款地址，而不是收款人。
 - **不部分付款。** 兑换要么全部完成，要么不执行。
 - **合规检查。** 无需账户或 KYC。被标记的地址拿不到报价，因此不会发生任何转账。到账后才被标记的充值不会退回，而是冻结审核；你需要通过 NEAR Intents 支持团队处理。参见[筛查如何运作](/zh/products/swap/learn/failed-swaps-and-refunds#how-screening-works)。
@@ -88,7 +88,7 @@ sidebarTitle: "加密货币付款"
   </Accordion>
 
   <Accordion title="收款人会因为费用损失多少？">
-    稳定币损失很少。在 2026 年 10 月 19 日的实时报价中，从 Tron 发出的 1,000 USDT 通过 L2Pass RFQ 扣除所有费用后在 Ethereum 上到账 999.55 USDT。稳定币的 L2Pass 手续费为 0%。
+    稳定币损失很少。在 2026 年 10 月 19 日的实时报价中，从 Tron 发出的 1,000 USDT 通过 L2Pass RFQ 扣除所有费用后在 Ethereum 上到账 999.55 USDT。公开兑换的 L2Pass 手续费为 0%。
   </Accordion>
 
   <Accordion title="可以用 USDT 向别人支付 BTC 或 ZEC 吗？">

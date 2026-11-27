@@ -4,7 +4,7 @@ description: "L2Pass Swap ile alıcının istediği ağda USDT, USDC, BTC veya Z
 sidebarTitle: "Kripto ödemeleri"
 ---
 
-[L2Pass Swap](https://swap.l2pass.com/) ile birine, almak istediği token ve ağda ödeme yapabilirsiniz; siz de elinizde ne varsa onunla ödersiniz. Örneğin Tron'da USDT'niz var ve bir tedarikçi Solana'da USDC istiyor: onun Solana adresini alıcı adresi olarak girin, takas USDC'yi tek adımda oraya teslim eder. Bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan ödeyebilirsiniz. L2Pass ücreti stablecoin takaslarında %0'dır ve alıcının tüm ücretlerden sonra alacağı tutar, ödemeden önce gösterilir.
+[L2Pass Swap](https://swap.l2pass.com/) ile birine, almak istediği token ve ağda ödeme yapabilirsiniz; siz de elinizde ne varsa onunla ödersiniz. Örneğin Tron'da USDT'niz var ve bir tedarikçi Solana'da USDC istiyor: onun Solana adresini alıcı adresi olarak girin, takas USDC'yi tek adımda oraya teslim eder. Bağlı cüzdanınızdan, herhangi bir cüzdandan veya bir borsadan ödeyebilirsiniz. L2Pass ücreti herkese açık takaslarda %0'dır ve alıcının tüm ücretlerden sonra alacağı tutar, ödemeden önce gösterilir.
 
 ## Neler yapabilirsiniz
 
@@ -61,16 +61,16 @@ Alıcı size yalnızca bir adres ve ağ verir. Gerisini beş adımda siz yapars�
 
 Doğrudan bir cüzdandan ödediğinizde alıcı o cüzdanın adresini ve herkese açık geçmişini görebilir. Bunu sınırlamanın iki yolu:
 
-- **Gizli takas.** L2Pass Private, NEAR Intents üzerinde, herkese açık blok zincirlerinin takasın nasıl gerçekleştiği hakkında gösterdiklerini sınırlayan gizli bir ortamda çalışır. Gizli takasta L2Pass ücreti %0,3'e kadardır (%0 veya %0,2 yerine, üstüne değil).
+- **Gizli takas.** L2Pass Private, NEAR Intents üzerinde, herkese açık blok zincirlerinin takasın nasıl gerçekleştiği hakkında gösterdiklerini sınırlayan gizli bir ortamda çalışır. Gizli takasta L2Pass ücreti %0,3'e kadardır (%0 yerine, üstüne değil).
 - **Ayrı bir cüzdandan veya borsadan ödeyin.** Yatırma adresi rotası herhangi bir cüzdandan ödemenizi sağlar, böylece ödemeyi ana cüzdanınızın göndermesi gerekmez.
 
 Bu anonimlik değildir. Sağlayıcılar cüzdan adresinizi yine alır ve her takas, herkese açık ya da gizli, aynı şekilde taranır. Bkz. [Gizli cross-chain takas nedir](/tr/products/swap/learn/private-cross-chain-swaps).
 
 ## Ücretler, iadeler ve yükümlülükler
 
-İadeler alıcıya değil size döner ve stablecoin ödemelerinde L2Pass ücreti %0'dır.
+İadeler alıcıya değil size döner ve herkese açık takasla yapılan ödemelerde, token fark etmeksizin L2Pass ücreti %0'dır.
 
-- **Ücretler.** L2Pass ücreti stablecoin takaslarında %0, diğer varlıklarda %0,2'ye kadar ve gizli takaslarda %0,3'e kadardır. Bkz. [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees).
+- **Ücretler.** L2Pass ücreti herkese açık takaslarda her varlıkta ve her rotada %0, gizli takaslarda %0,3'e kadardır. Bkz. [L2Pass Swap ücretleri açıklaması](/tr/products/swap/learn/fees).
 - **İadeler.** Bir takas tamamlanamazsa sağlayıcı yatırılan tutarı alıcıya değil, iade adresinize geri gönderir.
 - **Kısmi ödeme yok.** Bir takas ya tamamen tamamlanır ya da hiç gerçekleşmez.
 - **Uyum kontrolleri.** Hesap veya KYC gerekmez. İşaretlenen bir adres teklif almaz, dolayısıyla hiçbir şey gönderilmez. Ulaştıktan sonra işaretlenen bir yatırma iade edilmez, inceleme için tutulur; bunu NEAR Intents desteğiyle çözersiniz. Bkz. [Tarama nasıl çalışır](/tr/products/swap/learn/failed-swaps-and-refunds#how-screening-works).
@@ -88,7 +88,7 @@ Bu anonimlik değildir. Sağlayıcılar cüzdan adresinizi yine alır ve her tak
   </Accordion>
 
   <Accordion title="Alıcı ücretlere ne kadar kaybeder?">
-    Stablecoin'lerde çok az. 19 Ekim 2026 tarihli canlı tekliflerde Tron'dan gönderilen 1.000 USDT, tüm ücretlerden sonra L2Pass RFQ ile Ethereum'a 999,55 USDT olarak ulaştı. Stablecoin'lerde L2Pass ücreti %0'dır.
+    Stablecoin'lerde çok az. 19 Ekim 2026 tarihli canlı tekliflerde Tron'dan gönderilen 1.000 USDT, tüm ücretlerden sonra L2Pass RFQ ile Ethereum'a 999,55 USDT olarak ulaştı. Herkese açık takaslarda L2Pass ücreti %0'dır.
   </Accordion>
 
   <Accordion title="USDT'den birine BTC veya ZEC ödeyebilir miyim?">

@@ -6,7 +6,7 @@ sidebarTitle: "USDC sang Solana"
 
 import SwapBeforeYouSend from '/snippets/vi/swap-before-you-send.mdx';
 
-Bạn có thể chuyển USDC sang Solana từ Ethereum hoặc Base, và đổi USDT trên Tron sang USDC trên Solana, bằng [L2Pass Swap](https://swap.l2pass.com/). Trong báo giá thử nghiệm, các cặp này do L2Pass RFQ và L2Pass Private cung cấp, cả hai chạy trên [NEAR Intents](https://near.org/intents), với thời gian ước tính từ khoảng 30 giây đến 1,5 phút. Bạn thanh toán bằng cách gửi token đến địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn. Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí trước khi bạn xác nhận. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
+Bạn có thể chuyển USDC sang Solana từ Ethereum hoặc Base, và đổi USDT trên Tron sang USDC trên Solana, bằng [L2Pass Swap](https://swap.l2pass.com/). Trong báo giá thử nghiệm, các cặp này do L2Pass RFQ và L2Pass Private cung cấp, cả hai chạy trên [NEAR Intents](https://near.org/intents), với thời gian ước tính từ khoảng 30 giây đến 1,5 phút. Bạn thanh toán bằng cách gửi token đến địa chỉ nạp dùng một lần từ ví đã kết nối, bất kỳ ví nào hoặc từ sàn. Phí L2Pass cho hoán đổi công khai là 0% (tối đa 0,3% cho hoán đổi riêng tư), và báo giá hiển thị số tiền bạn nhận sau phí trước khi bạn xác nhận. Chỉ gas trên mạng nguồn và phí tin nhắn của cầu nối (nếu có) được trả riêng.
 
 **Khoảng 30 giây từ Base** · **Phí L2Pass 0%** · **Gửi 1.000 nhận 999,65 USDC** · **Không cần SOL**
 
@@ -71,7 +71,7 @@ Không có gì rời khỏi ví cho đến khi bạn thanh toán, nên bạn có
 Bạn chỉ cần gas trên mạng nguồn và không cần SOL để nhận.
 
 - **Chỉ cần gas trên mạng nguồn.** Bạn trả gas bằng ETH trên Ethereum hoặc Base, hoặc bằng TRX trên Tron. Phí mạng Solana được trừ vào số tiền hiển thị, nên bạn không cần SOL để nhận. Bạn sẽ cần SOL sau này để chuyển hoặc sử dụng USDC trên Solana.
-- **Từ USDT sang USDC trong một lần hoán đổi.** Từ Tron, bạn có thể đổi cả stablecoin lẫn mạng cùng lúc. Đây vẫn là hoán đổi stablecoin, với phí L2Pass 0% trên L2Pass RFQ.
+- **Từ USDT sang USDC trong một lần hoán đổi.** Từ Tron, bạn có thể đổi cả stablecoin lẫn mạng cùng lúc. Như mọi hoán đổi công khai, phí L2Pass là 0%.
 
 <SwapBeforeYouSend />
 
@@ -83,7 +83,7 @@ Bạn chỉ cần gas trên mạng nguồn và không cần SOL để nhận.
   </Accordion>
 
   <Accordion title="Chuyển USDC sang Solana tốn bao nhiêu?">
-    Phí L2Pass cho hoán đổi stablecoin là 0% (tối đa 0,3% cho hoán đổi riêng tư). Trong báo giá thử nghiệm cho 1.000 USDC, L2Pass RFQ giao 999,65 USDC từ Base và 999,55 USDC từ Ethereum, sau phí NEAR Intents và phí mạng Solana.
+    Phí L2Pass cho hoán đổi công khai là 0% (tối đa 0,3% cho hoán đổi riêng tư). Trong báo giá thử nghiệm cho 1.000 USDC, L2Pass RFQ giao 999,65 USDC từ Base và 999,55 USDC từ Ethereum, sau phí NEAR Intents và phí mạng Solana.
   </Accordion>
 
   <Accordion title="Tôi có cần SOL để nhận USDC trên Solana không?">

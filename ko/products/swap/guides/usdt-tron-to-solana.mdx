@@ -6,7 +6,7 @@ sidebarTitle: "USDT: Tron → Solana"
 
 import SwapBeforeYouSend from '/snippets/ko/swap-before-you-send.mdx';
 
-쌍의 모든 경로를 나란히 보여주는 비수탁형 인터페이스인 [L2Pass Swap](https://swap.l2pass.com/)으로 Tron(TRC-20)에서 Solana(SPL)로 USDT를 브릿지할 수 있습니다. 테스트 견적에서 이 쌍에는 L2Pass RFQ와 L2Pass Private 두 경로가 제시되었고, 예상 시간은 각각 약 80초이었습니다. 스테이블코인 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
+쌍의 모든 경로를 나란히 보여주는 비수탁형 인터페이스인 [L2Pass Swap](https://swap.l2pass.com/)으로 Tron(TRC-20)에서 Solana(SPL)로 USDT를 브릿지할 수 있습니다. 테스트 견적에서 이 쌍에는 L2Pass RFQ와 L2Pass Private 두 경로가 제시되었고, 예상 시간은 각각 약 80초이었습니다. 공개 스왑의 L2Pass 수수료는 0%(비공개 스왑은 최대 0.3%)이며, 견적은 확인 전에 수수료를 뺀 수령액을 보여줍니다. 출발 네트워크 가스비와 브릿지 메시지 수수료(있는 경우)만 별도로 냅니다.
 
 **약 80초** · **L2Pass 수수료 0%** · **1,000 보내면 999.87 USDT 도착** · **SOL 불필요**
 
@@ -77,7 +77,7 @@ L2Pass RFQ와 L2Pass Private는 모두 솔버와 마켓 메이커가 스왑 체�
   </Accordion>
 
   <Accordion title="대신 Solana에서 USDC나 SOL을 받을 수 있나요?">
-    네, 해당 쌍을 체결할 수 있는 경로가 있다면 가능합니다. 다른 도착 토큰을 고르면 견적이 업데이트됩니다. L2Pass 수수료는 USDT에서 USDC 같은 스테이블코인 스왑은 0%, SOL 같은 다른 자산은 최대 0.2%입니다.
+    네, 해당 쌍을 체결할 수 있는 경로가 있다면 가능합니다. 다른 도착 토큰을 고르면 견적이 업데이트됩니다. USDC를 고르든 SOL을 고르든 공개 스왑의 L2Pass 수수료는 0%입니다.
   </Accordion>
 
   <Accordion title="Tron에서 Solana로 USDT를 브릿지하는 데 얼마나 걸리나요?">

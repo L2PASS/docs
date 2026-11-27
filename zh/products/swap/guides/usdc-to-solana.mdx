@@ -6,7 +6,7 @@ sidebarTitle: "USDC 到 Solana"
 
 import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
 
-你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDC 从 Ethereum 或 Base 跨链到 Solana，也可以把 Tron 上的 USDT 兑换成 Solana 上的 USDC。在测试报价中，这些交易对由 L2Pass RFQ 和 L2Pass Private 提供（两者都运行在 [NEAR Intents](https://near.org/intents) 上），预计时间约 30 秒到 1.5 分钟。你把代币发送到一次性充值地址即可付款，可以从已连接的钱包、任意钱包或交易所发送。稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
+你可以使用 [L2Pass Swap](https://swap.l2pass.com/) 把 USDC 从 Ethereum 或 Base 跨链到 Solana，也可以把 Tron 上的 USDT 兑换成 Solana 上的 USDC。在测试报价中，这些交易对由 L2Pass RFQ 和 L2Pass Private 提供（两者都运行在 [NEAR Intents](https://near.org/intents) 上），预计时间约 30 秒到 1.5 分钟。你把代币发送到一次性充值地址即可付款，可以从已连接的钱包、任意钱包或交易所发送。公开兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%），报价会在你确认前显示扣除费用后的到账金额。只有源链 Gas 和可能存在的跨链消息费需要另外支付。
 
 **从 Base 约 30 秒** · **L2Pass 手续费 0%** · **发送 1,000 到账 999.65 USDC** · **无需 SOL**
 
@@ -71,7 +71,7 @@ import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
 你只需要源链上的 Gas，接收时不需要 SOL。
 
 - **只需源链 Gas。** 你在 Ethereum 或 Base 上用 ETH 支付 Gas，在 Tron 上用 TRX 支付。Solana 网络费会从显示金额中扣除，因此接收时不需要 SOL。之后在 Solana 上转移或使用 USDC 时才需要 SOL。
-- **一次兑换完成 USDT 到 USDC。** 从 Tron 出发，你可以同时更换稳定币和网络。这仍然是稳定币兑换，在 L2Pass RFQ 上 L2Pass 手续费为 0%。
+- **一次兑换完成 USDT 到 USDC。** 从 Tron 出发，你可以同时更换稳定币和网络。和所有公开兑换一样，L2Pass 手续费为 0%。
 
 <SwapBeforeYouSend />
 
@@ -83,7 +83,7 @@ import SwapBeforeYouSend from '/snippets/zh/swap-before-you-send.mdx';
   </Accordion>
 
   <Accordion title="把 USDC 跨链到 Solana 要多少钱？">
-    稳定币兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。在 1,000 USDC 的测试报价中，扣除 NEAR Intents 费用和 Solana 网络费后，L2Pass RFQ 从 Base 到账 999.65 USDC，从 Ethereum 到账 999.55 USDC。
+    公开兑换的 L2Pass 手续费为 0%（私密兑换最高 0.3%）。在 1,000 USDC 的测试报价中，扣除 NEAR Intents 费用和 Solana 网络费后，L2Pass RFQ 从 Base 到账 999.65 USDC，从 Ethereum 到账 999.55 USDC。
   </Accordion>
 
   <Accordion title="在 Solana 上接收 USDC 需要 SOL 吗？">

@@ -4,7 +4,7 @@ description: "O L2Pass Swap consulta várias fontes de roteamento ao mesmo tempo
 sidebarTitle: "Como as rotas se comparam"
 ---
 
-O [L2Pass Swap](https://swap.l2pass.com/) consulta várias fontes de roteamento ao mesmo tempo e mostra todas as rotas que podem executar seu swap, ordenadas pelo valor líquido que você recebe depois do gas. As fontes são L2Pass RFQ e L2Pass Private by NEAR Intents, as pontes nativas USDT0 e Circle CCTP, e os agregadores e redes de intents LI.FI, LI.FI Intents, Relay, Aori e o agregador OKX DEX. Nenhuma rota vence em todos os pares, então a comparação é feita a cada cotação. A taxa L2Pass é de 0% em swaps de stablecoins por qualquer rota.
+O [L2Pass Swap](https://swap.l2pass.com/) consulta várias fontes de roteamento ao mesmo tempo e mostra todas as rotas que podem executar seu swap, ordenadas pelo valor líquido que você recebe depois do gas. As fontes são L2Pass RFQ e L2Pass Private by NEAR Intents, as pontes nativas USDT0 e Circle CCTP, e os agregadores e redes de intents LI.FI, LI.FI Intents, Relay, Aori e o agregador OKX DEX. Nenhuma rota vence em todos os pares, então a comparação é feita a cada cotação. A taxa L2Pass é de 0% em qualquer swap público, por qualquer rota.
 
 ## As rotas
 
@@ -80,9 +80,9 @@ As rotas são ordenadas pelo valor líquido estimado que você recebe depois do 
 
 ## Taxas, pagamento e reembolsos
 
-A rota muda as taxas do provedor e a forma de pagamento, mas não a taxa L2Pass de 0% em stablecoins.
+A rota muda as taxas do provedor e a forma de pagamento, mas não a taxa L2Pass de 0% em swaps públicos.
 
-- **Em stablecoins, a taxa L2Pass não depende da rota.** Ela é de 0% em swaps de stablecoins por qualquer rota, até 0,2% em outros ativos e até 0,3% em swaps privados. Veja [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees).
+- **A taxa L2Pass não depende da rota.** Ela é de 0% em qualquer swap público, qualquer ativo e qualquer rota, e de até 0,3% em swaps privados. Veja [Taxas do L2Pass Swap explicadas](/pt-br/products/swap/learn/fees).
 - **Depósito ou carteira.** Só o L2Pass RFQ e o L2Pass Private usam endereço de depósito, então são as rotas que você pode pagar a partir de uma exchange. As outras exigem uma transação assinada na carteira.
 - **Reembolsos.** Rotas on-chain são revertidas se falharem (o gas não é reembolsável). Rotas com endereço de depósito devolvem o depósito ao endereço de reembolso; taxas do provedor e da rede podem ser descontadas.
 - **Sem execução parcial.** Um swap é concluído por inteiro ou não é executado.
